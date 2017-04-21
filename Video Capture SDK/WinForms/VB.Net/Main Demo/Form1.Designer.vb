@@ -5,8 +5,12 @@ Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+        If onvifControl IsNot Nothing Then
+            onvifControl.Dispose()
+        End If
+
         Try
             If disposing AndAlso components IsNot Nothing Then
                 components.Dispose()

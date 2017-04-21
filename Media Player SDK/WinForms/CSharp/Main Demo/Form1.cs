@@ -1514,26 +1514,11 @@ namespace Media_Player_Demo
                 MediaPlayer1.Encryption_Key = VideoCapture.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text);
             }
 
-            // MediaPlayer1.DirectShow_Filters_Blacklist_Clear();
-            // MediaPlayer1.DirectShow_Filters_Blacklist_Add("Color Space Converter");
-
-            // MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
-            // MediaPlayer1.Video_Effects_Clear();
-            // MediaPlayer1.Video_Effects_Enabled = false;
-
-            // MediaPlayer1.Audio_Effects_UseLegacyEffects = false;
-            // MediaPlayer1.Audio_Effects_Enabled = true;
-
-            // MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, true);
-            // MediaPlayer1.Audio_Effects_Amplify(-1, 0, 20000, false);
-            // MediaPlayer1.Audio_Effects_Legacy_DS_Compressor(-1, 0, 100, 100, 1000, 100, 1000, 199);
+            // Motion detection-ex
+            ConfigureMotionDetectionEx();
 
             MediaPlayer1.Play();
-
-            // MediaPlayer1.Audio_Effects_Amplify(-1, 0, 20000, false);
-
-            // MediaPlayer1.Audio_Effects_Legacy_DS_Compressor(-1, 0, 100, 100, 1000, 100, 1000, 199);
-
+            
             FillAdjustRanges();
 
             // DVD
@@ -2193,7 +2178,7 @@ namespace Media_Player_Demo
             }
         }
 
-        private void ConfigureObjectDetection()
+        private void ConfigureMotionDetectionEx()
         {
             if (cbMotionDetectionEx.Checked)
             {
@@ -2205,16 +2190,6 @@ namespace Media_Player_Demo
             {
                 MediaPlayer1.Motion_DetectionEx = null;
             }
-        }
-
-        private void cbAFMotionDetection_CheckedChanged(object sender, EventArgs e)
-        {
-            ConfigureObjectDetection();
-        }
-
-        private void cbAFMotionHighlight_CheckedChanged(object sender, EventArgs e)
-        {
-            ConfigureObjectDetection();
         }
 
         private delegate void AFMotionDelegate(float level);

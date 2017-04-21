@@ -20,6 +20,12 @@ namespace VideoCapture_CSharp_Demo
             {
                 components.Dispose();
             }
+
+            if (onvifControl != null)
+            {
+                onvifControl.Dispose();
+            }
+
             base.Dispose(disposing);
         }
 

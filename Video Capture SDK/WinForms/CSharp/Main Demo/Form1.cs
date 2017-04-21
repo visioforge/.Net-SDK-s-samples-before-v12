@@ -1298,7 +1298,7 @@ namespace VideoCapture_CSharp_Demo
                 }
 
                 cbFramerate.Items.Clear();
-                
+
                 foreach (string frameRate in deviceItem.VideoFrameRates)
                 {
                     cbFramerate.Items.Add(frameRate);
@@ -1546,7 +1546,7 @@ namespace VideoCapture_CSharp_Demo
                 edWMVProfile.Text = openFileDialog1.FileName;
             }
         }
-        
+
         /// <summary>
         /// Starts video preview or capture.
         /// </summary>
@@ -1680,20 +1680,20 @@ namespace VideoCapture_CSharp_Demo
             else if ((VideoCapture1.Mode == VFVideoCaptureMode.PushSourceCapture) || (VideoCapture1.Mode == VFVideoCaptureMode.PushSourcePreview))
             {
                 VideoCapture1.Push_Source = new PushSourceSettings
-                                                {
-                                                    VideoPresent = true,
-                                                    VideoWidth = 640,
-                                                    VideoHeight = 480,
-                                                    VideoFrameRate = 25.0f
-                                                };
+                {
+                    VideoPresent = true,
+                    VideoWidth = 640,
+                    VideoHeight = 480,
+                    VideoFrameRate = 25.0f
+                };
             }
             else if ((VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourceCapture) || (VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourcePreview))
             {
                 VideoCapture1.Decklink_Source = new DecklinkSourceSettings
-                                                    {
-                                                        Name = cbDecklinkCaptureDevice.Text,
-                                                        VideoFormat = cbDecklinkCaptureVideoFormat.Text
-                                                    };
+                {
+                    Name = cbDecklinkCaptureDevice.Text,
+                    VideoFormat = cbDecklinkCaptureVideoFormat.Text
+                };
             }
 
             // Auto file name
@@ -1752,13 +1752,13 @@ namespace VideoCapture_CSharp_Demo
                         outputFormat = VFVideoCaptureOutputFormat.M4A;
                         break;
                     case 7:
-                        {  
+                        {
                             outputFormat = VFVideoCaptureOutputFormat.WMA;
 
                             var wmaOutput = new VFWMAOutput
-                                                {
-                                                    ProfileFilename = edWMVProfile.Text
-                                                };
+                            {
+                                ProfileFilename = edWMVProfile.Text
+                            };
                             VideoCapture1.Output_Format = wmaOutput;
 
                             break;
@@ -1963,12 +1963,12 @@ namespace VideoCapture_CSharp_Demo
                 {
                     var mp4Output = new VFMP4Output();
                     SetMP4Output(ref mp4Output);
-                    
+
                     if (outputFormat == VFVideoCaptureOutputFormat.Encrypted)
                     {
                         mp4Output.Encryption = true;
                         mp4Output.Encryption_Format = VFEncryptionFormat.MP4_H264_SW_AAC;
-                        
+
                         if (rbEncryptionKeyString.Checked)
                         {
                             mp4Output.Encryption_KeyType = VFEncryptionKeyType.String;
@@ -1995,7 +1995,7 @@ namespace VideoCapture_CSharp_Demo
                             mp4Output.Encryption_Mode = VFEncryptionMode.v9_AES256;
                         }
                     }
-                    
+
                     VideoCapture1.Output_Format = mp4Output;
                 }
                 else if (outputFormat == VFVideoCaptureOutputFormat.AnimatedGIF)
@@ -2031,7 +2031,7 @@ namespace VideoCapture_CSharp_Demo
 
             // Chroma key
             ConfigureChromaKey();
-            
+
             // video renderer
             ConfigureVideoRenderer();
 
@@ -2064,12 +2064,12 @@ namespace VideoCapture_CSharp_Demo
             if (cbAudioChannelMapperEnabled.Checked)
             {
                 VideoCapture1.Audio_Channel_Mapper = new AudioChannelMapperSettings
-                                                         {
-                                                             Routes = audioChannelMapperItems.ToArray(),
-                                                             OutputChannelsCount =
+                {
+                    Routes = audioChannelMapperItems.ToArray(),
+                    OutputChannelsCount =
                                                                  Convert.ToInt32(
                                                                      edAudioChannelMapperOutputChannels.Text)
-                                                         };
+                };
             }
             else
             {
@@ -2085,7 +2085,7 @@ namespace VideoCapture_CSharp_Demo
 
             // PIP
             VideoCapture1.PIP_Mode = (VFPIPMode)cbPIPMode.SelectedIndex;
-            VideoCapture1.PIP_ResizeQuality = (VFPIPResizeQuality) cbPIPResizeMode.SelectedIndex;
+            VideoCapture1.PIP_ResizeQuality = (VFPIPResizeQuality)cbPIPResizeMode.SelectedIndex;
 
             if (VideoCapture1.PIP_Mode == VFPIPMode.ChromaKey)
             {
@@ -2113,7 +2113,7 @@ namespace VideoCapture_CSharp_Demo
             }
 
             // bug
-            //VideoCapture1.Video_Sample_Grabber_Enabled = true;
+            VideoCapture1.Video_Sample_Grabber_Enabled = true;
             //VideoCapture1.Video_Effects_Enabled = true;
 
             //IVFGPUVideoEffectEmboss intf;
@@ -2187,18 +2187,18 @@ namespace VideoCapture_CSharp_Demo
             if (cbTagEnabled.Checked)
             {
                 var tags = new VFFileTags
-                               {
-                                   Title = edTagTitle.Text,
-                                   Performers = new[] { edTagArtists.Text },
-                                   Album = edTagAlbum.Text,
-                                   Comment = edTagComment.Text,
-                                   Track = Convert.ToUInt32(edTagTrackID.Text),
-                                   Copyright = edTagCopyright.Text,
-                                   Year = Convert.ToUInt32(edTagYear.Text),
-                                   Composers = new[] { edTagComposers.Text },
-                                   Genres = new[] { cbTagGenre.Text },
-                                   Lyrics = edTagLyrics.Text
-                               };
+                {
+                    Title = edTagTitle.Text,
+                    Performers = new[] { edTagArtists.Text },
+                    Album = edTagAlbum.Text,
+                    Comment = edTagComment.Text,
+                    Track = Convert.ToUInt32(edTagTrackID.Text),
+                    Copyright = edTagCopyright.Text,
+                    Year = Convert.ToUInt32(edTagYear.Text),
+                    Composers = new[] { edTagComposers.Text },
+                    Genres = new[] { cbTagGenre.Text },
+                    Lyrics = edTagLyrics.Text
+                };
 
                 if (imgTagCover.Image != null)
                 {
@@ -2246,11 +2246,11 @@ namespace VideoCapture_CSharp_Demo
                 VideoCapture1.Video_ResizeOrCrop_Enabled = true;
 
                 VideoCapture1.Video_Resize = new VideoResizeSettings
-                                                 {
-                                                     Width = Convert.ToInt32(edResizeWidth.Text),
-                                                     Height = Convert.ToInt32(edResizeHeight.Text),
-                                                     LetterBox = cbResizeLetterbox.Checked
-                                                 };
+                {
+                    Width = Convert.ToInt32(edResizeWidth.Text),
+                    Height = Convert.ToInt32(edResizeHeight.Text),
+                    LetterBox = cbResizeLetterbox.Checked
+                };
 
                 switch (cbResizeMode.SelectedIndex)
                 {
@@ -2354,11 +2354,11 @@ namespace VideoCapture_CSharp_Demo
             if (cbChromaKeyEnabled.Checked)
             {
                 VideoCapture1.ChromaKey = new ChromaKeySettings
-                                              {
-                                                  ContrastHigh = tbChromaKeyContrastHigh.Value,
-                                                  ContrastLow = tbChromaKeyContrastLow.Value,
-                                                  ImageFilename = edChromaKeyImage.Text
-                                              };
+                {
+                    ContrastHigh = tbChromaKeyContrastHigh.Value,
+                    ContrastLow = tbChromaKeyContrastLow.Value,
+                    ImageFilename = edChromaKeyImage.Text
+                };
 
                 if (rbChromaKeyGreen.Checked)
                 {
@@ -2615,18 +2615,18 @@ namespace VideoCapture_CSharp_Demo
             if (cbFaceTrackingEnabled.Checked)
             {
                 VideoCapture1.Face_Tracking = new FaceTrackingSettings
-                                                  {
-                                                      ColorMode = (CamshiftMode)cbFaceTrackingColorMode.SelectedIndex,
-                                                      Highlight = cbFaceTrackingCHL.Checked,
-                                                      MinimumWindowSize =
+                {
+                    ColorMode = (CamshiftMode)cbFaceTrackingColorMode.SelectedIndex,
+                    Highlight = cbFaceTrackingCHL.Checked,
+                    MinimumWindowSize =
                                                           int.Parse(edFaceTrackingMinimumWindowSize.Text),
-                                                      ScalingMode =
+                    ScalingMode =
                                                           (ObjectDetectorScalingMode)
                                                           cbFaceTrackingScalingMode.SelectedIndex,
-                                                      SearchMode =
+                    SearchMode =
                                                           (ObjectDetectorSearchMode)
                                                           cbFaceTrackingSearchMode.SelectedIndex
-                                                  };
+                };
 
                 // VideoCapture1.FaceTracking_ScaleFactor = int.Parse(edFaceTrackingScaleFactor.Text);
             }
@@ -2655,31 +2655,31 @@ namespace VideoCapture_CSharp_Demo
             if (cbDecklinkOutput.Checked)
             {
                 VideoCapture1.Decklink_Output = new DecklinkOutputSettings
-                                                    {
-                                                        DVEncoding = cbDecklinkDV.Checked,
-                                                        AnalogOutputIREUSA = cbDecklinkOutputNTSC.SelectedIndex == 0,
-                                                        AnalogOutputSMPTE =
+                {
+                    DVEncoding = cbDecklinkDV.Checked,
+                    AnalogOutputIREUSA = cbDecklinkOutputNTSC.SelectedIndex == 0,
+                    AnalogOutputSMPTE =
                                                             cbDecklinkOutputComponentLevels.SelectedIndex == 0,
-                                                        BlackToDeckInCapture =
+                    BlackToDeckInCapture =
                                                             (DecklinkBlackToDeckInCapture)
                                                             cbDecklinkOutputBlackToDeck.SelectedIndex,
-                                                        DualLinkOutputMode =
+                    DualLinkOutputMode =
                                                             (DecklinkDualLinkMode)
                                                             cbDecklinkOutputDualLink.SelectedIndex,
-                                                        HDTVPulldownOnOutput =
+                    HDTVPulldownOnOutput =
                                                             (DecklinkHDTVPulldownOnOutput)
                                                             cbDecklinkOutputHDTVPulldown.SelectedIndex,
-                                                        SingleFieldOutputForSynchronousFrames =
+                    SingleFieldOutputForSynchronousFrames =
                                                             (DecklinkSingleFieldOutputForSynchronousFrames)
                                                             cbDecklinkOutputSingleField.SelectedIndex,
-                                                        VideoOutputDownConversionMode =
+                    VideoOutputDownConversionMode =
                                                             (DecklinkVideoOutputDownConversionMode)
                                                             cbDecklinkOutputDownConversion.SelectedIndex,
-                                                        VideoOutputDownConversionModeAnalogUsed =
+                    VideoOutputDownConversionModeAnalogUsed =
                                                             cbDecklinkOutputDownConversionAnalogOutput.Checked,
-                                                        AnalogOutput =
+                    AnalogOutput =
                                                             (DecklinkAnalogOutput)cbDecklinkOutputAnalog.SelectedIndex
-                                                    };
+                };
 
                 VideoCapture1.Decklink_Input = (DecklinkInput)cbDecklinkSourceInput.SelectedIndex;
                 VideoCapture1.Decklink_Input_SMPTE = cbDecklinkSourceComponentLevels.SelectedIndex == 0;
@@ -2731,7 +2731,7 @@ namespace VideoCapture_CSharp_Demo
             {
                 mp4Output.MP4Mode = VFMP4Mode.v10;
             }
-            else 
+            else
             {
                 mp4Output.MP4Mode = VFMP4Mode.NVENC;
             }
@@ -2952,11 +2952,11 @@ namespace VideoCapture_CSharp_Demo
             if (cbMP4Resize.Checked)
             {
                 mp4Output.Video_Resize = new VideoResizeSettings
-                                                 {
-                                                     Width = Convert.ToInt32(edMP4ResizeWidth.Text),
-                                                     Height = Convert.ToInt32(edMP4ResizeHeight.Text),
-                                                     LetterBox = cbMP4ResizeLetterbox.Checked
-                                                 };
+                {
+                    Width = Convert.ToInt32(edMP4ResizeWidth.Text),
+                    Height = Convert.ToInt32(edMP4ResizeHeight.Text),
+                    LetterBox = cbMP4ResizeLetterbox.Checked
+                };
 
                 switch (cbResizeMode.SelectedIndex)
                 {
@@ -3297,18 +3297,18 @@ namespace VideoCapture_CSharp_Demo
         private void SetSpeexOutput()
         {
             VideoCapture1.Output_Format = new VFSpeexOutput
-                                  {
-                                      BitRate = tbSpeexBitrate.Value,
-                                      BitrateControl = (SpeexBitrateControl)cbSpeexBitrateControl.SelectedIndex,
-                                      Mode = (SpeexEncodeMode)cbSpeexMode.SelectedIndex,
-                                      MaxBitRate = tbSpeexMaxBitrate.Value,
-                                      Complexity = tbSpeexComplexity.Value,
-                                      Quality = tbSpeexQuality.Value,
-                                      UseAGC = cbSpeexAGC.Checked,
-                                      UseDTX = cbSpeexDTX.Checked,
-                                      UseDenoise = cbSpeexDenoise.Checked,
-                                      UseVAD = cbSpeexVAD.Checked
-                                  };
+            {
+                BitRate = tbSpeexBitrate.Value,
+                BitrateControl = (SpeexBitrateControl)cbSpeexBitrateControl.SelectedIndex,
+                Mode = (SpeexEncodeMode)cbSpeexMode.SelectedIndex,
+                MaxBitRate = tbSpeexMaxBitrate.Value,
+                Complexity = tbSpeexComplexity.Value,
+                Quality = tbSpeexQuality.Value,
+                UseAGC = cbSpeexAGC.Checked,
+                UseDTX = cbSpeexDTX.Checked,
+                UseDenoise = cbSpeexDenoise.Checked,
+                UseVAD = cbSpeexVAD.Checked
+            };
         }
 
         private void SetM4AOutput(ref VFM4AOutput m4aOutput)
@@ -3325,12 +3325,12 @@ namespace VideoCapture_CSharp_Demo
         private void SetOGGOutput()
         {
             var oggVorbisOutput = new VFOGGVorbisOutput
-                                      {
-                                          Quality = Convert.ToInt32(edOGGQuality.Text),
-                                          MinBitRate = Convert.ToInt32(cbOGGMinimum.Text),
-                                          MaxBitRate = Convert.ToInt32(cbOGGMaximum.Text),
-                                          AvgBitRate = Convert.ToInt32(cbOGGAverage.Text)
-                                      };
+            {
+                Quality = Convert.ToInt32(edOGGQuality.Text),
+                MinBitRate = Convert.ToInt32(cbOGGMinimum.Text),
+                MaxBitRate = Convert.ToInt32(cbOGGMaximum.Text),
+                AvgBitRate = Convert.ToInt32(cbOGGAverage.Text)
+            };
 
             if (rbOGGQuality.Checked)
             {
@@ -3420,10 +3420,10 @@ namespace VideoCapture_CSharp_Demo
                         else
                         {
                             var wmvOutput = new VFWMVOutput
-                                                {
-                                                    Mode = VFWMVMode.ExternalProfile,
-                                                    External_Profile_FileName = edNetworkStreamingWMVProfile.Text
-                                                };
+                            {
+                                Mode = VFWMVMode.ExternalProfile,
+                                External_Profile_FileName = edNetworkStreamingWMVProfile.Text
+                            };
                             VideoCapture1.Network_Streaming_Output = wmvOutput;
                         }
 
@@ -3607,11 +3607,11 @@ namespace VideoCapture_CSharp_Demo
         private void SelectBDASource()
         {
             VideoCapture1.BDA_Source = new BDASourceSettings
-                                           {
-                                               ReceiverName = cbBDAReceiver.Text,
-                                               SourceType = (VFBDAType)cbBDADeviceStandard.SelectedIndex,
-                                               SourceName = cbBDASourceDevice.Text
-                                           };
+            {
+                ReceiverName = cbBDAReceiver.Text,
+                SourceType = (VFBDAType)cbBDADeviceStandard.SelectedIndex,
+                SourceName = cbBDASourceDevice.Text
+            };
 
             if (VideoCapture1.BDA_Source.SourceType == VFBDAType.DVBT)
             {
@@ -3645,9 +3645,9 @@ namespace VideoCapture_CSharp_Demo
         private void SelectIPCameraSource(out IPCameraSourceSettings settings)
         {
             settings = new IPCameraSourceSettings
-                           {
-                               URL = edIPUrl.Text
-                           };
+            {
+                URL = edIPUrl.Text
+            };
 
             switch (cbIPCameraType.SelectedIndex)
             {
@@ -3690,7 +3690,7 @@ namespace VideoCapture_CSharp_Demo
                                       + "\\VisioForge\\ip_cam_log.txt";
             settings.VLC_ZeroClockJitterEnabled = cbVLCZeroClockJitter.Checked;
             settings.VLC_CacheSize = Convert.ToInt32(edVLCCacheSize.Text);
-            
+
             if (cbIPCameraONVIF.Checked)
             {
                 settings.ONVIF_Source = true;
@@ -3700,7 +3700,7 @@ namespace VideoCapture_CSharp_Demo
                     settings.ONVIF_SourceProfile = cbONVIFProfile.Text;
                 }
             }
-            
+
             if (cbIPDisconnect.Checked)
             {
                 settings.DisconnectEventInterval = 5000;
@@ -5245,22 +5245,22 @@ namespace VideoCapture_CSharp_Demo
             if (cbMotDetEnabled.Checked)
             {
                 VideoCapture1.Motion_Detection = new MotionDetectionSettings
-                                                     {
-                                                         Enabled = cbMotDetEnabled.Checked,
-                                                         Compare_Red = cbCompareRed.Checked,
-                                                         Compare_Green = cbCompareGreen.Checked,
-                                                         Compare_Blue = cbCompareBlue.Checked,
-                                                         Compare_Greyscale = cbCompareGreyscale.Checked,
-                                                         Highlight_Color =
+                {
+                    Enabled = cbMotDetEnabled.Checked,
+                    Compare_Red = cbCompareRed.Checked,
+                    Compare_Green = cbCompareGreen.Checked,
+                    Compare_Blue = cbCompareBlue.Checked,
+                    Compare_Greyscale = cbCompareGreyscale.Checked,
+                    Highlight_Color =
                                                              (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
-                                                         Highlight_Enabled = cbMotDetHLEnabled.Checked,
-                                                         Highlight_Threshold = tbMotDetHLThreshold.Value,
-                                                         FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
-                                                         Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
-                                                         Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
-                                                         DropFrames_Enabled = cbMotDetDropFramesEnabled.Checked,
-                                                         DropFrames_Threshold = tbMotDetDropFramesThreshold.Value
-                                                     };
+                    Highlight_Enabled = cbMotDetHLEnabled.Checked,
+                    Highlight_Threshold = tbMotDetHLThreshold.Value,
+                    FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
+                    Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
+                    Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
+                    DropFrames_Enabled = cbMotDetDropFramesEnabled.Checked,
+                    DropFrames_Threshold = tbMotDetDropFramesThreshold.Value
+                };
                 VideoCapture1.MotionDetection_Update();
             }
             else
@@ -6074,7 +6074,7 @@ namespace VideoCapture_CSharp_Demo
         {
             IPCameraSourceSettings ipCameraSource;
             SelectIPCameraSource(out ipCameraSource);
-            
+
             VideoCapture1.PIP_Sources_Add_IPCamera(
                 ipCameraSource,
                 Convert.ToInt32(edPIPScreenCapLeft.Text),
@@ -6089,7 +6089,7 @@ namespace VideoCapture_CSharp_Demo
         {
             ScreenCaptureSourceSettings screenSource;
             SelectScreenSource(out screenSource);
-            
+
             VideoCapture1.PIP_Sources_Add_ScreenSource(
                 screenSource,
                 Convert.ToInt32(edPIPScreenCapLeft.Text),
@@ -7933,11 +7933,11 @@ namespace VideoCapture_CSharp_Demo
         private void btAudioChannelMapperAddNewRoute_Click(object sender, EventArgs e)
         {
             var item = new AudioChannelMapperItem
-                           {
-                               SourceChannel = Convert.ToInt32(edAudioChannelMapperSourceChannel.Text),
-                               TargetChannel = Convert.ToInt32(edAudioChannelMapperTargetChannel.Text),
-                               TargetChannelVolume = tbAudioChannelMapperVolume.Value / 1000.0f
-                           };
+            {
+                SourceChannel = Convert.ToInt32(edAudioChannelMapperSourceChannel.Text),
+                TargetChannel = Convert.ToInt32(edAudioChannelMapperTargetChannel.Text),
+                TargetChannelVolume = tbAudioChannelMapperVolume.Value / 1000.0f
+            };
 
             audioChannelMapperItems.Add(item);
 
@@ -8326,7 +8326,7 @@ namespace VideoCapture_CSharp_Demo
         {
             IPCameraDB.ShowWindow();
         }
-        
+
         private void btONVIFConnect_Click(object sender, EventArgs e)
         {
             if (btONVIFConnect.Text == "Connect")

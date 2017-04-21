@@ -396,6 +396,8 @@ Public Class Form1
 
         If Not (rbVMR9.Enabled And rbEVR.Enabled) Then
             rbVR.Checked = True
+        ElseIf (rbEVR.Enabled) Then
+            rbEVR.Checked = True
         End If
 
         rbVR_CheckedChanged(sender, e)
@@ -6764,8 +6766,8 @@ Public Class Form1
 
             cbONVIFProfile.Items.Clear()
 
-            Dim profiles As VisioForge.MediaFramework.ONVIF.deviceio.Profile() = onvifControl.GetProfiles()
-            For Each profile As VisioForge.MediaFramework.ONVIF.deviceio.Profile In profiles
+            Dim profiles As VisioForge.MediaFramework.deviceio.Profile() = onvifControl.GetProfiles()
+            For Each profile As VisioForge.MediaFramework.deviceio.Profile In profiles
                 cbONVIFProfile.Items.Add($"{profile.Name}")
             Next
 
