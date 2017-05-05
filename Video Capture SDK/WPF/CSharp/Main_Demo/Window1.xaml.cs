@@ -850,6 +850,10 @@ namespace Main_Demo
         {
             Title += " (SDK v" + VideoCapture1.SDK_Version + ", " + VideoCapture1.SDK_State + ")";
 
+            // font for text logo
+            fontDialog.Color = System.Drawing.Color.White;
+            fontDialog.Font = new Font(System.Drawing.FontFamily.GenericSansSerif, 32);
+
             // set combobox indexes
             cbMode.SelectedIndex = 0;
             cbOutputFormat.SelectedIndex = 0;
@@ -2302,7 +2306,7 @@ namespace Main_Demo
             }
 
             // Object detection 
-            this.ConfigureMotionDetectionEx();
+            ConfigureMotionDetectionEx();
 
             // Face tracking
             if (cbFaceTrackingEnabled.IsChecked == true)
@@ -6151,10 +6155,13 @@ namespace Main_Demo
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.IsChecked == true)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Dispatcher.BeginInvoke((Action)(() =>
+               {
+                   if (cbLicensing.IsChecked == true)
+                   {
+                       mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+                   }
+               }));
         }
 
         private void FFEXEDisableVideoMode()

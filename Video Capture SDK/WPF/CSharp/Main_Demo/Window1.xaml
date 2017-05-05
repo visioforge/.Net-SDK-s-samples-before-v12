@@ -2392,7 +2392,7 @@
                                 <Label Content="Audio output device" Height="28" HorizontalAlignment="Left" Margin="6.2,10,0,0" x:Name="label188" VerticalAlignment="Top" Width="120" />
                                 <ComboBox Height="24" Margin="6.2,36,0,0" x:Name="cbAudioOutputDevice" VerticalAlignment="Top" HorizontalAlignment="Left" Width="244" SelectionChanged="cbAudioOutputDevice_SelectedIndexChanged" />
                                 <CheckBox Content="Play Audio" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="169.2,15,0,0" x:Name="cbPlayAudio" VerticalAlignment="Top" Width="81" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="258.2,35,0,0" Maximum="100" x:Name="tbAudioVolume" VerticalAlignment="Top" Width="100" ValueChanged="tbAudioVolume_Scroll" Minimum="20" Value="80" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="258.2,35,0,0" Maximum="100" x:Name="tbAudioVolume" VerticalAlignment="Top" Width="100" ValueChanged="tbAudioVolume_Scroll" Minimum="0" Value="80" />
                                 <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="281.2,10,0,0" x:Name="label189" VerticalAlignment="Top" Width="52" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="364.2,35,0,0" Maximum="100" x:Name="tbAudioBalance" VerticalAlignment="Top" Width="100" ValueChanged="tbAudioBalance_Scroll" Minimum="-100" />
                                 <Label Content="Balance" Height="28" HorizontalAlignment="Left" Margin="389.2,10,0,0" x:Name="label190" VerticalAlignment="Top" Width="60" />

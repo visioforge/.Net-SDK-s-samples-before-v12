@@ -1658,7 +1658,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage53 = new System.Windows.Forms.TabPage();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
-            this.btTest = new System.Windows.Forms.Button();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.tabPage34 = new System.Windows.Forms.TabPage();
@@ -1682,6 +1681,7 @@ namespace VideoCapture_CSharp_Demo
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
+            this.cbIndependentThread = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tcOutputFormats.SuspendLayout();
@@ -15875,7 +15875,6 @@ namespace VideoCapture_CSharp_Demo
             this.tbAudioVolume.BackColor = System.Drawing.SystemColors.Window;
             this.tbAudioVolume.Location = new System.Drawing.Point(231, 35);
             this.tbAudioVolume.Maximum = 100;
-            this.tbAudioVolume.Minimum = 20;
             this.tbAudioVolume.Name = "tbAudioVolume";
             this.tbAudioVolume.Size = new System.Drawing.Size(82, 45);
             this.tbAudioVolume.TabIndex = 102;
@@ -19688,8 +19687,8 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage53
             // 
+            this.tabPage53.Controls.Add(this.cbIndependentThread);
             this.tabPage53.Controls.Add(this.cbLicensing);
-            this.tabPage53.Controls.Add(this.btTest);
             this.tabPage53.Controls.Add(this.cbDebugMode);
             this.tabPage53.Controls.Add(this.mmLog);
             this.tabPage53.Location = new System.Drawing.Point(4, 22);
@@ -19703,31 +19702,21 @@ namespace VideoCapture_CSharp_Demo
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(103, 6);
+            this.cbLicensing.Location = new System.Drawing.Point(73, 6);
             this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
+            this.cbLicensing.Size = new System.Drawing.Size(71, 17);
             this.cbLicensing.TabIndex = 75;
-            this.cbLicensing.Text = "Licensing info";
+            this.cbLicensing.Text = "Licensing";
             this.cbLicensing.UseVisualStyleBackColor = true;
-            // 
-            // btTest
-            // 
-            this.btTest.Location = new System.Drawing.Point(9, 6);
-            this.btTest.Name = "btTest";
-            this.btTest.Size = new System.Drawing.Size(53, 23);
-            this.btTest.TabIndex = 74;
-            this.btTest.Text = "Test";
-            this.btTest.UseVisualStyleBackColor = true;
-            this.btTest.Click += new System.EventHandler(this.btTest_Click);
             // 
             // cbDebugMode
             // 
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(200, 6);
+            this.cbDebugMode.Location = new System.Drawing.Point(9, 6);
             this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
+            this.cbDebugMode.Size = new System.Drawing.Size(58, 17);
             this.cbDebugMode.TabIndex = 73;
-            this.cbDebugMode.Text = "Debug mode";
+            this.cbDebugMode.Text = "Debug";
             this.cbDebugMode.UseVisualStyleBackColor = true;
             // 
             // mmLog
@@ -19735,7 +19724,7 @@ namespace VideoCapture_CSharp_Demo
             this.mmLog.Location = new System.Drawing.Point(9, 29);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(278, 92);
+            this.mmLog.Size = new System.Drawing.Size(289, 92);
             this.mmLog.TabIndex = 72;
             // 
             // tabPage34
@@ -20086,6 +20075,16 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoCapture1_OnBarcodeDetected);
             this.VideoCapture1.OnBDAChannelFound += new System.EventHandler<VisioForge.Types.BDAChannelEventArgs>(this.VideoCapture1_OnBDAChannelFound);
             this.VideoCapture1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoCapture1_MouseDown);
+            // 
+            // cbIndependentThread
+            // 
+            this.cbIndependentThread.AutoSize = true;
+            this.cbIndependentThread.Location = new System.Drawing.Point(150, 6);
+            this.cbIndependentThread.Name = "cbIndependentThread";
+            this.cbIndependentThread.Size = new System.Drawing.Size(156, 17);
+            this.cbIndependentThread.TabIndex = 76;
+            this.cbIndependentThread.Text = "Independent thread (BETA)";
+            this.cbIndependentThread.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -21208,7 +21207,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btChromaKeySelectBGImage;
         private System.Windows.Forms.TextBox edChromaKeyImage;
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
-        private System.Windows.Forms.Button btTest;
         private System.Windows.Forms.TabPage tabPage56;
         private System.Windows.Forms.TabPage tabPage61;
         private System.Windows.Forms.TabControl tabControl16;
@@ -22233,6 +22231,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label lbPIPChromaKeyTolerance1;
         private System.Windows.Forms.Label label515;
         private System.Windows.Forms.TrackBar tbPIPChromaKeyTolerance1;
+        private System.Windows.Forms.CheckBox cbIndependentThread;
     }
 }
 

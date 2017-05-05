@@ -13,6 +13,7 @@ namespace VideoCapture_CSharp_Demo
     using System.Globalization;
     using System.IO;
     using System.Linq;
+    using System.Net.Sockets;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
 
@@ -2125,7 +2126,7 @@ namespace VideoCapture_CSharp_Demo
             //VideoCapture1.Video_Effects_GPU_Add(intf);
 
             // start
-            VideoCapture1.Start();
+            VideoCapture1.Start(cbIndependentThread.Checked);
 
             edNetworkURL.Text = VideoCapture1.Network_Streaming_URL;
         }
@@ -5916,6 +5917,8 @@ namespace VideoCapture_CSharp_Demo
 
         private void btTest_Click(object sender, EventArgs e)
         {
+            VideoCapture1.OutputFilename_ChangeOnTheFly(edOutput.Text + "(1)");
+
             ////ApplyEffect(VisioForge.MediaFramework.DXVideoEffects.Effects.GrayScaleEffect.GetData());
 
             ////return;
