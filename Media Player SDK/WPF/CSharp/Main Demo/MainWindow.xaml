@@ -48,22 +48,22 @@
                     <CheckBox Content="Play audio" Height="16" HorizontalAlignment="Left" Margin="18,71,0,0" x:Name="cbPlayAudio" VerticalAlignment="Top" IsChecked="True" />
                     <CheckBox Content="Stream 1" Height="16" HorizontalAlignment="Left" Margin="18,115,0,0" x:Name="cbAudioStream1" VerticalAlignment="Top" Checked="cbAudioStream1_Checked" Unchecked="cbAudioStream1_Checked" />
                     <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="93,136,0,0" x:Name="label6" VerticalAlignment="Top" />
-                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,162,0,0" x:Name="tbVolume1" VerticalAlignment="Top" Width="100" Maximum="100" Value="80" ValueChanged="tbVolume1_ValueChanged" Minimum="20" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,162,0,0" x:Name="tbVolume1" VerticalAlignment="Top" Width="100" Maximum="100" Value="80" ValueChanged="tbVolume1_ValueChanged" Minimum="0" />
                     <Label Content="Balance" Height="28" HorizontalAlignment="Left" Margin="224,136,0,0" x:Name="label7" VerticalAlignment="Top" />
                     <Slider Height="23" HorizontalAlignment="Left" Margin="224,162,0,0" x:Name="tbBalance1" VerticalAlignment="Top" Width="100" Minimum="-100" Maximum="100" ValueChanged="tbBalance1_ValueChanged" />
                     <CheckBox Content="Stream 2" Height="16" HorizontalAlignment="Left" Margin="18,195,0,0" x:Name="cbAudioStream2" VerticalAlignment="Top" Checked="cbAudioStream2_Checked" Unchecked="cbAudioStream2_Checked" />
                     <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="93,216,0,0" x:Name="label8" VerticalAlignment="Top" />
-                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,242,0,0" Maximum="100" x:Name="tbVolume2" Value="80" VerticalAlignment="Top" Width="100" ValueChanged="tbVolume2_ValueChanged" Minimum="20" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,242,0,0" Maximum="100" x:Name="tbVolume2" Value="80" VerticalAlignment="Top" Width="100" ValueChanged="tbVolume2_ValueChanged" Minimum="0" />
                     <Label Content="Balance" Height="28" HorizontalAlignment="Left" Margin="224,216,0,0" x:Name="label9" VerticalAlignment="Top" />
                     <Slider Height="23" HorizontalAlignment="Left" Margin="224,242,0,0" Maximum="100" Minimum="-100" x:Name="tbBalance2" VerticalAlignment="Top" Width="100" ValueChanged="tbBalance2_ValueChanged" />
                     <CheckBox Content="Stream 3" Height="16" HorizontalAlignment="Left" Margin="18,280,0,0" x:Name="cbAudioStream3" VerticalAlignment="Top" Checked="cbAudioStream3_Checked" Unchecked="cbAudioStream3_Checked" />
                     <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="93,301,0,0" x:Name="label10" VerticalAlignment="Top" />
-                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,327,0,0" Maximum="100" x:Name="tbVolume3" Value="80" VerticalAlignment="Top" Width="100" ValueChanged="tbVolume3_ValueChanged" Minimum="20" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,327,0,0" Maximum="100" x:Name="tbVolume3" Value="80" VerticalAlignment="Top" Width="100" ValueChanged="tbVolume3_ValueChanged" Minimum="0" />
                     <Label Content="Balance" Height="28" HorizontalAlignment="Left" Margin="224,301,0,0" x:Name="label11" VerticalAlignment="Top" />
                     <Slider Height="23" HorizontalAlignment="Left" Margin="224,327,0,0" Maximum="100" Minimum="-100" x:Name="tbBalance3" VerticalAlignment="Top" Width="100" ValueChanged="tbBalance3_ValueChanged" />
                     <CheckBox Content="Stream 4" Height="16" HorizontalAlignment="Left" Margin="18,373,0,0" x:Name="cbAudioStream4" VerticalAlignment="Top" Checked="cbAudioStream4_Checked" Unchecked="cbAudioStream4_Checked" />
                     <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="93,394,0,0" x:Name="label12" VerticalAlignment="Top" />
-                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,420,0,0" Maximum="100" x:Name="tbVolume4" Value="80" VerticalAlignment="Top" Width="100" ValueChanged="tbVolume4_ValueChanged" Minimum="20" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="93,420,0,0" Maximum="100" x:Name="tbVolume4" Value="80" VerticalAlignment="Top" Width="100" ValueChanged="tbVolume4_ValueChanged" Minimum="0" />
                     <Label Content="Balance" Height="28" HorizontalAlignment="Left" Margin="224,394,0,0" x:Name="label13" VerticalAlignment="Top" />
                     <Slider Height="23" HorizontalAlignment="Left" Margin="224,420,0,0" Maximum="100" Minimum="-100" x:Name="tbBalance4" VerticalAlignment="Top" Width="100" ValueChanged="tbBalance4_ValueChanged" />
                 </Grid>
@@ -343,7 +343,7 @@
                         </TabItem>
                         <TabItem Header="Deinterlace (SW)" x:Name="tabItem24">
                             <Grid>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="22,16,0,0" x:Name="cbDeinterlace" VerticalAlignment="Top" />
+                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="22,16,0,0" x:Name="cbDeinterlace" VerticalAlignment="Top" />
                                 <RadioButton Content="Content Adaptive Vertical Temporal (CAVT)" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="36,51,0,0" x:Name="rbDeintCAVTEnabled" VerticalAlignment="Top" />
                                 <RadioButton Content="Blend" Height="16" HorizontalAlignment="Left" Margin="36,141,0,0" x:Name="rbDeintBlendEnabled" VerticalAlignment="Top" />
                                 <RadioButton Content="Triangle" Height="16" HorizontalAlignment="Left" Margin="36,276,0,0" x:Name="rbDeintTriangleEnabled" VerticalAlignment="Top" />

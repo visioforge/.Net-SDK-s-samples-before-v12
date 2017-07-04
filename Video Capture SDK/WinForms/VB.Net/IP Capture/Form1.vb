@@ -188,7 +188,7 @@ Public Class Form1
         VideoCapture1.IP_Camera_Source.Login = edIPLogin.Text
         VideoCapture1.IP_Camera_Source.Password = edIPPassword.Text
         VideoCapture1.IP_Camera_Source.VLC_ZeroClockJitterEnabled = cbVLCZeroClockJitter.Checked
-        VideoCapture1.IP_Camera_Source.VLC_CacheSize = Convert.ToInt32(edVLCCacheSize.Text)
+        VideoCapture1.IP_Camera_Source.VLC_CustomLatency = Convert.ToInt32(edVLCCacheSize.Text)
 
         If (cbIPCameraONVIF.Checked) Then
             VideoCapture1.IP_Camera_Source.ONVIF_Source = True

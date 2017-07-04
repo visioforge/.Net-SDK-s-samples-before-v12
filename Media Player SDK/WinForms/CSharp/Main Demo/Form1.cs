@@ -1,6 +1,3 @@
-// ReSharper disable InconsistentNaming
-
-// ReSharper disable StyleCop.SA1600
 namespace Media_Player_Demo
 {
     using System;
@@ -1054,11 +1051,11 @@ namespace Media_Player_Demo
             if (cbChromaKeyEnabled.Checked)
             {
                 MediaPlayer1.ChromaKey = new ChromaKeySettings
-                                             {
-                                                 ContrastHigh = this.tbChromaKeyContrastHigh.Value,
-                                                 ContrastLow = this.tbChromaKeyContrastLow.Value,
-                                                 ImageFilename = this.edChromaKeyImage.Text
-                                             };
+                {
+                    ContrastHigh = this.tbChromaKeyContrastHigh.Value,
+                    ContrastLow = this.tbChromaKeyContrastLow.Value,
+                    ImageFilename = this.edChromaKeyImage.Text
+                };
 
                 if (rbChromaKeyGreen.Checked)
                 {
@@ -1267,12 +1264,12 @@ namespace Media_Player_Demo
             if (cbAudioChannelMapperEnabled.Checked)
             {
                 MediaPlayer1.Audio_Channel_Mapper = new AudioChannelMapperSettings
-                                                        {
-                                                            Routes = this.audioChannelMapperItems.ToArray(),
-                                                            OutputChannelsCount =
+                {
+                    Routes = this.audioChannelMapperItems.ToArray(),
+                    OutputChannelsCount =
                                                                 Convert.ToInt32(
                                                                     this.edAudioChannelMapperOutputChannels.Text)
-                                                        };
+                };
             }
             else
             {
@@ -1517,8 +1514,10 @@ namespace Media_Player_Demo
             // Motion detection-ex
             ConfigureMotionDetectionEx();
 
+            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
+
             MediaPlayer1.Play();
-            
+
             FillAdjustRanges();
 
             // DVD
@@ -1822,7 +1821,7 @@ namespace Media_Player_Demo
         private void btStop_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Stop();
-             timer1.Enabled = false;
+            timer1.Enabled = false;
             tbTimeline.Value = 0;
 
             waveformPainter1.Clear();
@@ -2146,22 +2145,22 @@ namespace Media_Player_Demo
             if (cbMotDetEnabled.Checked)
             {
                 MediaPlayer1.Motion_Detection = new MotionDetectionSettings
-                                                    {
-                                                        Enabled = this.cbMotDetEnabled.Checked,
-                                                        Compare_Red = this.cbCompareRed.Checked,
-                                                        Compare_Green = this.cbCompareGreen.Checked,
-                                                        Compare_Blue = this.cbCompareBlue.Checked,
-                                                        Compare_Greyscale = this.cbCompareGreyscale.Checked,
-                                                        Highlight_Color =
+                {
+                    Enabled = this.cbMotDetEnabled.Checked,
+                    Compare_Red = this.cbCompareRed.Checked,
+                    Compare_Green = this.cbCompareGreen.Checked,
+                    Compare_Blue = this.cbCompareBlue.Checked,
+                    Compare_Greyscale = this.cbCompareGreyscale.Checked,
+                    Highlight_Color =
                                                             (VFMotionCHLColor)this.cbMotDetHLColor.SelectedIndex,
-                                                        Highlight_Enabled = this.cbMotDetHLEnabled.Checked,
-                                                        Highlight_Threshold = this.tbMotDetHLThreshold.Value,
-                                                        FrameInterval = Convert.ToInt32(this.edMotDetFrameInterval.Text),
-                                                        Matrix_Height = Convert.ToInt32(this.edMotDetMatrixHeight.Text),
-                                                        Matrix_Width = Convert.ToInt32(this.edMotDetMatrixWidth.Text),
-                                                        DropFrames_Enabled = this.cbMotDetDropFramesEnabled.Checked,
-                                                        DropFrames_Threshold = this.tbMotDetDropFramesThreshold.Value
-                                                    };
+                    Highlight_Enabled = this.cbMotDetHLEnabled.Checked,
+                    Highlight_Threshold = this.tbMotDetHLThreshold.Value,
+                    FrameInterval = Convert.ToInt32(this.edMotDetFrameInterval.Text),
+                    Matrix_Height = Convert.ToInt32(this.edMotDetMatrixHeight.Text),
+                    Matrix_Width = Convert.ToInt32(this.edMotDetMatrixWidth.Text),
+                    DropFrames_Enabled = this.cbMotDetDropFramesEnabled.Checked,
+                    DropFrames_Threshold = this.tbMotDetDropFramesThreshold.Value
+                };
                 MediaPlayer1.MotionDetection_Update();
             }
             else
@@ -2861,14 +2860,14 @@ namespace Media_Player_Demo
         private void ApplyAudioInputGains()
         {
             VFAudioEnhancerGains gains = new VFAudioEnhancerGains
-                                             {
-                                                 L = tbAudioInputGainL.Value / 10.0f,
-                                                 C = tbAudioInputGainC.Value / 10.0f,
-                                                 R = tbAudioInputGainR.Value / 10.0f,
-                                                 SL = tbAudioInputGainSL.Value / 10.0f,
-                                                 SR = tbAudioInputGainSR.Value / 10.0f,
-                                                 LFE = tbAudioInputGainLFE.Value / 10.0f
-                                             };
+            {
+                L = tbAudioInputGainL.Value / 10.0f,
+                C = tbAudioInputGainC.Value / 10.0f,
+                R = tbAudioInputGainR.Value / 10.0f,
+                SL = tbAudioInputGainSL.Value / 10.0f,
+                SR = tbAudioInputGainSR.Value / 10.0f,
+                LFE = tbAudioInputGainLFE.Value / 10.0f
+            };
 
             MediaPlayer1.Audio_Enhancer_InputGains(-1, gains);
         }
@@ -3091,11 +3090,11 @@ namespace Media_Player_Demo
         private void btAudioChannelMapperAddNewRoute_Click(object sender, EventArgs e)
         {
             var item = new AudioChannelMapperItem
-                           {
-                               SourceChannel = Convert.ToInt32(this.edAudioChannelMapperSourceChannel.Text),
-                               TargetChannel = Convert.ToInt32(this.edAudioChannelMapperTargetChannel.Text),
-                               TargetChannelVolume = this.tbAudioChannelMapperVolume.Value / 1000.0f
-                           };
+            {
+                SourceChannel = Convert.ToInt32(this.edAudioChannelMapperSourceChannel.Text),
+                TargetChannel = Convert.ToInt32(this.edAudioChannelMapperTargetChannel.Text),
+                TargetChannelVolume = this.tbAudioChannelMapperVolume.Value / 1000.0f
+            };
 
             audioChannelMapperItems.Add(item);
 

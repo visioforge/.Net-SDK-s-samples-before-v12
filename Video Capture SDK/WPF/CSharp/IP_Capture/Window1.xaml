@@ -233,7 +233,7 @@
             </TabItem>
             <TabItem Header="Debug" HorizontalAlignment="Left" VerticalAlignment="Top" >
                 <Grid>
-                    <TextBox Margin="10,30,2,0" Name="mmLog" TextWrapping="Wrap" Height="40" VerticalAlignment="Top" />
+                    <TextBox Margin="10,31,10,0" Name="mmLog" TextWrapping="Wrap" Height="310" VerticalAlignment="Top" />
                     <CheckBox Height="16" HorizontalAlignment="Right" Margin="0,10,324,0" Name="cbDebugMode" VerticalAlignment="Top" Width="92">Debug Mode</CheckBox>
                     <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 </Grid>

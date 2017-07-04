@@ -3690,8 +3690,8 @@ namespace VideoCapture_CSharp_Demo
             settings.Debug_Filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                                       + "\\VisioForge\\ip_cam_log.txt";
             settings.VLC_ZeroClockJitterEnabled = cbVLCZeroClockJitter.Checked;
-            settings.VLC_CacheSize = Convert.ToInt32(edVLCCacheSize.Text);
-
+            settings.VLC_CustomLatency = Convert.ToInt32(edVLCCacheSize.Text);
+           
             if (cbIPCameraONVIF.Checked)
             {
                 settings.ONVIF_Source = true;

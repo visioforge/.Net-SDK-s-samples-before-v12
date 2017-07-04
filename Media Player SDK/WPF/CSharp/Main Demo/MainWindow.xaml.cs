@@ -117,6 +117,10 @@ namespace Main_Demo
         {
             Title += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + "), C# WPF";
 
+            // font for text logo
+            fontDialog.Color = System.Drawing.Color.White;
+            fontDialog.Font = new Font(System.Drawing.FontFamily.GenericSansSerif, 32);
+
             // set combobox indexes
             cbSourceMode.SelectedIndex = 0;
             cbImageType.SelectedIndex = 1;

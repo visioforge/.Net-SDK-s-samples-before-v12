@@ -32,7 +32,7 @@ namespace Media_Player_Demo
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbUseLibMediaInfo = new System.Windows.Forms.CheckBox();
@@ -588,6 +588,15 @@ namespace Media_Player_Demo
             this.cbCompareGreen = new System.Windows.Forms.CheckBox();
             this.cbCompareRed = new System.Windows.Forms.CheckBox();
             this.cbMotDetEnabled = new System.Windows.Forms.CheckBox();
+            this.tabPage14 = new System.Windows.Forms.TabPage();
+            this.label505 = new System.Windows.Forms.Label();
+            this.rbMotionDetectionExProcessor = new System.Windows.Forms.ComboBox();
+            this.label389 = new System.Windows.Forms.Label();
+            this.rbMotionDetectionExDetector = new System.Windows.Forms.ComboBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.label65 = new System.Windows.Forms.Label();
+            this.pbAFMotionLevel = new System.Windows.Forms.ProgressBar();
+            this.cbMotionDetectionEx = new System.Windows.Forms.CheckBox();
             this.tabPage21 = new System.Windows.Forms.TabPage();
             this.edBarcodeMetadata = new System.Windows.Forms.TextBox();
             this.label91 = new System.Windows.Forms.Label();
@@ -680,15 +689,6 @@ namespace Media_Player_Demo
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
-            this.tabPage14 = new System.Windows.Forms.TabPage();
-            this.label505 = new System.Windows.Forms.Label();
-            this.rbMotionDetectionExProcessor = new System.Windows.Forms.ComboBox();
-            this.label389 = new System.Windows.Forms.Label();
-            this.rbMotionDetectionExDetector = new System.Windows.Forms.ComboBox();
-            this.label64 = new System.Windows.Forms.Label();
-            this.label65 = new System.Windows.Forms.Label();
-            this.pbAFMotionLevel = new System.Windows.Forms.ProgressBar();
-            this.cbMotionDetectionEx = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -831,6 +831,7 @@ namespace Media_Player_Demo
             this.groupBox26.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbMotDetDropFramesThreshold)).BeginInit();
             this.groupBox24.SuspendLayout();
+            this.tabPage14.SuspendLayout();
             this.tabPage21.SuspendLayout();
             this.tabPage23.SuspendLayout();
             this.groupBox48.SuspendLayout();
@@ -848,7 +849,6 @@ namespace Media_Player_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).BeginInit();
             this.tabPage55.SuspendLayout();
             this.tabPage25.SuspendLayout();
-            this.tabPage14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1133,7 +1133,6 @@ namespace Media_Player_Demo
             this.tbVolume4.BackColor = System.Drawing.SystemColors.Window;
             this.tbVolume4.Location = new System.Drawing.Point(103, 328);
             this.tbVolume4.Maximum = 100;
-            this.tbVolume4.Minimum = 20;
             this.tbVolume4.Name = "tbVolume4";
             this.tbVolume4.Size = new System.Drawing.Size(85, 45);
             this.tbVolume4.TabIndex = 19;
@@ -1185,7 +1184,6 @@ namespace Media_Player_Demo
             this.tbVolume3.BackColor = System.Drawing.SystemColors.Window;
             this.tbVolume3.Location = new System.Drawing.Point(103, 262);
             this.tbVolume3.Maximum = 100;
-            this.tbVolume3.Minimum = 20;
             this.tbVolume3.Name = "tbVolume3";
             this.tbVolume3.Size = new System.Drawing.Size(85, 45);
             this.tbVolume3.TabIndex = 14;
@@ -1237,7 +1235,6 @@ namespace Media_Player_Demo
             this.tbVolume2.BackColor = System.Drawing.SystemColors.Window;
             this.tbVolume2.Location = new System.Drawing.Point(103, 200);
             this.tbVolume2.Maximum = 100;
-            this.tbVolume2.Minimum = 20;
             this.tbVolume2.Name = "tbVolume2";
             this.tbVolume2.Size = new System.Drawing.Size(85, 45);
             this.tbVolume2.TabIndex = 9;
@@ -1289,7 +1286,6 @@ namespace Media_Player_Demo
             this.tbVolume1.BackColor = System.Drawing.SystemColors.Window;
             this.tbVolume1.Location = new System.Drawing.Point(103, 138);
             this.tbVolume1.Maximum = 100;
-            this.tbVolume1.Minimum = 20;
             this.tbVolume1.Name = "tbVolume1";
             this.tbVolume1.Size = new System.Drawing.Size(85, 45);
             this.tbVolume1.TabIndex = 4;
@@ -3724,8 +3720,6 @@ namespace Media_Player_Demo
             // cbDeinterlace
             // 
             this.cbDeinterlace.AutoSize = true;
-            this.cbDeinterlace.Checked = true;
-            this.cbDeinterlace.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDeinterlace.Location = new System.Drawing.Point(18, 16);
             this.cbDeinterlace.Name = "cbDeinterlace";
             this.cbDeinterlace.Size = new System.Drawing.Size(65, 17);
@@ -6867,6 +6861,105 @@ namespace Media_Player_Demo
             this.cbMotDetEnabled.Text = "Enabled";
             this.cbMotDetEnabled.UseVisualStyleBackColor = true;
             // 
+            // tabPage14
+            // 
+            this.tabPage14.Controls.Add(this.label505);
+            this.tabPage14.Controls.Add(this.rbMotionDetectionExProcessor);
+            this.tabPage14.Controls.Add(this.label389);
+            this.tabPage14.Controls.Add(this.rbMotionDetectionExDetector);
+            this.tabPage14.Controls.Add(this.label64);
+            this.tabPage14.Controls.Add(this.label65);
+            this.tabPage14.Controls.Add(this.pbAFMotionLevel);
+            this.tabPage14.Controls.Add(this.cbMotionDetectionEx);
+            this.tabPage14.Location = new System.Drawing.Point(4, 22);
+            this.tabPage14.Name = "tabPage14";
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Size = new System.Drawing.Size(301, 492);
+            this.tabPage14.TabIndex = 14;
+            this.tabPage14.Text = "Motion detection (Extended)";
+            this.tabPage14.UseVisualStyleBackColor = true;
+            // 
+            // label505
+            // 
+            this.label505.AutoSize = true;
+            this.label505.Location = new System.Drawing.Point(16, 100);
+            this.label505.Name = "label505";
+            this.label505.Size = new System.Drawing.Size(54, 13);
+            this.label505.TabIndex = 31;
+            this.label505.Text = "Processor";
+            // 
+            // rbMotionDetectionExProcessor
+            // 
+            this.rbMotionDetectionExProcessor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rbMotionDetectionExProcessor.FormattingEnabled = true;
+            this.rbMotionDetectionExProcessor.Items.AddRange(new object[] {
+            "None",
+            "Blob counting objects",
+            "GridMotionAreaProcessing",
+            "Motion area highlighting",
+            "Motion border highlighting"});
+            this.rbMotionDetectionExProcessor.Location = new System.Drawing.Point(16, 116);
+            this.rbMotionDetectionExProcessor.Name = "rbMotionDetectionExProcessor";
+            this.rbMotionDetectionExProcessor.Size = new System.Drawing.Size(258, 21);
+            this.rbMotionDetectionExProcessor.TabIndex = 30;
+            // 
+            // label389
+            // 
+            this.label389.AutoSize = true;
+            this.label389.Location = new System.Drawing.Point(16, 50);
+            this.label389.Name = "label389";
+            this.label389.Size = new System.Drawing.Size(48, 13);
+            this.label389.TabIndex = 29;
+            this.label389.Text = "Detector";
+            // 
+            // rbMotionDetectionExDetector
+            // 
+            this.rbMotionDetectionExDetector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.rbMotionDetectionExDetector.FormattingEnabled = true;
+            this.rbMotionDetectionExDetector.Items.AddRange(new object[] {
+            "Custom frame difference",
+            "Simple background modeling",
+            "Two frames difference"});
+            this.rbMotionDetectionExDetector.Location = new System.Drawing.Point(16, 66);
+            this.rbMotionDetectionExDetector.Name = "rbMotionDetectionExDetector";
+            this.rbMotionDetectionExDetector.Size = new System.Drawing.Size(258, 21);
+            this.rbMotionDetectionExDetector.TabIndex = 28;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(53, 438);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(173, 13);
+            this.label64.TabIndex = 27;
+            this.label64.Text = "Much more options available in API";
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(16, 158);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(64, 13);
+            this.label65.TabIndex = 26;
+            this.label65.Text = "Motion level";
+            // 
+            // pbAFMotionLevel
+            // 
+            this.pbAFMotionLevel.Location = new System.Drawing.Point(16, 174);
+            this.pbAFMotionLevel.Name = "pbAFMotionLevel";
+            this.pbAFMotionLevel.Size = new System.Drawing.Size(258, 23);
+            this.pbAFMotionLevel.TabIndex = 25;
+            // 
+            // cbMotionDetectionEx
+            // 
+            this.cbMotionDetectionEx.AutoSize = true;
+            this.cbMotionDetectionEx.Location = new System.Drawing.Point(16, 12);
+            this.cbMotionDetectionEx.Name = "cbMotionDetectionEx";
+            this.cbMotionDetectionEx.Size = new System.Drawing.Size(65, 17);
+            this.cbMotionDetectionEx.TabIndex = 24;
+            this.cbMotionDetectionEx.Text = "Enabled";
+            this.cbMotionDetectionEx.UseVisualStyleBackColor = true;
+            // 
             // tabPage21
             // 
             this.tabPage21.Controls.Add(this.edBarcodeMetadata);
@@ -6892,7 +6985,7 @@ namespace Media_Player_Demo
             this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcodeMetadata.Multiline = true;
             this.edBarcodeMetadata.Name = "edBarcodeMetadata";
-            this.edBarcodeMetadata.Size = new System.Drawing.Size(282, 96);
+            this.edBarcodeMetadata.Size = new System.Drawing.Size(272, 96);
             this.edBarcodeMetadata.TabIndex = 16;
             // 
             // label91
@@ -6957,7 +7050,7 @@ namespace Media_Player_Demo
             this.edBarcode.Location = new System.Drawing.Point(16, 112);
             this.edBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcode.Name = "edBarcode";
-            this.edBarcode.Size = new System.Drawing.Size(282, 20);
+            this.edBarcode.Size = new System.Drawing.Size(272, 20);
             this.edBarcode.TabIndex = 11;
             // 
             // label89
@@ -7276,7 +7369,6 @@ namespace Media_Player_Demo
             // 
             this.tbSpeed.Location = new System.Drawing.Point(321, 27);
             this.tbSpeed.Maximum = 25;
-            this.tbSpeed.Minimum = -25;
             this.tbSpeed.Name = "tbSpeed";
             this.tbSpeed.Size = new System.Drawing.Size(89, 45);
             this.tbSpeed.TabIndex = 3;
@@ -7821,6 +7913,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Debug_Mode = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
+            this.MediaPlayer1.Face_Tracking = null;
             this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(330, 183);
@@ -7845,24 +7938,24 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Start_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
 // TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -7874,105 +7967,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.MediaPlayer1_OnObjectDetection);
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
-            // 
-            // tabPage14
-            // 
-            this.tabPage14.Controls.Add(this.label505);
-            this.tabPage14.Controls.Add(this.rbMotionDetectionExProcessor);
-            this.tabPage14.Controls.Add(this.label389);
-            this.tabPage14.Controls.Add(this.rbMotionDetectionExDetector);
-            this.tabPage14.Controls.Add(this.label64);
-            this.tabPage14.Controls.Add(this.label65);
-            this.tabPage14.Controls.Add(this.pbAFMotionLevel);
-            this.tabPage14.Controls.Add(this.cbMotionDetectionEx);
-            this.tabPage14.Location = new System.Drawing.Point(4, 22);
-            this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage14.Size = new System.Drawing.Size(301, 492);
-            this.tabPage14.TabIndex = 14;
-            this.tabPage14.Text = "Motion detection (Extended)";
-            this.tabPage14.UseVisualStyleBackColor = true;
-            // 
-            // label505
-            // 
-            this.label505.AutoSize = true;
-            this.label505.Location = new System.Drawing.Point(16, 100);
-            this.label505.Name = "label505";
-            this.label505.Size = new System.Drawing.Size(54, 13);
-            this.label505.TabIndex = 31;
-            this.label505.Text = "Processor";
-            // 
-            // rbMotionDetectionExProcessor
-            // 
-            this.rbMotionDetectionExProcessor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rbMotionDetectionExProcessor.FormattingEnabled = true;
-            this.rbMotionDetectionExProcessor.Items.AddRange(new object[] {
-            "None",
-            "Blob counting objects",
-            "GridMotionAreaProcessing",
-            "Motion area highlighting",
-            "Motion border highlighting"});
-            this.rbMotionDetectionExProcessor.Location = new System.Drawing.Point(16, 116);
-            this.rbMotionDetectionExProcessor.Name = "rbMotionDetectionExProcessor";
-            this.rbMotionDetectionExProcessor.Size = new System.Drawing.Size(258, 21);
-            this.rbMotionDetectionExProcessor.TabIndex = 30;
-            // 
-            // label389
-            // 
-            this.label389.AutoSize = true;
-            this.label389.Location = new System.Drawing.Point(16, 50);
-            this.label389.Name = "label389";
-            this.label389.Size = new System.Drawing.Size(48, 13);
-            this.label389.TabIndex = 29;
-            this.label389.Text = "Detector";
-            // 
-            // rbMotionDetectionExDetector
-            // 
-            this.rbMotionDetectionExDetector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.rbMotionDetectionExDetector.FormattingEnabled = true;
-            this.rbMotionDetectionExDetector.Items.AddRange(new object[] {
-            "Custom frame difference",
-            "Simple background modeling",
-            "Two frames difference"});
-            this.rbMotionDetectionExDetector.Location = new System.Drawing.Point(16, 66);
-            this.rbMotionDetectionExDetector.Name = "rbMotionDetectionExDetector";
-            this.rbMotionDetectionExDetector.Size = new System.Drawing.Size(258, 21);
-            this.rbMotionDetectionExDetector.TabIndex = 28;
-            // 
-            // label64
-            // 
-            this.label64.AutoSize = true;
-            this.label64.Location = new System.Drawing.Point(53, 438);
-            this.label64.Name = "label64";
-            this.label64.Size = new System.Drawing.Size(173, 13);
-            this.label64.TabIndex = 27;
-            this.label64.Text = "Much more options available in API";
-            // 
-            // label65
-            // 
-            this.label65.AutoSize = true;
-            this.label65.Location = new System.Drawing.Point(16, 158);
-            this.label65.Name = "label65";
-            this.label65.Size = new System.Drawing.Size(64, 13);
-            this.label65.TabIndex = 26;
-            this.label65.Text = "Motion level";
-            // 
-            // pbAFMotionLevel
-            // 
-            this.pbAFMotionLevel.Location = new System.Drawing.Point(16, 174);
-            this.pbAFMotionLevel.Name = "pbAFMotionLevel";
-            this.pbAFMotionLevel.Size = new System.Drawing.Size(258, 23);
-            this.pbAFMotionLevel.TabIndex = 25;
-            // 
-            // cbMotionDetectionEx
-            // 
-            this.cbMotionDetectionEx.AutoSize = true;
-            this.cbMotionDetectionEx.Location = new System.Drawing.Point(16, 12);
-            this.cbMotionDetectionEx.Name = "cbMotionDetectionEx";
-            this.cbMotionDetectionEx.Size = new System.Drawing.Size(65, 17);
-            this.cbMotionDetectionEx.TabIndex = 24;
-            this.cbMotionDetectionEx.Text = "Enabled";
-            this.cbMotionDetectionEx.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -8206,6 +8200,8 @@ namespace Media_Player_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbMotDetDropFramesThreshold)).EndInit();
             this.groupBox24.ResumeLayout(false);
             this.groupBox24.PerformLayout();
+            this.tabPage14.ResumeLayout(false);
+            this.tabPage14.PerformLayout();
             this.tabPage21.ResumeLayout(false);
             this.tabPage21.PerformLayout();
             this.tabPage23.ResumeLayout(false);
@@ -8232,8 +8228,6 @@ namespace Media_Player_Demo
             this.tabPage55.PerformLayout();
             this.tabPage25.ResumeLayout(false);
             this.tabPage25.PerformLayout();
-            this.tabPage14.ResumeLayout(false);
-            this.tabPage14.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

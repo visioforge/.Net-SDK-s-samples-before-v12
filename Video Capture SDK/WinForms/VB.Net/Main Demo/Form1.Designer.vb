@@ -28,7 +28,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim VideoRendererSettingsWinForms4 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.saveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.fontDialog1 = New System.Windows.Forms.FontDialog()
@@ -413,6 +413,8 @@ Partial Class Form1
         Me.edPIPFileSoureFilename = New System.Windows.Forms.TextBox()
         Me.label320 = New System.Windows.Forms.Label()
         Me.tabPage77 = New System.Windows.Forms.TabPage()
+        Me.cbPIPResizeMode = New System.Windows.Forms.ComboBox()
+        Me.label317 = New System.Windows.Forms.Label()
         Me.groupBox34 = New System.Windows.Forms.GroupBox()
         Me.btPIPSet = New System.Windows.Forms.Button()
         Me.tbPIPTransparency = New System.Windows.Forms.TrackBar()
@@ -437,6 +439,15 @@ Partial Class Form1
         Me.label130 = New System.Windows.Forms.Label()
         Me.edPIPLeft = New System.Windows.Forms.TextBox()
         Me.label131 = New System.Windows.Forms.Label()
+        Me.TabPage113 = New System.Windows.Forms.TabPage()
+        Me.lbPIPChromaKeyTolerance2 = New System.Windows.Forms.Label()
+        Me.label518 = New System.Windows.Forms.Label()
+        Me.tbPIPChromaKeyTolerance2 = New System.Windows.Forms.TrackBar()
+        Me.lbPIPChromaKeyTolerance1 = New System.Windows.Forms.Label()
+        Me.label515 = New System.Windows.Forms.Label()
+        Me.tbPIPChromaKeyTolerance1 = New System.Windows.Forms.TrackBar()
+        Me.pnPIPChromaKeyColor = New System.Windows.Forms.Panel()
+        Me.label514 = New System.Windows.Forms.Label()
         Me.tabPage50 = New System.Windows.Forms.TabPage()
         Me.cbFlipHorizontal3 = New System.Windows.Forms.CheckBox()
         Me.cbFlipVertical3 = New System.Windows.Forms.CheckBox()
@@ -1631,17 +1642,6 @@ Partial Class Form1
         Me.cbTagEnabled = New System.Windows.Forms.CheckBox()
         Me.openFileDialog3 = New System.Windows.Forms.OpenFileDialog()
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
-        Me.TabPage113 = New System.Windows.Forms.TabPage()
-        Me.lbPIPChromaKeyTolerance2 = New System.Windows.Forms.Label()
-        Me.label518 = New System.Windows.Forms.Label()
-        Me.tbPIPChromaKeyTolerance2 = New System.Windows.Forms.TrackBar()
-        Me.lbPIPChromaKeyTolerance1 = New System.Windows.Forms.Label()
-        Me.label515 = New System.Windows.Forms.Label()
-        Me.tbPIPChromaKeyTolerance1 = New System.Windows.Forms.TrackBar()
-        Me.pnPIPChromaKeyColor = New System.Windows.Forms.Panel()
-        Me.label514 = New System.Windows.Forms.Label()
-        Me.cbPIPResizeMode = New System.Windows.Forms.ComboBox()
-        Me.label317 = New System.Windows.Forms.Label()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabPage34.SuspendLayout
@@ -1717,6 +1717,9 @@ Partial Class Form1
         CType(Me.tbPIPTransparency,System.ComponentModel.ISupportInitialize).BeginInit
         Me.groupBox33.SuspendLayout
         Me.groupBox20.SuspendLayout
+        Me.TabPage113.SuspendLayout
+        CType(Me.tbPIPChromaKeyTolerance2,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbPIPChromaKeyTolerance1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabPage50.SuspendLayout
         Me.tabPage51.SuspendLayout
         Me.tabControl26.SuspendLayout
@@ -1940,9 +1943,6 @@ Partial Class Form1
         Me.TabPage142.SuspendLayout
         Me.TabPage143.SuspendLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.TabPage113.SuspendLayout
-        CType(Me.tbPIPChromaKeyTolerance2,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbPIPChromaKeyTolerance1,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'fontDialog1
@@ -3478,7 +3478,6 @@ Partial Class Form1
         Me.tbAudioVolume.BackColor = System.Drawing.SystemColors.Window
         Me.tbAudioVolume.Location = New System.Drawing.Point(231, 35)
         Me.tbAudioVolume.Maximum = 100
-        Me.tbAudioVolume.Minimum = 20
         Me.tbAudioVolume.Name = "tbAudioVolume"
         Me.tbAudioVolume.Size = New System.Drawing.Size(82, 45)
         Me.tbAudioVolume.TabIndex = 102
@@ -5814,6 +5813,25 @@ Partial Class Form1
         Me.tabPage77.Text = "Configuration"
         Me.tabPage77.UseVisualStyleBackColor = true
         '
+        'cbPIPResizeMode
+        '
+        Me.cbPIPResizeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbPIPResizeMode.FormattingEnabled = true
+        Me.cbPIPResizeMode.Items.AddRange(New Object() {"Nearest neighbor", "Linear", "Cubic", "Lanczos"})
+        Me.cbPIPResizeMode.Location = New System.Drawing.Point(232, 200)
+        Me.cbPIPResizeMode.Name = "cbPIPResizeMode"
+        Me.cbPIPResizeMode.Size = New System.Drawing.Size(189, 21)
+        Me.cbPIPResizeMode.TabIndex = 56
+        '
+        'label317
+        '
+        Me.label317.AutoSize = true
+        Me.label317.Location = New System.Drawing.Point(229, 180)
+        Me.label317.Name = "label317"
+        Me.label317.Size = New System.Drawing.Size(62, 13)
+        Me.label317.TabIndex = 55
+        Me.label317.Text = "Resize type"
+        '
         'groupBox34
         '
         Me.groupBox34.Controls.Add(Me.btPIPSet)
@@ -6046,6 +6064,100 @@ Partial Class Form1
         Me.label131.Size = New System.Drawing.Size(25, 13)
         Me.label131.TabIndex = 33
         Me.label131.Text = "Left"
+        '
+        'TabPage113
+        '
+        Me.TabPage113.Controls.Add(Me.lbPIPChromaKeyTolerance2)
+        Me.TabPage113.Controls.Add(Me.label518)
+        Me.TabPage113.Controls.Add(Me.tbPIPChromaKeyTolerance2)
+        Me.TabPage113.Controls.Add(Me.lbPIPChromaKeyTolerance1)
+        Me.TabPage113.Controls.Add(Me.label515)
+        Me.TabPage113.Controls.Add(Me.tbPIPChromaKeyTolerance1)
+        Me.TabPage113.Controls.Add(Me.pnPIPChromaKeyColor)
+        Me.TabPage113.Controls.Add(Me.label514)
+        Me.TabPage113.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage113.Name = "TabPage113"
+        Me.TabPage113.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage113.Size = New System.Drawing.Size(442, 249)
+        Me.TabPage113.TabIndex = 2
+        Me.TabPage113.Text = "Chroma-key"
+        Me.TabPage113.UseVisualStyleBackColor = true
+        '
+        'lbPIPChromaKeyTolerance2
+        '
+        Me.lbPIPChromaKeyTolerance2.AutoSize = true
+        Me.lbPIPChromaKeyTolerance2.Location = New System.Drawing.Point(378, 88)
+        Me.lbPIPChromaKeyTolerance2.Name = "lbPIPChromaKeyTolerance2"
+        Me.lbPIPChromaKeyTolerance2.Size = New System.Drawing.Size(19, 13)
+        Me.lbPIPChromaKeyTolerance2.TabIndex = 43
+        Me.lbPIPChromaKeyTolerance2.Text = "30"
+        '
+        'label518
+        '
+        Me.label518.AutoSize = true
+        Me.label518.Location = New System.Drawing.Point(248, 57)
+        Me.label518.Name = "label518"
+        Me.label518.Size = New System.Drawing.Size(64, 13)
+        Me.label518.TabIndex = 42
+        Me.label518.Text = "Tolerance 2"
+        '
+        'tbPIPChromaKeyTolerance2
+        '
+        Me.tbPIPChromaKeyTolerance2.Location = New System.Drawing.Point(251, 73)
+        Me.tbPIPChromaKeyTolerance2.Maximum = 100
+        Me.tbPIPChromaKeyTolerance2.Minimum = 5
+        Me.tbPIPChromaKeyTolerance2.Name = "tbPIPChromaKeyTolerance2"
+        Me.tbPIPChromaKeyTolerance2.Size = New System.Drawing.Size(110, 45)
+        Me.tbPIPChromaKeyTolerance2.TabIndex = 41
+        Me.tbPIPChromaKeyTolerance2.TickFrequency = 3
+        Me.tbPIPChromaKeyTolerance2.Value = 30
+        '
+        'lbPIPChromaKeyTolerance1
+        '
+        Me.lbPIPChromaKeyTolerance1.AutoSize = true
+        Me.lbPIPChromaKeyTolerance1.Location = New System.Drawing.Point(145, 88)
+        Me.lbPIPChromaKeyTolerance1.Name = "lbPIPChromaKeyTolerance1"
+        Me.lbPIPChromaKeyTolerance1.Size = New System.Drawing.Size(19, 13)
+        Me.lbPIPChromaKeyTolerance1.TabIndex = 40
+        Me.lbPIPChromaKeyTolerance1.Text = "10"
+        '
+        'label515
+        '
+        Me.label515.AutoSize = true
+        Me.label515.Location = New System.Drawing.Point(15, 57)
+        Me.label515.Name = "label515"
+        Me.label515.Size = New System.Drawing.Size(64, 13)
+        Me.label515.TabIndex = 39
+        Me.label515.Text = "Tolerance 1"
+        '
+        'tbPIPChromaKeyTolerance1
+        '
+        Me.tbPIPChromaKeyTolerance1.Location = New System.Drawing.Point(18, 73)
+        Me.tbPIPChromaKeyTolerance1.Maximum = 100
+        Me.tbPIPChromaKeyTolerance1.Minimum = 5
+        Me.tbPIPChromaKeyTolerance1.Name = "tbPIPChromaKeyTolerance1"
+        Me.tbPIPChromaKeyTolerance1.Size = New System.Drawing.Size(110, 45)
+        Me.tbPIPChromaKeyTolerance1.TabIndex = 38
+        Me.tbPIPChromaKeyTolerance1.TickFrequency = 3
+        Me.tbPIPChromaKeyTolerance1.Value = 10
+        '
+        'pnPIPChromaKeyColor
+        '
+        Me.pnPIPChromaKeyColor.BackColor = System.Drawing.Color.ForestGreen
+        Me.pnPIPChromaKeyColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pnPIPChromaKeyColor.Location = New System.Drawing.Point(148, 21)
+        Me.pnPIPChromaKeyColor.Name = "pnPIPChromaKeyColor"
+        Me.pnPIPChromaKeyColor.Size = New System.Drawing.Size(24, 24)
+        Me.pnPIPChromaKeyColor.TabIndex = 37
+        '
+        'label514
+        '
+        Me.label514.AutoSize = true
+        Me.label514.Location = New System.Drawing.Point(14, 24)
+        Me.label514.Name = "label514"
+        Me.label514.Size = New System.Drawing.Size(105, 13)
+        Me.label514.TabIndex = 36
+        Me.label514.Text = "Color (click to select)"
         '
         'tabPage50
         '
@@ -18539,24 +18651,24 @@ Partial Class Form1
         Me.VideoCapture1.Video_Decoder = Nothing
         Me.VideoCapture1.Video_Effects_AllowMultipleStreams = false
         Me.VideoCapture1.Video_Effects_Enabled = false
-        VideoRendererSettingsWinForms4.Aspect_Ratio_Override = false
-        VideoRendererSettingsWinForms4.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms4.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms4.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
 'TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-        VideoRendererSettingsWinForms4.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms4.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms4.Deinterlace_VMR9_UseDefault = false
-        VideoRendererSettingsWinForms4.Flip_Horizontal = false
-        VideoRendererSettingsWinForms4.Flip_Vertical = false
-        VideoRendererSettingsWinForms4.RotationAngle = 0
-        VideoRendererSettingsWinForms4.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms4.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms4.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms4.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms4.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms4.Zoom_ShiftY = 0
-        Me.VideoCapture1.Video_Renderer = VideoRendererSettingsWinForms4
+        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms1.Flip_Horizontal = false
+        VideoRendererSettingsWinForms1.Flip_Vertical = false
+        VideoRendererSettingsWinForms1.RotationAngle = 0
+        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
+        Me.VideoCapture1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.VideoCapture1.Video_Resize = Nothing
         Me.VideoCapture1.Video_ResizeOrCrop_Enabled = false
         Me.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone
@@ -18566,119 +18678,6 @@ Partial Class Form1
         Me.VideoCapture1.Virtual_Camera_Output_Enabled = false
         Me.VideoCapture1.Virtual_Camera_Output_LicenseKey = Nothing
         Me.VideoCapture1.VLC_Path = Nothing
-        '
-        'TabPage113
-        '
-        Me.TabPage113.Controls.Add(Me.lbPIPChromaKeyTolerance2)
-        Me.TabPage113.Controls.Add(Me.label518)
-        Me.TabPage113.Controls.Add(Me.tbPIPChromaKeyTolerance2)
-        Me.TabPage113.Controls.Add(Me.lbPIPChromaKeyTolerance1)
-        Me.TabPage113.Controls.Add(Me.label515)
-        Me.TabPage113.Controls.Add(Me.tbPIPChromaKeyTolerance1)
-        Me.TabPage113.Controls.Add(Me.pnPIPChromaKeyColor)
-        Me.TabPage113.Controls.Add(Me.label514)
-        Me.TabPage113.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage113.Name = "TabPage113"
-        Me.TabPage113.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage113.Size = New System.Drawing.Size(442, 249)
-        Me.TabPage113.TabIndex = 2
-        Me.TabPage113.Text = "Chroma-key"
-        Me.TabPage113.UseVisualStyleBackColor = true
-        '
-        'lbPIPChromaKeyTolerance2
-        '
-        Me.lbPIPChromaKeyTolerance2.AutoSize = true
-        Me.lbPIPChromaKeyTolerance2.Location = New System.Drawing.Point(378, 88)
-        Me.lbPIPChromaKeyTolerance2.Name = "lbPIPChromaKeyTolerance2"
-        Me.lbPIPChromaKeyTolerance2.Size = New System.Drawing.Size(19, 13)
-        Me.lbPIPChromaKeyTolerance2.TabIndex = 43
-        Me.lbPIPChromaKeyTolerance2.Text = "30"
-        '
-        'label518
-        '
-        Me.label518.AutoSize = true
-        Me.label518.Location = New System.Drawing.Point(248, 57)
-        Me.label518.Name = "label518"
-        Me.label518.Size = New System.Drawing.Size(64, 13)
-        Me.label518.TabIndex = 42
-        Me.label518.Text = "Tolerance 2"
-        '
-        'tbPIPChromaKeyTolerance2
-        '
-        Me.tbPIPChromaKeyTolerance2.Location = New System.Drawing.Point(251, 73)
-        Me.tbPIPChromaKeyTolerance2.Maximum = 100
-        Me.tbPIPChromaKeyTolerance2.Minimum = 5
-        Me.tbPIPChromaKeyTolerance2.Name = "tbPIPChromaKeyTolerance2"
-        Me.tbPIPChromaKeyTolerance2.Size = New System.Drawing.Size(110, 45)
-        Me.tbPIPChromaKeyTolerance2.TabIndex = 41
-        Me.tbPIPChromaKeyTolerance2.TickFrequency = 3
-        Me.tbPIPChromaKeyTolerance2.Value = 30
-        '
-        'lbPIPChromaKeyTolerance1
-        '
-        Me.lbPIPChromaKeyTolerance1.AutoSize = true
-        Me.lbPIPChromaKeyTolerance1.Location = New System.Drawing.Point(145, 88)
-        Me.lbPIPChromaKeyTolerance1.Name = "lbPIPChromaKeyTolerance1"
-        Me.lbPIPChromaKeyTolerance1.Size = New System.Drawing.Size(19, 13)
-        Me.lbPIPChromaKeyTolerance1.TabIndex = 40
-        Me.lbPIPChromaKeyTolerance1.Text = "10"
-        '
-        'label515
-        '
-        Me.label515.AutoSize = true
-        Me.label515.Location = New System.Drawing.Point(15, 57)
-        Me.label515.Name = "label515"
-        Me.label515.Size = New System.Drawing.Size(64, 13)
-        Me.label515.TabIndex = 39
-        Me.label515.Text = "Tolerance 1"
-        '
-        'tbPIPChromaKeyTolerance1
-        '
-        Me.tbPIPChromaKeyTolerance1.Location = New System.Drawing.Point(18, 73)
-        Me.tbPIPChromaKeyTolerance1.Maximum = 100
-        Me.tbPIPChromaKeyTolerance1.Minimum = 5
-        Me.tbPIPChromaKeyTolerance1.Name = "tbPIPChromaKeyTolerance1"
-        Me.tbPIPChromaKeyTolerance1.Size = New System.Drawing.Size(110, 45)
-        Me.tbPIPChromaKeyTolerance1.TabIndex = 38
-        Me.tbPIPChromaKeyTolerance1.TickFrequency = 3
-        Me.tbPIPChromaKeyTolerance1.Value = 10
-        '
-        'pnPIPChromaKeyColor
-        '
-        Me.pnPIPChromaKeyColor.BackColor = System.Drawing.Color.ForestGreen
-        Me.pnPIPChromaKeyColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnPIPChromaKeyColor.Location = New System.Drawing.Point(148, 21)
-        Me.pnPIPChromaKeyColor.Name = "pnPIPChromaKeyColor"
-        Me.pnPIPChromaKeyColor.Size = New System.Drawing.Size(24, 24)
-        Me.pnPIPChromaKeyColor.TabIndex = 37
-        '
-        'label514
-        '
-        Me.label514.AutoSize = true
-        Me.label514.Location = New System.Drawing.Point(14, 24)
-        Me.label514.Name = "label514"
-        Me.label514.Size = New System.Drawing.Size(105, 13)
-        Me.label514.TabIndex = 36
-        Me.label514.Text = "Color (click to select)"
-        '
-        'cbPIPResizeMode
-        '
-        Me.cbPIPResizeMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbPIPResizeMode.FormattingEnabled = true
-        Me.cbPIPResizeMode.Items.AddRange(New Object() {"Nearest neighbor", "Linear", "Cubic", "Lanczos"})
-        Me.cbPIPResizeMode.Location = New System.Drawing.Point(232, 200)
-        Me.cbPIPResizeMode.Name = "cbPIPResizeMode"
-        Me.cbPIPResizeMode.Size = New System.Drawing.Size(189, 21)
-        Me.cbPIPResizeMode.TabIndex = 56
-        '
-        'label317
-        '
-        Me.label317.AutoSize = true
-        Me.label317.Location = New System.Drawing.Point(229, 180)
-        Me.label317.Name = "label317"
-        Me.label317.Size = New System.Drawing.Size(62, 13)
-        Me.label317.TabIndex = 55
-        Me.label317.Text = "Resize type"
         '
         'Form1
         '
@@ -18816,6 +18815,10 @@ Partial Class Form1
         Me.groupBox33.PerformLayout
         Me.groupBox20.ResumeLayout(false)
         Me.groupBox20.PerformLayout
+        Me.TabPage113.ResumeLayout(false)
+        Me.TabPage113.PerformLayout
+        CType(Me.tbPIPChromaKeyTolerance2,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbPIPChromaKeyTolerance1,System.ComponentModel.ISupportInitialize).EndInit
         Me.tabPage50.ResumeLayout(false)
         Me.tabPage50.PerformLayout
         Me.tabPage51.ResumeLayout(false)
@@ -19165,10 +19168,6 @@ Partial Class Form1
         Me.TabPage143.ResumeLayout(false)
         Me.TabPage143.PerformLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage113.ResumeLayout(false)
-        Me.TabPage113.PerformLayout
-        CType(Me.tbPIPChromaKeyTolerance2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbPIPChromaKeyTolerance1,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 

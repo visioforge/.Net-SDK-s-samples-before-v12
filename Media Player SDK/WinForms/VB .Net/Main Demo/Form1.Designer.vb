@@ -651,6 +651,15 @@ Partial Class Form1
         Me.edReversePlaybackCacheSize = New System.Windows.Forms.TextBox()
         Me.label32 = New System.Windows.Forms.Label()
         Me.tbReversePlaybackTrackbar = New System.Windows.Forms.TrackBar()
+        Me.TabPage14 = New System.Windows.Forms.TabPage()
+        Me.label505 = New System.Windows.Forms.Label()
+        Me.rbMotionDetectionExProcessor = New System.Windows.Forms.ComboBox()
+        Me.label389 = New System.Windows.Forms.Label()
+        Me.rbMotionDetectionExDetector = New System.Windows.Forms.ComboBox()
+        Me.label64 = New System.Windows.Forms.Label()
+        Me.label65 = New System.Windows.Forms.Label()
+        Me.pbAFMotionLevel = New System.Windows.Forms.ProgressBar()
+        Me.cbMotionDetectionEx = New System.Windows.Forms.CheckBox()
         Me.saveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.fontDialog1 = New System.Windows.Forms.FontDialog()
@@ -668,15 +677,6 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
-        Me.TabPage14 = New System.Windows.Forms.TabPage()
-        Me.label505 = New System.Windows.Forms.Label()
-        Me.rbMotionDetectionExProcessor = New System.Windows.Forms.ComboBox()
-        Me.label389 = New System.Windows.Forms.Label()
-        Me.rbMotionDetectionExDetector = New System.Windows.Forms.ComboBox()
-        Me.label64 = New System.Windows.Forms.Label()
-        Me.label65 = New System.Windows.Forms.Label()
-        Me.pbAFMotionLevel = New System.Windows.Forms.ProgressBar()
-        Me.cbMotionDetectionEx = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -1581,12 +1581,11 @@ Partial Class Form1
         '
         Me.tbVolume4.BackColor = System.Drawing.SystemColors.Window
         Me.tbVolume4.Location = New System.Drawing.Point(103, 337)
-        Me.tbVolume4.Maximum = 1000
-        Me.tbVolume4.Minimum = 250
+        Me.tbVolume4.Maximum = 100
         Me.tbVolume4.Name = "tbVolume4"
         Me.tbVolume4.Size = New System.Drawing.Size(85, 45)
         Me.tbVolume4.TabIndex = 19
-        Me.tbVolume4.Value = 850
+        Me.tbVolume4.Value = 85
         '
         'cbAudioStream4
         '
@@ -1631,7 +1630,6 @@ Partial Class Form1
         Me.tbVolume3.BackColor = System.Drawing.SystemColors.Window
         Me.tbVolume3.Location = New System.Drawing.Point(103, 270)
         Me.tbVolume3.Maximum = 100
-        Me.tbVolume3.Minimum = 20
         Me.tbVolume3.Name = "tbVolume3"
         Me.tbVolume3.Size = New System.Drawing.Size(85, 45)
         Me.tbVolume3.TabIndex = 14
@@ -1680,7 +1678,6 @@ Partial Class Form1
         Me.tbVolume2.BackColor = System.Drawing.SystemColors.Window
         Me.tbVolume2.Location = New System.Drawing.Point(103, 202)
         Me.tbVolume2.Maximum = 100
-        Me.tbVolume2.Minimum = 20
         Me.tbVolume2.Name = "tbVolume2"
         Me.tbVolume2.Size = New System.Drawing.Size(85, 45)
         Me.tbVolume2.TabIndex = 9
@@ -1729,7 +1726,6 @@ Partial Class Form1
         Me.tbVolume1.BackColor = System.Drawing.SystemColors.Window
         Me.tbVolume1.Location = New System.Drawing.Point(103, 138)
         Me.tbVolume1.Maximum = 100
-        Me.tbVolume1.Minimum = 20
         Me.tbVolume1.Name = "tbVolume1"
         Me.tbVolume1.Size = New System.Drawing.Size(85, 45)
         Me.tbVolume1.TabIndex = 4
@@ -7352,6 +7348,97 @@ Partial Class Form1
         Me.tbReversePlaybackTrackbar.TabIndex = 11
         Me.tbReversePlaybackTrackbar.Value = 100
         '
+        'TabPage14
+        '
+        Me.TabPage14.Controls.Add(Me.label505)
+        Me.TabPage14.Controls.Add(Me.rbMotionDetectionExProcessor)
+        Me.TabPage14.Controls.Add(Me.label389)
+        Me.TabPage14.Controls.Add(Me.rbMotionDetectionExDetector)
+        Me.TabPage14.Controls.Add(Me.label64)
+        Me.TabPage14.Controls.Add(Me.label65)
+        Me.TabPage14.Controls.Add(Me.pbAFMotionLevel)
+        Me.TabPage14.Controls.Add(Me.cbMotionDetectionEx)
+        Me.TabPage14.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage14.Name = "TabPage14"
+        Me.TabPage14.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage14.Size = New System.Drawing.Size(301, 492)
+        Me.TabPage14.TabIndex = 14
+        Me.TabPage14.Text = "Motion detection (Extended)"
+        Me.TabPage14.UseVisualStyleBackColor = true
+        '
+        'label505
+        '
+        Me.label505.AutoSize = true
+        Me.label505.Location = New System.Drawing.Point(16, 100)
+        Me.label505.Name = "label505"
+        Me.label505.Size = New System.Drawing.Size(54, 13)
+        Me.label505.TabIndex = 31
+        Me.label505.Text = "Processor"
+        '
+        'rbMotionDetectionExProcessor
+        '
+        Me.rbMotionDetectionExProcessor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.rbMotionDetectionExProcessor.FormattingEnabled = true
+        Me.rbMotionDetectionExProcessor.Items.AddRange(New Object() {"None", "Blob counting objects", "GridMotionAreaProcessing", "Motion area highlighting", "Motion border highlighting"})
+        Me.rbMotionDetectionExProcessor.Location = New System.Drawing.Point(16, 116)
+        Me.rbMotionDetectionExProcessor.Name = "rbMotionDetectionExProcessor"
+        Me.rbMotionDetectionExProcessor.Size = New System.Drawing.Size(258, 21)
+        Me.rbMotionDetectionExProcessor.TabIndex = 30
+        '
+        'label389
+        '
+        Me.label389.AutoSize = true
+        Me.label389.Location = New System.Drawing.Point(16, 50)
+        Me.label389.Name = "label389"
+        Me.label389.Size = New System.Drawing.Size(48, 13)
+        Me.label389.TabIndex = 29
+        Me.label389.Text = "Detector"
+        '
+        'rbMotionDetectionExDetector
+        '
+        Me.rbMotionDetectionExDetector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.rbMotionDetectionExDetector.FormattingEnabled = true
+        Me.rbMotionDetectionExDetector.Items.AddRange(New Object() {"Custom frame difference", "Simple background modeling", "Two frames difference"})
+        Me.rbMotionDetectionExDetector.Location = New System.Drawing.Point(16, 66)
+        Me.rbMotionDetectionExDetector.Name = "rbMotionDetectionExDetector"
+        Me.rbMotionDetectionExDetector.Size = New System.Drawing.Size(258, 21)
+        Me.rbMotionDetectionExDetector.TabIndex = 28
+        '
+        'label64
+        '
+        Me.label64.AutoSize = true
+        Me.label64.Location = New System.Drawing.Point(53, 438)
+        Me.label64.Name = "label64"
+        Me.label64.Size = New System.Drawing.Size(173, 13)
+        Me.label64.TabIndex = 27
+        Me.label64.Text = "Much more options available in API"
+        '
+        'label65
+        '
+        Me.label65.AutoSize = true
+        Me.label65.Location = New System.Drawing.Point(16, 158)
+        Me.label65.Name = "label65"
+        Me.label65.Size = New System.Drawing.Size(64, 13)
+        Me.label65.TabIndex = 26
+        Me.label65.Text = "Motion level"
+        '
+        'pbAFMotionLevel
+        '
+        Me.pbAFMotionLevel.Location = New System.Drawing.Point(16, 174)
+        Me.pbAFMotionLevel.Name = "pbAFMotionLevel"
+        Me.pbAFMotionLevel.Size = New System.Drawing.Size(258, 23)
+        Me.pbAFMotionLevel.TabIndex = 25
+        '
+        'cbMotionDetectionEx
+        '
+        Me.cbMotionDetectionEx.AutoSize = true
+        Me.cbMotionDetectionEx.Location = New System.Drawing.Point(16, 12)
+        Me.cbMotionDetectionEx.Name = "cbMotionDetectionEx"
+        Me.cbMotionDetectionEx.Size = New System.Drawing.Size(65, 17)
+        Me.cbMotionDetectionEx.TabIndex = 24
+        Me.cbMotionDetectionEx.Text = "Enabled"
+        Me.cbMotionDetectionEx.UseVisualStyleBackColor = true
+        '
         'fontDialog1
         '
         Me.fontDialog1.Color = System.Drawing.Color.White
@@ -7476,6 +7563,7 @@ Partial Class Form1
         Me.MediaPlayer1.Debug_Mode = false
         Me.MediaPlayer1.Encryption_Key = ""
         Me.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.[String]
+        Me.MediaPlayer1.Face_Tracking = Nothing
         Me.MediaPlayer1.FilenamesOrURL = CType(resources.GetObject("MediaPlayer1.FilenamesOrURL"),System.Collections.Generic.List(Of String))
         Me.MediaPlayer1.Info_UseLibMediaInfo = false
         Me.MediaPlayer1.Location = New System.Drawing.Point(329, 150)
@@ -7520,97 +7608,6 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms2
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true
         Me.MediaPlayer1.Video_Stream_Index = 0
-        '
-        'TabPage14
-        '
-        Me.TabPage14.Controls.Add(Me.label505)
-        Me.TabPage14.Controls.Add(Me.rbMotionDetectionExProcessor)
-        Me.TabPage14.Controls.Add(Me.label389)
-        Me.TabPage14.Controls.Add(Me.rbMotionDetectionExDetector)
-        Me.TabPage14.Controls.Add(Me.label64)
-        Me.TabPage14.Controls.Add(Me.label65)
-        Me.TabPage14.Controls.Add(Me.pbAFMotionLevel)
-        Me.TabPage14.Controls.Add(Me.cbMotionDetectionEx)
-        Me.TabPage14.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage14.Name = "TabPage14"
-        Me.TabPage14.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage14.Size = New System.Drawing.Size(301, 492)
-        Me.TabPage14.TabIndex = 14
-        Me.TabPage14.Text = "Motion detection (Extended)"
-        Me.TabPage14.UseVisualStyleBackColor = true
-        '
-        'label505
-        '
-        Me.label505.AutoSize = true
-        Me.label505.Location = New System.Drawing.Point(16, 100)
-        Me.label505.Name = "label505"
-        Me.label505.Size = New System.Drawing.Size(54, 13)
-        Me.label505.TabIndex = 31
-        Me.label505.Text = "Processor"
-        '
-        'rbMotionDetectionExProcessor
-        '
-        Me.rbMotionDetectionExProcessor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.rbMotionDetectionExProcessor.FormattingEnabled = true
-        Me.rbMotionDetectionExProcessor.Items.AddRange(New Object() {"None", "Blob counting objects", "GridMotionAreaProcessing", "Motion area highlighting", "Motion border highlighting"})
-        Me.rbMotionDetectionExProcessor.Location = New System.Drawing.Point(16, 116)
-        Me.rbMotionDetectionExProcessor.Name = "rbMotionDetectionExProcessor"
-        Me.rbMotionDetectionExProcessor.Size = New System.Drawing.Size(258, 21)
-        Me.rbMotionDetectionExProcessor.TabIndex = 30
-        '
-        'label389
-        '
-        Me.label389.AutoSize = true
-        Me.label389.Location = New System.Drawing.Point(16, 50)
-        Me.label389.Name = "label389"
-        Me.label389.Size = New System.Drawing.Size(48, 13)
-        Me.label389.TabIndex = 29
-        Me.label389.Text = "Detector"
-        '
-        'rbMotionDetectionExDetector
-        '
-        Me.rbMotionDetectionExDetector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.rbMotionDetectionExDetector.FormattingEnabled = true
-        Me.rbMotionDetectionExDetector.Items.AddRange(New Object() {"Custom frame difference", "Simple background modeling", "Two frames difference"})
-        Me.rbMotionDetectionExDetector.Location = New System.Drawing.Point(16, 66)
-        Me.rbMotionDetectionExDetector.Name = "rbMotionDetectionExDetector"
-        Me.rbMotionDetectionExDetector.Size = New System.Drawing.Size(258, 21)
-        Me.rbMotionDetectionExDetector.TabIndex = 28
-        '
-        'label64
-        '
-        Me.label64.AutoSize = true
-        Me.label64.Location = New System.Drawing.Point(53, 438)
-        Me.label64.Name = "label64"
-        Me.label64.Size = New System.Drawing.Size(173, 13)
-        Me.label64.TabIndex = 27
-        Me.label64.Text = "Much more options available in API"
-        '
-        'label65
-        '
-        Me.label65.AutoSize = true
-        Me.label65.Location = New System.Drawing.Point(16, 158)
-        Me.label65.Name = "label65"
-        Me.label65.Size = New System.Drawing.Size(64, 13)
-        Me.label65.TabIndex = 26
-        Me.label65.Text = "Motion level"
-        '
-        'pbAFMotionLevel
-        '
-        Me.pbAFMotionLevel.Location = New System.Drawing.Point(16, 174)
-        Me.pbAFMotionLevel.Name = "pbAFMotionLevel"
-        Me.pbAFMotionLevel.Size = New System.Drawing.Size(258, 23)
-        Me.pbAFMotionLevel.TabIndex = 25
-        '
-        'cbMotionDetectionEx
-        '
-        Me.cbMotionDetectionEx.AutoSize = true
-        Me.cbMotionDetectionEx.Location = New System.Drawing.Point(16, 12)
-        Me.cbMotionDetectionEx.Name = "cbMotionDetectionEx"
-        Me.cbMotionDetectionEx.Size = New System.Drawing.Size(65, 17)
-        Me.cbMotionDetectionEx.TabIndex = 24
-        Me.cbMotionDetectionEx.Text = "Enabled"
-        Me.cbMotionDetectionEx.UseVisualStyleBackColor = true
         '
         'Form1
         '

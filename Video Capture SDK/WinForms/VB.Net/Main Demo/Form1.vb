@@ -2331,7 +2331,7 @@ Public Class Form1
         settings.Debug_Enabled = cbDebugMode.Checked
         settings.Debug_Filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\ip_cam_log.txt"
         settings.VLC_ZeroClockJitterEnabled = cbVLCZeroClockJitter.Checked
-        settings.VLC_CacheSize = Convert.ToInt32(edVLCCacheSize.Text)
+        settings.VLC_CustomLatency = Convert.ToInt32(edVLCCacheSize.Text)
 
         If (cbIPCameraONVIF.Checked) Then
             settings.ONVIF_Source = True

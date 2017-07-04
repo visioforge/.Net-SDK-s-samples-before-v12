@@ -1589,7 +1589,7 @@ namespace Main_Demo
             settings.Debug_Enabled = cbDebugMode.IsChecked == true;
             settings.Debug_Filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\ip_cam_log.txt";
             settings.VLC_ZeroClockJitterEnabled = cbVLCZeroClockJitter.IsChecked == true;
-            settings.VLC_CacheSize = Convert.ToInt32(edVLCCacheSize.Text);
+            settings.VLC_CustomLatency = Convert.ToInt32(edVLCCacheSize.Text);
 
             if (cbIPCameraONVIF.IsChecked == true)
             {
