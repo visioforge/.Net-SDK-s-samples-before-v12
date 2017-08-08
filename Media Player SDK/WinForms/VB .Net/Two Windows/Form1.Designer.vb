@@ -290,7 +290,7 @@ Partial Class Form1
         Me.MediaPlayer1.Motion_Detection = Nothing
         Me.MediaPlayer1.MultiScreen_Enabled = false
         Me.MediaPlayer1.Name = "MediaPlayer1"
-        Me.MediaPlayer1.Object_Detection = Nothing
+        Me.MediaPlayer1.Motion_DetectionEx = Nothing
         Me.MediaPlayer1.ReversePlayback_CacheSize = 0
         Me.MediaPlayer1.ReversePlayback_Enabled = false
         Me.MediaPlayer1.Selection_Active = false

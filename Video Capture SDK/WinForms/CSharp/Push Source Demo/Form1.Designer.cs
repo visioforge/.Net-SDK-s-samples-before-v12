@@ -157,6 +157,7 @@
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.Motion_DetectionEx = null;
             this.VideoCapture1.Output_Filename = "C:\\Users\\roman\\Documents\\VisioForge\\output.avi";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;

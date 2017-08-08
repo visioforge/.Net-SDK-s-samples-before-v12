@@ -69,15 +69,19 @@ namespace Video_Player_Demo
 
             MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device";
 
-            if (!MediaPlayer1.Filter_Supported_VMR9())
+            if (MediaPlayer1.Filter_Supported_EVR())
             {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
             }
-            else
+            else if (MediaPlayer1.Filter_Supported_VMR9())
             {
                 MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
             }
-            
+            else
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
+
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
 
             MediaPlayer1.Play();

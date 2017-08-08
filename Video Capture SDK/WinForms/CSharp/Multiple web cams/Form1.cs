@@ -94,6 +94,22 @@ namespace multiple_ap_cams
                 cbCamera1.SelectedIndex = 0;
                 cbCamera2.SelectedIndex = 0;
             }
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+                videoCapture2.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+                videoCapture2.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+                videoCapture2.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
         }
 
         private void videoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)

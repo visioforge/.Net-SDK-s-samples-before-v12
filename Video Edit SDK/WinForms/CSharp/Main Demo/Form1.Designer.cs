@@ -5806,10 +5806,10 @@ namespace VideoEdit_CS_Demo
             this.rbMP4Modern.Checked = true;
             this.rbMP4Modern.Location = new System.Drawing.Point(9, 99);
             this.rbMP4Modern.Name = "rbMP4Modern";
-            this.rbMP4Modern.Size = new System.Drawing.Size(167, 17);
+            this.rbMP4Modern.Size = new System.Drawing.Size(255, 17);
             this.rbMP4Modern.TabIndex = 11;
             this.rbMP4Modern.TabStop = true;
-            this.rbMP4Modern.Text = "Modern (Windows 7 and later)";
+            this.rbMP4Modern.Text = "CPU / QuickSync Modern (Windows 7 and later)";
             this.rbMP4Modern.UseVisualStyleBackColor = true;
             // 
             // rbMP4Legacy
@@ -5817,9 +5817,9 @@ namespace VideoEdit_CS_Demo
             this.rbMP4Legacy.AutoSize = true;
             this.rbMP4Legacy.Location = new System.Drawing.Point(9, 76);
             this.rbMP4Legacy.Name = "rbMP4Legacy";
-            this.rbMP4Legacy.Size = new System.Drawing.Size(174, 17);
+            this.rbMP4Legacy.Size = new System.Drawing.Size(262, 17);
             this.rbMP4Legacy.TabIndex = 10;
-            this.rbMP4Legacy.Text = "Legacy (Windows XP and later)";
+            this.rbMP4Legacy.Text = "CPU / QuickSync Legacy (Windows XP and later)";
             this.rbMP4Legacy.UseVisualStyleBackColor = true;
             // 
             // label380
@@ -13984,6 +13984,7 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Location = new System.Drawing.Point(331, 322);
             this.VideoEdit1.Mode = VisioForge.Types.VFVideoEditMode.Convert;
             this.VideoEdit1.Motion_Detection = null;
+            this.VideoEdit1.Motion_DetectionEx = null;
             this.VideoEdit1.Name = "VideoEdit1";
             this.VideoEdit1.Network_Streaming_Audio_Enabled = false;
             this.VideoEdit1.Network_Streaming_Enabled = false;
@@ -13992,7 +13993,6 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Network_Streaming_Output = null;
             this.VideoEdit1.Network_Streaming_URL = null;
             this.VideoEdit1.Network_Streaming_WMV_Maximum_Clients = 0;
-            this.VideoEdit1.Motion_DetectionEx = null;
             this.VideoEdit1.Output_Filename = "c:\\output.avi";
             this.VideoEdit1.Output_Format = null;
             this.VideoEdit1.Size = new System.Drawing.Size(433, 294);

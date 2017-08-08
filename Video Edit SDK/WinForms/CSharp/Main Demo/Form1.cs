@@ -410,13 +410,13 @@ namespace VideoEdit_CS_Demo
             cbAudEqualizerPreset.Items.AddRange(VideoEdit1.Audio_Effects_Equalizer_Presets().ToArray());
             cbAudEqualizerPreset.SelectedIndex = 0;
 
-            if (!(rbVMR9.Enabled && rbEVR.Enabled))
-            {
-                rbVR.Checked = true;
-            }
-            else if (rbEVR.Enabled)
+            if (rbEVR.Enabled)
             {
                 rbEVR.Checked = true;
+            }
+            else if (!(rbVMR9.Enabled && rbEVR.Enabled))
+            {
+                rbVR.Checked = true;
             }
         }
 

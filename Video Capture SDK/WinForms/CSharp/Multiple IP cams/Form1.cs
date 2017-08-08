@@ -62,6 +62,22 @@ namespace multiple_ap_cams
         private void Form1_Load(object sender, EventArgs e)
         {
             Text += " (SDK v" + videoCapture2.SDK_Version + ", " + videoCapture2.SDK_State + ")";
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+                videoCapture2.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+                videoCapture2.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+                videoCapture2.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
         }
 
         private void videoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)

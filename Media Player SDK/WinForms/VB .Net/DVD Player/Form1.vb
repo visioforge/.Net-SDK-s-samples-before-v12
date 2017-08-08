@@ -184,10 +184,12 @@ Public Class Form1
 
         MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device"
 
-        If (Not MediaPlayer1.Filter_Supported_VMR9()) Then
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
-        Else
+        If (MediaPlayer1.Filter_Supported_EVR()) Then
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
+        ElseIf (MediaPlayer1.Filter_Supported_VMR9()) Then
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
+        Else
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
         End If
 
         MediaPlayer1.Debug_Mode = cbDebugMode.Checked

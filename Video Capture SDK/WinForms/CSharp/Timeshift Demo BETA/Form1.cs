@@ -6,6 +6,7 @@ namespace VC_Timeshift_Demo
 {
     using System.Globalization;
 
+    using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
 
@@ -45,6 +46,19 @@ namespace VC_Timeshift_Demo
             }
 
             cbOutputFormat.SelectedIndex = 0;
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
         }
 
         private void cbVideoInputDevice_SelectedIndexChanged(object sender, EventArgs e)
@@ -161,8 +175,6 @@ namespace VC_Timeshift_Demo
         private void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
-
-            VideoCapture1.Video_Renderer = new VideoRendererSettingsWinForms();
 
             VideoCapture1.Debug_Mode = cbDebugMode.Checked;
             VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";

@@ -75,6 +75,19 @@ namespace Push_Source_Demo
 
             edOutputAVI.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.avi";
             edOutputMP4.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.mp4";
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
         }
 
         private void PushImages()
@@ -137,19 +150,6 @@ namespace Push_Source_Demo
             VideoCapture1.Push_Source.VideoHeight = bmp.Height;
             VideoCapture1.Push_Source.VideoFrameRate = 25.0f;
             bmp.Dispose();
-
-            if (VideoCapture.Filter_Supported_EVR())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
-            }
-            else if (VideoCapture.Filter_Supported_VMR9())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
-            }
-            else
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
-            }
 
             if (rbPreview.Checked)
             {

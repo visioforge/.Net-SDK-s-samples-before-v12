@@ -380,7 +380,9 @@ Public Class Form1
         End If
 
         'apply capture parameters
-        If VideoCapture.Filter_Supported_VMR9() Then
+        If VideoCapture.Filter_Supported_EVR() Then
+            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
+        ElseIf VideoCapture.Filter_Supported_VMR9() Then
             VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
         Else
             VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer

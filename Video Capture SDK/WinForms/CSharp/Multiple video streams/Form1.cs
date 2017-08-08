@@ -85,7 +85,7 @@ namespace multiple_video_streams
 
             videoCapture1.Debug_Mode = cbDebugMode.Checked;
             videoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
-
+            
             videoCapture1.Start();
         }
 
@@ -120,6 +120,19 @@ namespace multiple_video_streams
 
             edFilename.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
                               + "multiple_video_streams.wmv";
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else
+            {
+                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
         }
 
         private void cbCamera1_SelectedIndexChanged(object sender, EventArgs e)

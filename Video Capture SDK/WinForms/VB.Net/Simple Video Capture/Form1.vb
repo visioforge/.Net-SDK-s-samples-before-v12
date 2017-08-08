@@ -213,8 +213,6 @@ Public Class Form1
     End Sub
 
     Private Sub cbVideoInputDevice_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbVideoInputDevice.SelectedIndexChanged
-        Dim i As Integer
-
         If cbVideoInputDevice.SelectedIndex <> -1 Then
             VideoCapture1.Video_CaptureDevice = cbVideoInputDevice.Text
 
@@ -381,7 +379,9 @@ Public Class Form1
         End If
 
         'apply capture parameters
-        If VideoCapture.Filter_Supported_VMR9() Then
+        If VideoCapture.Filter_Supported_EVR() Then
+            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
+        ElseIf VideoCapture.Filter_Supported_VMR9() Then
             VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
         Else
             VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer

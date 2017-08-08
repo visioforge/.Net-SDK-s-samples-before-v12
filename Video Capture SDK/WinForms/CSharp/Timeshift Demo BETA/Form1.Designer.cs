@@ -454,8 +454,7 @@
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
-            this.VideoCapture1.Object_Detection = null;
-            this.VideoCapture1.OpenCL_Enabled = false;
+            this.VideoCapture1.Motion_DetectionEx = null;
             this.VideoCapture1.Output_Filename = "C:\\Users\\roman\\Documents\\VisioForge\\output.avi";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -481,7 +480,6 @@
             this.VideoCapture1.TVTuner_FM_Tuning_StopFrequency = 0;
             this.VideoCapture1.TVTuner_Frequency = 0;
             this.VideoCapture1.TVTuner_InputType = "";
-            this.VideoCapture1.TVTuner_Mode = "";
             this.VideoCapture1.TVTuner_Name = "";
             this.VideoCapture1.TVTuner_TVFormat = VisioForge.Types.VFTVTunerVideoFormat.PAL_D;
             this.VideoCapture1.Video_CaptureDevice = "";
@@ -502,8 +500,8 @@
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
 // TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-            videoRendererSettingsWinForms1.Deinterlace_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_UseDefault = true;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
             videoRendererSettingsWinForms1.Flip_Horizontal = false;
             videoRendererSettingsWinForms1.Flip_Vertical = false;
             videoRendererSettingsWinForms1.RotationAngle = 0;
@@ -575,7 +573,7 @@
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
-            this.MediaPlayer1.Object_Detection = null;
+            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -596,8 +594,8 @@
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Black;
 // TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-            videoRendererSettingsWinForms2.Deinterlace_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_UseDefault = true;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
             videoRendererSettingsWinForms2.Flip_Horizontal = false;
             videoRendererSettingsWinForms2.Flip_Vertical = false;
             videoRendererSettingsWinForms2.RotationAngle = 0;

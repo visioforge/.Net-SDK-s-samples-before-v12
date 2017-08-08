@@ -1582,11 +1582,6 @@ namespace VideoCapture_CSharp_Demo
                 }
             }
 
-            if (VideoCapture1.Video_Renderer == null)
-            {
-                VideoCapture1.Video_Renderer = new VideoRendererSettingsWinForms();
-            }
-
             VideoCapture1.Video_Renderer.Zoom_Ratio = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftX = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftY = 0;

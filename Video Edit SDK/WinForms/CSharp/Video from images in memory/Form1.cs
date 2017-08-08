@@ -153,7 +153,11 @@ namespace Video_From_Images
             VideoEdit1.Video_FrameRate = Convert.ToDouble(cbFrameRate.Text);
 
             // apply capture parameters
-            if (VideoEdit.Filter_Supported_VMR9())
+            if (VideoEdit.Filter_Supported_EVR())
+            {
+                VideoEdit1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoEdit.Filter_Supported_VMR9())
             {
                 VideoEdit1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
             }

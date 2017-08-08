@@ -325,15 +325,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             }
 
             // apply capture params
-            if (VideoCapture.Filter_Supported_VMR9())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
-            }
-            else
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
-            }
-
             VideoCapture1.Video_Effects_Enabled = true;
             VideoCapture1.Video_Effects_Clear();
 
@@ -582,6 +573,19 @@ namespace VisioForge_SDK_Screen_Capture_Demo
 
             edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.avi";
             edScreenshotsFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
         }
 
         private void llVideoTutorials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
