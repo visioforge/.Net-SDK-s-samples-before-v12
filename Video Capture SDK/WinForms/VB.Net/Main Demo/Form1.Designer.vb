@@ -28,7 +28,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms5 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.saveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.fontDialog1 = New System.Windows.Forms.FontDialog()
@@ -1642,6 +1642,10 @@ Partial Class Form1
         Me.cbTagEnabled = New System.Windows.Forms.CheckBox()
         Me.openFileDialog3 = New System.Windows.Forms.OpenFileDialog()
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
+        Me.edCustomAudioSourceURL = New System.Windows.Forms.TextBox()
+        Me.label517 = New System.Windows.Forms.Label()
+        Me.edCustomVideoSourceURL = New System.Windows.Forms.TextBox()
+        Me.label516 = New System.Windows.Forms.Label()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabPage34.SuspendLayout
@@ -6828,6 +6832,8 @@ Partial Class Form1
         '
         'tabPage125
         '
+        Me.tabPage125.Controls.Add(Me.edCustomVideoSourceURL)
+        Me.tabPage125.Controls.Add(Me.label516)
         Me.tabPage125.Controls.Add(Me.cbCustomVideoSourceFrameRate)
         Me.tabPage125.Controls.Add(Me.label438)
         Me.tabPage125.Controls.Add(Me.label435)
@@ -6848,7 +6854,7 @@ Partial Class Form1
         '
         Me.cbCustomVideoSourceFrameRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCustomVideoSourceFrameRate.FormattingEnabled = true
-        Me.cbCustomVideoSourceFrameRate.Location = New System.Drawing.Point(165, 139)
+        Me.cbCustomVideoSourceFrameRate.Location = New System.Drawing.Point(343, 81)
         Me.cbCustomVideoSourceFrameRate.Name = "cbCustomVideoSourceFrameRate"
         Me.cbCustomVideoSourceFrameRate.Size = New System.Drawing.Size(85, 21)
         Me.cbCustomVideoSourceFrameRate.TabIndex = 12
@@ -6856,7 +6862,7 @@ Partial Class Form1
         'label438
         '
         Me.label438.AutoSize = true
-        Me.label438.Location = New System.Drawing.Point(162, 122)
+        Me.label438.Location = New System.Drawing.Point(340, 64)
         Me.label438.Name = "label438"
         Me.label438.Size = New System.Drawing.Size(57, 13)
         Me.label438.TabIndex = 11
@@ -6875,15 +6881,15 @@ Partial Class Form1
         '
         Me.cbCustomVideoSourceFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCustomVideoSourceFormat.FormattingEnabled = true
-        Me.cbCustomVideoSourceFormat.Location = New System.Drawing.Point(165, 83)
+        Me.cbCustomVideoSourceFormat.Location = New System.Drawing.Point(14, 81)
         Me.cbCustomVideoSourceFormat.Name = "cbCustomVideoSourceFormat"
-        Me.cbCustomVideoSourceFormat.Size = New System.Drawing.Size(263, 21)
+        Me.cbCustomVideoSourceFormat.Size = New System.Drawing.Size(323, 21)
         Me.cbCustomVideoSourceFormat.TabIndex = 9
         '
         'label434
         '
         Me.label434.AutoSize = true
-        Me.label434.Location = New System.Drawing.Point(162, 66)
+        Me.label434.Location = New System.Drawing.Point(11, 64)
         Me.label434.Name = "label434"
         Me.label434.Size = New System.Drawing.Size(39, 13)
         Me.label434.TabIndex = 8
@@ -6919,6 +6925,8 @@ Partial Class Form1
         '
         'tabPage126
         '
+        Me.tabPage126.Controls.Add(Me.edCustomAudioSourceURL)
+        Me.tabPage126.Controls.Add(Me.label517)
         Me.tabPage126.Controls.Add(Me.label437)
         Me.tabPage126.Controls.Add(Me.cbCustomAudioSourceFormat)
         Me.tabPage126.Controls.Add(Me.label436)
@@ -6946,15 +6954,15 @@ Partial Class Form1
         '
         Me.cbCustomAudioSourceFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbCustomAudioSourceFormat.FormattingEnabled = true
-        Me.cbCustomAudioSourceFormat.Location = New System.Drawing.Point(165, 83)
+        Me.cbCustomAudioSourceFormat.Location = New System.Drawing.Point(14, 79)
         Me.cbCustomAudioSourceFormat.Name = "cbCustomAudioSourceFormat"
-        Me.cbCustomAudioSourceFormat.Size = New System.Drawing.Size(263, 21)
+        Me.cbCustomAudioSourceFormat.Size = New System.Drawing.Size(414, 21)
         Me.cbCustomAudioSourceFormat.TabIndex = 11
         '
         'label436
         '
         Me.label436.AutoSize = true
-        Me.label436.Location = New System.Drawing.Point(162, 66)
+        Me.label436.Location = New System.Drawing.Point(11, 62)
         Me.label436.Name = "label436"
         Me.label436.Size = New System.Drawing.Size(39, 13)
         Me.label436.TabIndex = 10
@@ -18651,24 +18659,24 @@ Partial Class Form1
         Me.VideoCapture1.Video_Decoder = Nothing
         Me.VideoCapture1.Video_Effects_AllowMultipleStreams = false
         Me.VideoCapture1.Video_Effects_Enabled = false
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
-        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms5.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms5.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms5.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms5.BackgroundColor = System.Drawing.Color.Empty
 'TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false
-        VideoRendererSettingsWinForms1.Flip_Horizontal = false
-        VideoRendererSettingsWinForms1.Flip_Vertical = false
-        VideoRendererSettingsWinForms1.RotationAngle = 0
-        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
-        Me.VideoCapture1.Video_Renderer = VideoRendererSettingsWinForms1
+        VideoRendererSettingsWinForms5.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms5.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms5.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms5.Flip_Horizontal = false
+        VideoRendererSettingsWinForms5.Flip_Vertical = false
+        VideoRendererSettingsWinForms5.RotationAngle = 0
+        VideoRendererSettingsWinForms5.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms5.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms5.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms5.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms5.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms5.Zoom_ShiftY = 0
+        Me.VideoCapture1.Video_Renderer = VideoRendererSettingsWinForms5
         Me.VideoCapture1.Video_Resize = Nothing
         Me.VideoCapture1.Video_ResizeOrCrop_Enabled = false
         Me.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone
@@ -18678,6 +18686,38 @@ Partial Class Form1
         Me.VideoCapture1.Virtual_Camera_Output_Enabled = false
         Me.VideoCapture1.Virtual_Camera_Output_LicenseKey = Nothing
         Me.VideoCapture1.VLC_Path = Nothing
+        '
+        'edCustomAudioSourceURL
+        '
+        Me.edCustomAudioSourceURL.Location = New System.Drawing.Point(14, 131)
+        Me.edCustomAudioSourceURL.Name = "edCustomAudioSourceURL"
+        Me.edCustomAudioSourceURL.Size = New System.Drawing.Size(414, 20)
+        Me.edCustomAudioSourceURL.TabIndex = 18
+        '
+        'label517
+        '
+        Me.label517.AutoSize = true
+        Me.label517.Location = New System.Drawing.Point(11, 114)
+        Me.label517.Name = "label517"
+        Me.label517.Size = New System.Drawing.Size(189, 13)
+        Me.label517.TabIndex = 17
+        Me.label517.Text = "File name or URL (if supported by filter)"
+        '
+        'edCustomVideoSourceURL
+        '
+        Me.edCustomVideoSourceURL.Location = New System.Drawing.Point(14, 131)
+        Me.edCustomVideoSourceURL.Name = "edCustomVideoSourceURL"
+        Me.edCustomVideoSourceURL.Size = New System.Drawing.Size(414, 20)
+        Me.edCustomVideoSourceURL.TabIndex = 16
+        '
+        'label516
+        '
+        Me.label516.AutoSize = true
+        Me.label516.Location = New System.Drawing.Point(11, 114)
+        Me.label516.Name = "label516"
+        Me.label516.Size = New System.Drawing.Size(189, 13)
+        Me.label516.TabIndex = 15
+        Me.label516.Text = "File name or URL (if supported by filter)"
         '
         'Form1
         '
@@ -20785,4 +20825,8 @@ End Sub
     Private WithEvents label514 As Label
     Private WithEvents cbPIPResizeMode As ComboBox
     Private WithEvents label317 As Label
+    Private WithEvents edCustomAudioSourceURL As TextBox
+    Private WithEvents label517 As Label
+    Private WithEvents edCustomVideoSourceURL As TextBox
+    Private WithEvents label516 As Label
 End Class

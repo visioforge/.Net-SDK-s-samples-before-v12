@@ -2258,6 +2258,7 @@ Public Class Form1
 
         VideoCapture1.Custom_Source.VideoFilterName = cbCustomVideoSourceFilter.Text
         VideoCapture1.Custom_Source.VideoFilterFormat = cbCustomVideoSourceFormat.Text
+        VideoCapture1.Custom_Source.VideoFilenameOrURL = edCustomVideoSourceURL.Text
 
         If (String.IsNullOrEmpty(cbCustomVideoSourceFrameRate.Text)) Then
             VideoCapture1.Custom_Source.VideoFilterFrameRate = 0.0F
@@ -2273,6 +2274,8 @@ Public Class Form1
 
         VideoCapture1.Custom_Source.AudioFilterName = cbCustomAudioSourceFilter.Text
         VideoCapture1.Custom_Source.AudioFilterFormat = cbCustomAudioSourceFormat.Text
+        VideoCapture1.Custom_Source.AudioFilenameOrURL = edCustomAudioSourceURL.Text
+
     End Sub
 
     Private Sub SelectBDASource()
@@ -6922,6 +6925,10 @@ Public Class Form1
     Private Sub tbPIPChromaKeyTolerance2_Scroll(sender As Object, e As EventArgs) Handles tbPIPChromaKeyTolerance2.Scroll
 
         lbPIPChromaKeyTolerance2.Text = tbPIPChromaKeyTolerance2.Value.ToString()
+
+    End Sub
+
+    Private Sub label434_Click(sender As Object, e As EventArgs) Handles label434.Click
 
     End Sub
 End Class

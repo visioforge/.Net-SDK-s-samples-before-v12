@@ -1657,6 +1657,7 @@ namespace VideoCapture_CSharp_Demo
             this.cbCustomAudioSourceCategory = new System.Windows.Forms.ComboBox();
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage53 = new System.Windows.Forms.TabPage();
+            this.cbIndependentThread = new System.Windows.Forms.CheckBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
@@ -1681,7 +1682,10 @@ namespace VideoCapture_CSharp_Demo
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
-            this.cbIndependentThread = new System.Windows.Forms.CheckBox();
+            this.label516 = new System.Windows.Forms.Label();
+            this.edCustomVideoSourceURL = new System.Windows.Forms.TextBox();
+            this.edCustomAudioSourceURL = new System.Windows.Forms.TextBox();
+            this.label517 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tcOutputFormats.SuspendLayout();
@@ -19507,6 +19511,8 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage125
             // 
+            this.tabPage125.Controls.Add(this.edCustomVideoSourceURL);
+            this.tabPage125.Controls.Add(this.label516);
             this.tabPage125.Controls.Add(this.cbCustomVideoSourceFrameRate);
             this.tabPage125.Controls.Add(this.label438);
             this.tabPage125.Controls.Add(this.label435);
@@ -19527,7 +19533,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.cbCustomVideoSourceFrameRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomVideoSourceFrameRate.FormattingEnabled = true;
-            this.cbCustomVideoSourceFrameRate.Location = new System.Drawing.Point(165, 139);
+            this.cbCustomVideoSourceFrameRate.Location = new System.Drawing.Point(343, 81);
             this.cbCustomVideoSourceFrameRate.Name = "cbCustomVideoSourceFrameRate";
             this.cbCustomVideoSourceFrameRate.Size = new System.Drawing.Size(85, 21);
             this.cbCustomVideoSourceFrameRate.TabIndex = 12;
@@ -19535,7 +19541,7 @@ namespace VideoCapture_CSharp_Demo
             // label438
             // 
             this.label438.AutoSize = true;
-            this.label438.Location = new System.Drawing.Point(162, 122);
+            this.label438.Location = new System.Drawing.Point(340, 64);
             this.label438.Name = "label438";
             this.label438.Size = new System.Drawing.Size(57, 13);
             this.label438.TabIndex = 11;
@@ -19554,15 +19560,15 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.cbCustomVideoSourceFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomVideoSourceFormat.FormattingEnabled = true;
-            this.cbCustomVideoSourceFormat.Location = new System.Drawing.Point(165, 83);
+            this.cbCustomVideoSourceFormat.Location = new System.Drawing.Point(14, 81);
             this.cbCustomVideoSourceFormat.Name = "cbCustomVideoSourceFormat";
-            this.cbCustomVideoSourceFormat.Size = new System.Drawing.Size(263, 21);
+            this.cbCustomVideoSourceFormat.Size = new System.Drawing.Size(323, 21);
             this.cbCustomVideoSourceFormat.TabIndex = 9;
             // 
             // label434
             // 
             this.label434.AutoSize = true;
-            this.label434.Location = new System.Drawing.Point(162, 66);
+            this.label434.Location = new System.Drawing.Point(11, 64);
             this.label434.Name = "label434";
             this.label434.Size = new System.Drawing.Size(39, 13);
             this.label434.TabIndex = 8;
@@ -19602,6 +19608,8 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage126
             // 
+            this.tabPage126.Controls.Add(this.edCustomAudioSourceURL);
+            this.tabPage126.Controls.Add(this.label517);
             this.tabPage126.Controls.Add(this.label437);
             this.tabPage126.Controls.Add(this.cbCustomAudioSourceFormat);
             this.tabPage126.Controls.Add(this.label436);
@@ -19629,15 +19637,15 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.cbCustomAudioSourceFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomAudioSourceFormat.FormattingEnabled = true;
-            this.cbCustomAudioSourceFormat.Location = new System.Drawing.Point(165, 83);
+            this.cbCustomAudioSourceFormat.Location = new System.Drawing.Point(14, 81);
             this.cbCustomAudioSourceFormat.Name = "cbCustomAudioSourceFormat";
-            this.cbCustomAudioSourceFormat.Size = new System.Drawing.Size(263, 21);
+            this.cbCustomAudioSourceFormat.Size = new System.Drawing.Size(414, 21);
             this.cbCustomAudioSourceFormat.TabIndex = 11;
             // 
             // label436
             // 
             this.label436.AutoSize = true;
-            this.label436.Location = new System.Drawing.Point(162, 66);
+            this.label436.Location = new System.Drawing.Point(11, 64);
             this.label436.Name = "label436";
             this.label436.Size = new System.Drawing.Size(39, 13);
             this.label436.TabIndex = 10;
@@ -19698,6 +19706,16 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage53.TabIndex = 2;
             this.tabPage53.Text = "Errors";
             this.tabPage53.UseVisualStyleBackColor = true;
+            // 
+            // cbIndependentThread
+            // 
+            this.cbIndependentThread.AutoSize = true;
+            this.cbIndependentThread.Location = new System.Drawing.Point(150, 6);
+            this.cbIndependentThread.Name = "cbIndependentThread";
+            this.cbIndependentThread.Size = new System.Drawing.Size(156, 17);
+            this.cbIndependentThread.TabIndex = 76;
+            this.cbIndependentThread.Text = "Independent thread (BETA)";
+            this.cbIndependentThread.UseVisualStyleBackColor = true;
             // 
             // cbLicensing
             // 
@@ -20076,15 +20094,37 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.OnBDAChannelFound += new System.EventHandler<VisioForge.Types.BDAChannelEventArgs>(this.VideoCapture1_OnBDAChannelFound);
             this.VideoCapture1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoCapture1_MouseDown);
             // 
-            // cbIndependentThread
+            // label516
             // 
-            this.cbIndependentThread.AutoSize = true;
-            this.cbIndependentThread.Location = new System.Drawing.Point(150, 6);
-            this.cbIndependentThread.Name = "cbIndependentThread";
-            this.cbIndependentThread.Size = new System.Drawing.Size(156, 17);
-            this.cbIndependentThread.TabIndex = 76;
-            this.cbIndependentThread.Text = "Independent thread (BETA)";
-            this.cbIndependentThread.UseVisualStyleBackColor = true;
+            this.label516.AutoSize = true;
+            this.label516.Location = new System.Drawing.Point(11, 114);
+            this.label516.Name = "label516";
+            this.label516.Size = new System.Drawing.Size(189, 13);
+            this.label516.TabIndex = 13;
+            this.label516.Text = "File name or URL (if supported by filter)";
+            // 
+            // edCustomVideoSourceURL
+            // 
+            this.edCustomVideoSourceURL.Location = new System.Drawing.Point(14, 131);
+            this.edCustomVideoSourceURL.Name = "edCustomVideoSourceURL";
+            this.edCustomVideoSourceURL.Size = new System.Drawing.Size(414, 20);
+            this.edCustomVideoSourceURL.TabIndex = 14;
+            // 
+            // edCustomAudioSourceURL
+            // 
+            this.edCustomAudioSourceURL.Location = new System.Drawing.Point(14, 131);
+            this.edCustomAudioSourceURL.Name = "edCustomAudioSourceURL";
+            this.edCustomAudioSourceURL.Size = new System.Drawing.Size(414, 20);
+            this.edCustomAudioSourceURL.TabIndex = 16;
+            // 
+            // label517
+            // 
+            this.label517.AutoSize = true;
+            this.label517.Location = new System.Drawing.Point(11, 114);
+            this.label517.Name = "label517";
+            this.label517.Size = new System.Drawing.Size(189, 13);
+            this.label517.TabIndex = 15;
+            this.label517.Text = "File name or URL (if supported by filter)";
             // 
             // Form1
             // 
@@ -22232,6 +22272,10 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label label515;
         private System.Windows.Forms.TrackBar tbPIPChromaKeyTolerance1;
         private System.Windows.Forms.CheckBox cbIndependentThread;
+        private System.Windows.Forms.TextBox edCustomVideoSourceURL;
+        private System.Windows.Forms.Label label516;
+        private System.Windows.Forms.TextBox edCustomAudioSourceURL;
+        private System.Windows.Forms.Label label517;
     }
 }
 

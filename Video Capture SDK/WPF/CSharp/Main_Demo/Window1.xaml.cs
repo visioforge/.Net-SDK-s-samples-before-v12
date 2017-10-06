@@ -1885,6 +1885,7 @@ namespace Main_Demo
 
                 VideoCapture1.Custom_Source.VideoFilterName = cbCustomVideoSourceFilter.Text;
                 VideoCapture1.Custom_Source.VideoFilterFormat = cbCustomVideoSourceFormat.Text;
+                VideoCapture1.Custom_Source.VideoFilenameOrURL = edCustomVideoSourceURL.Text;
 
                 if (string.IsNullOrEmpty(cbCustomVideoSourceFrameRate.Text))
                 {
@@ -1906,6 +1907,7 @@ namespace Main_Demo
 
                 VideoCapture1.Custom_Source.AudioFilterName = cbCustomAudioSourceFilter.Text;
                 VideoCapture1.Custom_Source.AudioFilterFormat = cbCustomAudioSourceFormat.Text;
+                VideoCapture1.Custom_Source.AudioFilenameOrURL = edCustomAudioSourceURL.Text;
             }
             else if ((VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourceCapture) || (VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourcePreview))
             {

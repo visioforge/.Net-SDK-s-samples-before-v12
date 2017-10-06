@@ -2886,10 +2886,12 @@
                                 </ComboBox>
                                 <Label Content="Name" HorizontalAlignment="Left" Margin="188,10,0,0" VerticalAlignment="Top"/>
                                 <ComboBox x:Name="cbCustomVideoSourceFilter" HorizontalAlignment="Left" Margin="192,35.96,0,0" VerticalAlignment="Top" Width="302" SelectionChanged="cbCustomVideoSourceFilter_SelectionChanged"/>
-                                <Label Content="Format" HorizontalAlignment="Left" Margin="188,67.92,0,0" VerticalAlignment="Top"/>
-                                <ComboBox x:Name="cbCustomVideoSourceFormat" HorizontalAlignment="Left" Margin="192,93.88,0,0" VerticalAlignment="Top" Width="302"/>
-                                <Label Content="Frame rate" HorizontalAlignment="Left" Margin="188,129.12,0,0" VerticalAlignment="Top"/>
-                                <ComboBox x:Name="cbCustomVideoSourceFrameRate" HorizontalAlignment="Left" Margin="192,155.08,0,0" VerticalAlignment="Top" Width="102"/>
+                                <Label Content="Format" HorizontalAlignment="Left" Margin="6,76,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbCustomVideoSourceFormat" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Width="373"/>
+                                <Label Content="Frame rate" HorizontalAlignment="Left" Margin="388,76,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbCustomVideoSourceFrameRate" HorizontalAlignment="Left" Margin="392,102,0,0" VerticalAlignment="Top" Width="102"/>
+                                <Label Content="File name or URL (if supported by filter)" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edCustomVideoSourceURL" HorizontalAlignment="Left" Height="23" Margin="10,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="484"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Audio source">
@@ -2901,8 +2903,10 @@
                                 </ComboBox>
                                 <Label Content="Name" HorizontalAlignment="Left" Margin="188,10,0,0" VerticalAlignment="Top"/>
                                 <ComboBox x:Name="cbCustomAudioSourceFilter" HorizontalAlignment="Left" Margin="192,35.96,0,0" VerticalAlignment="Top" Width="302" SelectionChanged="cbCustomAudioSourceFilter_SelectionChanged"/>
-                                <Label Content="Format" HorizontalAlignment="Left" Margin="188,67.92,0,0" VerticalAlignment="Top"/>
-                                <ComboBox x:Name="cbCustomAudioSourceFormat" HorizontalAlignment="Left" Margin="192,93.88,0,0" VerticalAlignment="Top" Width="302"/>
+                                <Label Content="Format" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbCustomAudioSourceFormat" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="484"/>
+                                <Label Content="File name or URL (if supported by filter)" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edCustomAudioSourceURL" HorizontalAlignment="Left" Height="23" Margin="10,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="484"/>
                             </Grid>
                         </TabItem>
                     </TabControl>
