@@ -33,6 +33,28 @@ Public Class Form1
 
     End Function
 
+    Private Function IsWindows8OrNewer() As Boolean
+
+        Dim os = Environment.OSVersion
+        Return os.Platform = PlatformID.Win32NT And (os.Version.Major > 6 Or (os.Version.Major = 6 And os.Version.Minor >= 2))
+
+    End Function
+
+    Private Function IsWindows7OrNewer() As Boolean
+
+        Dim Version = Environment.OSVersion.Version
+        If (Version.Major > 6) Then
+            Return True
+        End If
+
+        If (Version.Major = 6 And Version.Minor >= 1) Then
+            Return True
+        End If
+
+        Return False
+
+    End Function
+
     Private Sub btAudioSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btAudioSettings.Click
 
         Dim sName As String
@@ -260,7 +282,7 @@ Public Class Form1
         Tag = 1
 
         cbFrameRate.SelectedIndex = 0
-        cbOutputVideoFormat.SelectedIndex = 0
+        cbOutputVideoFormat.SelectedIndex = 14
         cbWMVAudioMode.SelectedIndex = 0
         cbWMVVideoMode.SelectedIndex = 0
         cbWMVTVFormat.SelectedIndex = 0
@@ -299,6 +321,31 @@ Public Class Form1
         cbLameVBRMin.SelectedIndex = 8
         cbLameVBRMax.SelectedIndex = 10
         cbLameSampleRate.SelectedIndex = 0
+
+        cbMFProfile.SelectedIndex = 1
+        cbMFLevel.SelectedIndex = 12
+        cbMFRateControl.SelectedIndex = 3
+
+        Dim FiltersAvailableInfo = VideoEdit.GetFiltersAvailable()
+        If (FiltersAvailableInfo.V11_NVENC_H264) Then
+            lbMFHWAvailableEncoders.Text += "NVENC "
+        End If
+
+        If (FiltersAvailableInfo.V11_AMD_H264) Then
+            lbMFHWAvailableEncoders.Text = lbMFHWAvailableEncoders.Text + "AMD "
+        End If
+
+        If (FiltersAvailableInfo.V11_QSV_H264) Then
+            lbMFHWAvailableEncoders.Text += "INTEL QSV"
+        End If
+
+        If (IsWindows8OrNewer()) Then
+            cbMP4Mode.SelectedIndex = 3
+        ElseIf (IsWindows7OrNewer()) Then
+            cbMP4Mode.SelectedIndex = 1
+        Else
+            cbMP4Mode.SelectedIndex = 0
+        End If
 
         cbFLACBlockSize.SelectedIndex = 4
 
@@ -1124,35 +1171,41 @@ Public Class Form1
             Dim mp4Output As VFMP4Output = New VFMP4Output()
 
             ' Main settings
-            If rbMP4Legacy.Checked Then
-                mp4Output.MP4Mode = VFMP4Mode.v8
-            ElseIf (rbMP4Modern.Checked) Then
-                mp4Output.MP4Mode = VFMP4Mode.v10
-            Else
-                mp4Output.MP4Mode = VFMP4Mode.NVENC
-            End If
+            Select Case (cbMP4Mode.SelectedIndex)
+                Case 0
+                    ' v8 Legacy(XP compatible, CPU Or Intel QuickSync GPU)
+                    mp4Output.MP4Mode = VFMP4Mode.v8
+                Case 1
+                    ' v10(CPU Or Intel QuickSync GPU)
+                    mp4Output.MP4Mode = VFMP4Mode.v10
+                Case 2
+                    ' v10 nVidia NVENC
+                    mp4Output.MP4Mode = VFMP4Mode.v10_NVENC
+                Case Else
+                    mp4Output.MP4Mode = VFMP4Mode.v11
+            End Select
 
-            If (mp4Output.MP4Mode <> VFMP4Mode.NVENC) Then
+            If (mp4Output.MP4Mode = VFMP4Mode.v8 Or mp4Output.MP4Mode = VFMP4Mode.v10) Then
                 ' Video H264 settings
                 Select Case (cbH264Profile.SelectedIndex)
 
                     Case 0
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileAuto
+                        mp4Output.Video_v10.Profile = VFH264Profile.ProfileAuto
 
                     Case 1
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileBaseline
+                        mp4Output.Video_v10.Profile = VFH264Profile.ProfileBaseline
 
                     Case 2
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileMain
+                        mp4Output.Video_v10.Profile = VFH264Profile.ProfileMain
 
                     Case 3
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh
+                        mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh
 
                     Case 4
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh10
+                        mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh10
 
                     Case 5
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh422
+                        mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh422
 
 
                 End Select
@@ -1160,162 +1213,247 @@ Public Class Form1
                 Select Case (cbH264Level.SelectedIndex)
 
                     Case 0
-                        mp4Output.Video_H264.Level = VFH264Level.LevelAuto
+                        mp4Output.Video_v10.Level = VFH264Level.LevelAuto
 
                     Case 1
-                        mp4Output.Video_H264.Level = VFH264Level.Level1
+                        mp4Output.Video_v10.Level = VFH264Level.Level1
 
                     Case 2
-                        mp4Output.Video_H264.Level = VFH264Level.Level11
+                        mp4Output.Video_v10.Level = VFH264Level.Level11
 
                     Case 3
-                        mp4Output.Video_H264.Level = VFH264Level.Level12
+                        mp4Output.Video_v10.Level = VFH264Level.Level12
 
                     Case 4
-                        mp4Output.Video_H264.Level = VFH264Level.Level13
+                        mp4Output.Video_v10.Level = VFH264Level.Level13
 
                     Case 5
-                        mp4Output.Video_H264.Level = VFH264Level.Level2
+                        mp4Output.Video_v10.Level = VFH264Level.Level2
 
                     Case 6
-                        mp4Output.Video_H264.Level = VFH264Level.Level21
+                        mp4Output.Video_v10.Level = VFH264Level.Level21
 
                     Case 7
-                        mp4Output.Video_H264.Level = VFH264Level.Level22
+                        mp4Output.Video_v10.Level = VFH264Level.Level22
 
                     Case 8
-                        mp4Output.Video_H264.Level = VFH264Level.Level3
+                        mp4Output.Video_v10.Level = VFH264Level.Level3
 
                     Case 9
-                        mp4Output.Video_H264.Level = VFH264Level.Level31
+                        mp4Output.Video_v10.Level = VFH264Level.Level31
 
                     Case 10
-                        mp4Output.Video_H264.Level = VFH264Level.Level32
+                        mp4Output.Video_v10.Level = VFH264Level.Level32
 
                     Case 11
-                        mp4Output.Video_H264.Level = VFH264Level.Level4
+                        mp4Output.Video_v10.Level = VFH264Level.Level4
 
                     Case 12
-                        mp4Output.Video_H264.Level = VFH264Level.Level41
+                        mp4Output.Video_v10.Level = VFH264Level.Level41
 
                     Case 13
-                        mp4Output.Video_H264.Level = VFH264Level.Level42
+                        mp4Output.Video_v10.Level = VFH264Level.Level42
 
                     Case 14
-                        mp4Output.Video_H264.Level = VFH264Level.Level5
+                        mp4Output.Video_v10.Level = VFH264Level.Level5
 
                     Case 15
-                        mp4Output.Video_H264.Level = VFH264Level.Level51
+                        mp4Output.Video_v10.Level = VFH264Level.Level51
 
                 End Select
 
                 Select Case (cbH264TargetUsage.SelectedIndex)
 
                     Case 0
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Auto
+                        mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.Auto
 
                     Case 1
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestQuality
+                        mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.BestQuality
 
                     Case 2
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Balanced
+                        mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.Balanced
 
                     Case 3
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestSpeed
+                        mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.BestSpeed
 
                 End Select
 
                 Select Case (cbH264PictureType.SelectedIndex)
 
                     Case 0
-                        mp4Output.Video_H264.PictureType = VFH264PictureType.Auto
+                        mp4Output.Video_v10.PictureType = VFH264PictureType.Auto
 
                     Case 1
-                        mp4Output.Video_H264.PictureType = VFH264PictureType.Frame
+                        mp4Output.Video_v10.PictureType = VFH264PictureType.Frame
 
                     Case 2
-                        mp4Output.Video_H264.PictureType = VFH264PictureType.TFF
+                        mp4Output.Video_v10.PictureType = VFH264PictureType.TFF
 
                     Case 3
-                        mp4Output.Video_H264.PictureType = VFH264PictureType.BFF
+                        mp4Output.Video_v10.PictureType = VFH264PictureType.BFF
 
                 End Select
 
-                mp4Output.Video_H264.RateControl = cbH264RateControl.SelectedIndex
-                mp4Output.Video_H264.MBEncoding = cbH264MBEncoding.SelectedIndex
-                mp4Output.Video_H264.GOP = cbH264GOP.Checked
-                mp4Output.Video_H264.BitrateAuto = cbH264AutoBitrate.Checked
+                mp4Output.Video_v10.RateControl = cbH264RateControl.SelectedIndex
+                mp4Output.Video_v10.MBEncoding = cbH264MBEncoding.SelectedIndex
+                mp4Output.Video_v10.GOP = cbH264GOP.Checked
+                mp4Output.Video_v10.BitrateAuto = cbH264AutoBitrate.Checked
 
                 Int32.TryParse(edH264IDR.Text, tmp)
-                mp4Output.Video_H264.IDR_Period = tmp
+                mp4Output.Video_v10.IDR_Period = tmp
 
                 Int32.TryParse(edH264P.Text, tmp)
-                mp4Output.Video_H264.P_Period = tmp
+                mp4Output.Video_v10.P_Period = tmp
 
                 Int32.TryParse(edH264Bitrate.Text, tmp)
-                mp4Output.Video_H264.Bitrate = tmp
+                mp4Output.Video_v10.Bitrate = tmp
 
-            Else
+            ElseIf (mp4Output.MP4Mode = VFMP4Mode.v10_NVENC) Then
 
                 ' NVENC settings
                 Select Case (cbNVENCProfile.SelectedIndex)
                     Case 0
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.Auto
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.Auto
                     Case 1
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.H264_Baseline
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_Baseline
                     Case 2
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.H264_Main
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_Main
                     Case 3
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.H264_High
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_High
                     Case 4
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.H264_High444
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_High444
                     Case 5
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.H264_ProgressiveHigh
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_ProgressiveHigh
                     Case 6
-                        mp4Output.Video_NVENC.Profile = NVENCProfile.H264_ConstrainedHigh
+                        mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_ConstrainedHigh
                 End Select
 
                 Select Case (cbNVENCLevel.SelectedIndex)
                     Case 0
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.Auto
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.Auto
                     Case 1
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_1
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_1
                     Case 2
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_11
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_11
                     Case 3
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_12
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_12
                     Case 4
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_13
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_13
                     Case 5
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_2
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_2
                     Case 6
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_21
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_21
                     Case 7
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_22
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_22
                     Case 8
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_3
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_3
                     Case 9
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_31
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_31
                     Case 10
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_32
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_32
                     Case 11
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_4
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_4
                     Case 12
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_41
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_41
                     Case 13
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_42
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_42
                     Case 14
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_5
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_5
                     Case 15
-                        mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_51
+                        mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_51
                 End Select
 
-                mp4Output.Video_NVENC.Bitrate = Convert.ToInt32(edNVENCBitrate.Text)
-                mp4Output.Video_NVENC.QP = Convert.ToInt32(edNVENCQP.Text)
-                mp4Output.Video_NVENC.RateControl = cbNVENCRateControl.SelectedIndex
-                mp4Output.Video_NVENC.GOP = Convert.ToInt32(edNVENCGOP.Text)
-                mp4Output.Video_NVENC.BFrames = Convert.ToInt32(edNVENCBFrames.Text)
+                mp4Output.Video_v10_NVENC.Bitrate = Convert.ToInt32(edNVENCBitrate.Text)
+                mp4Output.Video_v10_NVENC.QP = Convert.ToInt32(edNVENCQP.Text)
+                mp4Output.Video_v10_NVENC.RateControl = cbNVENCRateControl.SelectedIndex
+                mp4Output.Video_v10_NVENC.GOP = Convert.ToInt32(edNVENCGOP.Text)
+                mp4Output.Video_v10_NVENC.BFrames = Convert.ToInt32(edNVENCBFrames.Text)
+            Else
+                Select Case (cbMP4Mode.SelectedIndex)
+                    Case 3
+                        '  v11 (CPU) H264
+                        mp4Output.Video_v11.Codec = VFMFVideoEncoder.MS_H264
+                    Case 4
+                        '  v11 nVidia NVENC H264
+                        mp4Output.Video_v11.Codec = VFMFVideoEncoder.NVENC_H264
+                    Case 5
+                        '  v11 Intel QuickSync H264
+                        mp4Output.Video_v11.Codec = VFMFVideoEncoder.QSV_H264
+                    Case 6
+                        '  v11 AMD Radeon H264
+                        mp4Output.Video_v11.Codec = VFMFVideoEncoder.AMD_H264
+                    Case 7
+                        '  v11 nVidia NVENC H265
+                        mp4Output.Video_v11.Codec = VFMFVideoEncoder.NVENC_H265
+                    Case 8
+                        '  v11 AMD Radeon H265
+                        mp4Output.Video_v11.Codec = VFMFVideoEncoder.AMD_H265
+                End Select
 
+                ' Video H264 settings
+                Select Case (cbMFProfile.SelectedIndex)
+                    Case 0
+                        mp4Output.Video_v11.Profile = VFMFH264Profile.Base
+                    Case 1
+                        mp4Output.Video_v11.Profile = VFMFH264Profile.Main
+                    Case 2
+                        mp4Output.Video_v11.Profile = VFMFH264Profile.High
+                End Select
+
+                Select Case (cbMFLevel.SelectedIndex)
+                    Case 0
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level1
+                    Case 1
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level11
+                    Case 2
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level12
+                    Case 3
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level13
+                    Case 4
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level2
+                    Case 5
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level21
+                    Case 6
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level22
+                    Case 7
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level3
+                    Case 8
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level31
+                    Case 9
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level32
+                    Case 10
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level4
+                    Case 11
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level41
+                    Case 12
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level42
+                    Case 13
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level5
+                    Case 14
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level51
+                    Case 15
+                        mp4Output.Video_v11.Level = VFMFH264Level.Level51
+                End Select
+
+                mp4Output.Video_v11.RateControl = cbMFRateControl.SelectedIndex
+
+                mp4Output.Video_v11.CABAC = cbMFCABAC.Checked
+                mp4Output.Video_v11.LowLatencyMode = cbMFLowLatency.Checked
+
+                Int32.TryParse(edMFBFramesCount.Text, tmp)
+                mp4Output.Video_v11.DefaultBPictureCount = tmp
+
+                Int32.TryParse(edMFKeyFrameSpacing.Text, tmp)
+                mp4Output.Video_v11.MaxKeyFrameSpacing = tmp
+
+                Int32.TryParse(edMFBitrate.Text, tmp)
+                mp4Output.Video_v11.AvgBitrate = tmp
+
+                Int32.TryParse(edMFMaxBitrate.Text, tmp)
+                mp4Output.Video_v11.MaxBitrate = tmp
+
+                Int32.TryParse(edMFQuality.Text, tmp)
+                mp4Output.Video_v11.Quality = tmp
             End If
 
             ' Audio AAC settings
@@ -4543,7 +4681,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub linkLabel6_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel6.LinkClicked
+    Private Sub linkLabel6_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs)
 
         Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/support/934037-MP4-H264--AAC-output-for-2K--4K-resolution-memory-problem")
         Process.Start(startInfo)

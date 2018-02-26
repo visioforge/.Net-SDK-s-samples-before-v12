@@ -31,7 +31,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         /// </summary>
         private void InitializeComponent()
         {
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms3 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl15 = new System.Windows.Forms.TabControl();
@@ -89,36 +89,11 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.cbSampleRate = new System.Windows.Forms.ComboBox();
             this.cbVideoCodecs = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.btSelectOutputMP4 = new System.Windows.Forms.Button();
             this.edOutputMP4 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.cbH264GOP = new System.Windows.Forms.CheckBox();
-            this.cbH264AutoBitrate = new System.Windows.Forms.CheckBox();
-            this.label350 = new System.Windows.Forms.Label();
-            this.edH264Bitrate = new System.Windows.Forms.TextBox();
-            this.label351 = new System.Windows.Forms.Label();
-            this.cbH264RateControl = new System.Windows.Forms.ComboBox();
-            this.groupBox46 = new System.Windows.Forms.GroupBox();
-            this.cbH264TargetUsage = new System.Windows.Forms.ComboBox();
-            this.label359 = new System.Windows.Forms.Label();
-            this.label352 = new System.Windows.Forms.Label();
-            this.label353 = new System.Windows.Forms.Label();
-            this.cbH264Level = new System.Windows.Forms.ComboBox();
-            this.cbH264Profile = new System.Windows.Forms.ComboBox();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.label354 = new System.Windows.Forms.Label();
-            this.cbAACOutput = new System.Windows.Forms.ComboBox();
-            this.label355 = new System.Windows.Forms.Label();
-            this.cbAACBitrate = new System.Windows.Forms.ComboBox();
-            this.label356 = new System.Windows.Forms.Label();
-            this.cbAACObjectType = new System.Windows.Forms.ComboBox();
-            this.label357 = new System.Windows.Forms.Label();
-            this.cbAACVersion = new System.Windows.Forms.ComboBox();
-            this.label358 = new System.Windows.Forms.Label();
             this.tabPage7 = new System.Windows.Forms.TabPage();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
@@ -149,12 +124,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.groupBox42.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.groupBox29.SuspendLayout();
-            this.groupBox46.SuspendLayout();
-            this.tabPage6.SuspendLayout();
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).BeginInit();
@@ -781,7 +750,11 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.tabControl2);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.label4);
+            this.tabPage3.Controls.Add(this.btSelectOutputMP4);
+            this.tabPage3.Controls.Add(this.edOutputMP4);
+            this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -790,38 +763,32 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage3.Text = "MP4 output";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tabControl2
+            // label3
             // 
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Controls.Add(this.tabPage5);
-            this.tabControl2.Controls.Add(this.tabPage6);
-            this.tabControl2.Location = new System.Drawing.Point(6, 6);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(451, 314);
-            this.tabControl2.TabIndex = 0;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(322, 13);
+            this.label3.TabIndex = 55;
+            this.label3.Text = "Supported GPUs - Intel, nVidia and AMD. H264 and H265 codecs.";
             // 
-            // tabPage4
+            // label4
             // 
-            this.tabPage4.Controls.Add(this.btSelectOutputMP4);
-            this.tabPage4.Controls.Add(this.edOutputMP4);
-            this.tabPage4.Controls.Add(this.label1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(443, 288);
-            this.tabPage4.TabIndex = 0;
-            this.tabPage4.Text = "Main";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(303, 13);
+            this.label4.TabIndex = 54;
+            this.label4.Text = "Please use Main Demo to configure CPU encoder or use GPU.";
             // 
             // btSelectOutputMP4
             // 
             this.btSelectOutputMP4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSelectOutputMP4.Location = new System.Drawing.Point(413, 13);
+            this.btSelectOutputMP4.Location = new System.Drawing.Point(415, 11);
             this.btSelectOutputMP4.Name = "btSelectOutputMP4";
             this.btSelectOutputMP4.Size = new System.Drawing.Size(24, 23);
-            this.btSelectOutputMP4.TabIndex = 50;
+            this.btSelectOutputMP4.TabIndex = 53;
             this.btSelectOutputMP4.Text = "...";
             this.btSelectOutputMP4.UseVisualStyleBackColor = true;
             this.btSelectOutputMP4.Click += new System.EventHandler(this.btSelectOutputMP4_Click);
@@ -830,10 +797,10 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             this.edOutputMP4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.edOutputMP4.Location = new System.Drawing.Point(66, 15);
+            this.edOutputMP4.Location = new System.Drawing.Point(68, 13);
             this.edOutputMP4.Name = "edOutputMP4";
             this.edOutputMP4.Size = new System.Drawing.Size(341, 20);
-            this.edOutputMP4.TabIndex = 49;
+            this.edOutputMP4.TabIndex = 52;
             this.edOutputMP4.Text = "c:\\capture.mp4";
             // 
             // label1
@@ -841,334 +808,11 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 18);
+            this.label1.Location = new System.Drawing.Point(11, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 48;
+            this.label1.TabIndex = 51;
             this.label1.Text = "File name";
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.groupBox29);
-            this.tabPage5.Controls.Add(this.groupBox46);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(443, 288);
-            this.tabPage5.TabIndex = 1;
-            this.tabPage5.Text = "Video";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // groupBox29
-            // 
-            this.groupBox29.Controls.Add(this.cbH264GOP);
-            this.groupBox29.Controls.Add(this.cbH264AutoBitrate);
-            this.groupBox29.Controls.Add(this.label350);
-            this.groupBox29.Controls.Add(this.edH264Bitrate);
-            this.groupBox29.Controls.Add(this.label351);
-            this.groupBox29.Controls.Add(this.cbH264RateControl);
-            this.groupBox29.Location = new System.Drawing.Point(6, 109);
-            this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(223, 98);
-            this.groupBox29.TabIndex = 7;
-            this.groupBox29.TabStop = false;
-            this.groupBox29.Text = "Bitrate";
-            // 
-            // cbH264GOP
-            // 
-            this.cbH264GOP.AutoSize = true;
-            this.cbH264GOP.Location = new System.Drawing.Point(166, 78);
-            this.cbH264GOP.Name = "cbH264GOP";
-            this.cbH264GOP.Size = new System.Drawing.Size(49, 17);
-            this.cbH264GOP.TabIndex = 12;
-            this.cbH264GOP.Text = "GOP";
-            this.cbH264GOP.UseVisualStyleBackColor = true;
-            // 
-            // cbH264AutoBitrate
-            // 
-            this.cbH264AutoBitrate.AutoSize = true;
-            this.cbH264AutoBitrate.Location = new System.Drawing.Point(10, 78);
-            this.cbH264AutoBitrate.Name = "cbH264AutoBitrate";
-            this.cbH264AutoBitrate.Size = new System.Drawing.Size(127, 17);
-            this.cbH264AutoBitrate.TabIndex = 7;
-            this.cbH264AutoBitrate.Text = "Auto configure bitrate";
-            this.cbH264AutoBitrate.UseVisualStyleBackColor = true;
-            // 
-            // label350
-            // 
-            this.label350.AutoSize = true;
-            this.label350.Location = new System.Drawing.Point(6, 53);
-            this.label350.Name = "label350";
-            this.label350.Size = new System.Drawing.Size(69, 13);
-            this.label350.TabIndex = 6;
-            this.label350.Text = "Bitrate (kbps)";
-            // 
-            // edH264Bitrate
-            // 
-            this.edH264Bitrate.Location = new System.Drawing.Point(94, 52);
-            this.edH264Bitrate.Name = "edH264Bitrate";
-            this.edH264Bitrate.Size = new System.Drawing.Size(121, 20);
-            this.edH264Bitrate.TabIndex = 5;
-            this.edH264Bitrate.Text = "2000";
-            this.edH264Bitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label351
-            // 
-            this.label351.AutoSize = true;
-            this.label351.Location = new System.Drawing.Point(6, 21);
-            this.label351.Name = "label351";
-            this.label351.Size = new System.Drawing.Size(65, 13);
-            this.label351.TabIndex = 4;
-            this.label351.Text = "Rate ñontrol";
-            // 
-            // cbH264RateControl
-            // 
-            this.cbH264RateControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264RateControl.FormattingEnabled = true;
-            this.cbH264RateControl.Items.AddRange(new object[] {
-            "CBR",
-            "VBR"});
-            this.cbH264RateControl.Location = new System.Drawing.Point(94, 19);
-            this.cbH264RateControl.Name = "cbH264RateControl";
-            this.cbH264RateControl.Size = new System.Drawing.Size(121, 21);
-            this.cbH264RateControl.TabIndex = 3;
-            // 
-            // groupBox46
-            // 
-            this.groupBox46.Controls.Add(this.cbH264TargetUsage);
-            this.groupBox46.Controls.Add(this.label359);
-            this.groupBox46.Controls.Add(this.label352);
-            this.groupBox46.Controls.Add(this.label353);
-            this.groupBox46.Controls.Add(this.cbH264Level);
-            this.groupBox46.Controls.Add(this.cbH264Profile);
-            this.groupBox46.Location = new System.Drawing.Point(6, 6);
-            this.groupBox46.Name = "groupBox46";
-            this.groupBox46.Size = new System.Drawing.Size(223, 97);
-            this.groupBox46.TabIndex = 6;
-            this.groupBox46.TabStop = false;
-            this.groupBox46.Text = "Profile settings";
-            // 
-            // cbH264TargetUsage
-            // 
-            this.cbH264TargetUsage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264TargetUsage.FormattingEnabled = true;
-            this.cbH264TargetUsage.Items.AddRange(new object[] {
-            "Auto",
-            "Best quality",
-            "Balanced",
-            "Best speed"});
-            this.cbH264TargetUsage.Location = new System.Drawing.Point(94, 73);
-            this.cbH264TargetUsage.Name = "cbH264TargetUsage";
-            this.cbH264TargetUsage.Size = new System.Drawing.Size(121, 21);
-            this.cbH264TargetUsage.TabIndex = 5;
-            // 
-            // label359
-            // 
-            this.label359.AutoSize = true;
-            this.label359.Location = new System.Drawing.Point(7, 76);
-            this.label359.Name = "label359";
-            this.label359.Size = new System.Drawing.Size(70, 13);
-            this.label359.TabIndex = 4;
-            this.label359.Text = "Target usage";
-            // 
-            // label352
-            // 
-            this.label352.AutoSize = true;
-            this.label352.Location = new System.Drawing.Point(7, 49);
-            this.label352.Name = "label352";
-            this.label352.Size = new System.Drawing.Size(33, 13);
-            this.label352.TabIndex = 3;
-            this.label352.Text = "Level";
-            // 
-            // label353
-            // 
-            this.label353.AutoSize = true;
-            this.label353.Location = new System.Drawing.Point(7, 22);
-            this.label353.Name = "label353";
-            this.label353.Size = new System.Drawing.Size(36, 13);
-            this.label353.TabIndex = 2;
-            this.label353.Text = "Profile";
-            // 
-            // cbH264Level
-            // 
-            this.cbH264Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264Level.FormattingEnabled = true;
-            this.cbH264Level.Items.AddRange(new object[] {
-            "Auto",
-            "1.0",
-            "1.1",
-            "1.2",
-            "1.3",
-            "2.0",
-            "2.1",
-            "2.2",
-            "3.0",
-            "3.1",
-            "3.2",
-            "4.0",
-            "4.1",
-            "4.2",
-            "5.0",
-            "5.1"});
-            this.cbH264Level.Location = new System.Drawing.Point(94, 46);
-            this.cbH264Level.Name = "cbH264Level";
-            this.cbH264Level.Size = new System.Drawing.Size(121, 21);
-            this.cbH264Level.TabIndex = 1;
-            // 
-            // cbH264Profile
-            // 
-            this.cbH264Profile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264Profile.FormattingEnabled = true;
-            this.cbH264Profile.Items.AddRange(new object[] {
-            "Auto",
-            "Baseline",
-            "Main",
-            "High",
-            "High 10",
-            "High 422"});
-            this.cbH264Profile.Location = new System.Drawing.Point(94, 19);
-            this.cbH264Profile.Name = "cbH264Profile";
-            this.cbH264Profile.Size = new System.Drawing.Size(121, 21);
-            this.cbH264Profile.TabIndex = 0;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.label354);
-            this.tabPage6.Controls.Add(this.cbAACOutput);
-            this.tabPage6.Controls.Add(this.label355);
-            this.tabPage6.Controls.Add(this.cbAACBitrate);
-            this.tabPage6.Controls.Add(this.label356);
-            this.tabPage6.Controls.Add(this.cbAACObjectType);
-            this.tabPage6.Controls.Add(this.label357);
-            this.tabPage6.Controls.Add(this.cbAACVersion);
-            this.tabPage6.Controls.Add(this.label358);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(443, 288);
-            this.tabPage6.TabIndex = 2;
-            this.tabPage6.Text = "Audio";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // label354
-            // 
-            this.label354.AutoSize = true;
-            this.label354.Location = new System.Drawing.Point(230, 88);
-            this.label354.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label354.Name = "label354";
-            this.label354.Size = new System.Drawing.Size(31, 13);
-            this.label354.TabIndex = 17;
-            this.label354.Text = "Kbps";
-            // 
-            // cbAACOutput
-            // 
-            this.cbAACOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACOutput.FormattingEnabled = true;
-            this.cbAACOutput.Items.AddRange(new object[] {
-            "RAW",
-            "ADTS"});
-            this.cbAACOutput.Location = new System.Drawing.Point(105, 124);
-            this.cbAACOutput.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACOutput.Name = "cbAACOutput";
-            this.cbAACOutput.Size = new System.Drawing.Size(156, 21);
-            this.cbAACOutput.TabIndex = 16;
-            // 
-            // label355
-            // 
-            this.label355.AutoSize = true;
-            this.label355.Location = new System.Drawing.Point(12, 126);
-            this.label355.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label355.Name = "label355";
-            this.label355.Size = new System.Drawing.Size(39, 13);
-            this.label355.TabIndex = 15;
-            this.label355.Text = "Output";
-            // 
-            // cbAACBitrate
-            // 
-            this.cbAACBitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACBitrate.FormattingEnabled = true;
-            this.cbAACBitrate.Items.AddRange(new object[] {
-            "32",
-            "40",
-            "48",
-            "56",
-            "64",
-            "72",
-            "80",
-            "88",
-            "96",
-            "104",
-            "112",
-            "120",
-            "128",
-            "140",
-            "160",
-            "192",
-            "224",
-            "256"});
-            this.cbAACBitrate.Location = new System.Drawing.Point(105, 86);
-            this.cbAACBitrate.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACBitrate.Name = "cbAACBitrate";
-            this.cbAACBitrate.Size = new System.Drawing.Size(121, 21);
-            this.cbAACBitrate.TabIndex = 14;
-            // 
-            // label356
-            // 
-            this.label356.AutoSize = true;
-            this.label356.Location = new System.Drawing.Point(12, 88);
-            this.label356.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label356.Name = "label356";
-            this.label356.Size = new System.Drawing.Size(37, 13);
-            this.label356.TabIndex = 13;
-            this.label356.Text = "Bitrate";
-            // 
-            // cbAACObjectType
-            // 
-            this.cbAACObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACObjectType.FormattingEnabled = true;
-            this.cbAACObjectType.Items.AddRange(new object[] {
-            "Main",
-            "Low complexity",
-            "Scalable Sampling Rate",
-            "Long Term Predictor"});
-            this.cbAACObjectType.Location = new System.Drawing.Point(105, 50);
-            this.cbAACObjectType.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACObjectType.Name = "cbAACObjectType";
-            this.cbAACObjectType.Size = new System.Drawing.Size(156, 21);
-            this.cbAACObjectType.TabIndex = 12;
-            // 
-            // label357
-            // 
-            this.label357.AutoSize = true;
-            this.label357.Location = new System.Drawing.Point(12, 52);
-            this.label357.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label357.Name = "label357";
-            this.label357.Size = new System.Drawing.Size(61, 13);
-            this.label357.TabIndex = 11;
-            this.label357.Text = "Object type";
-            // 
-            // cbAACVersion
-            // 
-            this.cbAACVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACVersion.FormattingEnabled = true;
-            this.cbAACVersion.Items.AddRange(new object[] {
-            "MPEG-4",
-            "MPEG-2"});
-            this.cbAACVersion.Location = new System.Drawing.Point(105, 15);
-            this.cbAACVersion.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACVersion.Name = "cbAACVersion";
-            this.cbAACVersion.Size = new System.Drawing.Size(156, 21);
-            this.cbAACVersion.TabIndex = 10;
-            // 
-            // label358
-            // 
-            this.label358.AutoSize = true;
-            this.label358.Location = new System.Drawing.Point(12, 18);
-            this.label358.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label358.Name = "label358";
-            this.label358.Size = new System.Drawing.Size(75, 13);
-            this.label358.TabIndex = 9;
-            this.label358.Text = "MPEG version";
             // 
             // tabPage7
             // 
@@ -1425,6 +1069,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
+            this.VideoCapture1.PIP_ChromaKeySettings = null;
             this.VideoCapture1.PIP_Mode = VisioForge.Types.VFPIPMode.Custom;
             this.VideoCapture1.PIP_ResizeQuality = VisioForge.Types.VFPIPResizeQuality.RQ_NN;
             this.VideoCapture1.Push_Source = null;
@@ -1464,24 +1109,24 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms3.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms3.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms3.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms3.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
 // TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-            videoRendererSettingsWinForms3.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms3.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms3.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms3.Flip_Horizontal = false;
-            videoRendererSettingsWinForms3.Flip_Vertical = false;
-            videoRendererSettingsWinForms3.RotationAngle = 0;
-            videoRendererSettingsWinForms3.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms3.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms3.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms3.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms3.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms3.Zoom_ShiftY = 0;
-            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms3;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms1;
             this.VideoCapture1.Video_Resize = null;
             this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
             this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
@@ -1546,16 +1191,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.groupBox29.ResumeLayout(false);
-            this.groupBox29.PerformLayout();
-            this.groupBox46.ResumeLayout(false);
-            this.groupBox46.PerformLayout();
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage6.PerformLayout();
+            this.tabPage3.PerformLayout();
             this.tabPage7.ResumeLayout(false);
             this.tabPage7.PerformLayout();
             this.tabPage8.ResumeLayout(false);
@@ -1594,36 +1230,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         internal System.Windows.Forms.LinkLabel llVideoTutorials;
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Button btSelectOutputMP4;
-        private System.Windows.Forms.TextBox edOutputMP4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.GroupBox groupBox29;
-        private System.Windows.Forms.CheckBox cbH264GOP;
-        private System.Windows.Forms.CheckBox cbH264AutoBitrate;
-        private System.Windows.Forms.Label label350;
-        private System.Windows.Forms.TextBox edH264Bitrate;
-        private System.Windows.Forms.Label label351;
-        private System.Windows.Forms.ComboBox cbH264RateControl;
-        private System.Windows.Forms.GroupBox groupBox46;
-        private System.Windows.Forms.ComboBox cbH264TargetUsage;
-        private System.Windows.Forms.Label label359;
-        private System.Windows.Forms.Label label352;
-        private System.Windows.Forms.Label label353;
-        private System.Windows.Forms.ComboBox cbH264Level;
-        private System.Windows.Forms.ComboBox cbH264Profile;
-        private System.Windows.Forms.Label label354;
-        private System.Windows.Forms.ComboBox cbAACOutput;
-        private System.Windows.Forms.Label label355;
-        private System.Windows.Forms.ComboBox cbAACBitrate;
-        private System.Windows.Forms.Label label356;
-        private System.Windows.Forms.ComboBox cbAACObjectType;
-        private System.Windows.Forms.Label label357;
-        private System.Windows.Forms.ComboBox cbAACVersion;
-        private System.Windows.Forms.Label label358;
         private System.Windows.Forms.RadioButton rbCaptureMP4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage7;
@@ -1676,6 +1282,11 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         private System.Windows.Forms.Button btONVIFConnect;
         private System.Windows.Forms.TextBox edIPUrl;
         private System.Windows.Forms.Label label165;
+        private System.Windows.Forms.Button btSelectOutputMP4;
+        private System.Windows.Forms.TextBox edOutputMP4;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }
 

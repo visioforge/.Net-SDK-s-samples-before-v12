@@ -62,6 +62,29 @@ namespace Main_Demo
             return filename.Substring(k, filename.Length - k);
         }
 
+        private bool IsWindows8OrNewer()
+        {
+            var os = Environment.OSVersion;
+            return os.Platform == PlatformID.Win32NT &&
+                   (os.Version.Major > 6 || (os.Version.Major == 6 && os.Version.Minor >= 2));
+        }
+
+        private bool IsWindows7OrNewer()
+        {
+            var version = Environment.OSVersion.Version;
+            if (version.Major > 6)
+            {
+                return true;
+            }
+
+            if (version.Major == 6 && version.Minor >= 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         public Window1()
         {
             InitializeComponent();
@@ -77,8 +100,12 @@ namespace Main_Demo
         {
             Title += " (SDK v" + VideoEdit1.SDK_Version + ", " + VideoEdit1.SDK_State + ")";
 
+            // font for text logo
+            fontDialog.Color = System.Drawing.Color.White;
+            fontDialog.Font = new Font(System.Drawing.FontFamily.GenericSansSerif, 32);
+
             cbFrameRate.SelectedIndex = 0;
-            cbOutputVideoFormat.SelectedIndex = 0;
+            cbOutputVideoFormat.SelectedIndex = 14;
             cbWMVAudioMode.SelectedIndex = 0;
             cbWMVVideoMode.SelectedIndex = 0;
             cbWMVTVFormat.SelectedIndex = 0;
@@ -109,6 +136,39 @@ namespace Main_Demo
             cbLameVBRMin.SelectedIndex = 8;
             cbLameVBRMax.SelectedIndex = 10;
             cbLameSampleRate.SelectedIndex = 0;
+
+            cbMFProfile.SelectedIndex = 1;
+            cbMFLevel.SelectedIndex = 12;
+            cbMFRateControl.SelectedIndex = 3;
+
+            var filtersAvailableInfo = VideoCapture.GetFiltersAvailable();
+            if (filtersAvailableInfo.V11_NVENC_H264)
+            {
+                lbMFHWAvailableEncoders.Content += "NVENC ";
+            }
+
+            if (filtersAvailableInfo.V11_AMD_H264)
+            {
+                lbMFHWAvailableEncoders.Content += "AMD ";
+            }
+
+            if (filtersAvailableInfo.V11_QSV_H264)
+            {
+                lbMFHWAvailableEncoders.Content += "INTEL QSV";
+            }
+
+            if (IsWindows8OrNewer())
+            {
+                cbMP4Mode.SelectedIndex = 3;
+            }
+            else if (IsWindows7OrNewer())
+            {
+                cbMP4Mode.SelectedIndex = 1;
+            }
+            else
+            {
+                cbMP4Mode.SelectedIndex = 0;
+            }
 
             cbWebMVideoEndUsageMode.SelectedIndex = 0;
             edWebMVideoThreadCount.Text = Environment.ProcessorCount.ToString(CultureInfo.InvariantCulture);
@@ -1707,228 +1767,350 @@ namespace Main_Demo
                 var mp4Output = new VFMP4Output();
 
                 // Main settings
-                if (rbMP4Legacy.IsChecked == true)
+                switch (cbMP4Mode.SelectedIndex)
                 {
-                    mp4Output.MP4Mode = VFMP4Mode.v8;
-                }
-                else if (rbMP4Modern.IsChecked == true)
-                {
-                    mp4Output.MP4Mode = VFMP4Mode.v10;
-                }
-                else
-                {
-                    mp4Output.MP4Mode = VFMP4Mode.NVENC;
+                    case 0:
+                        // v8 Legacy(XP compatible, CPU or Intel QuickSync GPU)
+                        mp4Output.MP4Mode = VFMP4Mode.v8;
+                        break;
+                    case 1:
+                        // v10(CPU or Intel QuickSync GPU)
+                        mp4Output.MP4Mode = VFMP4Mode.v10;
+                        break;
+                    case 2:
+                        // v10 nVidia NVENC
+                        mp4Output.MP4Mode = VFMP4Mode.v10_NVENC;
+                        break;
+                    default:
+                        mp4Output.MP4Mode = VFMP4Mode.v11;
+                        break;
                 }
 
-                if (mp4Output.MP4Mode != VFMP4Mode.NVENC)
+                if (mp4Output.MP4Mode == VFMP4Mode.v8 || mp4Output.MP4Mode == VFMP4Mode.v10)
                 {
                     // Legacy / Modern settings
                     // Video H264 settings
                     switch (cbH264Profile.SelectedIndex)
                     {
                         case 0:
-                            mp4Output.Video_H264.Profile = VFH264Profile.ProfileAuto;
+                            mp4Output.Video_v10.Profile = VFH264Profile.ProfileAuto;
                             break;
                         case 1:
-                            mp4Output.Video_H264.Profile = VFH264Profile.ProfileBaseline;
+                            mp4Output.Video_v10.Profile = VFH264Profile.ProfileBaseline;
                             break;
                         case 2:
-                            mp4Output.Video_H264.Profile = VFH264Profile.ProfileMain;
+                            mp4Output.Video_v10.Profile = VFH264Profile.ProfileMain;
                             break;
                         case 3:
-                            mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh;
+                            mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh;
                             break;
                         case 4:
-                            mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh10;
+                            mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh10;
                             break;
                         case 5:
-                            mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh422;
+                            mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh422;
                             break;
                     }
 
                     switch (cbH264Level.SelectedIndex)
                     {
                         case 0:
-                            mp4Output.Video_H264.Level = VFH264Level.LevelAuto;
+                            mp4Output.Video_v10.Level = VFH264Level.LevelAuto;
                             break;
                         case 1:
-                            mp4Output.Video_H264.Level = VFH264Level.Level1;
+                            mp4Output.Video_v10.Level = VFH264Level.Level1;
                             break;
                         case 2:
-                            mp4Output.Video_H264.Level = VFH264Level.Level11;
+                            mp4Output.Video_v10.Level = VFH264Level.Level11;
                             break;
                         case 3:
-                            mp4Output.Video_H264.Level = VFH264Level.Level12;
+                            mp4Output.Video_v10.Level = VFH264Level.Level12;
                             break;
                         case 4:
-                            mp4Output.Video_H264.Level = VFH264Level.Level13;
+                            mp4Output.Video_v10.Level = VFH264Level.Level13;
                             break;
                         case 5:
-                            mp4Output.Video_H264.Level = VFH264Level.Level2;
+                            mp4Output.Video_v10.Level = VFH264Level.Level2;
                             break;
                         case 6:
-                            mp4Output.Video_H264.Level = VFH264Level.Level21;
+                            mp4Output.Video_v10.Level = VFH264Level.Level21;
                             break;
                         case 7:
-                            mp4Output.Video_H264.Level = VFH264Level.Level22;
+                            mp4Output.Video_v10.Level = VFH264Level.Level22;
                             break;
                         case 8:
-                            mp4Output.Video_H264.Level = VFH264Level.Level3;
+                            mp4Output.Video_v10.Level = VFH264Level.Level3;
                             break;
                         case 9:
-                            mp4Output.Video_H264.Level = VFH264Level.Level31;
+                            mp4Output.Video_v10.Level = VFH264Level.Level31;
                             break;
                         case 10:
-                            mp4Output.Video_H264.Level = VFH264Level.Level32;
+                            mp4Output.Video_v10.Level = VFH264Level.Level32;
                             break;
                         case 11:
-                            mp4Output.Video_H264.Level = VFH264Level.Level4;
+                            mp4Output.Video_v10.Level = VFH264Level.Level4;
                             break;
                         case 12:
-                            mp4Output.Video_H264.Level = VFH264Level.Level41;
+                            mp4Output.Video_v10.Level = VFH264Level.Level41;
                             break;
                         case 13:
-                            mp4Output.Video_H264.Level = VFH264Level.Level42;
+                            mp4Output.Video_v10.Level = VFH264Level.Level42;
                             break;
                         case 14:
-                            mp4Output.Video_H264.Level = VFH264Level.Level5;
+                            mp4Output.Video_v10.Level = VFH264Level.Level5;
                             break;
                         case 15:
-                            mp4Output.Video_H264.Level = VFH264Level.Level51;
+                            mp4Output.Video_v10.Level = VFH264Level.Level51;
                             break;
                     }
 
                     switch (cbH264TargetUsage.SelectedIndex)
                     {
                         case 0:
-                            mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Auto;
+                            mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.Auto;
                             break;
                         case 1:
-                            mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestQuality;
+                            mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.BestQuality;
                             break;
                         case 2:
-                            mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Balanced;
+                            mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.Balanced;
                             break;
                         case 3:
-                            mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestSpeed;
+                            mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.BestSpeed;
                             break;
                     }
 
                     switch (cbH264PictureType.SelectedIndex)
                     {
                         case 0:
-                            mp4Output.Video_H264.PictureType = VFH264PictureType.Auto;
+                            mp4Output.Video_v10.PictureType = VFH264PictureType.Auto;
                             break;
                         case 1:
-                            mp4Output.Video_H264.PictureType = VFH264PictureType.Frame;
+                            mp4Output.Video_v10.PictureType = VFH264PictureType.Frame;
                             break;
                         case 2:
-                            mp4Output.Video_H264.PictureType = VFH264PictureType.TFF;
+                            mp4Output.Video_v10.PictureType = VFH264PictureType.TFF;
                             break;
                         case 3:
-                            mp4Output.Video_H264.PictureType = VFH264PictureType.BFF;
+                            mp4Output.Video_v10.PictureType = VFH264PictureType.BFF;
                             break;
                     }
 
-                    mp4Output.Video_H264.RateControl = (VFH264RateControl)cbH264RateControl.SelectedIndex;
-                    mp4Output.Video_H264.MBEncoding = (VFH264MBEncoding)cbH264MBEncoding.SelectedIndex;
-                    mp4Output.Video_H264.GOP = cbH264GOP.IsChecked == true;
-                    mp4Output.Video_H264.BitrateAuto = cbH264AutoBitrate.IsChecked == true;
+                    mp4Output.Video_v10.RateControl = (VFH264RateControl)cbH264RateControl.SelectedIndex;
+                    mp4Output.Video_v10.MBEncoding = (VFH264MBEncoding)cbH264MBEncoding.SelectedIndex;
+                    mp4Output.Video_v10.GOP = cbH264GOP.IsChecked == true;
+                    mp4Output.Video_v10.BitrateAuto = cbH264AutoBitrate.IsChecked == true;
 
                     int.TryParse(edH264IDR.Text, out tmp);
-                    mp4Output.Video_H264.IDR_Period = tmp;
+                    mp4Output.Video_v10.IDR_Period = tmp;
 
                     int.TryParse(edH264P.Text, out tmp);
-                    mp4Output.Video_H264.P_Period = tmp;
+                    mp4Output.Video_v10.P_Period = tmp;
 
                     int.TryParse(edH264Bitrate.Text, out tmp);
-                    mp4Output.Video_H264.Bitrate = tmp;
+                    mp4Output.Video_v10.Bitrate = tmp;
                 }
-                else
+                else if (mp4Output.MP4Mode == VFMP4Mode.v10_NVENC)
                 {
                     // NVENC settings
                     switch (cbNVENCProfile.SelectedIndex)
                     {
                         case 0:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.Auto;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.Auto;
                             break;
                         case 1:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.H264_Baseline;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_Baseline;
                             break;
                         case 2:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.H264_Main;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_Main;
                             break;
                         case 3:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.H264_High;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_High;
                             break;
                         case 4:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.H264_High444;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_High444;
                             break;
                         case 5:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.H264_ProgressiveHigh;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_ProgressiveHigh;
                             break;
                         case 6:
-                            mp4Output.Video_NVENC.Profile = NVENCProfile.H264_ConstrainedHigh;
+                            mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_ConstrainedHigh;
                             break;
                     }
 
                     switch (cbNVENCLevel.SelectedIndex)
                     {
                         case 0:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.Auto;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.Auto;
                             break;
                         case 1:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_1;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_1;
                             break;
                         case 2:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_11;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_11;
                             break;
                         case 3:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_12;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_12;
                             break;
                         case 4:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_13;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_13;
                             break;
                         case 5:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_2;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_2;
                             break;
                         case 6:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_21;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_21;
                             break;
                         case 7:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_22;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_22;
                             break;
                         case 8:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_3;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_3;
                             break;
                         case 9:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_31;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_31;
                             break;
                         case 10:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_32;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_32;
                             break;
                         case 11:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_4;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_4;
                             break;
                         case 12:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_41;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_41;
                             break;
                         case 13:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_42;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_42;
                             break;
                         case 14:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_5;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_5;
                             break;
                         case 15:
-                            mp4Output.Video_NVENC.Level = VFNVENCLevel.H264_51;
+                            mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_51;
                             break;
                     }
 
-                    mp4Output.Video_NVENC.Bitrate = Convert.ToInt32(edNVENCBitrate.Text);
-                    mp4Output.Video_NVENC.QP = Convert.ToInt32(edNVENCQP.Text);
-                    mp4Output.Video_NVENC.RateControl = (VFNVENCRateControlMode)cbNVENCRateControl.SelectedIndex;
-                    mp4Output.Video_NVENC.GOP = Convert.ToInt32(edNVENCGOP.Text);
-                    mp4Output.Video_NVENC.BFrames = Convert.ToInt32(edNVENCBFrames.Text);
+                    mp4Output.Video_v10_NVENC.Bitrate = Convert.ToInt32(edNVENCBitrate.Text);
+                    mp4Output.Video_v10_NVENC.QP = Convert.ToInt32(edNVENCQP.Text);
+                    mp4Output.Video_v10_NVENC.RateControl = (VFNVENCRateControlMode)cbNVENCRateControl.SelectedIndex;
+                    mp4Output.Video_v10_NVENC.GOP = Convert.ToInt32(edNVENCGOP.Text);
+                    mp4Output.Video_v10_NVENC.BFrames = Convert.ToInt32(edNVENCBFrames.Text);
+                }
+                else
+                {
+                    switch (cbMP4Mode.SelectedIndex)
+                    {
+                        case 3:
+                            //  v11 (CPU) H264
+                            mp4Output.Video_v11.Codec = VFMFVideoEncoder.MS_H264;
+                            break;
+                        case 4:
+                            //  v11 nVidia NVENC H264
+                            mp4Output.Video_v11.Codec = VFMFVideoEncoder.NVENC_H264;
+                            break;
+                        case 5:
+                            //  v11 Intel QuickSync H264
+                            mp4Output.Video_v11.Codec = VFMFVideoEncoder.QSV_H264;
+                            break;
+                        case 6:
+                            //  v11 AMD Radeon H264
+                            mp4Output.Video_v11.Codec = VFMFVideoEncoder.AMD_H264;
+                            break;
+                        case 7:
+                            //  v11 nVidia NVENC H265
+                            mp4Output.Video_v11.Codec = VFMFVideoEncoder.NVENC_H265;
+                            break;
+                        case 8:
+                            //  v11 AMD Radeon H265
+                            mp4Output.Video_v11.Codec = VFMFVideoEncoder.AMD_H265;
+                            break;
+                    }
+
+                    // Video H264 settings
+                    switch (cbMFProfile.SelectedIndex)
+                    {
+                        case 0:
+                            mp4Output.Video_v11.Profile = VFMFH264Profile.Base;
+                            break;
+                        case 1:
+                            mp4Output.Video_v11.Profile = VFMFH264Profile.Main;
+                            break;
+                        case 2:
+                            mp4Output.Video_v11.Profile = VFMFH264Profile.High;
+                            break;
+                    }
+
+                    switch (cbMFLevel.SelectedIndex)
+                    {
+                        case 0:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level1;
+                            break;
+                        case 1:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level11;
+                            break;
+                        case 2:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level12;
+                            break;
+                        case 3:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level13;
+                            break;
+                        case 4:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level2;
+                            break;
+                        case 5:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level21;
+                            break;
+                        case 6:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level22;
+                            break;
+                        case 7:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level3;
+                            break;
+                        case 8:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level31;
+                            break;
+                        case 9:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level32;
+                            break;
+                        case 10:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level4;
+                            break;
+                        case 11:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level41;
+                            break;
+                        case 12:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level42;
+                            break;
+                        case 13:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level5;
+                            break;
+                        case 14:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level51;
+                            break;
+                        case 15:
+                            mp4Output.Video_v11.Level = VFMFH264Level.Level51;
+                            break;
+                    }
+
+                    mp4Output.Video_v11.RateControl = (VFMFCommonRateControlMode)cbMFRateControl.SelectedIndex;
+
+                    mp4Output.Video_v11.CABAC = cbMFCABAC.IsChecked == true;
+                    mp4Output.Video_v11.LowLatencyMode = cbMFLowLatency.IsChecked == true;
+
+                    int.TryParse(edMFBFramesCount.Text, out tmp);
+                    mp4Output.Video_v11.DefaultBPictureCount = tmp;
+
+                    int.TryParse(edMFKeyFrameSpacing.Text, out tmp);
+                    mp4Output.Video_v11.MaxKeyFrameSpacing = tmp;
+
+                    int.TryParse(edMFBitrate.Text, out tmp);
+                    mp4Output.Video_v11.AvgBitrate = tmp;
+
+                    int.TryParse(edMFMaxBitrate.Text, out tmp);
+                    mp4Output.Video_v11.MaxBitrate = tmp;
+
+                    int.TryParse(edMFQuality.Text, out tmp);
+                    mp4Output.Video_v11.Quality = tmp;
                 }
 
                 // Audio AAC settings
@@ -5552,6 +5734,26 @@ namespace Main_Demo
                 {
                     intf.Enabled = cbGPUOldMovie.IsChecked == true;
                     intf.Update();
+                }
+            }
+        }
+
+        private void tpNVENC_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+            if (lbNVENCStatus.Tag.ToString() == "0")
+            {
+                lbNVENCStatus.Tag = 1;
+
+                NVENCErrorCode errorCode;
+                bool res = VideoCapture.Filter_Supported_NVENC(out errorCode);
+
+                if (res)
+                {
+                    lbNVENCStatus.Content = "Available";
+                }
+                else
+                {
+                    lbNVENCStatus.Content = "Not available. Error code: " + errorCode;
                 }
             }
         }

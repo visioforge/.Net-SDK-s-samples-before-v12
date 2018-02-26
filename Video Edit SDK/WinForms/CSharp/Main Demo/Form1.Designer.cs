@@ -57,6 +57,97 @@ namespace VideoEdit_CS_Demo
             this.edWidth = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cbResize = new System.Windows.Forms.CheckBox();
+            this.tabPage48 = new System.Windows.Forms.TabPage();
+            this.tabControl24 = new System.Windows.Forms.TabControl();
+            this.tabPage111 = new System.Windows.Forms.TabPage();
+            this.lbMFHWAvailableEncoders = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.cbMP4Mode = new System.Windows.Forms.ComboBox();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label492 = new System.Windows.Forms.Label();
+            this.label490 = new System.Windows.Forms.Label();
+            this.label377 = new System.Windows.Forms.Label();
+            this.tabPage89 = new System.Windows.Forms.TabPage();
+            this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.cbH264PictureType = new System.Windows.Forms.ComboBox();
+            this.label360 = new System.Windows.Forms.Label();
+            this.label347 = new System.Windows.Forms.Label();
+            this.edH264P = new System.Windows.Forms.TextBox();
+            this.label348 = new System.Windows.Forms.Label();
+            this.edH264IDR = new System.Windows.Forms.TextBox();
+            this.label349 = new System.Windows.Forms.Label();
+            this.cbH264MBEncoding = new System.Windows.Forms.ComboBox();
+            this.groupBox29 = new System.Windows.Forms.GroupBox();
+            this.cbH264GOP = new System.Windows.Forms.CheckBox();
+            this.cbH264AutoBitrate = new System.Windows.Forms.CheckBox();
+            this.label350 = new System.Windows.Forms.Label();
+            this.edH264Bitrate = new System.Windows.Forms.TextBox();
+            this.label351 = new System.Windows.Forms.Label();
+            this.cbH264RateControl = new System.Windows.Forms.ComboBox();
+            this.groupBox46 = new System.Windows.Forms.GroupBox();
+            this.cbH264TargetUsage = new System.Windows.Forms.ComboBox();
+            this.label359 = new System.Windows.Forms.Label();
+            this.label352 = new System.Windows.Forms.Label();
+            this.label353 = new System.Windows.Forms.Label();
+            this.cbH264Level = new System.Windows.Forms.ComboBox();
+            this.cbH264Profile = new System.Windows.Forms.ComboBox();
+            this.tpNVENC = new System.Windows.Forms.TabPage();
+            this.lbNVENCStatus = new System.Windows.Forms.Label();
+            this.label316 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.label506 = new System.Windows.Forms.Label();
+            this.edNVENCBFrames = new System.Windows.Forms.TextBox();
+            this.label507 = new System.Windows.Forms.Label();
+            this.edNVENCGOP = new System.Windows.Forms.TextBox();
+            this.groupBox49 = new System.Windows.Forms.GroupBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.edNVENCQP = new System.Windows.Forms.TextBox();
+            this.label508 = new System.Windows.Forms.Label();
+            this.edNVENCBitrate = new System.Windows.Forms.TextBox();
+            this.label509 = new System.Windows.Forms.Label();
+            this.cbNVENCRateControl = new System.Windows.Forms.ComboBox();
+            this.groupBox50 = new System.Windows.Forms.GroupBox();
+            this.label511 = new System.Windows.Forms.Label();
+            this.label512 = new System.Windows.Forms.Label();
+            this.cbNVENCLevel = new System.Windows.Forms.ComboBox();
+            this.cbNVENCProfile = new System.Windows.Forms.ComboBox();
+            this.tabPage148 = new System.Windows.Forms.TabPage();
+            this.edMFKeyFrameSpacing = new System.Windows.Forms.TextBox();
+            this.label528 = new System.Windows.Forms.Label();
+            this.label525 = new System.Windows.Forms.Label();
+            this.edMFBFramesCount = new System.Windows.Forms.TextBox();
+            this.label522 = new System.Windows.Forms.Label();
+            this.cbMFLowLatency = new System.Windows.Forms.CheckBox();
+            this.cbMFCABAC = new System.Windows.Forms.CheckBox();
+            this.groupBox52 = new System.Windows.Forms.GroupBox();
+            this.label521 = new System.Windows.Forms.Label();
+            this.edMFQuality = new System.Windows.Forms.TextBox();
+            this.label520 = new System.Windows.Forms.Label();
+            this.edMFMaxBitrate = new System.Windows.Forms.TextBox();
+            this.label523 = new System.Windows.Forms.Label();
+            this.edMFBitrate = new System.Windows.Forms.TextBox();
+            this.label524 = new System.Windows.Forms.Label();
+            this.cbMFRateControl = new System.Windows.Forms.ComboBox();
+            this.groupBox53 = new System.Windows.Forms.GroupBox();
+            this.label526 = new System.Windows.Forms.Label();
+            this.label527 = new System.Windows.Forms.Label();
+            this.cbMFLevel = new System.Windows.Forms.ComboBox();
+            this.cbMFProfile = new System.Windows.Forms.ComboBox();
+            this.tabPage90 = new System.Windows.Forms.TabPage();
+            this.label354 = new System.Windows.Forms.Label();
+            this.cbAACOutput = new System.Windows.Forms.ComboBox();
+            this.label355 = new System.Windows.Forms.Label();
+            this.cbAACBitrate = new System.Windows.Forms.ComboBox();
+            this.label356 = new System.Windows.Forms.Label();
+            this.cbAACObjectType = new System.Windows.Forms.ComboBox();
+            this.label357 = new System.Windows.Forms.Label();
+            this.cbAACVersion = new System.Windows.Forms.ComboBox();
+            this.label358 = new System.Windows.Forms.Label();
+            this.tabPage94 = new System.Windows.Forms.TabPage();
+            this.cbMP4UseSpecialSyncMode = new System.Windows.Forms.CheckBox();
+            this.cbMP4CustomAVSettings = new System.Windows.Forms.CheckBox();
+            this.cbMP4TimeAdjust = new System.Windows.Forms.CheckBox();
+            this.cbMP4TimeOverride = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.cbUseLameInAVI = new System.Windows.Forms.CheckBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -410,74 +501,6 @@ namespace VideoEdit_CS_Demo
             this.label471 = new System.Windows.Forms.Label();
             this.cbFFEXEProfile = new System.Windows.Forms.ComboBox();
             this.label467 = new System.Windows.Forms.Label();
-            this.tabPage48 = new System.Windows.Forms.TabPage();
-            this.tabControl24 = new System.Windows.Forms.TabControl();
-            this.tabPage55 = new System.Windows.Forms.TabPage();
-            this.rbMP4NVENC = new System.Windows.Forms.RadioButton();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.label492 = new System.Windows.Forms.Label();
-            this.label490 = new System.Windows.Forms.Label();
-            this.rbMP4Modern = new System.Windows.Forms.RadioButton();
-            this.rbMP4Legacy = new System.Windows.Forms.RadioButton();
-            this.label380 = new System.Windows.Forms.Label();
-            this.label379 = new System.Windows.Forms.Label();
-            this.label378 = new System.Windows.Forms.Label();
-            this.label377 = new System.Windows.Forms.Label();
-            this.tabPage89 = new System.Windows.Forms.TabPage();
-            this.groupBox18 = new System.Windows.Forms.GroupBox();
-            this.cbH264PictureType = new System.Windows.Forms.ComboBox();
-            this.label360 = new System.Windows.Forms.Label();
-            this.label347 = new System.Windows.Forms.Label();
-            this.edH264P = new System.Windows.Forms.TextBox();
-            this.label348 = new System.Windows.Forms.Label();
-            this.edH264IDR = new System.Windows.Forms.TextBox();
-            this.label349 = new System.Windows.Forms.Label();
-            this.cbH264MBEncoding = new System.Windows.Forms.ComboBox();
-            this.groupBox29 = new System.Windows.Forms.GroupBox();
-            this.cbH264GOP = new System.Windows.Forms.CheckBox();
-            this.cbH264AutoBitrate = new System.Windows.Forms.CheckBox();
-            this.label350 = new System.Windows.Forms.Label();
-            this.edH264Bitrate = new System.Windows.Forms.TextBox();
-            this.label351 = new System.Windows.Forms.Label();
-            this.cbH264RateControl = new System.Windows.Forms.ComboBox();
-            this.groupBox46 = new System.Windows.Forms.GroupBox();
-            this.cbH264TargetUsage = new System.Windows.Forms.ComboBox();
-            this.label359 = new System.Windows.Forms.Label();
-            this.label352 = new System.Windows.Forms.Label();
-            this.label353 = new System.Windows.Forms.Label();
-            this.cbH264Level = new System.Windows.Forms.ComboBox();
-            this.cbH264Profile = new System.Windows.Forms.ComboBox();
-            this.tabPage24 = new System.Windows.Forms.TabPage();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.label506 = new System.Windows.Forms.Label();
-            this.edNVENCBFrames = new System.Windows.Forms.TextBox();
-            this.label507 = new System.Windows.Forms.Label();
-            this.edNVENCGOP = new System.Windows.Forms.TextBox();
-            this.groupBox49 = new System.Windows.Forms.GroupBox();
-            this.label170 = new System.Windows.Forms.Label();
-            this.edNVENCQP = new System.Windows.Forms.TextBox();
-            this.label508 = new System.Windows.Forms.Label();
-            this.edNVENCBitrate = new System.Windows.Forms.TextBox();
-            this.label509 = new System.Windows.Forms.Label();
-            this.cbNVENCRateControl = new System.Windows.Forms.ComboBox();
-            this.groupBox50 = new System.Windows.Forms.GroupBox();
-            this.label511 = new System.Windows.Forms.Label();
-            this.label512 = new System.Windows.Forms.Label();
-            this.cbNVENCLevel = new System.Windows.Forms.ComboBox();
-            this.cbNVENCProfile = new System.Windows.Forms.ComboBox();
-            this.tabPage90 = new System.Windows.Forms.TabPage();
-            this.label25 = new System.Windows.Forms.Label();
-            this.rbMP4LAME = new System.Windows.Forms.RadioButton();
-            this.rbMP4AAC = new System.Windows.Forms.RadioButton();
-            this.label354 = new System.Windows.Forms.Label();
-            this.cbAACOutput = new System.Windows.Forms.ComboBox();
-            this.label355 = new System.Windows.Forms.Label();
-            this.cbAACBitrate = new System.Windows.Forms.ComboBox();
-            this.label356 = new System.Windows.Forms.Label();
-            this.cbAACObjectType = new System.Windows.Forms.ComboBox();
-            this.label357 = new System.Windows.Forms.Label();
-            this.cbAACVersion = new System.Windows.Forms.ComboBox();
-            this.label358 = new System.Windows.Forms.Label();
             this.tabPage56 = new System.Windows.Forms.TabPage();
             this.cbFLACExhaustiveModelSearch = new System.Windows.Forms.CheckBox();
             this.cbFLACAdaptiveMidSideCoding = new System.Windows.Forms.CheckBox();
@@ -1179,6 +1202,22 @@ namespace VideoEdit_CS_Demo
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage30.SuspendLayout();
+            this.tabPage48.SuspendLayout();
+            this.tabControl24.SuspendLayout();
+            this.tabPage111.SuspendLayout();
+            this.tabPage89.SuspendLayout();
+            this.groupBox18.SuspendLayout();
+            this.groupBox29.SuspendLayout();
+            this.groupBox46.SuspendLayout();
+            this.tpNVENC.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox49.SuspendLayout();
+            this.groupBox50.SuspendLayout();
+            this.tabPage148.SuspendLayout();
+            this.groupBox52.SuspendLayout();
+            this.groupBox53.SuspendLayout();
+            this.tabPage90.SuspendLayout();
+            this.tabPage94.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabControl11.SuspendLayout();
@@ -1228,18 +1267,6 @@ namespace VideoEdit_CS_Demo
             this.tabPage131.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbFFEXEAudioQuality)).BeginInit();
             this.tabPage133.SuspendLayout();
-            this.tabPage48.SuspendLayout();
-            this.tabControl24.SuspendLayout();
-            this.tabPage55.SuspendLayout();
-            this.tabPage89.SuspendLayout();
-            this.groupBox18.SuspendLayout();
-            this.groupBox29.SuspendLayout();
-            this.groupBox46.SuspendLayout();
-            this.tabPage24.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.groupBox49.SuspendLayout();
-            this.groupBox50.SuspendLayout();
-            this.tabPage90.SuspendLayout();
             this.tabPage56.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbFLACLPCOrder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbFLACLevel)).BeginInit();
@@ -1484,6 +1511,7 @@ namespace VideoEdit_CS_Demo
             // tabControl2
             // 
             this.tabControl2.Controls.Add(this.tabPage30);
+            this.tabControl2.Controls.Add(this.tabPage48);
             this.tabControl2.Controls.Add(this.tabPage4);
             this.tabControl2.Controls.Add(this.tabPage5);
             this.tabControl2.Controls.Add(this.tabPage6);
@@ -1494,7 +1522,6 @@ namespace VideoEdit_CS_Demo
             this.tabControl2.Controls.Add(this.tabPage7);
             this.tabControl2.Controls.Add(this.tabPage14);
             this.tabControl2.Controls.Add(this.tabPage67);
-            this.tabControl2.Controls.Add(this.tabPage48);
             this.tabControl2.Controls.Add(this.tabPage56);
             this.tabControl2.Controls.Add(this.tabPage57);
             this.tabControl2.Controls.Add(this.tabPage78);
@@ -1697,6 +1724,1089 @@ namespace VideoEdit_CS_Demo
             this.cbResize.TabIndex = 40;
             this.cbResize.Text = "Resize";
             this.cbResize.UseVisualStyleBackColor = true;
+            // 
+            // tabPage48
+            // 
+            this.tabPage48.Controls.Add(this.tabControl24);
+            this.tabPage48.Location = new System.Drawing.Point(4, 22);
+            this.tabPage48.Name = "tabPage48";
+            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage48.Size = new System.Drawing.Size(284, 399);
+            this.tabPage48.TabIndex = 14;
+            this.tabPage48.Text = "MP4";
+            this.tabPage48.UseVisualStyleBackColor = true;
+            // 
+            // tabControl24
+            // 
+            this.tabControl24.Controls.Add(this.tabPage111);
+            this.tabControl24.Controls.Add(this.tabPage89);
+            this.tabControl24.Controls.Add(this.tpNVENC);
+            this.tabControl24.Controls.Add(this.tabPage148);
+            this.tabControl24.Controls.Add(this.tabPage90);
+            this.tabControl24.Controls.Add(this.tabPage94);
+            this.tabControl24.Location = new System.Drawing.Point(2, 5);
+            this.tabControl24.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl24.Name = "tabControl24";
+            this.tabControl24.SelectedIndex = 0;
+            this.tabControl24.Size = new System.Drawing.Size(286, 382);
+            this.tabControl24.TabIndex = 6;
+            // 
+            // tabPage111
+            // 
+            this.tabPage111.Controls.Add(this.lbMFHWAvailableEncoders);
+            this.tabPage111.Controls.Add(this.textBox5);
+            this.tabPage111.Controls.Add(this.cbMP4Mode);
+            this.tabPage111.Controls.Add(this.linkLabel2);
+            this.tabPage111.Controls.Add(this.label492);
+            this.tabPage111.Controls.Add(this.label490);
+            this.tabPage111.Controls.Add(this.label377);
+            this.tabPage111.Location = new System.Drawing.Point(4, 22);
+            this.tabPage111.Name = "tabPage111";
+            this.tabPage111.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage111.Size = new System.Drawing.Size(278, 356);
+            this.tabPage111.TabIndex = 2;
+            this.tabPage111.Text = "Main";
+            this.tabPage111.UseVisualStyleBackColor = true;
+            // 
+            // lbMFHWAvailableEncoders
+            // 
+            this.lbMFHWAvailableEncoders.AutoSize = true;
+            this.lbMFHWAvailableEncoders.Location = new System.Drawing.Point(7, 128);
+            this.lbMFHWAvailableEncoders.Name = "lbMFHWAvailableEncoders";
+            this.lbMFHWAvailableEncoders.Size = new System.Drawing.Size(77, 13);
+            this.lbMFHWAvailableEncoders.TabIndex = 18;
+            this.lbMFHWAvailableEncoders.Text = "HW available: ";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(10, 11);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(255, 77);
+            this.textBox5.TabIndex = 17;
+            this.textBox5.Text = "SDK contains legacy encoder first to have compatibility with XP and Vista (v8) an" +
+    "d several modern encoders that can use CPU or Intel, AMD and nVidia GPUs for enc" +
+    "oding,";
+            // 
+            // cbMP4Mode
+            // 
+            this.cbMP4Mode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMP4Mode.FormattingEnabled = true;
+            this.cbMP4Mode.Items.AddRange(new object[] {
+            "v8 Legacy (H264/AAC, XP compatible, CPU or Intel GPU)",
+            "v10 (H264/AAC, CPU or Intel QSV GPU)",
+            "v10 nVidia NVENC (H264/AAC)",
+            "v11 (CPU, H264/AAC)",
+            "v11 nVidia NVENC (H264/AAC)",
+            "v11 Intel QuickSync (H264/AAC)",
+            "v11 AMD Radeon (H264/AAC)",
+            "v11 nVidia NVENC (H265/AAC)",
+            "v11 AMD Radeon (H265/AAC)"});
+            this.cbMP4Mode.Location = new System.Drawing.Point(10, 94);
+            this.cbMP4Mode.Name = "cbMP4Mode";
+            this.cbMP4Mode.Size = new System.Drawing.Size(255, 21);
+            this.cbMP4Mode.TabIndex = 16;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(7, 289);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(59, 13);
+            this.linkLabel2.TabIndex = 9;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Read more";
+            // 
+            // label492
+            // 
+            this.label492.AutoSize = true;
+            this.label492.Location = new System.Drawing.Point(7, 262);
+            this.label492.Name = "label492";
+            this.label492.Size = new System.Drawing.Size(184, 13);
+            this.label492.TabIndex = 8;
+            this.label492.Text = "/largeaddressaware option for exe file";
+            // 
+            // label490
+            // 
+            this.label490.AutoSize = true;
+            this.label490.Location = new System.Drawing.Point(7, 240);
+            this.label490.Name = "label490";
+            this.label490.Size = new System.Drawing.Size(189, 13);
+            this.label490.TabIndex = 6;
+            this.label490.Text = "For 2K/4K resolutions you must enable";
+            // 
+            // label377
+            // 
+            this.label377.AutoSize = true;
+            this.label377.Location = new System.Drawing.Point(7, 11);
+            this.label377.Name = "label377";
+            this.label377.Size = new System.Drawing.Size(0, 13);
+            this.label377.TabIndex = 0;
+            // 
+            // tabPage89
+            // 
+            this.tabPage89.Controls.Add(this.groupBox18);
+            this.tabPage89.Controls.Add(this.groupBox29);
+            this.tabPage89.Controls.Add(this.groupBox46);
+            this.tabPage89.Location = new System.Drawing.Point(4, 22);
+            this.tabPage89.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage89.Name = "tabPage89";
+            this.tabPage89.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage89.Size = new System.Drawing.Size(278, 356);
+            this.tabPage89.TabIndex = 0;
+            this.tabPage89.Text = "Video (v8/v10)";
+            this.tabPage89.UseVisualStyleBackColor = true;
+            // 
+            // groupBox18
+            // 
+            this.groupBox18.Controls.Add(this.cbH264PictureType);
+            this.groupBox18.Controls.Add(this.label360);
+            this.groupBox18.Controls.Add(this.label347);
+            this.groupBox18.Controls.Add(this.edH264P);
+            this.groupBox18.Controls.Add(this.label348);
+            this.groupBox18.Controls.Add(this.edH264IDR);
+            this.groupBox18.Controls.Add(this.label349);
+            this.groupBox18.Controls.Add(this.cbH264MBEncoding);
+            this.groupBox18.Location = new System.Drawing.Point(5, 213);
+            this.groupBox18.Name = "groupBox18";
+            this.groupBox18.Size = new System.Drawing.Size(223, 142);
+            this.groupBox18.TabIndex = 6;
+            this.groupBox18.TabStop = false;
+            this.groupBox18.Text = "Advanced";
+            // 
+            // cbH264PictureType
+            // 
+            this.cbH264PictureType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbH264PictureType.FormattingEnabled = true;
+            this.cbH264PictureType.Items.AddRange(new object[] {
+            "Auto",
+            "Frame",
+            "TFF",
+            "BFF"});
+            this.cbH264PictureType.Location = new System.Drawing.Point(94, 48);
+            this.cbH264PictureType.Name = "cbH264PictureType";
+            this.cbH264PictureType.Size = new System.Drawing.Size(121, 21);
+            this.cbH264PictureType.TabIndex = 12;
+            // 
+            // label360
+            // 
+            this.label360.AutoSize = true;
+            this.label360.Location = new System.Drawing.Point(6, 51);
+            this.label360.Name = "label360";
+            this.label360.Size = new System.Drawing.Size(63, 13);
+            this.label360.TabIndex = 11;
+            this.label360.Text = "Picture type";
+            // 
+            // label347
+            // 
+            this.label347.AutoSize = true;
+            this.label347.Location = new System.Drawing.Point(7, 117);
+            this.label347.Name = "label347";
+            this.label347.Size = new System.Drawing.Size(46, 13);
+            this.label347.TabIndex = 10;
+            this.label347.Text = "P period";
+            // 
+            // edH264P
+            // 
+            this.edH264P.Location = new System.Drawing.Point(94, 114);
+            this.edH264P.Name = "edH264P";
+            this.edH264P.Size = new System.Drawing.Size(121, 20);
+            this.edH264P.TabIndex = 9;
+            this.edH264P.Text = "3";
+            this.edH264P.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label348
+            // 
+            this.label348.AutoSize = true;
+            this.label348.Location = new System.Drawing.Point(7, 83);
+            this.label348.Name = "label348";
+            this.label348.Size = new System.Drawing.Size(58, 13);
+            this.label348.TabIndex = 8;
+            this.label348.Text = "IDR period";
+            // 
+            // edH264IDR
+            // 
+            this.edH264IDR.Location = new System.Drawing.Point(94, 80);
+            this.edH264IDR.Name = "edH264IDR";
+            this.edH264IDR.Size = new System.Drawing.Size(121, 20);
+            this.edH264IDR.TabIndex = 7;
+            this.edH264IDR.Text = "15";
+            this.edH264IDR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label349
+            // 
+            this.label349.AutoSize = true;
+            this.label349.Location = new System.Drawing.Point(6, 19);
+            this.label349.Name = "label349";
+            this.label349.Size = new System.Drawing.Size(70, 13);
+            this.label349.TabIndex = 4;
+            this.label349.Text = "MB encoding";
+            // 
+            // cbH264MBEncoding
+            // 
+            this.cbH264MBEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbH264MBEncoding.FormattingEnabled = true;
+            this.cbH264MBEncoding.Items.AddRange(new object[] {
+            "CAVLC",
+            "CABAC"});
+            this.cbH264MBEncoding.Location = new System.Drawing.Point(94, 16);
+            this.cbH264MBEncoding.Name = "cbH264MBEncoding";
+            this.cbH264MBEncoding.Size = new System.Drawing.Size(121, 21);
+            this.cbH264MBEncoding.TabIndex = 3;
+            // 
+            // groupBox29
+            // 
+            this.groupBox29.Controls.Add(this.cbH264GOP);
+            this.groupBox29.Controls.Add(this.cbH264AutoBitrate);
+            this.groupBox29.Controls.Add(this.label350);
+            this.groupBox29.Controls.Add(this.edH264Bitrate);
+            this.groupBox29.Controls.Add(this.label351);
+            this.groupBox29.Controls.Add(this.cbH264RateControl);
+            this.groupBox29.Location = new System.Drawing.Point(5, 109);
+            this.groupBox29.Name = "groupBox29";
+            this.groupBox29.Size = new System.Drawing.Size(223, 98);
+            this.groupBox29.TabIndex = 5;
+            this.groupBox29.TabStop = false;
+            this.groupBox29.Text = "Bitrate";
+            // 
+            // cbH264GOP
+            // 
+            this.cbH264GOP.AutoSize = true;
+            this.cbH264GOP.Location = new System.Drawing.Point(166, 78);
+            this.cbH264GOP.Name = "cbH264GOP";
+            this.cbH264GOP.Size = new System.Drawing.Size(49, 17);
+            this.cbH264GOP.TabIndex = 12;
+            this.cbH264GOP.Text = "GOP";
+            this.cbH264GOP.UseVisualStyleBackColor = true;
+            // 
+            // cbH264AutoBitrate
+            // 
+            this.cbH264AutoBitrate.AutoSize = true;
+            this.cbH264AutoBitrate.Location = new System.Drawing.Point(10, 78);
+            this.cbH264AutoBitrate.Name = "cbH264AutoBitrate";
+            this.cbH264AutoBitrate.Size = new System.Drawing.Size(127, 17);
+            this.cbH264AutoBitrate.TabIndex = 7;
+            this.cbH264AutoBitrate.Text = "Auto configure bitrate";
+            this.cbH264AutoBitrate.UseVisualStyleBackColor = true;
+            // 
+            // label350
+            // 
+            this.label350.AutoSize = true;
+            this.label350.Location = new System.Drawing.Point(6, 53);
+            this.label350.Name = "label350";
+            this.label350.Size = new System.Drawing.Size(69, 13);
+            this.label350.TabIndex = 6;
+            this.label350.Text = "Bitrate (kbps)";
+            // 
+            // edH264Bitrate
+            // 
+            this.edH264Bitrate.Location = new System.Drawing.Point(94, 52);
+            this.edH264Bitrate.Name = "edH264Bitrate";
+            this.edH264Bitrate.Size = new System.Drawing.Size(121, 20);
+            this.edH264Bitrate.TabIndex = 5;
+            this.edH264Bitrate.Text = "2000";
+            this.edH264Bitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label351
+            // 
+            this.label351.AutoSize = true;
+            this.label351.Location = new System.Drawing.Point(6, 21);
+            this.label351.Name = "label351";
+            this.label351.Size = new System.Drawing.Size(65, 13);
+            this.label351.TabIndex = 4;
+            this.label351.Text = "Rate ñontrol";
+            // 
+            // cbH264RateControl
+            // 
+            this.cbH264RateControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbH264RateControl.FormattingEnabled = true;
+            this.cbH264RateControl.Items.AddRange(new object[] {
+            "CBR",
+            "VBR"});
+            this.cbH264RateControl.Location = new System.Drawing.Point(94, 19);
+            this.cbH264RateControl.Name = "cbH264RateControl";
+            this.cbH264RateControl.Size = new System.Drawing.Size(121, 21);
+            this.cbH264RateControl.TabIndex = 3;
+            // 
+            // groupBox46
+            // 
+            this.groupBox46.Controls.Add(this.cbH264TargetUsage);
+            this.groupBox46.Controls.Add(this.label359);
+            this.groupBox46.Controls.Add(this.label352);
+            this.groupBox46.Controls.Add(this.label353);
+            this.groupBox46.Controls.Add(this.cbH264Level);
+            this.groupBox46.Controls.Add(this.cbH264Profile);
+            this.groupBox46.Location = new System.Drawing.Point(5, 6);
+            this.groupBox46.Name = "groupBox46";
+            this.groupBox46.Size = new System.Drawing.Size(223, 97);
+            this.groupBox46.TabIndex = 4;
+            this.groupBox46.TabStop = false;
+            this.groupBox46.Text = "Profile settings";
+            // 
+            // cbH264TargetUsage
+            // 
+            this.cbH264TargetUsage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbH264TargetUsage.FormattingEnabled = true;
+            this.cbH264TargetUsage.Items.AddRange(new object[] {
+            "Auto",
+            "Best quality",
+            "Balanced",
+            "Best speed"});
+            this.cbH264TargetUsage.Location = new System.Drawing.Point(94, 73);
+            this.cbH264TargetUsage.Name = "cbH264TargetUsage";
+            this.cbH264TargetUsage.Size = new System.Drawing.Size(121, 21);
+            this.cbH264TargetUsage.TabIndex = 5;
+            // 
+            // label359
+            // 
+            this.label359.AutoSize = true;
+            this.label359.Location = new System.Drawing.Point(7, 76);
+            this.label359.Name = "label359";
+            this.label359.Size = new System.Drawing.Size(70, 13);
+            this.label359.TabIndex = 4;
+            this.label359.Text = "Target usage";
+            // 
+            // label352
+            // 
+            this.label352.AutoSize = true;
+            this.label352.Location = new System.Drawing.Point(7, 49);
+            this.label352.Name = "label352";
+            this.label352.Size = new System.Drawing.Size(33, 13);
+            this.label352.TabIndex = 3;
+            this.label352.Text = "Level";
+            // 
+            // label353
+            // 
+            this.label353.AutoSize = true;
+            this.label353.Location = new System.Drawing.Point(7, 22);
+            this.label353.Name = "label353";
+            this.label353.Size = new System.Drawing.Size(36, 13);
+            this.label353.TabIndex = 2;
+            this.label353.Text = "Profile";
+            // 
+            // cbH264Level
+            // 
+            this.cbH264Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbH264Level.FormattingEnabled = true;
+            this.cbH264Level.Items.AddRange(new object[] {
+            "Auto",
+            "1.0",
+            "1.1",
+            "1.2",
+            "1.3",
+            "2.0",
+            "2.1",
+            "2.2",
+            "3.0",
+            "3.1",
+            "3.2",
+            "4.0",
+            "4.1",
+            "4.2",
+            "5.0",
+            "5.1"});
+            this.cbH264Level.Location = new System.Drawing.Point(94, 46);
+            this.cbH264Level.Name = "cbH264Level";
+            this.cbH264Level.Size = new System.Drawing.Size(121, 21);
+            this.cbH264Level.TabIndex = 1;
+            // 
+            // cbH264Profile
+            // 
+            this.cbH264Profile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbH264Profile.FormattingEnabled = true;
+            this.cbH264Profile.Items.AddRange(new object[] {
+            "Auto",
+            "Baseline",
+            "Main",
+            "High",
+            "High 10",
+            "High 422"});
+            this.cbH264Profile.Location = new System.Drawing.Point(94, 19);
+            this.cbH264Profile.Name = "cbH264Profile";
+            this.cbH264Profile.Size = new System.Drawing.Size(121, 21);
+            this.cbH264Profile.TabIndex = 0;
+            // 
+            // tpNVENC
+            // 
+            this.tpNVENC.Controls.Add(this.lbNVENCStatus);
+            this.tpNVENC.Controls.Add(this.label316);
+            this.tpNVENC.Controls.Add(this.groupBox14);
+            this.tpNVENC.Controls.Add(this.groupBox49);
+            this.tpNVENC.Controls.Add(this.groupBox50);
+            this.tpNVENC.Location = new System.Drawing.Point(4, 22);
+            this.tpNVENC.Name = "tpNVENC";
+            this.tpNVENC.Padding = new System.Windows.Forms.Padding(3);
+            this.tpNVENC.Size = new System.Drawing.Size(278, 356);
+            this.tpNVENC.TabIndex = 3;
+            this.tpNVENC.Text = "Video (v10 NVENC)";
+            this.tpNVENC.UseVisualStyleBackColor = true;
+            // 
+            // lbNVENCStatus
+            // 
+            this.lbNVENCStatus.AutoSize = true;
+            this.lbNVENCStatus.Location = new System.Drawing.Point(55, 11);
+            this.lbNVENCStatus.Name = "lbNVENCStatus";
+            this.lbNVENCStatus.Size = new System.Drawing.Size(69, 13);
+            this.lbNVENCStatus.TabIndex = 11;
+            this.lbNVENCStatus.Tag = "0";
+            this.lbNVENCStatus.Text = "Not available";
+            // 
+            // label316
+            // 
+            this.label316.AutoSize = true;
+            this.label316.Location = new System.Drawing.Point(9, 11);
+            this.label316.Name = "label316";
+            this.label316.Size = new System.Drawing.Size(40, 13);
+            this.label316.TabIndex = 10;
+            this.label316.Text = "Status:";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.label506);
+            this.groupBox14.Controls.Add(this.edNVENCBFrames);
+            this.groupBox14.Controls.Add(this.label507);
+            this.groupBox14.Controls.Add(this.edNVENCGOP);
+            this.groupBox14.Location = new System.Drawing.Point(8, 249);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(264, 79);
+            this.groupBox14.TabIndex = 9;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Advanced";
+            // 
+            // label506
+            // 
+            this.label506.AutoSize = true;
+            this.label506.Location = new System.Drawing.Point(9, 48);
+            this.label506.Name = "label506";
+            this.label506.Size = new System.Drawing.Size(48, 13);
+            this.label506.TabIndex = 10;
+            this.label506.Text = "B-frames";
+            // 
+            // edNVENCBFrames
+            // 
+            this.edNVENCBFrames.Location = new System.Drawing.Point(96, 45);
+            this.edNVENCBFrames.Name = "edNVENCBFrames";
+            this.edNVENCBFrames.Size = new System.Drawing.Size(121, 20);
+            this.edNVENCBFrames.TabIndex = 9;
+            this.edNVENCBFrames.Text = "0";
+            this.edNVENCBFrames.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label507
+            // 
+            this.label507.AutoSize = true;
+            this.label507.Location = new System.Drawing.Point(9, 22);
+            this.label507.Name = "label507";
+            this.label507.Size = new System.Drawing.Size(30, 13);
+            this.label507.TabIndex = 8;
+            this.label507.Text = "GOP";
+            // 
+            // edNVENCGOP
+            // 
+            this.edNVENCGOP.Location = new System.Drawing.Point(96, 19);
+            this.edNVENCGOP.Name = "edNVENCGOP";
+            this.edNVENCGOP.Size = new System.Drawing.Size(121, 20);
+            this.edNVENCGOP.TabIndex = 7;
+            this.edNVENCGOP.Text = "32";
+            this.edNVENCGOP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // groupBox49
+            // 
+            this.groupBox49.Controls.Add(this.label25);
+            this.groupBox49.Controls.Add(this.edNVENCQP);
+            this.groupBox49.Controls.Add(this.label508);
+            this.groupBox49.Controls.Add(this.edNVENCBitrate);
+            this.groupBox49.Controls.Add(this.label509);
+            this.groupBox49.Controls.Add(this.cbNVENCRateControl);
+            this.groupBox49.Location = new System.Drawing.Point(8, 137);
+            this.groupBox49.Name = "groupBox49";
+            this.groupBox49.Size = new System.Drawing.Size(264, 106);
+            this.groupBox49.TabIndex = 8;
+            this.groupBox49.TabStop = false;
+            this.groupBox49.Text = "Bitrate";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(6, 73);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(22, 13);
+            this.label25.TabIndex = 8;
+            this.label25.Text = "QP";
+            // 
+            // edNVENCQP
+            // 
+            this.edNVENCQP.Location = new System.Drawing.Point(94, 72);
+            this.edNVENCQP.Name = "edNVENCQP";
+            this.edNVENCQP.Size = new System.Drawing.Size(121, 20);
+            this.edNVENCQP.TabIndex = 7;
+            this.edNVENCQP.Text = "28";
+            this.edNVENCQP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label508
+            // 
+            this.label508.AutoSize = true;
+            this.label508.Location = new System.Drawing.Point(6, 47);
+            this.label508.Name = "label508";
+            this.label508.Size = new System.Drawing.Size(69, 13);
+            this.label508.TabIndex = 6;
+            this.label508.Text = "Bitrate (kbps)";
+            // 
+            // edNVENCBitrate
+            // 
+            this.edNVENCBitrate.Location = new System.Drawing.Point(94, 46);
+            this.edNVENCBitrate.Name = "edNVENCBitrate";
+            this.edNVENCBitrate.Size = new System.Drawing.Size(121, 20);
+            this.edNVENCBitrate.TabIndex = 5;
+            this.edNVENCBitrate.Text = "2000";
+            this.edNVENCBitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label509
+            // 
+            this.label509.AutoSize = true;
+            this.label509.Location = new System.Drawing.Point(6, 21);
+            this.label509.Name = "label509";
+            this.label509.Size = new System.Drawing.Size(65, 13);
+            this.label509.TabIndex = 4;
+            this.label509.Text = "Rate ñontrol";
+            // 
+            // cbNVENCRateControl
+            // 
+            this.cbNVENCRateControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNVENCRateControl.FormattingEnabled = true;
+            this.cbNVENCRateControl.Items.AddRange(new object[] {
+            "CONST QP",
+            "VBR",
+            "CBR"});
+            this.cbNVENCRateControl.Location = new System.Drawing.Point(94, 19);
+            this.cbNVENCRateControl.Name = "cbNVENCRateControl";
+            this.cbNVENCRateControl.Size = new System.Drawing.Size(121, 21);
+            this.cbNVENCRateControl.TabIndex = 3;
+            // 
+            // groupBox50
+            // 
+            this.groupBox50.Controls.Add(this.label511);
+            this.groupBox50.Controls.Add(this.label512);
+            this.groupBox50.Controls.Add(this.cbNVENCLevel);
+            this.groupBox50.Controls.Add(this.cbNVENCProfile);
+            this.groupBox50.Location = new System.Drawing.Point(8, 49);
+            this.groupBox50.Name = "groupBox50";
+            this.groupBox50.Size = new System.Drawing.Size(264, 82);
+            this.groupBox50.TabIndex = 7;
+            this.groupBox50.TabStop = false;
+            this.groupBox50.Text = "Profile settings";
+            // 
+            // label511
+            // 
+            this.label511.AutoSize = true;
+            this.label511.Location = new System.Drawing.Point(7, 49);
+            this.label511.Name = "label511";
+            this.label511.Size = new System.Drawing.Size(33, 13);
+            this.label511.TabIndex = 3;
+            this.label511.Text = "Level";
+            // 
+            // label512
+            // 
+            this.label512.AutoSize = true;
+            this.label512.Location = new System.Drawing.Point(7, 22);
+            this.label512.Name = "label512";
+            this.label512.Size = new System.Drawing.Size(36, 13);
+            this.label512.TabIndex = 2;
+            this.label512.Text = "Profile";
+            // 
+            // cbNVENCLevel
+            // 
+            this.cbNVENCLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNVENCLevel.FormattingEnabled = true;
+            this.cbNVENCLevel.Items.AddRange(new object[] {
+            "Auto",
+            "1.0",
+            "1.1",
+            "1.2",
+            "1.3",
+            "2.0",
+            "2.1",
+            "2.2",
+            "3.0",
+            "3.1",
+            "3.2",
+            "4.0",
+            "4.1",
+            "4.2",
+            "5.0",
+            "5.1"});
+            this.cbNVENCLevel.Location = new System.Drawing.Point(94, 46);
+            this.cbNVENCLevel.Name = "cbNVENCLevel";
+            this.cbNVENCLevel.Size = new System.Drawing.Size(121, 21);
+            this.cbNVENCLevel.TabIndex = 1;
+            // 
+            // cbNVENCProfile
+            // 
+            this.cbNVENCProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNVENCProfile.FormattingEnabled = true;
+            this.cbNVENCProfile.Items.AddRange(new object[] {
+            "Auto",
+            "Baseline",
+            "Main",
+            "High",
+            "High 444",
+            "Progressive High",
+            "Constrained High"});
+            this.cbNVENCProfile.Location = new System.Drawing.Point(94, 19);
+            this.cbNVENCProfile.Name = "cbNVENCProfile";
+            this.cbNVENCProfile.Size = new System.Drawing.Size(121, 21);
+            this.cbNVENCProfile.TabIndex = 0;
+            // 
+            // tabPage148
+            // 
+            this.tabPage148.Controls.Add(this.edMFKeyFrameSpacing);
+            this.tabPage148.Controls.Add(this.label528);
+            this.tabPage148.Controls.Add(this.label525);
+            this.tabPage148.Controls.Add(this.edMFBFramesCount);
+            this.tabPage148.Controls.Add(this.label522);
+            this.tabPage148.Controls.Add(this.cbMFLowLatency);
+            this.tabPage148.Controls.Add(this.cbMFCABAC);
+            this.tabPage148.Controls.Add(this.groupBox52);
+            this.tabPage148.Controls.Add(this.groupBox53);
+            this.tabPage148.Location = new System.Drawing.Point(4, 22);
+            this.tabPage148.Name = "tabPage148";
+            this.tabPage148.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage148.Size = new System.Drawing.Size(278, 356);
+            this.tabPage148.TabIndex = 6;
+            this.tabPage148.Text = "Video (v11)";
+            this.tabPage148.UseVisualStyleBackColor = true;
+            // 
+            // edMFKeyFrameSpacing
+            // 
+            this.edMFKeyFrameSpacing.Location = new System.Drawing.Point(110, 277);
+            this.edMFKeyFrameSpacing.Name = "edMFKeyFrameSpacing";
+            this.edMFKeyFrameSpacing.Size = new System.Drawing.Size(111, 20);
+            this.edMFKeyFrameSpacing.TabIndex = 17;
+            this.edMFKeyFrameSpacing.Text = "50";
+            this.edMFKeyFrameSpacing.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label528
+            // 
+            this.label528.AutoSize = true;
+            this.label528.Location = new System.Drawing.Point(13, 280);
+            this.label528.Name = "label528";
+            this.label528.Size = new System.Drawing.Size(94, 13);
+            this.label528.TabIndex = 16;
+            this.label528.Text = "Key-frame spacing";
+            // 
+            // label525
+            // 
+            this.label525.AutoSize = true;
+            this.label525.Location = new System.Drawing.Point(225, 254);
+            this.label525.Name = "label525";
+            this.label525.Size = new System.Drawing.Size(34, 13);
+            this.label525.TabIndex = 15;
+            this.label525.Text = "(0 - 2)";
+            // 
+            // edMFBFramesCount
+            // 
+            this.edMFBFramesCount.Location = new System.Drawing.Point(110, 251);
+            this.edMFBFramesCount.Name = "edMFBFramesCount";
+            this.edMFBFramesCount.Size = new System.Drawing.Size(111, 20);
+            this.edMFBFramesCount.TabIndex = 14;
+            this.edMFBFramesCount.Text = "0";
+            this.edMFBFramesCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label522
+            // 
+            this.label522.AutoSize = true;
+            this.label522.Location = new System.Drawing.Point(13, 254);
+            this.label522.Name = "label522";
+            this.label522.Size = new System.Drawing.Size(78, 13);
+            this.label522.TabIndex = 13;
+            this.label522.Text = "B-frames count";
+            // 
+            // cbMFLowLatency
+            // 
+            this.cbMFLowLatency.AutoSize = true;
+            this.cbMFLowLatency.Location = new System.Drawing.Point(110, 232);
+            this.cbMFLowLatency.Name = "cbMFLowLatency";
+            this.cbMFLowLatency.Size = new System.Drawing.Size(83, 17);
+            this.cbMFLowLatency.TabIndex = 12;
+            this.cbMFLowLatency.Text = "Low latency";
+            this.cbMFLowLatency.UseVisualStyleBackColor = true;
+            // 
+            // cbMFCABAC
+            // 
+            this.cbMFCABAC.AutoSize = true;
+            this.cbMFCABAC.Location = new System.Drawing.Point(16, 232);
+            this.cbMFCABAC.Name = "cbMFCABAC";
+            this.cbMFCABAC.Size = new System.Drawing.Size(61, 17);
+            this.cbMFCABAC.TabIndex = 11;
+            this.cbMFCABAC.Text = "CABAC";
+            this.cbMFCABAC.UseVisualStyleBackColor = true;
+            // 
+            // groupBox52
+            // 
+            this.groupBox52.Controls.Add(this.label521);
+            this.groupBox52.Controls.Add(this.edMFQuality);
+            this.groupBox52.Controls.Add(this.label520);
+            this.groupBox52.Controls.Add(this.edMFMaxBitrate);
+            this.groupBox52.Controls.Add(this.label523);
+            this.groupBox52.Controls.Add(this.edMFBitrate);
+            this.groupBox52.Controls.Add(this.label524);
+            this.groupBox52.Controls.Add(this.cbMFRateControl);
+            this.groupBox52.Location = new System.Drawing.Point(6, 94);
+            this.groupBox52.Name = "groupBox52";
+            this.groupBox52.Size = new System.Drawing.Size(259, 132);
+            this.groupBox52.TabIndex = 8;
+            this.groupBox52.TabStop = false;
+            this.groupBox52.Text = "Bitrate / quality";
+            // 
+            // label521
+            // 
+            this.label521.AutoSize = true;
+            this.label521.Location = new System.Drawing.Point(7, 99);
+            this.label521.Name = "label521";
+            this.label521.Size = new System.Drawing.Size(39, 13);
+            this.label521.TabIndex = 10;
+            this.label521.Text = "Quality";
+            // 
+            // edMFQuality
+            // 
+            this.edMFQuality.Location = new System.Drawing.Point(104, 98);
+            this.edMFQuality.Name = "edMFQuality";
+            this.edMFQuality.Size = new System.Drawing.Size(111, 20);
+            this.edMFQuality.TabIndex = 9;
+            this.edMFQuality.Text = "75";
+            this.edMFQuality.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label520
+            // 
+            this.label520.AutoSize = true;
+            this.label520.Location = new System.Drawing.Point(7, 73);
+            this.label520.Name = "label520";
+            this.label520.Size = new System.Drawing.Size(91, 13);
+            this.label520.TabIndex = 8;
+            this.label520.Text = "Max bitrate (kbps)";
+            // 
+            // edMFMaxBitrate
+            // 
+            this.edMFMaxBitrate.Location = new System.Drawing.Point(104, 72);
+            this.edMFMaxBitrate.Name = "edMFMaxBitrate";
+            this.edMFMaxBitrate.Size = new System.Drawing.Size(111, 20);
+            this.edMFMaxBitrate.TabIndex = 7;
+            this.edMFMaxBitrate.Text = "5000";
+            this.edMFMaxBitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label523
+            // 
+            this.label523.AutoSize = true;
+            this.label523.Location = new System.Drawing.Point(6, 47);
+            this.label523.Name = "label523";
+            this.label523.Size = new System.Drawing.Size(69, 13);
+            this.label523.TabIndex = 6;
+            this.label523.Text = "Bitrate (kbps)";
+            // 
+            // edMFBitrate
+            // 
+            this.edMFBitrate.Location = new System.Drawing.Point(104, 46);
+            this.edMFBitrate.Name = "edMFBitrate";
+            this.edMFBitrate.Size = new System.Drawing.Size(111, 20);
+            this.edMFBitrate.TabIndex = 5;
+            this.edMFBitrate.Text = "2000";
+            this.edMFBitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label524
+            // 
+            this.label524.AutoSize = true;
+            this.label524.Location = new System.Drawing.Point(6, 21);
+            this.label524.Name = "label524";
+            this.label524.Size = new System.Drawing.Size(65, 13);
+            this.label524.TabIndex = 4;
+            this.label524.Text = "Rate ñontrol";
+            // 
+            // cbMFRateControl
+            // 
+            this.cbMFRateControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMFRateControl.FormattingEnabled = true;
+            this.cbMFRateControl.Items.AddRange(new object[] {
+            "CBR",
+            "Peak Constrained VBR",
+            "Unconstrained VBR",
+            "Quality",
+            "Low Delay VBR"});
+            this.cbMFRateControl.Location = new System.Drawing.Point(104, 19);
+            this.cbMFRateControl.Name = "cbMFRateControl";
+            this.cbMFRateControl.Size = new System.Drawing.Size(111, 21);
+            this.cbMFRateControl.TabIndex = 3;
+            // 
+            // groupBox53
+            // 
+            this.groupBox53.Controls.Add(this.label526);
+            this.groupBox53.Controls.Add(this.label527);
+            this.groupBox53.Controls.Add(this.cbMFLevel);
+            this.groupBox53.Controls.Add(this.cbMFProfile);
+            this.groupBox53.Location = new System.Drawing.Point(6, 6);
+            this.groupBox53.Name = "groupBox53";
+            this.groupBox53.Size = new System.Drawing.Size(259, 82);
+            this.groupBox53.TabIndex = 7;
+            this.groupBox53.TabStop = false;
+            this.groupBox53.Text = "Profile settings";
+            // 
+            // label526
+            // 
+            this.label526.AutoSize = true;
+            this.label526.Location = new System.Drawing.Point(7, 49);
+            this.label526.Name = "label526";
+            this.label526.Size = new System.Drawing.Size(33, 13);
+            this.label526.TabIndex = 3;
+            this.label526.Text = "Level";
+            // 
+            // label527
+            // 
+            this.label527.AutoSize = true;
+            this.label527.Location = new System.Drawing.Point(7, 22);
+            this.label527.Name = "label527";
+            this.label527.Size = new System.Drawing.Size(36, 13);
+            this.label527.TabIndex = 2;
+            this.label527.Text = "Profile";
+            // 
+            // cbMFLevel
+            // 
+            this.cbMFLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMFLevel.FormattingEnabled = true;
+            this.cbMFLevel.Items.AddRange(new object[] {
+            "1.0",
+            "1.1",
+            "1.2",
+            "1.3",
+            "2.0",
+            "2.1",
+            "2.2",
+            "3.0",
+            "3.1",
+            "3.2",
+            "4.0",
+            "4.1",
+            "4.2",
+            "5.0",
+            "5.1",
+            "5.2"});
+            this.cbMFLevel.Location = new System.Drawing.Point(104, 46);
+            this.cbMFLevel.Name = "cbMFLevel";
+            this.cbMFLevel.Size = new System.Drawing.Size(111, 21);
+            this.cbMFLevel.TabIndex = 1;
+            // 
+            // cbMFProfile
+            // 
+            this.cbMFProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMFProfile.FormattingEnabled = true;
+            this.cbMFProfile.Items.AddRange(new object[] {
+            "Base",
+            "Main",
+            "High"});
+            this.cbMFProfile.Location = new System.Drawing.Point(104, 19);
+            this.cbMFProfile.Name = "cbMFProfile";
+            this.cbMFProfile.Size = new System.Drawing.Size(111, 21);
+            this.cbMFProfile.TabIndex = 0;
+            // 
+            // tabPage90
+            // 
+            this.tabPage90.Controls.Add(this.label354);
+            this.tabPage90.Controls.Add(this.cbAACOutput);
+            this.tabPage90.Controls.Add(this.label355);
+            this.tabPage90.Controls.Add(this.cbAACBitrate);
+            this.tabPage90.Controls.Add(this.label356);
+            this.tabPage90.Controls.Add(this.cbAACObjectType);
+            this.tabPage90.Controls.Add(this.label357);
+            this.tabPage90.Controls.Add(this.cbAACVersion);
+            this.tabPage90.Controls.Add(this.label358);
+            this.tabPage90.Location = new System.Drawing.Point(4, 22);
+            this.tabPage90.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage90.Name = "tabPage90";
+            this.tabPage90.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage90.Size = new System.Drawing.Size(278, 356);
+            this.tabPage90.TabIndex = 1;
+            this.tabPage90.Text = "Audio";
+            this.tabPage90.UseVisualStyleBackColor = true;
+            // 
+            // label354
+            // 
+            this.label354.AutoSize = true;
+            this.label354.Location = new System.Drawing.Point(230, 94);
+            this.label354.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label354.Name = "label354";
+            this.label354.Size = new System.Drawing.Size(31, 13);
+            this.label354.TabIndex = 8;
+            this.label354.Text = "Kbps";
+            // 
+            // cbAACOutput
+            // 
+            this.cbAACOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAACOutput.FormattingEnabled = true;
+            this.cbAACOutput.Items.AddRange(new object[] {
+            "RAW",
+            "ADTS"});
+            this.cbAACOutput.Location = new System.Drawing.Point(105, 130);
+            this.cbAACOutput.Margin = new System.Windows.Forms.Padding(2);
+            this.cbAACOutput.Name = "cbAACOutput";
+            this.cbAACOutput.Size = new System.Drawing.Size(156, 21);
+            this.cbAACOutput.TabIndex = 7;
+            // 
+            // label355
+            // 
+            this.label355.AutoSize = true;
+            this.label355.Location = new System.Drawing.Point(12, 132);
+            this.label355.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label355.Name = "label355";
+            this.label355.Size = new System.Drawing.Size(39, 13);
+            this.label355.TabIndex = 6;
+            this.label355.Text = "Output";
+            // 
+            // cbAACBitrate
+            // 
+            this.cbAACBitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAACBitrate.FormattingEnabled = true;
+            this.cbAACBitrate.Items.AddRange(new object[] {
+            "12",
+            "16",
+            "20",
+            "24",
+            "32",
+            "40",
+            "48",
+            "56",
+            "64",
+            "72",
+            "80",
+            "88",
+            "96",
+            "104",
+            "112",
+            "120",
+            "128",
+            "140",
+            "160",
+            "192",
+            "224",
+            "256"});
+            this.cbAACBitrate.Location = new System.Drawing.Point(105, 92);
+            this.cbAACBitrate.Margin = new System.Windows.Forms.Padding(2);
+            this.cbAACBitrate.Name = "cbAACBitrate";
+            this.cbAACBitrate.Size = new System.Drawing.Size(121, 21);
+            this.cbAACBitrate.TabIndex = 5;
+            // 
+            // label356
+            // 
+            this.label356.AutoSize = true;
+            this.label356.Location = new System.Drawing.Point(12, 94);
+            this.label356.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label356.Name = "label356";
+            this.label356.Size = new System.Drawing.Size(37, 13);
+            this.label356.TabIndex = 4;
+            this.label356.Text = "Bitrate";
+            // 
+            // cbAACObjectType
+            // 
+            this.cbAACObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAACObjectType.FormattingEnabled = true;
+            this.cbAACObjectType.Items.AddRange(new object[] {
+            "Main",
+            "Low complexity",
+            "Scalable Sampling Rate",
+            "Long Term Predictor"});
+            this.cbAACObjectType.Location = new System.Drawing.Point(105, 56);
+            this.cbAACObjectType.Margin = new System.Windows.Forms.Padding(2);
+            this.cbAACObjectType.Name = "cbAACObjectType";
+            this.cbAACObjectType.Size = new System.Drawing.Size(156, 21);
+            this.cbAACObjectType.TabIndex = 3;
+            // 
+            // label357
+            // 
+            this.label357.AutoSize = true;
+            this.label357.Location = new System.Drawing.Point(12, 58);
+            this.label357.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label357.Name = "label357";
+            this.label357.Size = new System.Drawing.Size(61, 13);
+            this.label357.TabIndex = 2;
+            this.label357.Text = "Object type";
+            // 
+            // cbAACVersion
+            // 
+            this.cbAACVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAACVersion.FormattingEnabled = true;
+            this.cbAACVersion.Items.AddRange(new object[] {
+            "MPEG-4",
+            "MPEG-2"});
+            this.cbAACVersion.Location = new System.Drawing.Point(105, 21);
+            this.cbAACVersion.Margin = new System.Windows.Forms.Padding(2);
+            this.cbAACVersion.Name = "cbAACVersion";
+            this.cbAACVersion.Size = new System.Drawing.Size(156, 21);
+            this.cbAACVersion.TabIndex = 1;
+            // 
+            // label358
+            // 
+            this.label358.AutoSize = true;
+            this.label358.Location = new System.Drawing.Point(12, 24);
+            this.label358.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label358.Name = "label358";
+            this.label358.Size = new System.Drawing.Size(75, 13);
+            this.label358.TabIndex = 0;
+            this.label358.Text = "MPEG version";
+            // 
+            // tabPage94
+            // 
+            this.tabPage94.Controls.Add(this.cbMP4UseSpecialSyncMode);
+            this.tabPage94.Controls.Add(this.cbMP4CustomAVSettings);
+            this.tabPage94.Controls.Add(this.cbMP4TimeAdjust);
+            this.tabPage94.Controls.Add(this.cbMP4TimeOverride);
+            this.tabPage94.Location = new System.Drawing.Point(4, 22);
+            this.tabPage94.Name = "tabPage94";
+            this.tabPage94.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage94.Size = new System.Drawing.Size(278, 356);
+            this.tabPage94.TabIndex = 4;
+            this.tabPage94.Text = "MP4 (v10)";
+            this.tabPage94.UseVisualStyleBackColor = true;
+            // 
+            // cbMP4UseSpecialSyncMode
+            // 
+            this.cbMP4UseSpecialSyncMode.AutoSize = true;
+            this.cbMP4UseSpecialSyncMode.Location = new System.Drawing.Point(12, 134);
+            this.cbMP4UseSpecialSyncMode.Name = "cbMP4UseSpecialSyncMode";
+            this.cbMP4UseSpecialSyncMode.Size = new System.Drawing.Size(135, 17);
+            this.cbMP4UseSpecialSyncMode.TabIndex = 12;
+            this.cbMP4UseSpecialSyncMode.Text = "Use special sync mode";
+            this.cbMP4UseSpecialSyncMode.UseVisualStyleBackColor = true;
+            // 
+            // cbMP4CustomAVSettings
+            // 
+            this.cbMP4CustomAVSettings.AutoSize = true;
+            this.cbMP4CustomAVSettings.Checked = true;
+            this.cbMP4CustomAVSettings.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMP4CustomAVSettings.Location = new System.Drawing.Point(12, 18);
+            this.cbMP4CustomAVSettings.Name = "cbMP4CustomAVSettings";
+            this.cbMP4CustomAVSettings.Size = new System.Drawing.Size(177, 17);
+            this.cbMP4CustomAVSettings.TabIndex = 2;
+            this.cbMP4CustomAVSettings.Text = "Enable custom AV sync settings";
+            this.cbMP4CustomAVSettings.UseVisualStyleBackColor = true;
+            // 
+            // cbMP4TimeAdjust
+            // 
+            this.cbMP4TimeAdjust.AutoSize = true;
+            this.cbMP4TimeAdjust.Location = new System.Drawing.Point(26, 72);
+            this.cbMP4TimeAdjust.Name = "cbMP4TimeAdjust";
+            this.cbMP4TimeAdjust.Size = new System.Drawing.Size(112, 17);
+            this.cbMP4TimeAdjust.TabIndex = 1;
+            this.cbMP4TimeAdjust.Text = "Enable time adjust";
+            this.cbMP4TimeAdjust.UseVisualStyleBackColor = true;
+            // 
+            // cbMP4TimeOverride
+            // 
+            this.cbMP4TimeOverride.AutoSize = true;
+            this.cbMP4TimeOverride.Checked = true;
+            this.cbMP4TimeOverride.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbMP4TimeOverride.Location = new System.Drawing.Point(26, 49);
+            this.cbMP4TimeOverride.Name = "cbMP4TimeOverride";
+            this.cbMP4TimeOverride.Size = new System.Drawing.Size(122, 17);
+            this.cbMP4TimeOverride.TabIndex = 0;
+            this.cbMP4TimeOverride.Text = "Enable time override";
+            this.cbMP4TimeOverride.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -5716,813 +6826,6 @@ namespace VideoEdit_CS_Demo
             this.label467.Size = new System.Drawing.Size(36, 13);
             this.label467.TabIndex = 9;
             this.label467.Text = "Profile";
-            // 
-            // tabPage48
-            // 
-            this.tabPage48.Controls.Add(this.tabControl24);
-            this.tabPage48.Location = new System.Drawing.Point(4, 22);
-            this.tabPage48.Name = "tabPage48";
-            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage48.Size = new System.Drawing.Size(284, 399);
-            this.tabPage48.TabIndex = 14;
-            this.tabPage48.Text = "MP4 H264 / AAC";
-            this.tabPage48.UseVisualStyleBackColor = true;
-            // 
-            // tabControl24
-            // 
-            this.tabControl24.Controls.Add(this.tabPage55);
-            this.tabControl24.Controls.Add(this.tabPage89);
-            this.tabControl24.Controls.Add(this.tabPage24);
-            this.tabControl24.Controls.Add(this.tabPage90);
-            this.tabControl24.Location = new System.Drawing.Point(-1, 8);
-            this.tabControl24.Margin = new System.Windows.Forms.Padding(2);
-            this.tabControl24.Name = "tabControl24";
-            this.tabControl24.SelectedIndex = 0;
-            this.tabControl24.Size = new System.Drawing.Size(286, 382);
-            this.tabControl24.TabIndex = 6;
-            // 
-            // tabPage55
-            // 
-            this.tabPage55.Controls.Add(this.rbMP4NVENC);
-            this.tabPage55.Controls.Add(this.linkLabel2);
-            this.tabPage55.Controls.Add(this.label492);
-            this.tabPage55.Controls.Add(this.label490);
-            this.tabPage55.Controls.Add(this.rbMP4Modern);
-            this.tabPage55.Controls.Add(this.rbMP4Legacy);
-            this.tabPage55.Controls.Add(this.label380);
-            this.tabPage55.Controls.Add(this.label379);
-            this.tabPage55.Controls.Add(this.label378);
-            this.tabPage55.Controls.Add(this.label377);
-            this.tabPage55.Location = new System.Drawing.Point(4, 22);
-            this.tabPage55.Name = "tabPage55";
-            this.tabPage55.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage55.Size = new System.Drawing.Size(278, 356);
-            this.tabPage55.TabIndex = 2;
-            this.tabPage55.Text = "Main";
-            this.tabPage55.UseVisualStyleBackColor = true;
-            // 
-            // rbMP4NVENC
-            // 
-            this.rbMP4NVENC.AutoSize = true;
-            this.rbMP4NVENC.Location = new System.Drawing.Point(9, 122);
-            this.rbMP4NVENC.Name = "rbMP4NVENC";
-            this.rbMP4NVENC.Size = new System.Drawing.Size(126, 17);
-            this.rbMP4NVENC.TabIndex = 15;
-            this.rbMP4NVENC.Text = "nVidia NVENC (GPU)";
-            this.rbMP4NVENC.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(6, 256);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(59, 13);
-            this.linkLabel2.TabIndex = 14;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Read more";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // label492
-            // 
-            this.label492.AutoSize = true;
-            this.label492.Location = new System.Drawing.Point(6, 229);
-            this.label492.Name = "label492";
-            this.label492.Size = new System.Drawing.Size(184, 13);
-            this.label492.TabIndex = 13;
-            this.label492.Text = "/largeaddressaware option for exe file";
-            // 
-            // label490
-            // 
-            this.label490.AutoSize = true;
-            this.label490.Location = new System.Drawing.Point(6, 207);
-            this.label490.Name = "label490";
-            this.label490.Size = new System.Drawing.Size(189, 13);
-            this.label490.TabIndex = 12;
-            this.label490.Text = "For 2K/4K resolutions you must enable";
-            // 
-            // rbMP4Modern
-            // 
-            this.rbMP4Modern.AutoSize = true;
-            this.rbMP4Modern.Checked = true;
-            this.rbMP4Modern.Location = new System.Drawing.Point(9, 99);
-            this.rbMP4Modern.Name = "rbMP4Modern";
-            this.rbMP4Modern.Size = new System.Drawing.Size(255, 17);
-            this.rbMP4Modern.TabIndex = 11;
-            this.rbMP4Modern.TabStop = true;
-            this.rbMP4Modern.Text = "CPU / QuickSync Modern (Windows 7 and later)";
-            this.rbMP4Modern.UseVisualStyleBackColor = true;
-            // 
-            // rbMP4Legacy
-            // 
-            this.rbMP4Legacy.AutoSize = true;
-            this.rbMP4Legacy.Location = new System.Drawing.Point(9, 76);
-            this.rbMP4Legacy.Name = "rbMP4Legacy";
-            this.rbMP4Legacy.Size = new System.Drawing.Size(262, 17);
-            this.rbMP4Legacy.TabIndex = 10;
-            this.rbMP4Legacy.Text = "CPU / QuickSync Legacy (Windows XP and later)";
-            this.rbMP4Legacy.UseVisualStyleBackColor = true;
-            // 
-            // label380
-            // 
-            this.label380.AutoSize = true;
-            this.label380.Location = new System.Drawing.Point(6, 51);
-            this.label380.Name = "label380";
-            this.label380.Size = new System.Drawing.Size(256, 13);
-            this.label380.TabIndex = 9;
-            this.label380.Text = "on modern CPUs (available for Windows 7 and later).";
-            // 
-            // label379
-            // 
-            this.label379.AutoSize = true;
-            this.label379.Location = new System.Drawing.Point(6, 38);
-            this.label379.Name = "label379";
-            this.label379.Size = new System.Drawing.Size(270, 13);
-            this.label379.TabIndex = 8;
-            this.label379.Text = "second to provide maximal quality with HW acceleration";
-            // 
-            // label378
-            // 
-            this.label378.AutoSize = true;
-            this.label378.Location = new System.Drawing.Point(6, 25);
-            this.label378.Name = "label378";
-            this.label378.Size = new System.Drawing.Size(211, 13);
-            this.label378.TabIndex = 7;
-            this.label378.Text = "first to have compatibility with XP and Vista,";
-            // 
-            // label377
-            // 
-            this.label377.AutoSize = true;
-            this.label377.Location = new System.Drawing.Point(6, 12);
-            this.label377.Name = "label377";
-            this.label377.Size = new System.Drawing.Size(225, 13);
-            this.label377.TabIndex = 6;
-            this.label377.Text = "SDK contains 2 codec packs for MP4 output, ";
-            // 
-            // tabPage89
-            // 
-            this.tabPage89.Controls.Add(this.groupBox18);
-            this.tabPage89.Controls.Add(this.groupBox29);
-            this.tabPage89.Controls.Add(this.groupBox46);
-            this.tabPage89.Location = new System.Drawing.Point(4, 22);
-            this.tabPage89.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage89.Name = "tabPage89";
-            this.tabPage89.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage89.Size = new System.Drawing.Size(278, 356);
-            this.tabPage89.TabIndex = 0;
-            this.tabPage89.Text = "Video (Modern\\Legacy)";
-            this.tabPage89.UseVisualStyleBackColor = true;
-            // 
-            // groupBox18
-            // 
-            this.groupBox18.Controls.Add(this.cbH264PictureType);
-            this.groupBox18.Controls.Add(this.label360);
-            this.groupBox18.Controls.Add(this.label347);
-            this.groupBox18.Controls.Add(this.edH264P);
-            this.groupBox18.Controls.Add(this.label348);
-            this.groupBox18.Controls.Add(this.edH264IDR);
-            this.groupBox18.Controls.Add(this.label349);
-            this.groupBox18.Controls.Add(this.cbH264MBEncoding);
-            this.groupBox18.Location = new System.Drawing.Point(5, 213);
-            this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(223, 142);
-            this.groupBox18.TabIndex = 6;
-            this.groupBox18.TabStop = false;
-            this.groupBox18.Text = "Advanced";
-            // 
-            // cbH264PictureType
-            // 
-            this.cbH264PictureType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264PictureType.FormattingEnabled = true;
-            this.cbH264PictureType.Items.AddRange(new object[] {
-            "Auto",
-            "Frame",
-            "TFF",
-            "BFF"});
-            this.cbH264PictureType.Location = new System.Drawing.Point(94, 48);
-            this.cbH264PictureType.Name = "cbH264PictureType";
-            this.cbH264PictureType.Size = new System.Drawing.Size(121, 21);
-            this.cbH264PictureType.TabIndex = 12;
-            // 
-            // label360
-            // 
-            this.label360.AutoSize = true;
-            this.label360.Location = new System.Drawing.Point(6, 51);
-            this.label360.Name = "label360";
-            this.label360.Size = new System.Drawing.Size(63, 13);
-            this.label360.TabIndex = 11;
-            this.label360.Text = "Picture type";
-            // 
-            // label347
-            // 
-            this.label347.AutoSize = true;
-            this.label347.Location = new System.Drawing.Point(7, 117);
-            this.label347.Name = "label347";
-            this.label347.Size = new System.Drawing.Size(46, 13);
-            this.label347.TabIndex = 10;
-            this.label347.Text = "P period";
-            // 
-            // edH264P
-            // 
-            this.edH264P.Location = new System.Drawing.Point(94, 114);
-            this.edH264P.Name = "edH264P";
-            this.edH264P.Size = new System.Drawing.Size(121, 20);
-            this.edH264P.TabIndex = 9;
-            this.edH264P.Text = "3";
-            this.edH264P.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label348
-            // 
-            this.label348.AutoSize = true;
-            this.label348.Location = new System.Drawing.Point(7, 83);
-            this.label348.Name = "label348";
-            this.label348.Size = new System.Drawing.Size(58, 13);
-            this.label348.TabIndex = 8;
-            this.label348.Text = "IDR period";
-            // 
-            // edH264IDR
-            // 
-            this.edH264IDR.Location = new System.Drawing.Point(94, 80);
-            this.edH264IDR.Name = "edH264IDR";
-            this.edH264IDR.Size = new System.Drawing.Size(121, 20);
-            this.edH264IDR.TabIndex = 7;
-            this.edH264IDR.Text = "15";
-            this.edH264IDR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label349
-            // 
-            this.label349.AutoSize = true;
-            this.label349.Location = new System.Drawing.Point(6, 19);
-            this.label349.Name = "label349";
-            this.label349.Size = new System.Drawing.Size(70, 13);
-            this.label349.TabIndex = 4;
-            this.label349.Text = "MB encoding";
-            // 
-            // cbH264MBEncoding
-            // 
-            this.cbH264MBEncoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264MBEncoding.FormattingEnabled = true;
-            this.cbH264MBEncoding.Items.AddRange(new object[] {
-            "CAVLC",
-            "CABAC"});
-            this.cbH264MBEncoding.Location = new System.Drawing.Point(94, 16);
-            this.cbH264MBEncoding.Name = "cbH264MBEncoding";
-            this.cbH264MBEncoding.Size = new System.Drawing.Size(121, 21);
-            this.cbH264MBEncoding.TabIndex = 3;
-            // 
-            // groupBox29
-            // 
-            this.groupBox29.Controls.Add(this.cbH264GOP);
-            this.groupBox29.Controls.Add(this.cbH264AutoBitrate);
-            this.groupBox29.Controls.Add(this.label350);
-            this.groupBox29.Controls.Add(this.edH264Bitrate);
-            this.groupBox29.Controls.Add(this.label351);
-            this.groupBox29.Controls.Add(this.cbH264RateControl);
-            this.groupBox29.Location = new System.Drawing.Point(5, 109);
-            this.groupBox29.Name = "groupBox29";
-            this.groupBox29.Size = new System.Drawing.Size(223, 98);
-            this.groupBox29.TabIndex = 5;
-            this.groupBox29.TabStop = false;
-            this.groupBox29.Text = "Bitrate";
-            // 
-            // cbH264GOP
-            // 
-            this.cbH264GOP.AutoSize = true;
-            this.cbH264GOP.Location = new System.Drawing.Point(166, 78);
-            this.cbH264GOP.Name = "cbH264GOP";
-            this.cbH264GOP.Size = new System.Drawing.Size(49, 17);
-            this.cbH264GOP.TabIndex = 12;
-            this.cbH264GOP.Text = "GOP";
-            this.cbH264GOP.UseVisualStyleBackColor = true;
-            // 
-            // cbH264AutoBitrate
-            // 
-            this.cbH264AutoBitrate.AutoSize = true;
-            this.cbH264AutoBitrate.Location = new System.Drawing.Point(10, 78);
-            this.cbH264AutoBitrate.Name = "cbH264AutoBitrate";
-            this.cbH264AutoBitrate.Size = new System.Drawing.Size(127, 17);
-            this.cbH264AutoBitrate.TabIndex = 7;
-            this.cbH264AutoBitrate.Text = "Auto configure bitrate";
-            this.cbH264AutoBitrate.UseVisualStyleBackColor = true;
-            // 
-            // label350
-            // 
-            this.label350.AutoSize = true;
-            this.label350.Location = new System.Drawing.Point(6, 53);
-            this.label350.Name = "label350";
-            this.label350.Size = new System.Drawing.Size(69, 13);
-            this.label350.TabIndex = 6;
-            this.label350.Text = "Bitrate (kbps)";
-            // 
-            // edH264Bitrate
-            // 
-            this.edH264Bitrate.Location = new System.Drawing.Point(94, 52);
-            this.edH264Bitrate.Name = "edH264Bitrate";
-            this.edH264Bitrate.Size = new System.Drawing.Size(121, 20);
-            this.edH264Bitrate.TabIndex = 5;
-            this.edH264Bitrate.Text = "2000";
-            this.edH264Bitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label351
-            // 
-            this.label351.AutoSize = true;
-            this.label351.Location = new System.Drawing.Point(6, 21);
-            this.label351.Name = "label351";
-            this.label351.Size = new System.Drawing.Size(65, 13);
-            this.label351.TabIndex = 4;
-            this.label351.Text = "Rate ñontrol";
-            // 
-            // cbH264RateControl
-            // 
-            this.cbH264RateControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264RateControl.FormattingEnabled = true;
-            this.cbH264RateControl.Items.AddRange(new object[] {
-            "CBR",
-            "VBR"});
-            this.cbH264RateControl.Location = new System.Drawing.Point(94, 19);
-            this.cbH264RateControl.Name = "cbH264RateControl";
-            this.cbH264RateControl.Size = new System.Drawing.Size(121, 21);
-            this.cbH264RateControl.TabIndex = 3;
-            // 
-            // groupBox46
-            // 
-            this.groupBox46.Controls.Add(this.cbH264TargetUsage);
-            this.groupBox46.Controls.Add(this.label359);
-            this.groupBox46.Controls.Add(this.label352);
-            this.groupBox46.Controls.Add(this.label353);
-            this.groupBox46.Controls.Add(this.cbH264Level);
-            this.groupBox46.Controls.Add(this.cbH264Profile);
-            this.groupBox46.Location = new System.Drawing.Point(5, 6);
-            this.groupBox46.Name = "groupBox46";
-            this.groupBox46.Size = new System.Drawing.Size(223, 97);
-            this.groupBox46.TabIndex = 4;
-            this.groupBox46.TabStop = false;
-            this.groupBox46.Text = "Profile settings";
-            // 
-            // cbH264TargetUsage
-            // 
-            this.cbH264TargetUsage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264TargetUsage.FormattingEnabled = true;
-            this.cbH264TargetUsage.Items.AddRange(new object[] {
-            "Auto",
-            "Best quality",
-            "Balanced",
-            "Best speed"});
-            this.cbH264TargetUsage.Location = new System.Drawing.Point(94, 73);
-            this.cbH264TargetUsage.Name = "cbH264TargetUsage";
-            this.cbH264TargetUsage.Size = new System.Drawing.Size(121, 21);
-            this.cbH264TargetUsage.TabIndex = 5;
-            // 
-            // label359
-            // 
-            this.label359.AutoSize = true;
-            this.label359.Location = new System.Drawing.Point(7, 76);
-            this.label359.Name = "label359";
-            this.label359.Size = new System.Drawing.Size(70, 13);
-            this.label359.TabIndex = 4;
-            this.label359.Text = "Target usage";
-            // 
-            // label352
-            // 
-            this.label352.AutoSize = true;
-            this.label352.Location = new System.Drawing.Point(7, 49);
-            this.label352.Name = "label352";
-            this.label352.Size = new System.Drawing.Size(33, 13);
-            this.label352.TabIndex = 3;
-            this.label352.Text = "Level";
-            // 
-            // label353
-            // 
-            this.label353.AutoSize = true;
-            this.label353.Location = new System.Drawing.Point(7, 22);
-            this.label353.Name = "label353";
-            this.label353.Size = new System.Drawing.Size(36, 13);
-            this.label353.TabIndex = 2;
-            this.label353.Text = "Profile";
-            // 
-            // cbH264Level
-            // 
-            this.cbH264Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264Level.FormattingEnabled = true;
-            this.cbH264Level.Items.AddRange(new object[] {
-            "Auto",
-            "1.0",
-            "1.1",
-            "1.2",
-            "1.3",
-            "2.0",
-            "2.1",
-            "2.2",
-            "3.0",
-            "3.1",
-            "3.2",
-            "4.0",
-            "4.1",
-            "4.2",
-            "5.0",
-            "5.1"});
-            this.cbH264Level.Location = new System.Drawing.Point(94, 46);
-            this.cbH264Level.Name = "cbH264Level";
-            this.cbH264Level.Size = new System.Drawing.Size(121, 21);
-            this.cbH264Level.TabIndex = 1;
-            // 
-            // cbH264Profile
-            // 
-            this.cbH264Profile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbH264Profile.FormattingEnabled = true;
-            this.cbH264Profile.Items.AddRange(new object[] {
-            "Auto",
-            "Baseline",
-            "Main",
-            "High",
-            "High 10",
-            "High 422"});
-            this.cbH264Profile.Location = new System.Drawing.Point(94, 19);
-            this.cbH264Profile.Name = "cbH264Profile";
-            this.cbH264Profile.Size = new System.Drawing.Size(121, 21);
-            this.cbH264Profile.TabIndex = 0;
-            // 
-            // tabPage24
-            // 
-            this.tabPage24.Controls.Add(this.groupBox14);
-            this.tabPage24.Controls.Add(this.groupBox49);
-            this.tabPage24.Controls.Add(this.groupBox50);
-            this.tabPage24.Location = new System.Drawing.Point(4, 22);
-            this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage24.Size = new System.Drawing.Size(278, 356);
-            this.tabPage24.TabIndex = 3;
-            this.tabPage24.Text = "Video (NVENC)";
-            this.tabPage24.UseVisualStyleBackColor = true;
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.label506);
-            this.groupBox14.Controls.Add(this.edNVENCBFrames);
-            this.groupBox14.Controls.Add(this.label507);
-            this.groupBox14.Controls.Add(this.edNVENCGOP);
-            this.groupBox14.Location = new System.Drawing.Point(8, 206);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(264, 79);
-            this.groupBox14.TabIndex = 12;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Advanced";
-            // 
-            // label506
-            // 
-            this.label506.AutoSize = true;
-            this.label506.Location = new System.Drawing.Point(9, 48);
-            this.label506.Name = "label506";
-            this.label506.Size = new System.Drawing.Size(48, 13);
-            this.label506.TabIndex = 10;
-            this.label506.Text = "B-frames";
-            // 
-            // edNVENCBFrames
-            // 
-            this.edNVENCBFrames.Location = new System.Drawing.Point(96, 45);
-            this.edNVENCBFrames.Name = "edNVENCBFrames";
-            this.edNVENCBFrames.Size = new System.Drawing.Size(121, 20);
-            this.edNVENCBFrames.TabIndex = 9;
-            this.edNVENCBFrames.Text = "0";
-            this.edNVENCBFrames.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label507
-            // 
-            this.label507.AutoSize = true;
-            this.label507.Location = new System.Drawing.Point(9, 22);
-            this.label507.Name = "label507";
-            this.label507.Size = new System.Drawing.Size(30, 13);
-            this.label507.TabIndex = 8;
-            this.label507.Text = "GOP";
-            // 
-            // edNVENCGOP
-            // 
-            this.edNVENCGOP.Location = new System.Drawing.Point(96, 19);
-            this.edNVENCGOP.Name = "edNVENCGOP";
-            this.edNVENCGOP.Size = new System.Drawing.Size(121, 20);
-            this.edNVENCGOP.TabIndex = 7;
-            this.edNVENCGOP.Text = "32";
-            this.edNVENCGOP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // groupBox49
-            // 
-            this.groupBox49.Controls.Add(this.label170);
-            this.groupBox49.Controls.Add(this.edNVENCQP);
-            this.groupBox49.Controls.Add(this.label508);
-            this.groupBox49.Controls.Add(this.edNVENCBitrate);
-            this.groupBox49.Controls.Add(this.label509);
-            this.groupBox49.Controls.Add(this.cbNVENCRateControl);
-            this.groupBox49.Location = new System.Drawing.Point(8, 94);
-            this.groupBox49.Name = "groupBox49";
-            this.groupBox49.Size = new System.Drawing.Size(264, 106);
-            this.groupBox49.TabIndex = 11;
-            this.groupBox49.TabStop = false;
-            this.groupBox49.Text = "Bitrate";
-            // 
-            // label170
-            // 
-            this.label170.AutoSize = true;
-            this.label170.Location = new System.Drawing.Point(6, 73);
-            this.label170.Name = "label170";
-            this.label170.Size = new System.Drawing.Size(22, 13);
-            this.label170.TabIndex = 8;
-            this.label170.Text = "QP";
-            // 
-            // edNVENCQP
-            // 
-            this.edNVENCQP.Location = new System.Drawing.Point(94, 72);
-            this.edNVENCQP.Name = "edNVENCQP";
-            this.edNVENCQP.Size = new System.Drawing.Size(121, 20);
-            this.edNVENCQP.TabIndex = 7;
-            this.edNVENCQP.Text = "28";
-            this.edNVENCQP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label508
-            // 
-            this.label508.AutoSize = true;
-            this.label508.Location = new System.Drawing.Point(6, 47);
-            this.label508.Name = "label508";
-            this.label508.Size = new System.Drawing.Size(69, 13);
-            this.label508.TabIndex = 6;
-            this.label508.Text = "Bitrate (kbps)";
-            // 
-            // edNVENCBitrate
-            // 
-            this.edNVENCBitrate.Location = new System.Drawing.Point(94, 46);
-            this.edNVENCBitrate.Name = "edNVENCBitrate";
-            this.edNVENCBitrate.Size = new System.Drawing.Size(121, 20);
-            this.edNVENCBitrate.TabIndex = 5;
-            this.edNVENCBitrate.Text = "2000";
-            this.edNVENCBitrate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label509
-            // 
-            this.label509.AutoSize = true;
-            this.label509.Location = new System.Drawing.Point(6, 21);
-            this.label509.Name = "label509";
-            this.label509.Size = new System.Drawing.Size(65, 13);
-            this.label509.TabIndex = 4;
-            this.label509.Text = "Rate ñontrol";
-            // 
-            // cbNVENCRateControl
-            // 
-            this.cbNVENCRateControl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNVENCRateControl.FormattingEnabled = true;
-            this.cbNVENCRateControl.Items.AddRange(new object[] {
-            "CONST QP",
-            "VBR",
-            "CBR"});
-            this.cbNVENCRateControl.Location = new System.Drawing.Point(94, 19);
-            this.cbNVENCRateControl.Name = "cbNVENCRateControl";
-            this.cbNVENCRateControl.Size = new System.Drawing.Size(121, 21);
-            this.cbNVENCRateControl.TabIndex = 3;
-            // 
-            // groupBox50
-            // 
-            this.groupBox50.Controls.Add(this.label511);
-            this.groupBox50.Controls.Add(this.label512);
-            this.groupBox50.Controls.Add(this.cbNVENCLevel);
-            this.groupBox50.Controls.Add(this.cbNVENCProfile);
-            this.groupBox50.Location = new System.Drawing.Point(8, 6);
-            this.groupBox50.Name = "groupBox50";
-            this.groupBox50.Size = new System.Drawing.Size(264, 82);
-            this.groupBox50.TabIndex = 10;
-            this.groupBox50.TabStop = false;
-            this.groupBox50.Text = "Profile settings";
-            // 
-            // label511
-            // 
-            this.label511.AutoSize = true;
-            this.label511.Location = new System.Drawing.Point(7, 49);
-            this.label511.Name = "label511";
-            this.label511.Size = new System.Drawing.Size(33, 13);
-            this.label511.TabIndex = 3;
-            this.label511.Text = "Level";
-            // 
-            // label512
-            // 
-            this.label512.AutoSize = true;
-            this.label512.Location = new System.Drawing.Point(7, 22);
-            this.label512.Name = "label512";
-            this.label512.Size = new System.Drawing.Size(36, 13);
-            this.label512.TabIndex = 2;
-            this.label512.Text = "Profile";
-            // 
-            // cbNVENCLevel
-            // 
-            this.cbNVENCLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNVENCLevel.FormattingEnabled = true;
-            this.cbNVENCLevel.Items.AddRange(new object[] {
-            "Auto",
-            "1.0",
-            "1.1",
-            "1.2",
-            "1.3",
-            "2.0",
-            "2.1",
-            "2.2",
-            "3.0",
-            "3.1",
-            "3.2",
-            "4.0",
-            "4.1",
-            "4.2",
-            "5.0",
-            "5.1"});
-            this.cbNVENCLevel.Location = new System.Drawing.Point(94, 46);
-            this.cbNVENCLevel.Name = "cbNVENCLevel";
-            this.cbNVENCLevel.Size = new System.Drawing.Size(121, 21);
-            this.cbNVENCLevel.TabIndex = 1;
-            // 
-            // cbNVENCProfile
-            // 
-            this.cbNVENCProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNVENCProfile.FormattingEnabled = true;
-            this.cbNVENCProfile.Items.AddRange(new object[] {
-            "Auto",
-            "Baseline",
-            "Main",
-            "High",
-            "High 444",
-            "Progressive High",
-            "Constrained High"});
-            this.cbNVENCProfile.Location = new System.Drawing.Point(94, 19);
-            this.cbNVENCProfile.Name = "cbNVENCProfile";
-            this.cbNVENCProfile.Size = new System.Drawing.Size(121, 21);
-            this.cbNVENCProfile.TabIndex = 0;
-            // 
-            // tabPage90
-            // 
-            this.tabPage90.Controls.Add(this.label25);
-            this.tabPage90.Controls.Add(this.rbMP4LAME);
-            this.tabPage90.Controls.Add(this.rbMP4AAC);
-            this.tabPage90.Controls.Add(this.label354);
-            this.tabPage90.Controls.Add(this.cbAACOutput);
-            this.tabPage90.Controls.Add(this.label355);
-            this.tabPage90.Controls.Add(this.cbAACBitrate);
-            this.tabPage90.Controls.Add(this.label356);
-            this.tabPage90.Controls.Add(this.cbAACObjectType);
-            this.tabPage90.Controls.Add(this.label357);
-            this.tabPage90.Controls.Add(this.cbAACVersion);
-            this.tabPage90.Controls.Add(this.label358);
-            this.tabPage90.Location = new System.Drawing.Point(4, 22);
-            this.tabPage90.Margin = new System.Windows.Forms.Padding(2);
-            this.tabPage90.Name = "tabPage90";
-            this.tabPage90.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage90.Size = new System.Drawing.Size(278, 356);
-            this.tabPage90.TabIndex = 1;
-            this.tabPage90.Text = "Audio";
-            this.tabPage90.UseVisualStyleBackColor = true;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(24, 218);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(186, 13);
-            this.label25.TabIndex = 11;
-            this.label25.Text = "Settings available on LAME (MP3) tab";
-            // 
-            // rbMP4LAME
-            // 
-            this.rbMP4LAME.AutoSize = true;
-            this.rbMP4LAME.Location = new System.Drawing.Point(16, 189);
-            this.rbMP4LAME.Name = "rbMP4LAME";
-            this.rbMP4LAME.Size = new System.Drawing.Size(116, 17);
-            this.rbMP4LAME.TabIndex = 10;
-            this.rbMP4LAME.Text = "MP3 LAME (BETA)";
-            this.rbMP4LAME.UseVisualStyleBackColor = true;
-            // 
-            // rbMP4AAC
-            // 
-            this.rbMP4AAC.AutoSize = true;
-            this.rbMP4AAC.Checked = true;
-            this.rbMP4AAC.Location = new System.Drawing.Point(16, 15);
-            this.rbMP4AAC.Name = "rbMP4AAC";
-            this.rbMP4AAC.Size = new System.Drawing.Size(46, 17);
-            this.rbMP4AAC.TabIndex = 9;
-            this.rbMP4AAC.TabStop = true;
-            this.rbMP4AAC.Text = "AAC";
-            this.rbMP4AAC.UseVisualStyleBackColor = true;
-            // 
-            // label354
-            // 
-            this.label354.AutoSize = true;
-            this.label354.Location = new System.Drawing.Point(228, 116);
-            this.label354.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label354.Name = "label354";
-            this.label354.Size = new System.Drawing.Size(31, 13);
-            this.label354.TabIndex = 8;
-            this.label354.Text = "Kbps";
-            // 
-            // cbAACOutput
-            // 
-            this.cbAACOutput.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACOutput.FormattingEnabled = true;
-            this.cbAACOutput.Items.AddRange(new object[] {
-            "RAW",
-            "ADTS"});
-            this.cbAACOutput.Location = new System.Drawing.Point(103, 152);
-            this.cbAACOutput.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACOutput.Name = "cbAACOutput";
-            this.cbAACOutput.Size = new System.Drawing.Size(156, 21);
-            this.cbAACOutput.TabIndex = 7;
-            // 
-            // label355
-            // 
-            this.label355.AutoSize = true;
-            this.label355.Location = new System.Drawing.Point(24, 154);
-            this.label355.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label355.Name = "label355";
-            this.label355.Size = new System.Drawing.Size(39, 13);
-            this.label355.TabIndex = 6;
-            this.label355.Text = "Output";
-            // 
-            // cbAACBitrate
-            // 
-            this.cbAACBitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACBitrate.FormattingEnabled = true;
-            this.cbAACBitrate.Items.AddRange(new object[] {
-            "32",
-            "40",
-            "48",
-            "56",
-            "64",
-            "72",
-            "80",
-            "88",
-            "96",
-            "104",
-            "112",
-            "120",
-            "128",
-            "140",
-            "160",
-            "192",
-            "224",
-            "256"});
-            this.cbAACBitrate.Location = new System.Drawing.Point(103, 114);
-            this.cbAACBitrate.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACBitrate.Name = "cbAACBitrate";
-            this.cbAACBitrate.Size = new System.Drawing.Size(121, 21);
-            this.cbAACBitrate.TabIndex = 5;
-            // 
-            // label356
-            // 
-            this.label356.AutoSize = true;
-            this.label356.Location = new System.Drawing.Point(24, 116);
-            this.label356.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label356.Name = "label356";
-            this.label356.Size = new System.Drawing.Size(37, 13);
-            this.label356.TabIndex = 4;
-            this.label356.Text = "Bitrate";
-            // 
-            // cbAACObjectType
-            // 
-            this.cbAACObjectType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACObjectType.FormattingEnabled = true;
-            this.cbAACObjectType.Items.AddRange(new object[] {
-            "Main",
-            "Low complexity",
-            "Scalable Sampling Rate",
-            "Long Term Predictor"});
-            this.cbAACObjectType.Location = new System.Drawing.Point(103, 78);
-            this.cbAACObjectType.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACObjectType.Name = "cbAACObjectType";
-            this.cbAACObjectType.Size = new System.Drawing.Size(156, 21);
-            this.cbAACObjectType.TabIndex = 3;
-            // 
-            // label357
-            // 
-            this.label357.AutoSize = true;
-            this.label357.Location = new System.Drawing.Point(24, 80);
-            this.label357.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label357.Name = "label357";
-            this.label357.Size = new System.Drawing.Size(61, 13);
-            this.label357.TabIndex = 2;
-            this.label357.Text = "Object type";
-            // 
-            // cbAACVersion
-            // 
-            this.cbAACVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAACVersion.FormattingEnabled = true;
-            this.cbAACVersion.Items.AddRange(new object[] {
-            "MPEG-4",
-            "MPEG-2"});
-            this.cbAACVersion.Location = new System.Drawing.Point(103, 43);
-            this.cbAACVersion.Margin = new System.Windows.Forms.Padding(2);
-            this.cbAACVersion.Name = "cbAACVersion";
-            this.cbAACVersion.Size = new System.Drawing.Size(156, 21);
-            this.cbAACVersion.TabIndex = 1;
-            // 
-            // label358
-            // 
-            this.label358.AutoSize = true;
-            this.label358.Location = new System.Drawing.Point(24, 46);
-            this.label358.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label358.Name = "label358";
-            this.label358.Size = new System.Drawing.Size(75, 13);
-            this.label358.TabIndex = 0;
-            this.label358.Text = "MPEG version";
             // 
             // tabPage56
             // 
@@ -14078,6 +14381,35 @@ namespace VideoEdit_CS_Demo
             this.tabControl2.ResumeLayout(false);
             this.tabPage30.ResumeLayout(false);
             this.tabPage30.PerformLayout();
+            this.tabPage48.ResumeLayout(false);
+            this.tabControl24.ResumeLayout(false);
+            this.tabPage111.ResumeLayout(false);
+            this.tabPage111.PerformLayout();
+            this.tabPage89.ResumeLayout(false);
+            this.groupBox18.ResumeLayout(false);
+            this.groupBox18.PerformLayout();
+            this.groupBox29.ResumeLayout(false);
+            this.groupBox29.PerformLayout();
+            this.groupBox46.ResumeLayout(false);
+            this.groupBox46.PerformLayout();
+            this.tpNVENC.ResumeLayout(false);
+            this.tpNVENC.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox49.ResumeLayout(false);
+            this.groupBox49.PerformLayout();
+            this.groupBox50.ResumeLayout(false);
+            this.groupBox50.PerformLayout();
+            this.tabPage148.ResumeLayout(false);
+            this.tabPage148.PerformLayout();
+            this.groupBox52.ResumeLayout(false);
+            this.groupBox52.PerformLayout();
+            this.groupBox53.ResumeLayout(false);
+            this.groupBox53.PerformLayout();
+            this.tabPage90.ResumeLayout(false);
+            this.tabPage90.PerformLayout();
+            this.tabPage94.ResumeLayout(false);
+            this.tabPage94.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
@@ -14160,26 +14492,6 @@ namespace VideoEdit_CS_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbFFEXEAudioQuality)).EndInit();
             this.tabPage133.ResumeLayout(false);
             this.tabPage133.PerformLayout();
-            this.tabPage48.ResumeLayout(false);
-            this.tabControl24.ResumeLayout(false);
-            this.tabPage55.ResumeLayout(false);
-            this.tabPage55.PerformLayout();
-            this.tabPage89.ResumeLayout(false);
-            this.groupBox18.ResumeLayout(false);
-            this.groupBox18.PerformLayout();
-            this.groupBox29.ResumeLayout(false);
-            this.groupBox29.PerformLayout();
-            this.groupBox46.ResumeLayout(false);
-            this.groupBox46.PerformLayout();
-            this.tabPage24.ResumeLayout(false);
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.groupBox49.ResumeLayout(false);
-            this.groupBox49.PerformLayout();
-            this.groupBox50.ResumeLayout(false);
-            this.groupBox50.PerformLayout();
-            this.tabPage90.ResumeLayout(false);
-            this.tabPage90.PerformLayout();
             this.tabPage56.ResumeLayout(false);
             this.tabPage56.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbFLACLPCOrder)).EndInit();
@@ -15019,44 +15331,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.TabPage tabPage47;
         private System.Windows.Forms.TabPage tabPage48;
-        private System.Windows.Forms.TabControl tabControl24;
-        private System.Windows.Forms.TabPage tabPage89;
-        private System.Windows.Forms.GroupBox groupBox18;
-        private System.Windows.Forms.ComboBox cbH264PictureType;
-        private System.Windows.Forms.Label label360;
-        private System.Windows.Forms.Label label347;
-        private System.Windows.Forms.TextBox edH264P;
-        private System.Windows.Forms.Label label348;
-        private System.Windows.Forms.TextBox edH264IDR;
-        private System.Windows.Forms.Label label349;
-        private System.Windows.Forms.ComboBox cbH264MBEncoding;
-        private System.Windows.Forms.GroupBox groupBox29;
-        private System.Windows.Forms.CheckBox cbH264GOP;
-        private System.Windows.Forms.CheckBox cbH264AutoBitrate;
-        private System.Windows.Forms.Label label350;
-        private System.Windows.Forms.TextBox edH264Bitrate;
-        private System.Windows.Forms.Label label351;
-        private System.Windows.Forms.ComboBox cbH264RateControl;
-        private System.Windows.Forms.GroupBox groupBox46;
-        private System.Windows.Forms.ComboBox cbH264TargetUsage;
-        private System.Windows.Forms.Label label359;
-        private System.Windows.Forms.Label label352;
-        private System.Windows.Forms.Label label353;
-        private System.Windows.Forms.ComboBox cbH264Level;
-        private System.Windows.Forms.ComboBox cbH264Profile;
-        private System.Windows.Forms.TabPage tabPage90;
-        private System.Windows.Forms.Label label354;
-        private System.Windows.Forms.ComboBox cbAACOutput;
-        private System.Windows.Forms.Label label355;
-        private System.Windows.Forms.ComboBox cbAACBitrate;
-        private System.Windows.Forms.Label label356;
-        private System.Windows.Forms.ComboBox cbAACObjectType;
-        private System.Windows.Forms.Label label357;
-        private System.Windows.Forms.ComboBox cbAACVersion;
-        private System.Windows.Forms.Label label358;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.RadioButton rbMP4LAME;
-        private System.Windows.Forms.RadioButton rbMP4AAC;
         private System.Windows.Forms.ProgressBar ProgressBar1;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.TextBox edNetworkURL;
@@ -15114,13 +15388,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Button btAddInputFile3;
         private System.Windows.Forms.ListBox lbFiles2;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TabPage tabPage55;
-        private System.Windows.Forms.RadioButton rbMP4Modern;
-        private System.Windows.Forms.RadioButton rbMP4Legacy;
-        private System.Windows.Forms.Label label380;
-        private System.Windows.Forms.Label label379;
-        private System.Windows.Forms.Label label378;
-        private System.Windows.Forms.Label label377;
         private System.Windows.Forms.Label label393;
         private System.Windows.Forms.ComboBox cbDirect2DRotate;
         private System.Windows.Forms.Panel pnVideoRendererBGColor;
@@ -15408,9 +15675,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.ComboBox cbM4AVersion;
         private System.Windows.Forms.Label label489;
         internal System.Windows.Forms.TabPage tabPage141;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.Label label492;
-        private System.Windows.Forms.Label label490;
         private System.Windows.Forms.ComboBox cbMode;
         private System.Windows.Forms.Label label130;
         private System.Windows.Forms.Button btStopCut;
@@ -15491,25 +15755,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.LinkLabel linkLabel10;
         private System.Windows.Forms.RadioButton rbNetworkSSFFMPEGCustom;
         private System.Windows.Forms.RadioButton rbNetworkSSFFMPEGDefault;
-        private System.Windows.Forms.RadioButton rbMP4NVENC;
-        private System.Windows.Forms.TabPage tabPage24;
-        private System.Windows.Forms.GroupBox groupBox14;
-        private System.Windows.Forms.Label label506;
-        private System.Windows.Forms.TextBox edNVENCBFrames;
-        private System.Windows.Forms.Label label507;
-        private System.Windows.Forms.TextBox edNVENCGOP;
-        private System.Windows.Forms.GroupBox groupBox49;
-        private System.Windows.Forms.Label label170;
-        private System.Windows.Forms.TextBox edNVENCQP;
-        private System.Windows.Forms.Label label508;
-        private System.Windows.Forms.TextBox edNVENCBitrate;
-        private System.Windows.Forms.Label label509;
-        private System.Windows.Forms.ComboBox cbNVENCRateControl;
-        private System.Windows.Forms.GroupBox groupBox50;
-        private System.Windows.Forms.Label label511;
-        private System.Windows.Forms.Label label512;
-        private System.Windows.Forms.ComboBox cbNVENCLevel;
-        private System.Windows.Forms.ComboBox cbNVENCProfile;
         private System.Windows.Forms.TabPage tabPage81;
         private System.Windows.Forms.Button btAudioChannelMapperClear;
         private System.Windows.Forms.GroupBox groupBox41;
@@ -15552,6 +15797,96 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.TrackBar tbGPUSaturation;
         private System.Windows.Forms.CheckBox cbGPUInvert;
         private System.Windows.Forms.CheckBox cbGPUGreyscale;
+        private System.Windows.Forms.TabControl tabControl24;
+        private System.Windows.Forms.TabPage tabPage111;
+        private System.Windows.Forms.Label lbMFHWAvailableEncoders;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.ComboBox cbMP4Mode;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Label label492;
+        private System.Windows.Forms.Label label490;
+        private System.Windows.Forms.Label label377;
+        private System.Windows.Forms.TabPage tabPage89;
+        private System.Windows.Forms.GroupBox groupBox18;
+        private System.Windows.Forms.ComboBox cbH264PictureType;
+        private System.Windows.Forms.Label label360;
+        private System.Windows.Forms.Label label347;
+        private System.Windows.Forms.TextBox edH264P;
+        private System.Windows.Forms.Label label348;
+        private System.Windows.Forms.TextBox edH264IDR;
+        private System.Windows.Forms.Label label349;
+        private System.Windows.Forms.ComboBox cbH264MBEncoding;
+        private System.Windows.Forms.GroupBox groupBox29;
+        private System.Windows.Forms.CheckBox cbH264GOP;
+        private System.Windows.Forms.CheckBox cbH264AutoBitrate;
+        private System.Windows.Forms.Label label350;
+        private System.Windows.Forms.TextBox edH264Bitrate;
+        private System.Windows.Forms.Label label351;
+        private System.Windows.Forms.ComboBox cbH264RateControl;
+        private System.Windows.Forms.GroupBox groupBox46;
+        private System.Windows.Forms.ComboBox cbH264TargetUsage;
+        private System.Windows.Forms.Label label359;
+        private System.Windows.Forms.Label label352;
+        private System.Windows.Forms.Label label353;
+        private System.Windows.Forms.ComboBox cbH264Level;
+        private System.Windows.Forms.ComboBox cbH264Profile;
+        private System.Windows.Forms.TabPage tpNVENC;
+        private System.Windows.Forms.Label lbNVENCStatus;
+        private System.Windows.Forms.Label label316;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Label label506;
+        private System.Windows.Forms.TextBox edNVENCBFrames;
+        private System.Windows.Forms.Label label507;
+        private System.Windows.Forms.TextBox edNVENCGOP;
+        private System.Windows.Forms.GroupBox groupBox49;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox edNVENCQP;
+        private System.Windows.Forms.Label label508;
+        private System.Windows.Forms.TextBox edNVENCBitrate;
+        private System.Windows.Forms.Label label509;
+        private System.Windows.Forms.ComboBox cbNVENCRateControl;
+        private System.Windows.Forms.GroupBox groupBox50;
+        private System.Windows.Forms.Label label511;
+        private System.Windows.Forms.Label label512;
+        private System.Windows.Forms.ComboBox cbNVENCLevel;
+        private System.Windows.Forms.ComboBox cbNVENCProfile;
+        private System.Windows.Forms.TabPage tabPage148;
+        private System.Windows.Forms.TextBox edMFKeyFrameSpacing;
+        private System.Windows.Forms.Label label528;
+        private System.Windows.Forms.Label label525;
+        private System.Windows.Forms.TextBox edMFBFramesCount;
+        private System.Windows.Forms.Label label522;
+        private System.Windows.Forms.CheckBox cbMFLowLatency;
+        private System.Windows.Forms.CheckBox cbMFCABAC;
+        private System.Windows.Forms.GroupBox groupBox52;
+        private System.Windows.Forms.Label label521;
+        private System.Windows.Forms.TextBox edMFQuality;
+        private System.Windows.Forms.Label label520;
+        private System.Windows.Forms.TextBox edMFMaxBitrate;
+        private System.Windows.Forms.Label label523;
+        private System.Windows.Forms.TextBox edMFBitrate;
+        private System.Windows.Forms.Label label524;
+        private System.Windows.Forms.ComboBox cbMFRateControl;
+        private System.Windows.Forms.GroupBox groupBox53;
+        private System.Windows.Forms.Label label526;
+        private System.Windows.Forms.Label label527;
+        private System.Windows.Forms.ComboBox cbMFLevel;
+        private System.Windows.Forms.ComboBox cbMFProfile;
+        private System.Windows.Forms.TabPage tabPage90;
+        private System.Windows.Forms.Label label354;
+        private System.Windows.Forms.ComboBox cbAACOutput;
+        private System.Windows.Forms.Label label355;
+        private System.Windows.Forms.ComboBox cbAACBitrate;
+        private System.Windows.Forms.Label label356;
+        private System.Windows.Forms.ComboBox cbAACObjectType;
+        private System.Windows.Forms.Label label357;
+        private System.Windows.Forms.ComboBox cbAACVersion;
+        private System.Windows.Forms.Label label358;
+        private System.Windows.Forms.TabPage tabPage94;
+        private System.Windows.Forms.CheckBox cbMP4UseSpecialSyncMode;
+        private System.Windows.Forms.CheckBox cbMP4CustomAVSettings;
+        private System.Windows.Forms.CheckBox cbMP4TimeAdjust;
+        private System.Windows.Forms.CheckBox cbMP4TimeOverride;
     }
 }
 

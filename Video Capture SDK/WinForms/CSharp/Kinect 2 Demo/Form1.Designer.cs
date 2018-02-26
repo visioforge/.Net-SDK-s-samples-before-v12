@@ -133,7 +133,7 @@ namespace Kinect_2_Demo
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
-            this.VideoCapture1.Object_Detection = null;
+            this.VideoCapture1.Motion_DetectionEx = null;
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;

@@ -8,6 +8,21 @@ Imports VisioForge.Types.VideoEffects
 
 Public Class Form1
 
+    Private Function IsWindows7OrNewer() As Boolean
+
+        Dim Version = Environment.OSVersion.Version
+        If (Version.Major > 6) Then
+            Return True
+        End If
+
+        If (Version.Major = 6 And Version.Minor >= 1) Then
+            Return True
+        End If
+
+        Return False
+
+    End Function
+
     Private Sub cbVideoCodecs_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         Dim sName As String = cbVideoCodecs.Text
         btVideoSettings.Enabled = VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.Default) OrElse VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig)
@@ -388,9 +403,9 @@ Public Class Form1
         End If
 
         VideoCapture1.Video_CaptureDevice = cbVideoInputDevice.Text
-        VideoCapture1.Video_CaptureDevice_IsAudioSource = True
+        VideoCapture1.Video_CaptureDevice_IsAudioSource = cbUseAudioInputFromVideoCaptureDevice.Checked
         VideoCapture1.Audio_OutputDevice = cbAudioOutputDevice.Text
-        VideoCapture1.Audio_CaptureDevice_Format_UseBest = True
+        VideoCapture1.Audio_CaptureDevice_Format_UseBest = cbUseBestAudioInputFormat.Checked
         VideoCapture1.Video_CaptureDevice_Format = cbVideoInputFormat.Text
         VideoCapture1.Video_CaptureDevice_Format_UseBest = cbUseBestVideoInputFormat.Checked
         VideoCapture1.Audio_CaptureDevice = cbAudioInputDevice.Text
@@ -403,6 +418,7 @@ Public Class Form1
         If (cbMode.SelectedIndex = 0) Then
             VideoCapture1.Mode = VFVideoCaptureMode.VideoPreview
         Else
+            VideoCapture1.SeparateCapture_Enabled = True
             VideoCapture1.Mode = VFVideoCaptureMode.VideoCapture
             VideoCapture1.Output_Filename = edOutput.Text
 
@@ -437,88 +453,11 @@ Public Class Form1
 
                 Dim mp4Output As VFMP4Output = New VFMP4Output()
 
-                ' Main settings
-                mp4Output.MP4Mode = VFMP4Mode.v10
-
-                ' Video H264 settings
-                Select Case (cbH264Profile.SelectedIndex)
-                    Case 0
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileAuto
-                    Case 1
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileBaseline
-                    Case 2
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileMain
-                    Case 3
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh
-                    Case 4
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh10
-                    Case 5
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh422
-                End Select
-
-                Select Case (cbH264Level.SelectedIndex)
-                    Case 0
-                        mp4Output.Video_H264.Level = VFH264Level.LevelAuto
-                    Case 1
-                        mp4Output.Video_H264.Level = VFH264Level.Level1
-                    Case 2
-                        mp4Output.Video_H264.Level = VFH264Level.Level11
-                    Case 3
-                        mp4Output.Video_H264.Level = VFH264Level.Level12
-                    Case 4
-                        mp4Output.Video_H264.Level = VFH264Level.Level13
-                    Case 5
-                        mp4Output.Video_H264.Level = VFH264Level.Level2
-                    Case 6
-                        mp4Output.Video_H264.Level = VFH264Level.Level21
-                    Case 7
-                        mp4Output.Video_H264.Level = VFH264Level.Level22
-                    Case 8
-                        mp4Output.Video_H264.Level = VFH264Level.Level3
-                    Case 9
-                        mp4Output.Video_H264.Level = VFH264Level.Level31
-                    Case 10
-                        mp4Output.Video_H264.Level = VFH264Level.Level32
-                    Case 11
-                        mp4Output.Video_H264.Level = VFH264Level.Level4
-                    Case 12
-                        mp4Output.Video_H264.Level = VFH264Level.Level41
-                    Case 13
-                        mp4Output.Video_H264.Level = VFH264Level.Level42
-                    Case 14
-                        mp4Output.Video_H264.Level = VFH264Level.Level5
-                    Case 15
-                        mp4Output.Video_H264.Level = VFH264Level.Level51
-                End Select
-
-                Select Case (cbH264TargetUsage.SelectedIndex)
-                    Case 0
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Auto
-                    Case 1
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestQuality
-                    Case 2
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Balanced
-                    Case 3
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestSpeed
-                End Select
-
-                mp4Output.Video_H264.PictureType = VFH264PictureType.Auto
-
-                mp4Output.Video_H264.RateControl = cbH264RateControl.SelectedIndex
-                mp4Output.Video_H264.GOP = cbH264GOP.Checked
-                mp4Output.Video_H264.BitrateAuto = cbH264AutoBitrate.Checked
-
-                Dim tmp As Integer
-                Integer.TryParse(edH264Bitrate.Text, tmp)
-                mp4Output.Video_H264.Bitrate = tmp
-
-                ' Audio AAC settings
-                Integer.TryParse(cbAACBitrate.Text, tmp)
-                mp4Output.Audio_AAC.Bitrate = tmp
-
-                mp4Output.Audio_AAC.Version = cbAACVersion.SelectedIndex
-                mp4Output.Audio_AAC.Output = cbAACOutput.SelectedIndex
-                mp4Output.Audio_AAC.Object = (cbAACObjectType.SelectedIndex + 1)
+                If (IsWindows7OrNewer()) Then
+                    mp4Output.MP4Mode = VFMP4Mode.v11
+                Else
+                    mp4Output.MP4Mode = VFMP4Mode.v8
+                End If
 
                 VideoCapture1.Output_Format = mp4Output
             End If
@@ -627,28 +566,19 @@ Public Class Form1
 
         cbMode.SelectedIndex = 0
 
-        cbH264Profile.SelectedIndex = 2
-        cbH264Level.SelectedIndex = 0
-        cbH264RateControl.SelectedIndex = 1
-        cbAACOutput.SelectedIndex = 0
-        cbAACVersion.SelectedIndex = 0
-        cbAACObjectType.SelectedIndex = 1
-        cbAACBitrate.SelectedIndex = 12
-        cbH264TargetUsage.SelectedIndex = 3
-
         edScreenshotsFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
         edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\" + "output.avi"
 
     End Sub
 
-    Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles llVideoTutorials.LinkClicked
+    Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles llVideoTutorials.LinkClicked
 
         Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
         Process.Start(startInfo)
 
     End Sub
 
-    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As VisioForge.Types.ErrorsEventArgs) Handles VideoCapture1.OnError
+    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
 
         mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
 

@@ -103,114 +103,11 @@
             </TabItem>
             <TabItem Header="MP4 output" IsSelected="True">
                 <Grid>
-                    <TabControl Height="245" HorizontalAlignment="Left" Margin="10,4,0,0" VerticalAlignment="Top" Width="363">
-                        <TabItem Header="Main" >
-                            <Grid>
-                                <Label Height="24" HorizontalAlignment="Left" Margin="10,17,0,0" x:Name="label5_Copy" VerticalAlignment="Top" Width="67" Content="File name"/>
-                                <TextBox Margin="90,19,0,0" x:Name="edOutputMP4" Height="22.723" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228" />
-                                <Button Height="23" HorizontalAlignment="Left" Margin="323,19,0,0" x:Name="btSelectOutputMP4" VerticalAlignment="Top" Width="26" Content="..." Click="btSelectOutputMP4_Click"/>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Video codec (H264)" >
-                            <Grid>
-                                <GroupBox Header="Profile settings" HorizontalAlignment="Left" Margin="6,0,0,0" 
-                					VerticalAlignment="Top" Height="105.12" Width="308">
-                                    <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="8,4,0,0" >
-                                        <TextBlock Margin="10,2,0,0" VerticalAlignment="Top" Height="22"><Run Text="Profile"/></TextBlock>
-                                        <ComboBox x:Name="cbH264Profile" Margin="90,0,0,0" VerticalAlignment="Top" Height="22" Width="160">
-                                            <ComboBoxItem Content="Baseline"/>
-                                            <ComboBoxItem Content="Main"/>
-                                            <ComboBoxItem Content="High"/>
-                                        </ComboBox>
-                                        <TextBlock Margin="10,58,0,-27" VerticalAlignment="Top" Height="22"><Run Text="Target usage"/></TextBlock>
-                                        <ComboBox x:Name="cbH264TargetUsage" Margin="90,58,0,-27" VerticalAlignment="Top" Height="22" Width="160">
-                                            <ComboBoxItem Content="Auto"/>
-                                            <ComboBoxItem Content="Best quality"/>
-                                            <ComboBoxItem Content="Balanced"/>
-                                            <ComboBoxItem Content="Best speed"/>
-                                        </ComboBox>
-                                        <TextBlock Margin="10,31,0,0" VerticalAlignment="Top" Height="22"><Run Text="Level"/></TextBlock>
-                                        <ComboBox x:Name="cbH264Level" Margin="90,29,0,0" VerticalAlignment="Top" Height="22" Width="160">
-                                            <ComboBoxItem Content="Auto"/>
-                                            <ComboBoxItem Content="1.0"/>
-                                            <ComboBoxItem Content="1.1"/>
-                                            <ComboBoxItem Content="1.2"/>
-                                            <ComboBoxItem Content="1.3"/>
-                                            <ComboBoxItem Content="2.0"/>
-                                            <ComboBoxItem Content="2.1"/>
-                                            <ComboBoxItem Content="2.2"/>
-                                            <ComboBoxItem Content="3.0"/>
-                                            <ComboBoxItem Content="3.1"/>
-                                            <ComboBoxItem Content="3.2"/>
-                                            <ComboBoxItem Content="4.0"/>
-                                            <ComboBoxItem Content="4.1"/>
-                                            <ComboBoxItem Content="4.2"/>
-                                            <ComboBoxItem Content="5.0"/>
-                                            <ComboBoxItem Content="5.1"/>
-                                        </ComboBox>
-                                    </Grid>
-                                </GroupBox>
-                                <GroupBox Header="Bitrate" HorizontalAlignment="Left" Margin="6,105.12,0,0" 
-                					VerticalAlignment="Top" Height="110" Width="308">
-                                    <Grid HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="8,4,0,0" >
-                                        <TextBlock Margin="10,4.04,0,0" VerticalAlignment="Top" Height="22"><Run Text="Rate control"/></TextBlock>
-                                        <ComboBox x:Name="cbH264RateControl" Margin="90,2.04,0,0" VerticalAlignment="Top" Height="22" Width="160">
-                                            <ComboBoxItem Content="CBR"/>
-                                            <ComboBoxItem Content="VBR"/>
-                                        </ComboBox>
-                                        <TextBlock Margin="10,38.04,0,0" VerticalAlignment="Top" Height="22"><Run Text="Bitrate (kbps)"/></TextBlock>
-                                        <TextBox x:Name="edH264Bitrate" Margin="90,36.04,0,0" VerticalAlignment="Top" Height="22" Width="160" Text="2000"/>
-                                        <CheckBox x:Name="cbH264AutoBitrate" Margin="10,66.04,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="160" Content="Auto configure bitrate"/>
-                                        <CheckBox x:Name="cbH264GOP" Margin="175,66.04,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="75" Content="GOP"/>
-                                    </Grid>
-                                </GroupBox>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Audio codec (AAC)" >
-                            <Grid>
-                                <TextBlock Margin="10,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"><Run Text="MPEG version"/></TextBlock>
-                                <ComboBox x:Name="cbAACMPEGVersion" Margin="90,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="160">
-                                    <ComboBoxItem Content="MPEG-4"/>
-                                    <ComboBoxItem Content="MPEG-2"/>
-                                </ComboBox>
-                                <TextBlock Margin="10,42,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"><Run Text="Object type"/></TextBlock>
-                                <ComboBox x:Name="cbAACObject" Margin="90,40,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="160">
-                                    <ComboBoxItem Content="Main"/>
-                                    <ComboBoxItem Content="Low complexity"/>
-                                    <ComboBoxItem Content="Scalable Sampling Rate"/>
-                                    <ComboBoxItem Content="Long Term Predictor"/>
-                                </ComboBox>
-                                <TextBlock Margin="10,76,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"><Run Text="Bitrate"/></TextBlock>
-                                <ComboBox x:Name="cbAACBitrate" Margin="90,74,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="111.2">
-                                    <ComboBoxItem Content="32"/>
-                                    <ComboBoxItem Content="40"/>
-                                    <ComboBoxItem Content="48"/>
-                                    <ComboBoxItem Content="56"/>
-                                    <ComboBoxItem Content="64"/>
-                                    <ComboBoxItem Content="72"/>
-                                    <ComboBoxItem Content="80"/>
-                                    <ComboBoxItem Content="88"/>
-                                    <ComboBoxItem Content="96"/>
-                                    <ComboBoxItem Content="104"/>
-                                    <ComboBoxItem Content="112"/>
-                                    <ComboBoxItem Content="120"/>
-                                    <ComboBoxItem Content="128"/>
-                                    <ComboBoxItem Content="140"/>
-                                    <ComboBoxItem Content="160"/>
-                                    <ComboBoxItem Content="192"/>
-                                    <ComboBoxItem Content="224"/>
-                                    <ComboBoxItem Content="256"/>
-                                </ComboBox>
-                                <TextBlock Margin="210,76,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"><Run Text="kbps"/></TextBlock>
-                                <TextBlock Margin="10,112,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22"><Run Text="Output"/></TextBlock>
-                                <ComboBox x:Name="cbAACOutput" Margin="90,110,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="160">
-                                    <ComboBoxItem Content="RAW"/>
-                                    <ComboBoxItem Content="ADTS"/>
-                                </ComboBox>
-                            </Grid>
-                        </TabItem>
-                    </TabControl>
-
+                    <Label Content="Please use Main Demo to configure CPU encoder or use GPU." HorizontalAlignment="Left" Margin="10,104,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Supported GPUs - Intel, nVidia and AMD. H264 and H265 codecs." HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+                    <Label Height="24" HorizontalAlignment="Left" Margin="9,8,0,0" x:Name="label5_Copy" VerticalAlignment="Top" Width="67" Content="File name"/>
+                    <TextBox Margin="89,10,0,0" x:Name="edOutputMP4" Height="23" VerticalAlignment="Top" HorizontalAlignment="Left" Width="243" />
+                    <Button Height="23" HorizontalAlignment="Left" Margin="339,10,0,0" x:Name="btSelectOutput_Copy" VerticalAlignment="Top" Width="26" Click="btSelectOutput_Click" Content="..."/>
                 </Grid>
             </TabItem>
             <TabItem Header="Screenshot" HorizontalAlignment="Left" VerticalAlignment="Top" >

@@ -5,6 +5,7 @@ using VisioForge.Kinect2;
 
 namespace Kinect_2_Demo
 {
+    using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
 
@@ -17,34 +18,32 @@ namespace Kinect_2_Demo
             InitializeComponent();
         }
 
+        private bool IsWindows7OrNewer()
+        {
+            var version = Environment.OSVersion.Version;
+            if (version.Major > 6)
+            {
+                return true;
+            }
+
+            if (version.Major == 6 && version.Minor >= 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void ApplyMP4Settings(ref VFMP4Output mp4Output)
         {
-            // Video H264 settings
-            mp4Output.Video_H264.Profile = VFH264Profile.ProfileBaseline;
-
-            mp4Output.Video_H264.Level = VFH264Level.LevelAuto;
-
-            mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestSpeed;
-
-            mp4Output.Video_H264.PictureType = VFH264PictureType.Auto;
-
-            mp4Output.Video_H264.RateControl = VFH264RateControl.CBR;
-            mp4Output.Video_H264.MBEncoding = VFH264MBEncoding.CABAC;
-            mp4Output.Video_H264.GOP = false;
-            mp4Output.Video_H264.BitrateAuto = false;
-
-            mp4Output.Video_H264.IDR_Period = 15;
-
-            mp4Output.Video_H264.P_Period = 3;
-
-            mp4Output.Video_H264.Bitrate = 2000;
-
-            // Audio AAC settings
-            mp4Output.Audio_AAC.Bitrate = 128;
-
-            mp4Output.Audio_AAC.Version = VFAACVersion.MPEG4;
-            mp4Output.Audio_AAC.Output = VFAACOutput.RAW;
-            mp4Output.Audio_AAC.Object = VFAACObject.Main;
+            if (IsWindows7OrNewer())
+            {
+                mp4Output.MP4Mode = VFMP4Mode.v11;
+            }
+            else
+            {
+                mp4Output.MP4Mode = VFMP4Mode.v8;
+            }
         }
 
         private void btStart_Click(object sender, EventArgs e)
@@ -78,6 +77,19 @@ namespace Kinect_2_Demo
                 var mp4Output = new VFMP4Output();
                 ApplyMP4Settings(ref mp4Output);
                 VideoCapture1.Output_Format = mp4Output;
+            }
+
+            if (VideoCapture.Filter_Supported_EVR())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (VideoCapture.Filter_Supported_VMR9())
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else
+            {
+                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
             }
 
             VideoCapture1.Audio_PlayAudio = false;

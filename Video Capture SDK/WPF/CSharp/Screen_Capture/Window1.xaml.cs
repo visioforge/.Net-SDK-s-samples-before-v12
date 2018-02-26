@@ -26,6 +26,22 @@ namespace Screen_Capture
     [SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]
     public partial class Window1
     {
+        private bool IsWindows7OrNewer()
+        {
+            var version = Environment.OSVersion.Version;
+            if (version.Major > 6)
+            {
+                return true;
+            }
+
+            if (version.Major == 6 && version.Minor >= 1)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
         
@@ -326,8 +342,9 @@ namespace Screen_Capture
                 {
                     VideoCapture1.Screen_Capture_Source.WindowHandle = FindWindow(edScreenCaptureWindowName.Text, null);
                 }
-                catch
+                catch (Exception ex)
                 {
+                    MessageBox.Show("Unable to get window handle for screen capture. " + ex.Message);
                 }
 
                 if (VideoCapture1.Screen_Capture_Source.WindowHandle == IntPtr.Zero)
@@ -419,119 +436,15 @@ namespace Screen_Capture
                 VideoCapture1.Output_Filename = edOutput.Text;
 
                 var mp4Output = new VFMP4Output();
-                
-                int tmp;
 
-                // Main settings
-                mp4Output.MP4Mode = VFMP4Mode.v10;
-
-                // Video H264 settings
-                switch (cbH264Profile.SelectedIndex)
+                if (IsWindows7OrNewer())
                 {
-                    case 0:
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileAuto;
-                        break;
-                    case 1:
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileBaseline;
-                        break;
-                    case 2:
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileMain;
-                        break;
-                    case 3:
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh;
-                        break;
-                    case 4:
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh10;
-                        break;
-                    case 5:
-                        mp4Output.Video_H264.Profile = VFH264Profile.ProfileHigh422;
-                        break;
+                    mp4Output.MP4Mode = VFMP4Mode.v11;
                 }
-
-                switch (cbH264Level.SelectedIndex)
+                else
                 {
-                    case 0:
-                        mp4Output.Video_H264.Level = VFH264Level.LevelAuto;
-                        break;
-                    case 1:
-                        mp4Output.Video_H264.Level = VFH264Level.Level1;
-                        break;
-                    case 2:
-                        mp4Output.Video_H264.Level = VFH264Level.Level11;
-                        break;
-                    case 3:
-                        mp4Output.Video_H264.Level = VFH264Level.Level12;
-                        break;
-                    case 4:
-                        mp4Output.Video_H264.Level = VFH264Level.Level13;
-                        break;
-                    case 5:
-                        mp4Output.Video_H264.Level = VFH264Level.Level2;
-                        break;
-                    case 6:
-                        mp4Output.Video_H264.Level = VFH264Level.Level21;
-                        break;
-                    case 7:
-                        mp4Output.Video_H264.Level = VFH264Level.Level22;
-                        break;
-                    case 8:
-                        mp4Output.Video_H264.Level = VFH264Level.Level3;
-                        break;
-                    case 9:
-                        mp4Output.Video_H264.Level = VFH264Level.Level31;
-                        break;
-                    case 10:
-                        mp4Output.Video_H264.Level = VFH264Level.Level32;
-                        break;
-                    case 11:
-                        mp4Output.Video_H264.Level = VFH264Level.Level4;
-                        break;
-                    case 12:
-                        mp4Output.Video_H264.Level = VFH264Level.Level41;
-                        break;
-                    case 13:
-                        mp4Output.Video_H264.Level = VFH264Level.Level42;
-                        break;
-                    case 14:
-                        mp4Output.Video_H264.Level = VFH264Level.Level5;
-                        break;
-                    case 15:
-                        mp4Output.Video_H264.Level = VFH264Level.Level51;
-                        break;
+                    mp4Output.MP4Mode = VFMP4Mode.v8;
                 }
-
-                switch (cbH264TargetUsage.SelectedIndex)
-                {
-                    case 0:
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Auto;
-                        break;
-                    case 1:
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestQuality;
-                        break;
-                    case 2:
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.Balanced;
-                        break;
-                    case 3:
-                        mp4Output.Video_H264.TargetUsage = VFH264TargetUsage.BestSpeed;
-                        break;
-                }
-
-                mp4Output.Video_H264.PictureType = VFH264PictureType.Auto;
-
-                mp4Output.Video_H264.RateControl = (VFH264RateControl)cbH264RateControl.SelectedIndex;
-                mp4Output.Video_H264.GOP = cbH264GOP.IsChecked == true;
-                mp4Output.Video_H264.BitrateAuto = cbH264AutoBitrate.IsChecked == true;
-
-                int.TryParse(edH264Bitrate.Text, out tmp);
-                mp4Output.Video_H264.Bitrate = tmp;
-
-                // Audio AAC settings
-                int.TryParse(cbAACBitrate.Text, out tmp);
-                mp4Output.Audio_AAC.Bitrate = tmp;
-
-                mp4Output.Audio_AAC.Version = (VFAACVersion)cbAACMPEGVersion.SelectedIndex;
-                mp4Output.Audio_AAC.Output = (VFAACOutput)cbAACOutput.SelectedIndex;
-                mp4Output.Audio_AAC.Object = (VFAACObject)(cbAACObject.SelectedIndex + 1);
 
                 VideoCapture1.Output_Format = mp4Output;
             }
@@ -605,15 +518,6 @@ namespace Screen_Capture
             cbBPS.SelectedIndex = 1;
             cbSampleRate.SelectedIndex = 0;
             cbImageType.SelectedIndex = 1;
-
-            cbH264Profile.SelectedIndex = 2;
-            cbH264Level.SelectedIndex = 0;
-            cbH264RateControl.SelectedIndex = 1;
-            cbAACOutput.SelectedIndex = 0;
-            cbAACMPEGVersion.SelectedIndex = 0;
-            cbAACObject.SelectedIndex = 1;
-            cbAACBitrate.SelectedIndex = 12;
-            cbH264TargetUsage.SelectedIndex = 3;
 
             cbMode.SelectedIndex = 0;
 

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{06E594FA-BCB0-4C8C-AEB2-F0FE6E09DA1F}"
 EndProject
@@ -60,6 +60,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screen Capture Service Helper x86", "Services\Screen Capture\Helper\Screen Capture Service Helper x86.csproj", "{9CF98AB7-941E-4923-A3AA-478CF5CAF0FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Screen Capture Service x86", "Services\Screen Capture\Service\Screen Capture Service x86.csproj", "{D8D0FC78-4A50-485D-A018-84B947E95CDB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timeshift Demo x86", "WinForms\CSharp\Timeshift Demo\Timeshift Demo x86.csproj", "{97EC6046-7AFC-46CC-8CAB-116385DF67D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -245,6 +247,14 @@ Global
 		{D8D0FC78-4A50-485D-A018-84B947E95CDB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D8D0FC78-4A50-485D-A018-84B947E95CDB}.Release|x86.ActiveCfg = Release|Any CPU
 		{D8D0FC78-4A50-485D-A018-84B947E95CDB}.Release|x86.Build.0 = Release|Any CPU
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Debug|x86.ActiveCfg = Debug|x86
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Debug|x86.Build.0 = Debug|x86
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Release|x86.ActiveCfg = Release|x86
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -278,5 +288,9 @@ Global
 		{CD81DB7A-F5FB-44FA-B57C-A35F99AB7352} = {FC32C1FD-DE56-4F4B-A4C5-337525872E26}
 		{9CF98AB7-941E-4923-A3AA-478CF5CAF0FE} = {FC32C1FD-DE56-4F4B-A4C5-337525872E26}
 		{D8D0FC78-4A50-485D-A018-84B947E95CDB} = {FC32C1FD-DE56-4F4B-A4C5-337525872E26}
+		{97EC6046-7AFC-46CC-8CAB-116385DF67D4} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C1AC95C-433F-4A93-AF6D-2DC735C7F2C2}
 	EndGlobalSection
 EndGlobal
