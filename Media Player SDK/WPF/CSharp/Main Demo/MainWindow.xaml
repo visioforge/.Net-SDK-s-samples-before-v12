@@ -784,6 +784,8 @@
                     <Label Content="Wait several seconds to cache required frames" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
                     <Label Content="count before tracking" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
                     <Slider x:Name="tbReversePlaybackTrackbar" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="200" Height="30" Maximum="100" Value="100" TickPlacement="Both" SmallChange="1" TickFrequency="5" ValueChanged="tbReversePlaybackTrackbar_ValueChanged"/>
+                    <Button x:Name="btReversePlaybackPrevFrame" Content="Previous frame" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="99" Click="btReversePlaybackPrevFrame_Click"/>
+                    <Button x:Name="btReversePlaybackNextFrame" Content="Next frame" HorizontalAlignment="Left" Margin="114,202,0,0" VerticalAlignment="Top" Width="99" Click="btReversePlaybackNextFrame_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="VU meter" >

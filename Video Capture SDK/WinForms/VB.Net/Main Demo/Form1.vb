@@ -6534,7 +6534,7 @@ Public Class Form1
     Private Sub VideoCapture1_OnFFMPEGInfo(sender As Object, e As FFMPEGInfoEventArgs) Handles VideoCapture1.OnFFMPEGInfo
 
         Dim del As FFMPEGInfoDelegate = New FFMPEGInfoDelegate(AddressOf FFMPEGInfoDelegateMethod)
-        BeginInvoke(del, e)
+        BeginInvoke(del, e.Message)
 
     End Sub
 

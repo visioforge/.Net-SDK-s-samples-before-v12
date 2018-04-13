@@ -3283,6 +3283,18 @@ Public Class Form1
         End If
 
     End Sub
+
+    Private Sub btReversePlaybackPrevFrame_Click(sender As Object, e As EventArgs) Handles btReversePlaybackPrevFrame.Click
+
+        MediaPlayer1.ReversePlayback_PreviousFrame()
+
+    End Sub
+
+    Private Sub btReversePlaybackNextFrame_Click(sender As Object, e As EventArgs) Handles btReversePlaybackNextFrame.Click
+
+        MediaPlayer1.ReversePlayback_NextFrame()
+
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

@@ -3094,6 +3094,16 @@ namespace Main_Demo
                 }
             }
         }
+
+        private void btReversePlaybackPrevFrame_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.ReversePlayback_PreviousFrame();
+        }
+
+        private void btReversePlaybackNextFrame_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.ReversePlayback_NextFrame();
+        }
     }
 }
 
