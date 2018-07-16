@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_gen", "Console\vfp_gen\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_search", "Console\vfp_search\vfp_search.csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B7706EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageComparer", "Image Comparer\ImageComparer.csproj", "{71B4B524-9080-4F39-B9F5-D9DBD589A115}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,8 +73,19 @@ Global
 		{BC3C6DBD-A913-4D60-9960-D01E9B7706EE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC3C6DBD-A913-4D60-9960-D01E9B7706EE}.Release|x86.ActiveCfg = Release|x86
 		{BC3C6DBD-A913-4D60-9960-D01E9B7706EE}.Release|x86.Build.0 = Release|x86
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Debug|x86.ActiveCfg = Debug|x86
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Debug|x86.Build.0 = Debug|x86
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Release|x86.ActiveCfg = Release|x86
+		{71B4B524-9080-4F39-B9F5-D9DBD589A115}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0F85331-0E12-4C44-A9E2-7EBD49659DCF}
 	EndGlobalSection
 EndGlobal

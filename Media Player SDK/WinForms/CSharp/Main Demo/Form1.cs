@@ -1496,6 +1496,12 @@ namespace Media_Player_Demo
                 cbFadeInOut_CheckedChanged(null, null);
             }
 
+            // Motion detection
+            if (cbMotDetEnabled.Checked)
+            {
+                btMotDetUpdateSettings_Click(null, null);
+            }
+
             // Barcode detection
             MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked;
             MediaPlayer1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
@@ -2224,9 +2230,20 @@ namespace Media_Player_Demo
         public void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
+            int k = 0;
             foreach (byte b in e.Matrix)
             {
-                s += b + " ";
+                s += b.ToString("D3") + " ";
+
+                if (k == MediaPlayer1.Motion_Detection.Matrix_Width - 1)
+                {
+                    k = 0;
+                    s += Environment.NewLine;
+                }
+                else
+                {
+                    k++;
+                }
             }
 
             mmMotDetMatrix.Text = s.Trim();

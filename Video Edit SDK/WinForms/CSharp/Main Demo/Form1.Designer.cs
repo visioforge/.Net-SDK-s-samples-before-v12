@@ -11569,15 +11569,15 @@ namespace VideoEdit_CS_Demo
             // 
             // pbMotionLevel
             // 
-            this.pbMotionLevel.Location = new System.Drawing.Point(47, 207);
+            this.pbMotionLevel.Location = new System.Drawing.Point(19, 318);
             this.pbMotionLevel.Name = "pbMotionLevel";
-            this.pbMotionLevel.Size = new System.Drawing.Size(197, 19);
+            this.pbMotionLevel.Size = new System.Drawing.Size(225, 19);
             this.pbMotionLevel.TabIndex = 2;
             // 
             // label158
             // 
             this.label158.AutoSize = true;
-            this.label158.Location = new System.Drawing.Point(16, 187);
+            this.label158.Location = new System.Drawing.Point(16, 298);
             this.label158.Name = "label158";
             this.label158.Size = new System.Drawing.Size(64, 13);
             this.label158.TabIndex = 1;
@@ -11585,11 +11585,11 @@ namespace VideoEdit_CS_Demo
             // 
             // mmMotDetMatrix
             // 
-            this.mmMotDetMatrix.Location = new System.Drawing.Point(17, 19);
+            this.mmMotDetMatrix.Location = new System.Drawing.Point(6, 6);
             this.mmMotDetMatrix.Multiline = true;
             this.mmMotDetMatrix.Name = "mmMotDetMatrix";
             this.mmMotDetMatrix.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.mmMotDetMatrix.Size = new System.Drawing.Size(228, 157);
+            this.mmMotDetMatrix.Size = new System.Drawing.Size(248, 249);
             this.mmMotDetMatrix.TabIndex = 0;
             // 
             // tabPage45
@@ -14114,6 +14114,7 @@ namespace VideoEdit_CS_Demo
             this.cbMuxStreamsType.Items.AddRange(new object[] {
             "Video",
             "Audio",
+            "Subtitle",
             "0",
             "1",
             "2",

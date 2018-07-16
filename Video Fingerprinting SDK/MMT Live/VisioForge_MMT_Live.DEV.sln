@@ -1,0 +1,106 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge_MMT_Live.DEV", "VisioForge_MMT_Live.DEV.csproj", "{2E6512D7-5DD4-424D-8035-9E6055151F2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.MediaFramework.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.MediaFramework\VisioForge.MediaFramework.NET40.csproj", "{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.Types.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.Types\VisioForge.Types.NET40.csproj", "{0D66442E-7A32-42F4-87B1-8EEE08E88E91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.Shared.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.Shared\VisioForge.Shared.NET40.csproj", "{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.Controls.WPF.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.Controls.WPF\VisioForge.Controls.WPF.NET40.csproj", "{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.Controls.WinForms.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.Controls.WinForms\VisioForge.Controls.WinForms.NET40.csproj", "{049CDF65-FC00-4616-8E9D-3C200C043C4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.Controls.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.Controls\VisioForge.Controls.NET40.csproj", "{86FEDB56-F1BC-48D4-B59A-8BF292621817}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.Tools.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.Tools\VisioForge.Tools.NET40.csproj", "{B0A07AD5-44E5-4FF9-B389-55141DA599A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge.VideoFingerPrinting.NET40", "..\..\..\..\MediaFrameworkDotNet\_SOURCE\VisioForge.VideoFingerPrinting\VisioForge.VideoFingerPrinting.NET40.csproj", "{E3AD8CE1-E76A-4966-8660-31EB938B24F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Debug|x86.ActiveCfg = Debug|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Debug|x86.Build.0 = Debug|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Release|Any CPU.ActiveCfg = Release|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Release|x86.ActiveCfg = Release|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Release|x86.Build.0 = Release|x86
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Debug|x86.ActiveCfg = Debug|x86
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Debug|x86.Build.0 = Debug|x86
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Release|x86.ActiveCfg = Release|x86
+		{F6E2DC57-4C3E-4D7B-AC6D-93617166551A}.Release|x86.Build.0 = Release|x86
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Debug|x86.ActiveCfg = Debug|x86
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Debug|x86.Build.0 = Debug|x86
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Release|x86.ActiveCfg = Release|x86
+		{0D66442E-7A32-42F4-87B1-8EEE08E88E91}.Release|x86.Build.0 = Release|x86
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Debug|x86.ActiveCfg = Debug|x86
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Debug|x86.Build.0 = Debug|x86
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Release|x86.ActiveCfg = Release|x86
+		{B1EFCD39-FC2D-415F-8027-E4C4720FB6F2}.Release|x86.Build.0 = Release|x86
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Debug|x86.ActiveCfg = Debug|x86
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Debug|x86.Build.0 = Debug|x86
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Release|x86.ActiveCfg = Release|x86
+		{8F2E9E28-3890-4962-AAFE-B091DA0EF08F}.Release|x86.Build.0 = Release|x86
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Debug|x86.ActiveCfg = Debug|x86
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Debug|x86.Build.0 = Debug|x86
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Release|x86.ActiveCfg = Release|x86
+		{049CDF65-FC00-4616-8E9D-3C200C043C4B}.Release|x86.Build.0 = Release|x86
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Debug|x86.ActiveCfg = Debug|x86
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Debug|x86.Build.0 = Debug|x86
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Release|x86.ActiveCfg = Release|x86
+		{86FEDB56-F1BC-48D4-B59A-8BF292621817}.Release|x86.Build.0 = Release|x86
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Debug|x86.ActiveCfg = Debug|x86
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Debug|x86.Build.0 = Debug|x86
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Release|x86.ActiveCfg = Release|x86
+		{B0A07AD5-44E5-4FF9-B389-55141DA599A8}.Release|x86.Build.0 = Release|x86
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Debug|x86.ActiveCfg = Debug|x86
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Debug|x86.Build.0 = Debug|x86
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Release|x86.ActiveCfg = Release|x86
+		{E3AD8CE1-E76A-4966-8660-31EB938B24F1}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

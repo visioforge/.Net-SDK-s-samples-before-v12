@@ -368,14 +368,14 @@ namespace IP_Capture
                     onvifControl = null;
                 }
 
-                if (string.IsNullOrEmpty(edIPLogin.Text) || string.IsNullOrEmpty(this.edIPPassword.Text))
+                if (string.IsNullOrEmpty(edONVIFLogin.Text) || string.IsNullOrEmpty(edONVIFPassword.Text))
                 {
                     MessageBox.Show("Please specify IP camera user name and password.");
                     return;
                 }
 
                 onvifControl = new ONVIFControl();
-                var result = onvifControl.Connect(edIPUrl.Text, edIPLogin.Text, edIPPassword.Text);
+                var result = onvifControl.Connect(edONVIFURL.Text, edONVIFLogin.Text, edONVIFPassword.Text);
                 if (!result)
                 {
                     onvifControl = null;
@@ -385,6 +385,11 @@ namespace IP_Capture
 
                 var deviceInfo = onvifControl.GetDeviceInformation();
                 lbONVIFCameraInfo.Content = $"Model {deviceInfo.Model}, Firmware {deviceInfo.Firmware}";
+
+                edONVIFLiveVideoURL.Text = edIPUrl.Text = onvifControl.GetVideoURL();
+
+                edIPLogin.Text = edONVIFLogin.Text;
+                edIPPassword.Text = edONVIFPassword.Text;
 
                 cbONVIFProfile.Items.Clear();
                 var profiles = onvifControl.GetProfiles();

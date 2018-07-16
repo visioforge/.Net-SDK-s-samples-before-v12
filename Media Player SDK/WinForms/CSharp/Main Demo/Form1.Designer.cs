@@ -6585,15 +6585,15 @@ namespace Media_Player_Demo
             // 
             // pbMotionLevel
             // 
-            this.pbMotionLevel.Location = new System.Drawing.Point(47, 207);
+            this.pbMotionLevel.Location = new System.Drawing.Point(6, 327);
             this.pbMotionLevel.Name = "pbMotionLevel";
-            this.pbMotionLevel.Size = new System.Drawing.Size(197, 19);
+            this.pbMotionLevel.Size = new System.Drawing.Size(227, 19);
             this.pbMotionLevel.TabIndex = 2;
             // 
             // label158
             // 
             this.label158.AutoSize = true;
-            this.label158.Location = new System.Drawing.Point(16, 187);
+            this.label158.Location = new System.Drawing.Point(5, 307);
             this.label158.Name = "label158";
             this.label158.Size = new System.Drawing.Size(64, 13);
             this.label158.TabIndex = 1;
@@ -6601,11 +6601,11 @@ namespace Media_Player_Demo
             // 
             // mmMotDetMatrix
             // 
-            this.mmMotDetMatrix.Location = new System.Drawing.Point(17, 19);
+            this.mmMotDetMatrix.Location = new System.Drawing.Point(6, 6);
             this.mmMotDetMatrix.Multiline = true;
             this.mmMotDetMatrix.Name = "mmMotDetMatrix";
             this.mmMotDetMatrix.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.mmMotDetMatrix.Size = new System.Drawing.Size(228, 157);
+            this.mmMotDetMatrix.Size = new System.Drawing.Size(248, 261);
             this.mmMotDetMatrix.TabIndex = 0;
             // 
             // tabPage45

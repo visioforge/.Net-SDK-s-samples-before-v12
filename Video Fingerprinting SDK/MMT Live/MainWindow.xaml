@@ -4,7 +4,7 @@
 				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
 				xmlns:WPF="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI" x:Class="VisioForge_MMT.MainWindow"
                 DataContext="{Binding RelativeSource={RelativeSource Self}}"
-				Title="VisioForge Media Monitoring Tool Live v10.1.0.0" Height="582" Width="1005" Icon="visioforge_main_icon.ico"
+				Title="VisioForge Media Monitoring Tool Live v10.4.0.0" Height="654.891" Width="1005" Icon="visioforge_main_icon.ico"
                 Loaded="Window_Loaded" Unloaded="Window_Unloaded" Closing="Window_Closing">
     <Grid>
 
@@ -22,17 +22,45 @@
             <Label x:Name="lbStatus" Content="" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="450" Height="30"/>
         </StatusBar>
 
-        <TabControl Grid.Column="0" HorizontalAlignment="Stretch" Margin="10,297,10,70" VerticalAlignment="Stretch">
+        <TabControl Grid.Column="0" HorizontalAlignment="Stretch" Margin="10,306,10,35" VerticalAlignment="Stretch">
             <TabItem Header="Live video source" Height="24">
                 <Grid Background="Transparent">
-                    <Label Content="Source" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbVideoSource" HorizontalAlignment="Left" Margin="111,14,0,0" VerticalAlignment="Top" Width="278" SelectionChanged="cbVideoSource_SelectionChanged">
+
+                    <TabControl HorizontalAlignment="Left" Height="205" Margin="10,36,0,0" VerticalAlignment="Top" Width="375">
+                        <TabItem Header="Local capture source">
+                            <Grid Background="Transparent">
+                                <Label Content="Source" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbVideoSource" HorizontalAlignment="Left" Margin="81,14,0,0" VerticalAlignment="Top" Width="278" SelectionChanged="cbVideoSource_SelectionChanged">
+                                </ComboBox>
+                                <Label Content="Format" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbVideoFormat" HorizontalAlignment="Left" Margin="81,51,0,0" VerticalAlignment="Top" Width="278">
+                                </ComboBox>
+                                <Label Content="Frame rate" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbVideoFrameRate" HorizontalAlignment="Left" Margin="81,89,0,0" VerticalAlignment="Top" Width="97"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Network source">
+                            <Grid Background="Transparent">
+                                <Label Content="URL" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edNetworkSourceURL" HorizontalAlignment="Left" Height="23" Margin="60,13,0,0" TextWrapping="Wrap" Text="http://212.162.177.75/mjpg/video.mjpg" VerticalAlignment="Top" Width="299"/>
+                                <ComboBox x:Name="cbNetworkSourceEngine" HorizontalAlignment="Left" Margin="60,50,0,0" VerticalAlignment="Top" Width="110" SelectedIndex="0">
+                                    <ComboBoxItem Content="LAV"/>
+                                    <ComboBoxItem Content="VLC"/>
+                                    <ComboBoxItem Content="FFMPEG"/>
+                                </ComboBox>
+                                <Label Content="Engine" HorizontalAlignment="Left" Margin="10,46,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Login" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edNetworkSourceLogin" HorizontalAlignment="Left" Height="23" Margin="60,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+                                <Label Content="Password" HorizontalAlignment="Left" Margin="179,86,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edNetworkSourcePassword" HorizontalAlignment="Left" Height="23" Margin="249,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="110"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                    <Label Content="Source" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbSource" HorizontalAlignment="Left" Margin="90,6,0,0" VerticalAlignment="Top" Width="295" SelectedIndex="0">
+                        <ComboBoxItem Content="Local video capture source"/>
+                        <ComboBoxItem Content="Network stream"/>
                     </ComboBox>
-                    <Label Content="Format" HorizontalAlignment="Left" Margin="10,47,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbVideoFormat" HorizontalAlignment="Left" Margin="111,51,0,0" VerticalAlignment="Top" Width="278">
-                    </ComboBox>
-                    <Label Content="Frame rate" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbVideoFrameRate" HorizontalAlignment="Left" Margin="111,89,0,0" VerticalAlignment="Top" Width="71"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Ad samples" Height="24">
@@ -55,10 +83,9 @@
                     <Slider x:Name="slDifference" HorizontalAlignment="Left" Margin="127,48,0,0" VerticalAlignment="Top" Width="133" Maximum="2000" Minimum="200" Value="1100" Height="21"/>
                     <TextBlock HorizontalAlignment="Left" Margin="277,48,0,0" TextWrapping="Wrap" Text="1100" VerticalAlignment="Top"/>
                     <TextBlock HorizontalAlignment="Left" Margin="10,80,0,0" TextWrapping="Wrap" Text="Fragment duration" VerticalAlignment="Top" Foreground="Black"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,122,0,0" TextWrapping="Wrap" Text="for analyze" VerticalAlignment="Top" Foreground="Black"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,101,0,0" TextWrapping="Wrap" Text="of live video to split" VerticalAlignment="Top" Foreground="Black"/>
-                    <TextBox x:Name="edFragmentDuration" HorizontalAlignment="Left" Height="23" Margin="127,80,0,0" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="61"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="202,83,0,0" TextWrapping="Wrap" Text="minutes" VerticalAlignment="Top" Foreground="Black"/>
+                    <TextBox x:Name="edFragmentDuration" HorizontalAlignment="Left" Height="23" Margin="127,80,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="61"  />
+                    <TextBlock HorizontalAlignment="Left" Margin="193,80,0,0" TextWrapping="Wrap" Text="s" VerticalAlignment="Top" Foreground="Black"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="375"><Run Text="Duration "/><Run Text="of live video to split for analyze. Better to use 60 seconds or more. Minimal duration is longest ad duration + 10 seconds. 0 to calculate automatically."/><LineBreak/><Run Text=" "/></TextBlock>
                 </Grid>
             </TabItem>
             <TabItem Header="Log" Height="24">
@@ -68,13 +95,13 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ProgressBar Grid.Column="0" x:Name="pbProgress" HorizontalAlignment="Left" Height="26" Margin="10,0,0,35" Value="0" VerticalAlignment="Bottom" Width="316"/>
-        <Button Grid.Column="0" x:Name="btStart" Content="Start" HorizontalAlignment="Left" Height="26" Margin="331,0,0,35" Width="80" VerticalAlignment="Bottom" Click="btStart_Click"/>
-        <ListView x:Name="lvResults" Grid.Column="1" Margin="10,10,10,70" ItemsSource="{Binding Results}" >
+        <ProgressBar Grid.Column="1" x:Name="pbProgress" HorizontalAlignment="Left" Height="26" Margin="95,0,0,35" Value="0" VerticalAlignment="Bottom" Width="206"/>
+        <Button Grid.Column="1" x:Name="btStart" Content="Start" HorizontalAlignment="Left" Height="26" Margin="10,0,0,35" Width="80" VerticalAlignment="Bottom" Click="btStart_Click"/>
+        <ListView x:Name="lvResults" Grid.Column="1" Margin="10,10,10,70" ItemsSource="{Binding ResultsView}" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Width="250" Header="Ad file" DisplayMemberBinding="{Binding Sample}"  />
-                    <GridViewColumn Width="70" Header="Time stamp" DisplayMemberBinding="{Binding TimeStamp}" />
+                    <GridViewColumn Width="400" Header="Ad file" DisplayMemberBinding="{Binding Sample}"  />
+                    <GridViewColumn Width="120" Header="Time stamp" DisplayMemberBinding="{Binding TimeStamp}" />
                 </GridView>
             </ListView.View>
         </ListView>

@@ -21,7 +21,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms3 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.btSelectOutput = New System.Windows.Forms.Button()
         Me.tabControl1 = New System.Windows.Forms.TabControl()
         Me.tabPage1 = New System.Windows.Forms.TabPage()
@@ -59,10 +59,7 @@ Partial Class Form1
         Me.btONVIFUp = New System.Windows.Forms.Button()
         Me.cbONVIFProfile = New System.Windows.Forms.ComboBox()
         Me.label510 = New System.Windows.Forms.Label()
-        Me.lbONVIFCameraInfo = New System.Windows.Forms.Label()
         Me.btONVIFConnect = New System.Windows.Forms.Button()
-        Me.edIPUrl = New System.Windows.Forms.TextBox()
-        Me.label165 = New System.Windows.Forms.Label()
         Me.tabPage2 = New System.Windows.Forms.TabPage()
         Me.edOutputAVI = New System.Windows.Forms.TextBox()
         Me.label9 = New System.Windows.Forms.Label()
@@ -79,6 +76,11 @@ Partial Class Form1
         Me.cbSampleRate = New System.Windows.Forms.ComboBox()
         Me.cbVideoCodecs = New System.Windows.Forms.ComboBox()
         Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.btSelectOutputMP4 = New System.Windows.Forms.Button()
+        Me.edOutputMP4 = New System.Windows.Forms.TextBox()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.TabPage7 = New System.Windows.Forms.TabPage()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
@@ -100,11 +102,14 @@ Partial Class Form1
         Me.rbCaptureMP4 = New System.Windows.Forms.RadioButton()
         Me.rbCaptureAVI = New System.Windows.Forms.RadioButton()
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
-        Me.label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.btSelectOutputMP4 = New System.Windows.Forms.Button()
-        Me.edOutputMP4 = New System.Windows.Forms.TextBox()
-        Me.label1 = New System.Windows.Forms.Label()
+        Me.edIPUrl = New System.Windows.Forms.TextBox()
+        Me.label165 = New System.Windows.Forms.Label()
+        Me.edONVIFPassword = New System.Windows.Forms.TextBox()
+        Me.Label379 = New System.Windows.Forms.Label()
+        Me.edONVIFLogin = New System.Windows.Forms.TextBox()
+        Me.Label380 = New System.Windows.Forms.Label()
+        Me.edONVIFURL = New System.Windows.Forms.TextBox()
+        Me.lbONVIFCameraInfo = New System.Windows.Forms.Label()
         Me.tabControl1.SuspendLayout()
         Me.tabPage1.SuspendLayout()
         Me.tabControl15.SuspendLayout()
@@ -146,8 +151,6 @@ Partial Class Form1
         'tabPage1
         '
         Me.tabPage1.Controls.Add(Me.tabControl15)
-        Me.tabPage1.Controls.Add(Me.edIPUrl)
-        Me.tabPage1.Controls.Add(Me.label165)
         Me.tabPage1.Location = New System.Drawing.Point(4, 22)
         Me.tabPage1.Name = "tabPage1"
         Me.tabPage1.Padding = New System.Windows.Forms.Padding(3)
@@ -161,14 +164,16 @@ Partial Class Form1
         Me.tabControl15.Controls.Add(Me.tabPage144)
         Me.tabControl15.Controls.Add(Me.tabPage146)
         Me.tabControl15.Controls.Add(Me.tabPage145)
-        Me.tabControl15.Location = New System.Drawing.Point(12, 35)
+        Me.tabControl15.Location = New System.Drawing.Point(12, 6)
         Me.tabControl15.Name = "tabControl15"
         Me.tabControl15.SelectedIndex = 0
-        Me.tabControl15.Size = New System.Drawing.Size(447, 282)
+        Me.tabControl15.Size = New System.Drawing.Size(447, 311)
         Me.tabControl15.TabIndex = 68
         '
         'tabPage144
         '
+        Me.tabPage144.Controls.Add(Me.edIPUrl)
+        Me.tabPage144.Controls.Add(Me.label165)
         Me.tabPage144.Controls.Add(Me.cbIPCameraONVIF)
         Me.tabPage144.Controls.Add(Me.btShowIPCamDatabase)
         Me.tabPage144.Controls.Add(Me.linkLabel7)
@@ -187,7 +192,7 @@ Partial Class Form1
         Me.tabPage144.Location = New System.Drawing.Point(4, 22)
         Me.tabPage144.Name = "tabPage144"
         Me.tabPage144.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage144.Size = New System.Drawing.Size(439, 256)
+        Me.tabPage144.Size = New System.Drawing.Size(439, 285)
         Me.tabPage144.TabIndex = 0
         Me.tabPage144.Text = "Main"
         Me.tabPage144.UseVisualStyleBackColor = True
@@ -195,7 +200,7 @@ Partial Class Form1
         'cbIPCameraONVIF
         '
         Me.cbIPCameraONVIF.AutoSize = True
-        Me.cbIPCameraONVIF.Location = New System.Drawing.Point(294, 12)
+        Me.cbIPCameraONVIF.Location = New System.Drawing.Point(293, 47)
         Me.cbIPCameraONVIF.Name = "cbIPCameraONVIF"
         Me.cbIPCameraONVIF.Size = New System.Drawing.Size(96, 17)
         Me.cbIPCameraONVIF.TabIndex = 78
@@ -204,7 +209,7 @@ Partial Class Form1
         '
         'btShowIPCamDatabase
         '
-        Me.btShowIPCamDatabase.Location = New System.Drawing.Point(282, 179)
+        Me.btShowIPCamDatabase.Location = New System.Drawing.Point(281, 214)
         Me.btShowIPCamDatabase.Name = "btShowIPCamDatabase"
         Me.btShowIPCamDatabase.Size = New System.Drawing.Size(135, 23)
         Me.btShowIPCamDatabase.TabIndex = 77
@@ -214,7 +219,7 @@ Partial Class Form1
         'linkLabel7
         '
         Me.linkLabel7.AutoSize = True
-        Me.linkLabel7.Location = New System.Drawing.Point(12, 184)
+        Me.linkLabel7.Location = New System.Drawing.Point(11, 219)
         Me.linkLabel7.Name = "linkLabel7"
         Me.linkLabel7.Size = New System.Drawing.Size(264, 13)
         Me.linkLabel7.TabIndex = 76
@@ -224,7 +229,7 @@ Partial Class Form1
         'cbIPDisconnect
         '
         Me.cbIPDisconnect.AutoSize = True
-        Me.cbIPDisconnect.Location = New System.Drawing.Point(15, 127)
+        Me.cbIPDisconnect.Location = New System.Drawing.Point(14, 162)
         Me.cbIPDisconnect.Name = "cbIPDisconnect"
         Me.cbIPDisconnect.Size = New System.Drawing.Size(136, 17)
         Me.cbIPDisconnect.TabIndex = 75
@@ -233,7 +238,7 @@ Partial Class Form1
         '
         'edIPForcedFramerateID
         '
-        Me.edIPForcedFramerateID.Location = New System.Drawing.Point(267, 100)
+        Me.edIPForcedFramerateID.Location = New System.Drawing.Point(266, 135)
         Me.edIPForcedFramerateID.Margin = New System.Windows.Forms.Padding(2)
         Me.edIPForcedFramerateID.Name = "edIPForcedFramerateID"
         Me.edIPForcedFramerateID.Size = New System.Drawing.Size(32, 20)
@@ -243,7 +248,7 @@ Partial Class Form1
         'label344
         '
         Me.label344.AutoSize = True
-        Me.label344.Location = New System.Drawing.Point(165, 102)
+        Me.label344.Location = New System.Drawing.Point(164, 137)
         Me.label344.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label344.Name = "label344"
         Me.label344.Size = New System.Drawing.Size(98, 13)
@@ -252,7 +257,7 @@ Partial Class Form1
         '
         'edIPForcedFramerate
         '
-        Me.edIPForcedFramerate.Location = New System.Drawing.Point(114, 100)
+        Me.edIPForcedFramerate.Location = New System.Drawing.Point(113, 135)
         Me.edIPForcedFramerate.Margin = New System.Windows.Forms.Padding(2)
         Me.edIPForcedFramerate.Name = "edIPForcedFramerate"
         Me.edIPForcedFramerate.Size = New System.Drawing.Size(32, 20)
@@ -262,7 +267,7 @@ Partial Class Form1
         'label295
         '
         Me.label295.AutoSize = True
-        Me.label295.Location = New System.Drawing.Point(12, 102)
+        Me.label295.Location = New System.Drawing.Point(11, 137)
         Me.label295.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label295.Name = "label295"
         Me.label295.Size = New System.Drawing.Size(84, 13)
@@ -274,14 +279,14 @@ Partial Class Form1
         Me.cbIPCameraType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbIPCameraType.FormattingEnabled = True
         Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)"})
-        Me.cbIPCameraType.Location = New System.Drawing.Point(57, 10)
+        Me.cbIPCameraType.Location = New System.Drawing.Point(56, 45)
         Me.cbIPCameraType.Name = "cbIPCameraType"
         Me.cbIPCameraType.Size = New System.Drawing.Size(227, 21)
         Me.cbIPCameraType.TabIndex = 67
         '
         'edIPPassword
         '
-        Me.edIPPassword.Location = New System.Drawing.Point(168, 58)
+        Me.edIPPassword.Location = New System.Drawing.Point(167, 93)
         Me.edIPPassword.Name = "edIPPassword"
         Me.edIPPassword.Size = New System.Drawing.Size(100, 20)
         Me.edIPPassword.TabIndex = 66
@@ -289,7 +294,7 @@ Partial Class Form1
         'label167
         '
         Me.label167.AutoSize = True
-        Me.label167.Location = New System.Drawing.Point(165, 41)
+        Me.label167.Location = New System.Drawing.Point(164, 76)
         Me.label167.Name = "label167"
         Me.label167.Size = New System.Drawing.Size(53, 13)
         Me.label167.TabIndex = 65
@@ -297,7 +302,7 @@ Partial Class Form1
         '
         'edIPLogin
         '
-        Me.edIPLogin.Location = New System.Drawing.Point(15, 58)
+        Me.edIPLogin.Location = New System.Drawing.Point(14, 93)
         Me.edIPLogin.Name = "edIPLogin"
         Me.edIPLogin.Size = New System.Drawing.Size(100, 20)
         Me.edIPLogin.TabIndex = 64
@@ -305,7 +310,7 @@ Partial Class Form1
         'label166
         '
         Me.label166.AutoSize = True
-        Me.label166.Location = New System.Drawing.Point(11, 41)
+        Me.label166.Location = New System.Drawing.Point(10, 76)
         Me.label166.Name = "label166"
         Me.label166.Size = New System.Drawing.Size(33, 13)
         Me.label166.TabIndex = 63
@@ -316,7 +321,7 @@ Partial Class Form1
         Me.cbIPAudioCapture.AutoSize = True
         Me.cbIPAudioCapture.Checked = True
         Me.cbIPAudioCapture.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbIPAudioCapture.Location = New System.Drawing.Point(168, 127)
+        Me.cbIPAudioCapture.Location = New System.Drawing.Point(167, 162)
         Me.cbIPAudioCapture.Name = "cbIPAudioCapture"
         Me.cbIPAudioCapture.Size = New System.Drawing.Size(92, 17)
         Me.cbIPAudioCapture.TabIndex = 62
@@ -326,7 +331,7 @@ Partial Class Form1
         'label168
         '
         Me.label168.AutoSize = True
-        Me.label168.Location = New System.Drawing.Point(11, 14)
+        Me.label168.Location = New System.Drawing.Point(10, 49)
         Me.label168.Name = "label168"
         Me.label168.Size = New System.Drawing.Size(40, 13)
         Me.label168.TabIndex = 61
@@ -374,24 +379,29 @@ Partial Class Form1
         '
         'tabPage145
         '
+        Me.tabPage145.Controls.Add(Me.edONVIFPassword)
+        Me.tabPage145.Controls.Add(Me.Label379)
+        Me.tabPage145.Controls.Add(Me.edONVIFLogin)
+        Me.tabPage145.Controls.Add(Me.Label380)
+        Me.tabPage145.Controls.Add(Me.edONVIFURL)
+        Me.tabPage145.Controls.Add(Me.lbONVIFCameraInfo)
         Me.tabPage145.Controls.Add(Me.edONVIFLiveVideoURL)
         Me.tabPage145.Controls.Add(Me.label513)
         Me.tabPage145.Controls.Add(Me.groupBox42)
         Me.tabPage145.Controls.Add(Me.cbONVIFProfile)
         Me.tabPage145.Controls.Add(Me.label510)
-        Me.tabPage145.Controls.Add(Me.lbONVIFCameraInfo)
         Me.tabPage145.Controls.Add(Me.btONVIFConnect)
         Me.tabPage145.Location = New System.Drawing.Point(4, 22)
         Me.tabPage145.Name = "tabPage145"
         Me.tabPage145.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage145.Size = New System.Drawing.Size(439, 256)
+        Me.tabPage145.Size = New System.Drawing.Size(439, 285)
         Me.tabPage145.TabIndex = 1
         Me.tabPage145.Text = "ONVIF"
         Me.tabPage145.UseVisualStyleBackColor = True
         '
         'edONVIFLiveVideoURL
         '
-        Me.edONVIFLiveVideoURL.Location = New System.Drawing.Point(75, 75)
+        Me.edONVIFLiveVideoURL.Location = New System.Drawing.Point(75, 145)
         Me.edONVIFLiveVideoURL.Name = "edONVIFLiveVideoURL"
         Me.edONVIFLiveVideoURL.ReadOnly = True
         Me.edONVIFLiveVideoURL.Size = New System.Drawing.Size(346, 20)
@@ -400,7 +410,7 @@ Partial Class Form1
         'label513
         '
         Me.label513.AutoSize = True
-        Me.label513.Location = New System.Drawing.Point(11, 78)
+        Me.label513.Location = New System.Drawing.Point(11, 148)
         Me.label513.Name = "label513"
         Me.label513.Size = New System.Drawing.Size(59, 13)
         Me.label513.TabIndex = 27
@@ -415,7 +425,7 @@ Partial Class Form1
         Me.groupBox42.Controls.Add(Me.btONVIFZoomIn)
         Me.groupBox42.Controls.Add(Me.btONVIFDown)
         Me.groupBox42.Controls.Add(Me.btONVIFUp)
-        Me.groupBox42.Location = New System.Drawing.Point(14, 103)
+        Me.groupBox42.Location = New System.Drawing.Point(14, 175)
         Me.groupBox42.Name = "groupBox42"
         Me.groupBox42.Size = New System.Drawing.Size(271, 104)
         Me.groupBox42.TabIndex = 26
@@ -489,7 +499,7 @@ Partial Class Form1
         '
         Me.cbONVIFProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbONVIFProfile.FormattingEnabled = True
-        Me.cbONVIFProfile.Location = New System.Drawing.Point(75, 49)
+        Me.cbONVIFProfile.Location = New System.Drawing.Point(75, 119)
         Me.cbONVIFProfile.Name = "cbONVIFProfile"
         Me.cbONVIFProfile.Size = New System.Drawing.Size(346, 21)
         Me.cbONVIFProfile.TabIndex = 4
@@ -497,46 +507,20 @@ Partial Class Form1
         'label510
         '
         Me.label510.AutoSize = True
-        Me.label510.Location = New System.Drawing.Point(12, 52)
+        Me.label510.Location = New System.Drawing.Point(12, 122)
         Me.label510.Name = "label510"
         Me.label510.Size = New System.Drawing.Size(36, 13)
         Me.label510.TabIndex = 3
         Me.label510.Text = "Profile"
         '
-        'lbONVIFCameraInfo
-        '
-        Me.lbONVIFCameraInfo.AutoSize = True
-        Me.lbONVIFCameraInfo.Location = New System.Drawing.Point(95, 22)
-        Me.lbONVIFCameraInfo.Name = "lbONVIFCameraInfo"
-        Me.lbONVIFCameraInfo.Size = New System.Drawing.Size(126, 13)
-        Me.lbONVIFCameraInfo.TabIndex = 1
-        Me.lbONVIFCameraInfo.Text = "Camera info not available"
-        '
         'btONVIFConnect
         '
-        Me.btONVIFConnect.Location = New System.Drawing.Point(14, 17)
+        Me.btONVIFConnect.Location = New System.Drawing.Point(346, 15)
         Me.btONVIFConnect.Name = "btONVIFConnect"
         Me.btONVIFConnect.Size = New System.Drawing.Size(75, 23)
         Me.btONVIFConnect.TabIndex = 0
         Me.btONVIFConnect.Text = "Connect"
         Me.btONVIFConnect.UseVisualStyleBackColor = True
-        '
-        'edIPUrl
-        '
-        Me.edIPUrl.Location = New System.Drawing.Point(62, 9)
-        Me.edIPUrl.Name = "edIPUrl"
-        Me.edIPUrl.Size = New System.Drawing.Size(393, 20)
-        Me.edIPUrl.TabIndex = 67
-        Me.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg"
-        '
-        'label165
-        '
-        Me.label165.AutoSize = True
-        Me.label165.Location = New System.Drawing.Point(17, 11)
-        Me.label165.Name = "label165"
-        Me.label165.Size = New System.Drawing.Size(29, 13)
-        Me.label165.TabIndex = 66
-        Me.label165.Text = "URL"
         '
         'tabPage2
         '
@@ -715,6 +699,56 @@ Partial Class Form1
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "MP4 output"
         Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'btSelectOutputMP4
+        '
+        Me.btSelectOutputMP4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btSelectOutputMP4.Location = New System.Drawing.Point(306, 16)
+        Me.btSelectOutputMP4.Name = "btSelectOutputMP4"
+        Me.btSelectOutputMP4.Size = New System.Drawing.Size(20, 23)
+        Me.btSelectOutputMP4.TabIndex = 53
+        Me.btSelectOutputMP4.Text = "..."
+        Me.btSelectOutputMP4.UseVisualStyleBackColor = True
+        '
+        'edOutputMP4
+        '
+        Me.edOutputMP4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.edOutputMP4.Location = New System.Drawing.Point(69, 18)
+        Me.edOutputMP4.Name = "edOutputMP4"
+        Me.edOutputMP4.Size = New System.Drawing.Size(227, 20)
+        Me.edOutputMP4.TabIndex = 52
+        Me.edOutputMP4.Text = "c:\capture.avi"
+        '
+        'label1
+        '
+        Me.label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.label1.AutoSize = True
+        Me.label1.Location = New System.Drawing.Point(12, 21)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(52, 13)
+        Me.label1.TabIndex = 51
+        Me.label1.Text = "File name"
+        '
+        'label3
+        '
+        Me.label3.AutoSize = True
+        Me.label3.Location = New System.Drawing.Point(12, 67)
+        Me.label3.Name = "label3"
+        Me.label3.Size = New System.Drawing.Size(322, 13)
+        Me.label3.TabIndex = 3
+        Me.label3.Text = "Supported GPUs - Intel, nVidia and AMD. H264 and H265 codecs."
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(12, 54)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(303, 13)
+        Me.Label4.TabIndex = 2
+        Me.Label4.Text = "Please use Main Demo to configure CPU encoder or use GPU."
         '
         'TabPage7
         '
@@ -1020,24 +1054,24 @@ Partial Class Form1
         Me.VideoCapture1.Video_Decoder = Nothing
         Me.VideoCapture1.Video_Effects_AllowMultipleStreams = False
         Me.VideoCapture1.Video_Effects_Enabled = False
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
-        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black
+        VideoRendererSettingsWinForms3.Aspect_Ratio_Override = False
+        VideoRendererSettingsWinForms3.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms3.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms3.BackgroundColor = System.Drawing.Color.Black
         'TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = True
-        VideoRendererSettingsWinForms1.Flip_Horizontal = False
-        VideoRendererSettingsWinForms1.Flip_Vertical = False
-        VideoRendererSettingsWinForms1.RotationAngle = 0
-        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
-        Me.VideoCapture1.Video_Renderer = VideoRendererSettingsWinForms1
+        VideoRendererSettingsWinForms3.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms3.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms3.Deinterlace_VMR9_UseDefault = True
+        VideoRendererSettingsWinForms3.Flip_Horizontal = False
+        VideoRendererSettingsWinForms3.Flip_Vertical = False
+        VideoRendererSettingsWinForms3.RotationAngle = 0
+        VideoRendererSettingsWinForms3.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms3.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms3.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms3.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms3.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms3.Zoom_ShiftY = 0
+        Me.VideoCapture1.Video_Renderer = VideoRendererSettingsWinForms3
         Me.VideoCapture1.Video_Resize = Nothing
         Me.VideoCapture1.Video_ResizeOrCrop_Enabled = False
         Me.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone
@@ -1048,55 +1082,71 @@ Partial Class Form1
         Me.VideoCapture1.Virtual_Camera_Output_LicenseKey = Nothing
         Me.VideoCapture1.VLC_Path = Nothing
         '
-        'label3
+        'edIPUrl
         '
-        Me.label3.AutoSize = True
-        Me.label3.Location = New System.Drawing.Point(12, 67)
-        Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(322, 13)
-        Me.label3.TabIndex = 3
-        Me.label3.Text = "Supported GPUs - Intel, nVidia and AMD. H264 and H265 codecs."
+        Me.edIPUrl.Location = New System.Drawing.Point(56, 15)
+        Me.edIPUrl.Name = "edIPUrl"
+        Me.edIPUrl.Size = New System.Drawing.Size(360, 20)
+        Me.edIPUrl.TabIndex = 80
+        Me.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg"
         '
-        'Label4
+        'label165
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 54)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(303, 13)
-        Me.Label4.TabIndex = 2
-        Me.Label4.Text = "Please use Main Demo to configure CPU encoder or use GPU."
+        Me.label165.AutoSize = True
+        Me.label165.Location = New System.Drawing.Point(11, 18)
+        Me.label165.Name = "label165"
+        Me.label165.Size = New System.Drawing.Size(29, 13)
+        Me.label165.TabIndex = 79
+        Me.label165.Text = "URL"
         '
-        'btSelectOutputMP4
+        'edONVIFPassword
         '
-        Me.btSelectOutputMP4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btSelectOutputMP4.Location = New System.Drawing.Point(306, 16)
-        Me.btSelectOutputMP4.Name = "btSelectOutputMP4"
-        Me.btSelectOutputMP4.Size = New System.Drawing.Size(20, 23)
-        Me.btSelectOutputMP4.TabIndex = 53
-        Me.btSelectOutputMP4.Text = "..."
-        Me.btSelectOutputMP4.UseVisualStyleBackColor = True
+        Me.edONVIFPassword.Location = New System.Drawing.Point(241, 47)
+        Me.edONVIFPassword.Name = "edONVIFPassword"
+        Me.edONVIFPassword.Size = New System.Drawing.Size(100, 20)
+        Me.edONVIFPassword.TabIndex = 81
         '
-        'edOutputMP4
+        'Label379
         '
-        Me.edOutputMP4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.edOutputMP4.Location = New System.Drawing.Point(69, 18)
-        Me.edOutputMP4.Name = "edOutputMP4"
-        Me.edOutputMP4.Size = New System.Drawing.Size(227, 20)
-        Me.edOutputMP4.TabIndex = 52
-        Me.edOutputMP4.Text = "c:\capture.avi"
+        Me.Label379.AutoSize = True
+        Me.Label379.Location = New System.Drawing.Point(183, 50)
+        Me.Label379.Name = "Label379"
+        Me.Label379.Size = New System.Drawing.Size(53, 13)
+        Me.Label379.TabIndex = 80
+        Me.Label379.Text = "Password"
         '
-        'label1
+        'edONVIFLogin
         '
-        Me.label1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(12, 21)
-        Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(52, 13)
-        Me.label1.TabIndex = 51
-        Me.label1.Text = "File name"
+        Me.edONVIFLogin.Location = New System.Drawing.Point(76, 47)
+        Me.edONVIFLogin.Name = "edONVIFLogin"
+        Me.edONVIFLogin.Size = New System.Drawing.Size(100, 20)
+        Me.edONVIFLogin.TabIndex = 79
+        '
+        'Label380
+        '
+        Me.Label380.AutoSize = True
+        Me.Label380.Location = New System.Drawing.Point(12, 50)
+        Me.Label380.Name = "Label380"
+        Me.Label380.Size = New System.Drawing.Size(33, 13)
+        Me.Label380.TabIndex = 78
+        Me.Label380.Text = "Login"
+        '
+        'edONVIFURL
+        '
+        Me.edONVIFURL.Location = New System.Drawing.Point(15, 17)
+        Me.edONVIFURL.Name = "edONVIFURL"
+        Me.edONVIFURL.Size = New System.Drawing.Size(326, 20)
+        Me.edONVIFURL.TabIndex = 77
+        Me.edONVIFURL.Text = "http://192.168.1.200/onvif/device_service"
+        '
+        'lbONVIFCameraInfo
+        '
+        Me.lbONVIFCameraInfo.AutoSize = True
+        Me.lbONVIFCameraInfo.Location = New System.Drawing.Point(11, 74)
+        Me.lbONVIFCameraInfo.Name = "lbONVIFCameraInfo"
+        Me.lbONVIFCameraInfo.Size = New System.Drawing.Size(69, 13)
+        Me.lbONVIFCameraInfo.TabIndex = 76
+        Me.lbONVIFCameraInfo.Text = "Status: None"
         '
         'Form1
         '
@@ -1118,7 +1168,6 @@ Partial Class Form1
         Me.Text = "IP Preview/Capture Demo - VisioForge Video Capture SDK .Net"
         Me.tabControl1.ResumeLayout(False)
         Me.tabPage1.ResumeLayout(False)
-        Me.tabPage1.PerformLayout()
         Me.tabControl15.ResumeLayout(False)
         Me.tabPage144.ResumeLayout(False)
         Me.tabPage144.PerformLayout()
@@ -1204,10 +1253,7 @@ End Sub
     Private WithEvents btONVIFUp As Button
     Private WithEvents cbONVIFProfile As ComboBox
     Private WithEvents label510 As Label
-    Private WithEvents lbONVIFCameraInfo As Label
     Private WithEvents btONVIFConnect As Button
-    Private WithEvents edIPUrl As TextBox
-    Private WithEvents label165 As Label
     Private WithEvents cbLicensing As CheckBox
     Private WithEvents cbDebugMode As CheckBox
     Private WithEvents mmLog As TextBox
@@ -1223,4 +1269,12 @@ End Sub
     Private WithEvents label1 As Label
     Private WithEvents label3 As Label
     Private WithEvents Label4 As Label
+    Private WithEvents edIPUrl As TextBox
+    Private WithEvents label165 As Label
+    Private WithEvents edONVIFPassword As TextBox
+    Private WithEvents Label379 As Label
+    Private WithEvents edONVIFLogin As TextBox
+    Private WithEvents Label380 As Label
+    Private WithEvents edONVIFURL As TextBox
+    Private WithEvents lbONVIFCameraInfo As Label
 End Class

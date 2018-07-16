@@ -1,4 +1,8 @@
-﻿namespace VisioForge_MMT
+﻿using System.Collections.Concurrent;
+using System.Threading;
+using VisioForge.Types.Sources;
+
+namespace VisioForge_MMT
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +13,7 @@
     using System.Runtime.InteropServices;
     using System.Windows;
 
+    using VisioForge.MediaFramework.MFP;
     using VisioForge.Types;
     using VisioForge.VideoFingerPrinting;
 
@@ -17,15 +22,27 @@
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow 
+    public partial class MainWindow : IDisposable
     {
-        private VFPSearchData searchLiveData;
+        private FingerprintLiveData _searchLiveData;
 
-        private IntPtr tempBuffer;
+        private FingerprintLiveData _searchLiveOverlapData;
 
-        private List<VFPFingerPrint> adVFPList;
+        private ConcurrentQueue<FingerprintLiveData> _fingerprintQueue;
 
-        private int fragmentDuration;
+        private IntPtr _tempBuffer;
+
+        private List<VFPFingerPrint> _adVFPList;
+
+        private List<DetectedAd> _results;
+
+        private long _fragmentDuration;
+
+        private int _fragmentCount;
+
+        private int _overlapFragmentCount;
+
+        private object _processingLock;
 
         public MainWindow()
         {
@@ -59,19 +76,30 @@
             {
                 VideoCapture1.Stop();
 
+                Thread.Sleep(500);
+
+                ProcessVideoDelegateMethod();
+
                 btStart.Content = "Start";
 
                 lbStatus.Content = string.Empty;
+
+                if (_tempBuffer != IntPtr.Zero)
+                {
+                    Marshal.FreeCoTaskMem(_tempBuffer);
+                    _tempBuffer = IntPtr.Zero;
+                }
             }
             else
             {
                 btStart.IsEnabled = false;
-
+                
                 lbStatus.Content = "Step 1: Searching video files";
+                
+                _fragmentCount = 0;
+                _overlapFragmentCount = 0;
 
-                fragmentDuration = Convert.ToInt32(edFragmentDuration.Text) * 60 * 1000;
-
-                VFMediaPlayerSource engine = VFMediaPlayerSource.File_VLC;
+                var engine = VFMediaPlayerSource.File_VLC;
 
                 switch (cbEngine.SelectedIndex)
                 {
@@ -89,9 +117,9 @@
                         break;
                 }
 
-                List<string> adList = new List<string>();
+                var adList = new List<string>();
 
-                adVFPList = new List<VFPFingerPrint>();
+                _adVFPList = new List<VFPFingerPrint>();
 
                 foreach (string item in lbAdFolders.Items)
                 {
@@ -100,45 +128,107 @@
 
                 lbStatus.Content = "Step 2: Getting fingerprints for ads files";
 
+                if (adList.Count == 0)
+                {
+                    btStart.Content = "Start";
+                    lbStatus.Content = string.Empty;
+
+                    MessageBox.Show("Ads list is empty!");
+                    
+                    return;
+                }
+
                 int progress = 0;
                 foreach (string filename in adList)
                 {
                     pbProgress.Value = progress;
-                    string error;
+                    string error = "";
+                    VFPFingerPrint fp;
 
-                    var source = new VFPFingerprintSource(filename, engine);
-                    var fp = VFPAnalyzer.GetSearchFingerprintForVideoFile(source, out error);
-
+                    if (File.Exists(filename + ".vfsigx"))
+                    {
+                        fp = VFPFingerPrint.Load(filename + ".vfsigx");
+                    }
+                    else
+                    {
+                        var source = new VFPFingerprintSource(filename, engine);
+                        fp = VFPAnalyzer.GetSearchFingerprintForVideoFile(source, out error);
+                    }
+                    
                     if (fp == null)
                     {
                         MessageBox.Show("Unable to get fingerpring for video file: " + filename + ". Error: " + error);
                     }
                     else
                     {
-                        adVFPList.Add(fp);
+                        fp.Save(filename + ".vfsigx", false);
+                        _adVFPList.Add(fp);
                     }
 
                     progress += 100 / adList.Count;
                 }
 
-                pbProgress.Value = 100;
-
-                searchLiveData = new VFPSearchData(Convert.ToInt32(edFragmentDuration.Text) * 60);
-                if (tempBuffer != IntPtr.Zero)
+                int fragmentDurationProperty = Convert.ToInt32(edFragmentDuration.Text);
+                if (fragmentDurationProperty != 0)
                 {
-                    Marshal.FreeCoTaskMem(tempBuffer);
-                    tempBuffer = IntPtr.Zero;
+                    _fragmentDuration = fragmentDurationProperty * 1000;
+                }
+                else
+                {
+                    var maxDuration = _adVFPList.Max((print => print.Duration));
+                    long minfragmentDuration = (((maxDuration + 1000) / 1000) + 1) * 1000;
+                    _fragmentDuration = minfragmentDuration * 2;
+                }
+
+                pbProgress.Value = 100;
+                
+                if (_tempBuffer != IntPtr.Zero)
+                {
+                    Marshal.FreeCoTaskMem(_tempBuffer);
+                    _tempBuffer = IntPtr.Zero;
                 }
 
                 lbStatus.Content = "Step 3: Starting video preview";
 
-                VideoCapture1.Video_CaptureDevice = cbVideoSource.Text;
-                VideoCapture1.Video_CaptureFormat = cbVideoFormat.Text;
-                VideoCapture1.Video_CaptureFormat_UseBest = false;
-                VideoCapture1.Video_FrameRate = Convert.ToDouble(cbVideoFrameRate.Text);
+                if (cbSource.SelectedIndex == 0)
+                {
+                    VideoCapture1.Video_CaptureDevice = cbVideoSource.Text;
+                    VideoCapture1.Video_CaptureFormat = cbVideoFormat.Text;
+                    VideoCapture1.Video_CaptureFormat_UseBest = false;
+                    VideoCapture1.Video_FrameRate = Convert.ToDouble(cbVideoFrameRate.Text);
+
+                    VideoCapture1.Mode = VFVideoCaptureMode.VideoPreview;
+                }
+                else
+                {
+                    var ip = new IPCameraSourceSettings
+                    {
+                        URL = edNetworkSourceURL.Text,
+                        Login = edNetworkSourceLogin.Text,
+                        Password = edNetworkSourcePassword.Text
+                    };
+
+                    switch (cbNetworkSourceEngine.SelectedIndex)
+                    {
+                        case 0:
+                            ip.Type = VFIPSource.Auto_LAV;
+                            break;
+                        case 1:
+                            ip.Type = VFIPSource.Auto_VLC;
+                            break;
+                        case 2:
+                            ip.Type = VFIPSource.Auto_FFMPEG;
+                            break;
+                    }
+
+                    VideoCapture1.IP_Camera_Source = ip;
+
+                    VideoCapture1.Mode = VFVideoCaptureMode.IPPreview;
+                }
+
                 VideoCapture1.Audio_PlayAudio = false;
                 VideoCapture1.Audio_RecordAudio = false;
-                VideoCapture1.Mode = VFVideoCaptureMode.VideoPreview;
+               
                 VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.WPF;
 
                 VideoCapture1.Start();
@@ -156,13 +246,13 @@
 
         #region List view
 
-        private readonly ObservableCollection<ResultsViewModel> results = new ObservableCollection<ResultsViewModel>();
+        private readonly ObservableCollection<ResultsViewModel> resultsView = new ObservableCollection<ResultsViewModel>();
 
-        public ObservableCollection<ResultsViewModel> Results
+        public ObservableCollection<ResultsViewModel> ResultsView
         {
             get
             {
-                return results;
+                return resultsView;
             }
         }
 
@@ -170,7 +260,7 @@
 
         private void btSaveResults_Click(object sender, RoutedEventArgs e)
         {
-            string xml = XmlUtility.Obj2XmlStr(results);
+            string xml = XmlUtility.Obj2XmlStr(resultsView);
 
             var dlg = new System.Windows.Forms.SaveFileDialog();
             dlg.Filter = @"XML file|*.xml";
@@ -240,6 +330,11 @@
 
             VideoCapture1.OnVideoFrameBuffer += VideoCapture1_OnVideoFrameBuffer;
             VideoCapture1.OnError += VideoCapture1_OnError;
+
+            _fingerprintQueue = new ConcurrentQueue<FingerprintLiveData>();
+
+            _processingLock = new object();
+            _results = new List<DetectedAd>();
         }
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
@@ -250,67 +345,144 @@
         [DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
         private static extern void CopyMemory(IntPtr dest, IntPtr src, int length);
 
-        private delegate void StopVideoDelegate();
+        private delegate void ProcessVideoDelegate();
 
-        private void StopVideoDelegateMethod()
+        private void ProcessVideoDelegateMethod()
         {
-            // done. searching for fingerprints.
-            VideoCapture1.Stop();
-
-            long n;
-            IntPtr p = VFPSearch.Build(out n, ref searchLiveData);
-
-            VFPFingerPrint fvp = new VFPFingerPrint()
+            lock (_processingLock)
             {
-                Data = new byte[n],
-                OriginalFilename = string.Empty
-            };
+                //if (VideoCapture1.Status == VFVideoCaptureStatus.Free)
+                //{
+                //    return;
+                //}
 
-            Marshal.Copy(p, fvp.Data, 0, (int)n);
+                //// done. searching for fingerprints.
+                //VideoCapture1.Stop();
 
-            searchLiveData.Free();
+                long n;
+                FingerprintLiveData fingerprint = null;
 
-
-            foreach (var ad in adVFPList)
-            {
-                List<int> positions;
-                bool found = VFPAnalyzer.Search(ad, fvp, ad.Duration, (int)slDifference.Value, out positions, true);
-
-                if (found)
+                if (_fingerprintQueue.TryDequeue(out fingerprint))
                 {
-                    foreach (var pos in positions)
+                    IntPtr p = VFPSearch.Build(out n, ref fingerprint.Data);
+
+                    VFPFingerPrint fvp = new VFPFingerPrint()
                     {
-                        results.Add(
-                            new ResultsViewModel()
+                        Data = new byte[n],
+                        OriginalFilename = string.Empty
+                    };
+
+                    Marshal.Copy(p, fvp.Data, 0, (int) n);
+
+                    foreach (var ad in _adVFPList)
+                    {
+                        List<int> positions;
+                        bool found = VFPAnalyzer.Search(ad, fvp, ad.Duration, (int)slDifference.Value, out positions, true);
+
+                        if (found)
+                        {
+                            foreach (var pos in positions)
+                            {
+                                DateTime tm = fingerprint.StartTime.AddMilliseconds(pos * 1000);
+
+                                bool duplicate = false;
+                                foreach (var detectedAd in _results)
                                 {
-                                    Sample = ad.OriginalFilename,
-                                    TimeStamp = DateTime.Now.ToString(CultureInfo.InvariantCulture)
-                                    // minutes + ":" + seconds
-                                });
+                                    int time = 0;
+
+                                    if (detectedAd.Timestamp > tm)
+                                    {
+                                        time = (int)(detectedAd.Timestamp - tm).TotalMilliseconds;
+                                    }
+                                    else
+                                    {
+                                        time = (int)(tm - detectedAd.Timestamp).TotalMilliseconds;
+                                    }
+
+                                    if (time < 1000)
+                                    {
+                                        // duplicate
+                                        duplicate = true;
+                                        break;
+                                    }
+                                }
+
+                                if (duplicate)
+                                {
+                                    break;
+                                }
+
+                                _results.Add(new DetectedAd(tm));
+                                resultsView.Add(
+                                    new ResultsViewModel()
+                                    {
+                                        Sample = ad.OriginalFilename,
+                                        TimeStamp = tm.ToString("HH:mm:ss.fff")
+                                    });
+                            }
+                        }
                     }
+
+                    fingerprint.Data.Free();
+                    fingerprint.Dispose();
                 }
             }
-
-            MessageBox.Show("Analyze completed!");
         }
 
         private void VideoCapture1_OnVideoFrameBuffer(object sender, VideoFrameBufferEventArgs e)
         {
             try
             {
-                if (tempBuffer == IntPtr.Zero)
+                if (_tempBuffer == IntPtr.Zero)
                 {
-                    tempBuffer = Marshal.AllocCoTaskMem(e.Width * e.Height * 3);
+                    _tempBuffer = Marshal.AllocCoTaskMem(e.Frame.Stride * e.Frame.Height);
                 }
 
-                if (e.StartTime < fragmentDuration)
+                // live
+                if (_searchLiveData == null)
                 {
-                    Marshal.Copy(e.Buffer, 0, tempBuffer, e.Buffer.Length);
-                    VFPSearch.Process(tempBuffer, e.Width, e.Height, e.Width * 3, e.StartTime, ref searchLiveData);
+                    _searchLiveData = new FingerprintLiveData((int)(_fragmentDuration / 1000), DateTime.Now);
+                    _fragmentCount++;
+                }
+
+                if (e.StartTime < _fragmentDuration * _fragmentCount)
+                {
+                    ImageHelper.CopyMemory(_tempBuffer, e.Frame.Data, e.Frame.DataSize);
+                    VFPSearch.Process(_tempBuffer, e.Frame.Width, e.Frame.Height, e.Frame.Stride, e.StartTime, ref _searchLiveData.Data);
                 }
                 else
                 {
-                    Dispatcher.BeginInvoke(new StopVideoDelegate(StopVideoDelegateMethod));
+                    _fingerprintQueue.Enqueue(_searchLiveData);
+
+                    _searchLiveData = null;
+
+                    Dispatcher.BeginInvoke(new ProcessVideoDelegate(ProcessVideoDelegateMethod));
+                }
+
+                // overlap
+                if (e.StartTime < _fragmentDuration / 2)
+                {
+                    return;
+                }
+
+                if (_searchLiveOverlapData == null)
+                {
+                    _searchLiveOverlapData = new FingerprintLiveData((int)(_fragmentDuration / 1000), DateTime.Now);
+                    _overlapFragmentCount++;
+                }
+
+                if (e.StartTime < _fragmentDuration * _overlapFragmentCount + _fragmentDuration / 2)
+                {
+                    ImageHelper.CopyMemory(_tempBuffer, e.Frame.Data, e.Frame.DataSize);
+                    VFPSearch.Process(_tempBuffer, e.Frame.Width, e.Frame.Height, e.Frame.Stride, e.StartTime, ref _searchLiveOverlapData.Data);
+                }
+                else
+                {
+                    _fingerprintQueue.Enqueue(_searchLiveOverlapData);
+
+                    _searchLiveOverlapData = null;
+
+                    Dispatcher.BeginInvoke(new ProcessVideoDelegate(ProcessVideoDelegateMethod));
                 }
             }
             catch
@@ -364,5 +536,60 @@
         {
             SaveSettings();
         }
+
+        #region Dispose
+
+        /// <summary>
+        /// Dispose flag.
+        /// </summary>
+        private bool disposed;
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="MainWindow"/> class. 
+        /// </summary>
+        ~MainWindow()
+        {
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// Dispose.
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Dispose.
+        /// </summary>
+        /// <param name="disposing">
+        /// Disposing parameter.
+        /// </param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    // Free other state (managed objects).
+                }
+
+                // Free your own state (unmanaged objects).
+                // Set large fields to null.
+
+                if (_searchLiveData != null)
+                {
+                    _searchLiveData.Dispose();
+                    _searchLiveData = null;
+                }
+
+                disposed = true;
+            }
+        }
+
+        #endregion
+
     }
 }

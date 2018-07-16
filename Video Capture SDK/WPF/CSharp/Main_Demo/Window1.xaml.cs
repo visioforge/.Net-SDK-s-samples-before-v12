@@ -4776,9 +4776,20 @@ namespace Main_Demo
         public void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
+            int k = 0;
             foreach (byte b in e.Matrix)
             {
-                s += b + " ";
+                s += b.ToString("D3") + " ";
+
+                if (k == VideoCapture1.Motion_Detection.Matrix_Width - 1)
+                {
+                    k = 0;
+                    s += Environment.NewLine;
+                }
+                else
+                {
+                    k++;
+                }
             }
 
             mmMotDetMatrix.Text = s.Trim();
@@ -7735,14 +7746,14 @@ namespace Main_Demo
                     onvifControl = null;
                 }
 
-                if (string.IsNullOrEmpty(edIPLogin.Text) || string.IsNullOrEmpty(this.edIPPassword.Text))
+                if (string.IsNullOrEmpty(edONVIFLogin.Text) || string.IsNullOrEmpty(edONVIFPassword.Text))
                 {
                     MessageBox.Show("Please specify IP camera user name and password.");
                     return;
                 }
 
                 onvifControl = new ONVIFControl();
-                var result = onvifControl.Connect(edIPUrl.Text, edIPLogin.Text, edIPPassword.Text);
+                var result = onvifControl.Connect(edONVIFURL.Text, edONVIFLogin.Text, edONVIFPassword.Text);
                 if (!result)
                 {
                     onvifControl = null;
@@ -7752,6 +7763,11 @@ namespace Main_Demo
 
                 var deviceInfo = onvifControl.GetDeviceInformation();
                 lbONVIFCameraInfo.Content = $"Model {deviceInfo.Model}, Firmware {deviceInfo.Firmware}";
+
+                edONVIFLiveVideoURL.Text = edIPUrl.Text = onvifControl.GetVideoURL();
+
+                edIPLogin.Text = edONVIFLogin.Text;
+                edIPPassword.Text = edONVIFPassword.Text;
 
                 cbONVIFProfile.Items.Clear();
                 var profiles = onvifControl.GetProfiles();

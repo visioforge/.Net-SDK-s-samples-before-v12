@@ -1571,6 +1571,10 @@ Public Class Form1
         MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
         MediaPlayer1.Barcode_Reader_Type = cbBarcodeType.SelectedIndex
 
+        ' Motion detection
+        If (cbMotDetEnabled.Checked) Then
+            btMotDetUpdateSettings_Click(Nothing, Nothing)
+        End If
 
         ' Object detection
         ConfigureObjectTracking()
@@ -2305,10 +2309,16 @@ Public Class Form1
 
         Dim s As String = String.Empty
 
+        Dim k As Integer
         For Each b As Byte In e.Matrix
+            s += b.ToString("D3") + " "
 
-            s += b + " "
-
+            If (k = MediaPlayer1.Motion_Detection.Matrix_Width - 1) Then
+                k = 0
+                s += Environment.NewLine
+            Else
+                k += 1
+            End If
         Next
 
         mmMotDetMatrix.Text = s.Trim()

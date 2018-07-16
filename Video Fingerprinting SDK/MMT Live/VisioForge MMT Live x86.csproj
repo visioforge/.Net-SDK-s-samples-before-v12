@@ -67,6 +67,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DetectedAd.cs" />
+    <Compile Include="FingerprintLiveData.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="XmlUtil.cs" />
     <Compile Include="ResultsViewModel.cs" />

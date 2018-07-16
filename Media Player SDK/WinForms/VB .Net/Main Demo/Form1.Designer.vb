@@ -27,7 +27,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms2 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.tabControl3 = New System.Windows.Forms.TabControl()
         Me.tabPage10 = New System.Windows.Forms.TabPage()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
@@ -645,6 +645,8 @@ Partial Class Form1
         Me.edEncryptionKeyString = New System.Windows.Forms.TextBox()
         Me.rbEncryptionKeyString = New System.Windows.Forms.RadioButton()
         Me.TabPage24 = New System.Windows.Forms.TabPage()
+        Me.btReversePlaybackNextFrame = New System.Windows.Forms.Button()
+        Me.btReversePlaybackPrevFrame = New System.Windows.Forms.Button()
         Me.label34 = New System.Windows.Forms.Label()
         Me.label33 = New System.Windows.Forms.Label()
         Me.btReversePlayback = New System.Windows.Forms.Button()
@@ -677,8 +679,6 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
-        Me.btReversePlaybackNextFrame = New System.Windows.Forms.Button()
-        Me.btReversePlaybackPrevFrame = New System.Windows.Forms.Button()
         Me.tabControl3.SuspendLayout()
         Me.tabPage10.SuspendLayout()
         Me.tabPage9.SuspendLayout()
@@ -6796,15 +6796,15 @@ Partial Class Form1
         '
         'pbMotionLevel
         '
-        Me.pbMotionLevel.Location = New System.Drawing.Point(47, 207)
+        Me.pbMotionLevel.Location = New System.Drawing.Point(17, 346)
         Me.pbMotionLevel.Name = "pbMotionLevel"
-        Me.pbMotionLevel.Size = New System.Drawing.Size(197, 19)
+        Me.pbMotionLevel.Size = New System.Drawing.Size(227, 19)
         Me.pbMotionLevel.TabIndex = 2
         '
         'label158
         '
         Me.label158.AutoSize = True
-        Me.label158.Location = New System.Drawing.Point(16, 187)
+        Me.label158.Location = New System.Drawing.Point(16, 326)
         Me.label158.Name = "label158"
         Me.label158.Size = New System.Drawing.Size(64, 13)
         Me.label158.TabIndex = 1
@@ -6812,11 +6812,11 @@ Partial Class Form1
         '
         'mmMotDetMatrix
         '
-        Me.mmMotDetMatrix.Location = New System.Drawing.Point(17, 19)
+        Me.mmMotDetMatrix.Location = New System.Drawing.Point(6, 6)
         Me.mmMotDetMatrix.Multiline = True
         Me.mmMotDetMatrix.Name = "mmMotDetMatrix"
         Me.mmMotDetMatrix.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.mmMotDetMatrix.Size = New System.Drawing.Size(228, 157)
+        Me.mmMotDetMatrix.Size = New System.Drawing.Size(248, 246)
         Me.mmMotDetMatrix.TabIndex = 0
         '
         'tabPage45
@@ -7299,6 +7299,24 @@ Partial Class Form1
         Me.TabPage24.Text = "Reverse playback"
         Me.TabPage24.UseVisualStyleBackColor = True
         '
+        'btReversePlaybackNextFrame
+        '
+        Me.btReversePlaybackNextFrame.Location = New System.Drawing.Point(129, 209)
+        Me.btReversePlaybackNextFrame.Name = "btReversePlaybackNextFrame"
+        Me.btReversePlaybackNextFrame.Size = New System.Drawing.Size(105, 23)
+        Me.btReversePlaybackNextFrame.TabIndex = 18
+        Me.btReversePlaybackNextFrame.Text = "Next frame"
+        Me.btReversePlaybackNextFrame.UseVisualStyleBackColor = True
+        '
+        'btReversePlaybackPrevFrame
+        '
+        Me.btReversePlaybackPrevFrame.Location = New System.Drawing.Point(18, 209)
+        Me.btReversePlaybackPrevFrame.Name = "btReversePlaybackPrevFrame"
+        Me.btReversePlaybackPrevFrame.Size = New System.Drawing.Size(105, 23)
+        Me.btReversePlaybackPrevFrame.TabIndex = 17
+        Me.btReversePlaybackPrevFrame.Text = "Previous frame"
+        Me.btReversePlaybackPrevFrame.UseVisualStyleBackColor = True
+        '
         'label34
         '
         Me.label34.AutoSize = True
@@ -7593,44 +7611,26 @@ Partial Class Form1
         Me.MediaPlayer1.Start_DelayEnabled = False
         Me.MediaPlayer1.TabIndex = 25
         Me.MediaPlayer1.Video_Effects_Enabled = False
-        VideoRendererSettingsWinForms2.Aspect_Ratio_Override = False
-        VideoRendererSettingsWinForms2.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms2.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
+        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
         'TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-        VideoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = False
-        VideoRendererSettingsWinForms2.Flip_Horizontal = False
-        VideoRendererSettingsWinForms2.Flip_Vertical = False
-        VideoRendererSettingsWinForms2.RotationAngle = 0
-        VideoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms2.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms2.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms2.Zoom_ShiftY = 0
-        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms2
+        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = False
+        VideoRendererSettingsWinForms1.Flip_Horizontal = False
+        VideoRendererSettingsWinForms1.Flip_Vertical = False
+        VideoRendererSettingsWinForms1.RotationAngle = 0
+        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
+        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = True
         Me.MediaPlayer1.Video_Stream_Index = 0
-        '
-        'btReversePlaybackNextFrame
-        '
-        Me.btReversePlaybackNextFrame.Location = New System.Drawing.Point(129, 209)
-        Me.btReversePlaybackNextFrame.Name = "btReversePlaybackNextFrame"
-        Me.btReversePlaybackNextFrame.Size = New System.Drawing.Size(105, 23)
-        Me.btReversePlaybackNextFrame.TabIndex = 18
-        Me.btReversePlaybackNextFrame.Text = "Next frame"
-        Me.btReversePlaybackNextFrame.UseVisualStyleBackColor = True
-        '
-        'btReversePlaybackPrevFrame
-        '
-        Me.btReversePlaybackPrevFrame.Location = New System.Drawing.Point(18, 209)
-        Me.btReversePlaybackPrevFrame.Name = "btReversePlaybackPrevFrame"
-        Me.btReversePlaybackPrevFrame.Size = New System.Drawing.Size(105, 23)
-        Me.btReversePlaybackPrevFrame.TabIndex = 17
-        Me.btReversePlaybackPrevFrame.Text = "Previous frame"
-        Me.btReversePlaybackPrevFrame.UseVisualStyleBackColor = True
         '
         'Form1
         '
