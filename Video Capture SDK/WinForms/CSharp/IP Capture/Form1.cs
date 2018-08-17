@@ -363,14 +363,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
                     onvifControl = null;
                 }
 
-                if (string.IsNullOrEmpty(edIPLogin.Text) || string.IsNullOrEmpty(this.edIPPassword.Text))
+                if (string.IsNullOrEmpty(edONVIFLogin.Text) || string.IsNullOrEmpty(edONVIFPassword.Text))
                 {
                     MessageBox.Show("Please specify IP camera user name and password.");
                     return;
                 }
 
                 onvifControl = new ONVIFControl();
-                var result = onvifControl.Connect(edIPUrl.Text, edIPLogin.Text, edIPPassword.Text);
+                var result = onvifControl.Connect(edONVIFURL.Text, edONVIFLogin.Text, edONVIFPassword.Text);
                 if (!result)
                 {
                     onvifControl = null;
@@ -393,7 +393,10 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
                     cbONVIFProfile.SelectedIndex = 0;
                 }
 
-                edONVIFLiveVideoURL.Text = onvifControl.GetVideoURL();
+                edONVIFLiveVideoURL.Text = edIPUrl.Text = onvifControl.GetVideoURL();
+
+                edIPLogin.Text = edONVIFLogin.Text;
+                edIPPassword.Text = edONVIFPassword.Text;
 
                 onvifPtzRanges = onvifControl.PTZ_GetRanges();
                 onvifControl.PTZ_SetAbsolute(0, 0, 0);

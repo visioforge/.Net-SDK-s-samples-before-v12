@@ -3745,9 +3745,20 @@ namespace Main_Demo
         public void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
+            int k = 0;
             foreach (byte b in e.Matrix)
             {
-                s += b + " ";
+                s += b.ToString("D3") + " ";
+
+                if (k == VideoEdit1.Motion_Detection.Matrix_Width - 1)
+                {
+                    k = 0;
+                    s += Environment.NewLine;
+                }
+                else
+                {
+                    k++;
+                }
             }
 
             mmMotDetMatrix.Text = s.Trim();
@@ -3983,13 +3994,45 @@ namespace Main_Demo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            gdVideoEdit.Width /= 2;
-            VideoEdit1.Width = gdVideoEdit.Width;
-            VideoEdit1.Height = gdVideoEdit.Height;
+            VideoEdit1.Mode = VFVideoEditMode.Preview;
+           
+            VideoEdit1.Input_AddImageFile(@"c:\samples\autumn-06.jpg",25000, -1, VFVideoEditStretchMode.Stretch);
 
-            VideoEdit1.RenderSize = new System.Windows.Size(gdVideoEdit.Width, gdVideoEdit.Height);
+            VideoEdit1.Debug_Mode = true;
+            VideoEdit1.Debug_Dir = @"VisioForge";
 
-            VideoEdit1.Video_Renderer_Update();
+            VideoEdit1.Video_Renderer.Zoom_Ratio = 0;
+            VideoEdit1.Video_Renderer.Zoom_ShiftX = 0;
+            VideoEdit1.Video_Renderer.Zoom_ShiftY = 0;
+
+            VideoEdit1.Video_Effects_Clear();
+            VideoEdit1.Video_FrameRate = 0;
+            VideoEdit1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.WPF;
+
+            VideoEdit1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Letterbox;
+
+            VideoEdit1.Video_Renderer.RotationAngle = 0;
+
+            VideoEdit1.Video_Renderer.BackgroundColor = VideoEdit.ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
+            VideoEdit1.Video_Renderer.Flip_Horizontal = false;
+            VideoEdit1.Video_Renderer.Flip_Vertical = false; ;           
+
+            VideoEdit1.Network_Streaming_Audio_Enabled = false;
+
+            
+            
+
+            VideoEdit1.Video_Rotation = VFRotateMode.RotateNone;
+
+            VideoEdit1.Start();
+
+            //gdVideoEdit.Width /= 2;
+            //VideoEdit1.Width = gdVideoEdit.Width;
+            //VideoEdit1.Height = gdVideoEdit.Height;
+
+            //VideoEdit1.RenderSize = new System.Windows.Size(gdVideoEdit.Width, gdVideoEdit.Height);
+
+            //VideoEdit1.Video_Renderer_Update();
         }
 
         #region Full screen

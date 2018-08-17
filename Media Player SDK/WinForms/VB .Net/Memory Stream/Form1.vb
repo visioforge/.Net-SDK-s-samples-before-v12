@@ -17,19 +17,29 @@ Public Class Form1
 
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
-        Dim fs As FileStream = New FileStream(edFilename.Text, FileMode.Open)
-        Dim stream As ManagedIStream = New ManagedIStream(fs)
+        If (rbSTreamTypeFile.Checked) Then
+            Dim fs As FileStream = New FileStream(edFilename.Text, FileMode.Open)
+            Dim stream As ManagedIStream = New ManagedIStream(fs)
 
-        ' specifing settings
-        ' MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-        MediaPlayer1.Source_Stream = stream
-        MediaPlayer1.Source_Stream_Size = fs.Length
+            ' specifing settings
+            ' MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
+            MediaPlayer1.Source_Stream = stream
+            MediaPlayer1.Source_Stream_Size = fs.Length
+        Else
+            Dim source As Byte() = File.ReadAllBytes(edFilename.Text)
+            Dim MS = New MemoryStream(source)
+
+            Dim stream As ManagedIStream = New ManagedIStream(MS)
+
+            MediaPlayer1.Source_Stream = stream
+            MediaPlayer1.Source_Stream_Size = MS.Length
+        End If
 
         ' video and audio present in file. tune this settings to play audio files or video files without audio
         MediaPlayer1.Source_Stream_VideoPresent = True
         MediaPlayer1.Source_Stream_AudioPresent = True
 
-        MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG
+        MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS
 
         MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device"
 

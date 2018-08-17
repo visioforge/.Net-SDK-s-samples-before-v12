@@ -1954,7 +1954,7 @@
                                 <GroupBox Header="Color highlight" Height="101" HorizontalAlignment="Left" Margin="4,124,0,0" Name="groupBox19" VerticalAlignment="Top" Width="320">
                                     <Grid>
                                         <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="13,6,0,0" Name="cbMotDetHLEnabled" VerticalAlignment="Top" />
-                                        <Slider Height="23" HorizontalAlignment="Left" Margin="62,47,0,0" Maximum="255" Name="tbMotDetHLThreshold" VerticalAlignment="Top" Width="100" />
+                                        <Slider Height="23" HorizontalAlignment="Left" Margin="62,47,0,0" Maximum="255" Name="tbMotDetHLThreshold" VerticalAlignment="Top" Width="100" Value="5" />
                                         <Label Content="Threshold" Height="28" HorizontalAlignment="Left" Margin="71,20,0,0" Name="label183" VerticalAlignment="Top" Width="86" />
                                         <Label Content="Color" Height="28" HorizontalAlignment="Left" Margin="195,20,0,0" Name="label184" VerticalAlignment="Top" Width="81" />
                                         <ComboBox Height="23" HorizontalAlignment="Left" Margin="195,45,0,0" Name="cbMotDetHLColor" VerticalAlignment="Top" Width="96">
@@ -1967,7 +1967,7 @@
                                 <GroupBox Header="Drop frames" Height="88" HorizontalAlignment="Left" Margin="7,223,0,0" Name="groupBox20" VerticalAlignment="Top" Width="317">
                                     <Grid>
                                         <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,12,0,0" Name="cbMotDetDropFramesEnabled" VerticalAlignment="Top" />
-                                        <Slider Height="23" HorizontalAlignment="Left" Margin="126,35,0,0" Maximum="255" Name="tbMotDetDropFramesThreshold" VerticalAlignment="Top" Width="100" />
+                                        <Slider Height="23" HorizontalAlignment="Left" Margin="126,35,0,0" Maximum="255" Name="tbMotDetDropFramesThreshold" VerticalAlignment="Top" Width="100" Value="5" />
                                         <Label Content="Threshold" Height="28" HorizontalAlignment="Left" Margin="135,8,0,0" Name="label185" VerticalAlignment="Top" Width="86" />
                                     </Grid>
                                 </GroupBox>

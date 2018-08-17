@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge_MMT_Live", "VisioForge_MMT_Live.csproj", "{2E6512D7-5DD4-424D-8035-9E6055151F2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Debug|x86.ActiveCfg = Debug|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Debug|x86.Build.0 = Debug|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Release|x86.ActiveCfg = Release|x86
+		{2E6512D7-5DD4-424D-8035-9E6055151F2E}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

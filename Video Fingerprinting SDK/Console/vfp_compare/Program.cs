@@ -43,7 +43,6 @@ namespace vfp_compare
             var fragment = VFPFingerPrint.Load(options.Input1);
             var main = VFPFingerPrint.Load(options.Input2);
 
-            double difference;
             var res = VFPCompare.Compare(fragment, main, options.MaxDifference);
 
             var elapsed = DateTime.Now - time;

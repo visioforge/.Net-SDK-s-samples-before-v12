@@ -1362,6 +1362,12 @@ namespace Main_Demo
                 cbLiveRotation_Checked(null, null);
             }
 
+            // Motion detection
+            if (cbMotDetEnabled.IsChecked == true)
+            {
+                btMotDetUpdateSettings_Click(null, null);
+            }
+
             // Barcode detection
             MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
             MediaPlayer1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
@@ -1995,9 +2001,20 @@ namespace Main_Demo
         public void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
+            int k = 0;
             foreach (byte b in e.Matrix)
             {
-                s += b + " ";
+                s += b.ToString("D3") + " ";
+
+                if (k == MediaPlayer1.Motion_Detection.Matrix_Width - 1)
+                {
+                    k = 0;
+                    s += Environment.NewLine;
+                }
+                else
+                {
+                    k++;
+                }
             }
 
             mmMotDetMatrix.Text = s.Trim();
@@ -3093,6 +3110,16 @@ namespace Main_Demo
                     intf.Update();
                 }
             }
+        }
+
+        private void btReversePlaybackPrevFrame_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.ReversePlayback_PreviousFrame();
+        }
+
+        private void btReversePlaybackNextFrame_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.ReversePlayback_NextFrame();
         }
     }
 }

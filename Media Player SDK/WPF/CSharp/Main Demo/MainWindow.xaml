@@ -433,133 +433,133 @@
             <TabItem Header="Audio processing">
                 <Grid>
                     <TabControl Height="638" HorizontalAlignment="Left" Margin="2,2,0,0" VerticalAlignment="Top" Width="368">
-            <TabItem Header="Enhancements">
-                <Grid>
-                    <CheckBox x:Name="cbAudioEnhancementEnabled" Content="Enabled" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="cbAudioNormalize" Content="Normalize" HorizontalAlignment="Left" Margin="53,39.12,0,0" VerticalAlignment="Top" Checked="cbAudioNormalize_Checked" Unchecked="cbAudioNormalize_Checked"/>
-                    <CheckBox x:Name="cbAudioAutoGain" Content="Auto gain" HorizontalAlignment="Left" Margin="181,39.12,0,0" VerticalAlignment="Top" Checked="cbAudioAutoGain_Checked" Unchecked="cbAudioAutoGain_Checked"/>
-                    <GroupBox Header="Input gains (dB)" HorizontalAlignment="Left" Margin="10,59.218,0,0" VerticalAlignment="Top" Height="168.96" Width="356">
-                        <Grid>
-                            <Slider x:Name="tbAudioInputGainL" HorizontalAlignment="Left" Margin="13.418,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainL_ValueChanged"/>
-                            <Label Content="L" HorizontalAlignment="Left" Margin="13.418,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioInputGainL" Content="0.0" HorizontalAlignment="Left" Margin="10,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioInputGainC" HorizontalAlignment="Left" Margin="70.053,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainC_ValueChanged"/>
-                            <Label Content="C" HorizontalAlignment="Left" Margin="70.053,10,0,0" VerticalAlignment="Top" Width="29.023"/>
-                            <Label x:Name="lbAudioInputGainC" Content="0.0" HorizontalAlignment="Left" Margin="66.908,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioInputGainR" HorizontalAlignment="Left" Margin="126.689,35.96,0,0" VerticalAlignment="Top" Width="35.234" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainR_ValueChanged"/>
-                            <Label Content="R" HorizontalAlignment="Left" Margin="126.689,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioInputGainR" Content="0.0" HorizontalAlignment="Left" Margin="123.543,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioInputGainSL" HorizontalAlignment="Left" Margin="183.324,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainSL_ValueChanged"/>
-                            <Label Content="SL" HorizontalAlignment="Left" Margin="181.324,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioInputGainSL" Content="0.0" HorizontalAlignment="Left" Margin="180.179,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioInputGainSR" HorizontalAlignment="Left" Margin="239.959,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainSR_ValueChanged"/>
-                            <Label Content="SR" HorizontalAlignment="Left" Margin="237.959,10,0,0" VerticalAlignment="Top" Width="29.023"/>
-                            <Label x:Name="lbAudioInputGainSR" Content="0.0" HorizontalAlignment="Left" Margin="236.814,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioInputGainLFE" HorizontalAlignment="Left" Margin="296.595,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainLFE_ValueChanged"/>
-                            <Label Content="LFE" HorizontalAlignment="Left" Margin="293.595,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioInputGainLFE" Content="0.0" HorizontalAlignment="Left" Margin="293.595,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="Output gains (dB)" HorizontalAlignment="Left" Margin="10,233.178,0,0" VerticalAlignment="Top" Height="168.96" Width="356">
-                        <Grid>
-                            <Slider x:Name="tbAudioOutputGainL" HorizontalAlignment="Left" Margin="13.418,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainL_ValueChanged"/>
-                            <Label Content="L" HorizontalAlignment="Left" Margin="13.418,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioOutputGainL" Content="0.0" HorizontalAlignment="Left" Margin="10,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioOutputGainC" HorizontalAlignment="Left" Margin="70.053,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainC_ValueChanged"/>
-                            <Label Content="C" HorizontalAlignment="Left" Margin="70.053,10,0,0" VerticalAlignment="Top" Width="29.023"/>
-                            <Label x:Name="lbAudioOutputGainC" Content="0.0" HorizontalAlignment="Left" Margin="66.908,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioOutputGainR" HorizontalAlignment="Left" Margin="126.689,35.96,0,0" VerticalAlignment="Top" Width="35.234" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainR_ValueChanged"/>
-                            <Label Content="R" HorizontalAlignment="Left" Margin="126.689,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioOutputGainR" Content="0.0" HorizontalAlignment="Left" Margin="123.543,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioOutputGainSL" HorizontalAlignment="Left" Margin="183.324,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainSL_ValueChanged"/>
-                            <Label Content="SL" HorizontalAlignment="Left" Margin="181.324,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioOutputGainSL" Content="0.0" HorizontalAlignment="Left" Margin="180.179,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioOutputGainSR" HorizontalAlignment="Left" Margin="239.959,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainSR_ValueChanged"/>
-                            <Label Content="SR" HorizontalAlignment="Left" Margin="237.959,10,0,0" VerticalAlignment="Top" Width="29.023"/>
-                            <Label x:Name="lbAudioOutputGainSR" Content="0.0" HorizontalAlignment="Left" Margin="236.814,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                            <Slider x:Name="tbAudioOutputGainLFE" HorizontalAlignment="Left" Margin="296.595,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainLFE_ValueChanged"/>
-                            <Label Content="LFE" HorizontalAlignment="Left" Margin="293.595,10,0,0" VerticalAlignment="Top" Width="29.022"/>
-                            <Label x:Name="lbAudioOutputGainLFE" Content="0.0" HorizontalAlignment="Left" Margin="293.595,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
-                        </Grid>
-                    </GroupBox>
-                    <Label Content="Time shift" HorizontalAlignment="Left" Margin="10,423.12,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="lbAudioTimeshift" Content="0 ms" HorizontalAlignment="Left" Margin="190,423.12,0,0" VerticalAlignment="Top"/>
-                    <Slider x:Name="tbAudioTimeshift" HorizontalAlignment="Left" Margin="86,429,0,0" VerticalAlignment="Top" Width="99" Minimum="-1000" Maximum="1000" ValueChanged="tbAudioTimeshift_ValueChanged"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Effects" x:Name="tabItem28">
-                <Grid>
-                    <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="17,14,0,0" x:Name="cbAudioEffectsEnabled" VerticalAlignment="Top" />
-                    <TabControl Height="480" HorizontalAlignment="Left" Margin="10,34,0,0" x:Name="tabControl9" VerticalAlignment="Top" Width="363">
-                        <TabItem Header="Amplify" x:Name="tabItem29">
+                        <TabItem Header="Enhancements">
                             <Grid>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,20,217,0" x:Name="cbAudAmplifyEnabled" VerticalAlignment="Top" Width="120" Checked="cbAudAmplifyEnabled_Checked" Unchecked="cbAudAmplifyEnabled_Checked" />
-                                <Slider Height="27" HorizontalAlignment="Left" Margin="28,78,0,0" Maximum="4000" x:Name="tbAudAmplifyAmp" Value="1000" ValueChanged="tbAudAmplifyAmp_Scroll" VerticalAlignment="Top" Width="291" />
-                                <Label Content="Volume" Height="23" HorizontalAlignment="Left" Margin="28,55,0,0" x:Name="label119" VerticalAlignment="Top" Width="51" />
-                                <Label Content="400%" Height="23" HorizontalAlignment="Right" Margin="0,55,15,0" x:Name="label120" VerticalAlignment="Top" Width="51" />
-                                <Label Content="100%" Height="23" HorizontalAlignment="Left" Margin="92,55,0,0" x:Name="label121" VerticalAlignment="Top" Width="51" />
+                                <CheckBox x:Name="cbAudioEnhancementEnabled" Content="Enabled" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                                <CheckBox x:Name="cbAudioNormalize" Content="Normalize" HorizontalAlignment="Left" Margin="53,39.12,0,0" VerticalAlignment="Top" Checked="cbAudioNormalize_Checked" Unchecked="cbAudioNormalize_Checked"/>
+                                <CheckBox x:Name="cbAudioAutoGain" Content="Auto gain" HorizontalAlignment="Left" Margin="181,39.12,0,0" VerticalAlignment="Top" Checked="cbAudioAutoGain_Checked" Unchecked="cbAudioAutoGain_Checked"/>
+                                <GroupBox Header="Input gains (dB)" HorizontalAlignment="Left" Margin="10,59.218,0,0" VerticalAlignment="Top" Height="168.96" Width="356">
+                                    <Grid>
+                                        <Slider x:Name="tbAudioInputGainL" HorizontalAlignment="Left" Margin="13.418,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainL_ValueChanged"/>
+                                        <Label Content="L" HorizontalAlignment="Left" Margin="13.418,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioInputGainL" Content="0.0" HorizontalAlignment="Left" Margin="10,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioInputGainC" HorizontalAlignment="Left" Margin="70.053,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainC_ValueChanged"/>
+                                        <Label Content="C" HorizontalAlignment="Left" Margin="70.053,10,0,0" VerticalAlignment="Top" Width="29.023"/>
+                                        <Label x:Name="lbAudioInputGainC" Content="0.0" HorizontalAlignment="Left" Margin="66.908,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioInputGainR" HorizontalAlignment="Left" Margin="126.689,35.96,0,0" VerticalAlignment="Top" Width="35.234" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainR_ValueChanged"/>
+                                        <Label Content="R" HorizontalAlignment="Left" Margin="126.689,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioInputGainR" Content="0.0" HorizontalAlignment="Left" Margin="123.543,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioInputGainSL" HorizontalAlignment="Left" Margin="183.324,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainSL_ValueChanged"/>
+                                        <Label Content="SL" HorizontalAlignment="Left" Margin="181.324,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioInputGainSL" Content="0.0" HorizontalAlignment="Left" Margin="180.179,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioInputGainSR" HorizontalAlignment="Left" Margin="239.959,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainSR_ValueChanged"/>
+                                        <Label Content="SR" HorizontalAlignment="Left" Margin="237.959,10,0,0" VerticalAlignment="Top" Width="29.023"/>
+                                        <Label x:Name="lbAudioInputGainSR" Content="0.0" HorizontalAlignment="Left" Margin="236.814,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioInputGainLFE" HorizontalAlignment="Left" Margin="296.595,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioInputGainLFE_ValueChanged"/>
+                                        <Label Content="LFE" HorizontalAlignment="Left" Margin="293.595,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioInputGainLFE" Content="0.0" HorizontalAlignment="Left" Margin="293.595,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Header="Output gains (dB)" HorizontalAlignment="Left" Margin="10,233.178,0,0" VerticalAlignment="Top" Height="168.96" Width="356">
+                                    <Grid>
+                                        <Slider x:Name="tbAudioOutputGainL" HorizontalAlignment="Left" Margin="13.418,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainL_ValueChanged"/>
+                                        <Label Content="L" HorizontalAlignment="Left" Margin="13.418,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioOutputGainL" Content="0.0" HorizontalAlignment="Left" Margin="10,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioOutputGainC" HorizontalAlignment="Left" Margin="70.053,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainC_ValueChanged"/>
+                                        <Label Content="C" HorizontalAlignment="Left" Margin="70.053,10,0,0" VerticalAlignment="Top" Width="29.023"/>
+                                        <Label x:Name="lbAudioOutputGainC" Content="0.0" HorizontalAlignment="Left" Margin="66.908,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioOutputGainR" HorizontalAlignment="Left" Margin="126.689,35.96,0,0" VerticalAlignment="Top" Width="35.234" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainR_ValueChanged"/>
+                                        <Label Content="R" HorizontalAlignment="Left" Margin="126.689,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioOutputGainR" Content="0.0" HorizontalAlignment="Left" Margin="123.543,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioOutputGainSL" HorizontalAlignment="Left" Margin="183.324,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainSL_ValueChanged"/>
+                                        <Label Content="SL" HorizontalAlignment="Left" Margin="181.324,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioOutputGainSL" Content="0.0" HorizontalAlignment="Left" Margin="180.179,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioOutputGainSR" HorizontalAlignment="Left" Margin="239.959,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainSR_ValueChanged"/>
+                                        <Label Content="SR" HorizontalAlignment="Left" Margin="237.959,10,0,0" VerticalAlignment="Top" Width="29.023"/>
+                                        <Label x:Name="lbAudioOutputGainSR" Content="0.0" HorizontalAlignment="Left" Margin="236.814,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                        <Slider x:Name="tbAudioOutputGainLFE" HorizontalAlignment="Left" Margin="296.595,35.96,0,0" VerticalAlignment="Top" Width="35.235" Height="87" Orientation="Vertical" Minimum="-200" Maximum="200" ValueChanged="tbAudioOutputGainLFE_ValueChanged"/>
+                                        <Label Content="LFE" HorizontalAlignment="Left" Margin="293.595,10,0,0" VerticalAlignment="Top" Width="29.022"/>
+                                        <Label x:Name="lbAudioOutputGainLFE" Content="0.0" HorizontalAlignment="Left" Margin="293.595,122.96,0,0" VerticalAlignment="Top" Width="47.363"/>
+                                    </Grid>
+                                </GroupBox>
+                                <Label Content="Time shift" HorizontalAlignment="Left" Margin="10,423.12,0,0" VerticalAlignment="Top"/>
+                                <Label x:Name="lbAudioTimeshift" Content="0 ms" HorizontalAlignment="Left" Margin="190,423.12,0,0" VerticalAlignment="Top"/>
+                                <Slider x:Name="tbAudioTimeshift" HorizontalAlignment="Left" Margin="86,429,0,0" VerticalAlignment="Top" Width="99" Minimum="-1000" Maximum="1000" ValueChanged="tbAudioTimeshift_ValueChanged"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Equlizer" x:Name="tabItem30">
+                        <TabItem Header="Effects" x:Name="tabItem28">
                             <Grid>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,20,217,0" x:Name="cbAudEqualizerEnabled" VerticalAlignment="Top" Width="120" Checked="cbAudEqualizerEnabled_Checked" Unchecked="cbAudEqualizerEnabled_Checked" />
-                                <Slider Height="123" HorizontalAlignment="Left" Margin="51,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq0" Orientation="Vertical" ValueChanged="tbAudEq0_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123" HorizontalAlignment="Left" Margin="76,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq1" Orientation="Vertical" ValueChanged="tbAudEq1_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" HorizontalAlignment="Left" Margin="101,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq2" Orientation="Vertical" ValueChanged="tbAudEq2_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" HorizontalAlignment="Left" Margin="126,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq3" Orientation="Vertical" ValueChanged="tbAudEq3_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" HorizontalAlignment="Left" Margin="151,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq4" Orientation="Vertical" ValueChanged="tbAudEq4_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" HorizontalAlignment="Left" Margin="176,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq5" Orientation="Vertical" ValueChanged="tbAudEq5_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" Margin="201,38,124,0" Maximum="100" Minimum="-100" x:Name="tbAudEq6" Orientation="Vertical" ValueChanged="tbAudEq6_Scroll" VerticalAlignment="Top" />
-                                <Slider Height="123.447" HorizontalAlignment="Right" Margin="0,38,103,0" Maximum="100" Minimum="-100" x:Name="tbAudEq7" Orientation="Vertical" ValueChanged="tbAudEq7_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" HorizontalAlignment="Right" Margin="0,38,78,0" Maximum="100" Minimum="-100" x:Name="tbAudEq8" Orientation="Vertical" ValueChanged="tbAudEq8_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Slider Height="123.447" HorizontalAlignment="Right" Margin="0,38,53,0" Maximum="100" Minimum="-100" x:Name="tbAudEq9" Orientation="Vertical" ValueChanged="tbAudEq9_Scroll" VerticalAlignment="Top" Width="24" />
-                                <Label Content="60" Height="24" HorizontalAlignment="Left" Margin="47,164,0,0" x:Name="label122" VerticalAlignment="Top" Width="26" />
-                                <ComboBox Height="23" Margin="16,0,93,187" x:Name="cbAudEqualizerPreset" SelectionChanged="cbAudEqualizerPreset_SelectedIndexChanged" VerticalAlignment="Bottom" />
-                                <Label Content="Preset" Height="25.447" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="8,0,0,211" x:Name="label132" VerticalAlignment="Bottom" Width="54" />
-                                <Button Click="btAudEqRefresh_Click" Content="Refresh" Height="23" HorizontalAlignment="Right" Margin="0,0,12,187" x:Name="btAudEqRefresh" VerticalAlignment="Bottom" Width="75" />
-                                <Label Content="170" Height="24" HorizontalAlignment="Left" Margin="70,164,0,0" x:Name="label108" VerticalAlignment="Top" Width="32" />
-                                <Label Content="310" Height="24" HorizontalAlignment="Left" Margin="97,164,0,0" x:Name="label109" VerticalAlignment="Top" Width="32" />
-                                <Label Content="600" Height="24" HorizontalAlignment="Left" Margin="121,164,0,0" x:Name="label110" VerticalAlignment="Top" Width="32" />
-                                <Label Content="1K" Height="24" HorizontalAlignment="Left" Margin="149,164,0,0" x:Name="label113" VerticalAlignment="Top" Width="26" />
-                                <Label Content="3K" Height="24" HorizontalAlignment="Left" Margin="172,164,0,0" x:Name="label114" VerticalAlignment="Top" Width="26" />
-                                <Label Content="6K" Height="24" HorizontalAlignment="Right" Margin="0,164,128,0" x:Name="label123" VerticalAlignment="Top" Width="26" />
-                                <Label Content="12K" Height="24" HorizontalAlignment="Left" Margin="221,164,0,0" x:Name="label124" VerticalAlignment="Top" Width="32" />
-                                <Label Content="14K" Height="24" HorizontalAlignment="Left" Margin="246,164,0,0" x:Name="label125" VerticalAlignment="Top" Width="32" />
-                                <Label Content="16K" Height="24" HorizontalAlignment="Left" Margin="271,164,0,0" x:Name="label126" VerticalAlignment="Top" Width="32" />
+                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="17,14,0,0" x:Name="cbAudioEffectsEnabled" VerticalAlignment="Top" />
+                                <TabControl Height="480" HorizontalAlignment="Left" Margin="10,34,0,0" x:Name="tabControl9" VerticalAlignment="Top" Width="363">
+                                    <TabItem Header="Amplify" x:Name="tabItem29">
+                                        <Grid>
+                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,20,217,0" x:Name="cbAudAmplifyEnabled" VerticalAlignment="Top" Width="120" Checked="cbAudAmplifyEnabled_Checked" Unchecked="cbAudAmplifyEnabled_Checked" />
+                                            <Slider Height="27" HorizontalAlignment="Left" Margin="28,78,0,0" Maximum="4000" x:Name="tbAudAmplifyAmp" Value="1000" ValueChanged="tbAudAmplifyAmp_Scroll" VerticalAlignment="Top" Width="291" />
+                                            <Label Content="Volume" Height="23" HorizontalAlignment="Left" Margin="28,55,0,0" x:Name="label119" VerticalAlignment="Top" Width="51" />
+                                            <Label Content="400%" Height="23" HorizontalAlignment="Right" Margin="0,55,15,0" x:Name="label120" VerticalAlignment="Top" Width="51" />
+                                            <Label Content="100%" Height="23" HorizontalAlignment="Left" Margin="92,55,0,0" x:Name="label121" VerticalAlignment="Top" Width="51" />
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Equlizer" x:Name="tabItem30">
+                                        <Grid>
+                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,20,217,0" x:Name="cbAudEqualizerEnabled" VerticalAlignment="Top" Width="120" Checked="cbAudEqualizerEnabled_Checked" Unchecked="cbAudEqualizerEnabled_Checked" />
+                                            <Slider Height="123" HorizontalAlignment="Left" Margin="51,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq0" Orientation="Vertical" ValueChanged="tbAudEq0_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123" HorizontalAlignment="Left" Margin="76,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq1" Orientation="Vertical" ValueChanged="tbAudEq1_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" HorizontalAlignment="Left" Margin="101,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq2" Orientation="Vertical" ValueChanged="tbAudEq2_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" HorizontalAlignment="Left" Margin="126,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq3" Orientation="Vertical" ValueChanged="tbAudEq3_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" HorizontalAlignment="Left" Margin="151,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq4" Orientation="Vertical" ValueChanged="tbAudEq4_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" HorizontalAlignment="Left" Margin="176,38,0,0" Maximum="100" Minimum="-100" x:Name="tbAudEq5" Orientation="Vertical" ValueChanged="tbAudEq5_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" Margin="201,38,124,0" Maximum="100" Minimum="-100" x:Name="tbAudEq6" Orientation="Vertical" ValueChanged="tbAudEq6_Scroll" VerticalAlignment="Top" />
+                                            <Slider Height="123.447" HorizontalAlignment="Right" Margin="0,38,103,0" Maximum="100" Minimum="-100" x:Name="tbAudEq7" Orientation="Vertical" ValueChanged="tbAudEq7_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" HorizontalAlignment="Right" Margin="0,38,78,0" Maximum="100" Minimum="-100" x:Name="tbAudEq8" Orientation="Vertical" ValueChanged="tbAudEq8_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Slider Height="123.447" HorizontalAlignment="Right" Margin="0,38,53,0" Maximum="100" Minimum="-100" x:Name="tbAudEq9" Orientation="Vertical" ValueChanged="tbAudEq9_Scroll" VerticalAlignment="Top" Width="24" />
+                                            <Label Content="60" Height="24" HorizontalAlignment="Left" Margin="47,164,0,0" x:Name="label122" VerticalAlignment="Top" Width="26" />
+                                            <ComboBox Height="23" Margin="16,0,93,187" x:Name="cbAudEqualizerPreset" SelectionChanged="cbAudEqualizerPreset_SelectedIndexChanged" VerticalAlignment="Bottom" />
+                                            <Label Content="Preset" Height="25.447" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="8,0,0,211" x:Name="label132" VerticalAlignment="Bottom" Width="54" />
+                                            <Button Click="btAudEqRefresh_Click" Content="Refresh" Height="23" HorizontalAlignment="Right" Margin="0,0,12,187" x:Name="btAudEqRefresh" VerticalAlignment="Bottom" Width="75" />
+                                            <Label Content="170" Height="24" HorizontalAlignment="Left" Margin="70,164,0,0" x:Name="label108" VerticalAlignment="Top" Width="32" />
+                                            <Label Content="310" Height="24" HorizontalAlignment="Left" Margin="97,164,0,0" x:Name="label109" VerticalAlignment="Top" Width="32" />
+                                            <Label Content="600" Height="24" HorizontalAlignment="Left" Margin="121,164,0,0" x:Name="label110" VerticalAlignment="Top" Width="32" />
+                                            <Label Content="1K" Height="24" HorizontalAlignment="Left" Margin="149,164,0,0" x:Name="label113" VerticalAlignment="Top" Width="26" />
+                                            <Label Content="3K" Height="24" HorizontalAlignment="Left" Margin="172,164,0,0" x:Name="label114" VerticalAlignment="Top" Width="26" />
+                                            <Label Content="6K" Height="24" HorizontalAlignment="Right" Margin="0,164,128,0" x:Name="label123" VerticalAlignment="Top" Width="26" />
+                                            <Label Content="12K" Height="24" HorizontalAlignment="Left" Margin="221,164,0,0" x:Name="label124" VerticalAlignment="Top" Width="32" />
+                                            <Label Content="14K" Height="24" HorizontalAlignment="Left" Margin="246,164,0,0" x:Name="label125" VerticalAlignment="Top" Width="32" />
+                                            <Label Content="16K" Height="24" HorizontalAlignment="Left" Margin="271,164,0,0" x:Name="label126" VerticalAlignment="Top" Width="32" />
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Dynamic amplify" x:Name="tabItem31">
+                                        <Grid>
+                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,20,217,0" x:Name="cbAudDynamicAmplifyEnabled" VerticalAlignment="Top" Checked="cbAudDynamicAmplifyEnabled_Checked" Unchecked="cbAudDynamicAmplifyEnabled_Checked" />
+                                            <Slider Height="23" HorizontalAlignment="Left" Margin="28,75,0,0" Maximum="2000" Minimum="100" x:Name="tbAudDynAmp" ValueChanged="tbAudDynAmp_Scroll" VerticalAlignment="Top" Width="270" Value="1000" />
+                                            <Label Content="Maximum amplification" Height="28" HorizontalAlignment="Left" Margin="28,42,0,0" x:Name="label133" VerticalAlignment="Top" Width="152" />
+                                            <Slider Height="23" HorizontalAlignment="Left" Margin="28,165,0,0" Maximum="10000" Minimum="10" x:Name="tbAudAttack" ValueChanged="tbAudAttack_Scroll" VerticalAlignment="Top" Width="270" />
+                                            <Label Content="Attack" Height="28" HorizontalAlignment="Left" Margin="28,137,0,0" x:Name="label134" VerticalAlignment="Top" Width="86" />
+                                            <Slider Height="23" HorizontalAlignment="Left" Margin="28,255,0,0" Maximum="10000" Minimum="10" x:Name="tbAudRelease" ValueChanged="tbAudRelease_Scroll" VerticalAlignment="Top" Width="270" />
+                                            <Label Content="Release time" Height="28" HorizontalAlignment="Left" Margin="28,231,0,0" x:Name="label135" VerticalAlignment="Top" Width="86" />
+                                            <Label Content="0" Height="28" HorizontalAlignment="Left" Margin="304,70,0,0" x:Name="label244" VerticalAlignment="Top" />
+                                            <Label Content="0" Height="28" HorizontalAlignment="Left" Margin="304,160,0,0" x:Name="label246" VerticalAlignment="Top" />
+                                            <Label Content="0" Height="28" HorizontalAlignment="Left" Margin="304,250,0,0" x:Name="label248" VerticalAlignment="Top" />
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Sound 3D" x:Name="tabItem33">
+                                        <Grid>
+                                            <CheckBox Content="Enabled" Height="16" Margin="16,20,217,0" x:Name="cbAudSound3DEnabled" VerticalAlignment="Top" Checked="cbAudSound3DEnabled_Checked" Unchecked="cbAudSound3DEnabled_Checked" />
+                                            <Slider Height="46" Margin="17,71,18,0" Maximum="10000" x:Name="tbAud3DSound" TickFrequency="250" TickPlacement="BottomRight" ValueChanged="tbAud3DSound_Scroll" VerticalAlignment="Top" />
+                                            <Label Content="3D amplification" Height="28" HorizontalAlignment="Left" Margin="17,42,0,0" x:Name="label140" VerticalAlignment="Top" Width="120" />
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="True bass" x:Name="tabItem34">
+                                        <Grid>
+                                            <CheckBox Content="Enabled" Height="16" Margin="16,20,217,0" x:Name="cbAudTrueBassEnabled" VerticalAlignment="Top" Checked="cbAudTrueBassEnabled_Checked" Unchecked="cbAudTrueBassEnabled_Checked" />
+                                            <Slider Height="37" IsSelectionRangeEnabled="False" Margin="16,73,26,0" Maximum="10000" x:Name="tbAudTrueBass" TickFrequency="250" TickPlacement="BottomRight" ValueChanged="tbAudTrueBass_Scroll" VerticalAlignment="Top" />
+                                            <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="16,42,0,0" x:Name="label141" VerticalAlignment="Top" Width="74" />
+                                        </Grid>
+                                    </TabItem>
+                                </TabControl>
+                                <Label x:Name="label" Content="Much more effects available using API" HorizontalAlignment="Left" Margin="155,8,0,0" VerticalAlignment="Top"/>
                             </Grid>
                         </TabItem>
-                        <TabItem Header="Dynamic amplify" x:Name="tabItem31">
-                            <Grid>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,20,217,0" x:Name="cbAudDynamicAmplifyEnabled" VerticalAlignment="Top" Checked="cbAudDynamicAmplifyEnabled_Checked" Unchecked="cbAudDynamicAmplifyEnabled_Checked" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,75,0,0" Maximum="2000" Minimum="100" x:Name="tbAudDynAmp" ValueChanged="tbAudDynAmp_Scroll" VerticalAlignment="Top" Width="270" Value="1000" />
-                                <Label Content="Maximum amplification" Height="28" HorizontalAlignment="Left" Margin="28,42,0,0" x:Name="label133" VerticalAlignment="Top" Width="152" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,165,0,0" Maximum="10000" Minimum="10" x:Name="tbAudAttack" ValueChanged="tbAudAttack_Scroll" VerticalAlignment="Top" Width="270" />
-                                <Label Content="Attack" Height="28" HorizontalAlignment="Left" Margin="28,137,0,0" x:Name="label134" VerticalAlignment="Top" Width="86" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,255,0,0" Maximum="10000" Minimum="10" x:Name="tbAudRelease" ValueChanged="tbAudRelease_Scroll" VerticalAlignment="Top" Width="270" />
-                                <Label Content="Release time" Height="28" HorizontalAlignment="Left" Margin="28,231,0,0" x:Name="label135" VerticalAlignment="Top" Width="86" />
-                                <Label Content="0" Height="28" HorizontalAlignment="Left" Margin="304,70,0,0" x:Name="label244" VerticalAlignment="Top" />
-                                <Label Content="0" Height="28" HorizontalAlignment="Left" Margin="304,160,0,0" x:Name="label246" VerticalAlignment="Top" />
-                                <Label Content="0" Height="28" HorizontalAlignment="Left" Margin="304,250,0,0" x:Name="label248" VerticalAlignment="Top" />
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="Sound 3D" x:Name="tabItem33">
-                            <Grid>
-                                <CheckBox Content="Enabled" Height="16" Margin="16,20,217,0" x:Name="cbAudSound3DEnabled" VerticalAlignment="Top" Checked="cbAudSound3DEnabled_Checked" Unchecked="cbAudSound3DEnabled_Checked" />
-                                <Slider Height="46" Margin="17,71,18,0" Maximum="10000" x:Name="tbAud3DSound" TickFrequency="250" TickPlacement="BottomRight" ValueChanged="tbAud3DSound_Scroll" VerticalAlignment="Top" />
-                                <Label Content="3D amplification" Height="28" HorizontalAlignment="Left" Margin="17,42,0,0" x:Name="label140" VerticalAlignment="Top" Width="120" />
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="True bass" x:Name="tabItem34">
-                            <Grid>
-                                <CheckBox Content="Enabled" Height="16" Margin="16,20,217,0" x:Name="cbAudTrueBassEnabled" VerticalAlignment="Top" Checked="cbAudTrueBassEnabled_Checked" Unchecked="cbAudTrueBassEnabled_Checked" />
-                                <Slider Height="37" IsSelectionRangeEnabled="False" Margin="16,73,26,0" Maximum="10000" x:Name="tbAudTrueBass" TickFrequency="250" TickPlacement="BottomRight" ValueChanged="tbAudTrueBass_Scroll" VerticalAlignment="Top" />
-                                <Label Content="Volume" Height="28" HorizontalAlignment="Left" Margin="16,42,0,0" x:Name="label141" VerticalAlignment="Top" Width="74" />
-                            </Grid>
-                        </TabItem>
-                    </TabControl>
-                    <Label x:Name="label" Content="Much more effects available using API" HorizontalAlignment="Left" Margin="155,8,0,0" VerticalAlignment="Top"/>
-                </Grid>
-            </TabItem>
                         <TabItem Header="Channel mapper">
                             <Grid>
                                 <CheckBox x:Name="cbAudioChannelMapperEnabled" Content="Enabled" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
@@ -588,7 +588,7 @@
             <TabItem Header="Motion detection" x:Name="tabItem40">
                 <Grid>
                     <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="20,16,0,0" x:Name="cbMotDetEnabled" VerticalAlignment="Top" />
-                    <TabControl Height="464" HorizontalAlignment="Left" Margin="18,45,0,0" x:Name="tabControl11" VerticalAlignment="Top" Width="340">
+                    <TabControl Height="446" HorizontalAlignment="Left" Margin="18,37,0,0" x:Name="tabControl11" VerticalAlignment="Top" Width="340">
                         <TabItem Header="Output matrix" x:Name="tabItem41">
                             <Grid>
                                 <TextBox Height="247" HorizontalAlignment="Left" Margin="15,18,0,0" x:Name="mmMotDetMatrix" VerticalAlignment="Top" Width="296" />
@@ -611,7 +611,7 @@
                                 <GroupBox Header="Color highlight" Height="101" HorizontalAlignment="Left" Margin="4,124,0,0" x:Name="groupBox19" VerticalAlignment="Top" Width="320">
                                     <Grid>
                                         <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="13,6,0,0" x:Name="cbMotDetHLEnabled" VerticalAlignment="Top" />
-                                        <Slider Height="23" HorizontalAlignment="Left" Margin="62,47,0,0" Maximum="255" x:Name="tbMotDetHLThreshold" VerticalAlignment="Top" Width="100" />
+                                        <Slider Height="23" HorizontalAlignment="Left" Margin="62,47,0,0" Maximum="255" x:Name="tbMotDetHLThreshold" VerticalAlignment="Top" Width="100" Value="5" />
                                         <Label Content="Threshold" Height="28" HorizontalAlignment="Left" Margin="71,20,0,0" x:Name="label162" VerticalAlignment="Top" Width="86" />
                                         <Label Content="Color" Height="28" HorizontalAlignment="Left" Margin="195,20,0,0" x:Name="label163" VerticalAlignment="Top" Width="81" />
                                         <ComboBox Height="23" HorizontalAlignment="Left" Margin="195,45,0,0" x:Name="cbMotDetHLColor" VerticalAlignment="Top" Width="96">
@@ -624,19 +624,19 @@
                                 <GroupBox Header="Drop frames" Height="88" HorizontalAlignment="Left" Margin="7,223,0,0" x:Name="groupBox20" VerticalAlignment="Top" Width="317">
                                     <Grid>
                                         <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,12,0,0" x:Name="cbMotDetDropFramesEnabled" VerticalAlignment="Top" />
-                                        <Slider Height="23" HorizontalAlignment="Left" Margin="126,35,0,0" Maximum="255" x:Name="tbMotDetDropFramesThreshold" VerticalAlignment="Top" Width="100" />
+                                        <Slider Height="23" HorizontalAlignment="Left" Margin="126,35,0,0" Maximum="255" x:Name="tbMotDetDropFramesThreshold" VerticalAlignment="Top" Width="100" Value="5" />
                                         <Label Content="Threshold" Height="28" HorizontalAlignment="Left" Margin="135,8,0,0" x:Name="label164" VerticalAlignment="Top" Width="86" />
                                     </Grid>
                                 </GroupBox>
-                                <GroupBox Header="Matrix" Height="81" HorizontalAlignment="Left" Margin="9,312,0,0" x:Name="groupBox21" VerticalAlignment="Top" Width="315">
+                                <GroupBox Header="Matrix" Height="59" HorizontalAlignment="Left" Margin="9,312,0,0" x:Name="groupBox21" VerticalAlignment="Top" Width="315">
                                     <Grid>
-                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="59,16,0,0" x:Name="edMotDetMatrixWidth" Text="10" VerticalAlignment="Top" Width="58" />
-                                        <Label Content="Width" Height="28" HorizontalAlignment="Left" Margin="8,15,0,0" x:Name="label165" VerticalAlignment="Top" Width="72" />
-                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="190,16,0,0" x:Name="edMotDetMatrixHeight" Text="10" VerticalAlignment="Top" Width="58" />
-                                        <Label Content="Height" Height="28" HorizontalAlignment="Left" Margin="142,14,0,0" x:Name="label166" VerticalAlignment="Top" Width="72" />
+                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="58,10,0,0" x:Name="edMotDetMatrixWidth" Text="10" VerticalAlignment="Top" Width="58" />
+                                        <Label Content="Width" Height="28" HorizontalAlignment="Left" Margin="7,9,0,0" x:Name="label165" VerticalAlignment="Top" Width="72" />
+                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="189,10,0,0" x:Name="edMotDetMatrixHeight" Text="10" VerticalAlignment="Top" Width="58" />
+                                        <Label Content="Height" Height="28" HorizontalAlignment="Left" Margin="141,8,0,0" x:Name="label166" VerticalAlignment="Top" Width="72" />
                                     </Grid>
                                 </GroupBox>
-                                <Button Click="btMotDetUpdateSettings_Click" Content="Update settings" Height="23" HorizontalAlignment="Right" IsDefault="False" IsEnabled="True" Margin="0,403,12,0" x:Name="btMotDetUpdateSettings" VerticalAlignment="Top" Width="114" />
+                                <Button Click="btMotDetUpdateSettings_Click" Content="Update settings" Height="23" HorizontalAlignment="Right" IsDefault="False" IsEnabled="True" Margin="0,376,10,0" x:Name="btMotDetUpdateSettings" VerticalAlignment="Top" Width="114" />
                             </Grid>
                         </TabItem>
                     </TabControl>
@@ -784,6 +784,8 @@
                     <Label Content="Wait several seconds to cache required frames" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top"/>
                     <Label Content="count before tracking" HorizontalAlignment="Left" Margin="10,121,0,0" VerticalAlignment="Top"/>
                     <Slider x:Name="tbReversePlaybackTrackbar" HorizontalAlignment="Left" Margin="10,152,0,0" VerticalAlignment="Top" Width="200" Height="30" Maximum="100" Value="100" TickPlacement="Both" SmallChange="1" TickFrequency="5" ValueChanged="tbReversePlaybackTrackbar_ValueChanged"/>
+                    <Button x:Name="btReversePlaybackPrevFrame" Content="Previous frame" HorizontalAlignment="Left" Margin="10,202,0,0" VerticalAlignment="Top" Width="99" Click="btReversePlaybackPrevFrame_Click"/>
+                    <Button x:Name="btReversePlaybackNextFrame" Content="Next frame" HorizontalAlignment="Left" Margin="114,202,0,0" VerticalAlignment="Top" Width="99" Click="btReversePlaybackNextFrame_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="VU meter" >

@@ -3673,9 +3673,20 @@ namespace VideoEdit_CS_Demo
         private void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
+            int k = 0;
             foreach (byte b in e.Matrix)
             {
-                s += b + " ";
+                s += b.ToString("D3") + " ";
+
+                if (k == VideoEdit1.Motion_Detection.Matrix_Width - 1)
+                {
+                    k = 0;
+                    s += Environment.NewLine;
+                }
+                else
+                {
+                    k++;
+                }
             }
 
             mmMotDetMatrix.Text = s.Trim();
@@ -3701,37 +3712,34 @@ namespace VideoEdit_CS_Demo
 
         private void btTest_Click(object sender, EventArgs e)
         {
-            //string[] files = { "c:\\samples\\!video.avi", "c:\\samples\\!video2.wmv" };
-            string[] files = { "d:\\users\\!\\cut_1.avi", "d:\\users\\!\\cut_1.avi" };
-            VFVEFileSegment[] segments1 = new[] { new VFVEFileSegment(0, 5000) };
+            string[] files = { "c:\\samples\\!video.avi", "c:\\samples\\!video2.wmv" };
+            //string[] files = { "d:\\users\\!\\cut_1.avi", "d:\\users\\!\\cut_1.avi" };
+            VFVEFileSegment[] segments = new[] { new VFVEFileSegment(0, 5000) };
             var videoFile = new VFVEVideoSource(
                                 files[0],
-                                segments1,
+                                segments,
                                 VFVideoEditStretchMode.Letterbox,
                                 0,
                                 1.0);
-            VFVEFileSegment[] segments2 = new[] { new VFVEFileSegment(0, 5000) };
 
             var videoFile2 = new VFVEVideoSource(
                                             files[1],
-                                            segments2,
+                                            segments,
                                             VFVideoEditStretchMode.Letterbox,
                                             0,
                                             1.0);
 
-            VideoEdit1.Input_AddVideoFile(
-                                videoFile,
-                                0);
 
-            VideoEdit1.Input_AddVideoFile(
-                    videoFile2,
-                    4000);
+            var rect1 = new Rectangle(0, 0, 1280, 720);
+            var rect2 = new Rectangle(100, 100, 320, 240);
+            VideoEdit1.Input_AddVideoFile_PIP(videoFile, videoFile2, 0, 5000, VFVEPIPMode.Custom, true, 1280, 720, 0, rect2, rect1);
+
 
             // get id
-            int id = VideoEdit.Video_Transition_GetIDFromName("Upper right");
+            //int id = VideoEdit.Video_Transition_GetIDFromName("Upper right");
 
             // add transition
-            VideoEdit1.Video_Transition_Add(4000, 5000, id);
+           // VideoEdit1.Video_Transition_Add(4000, 5000, id);
 
             //var rect1 = new Rectangle(0, 0, 1280, 720);
             //var rect2 = new Rectangle(100, 100, 320, 240);
@@ -5680,6 +5688,10 @@ namespace VideoEdit_CS_Demo
             else if (cbMuxStreamsType.SelectedIndex == 1)
             {
                 prefix = "a";
+            }
+            else if (cbMuxStreamsType.SelectedIndex == 2)
+            {
+                prefix = "s";
             }
             else
             {

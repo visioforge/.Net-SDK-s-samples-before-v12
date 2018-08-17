@@ -293,13 +293,13 @@ Public Class Form1
                 onvifControl = Nothing
             End If
 
-            If (String.IsNullOrEmpty(edIPLogin.Text) Or String.IsNullOrEmpty(edIPPassword.Text)) Then
+            If (String.IsNullOrEmpty(edONVIFLogin.Text) Or String.IsNullOrEmpty(edONVIFPassword.Text)) Then
                 MessageBox.Show("Please specify IP camera user name and password.")
                 Exit Sub
             End If
 
             onvifControl = New ONVIFControl()
-            Dim result = onvifControl.Connect(edIPUrl.Text, edIPLogin.Text, edIPPassword.Text)
+            Dim result = onvifControl.Connect(edONVIFURL.Text, edONVIFLogin.Text, edONVIFPassword.Text)
 
             If (Not result) Then
                 onvifControl = Nothing
@@ -322,6 +322,10 @@ Public Class Form1
             End If
 
             edONVIFLiveVideoURL.Text = onvifControl.GetVideoURL()
+            edIPUrl.Text = edONVIFLiveVideoURL.Text
+
+            edIPLogin.Text = edONVIFLogin.Text
+            edIPPassword.Text = edONVIFPassword.Text
 
             onvifPtzRanges = onvifControl.PTZ_GetRanges()
             onvifControl.PTZ_SetAbsolute(0, 0, 0)

@@ -1991,7 +1991,7 @@
                                 <GroupBox Header="Color highlight" Height="101" HorizontalAlignment="Left" Margin="4,124,0,0" x:Name="groupBox19" VerticalAlignment="Top" Width="320">
                                     <Grid>
                                         <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="13,6,0,0" x:Name="cbMotDetHLEnabled" VerticalAlignment="Top" IsChecked="True" />
-                                        <Slider Height="23" HorizontalAlignment="Left" Margin="62,47,0,0" Maximum="255" x:Name="tbMotDetHLThreshold" VerticalAlignment="Top" Width="100" />
+                                        <Slider Height="23" HorizontalAlignment="Left" Margin="62,47,0,0" Maximum="255" x:Name="tbMotDetHLThreshold" VerticalAlignment="Top" Width="100" Value="5" />
                                         <Label Content="Threshold" Height="28" HorizontalAlignment="Left" Margin="71,20,0,0" x:Name="label162" VerticalAlignment="Top" Width="86" />
                                         <Label Content="Color" Height="28" HorizontalAlignment="Left" Margin="195,20,0,0" x:Name="label163" VerticalAlignment="Top" Width="81" />
                                         <ComboBox Height="23" HorizontalAlignment="Left" Margin="195,45,0,0" x:Name="cbMotDetHLColor" VerticalAlignment="Top" Width="96">
@@ -2004,7 +2004,7 @@
                                 <GroupBox Header="Drop frames" Height="88" HorizontalAlignment="Left" Margin="7,223,0,0" x:Name="groupBox20" VerticalAlignment="Top" Width="317">
                                     <Grid>
                                         <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,12,0,0" x:Name="cbMotDetDropFramesEnabled" VerticalAlignment="Top" />
-                                        <Slider Height="23" HorizontalAlignment="Left" Margin="126,35,0,0" Maximum="255" x:Name="tbMotDetDropFramesThreshold" VerticalAlignment="Top" Width="100" />
+                                        <Slider Height="23" HorizontalAlignment="Left" Margin="126,35,0,0" Maximum="255" x:Name="tbMotDetDropFramesThreshold" VerticalAlignment="Top" Width="100" Value="5" />
                                         <Label Content="Threshold" Height="28" HorizontalAlignment="Left" Margin="135,8,0,0" x:Name="label164" VerticalAlignment="Top" Width="86" />
                                     </Grid>
                                 </GroupBox>
@@ -2529,19 +2529,21 @@
             </TabItem>
             <TabItem Header="IP camera" x:Name="tabItem60">
                 <Grid>
-                    <TextBox Height="23" Margin="10,34,10,0" Name="edIPUrl" Text="http://212.162.177.75/mjpg/video.mjpg" VerticalAlignment="Top" />
-                    <Label Content="URL" Height="23" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label220" VerticalAlignment="Top" Width="55" />
 
-                    <TabControl HorizontalAlignment="Left" Height="279" Margin="10,62,0,0" VerticalAlignment="Top" Width="514">
+
+                    <TabControl HorizontalAlignment="Left" Height="331" Margin="0,13,0,0" VerticalAlignment="Top" Width="514">
                         <TabItem Header="Main">
                             <Grid>
-                                <Label Content="Type" Height="35" HorizontalAlignment="Left" Margin="14,17,0,0" Name="label223" VerticalAlignment="Top" Width="55" />
-                                <CheckBox Content="Capture audio" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="198,144,0,0" Name="cbIPAudioCapture" VerticalAlignment="Top" Width="107" />
-                                <Label Content="Login" Height="28" HorizontalAlignment="Left" Margin="14,52,0,0" Name="label221" VerticalAlignment="Top" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="18,76,0,0" Name="edIPLogin" VerticalAlignment="Top" Width="150" />
-                                <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="198,50,0,0" Name="label222" VerticalAlignment="Top" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="197,76,0,0" Name="edIPPassword" VerticalAlignment="Top" Width="150" />
-                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="63,20,0,0" Name="cbIPCameraType" VerticalAlignment="Top" Width="206">
+                                <TextBox Height="23" Margin="53,10,10,0" Name="edIPUrl" Text="http://212.162.177.75/mjpg/video.mjpg" VerticalAlignment="Top" />
+                                <Label Content="URL" Height="23" HorizontalAlignment="Left" Margin="4,6,0,0" Name="label220" VerticalAlignment="Top" Width="55" />
+
+                                <Label Content="Type" Height="35" HorizontalAlignment="Left" Margin="4,42,0,0" Name="label223" VerticalAlignment="Top" Width="55" />
+                                <CheckBox Content="Capture audio" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="188,169,0,0" Name="cbIPAudioCapture" VerticalAlignment="Top" Width="107" />
+                                <Label Content="Login" Height="28" HorizontalAlignment="Left" Margin="4,77,0,0" Name="label221" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="8,101,0,0" Name="edIPLogin" VerticalAlignment="Top" Width="150" />
+                                <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="188,75,0,0" Name="label222" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="187,101,0,0" Name="edIPPassword" VerticalAlignment="Top" Width="150" />
+                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="53,45,0,0" Name="cbIPCameraType" VerticalAlignment="Top" Width="206">
                                     <ComboBoxItem Content="Auto (VLC engine)" />
                                     <ComboBoxItem Content="Auto (FFMPEG engine)" />
                                     <ComboBoxItem Content="Auto (LAV engine)" />
@@ -2552,14 +2554,14 @@
                                     <ComboBoxItem Content="RTSP - TCP (FFMPEG engine)" />
                                     <ComboBoxItem Content="RTSP over HTTP (FFMPEG engine)" />
                                 </ComboBox>
-                                <Label x:Name="lbVLCRedist" Content="Please install VisioForge VLC redist to use VLC engine " HorizontalAlignment="Left" Margin="195,208,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist_MouseLeftButtonDown"/>
-                                <Button x:Name="btShowIPCamDatabase" Content="Show IP cam database" HorizontalAlignment="Left" Margin="20,211,0,0" VerticalAlignment="Top" Width="148" Click="btShowIPCamDatabase_Click"/>
-                                <CheckBox x:Name="cbIPCameraONVIF" Content="ONVIF camera" HorizontalAlignment="Left" Margin="285,23,0,0" VerticalAlignment="Top"/>
-                                <CheckBox x:Name="cbIPDisconnect" Content="Notify if connection lost" HorizontalAlignment="Left" Margin="20,145,0,0" VerticalAlignment="Top"/>
-                                <Label Content="Force frame rate" HorizontalAlignment="Left" Margin="20,104,0,0" VerticalAlignment="Top"/>
-                                <TextBox x:Name="edIPForcedFramerate" HorizontalAlignment="Left" Height="23" Margin="134,107,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="34"/>
-                                <Label Content="Force frame rate ID" HorizontalAlignment="Left" Margin="199,105,0,0" VerticalAlignment="Top"/>
-                                <TextBox x:Name="edIPForcedFramerateID" HorizontalAlignment="Left" Height="23" Margin="313,108,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="34"/>
+                                <Label x:Name="lbVLCRedist" Content="Please install VisioForge VLC redist to use VLC engine " HorizontalAlignment="Left" Margin="185,233,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist_MouseLeftButtonDown"/>
+                                <Button x:Name="btShowIPCamDatabase" Content="Show IP cam database" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="148" Click="btShowIPCamDatabase_Click"/>
+                                <CheckBox x:Name="cbIPCameraONVIF" Content="ONVIF camera" HorizontalAlignment="Left" Margin="275,48,0,0" VerticalAlignment="Top"/>
+                                <CheckBox x:Name="cbIPDisconnect" Content="Notify if connection lost" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Force frame rate" HorizontalAlignment="Left" Margin="10,129,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edIPForcedFramerate" HorizontalAlignment="Left" Height="23" Margin="124,132,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="34"/>
+                                <Label Content="Force frame rate ID" HorizontalAlignment="Left" Margin="189,130,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edIPForcedFramerateID" HorizontalAlignment="Left" Height="23" Margin="303,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="34"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="VLC">
@@ -2571,11 +2573,11 @@
                         </TabItem>
                         <TabItem Header="ONVIF">
                             <Grid>
-                                <Button x:Name="btONVIFConnect" Content="Connect" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="btONVIFConnect_Click"/>
-                                <Label x:Name="lbONVIFCameraInfo" Content="Camera info not available" HorizontalAlignment="Left" Margin="106,7,0,0" VerticalAlignment="Top"/>
-                                <Label Content="Profile" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
-                                <ComboBox x:Name="cbONVIFProfile" HorizontalAlignment="Left" Margin="72,48,0,0" VerticalAlignment="Top" Width="426" IsReadOnly="True"/>
-                                <GroupBox Header="PTZ" HorizontalAlignment="Left" Margin="10,86,0,0" VerticalAlignment="Top" Height="122" Width="488">
+                                <Button x:Name="btONVIFConnect" Content="Connect" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="75" Click="btONVIFConnect_Click"/>
+                                <Label x:Name="lbONVIFCameraInfo" Content="Status: None" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top"/>
+                                <Label Content="Profile" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbONVIFProfile" HorizontalAlignment="Left" Margin="80,104,0,0" VerticalAlignment="Top" Width="418" IsReadOnly="True"/>
+                                <GroupBox Header="PTZ" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Height="122" Width="488">
                                     <Grid>
                                         <Button x:Name="btONVIFUp" Content="Up" HorizontalAlignment="Left" Margin="42,11,0,0" VerticalAlignment="Top" Width="69" Click="btONVIFUp_Click"/>
                                         <Button x:Name="btONVIFDown" Content="Down" HorizontalAlignment="Left" Margin="42,72.96,0,0" VerticalAlignment="Top" Width="69" Click="btONVIFDown_Click"/>
@@ -2586,6 +2588,13 @@
                                         <Button x:Name="btONVIFPTZSetDefault" Content="Set default position" HorizontalAlignment="Left" Margin="179,36,0,0" VerticalAlignment="Top" Width="153" Click="btONVIFPTZSetDefault_Click"/>
                                     </Grid>
                                 </GroupBox>
+                                <Label Content="Video URL" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edONVIFLiveVideoURL" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="418" Margin="80,135,0,0"/>
+                                <TextBox x:Name="edONVIFURL" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="http://192.168.1.200/onvif/device_service" VerticalAlignment="Top" Width="408"/>
+                                <Label Content="Login" Height="28" HorizontalAlignment="Left" Margin="10,38,0,0" x:Name="label221_Copy" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="80,43,0,0" x:Name="edONVIFLogin" VerticalAlignment="Top" Width="150" />
+                                <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="283,38,0,0" x:Name="label222_Copy" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="348,43,0,0" x:Name="edONVIFPassword" VerticalAlignment="Top" Width="150" />
                             </Grid>
                         </TabItem>
                     </TabControl>

@@ -4349,10 +4349,16 @@ Public Class Form1
 
         Dim s As String = String.Empty
 
+        Dim k As Integer
         For Each b As Byte In e.Matrix
+            s += b.ToString("D3") + " "
 
-            s += b + " "
-
+            If (k = VideoCapture1.Motion_Detection.Matrix_Width - 1) Then
+                k = 0
+                s += Environment.NewLine
+            Else
+                k += 1
+            End If
         Next
 
         mmMotDetMatrix.Text = s.Trim()
@@ -6534,7 +6540,7 @@ Public Class Form1
     Private Sub VideoCapture1_OnFFMPEGInfo(sender As Object, e As FFMPEGInfoEventArgs) Handles VideoCapture1.OnFFMPEGInfo
 
         Dim del As FFMPEGInfoDelegate = New FFMPEGInfoDelegate(AddressOf FFMPEGInfoDelegateMethod)
-        BeginInvoke(del, e)
+        BeginInvoke(del, e.Message)
 
     End Sub
 
@@ -6917,13 +6923,13 @@ Public Class Form1
                 onvifControl = Nothing
             End If
 
-            If (String.IsNullOrEmpty(edIPLogin.Text) Or String.IsNullOrEmpty(edIPPassword.Text)) Then
+            If (String.IsNullOrEmpty(edONVIFLogin.Text) Or String.IsNullOrEmpty(edONVIFPassword.Text)) Then
                 MessageBox.Show("Please specify IP camera user name and password.")
                 Exit Sub
             End If
 
             onvifControl = New ONVIFControl()
-            Dim result = onvifControl.Connect(edIPUrl.Text, edIPLogin.Text, edIPPassword.Text)
+            Dim result = onvifControl.Connect(edONVIFURL.Text, edONVIFLogin.Text, edONVIFPassword.Text)
 
             If (Not result) Then
                 onvifControl = Nothing
@@ -6946,6 +6952,10 @@ Public Class Form1
             End If
 
             edONVIFLiveVideoURL.Text = onvifControl.GetVideoURL()
+            edIPUrl.Text = edONVIFLiveVideoURL.Text
+
+            edIPLogin.Text = edONVIFLogin.Text
+            edIPPassword.Text = edONVIFPassword.Text
 
             onvifPtzRanges = onvifControl.PTZ_GetRanges()
             onvifControl.PTZ_SetAbsolute(0, 0, 0)

@@ -96,6 +96,7 @@ namespace Media_Player_Demo
             this.cbScreenFlipHorizontal = new System.Windows.Forms.CheckBox();
             this.cbStretch = new System.Windows.Forms.CheckBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.rbMadVR = new System.Windows.Forms.RadioButton();
             this.rbDirect2D = new System.Windows.Forms.RadioButton();
             this.rbNone = new System.Windows.Forms.RadioButton();
             this.rbEVR = new System.Windows.Forms.RadioButton();
@@ -617,7 +618,8 @@ namespace Media_Player_Demo
             this.edEncryptionKeyString = new System.Windows.Forms.TextBox();
             this.rbEncryptionKeyString = new System.Windows.Forms.RadioButton();
             this.tabPage24 = new System.Windows.Forms.TabPage();
-            this.btPrevFrame = new System.Windows.Forms.Button();
+            this.btReversePlaybackNextFrame = new System.Windows.Forms.Button();
+            this.btReversePlaybackPrevFrame = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
             this.btReversePlayback = new System.Windows.Forms.Button();
@@ -1381,7 +1383,7 @@ namespace Media_Player_Demo
             // label393
             // 
             this.label393.AutoSize = true;
-            this.label393.Location = new System.Drawing.Point(141, 267);
+            this.label393.Location = new System.Drawing.Point(141, 318);
             this.label393.Name = "label393";
             this.label393.Size = new System.Drawing.Size(79, 13);
             this.label393.TabIndex = 35;
@@ -1396,7 +1398,7 @@ namespace Media_Player_Demo
             "90",
             "180",
             "270"});
-            this.cbDirect2DRotate.Location = new System.Drawing.Point(144, 283);
+            this.cbDirect2DRotate.Location = new System.Drawing.Point(144, 334);
             this.cbDirect2DRotate.Name = "cbDirect2DRotate";
             this.cbDirect2DRotate.Size = new System.Drawing.Size(122, 21);
             this.cbDirect2DRotate.TabIndex = 34;
@@ -1406,7 +1408,7 @@ namespace Media_Player_Demo
             // 
             this.pnVideoRendererBGColor.BackColor = System.Drawing.Color.Black;
             this.pnVideoRendererBGColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnVideoRendererBGColor.Location = new System.Drawing.Point(120, 168);
+            this.pnVideoRendererBGColor.Location = new System.Drawing.Point(120, 219);
             this.pnVideoRendererBGColor.Name = "pnVideoRendererBGColor";
             this.pnVideoRendererBGColor.Size = new System.Drawing.Size(24, 24);
             this.pnVideoRendererBGColor.TabIndex = 33;
@@ -1415,7 +1417,7 @@ namespace Media_Player_Demo
             // label394
             // 
             this.label394.AutoSize = true;
-            this.label394.Location = new System.Drawing.Point(13, 173);
+            this.label394.Location = new System.Drawing.Point(13, 224);
             this.label394.Name = "label394";
             this.label394.Size = new System.Drawing.Size(91, 13);
             this.label394.TabIndex = 32;
@@ -1423,7 +1425,7 @@ namespace Media_Player_Demo
             // 
             // btFullScreen
             // 
-            this.btFullScreen.Location = new System.Drawing.Point(144, 310);
+            this.btFullScreen.Location = new System.Drawing.Point(144, 361);
             this.btFullScreen.Name = "btFullScreen";
             this.btFullScreen.Size = new System.Drawing.Size(122, 23);
             this.btFullScreen.TabIndex = 31;
@@ -1439,7 +1441,7 @@ namespace Media_Player_Demo
             this.groupBox28.Controls.Add(this.btZoomIn);
             this.groupBox28.Controls.Add(this.btZoomShiftDown);
             this.groupBox28.Controls.Add(this.btZoomShiftUp);
-            this.groupBox28.Location = new System.Drawing.Point(16, 267);
+            this.groupBox28.Location = new System.Drawing.Point(16, 318);
             this.groupBox28.Name = "groupBox28";
             this.groupBox28.Size = new System.Drawing.Size(119, 104);
             this.groupBox28.TabIndex = 30;
@@ -1509,7 +1511,7 @@ namespace Media_Player_Demo
             // cbScreenFlipVertical
             // 
             this.cbScreenFlipVertical.AutoSize = true;
-            this.cbScreenFlipVertical.Location = new System.Drawing.Point(176, 192);
+            this.cbScreenFlipVertical.Location = new System.Drawing.Point(176, 243);
             this.cbScreenFlipVertical.Name = "cbScreenFlipVertical";
             this.cbScreenFlipVertical.Size = new System.Drawing.Size(79, 17);
             this.cbScreenFlipVertical.TabIndex = 29;
@@ -1520,7 +1522,7 @@ namespace Media_Player_Demo
             // cbScreenFlipHorizontal
             // 
             this.cbScreenFlipHorizontal.AutoSize = true;
-            this.cbScreenFlipHorizontal.Location = new System.Drawing.Point(176, 169);
+            this.cbScreenFlipHorizontal.Location = new System.Drawing.Point(176, 220);
             this.cbScreenFlipHorizontal.Name = "cbScreenFlipHorizontal";
             this.cbScreenFlipHorizontal.Size = new System.Drawing.Size(90, 17);
             this.cbScreenFlipHorizontal.TabIndex = 28;
@@ -1531,7 +1533,7 @@ namespace Media_Player_Demo
             // cbStretch
             // 
             this.cbStretch.AutoSize = true;
-            this.cbStretch.Location = new System.Drawing.Point(176, 217);
+            this.cbStretch.Location = new System.Drawing.Point(176, 268);
             this.cbStretch.Name = "cbStretch";
             this.cbStretch.Size = new System.Drawing.Size(89, 17);
             this.cbStretch.TabIndex = 27;
@@ -1541,6 +1543,7 @@ namespace Media_Player_Demo
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.rbMadVR);
             this.groupBox13.Controls.Add(this.rbDirect2D);
             this.groupBox13.Controls.Add(this.rbNone);
             this.groupBox13.Controls.Add(this.rbEVR);
@@ -1548,10 +1551,21 @@ namespace Media_Player_Demo
             this.groupBox13.Controls.Add(this.rbVR);
             this.groupBox13.Location = new System.Drawing.Point(16, 16);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(250, 138);
+            this.groupBox13.Size = new System.Drawing.Size(250, 181);
             this.groupBox13.TabIndex = 26;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Video Renderer";
+            // 
+            // rbMadVR
+            // 
+            this.rbMadVR.AutoSize = true;
+            this.rbMadVR.Location = new System.Drawing.Point(12, 113);
+            this.rbMadVR.Name = "rbMadVR";
+            this.rbMadVR.Size = new System.Drawing.Size(106, 17);
+            this.rbMadVR.TabIndex = 5;
+            this.rbMadVR.TabStop = true;
+            this.rbMadVR.Text = "madVR (optional)";
+            this.rbMadVR.UseVisualStyleBackColor = true;
             // 
             // rbDirect2D
             // 
@@ -1568,7 +1582,7 @@ namespace Media_Player_Demo
             // rbNone
             // 
             this.rbNone.AutoSize = true;
-            this.rbNone.Location = new System.Drawing.Point(12, 113);
+            this.rbNone.Location = new System.Drawing.Point(12, 136);
             this.rbNone.Name = "rbNone";
             this.rbNone.Size = new System.Drawing.Size(51, 17);
             this.rbNone.TabIndex = 3;
@@ -1615,7 +1629,7 @@ namespace Media_Player_Demo
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(68, 243);
+            this.label15.Location = new System.Drawing.Point(68, 294);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(12, 13);
             this.label15.TabIndex = 25;
@@ -1623,7 +1637,7 @@ namespace Media_Player_Demo
             // 
             // edAspectRatioY
             // 
-            this.edAspectRatioY.Location = new System.Drawing.Point(82, 240);
+            this.edAspectRatioY.Location = new System.Drawing.Point(82, 291);
             this.edAspectRatioY.Name = "edAspectRatioY";
             this.edAspectRatioY.Size = new System.Drawing.Size(30, 20);
             this.edAspectRatioY.TabIndex = 24;
@@ -1631,7 +1645,7 @@ namespace Media_Player_Demo
             // 
             // edAspectRatioX
             // 
-            this.edAspectRatioX.Location = new System.Drawing.Point(33, 240);
+            this.edAspectRatioX.Location = new System.Drawing.Point(33, 291);
             this.edAspectRatioX.Name = "edAspectRatioX";
             this.edAspectRatioX.Size = new System.Drawing.Size(30, 20);
             this.edAspectRatioX.TabIndex = 23;
@@ -1640,7 +1654,7 @@ namespace Media_Player_Demo
             // cbAspectRatioUseCustom
             // 
             this.cbAspectRatioUseCustom.AutoSize = true;
-            this.cbAspectRatioUseCustom.Location = new System.Drawing.Point(16, 217);
+            this.cbAspectRatioUseCustom.Location = new System.Drawing.Point(16, 268);
             this.cbAspectRatioUseCustom.Name = "cbAspectRatioUseCustom";
             this.cbAspectRatioUseCustom.Size = new System.Drawing.Size(140, 17);
             this.cbAspectRatioUseCustom.TabIndex = 22;
@@ -6571,15 +6585,15 @@ namespace Media_Player_Demo
             // 
             // pbMotionLevel
             // 
-            this.pbMotionLevel.Location = new System.Drawing.Point(47, 207);
+            this.pbMotionLevel.Location = new System.Drawing.Point(6, 327);
             this.pbMotionLevel.Name = "pbMotionLevel";
-            this.pbMotionLevel.Size = new System.Drawing.Size(197, 19);
+            this.pbMotionLevel.Size = new System.Drawing.Size(227, 19);
             this.pbMotionLevel.TabIndex = 2;
             // 
             // label158
             // 
             this.label158.AutoSize = true;
-            this.label158.Location = new System.Drawing.Point(16, 187);
+            this.label158.Location = new System.Drawing.Point(5, 307);
             this.label158.Name = "label158";
             this.label158.Size = new System.Drawing.Size(64, 13);
             this.label158.TabIndex = 1;
@@ -6587,11 +6601,11 @@ namespace Media_Player_Demo
             // 
             // mmMotDetMatrix
             // 
-            this.mmMotDetMatrix.Location = new System.Drawing.Point(17, 19);
+            this.mmMotDetMatrix.Location = new System.Drawing.Point(6, 6);
             this.mmMotDetMatrix.Multiline = true;
             this.mmMotDetMatrix.Name = "mmMotDetMatrix";
             this.mmMotDetMatrix.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.mmMotDetMatrix.Size = new System.Drawing.Size(228, 157);
+            this.mmMotDetMatrix.Size = new System.Drawing.Size(248, 261);
             this.mmMotDetMatrix.TabIndex = 0;
             // 
             // tabPage45
@@ -7177,7 +7191,8 @@ namespace Media_Player_Demo
             // 
             // tabPage24
             // 
-            this.tabPage24.Controls.Add(this.btPrevFrame);
+            this.tabPage24.Controls.Add(this.btReversePlaybackNextFrame);
+            this.tabPage24.Controls.Add(this.btReversePlaybackPrevFrame);
             this.tabPage24.Controls.Add(this.label34);
             this.tabPage24.Controls.Add(this.label33);
             this.tabPage24.Controls.Add(this.btReversePlayback);
@@ -7192,15 +7207,25 @@ namespace Media_Player_Demo
             this.tabPage24.Text = "Reverse playback";
             this.tabPage24.UseVisualStyleBackColor = true;
             // 
-            // btPrevFrame
+            // btReversePlaybackNextFrame
             // 
-            this.btPrevFrame.Location = new System.Drawing.Point(19, 202);
-            this.btPrevFrame.Name = "btPrevFrame";
-            this.btPrevFrame.Size = new System.Drawing.Size(105, 23);
-            this.btPrevFrame.TabIndex = 11;
-            this.btPrevFrame.Text = "Previous frame";
-            this.btPrevFrame.UseVisualStyleBackColor = true;
-            this.btPrevFrame.Click += new System.EventHandler(this.btPrevFrame_Click);
+            this.btReversePlaybackNextFrame.Location = new System.Drawing.Point(130, 202);
+            this.btReversePlaybackNextFrame.Name = "btReversePlaybackNextFrame";
+            this.btReversePlaybackNextFrame.Size = new System.Drawing.Size(105, 23);
+            this.btReversePlaybackNextFrame.TabIndex = 12;
+            this.btReversePlaybackNextFrame.Text = "Next frame";
+            this.btReversePlaybackNextFrame.UseVisualStyleBackColor = true;
+            this.btReversePlaybackNextFrame.Click += new System.EventHandler(this.btReversePlaybackNextFrame_Click);
+            // 
+            // btReversePlaybackPrevFrame
+            // 
+            this.btReversePlaybackPrevFrame.Location = new System.Drawing.Point(19, 202);
+            this.btReversePlaybackPrevFrame.Name = "btReversePlaybackPrevFrame";
+            this.btReversePlaybackPrevFrame.Size = new System.Drawing.Size(105, 23);
+            this.btReversePlaybackPrevFrame.TabIndex = 11;
+            this.btReversePlaybackPrevFrame.Text = "Previous frame";
+            this.btReversePlaybackPrevFrame.UseVisualStyleBackColor = true;
+            this.btReversePlaybackPrevFrame.Click += new System.EventHandler(this.btReversePlaybackPrevFrame_Click);
             // 
             // label34
             // 
@@ -7918,6 +7943,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(330, 183);
             this.MediaPlayer1.Loop = false;
+            this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.Motion_DetectionEx = null;
@@ -7994,7 +8020,6 @@ namespace Media_Player_Demo
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Main Demo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -8846,7 +8871,7 @@ namespace Media_Player_Demo
         private System.Windows.Forms.TextBox edTags;
         private System.Windows.Forms.PictureBox imgTags;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.Button btPrevFrame;
+        private System.Windows.Forms.Button btReversePlaybackPrevFrame;
         private System.Windows.Forms.TabPage tabPage25;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.TabPage tabPage50;
@@ -8891,5 +8916,7 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.ProgressBar pbAFMotionLevel;
         private System.Windows.Forms.CheckBox cbMotionDetectionEx;
+        private System.Windows.Forms.RadioButton rbMadVR;
+        private System.Windows.Forms.Button btReversePlaybackNextFrame;
     }
 }

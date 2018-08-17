@@ -1,3 +1,5 @@
+using System.Threading;
+
 namespace Media_Player_Demo
 {
     using System;
@@ -1079,7 +1081,7 @@ namespace Media_Player_Demo
         private void btStart_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
-
+            
             zoom = 1.0;
             zoomShiftX = 0;
             zoomShiftY = 0;
@@ -1233,6 +1235,10 @@ namespace Media_Player_Demo
             else if (rbDirect2D.Checked)
             {
                 MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D;
+            }
+            else if (rbMadVR.Checked)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.MadVR;
             }
             else
             {
@@ -1488,6 +1494,12 @@ namespace Media_Player_Demo
             if (cbFadeInOut.Checked)
             {
                 cbFadeInOut_CheckedChanged(null, null);
+            }
+
+            // Motion detection
+            if (cbMotDetEnabled.Checked)
+            {
+                btMotDetUpdateSettings_Click(null, null);
             }
 
             // Barcode detection
@@ -2218,9 +2230,20 @@ namespace Media_Player_Demo
         public void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
+            int k = 0;
             foreach (byte b in e.Matrix)
             {
-                s += b + " ";
+                s += b.ToString("D3") + " ";
+
+                if (k == MediaPlayer1.Motion_Detection.Matrix_Width - 1)
+                {
+                    k = 0;
+                    s += Environment.NewLine;
+                }
+                else
+                {
+                    k++;
+                }
             }
 
             mmMotDetMatrix.Text = s.Trim();
@@ -2365,7 +2388,7 @@ namespace Media_Player_Demo
             //byte[,] channels = { { 0, 0 }, { 1, 0 } };
             //MediaPlayer1.Audio_Effects_ChannelOrderEx(-1, 0, channels);
 
-            MediaPlayer1.Test();
+            var frame = MediaPlayer1.Position_Get_Frame();
         }
 
         private void cbZoom_CheckedChanged(object sender, EventArgs e)
@@ -2996,9 +3019,9 @@ namespace Media_Player_Demo
                 {
                     imgTags.Image = tags.Pictures[0];
                 }
-
-                edTags.Text = tags.ToString();
             }
+
+            edTags.Text = tags?.ToString();            
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -3070,7 +3093,7 @@ namespace Media_Player_Demo
             MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
         }
 
-        private void btPrevFrame_Click(object sender, EventArgs e)
+        private void btReversePlaybackPrevFrame_Click(object sender, EventArgs e)
         {
             MediaPlayer1.ReversePlayback_PreviousFrame();
         }
@@ -3344,9 +3367,9 @@ namespace Media_Player_Demo
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void btReversePlaybackNextFrame_Click(object sender, EventArgs e)
         {
-
+            MediaPlayer1.ReversePlayback_NextFrame();
         }
     }
 }

@@ -31,7 +31,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         /// </summary>
         private void InitializeComponent()
         {
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms3 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl15 = new System.Windows.Forms.TabControl();
@@ -70,8 +70,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.label510 = new System.Windows.Forms.Label();
             this.lbONVIFCameraInfo = new System.Windows.Forms.Label();
             this.btONVIFConnect = new System.Windows.Forms.Button();
-            this.edIPUrl = new System.Windows.Forms.TextBox();
-            this.label165 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btSelectOutputAVI = new System.Windows.Forms.Button();
             this.edOutputAVI = new System.Windows.Forms.TextBox();
@@ -115,6 +113,13 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.rbCaptureMP4 = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.edIPUrl = new System.Windows.Forms.TextBox();
+            this.label165 = new System.Windows.Forms.Label();
+            this.edONVIFPassword = new System.Windows.Forms.TextBox();
+            this.label378 = new System.Windows.Forms.Label();
+            this.edONVIFLogin = new System.Windows.Forms.TextBox();
+            this.label379 = new System.Windows.Forms.Label();
+            this.edONVIFURL = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl15.SuspendLayout();
@@ -145,8 +150,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tabControl15);
-            this.tabPage1.Controls.Add(this.edIPUrl);
-            this.tabPage1.Controls.Add(this.label165);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -160,14 +163,16 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabControl15.Controls.Add(this.tabPage144);
             this.tabControl15.Controls.Add(this.tabPage146);
             this.tabControl15.Controls.Add(this.tabPage145);
-            this.tabControl15.Location = new System.Drawing.Point(8, 38);
+            this.tabControl15.Location = new System.Drawing.Point(8, 6);
             this.tabControl15.Name = "tabControl15";
             this.tabControl15.SelectedIndex = 0;
-            this.tabControl15.Size = new System.Drawing.Size(447, 282);
+            this.tabControl15.Size = new System.Drawing.Size(447, 314);
             this.tabControl15.TabIndex = 65;
             // 
             // tabPage144
             // 
+            this.tabPage144.Controls.Add(this.edIPUrl);
+            this.tabPage144.Controls.Add(this.label165);
             this.tabPage144.Controls.Add(this.cbIPCameraONVIF);
             this.tabPage144.Controls.Add(this.btShowIPCamDatabase);
             this.tabPage144.Controls.Add(this.linkLabel7);
@@ -186,7 +191,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage144.Location = new System.Drawing.Point(4, 22);
             this.tabPage144.Name = "tabPage144";
             this.tabPage144.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage144.Size = new System.Drawing.Size(439, 256);
+            this.tabPage144.Size = new System.Drawing.Size(439, 288);
             this.tabPage144.TabIndex = 0;
             this.tabPage144.Text = "Main";
             this.tabPage144.UseVisualStyleBackColor = true;
@@ -194,7 +199,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // cbIPCameraONVIF
             // 
             this.cbIPCameraONVIF.AutoSize = true;
-            this.cbIPCameraONVIF.Location = new System.Drawing.Point(294, 12);
+            this.cbIPCameraONVIF.Location = new System.Drawing.Point(294, 43);
             this.cbIPCameraONVIF.Name = "cbIPCameraONVIF";
             this.cbIPCameraONVIF.Size = new System.Drawing.Size(96, 17);
             this.cbIPCameraONVIF.TabIndex = 78;
@@ -203,7 +208,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // btShowIPCamDatabase
             // 
-            this.btShowIPCamDatabase.Location = new System.Drawing.Point(282, 179);
+            this.btShowIPCamDatabase.Location = new System.Drawing.Point(282, 210);
             this.btShowIPCamDatabase.Name = "btShowIPCamDatabase";
             this.btShowIPCamDatabase.Size = new System.Drawing.Size(135, 23);
             this.btShowIPCamDatabase.TabIndex = 77;
@@ -214,7 +219,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // linkLabel7
             // 
             this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Location = new System.Drawing.Point(12, 184);
+            this.linkLabel7.Location = new System.Drawing.Point(12, 215);
             this.linkLabel7.Name = "linkLabel7";
             this.linkLabel7.Size = new System.Drawing.Size(264, 13);
             this.linkLabel7.TabIndex = 76;
@@ -225,7 +230,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // cbIPDisconnect
             // 
             this.cbIPDisconnect.AutoSize = true;
-            this.cbIPDisconnect.Location = new System.Drawing.Point(15, 127);
+            this.cbIPDisconnect.Location = new System.Drawing.Point(15, 158);
             this.cbIPDisconnect.Name = "cbIPDisconnect";
             this.cbIPDisconnect.Size = new System.Drawing.Size(136, 17);
             this.cbIPDisconnect.TabIndex = 75;
@@ -234,7 +239,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // edIPForcedFramerateID
             // 
-            this.edIPForcedFramerateID.Location = new System.Drawing.Point(267, 100);
+            this.edIPForcedFramerateID.Location = new System.Drawing.Point(267, 131);
             this.edIPForcedFramerateID.Margin = new System.Windows.Forms.Padding(2);
             this.edIPForcedFramerateID.Name = "edIPForcedFramerateID";
             this.edIPForcedFramerateID.Size = new System.Drawing.Size(32, 20);
@@ -244,7 +249,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label344
             // 
             this.label344.AutoSize = true;
-            this.label344.Location = new System.Drawing.Point(165, 102);
+            this.label344.Location = new System.Drawing.Point(165, 133);
             this.label344.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label344.Name = "label344";
             this.label344.Size = new System.Drawing.Size(98, 13);
@@ -253,7 +258,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // edIPForcedFramerate
             // 
-            this.edIPForcedFramerate.Location = new System.Drawing.Point(114, 100);
+            this.edIPForcedFramerate.Location = new System.Drawing.Point(114, 131);
             this.edIPForcedFramerate.Margin = new System.Windows.Forms.Padding(2);
             this.edIPForcedFramerate.Name = "edIPForcedFramerate";
             this.edIPForcedFramerate.Size = new System.Drawing.Size(32, 20);
@@ -263,7 +268,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label295
             // 
             this.label295.AutoSize = true;
-            this.label295.Location = new System.Drawing.Point(12, 102);
+            this.label295.Location = new System.Drawing.Point(12, 133);
             this.label295.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label295.Name = "label295";
             this.label295.Size = new System.Drawing.Size(84, 13);
@@ -284,14 +289,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             "RTSP - UDP (FFMPEG engine)",
             "RTSP - TCP (FFMPEG engine)",
             "RTSP over HTTP (FFMPEG engine)"});
-            this.cbIPCameraType.Location = new System.Drawing.Point(57, 10);
+            this.cbIPCameraType.Location = new System.Drawing.Point(57, 41);
             this.cbIPCameraType.Name = "cbIPCameraType";
             this.cbIPCameraType.Size = new System.Drawing.Size(227, 21);
             this.cbIPCameraType.TabIndex = 67;
             // 
             // edIPPassword
             // 
-            this.edIPPassword.Location = new System.Drawing.Point(168, 58);
+            this.edIPPassword.Location = new System.Drawing.Point(168, 89);
             this.edIPPassword.Name = "edIPPassword";
             this.edIPPassword.Size = new System.Drawing.Size(100, 20);
             this.edIPPassword.TabIndex = 66;
@@ -299,7 +304,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label167
             // 
             this.label167.AutoSize = true;
-            this.label167.Location = new System.Drawing.Point(165, 41);
+            this.label167.Location = new System.Drawing.Point(165, 72);
             this.label167.Name = "label167";
             this.label167.Size = new System.Drawing.Size(53, 13);
             this.label167.TabIndex = 65;
@@ -307,7 +312,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // edIPLogin
             // 
-            this.edIPLogin.Location = new System.Drawing.Point(15, 58);
+            this.edIPLogin.Location = new System.Drawing.Point(15, 89);
             this.edIPLogin.Name = "edIPLogin";
             this.edIPLogin.Size = new System.Drawing.Size(100, 20);
             this.edIPLogin.TabIndex = 64;
@@ -315,7 +320,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label166
             // 
             this.label166.AutoSize = true;
-            this.label166.Location = new System.Drawing.Point(11, 41);
+            this.label166.Location = new System.Drawing.Point(11, 72);
             this.label166.Name = "label166";
             this.label166.Size = new System.Drawing.Size(33, 13);
             this.label166.TabIndex = 63;
@@ -326,7 +331,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.cbIPAudioCapture.AutoSize = true;
             this.cbIPAudioCapture.Checked = true;
             this.cbIPAudioCapture.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbIPAudioCapture.Location = new System.Drawing.Point(168, 127);
+            this.cbIPAudioCapture.Location = new System.Drawing.Point(168, 158);
             this.cbIPAudioCapture.Name = "cbIPAudioCapture";
             this.cbIPAudioCapture.Size = new System.Drawing.Size(92, 17);
             this.cbIPAudioCapture.TabIndex = 62;
@@ -336,7 +341,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label168
             // 
             this.label168.AutoSize = true;
-            this.label168.Location = new System.Drawing.Point(11, 14);
+            this.label168.Location = new System.Drawing.Point(11, 45);
             this.label168.Name = "label168";
             this.label168.Size = new System.Drawing.Size(40, 13);
             this.label168.TabIndex = 61;
@@ -384,6 +389,11 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // tabPage145
             // 
+            this.tabPage145.Controls.Add(this.edONVIFPassword);
+            this.tabPage145.Controls.Add(this.label378);
+            this.tabPage145.Controls.Add(this.edONVIFLogin);
+            this.tabPage145.Controls.Add(this.label379);
+            this.tabPage145.Controls.Add(this.edONVIFURL);
             this.tabPage145.Controls.Add(this.edONVIFLiveVideoURL);
             this.tabPage145.Controls.Add(this.label513);
             this.tabPage145.Controls.Add(this.groupBox42);
@@ -394,14 +404,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage145.Location = new System.Drawing.Point(4, 22);
             this.tabPage145.Name = "tabPage145";
             this.tabPage145.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage145.Size = new System.Drawing.Size(439, 256);
+            this.tabPage145.Size = new System.Drawing.Size(439, 288);
             this.tabPage145.TabIndex = 1;
             this.tabPage145.Text = "ONVIF";
             this.tabPage145.UseVisualStyleBackColor = true;
             // 
             // edONVIFLiveVideoURL
             // 
-            this.edONVIFLiveVideoURL.Location = new System.Drawing.Point(75, 75);
+            this.edONVIFLiveVideoURL.Location = new System.Drawing.Point(78, 138);
             this.edONVIFLiveVideoURL.Name = "edONVIFLiveVideoURL";
             this.edONVIFLiveVideoURL.ReadOnly = true;
             this.edONVIFLiveVideoURL.Size = new System.Drawing.Size(346, 20);
@@ -410,7 +420,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label513
             // 
             this.label513.AutoSize = true;
-            this.label513.Location = new System.Drawing.Point(11, 78);
+            this.label513.Location = new System.Drawing.Point(14, 141);
             this.label513.Name = "label513";
             this.label513.Size = new System.Drawing.Size(59, 13);
             this.label513.TabIndex = 27;
@@ -425,7 +435,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.groupBox42.Controls.Add(this.btONVIFZoomIn);
             this.groupBox42.Controls.Add(this.btONVIFDown);
             this.groupBox42.Controls.Add(this.btONVIFUp);
-            this.groupBox42.Location = new System.Drawing.Point(14, 103);
+            this.groupBox42.Location = new System.Drawing.Point(15, 168);
             this.groupBox42.Name = "groupBox42";
             this.groupBox42.Size = new System.Drawing.Size(271, 104);
             this.groupBox42.TabIndex = 26;
@@ -506,7 +516,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             this.cbONVIFProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbONVIFProfile.FormattingEnabled = true;
-            this.cbONVIFProfile.Location = new System.Drawing.Point(75, 49);
+            this.cbONVIFProfile.Location = new System.Drawing.Point(78, 112);
             this.cbONVIFProfile.Name = "cbONVIFProfile";
             this.cbONVIFProfile.Size = new System.Drawing.Size(346, 21);
             this.cbONVIFProfile.TabIndex = 4;
@@ -514,7 +524,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // label510
             // 
             this.label510.AutoSize = true;
-            this.label510.Location = new System.Drawing.Point(12, 52);
+            this.label510.Location = new System.Drawing.Point(15, 115);
             this.label510.Name = "label510";
             this.label510.Size = new System.Drawing.Size(36, 13);
             this.label510.TabIndex = 3;
@@ -523,38 +533,21 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // lbONVIFCameraInfo
             // 
             this.lbONVIFCameraInfo.AutoSize = true;
-            this.lbONVIFCameraInfo.Location = new System.Drawing.Point(95, 22);
+            this.lbONVIFCameraInfo.Location = new System.Drawing.Point(14, 85);
             this.lbONVIFCameraInfo.Name = "lbONVIFCameraInfo";
-            this.lbONVIFCameraInfo.Size = new System.Drawing.Size(126, 13);
+            this.lbONVIFCameraInfo.Size = new System.Drawing.Size(69, 13);
             this.lbONVIFCameraInfo.TabIndex = 1;
-            this.lbONVIFCameraInfo.Text = "Camera info not available";
+            this.lbONVIFCameraInfo.Text = "Status: None";
             // 
             // btONVIFConnect
             // 
-            this.btONVIFConnect.Location = new System.Drawing.Point(14, 17);
+            this.btONVIFConnect.Location = new System.Drawing.Point(349, 10);
             this.btONVIFConnect.Name = "btONVIFConnect";
             this.btONVIFConnect.Size = new System.Drawing.Size(75, 23);
             this.btONVIFConnect.TabIndex = 0;
             this.btONVIFConnect.Text = "Connect";
             this.btONVIFConnect.UseVisualStyleBackColor = true;
             this.btONVIFConnect.Click += new System.EventHandler(this.btONVIFConnect_Click);
-            // 
-            // edIPUrl
-            // 
-            this.edIPUrl.Location = new System.Drawing.Point(58, 12);
-            this.edIPUrl.Name = "edIPUrl";
-            this.edIPUrl.Size = new System.Drawing.Size(393, 20);
-            this.edIPUrl.TabIndex = 64;
-            this.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg";
-            // 
-            // label165
-            // 
-            this.label165.AutoSize = true;
-            this.label165.Location = new System.Drawing.Point(13, 14);
-            this.label165.Name = "label165";
-            this.label165.Size = new System.Drawing.Size(29, 13);
-            this.label165.TabIndex = 63;
-            this.label165.Text = "URL";
             // 
             // tabPage2
             // 
@@ -1109,24 +1102,24 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms3.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms3.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms3.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms3.BackgroundColor = System.Drawing.Color.Black;
 // TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms1;
+            videoRendererSettingsWinForms3.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms3.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms3.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms3.Flip_Horizontal = false;
+            videoRendererSettingsWinForms3.Flip_Vertical = false;
+            videoRendererSettingsWinForms3.RotationAngle = 0;
+            videoRendererSettingsWinForms3.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms3.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms3.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms3.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms3.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms3.Zoom_ShiftY = 0;
+            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms3;
             this.VideoCapture1.Video_Resize = null;
             this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
             this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
@@ -1158,6 +1151,63 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.label2.TabIndex = 95;
             this.label2.Text = "Much more features available in Main Demo";
             // 
+            // edIPUrl
+            // 
+            this.edIPUrl.Location = new System.Drawing.Point(57, 10);
+            this.edIPUrl.Name = "edIPUrl";
+            this.edIPUrl.Size = new System.Drawing.Size(360, 20);
+            this.edIPUrl.TabIndex = 80;
+            this.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg";
+            // 
+            // label165
+            // 
+            this.label165.AutoSize = true;
+            this.label165.Location = new System.Drawing.Point(11, 13);
+            this.label165.Name = "label165";
+            this.label165.Size = new System.Drawing.Size(29, 13);
+            this.label165.TabIndex = 79;
+            this.label165.Text = "URL";
+            // 
+            // edONVIFPassword
+            // 
+            this.edONVIFPassword.Location = new System.Drawing.Point(244, 42);
+            this.edONVIFPassword.Name = "edONVIFPassword";
+            this.edONVIFPassword.Size = new System.Drawing.Size(100, 20);
+            this.edONVIFPassword.TabIndex = 75;
+            // 
+            // label378
+            // 
+            this.label378.AutoSize = true;
+            this.label378.Location = new System.Drawing.Point(186, 45);
+            this.label378.Name = "label378";
+            this.label378.Size = new System.Drawing.Size(53, 13);
+            this.label378.TabIndex = 74;
+            this.label378.Text = "Password";
+            // 
+            // edONVIFLogin
+            // 
+            this.edONVIFLogin.Location = new System.Drawing.Point(79, 42);
+            this.edONVIFLogin.Name = "edONVIFLogin";
+            this.edONVIFLogin.Size = new System.Drawing.Size(100, 20);
+            this.edONVIFLogin.TabIndex = 73;
+            // 
+            // label379
+            // 
+            this.label379.AutoSize = true;
+            this.label379.Location = new System.Drawing.Point(15, 45);
+            this.label379.Name = "label379";
+            this.label379.Size = new System.Drawing.Size(33, 13);
+            this.label379.TabIndex = 72;
+            this.label379.Text = "Login";
+            // 
+            // edONVIFURL
+            // 
+            this.edONVIFURL.Location = new System.Drawing.Point(18, 12);
+            this.edONVIFURL.Name = "edONVIFURL";
+            this.edONVIFURL.Size = new System.Drawing.Size(326, 20);
+            this.edONVIFURL.TabIndex = 71;
+            this.edONVIFURL.Text = "http://192.168.1.200/onvif/device_service";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1179,7 +1229,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
             this.tabControl15.ResumeLayout(false);
             this.tabPage144.ResumeLayout(false);
             this.tabPage144.PerformLayout();
@@ -1280,13 +1329,18 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         private System.Windows.Forms.Label label510;
         private System.Windows.Forms.Label lbONVIFCameraInfo;
         private System.Windows.Forms.Button btONVIFConnect;
-        private System.Windows.Forms.TextBox edIPUrl;
-        private System.Windows.Forms.Label label165;
         private System.Windows.Forms.Button btSelectOutputMP4;
         private System.Windows.Forms.TextBox edOutputMP4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox edIPUrl;
+        private System.Windows.Forms.Label label165;
+        private System.Windows.Forms.TextBox edONVIFPassword;
+        private System.Windows.Forms.Label label378;
+        private System.Windows.Forms.TextBox edONVIFLogin;
+        private System.Windows.Forms.Label label379;
+        private System.Windows.Forms.TextBox edONVIFURL;
     }
 }
 

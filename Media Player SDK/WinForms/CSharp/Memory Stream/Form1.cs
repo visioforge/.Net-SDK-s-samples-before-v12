@@ -42,19 +42,34 @@ namespace Memory_Stream_Demo
 
         private void btStart_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(edFilename.Text, FileMode.Open);
-            ManagedIStream stream = new ManagedIStream(fs);
+            if (rbSTreamTypeFile.Checked)
+            {
+                FileStream fs = new FileStream(edFilename.Text, FileMode.Open);
+                ManagedIStream stream = new ManagedIStream(fs);
 
-            // specifing settings
-            // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-            MediaPlayer1.Source_Stream = stream;
-            MediaPlayer1.Source_Stream_Size = fs.Length;
+                // specifing settings
+                // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
+                MediaPlayer1.Source_Stream = stream;
+                MediaPlayer1.Source_Stream_Size = fs.Length;
+            }
+            else
+            {
+                byte[] source = File.ReadAllBytes(edFilename.Text);
+                MemoryStream ms = new MemoryStream(source);
+
+                ManagedIStream stream = new ManagedIStream(ms);
+
+                // specifing settings
+                // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
+                MediaPlayer1.Source_Stream = stream;
+                MediaPlayer1.Source_Stream_Size = ms.Length;
+            }
 
             // video and audio present in file. tune this settings to play audio files or video files without audio
             MediaPlayer1.Source_Stream_VideoPresent = true;
             MediaPlayer1.Source_Stream_AudioPresent = true;
 
-            MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
+            MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
             
             MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device";
 

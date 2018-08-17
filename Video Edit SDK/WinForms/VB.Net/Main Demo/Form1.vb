@@ -325,6 +325,7 @@ Public Class Form1
         cbMFProfile.SelectedIndex = 1
         cbMFLevel.SelectedIndex = 12
         cbMFRateControl.SelectedIndex = 3
+        cbMotDetHLColor.SelectedIndex = 0
 
         Dim FiltersAvailableInfo = VideoEdit.GetFiltersAvailable()
         If (FiltersAvailableInfo.V11_NVENC_H264) Then
@@ -1699,6 +1700,11 @@ Public Class Form1
             cbFadeInOut_CheckedChanged(Nothing, Nothing)
         End If
 
+        'motion detection
+        If (cbMotDetEnabled.Checked) Then
+            btMotDetUpdateSettings_Click(sender, e) 'apply settings
+        End If
+
         ' Barcode detection
         VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
         VideoEdit1.Barcode_Reader_Type = cbBarcodeType.SelectedIndex
@@ -2771,10 +2777,16 @@ Public Class Form1
 
         Dim s As String = String.Empty
 
+        Dim k As Integer
         For Each b As Byte In e.Matrix
+            s += b.ToString("D3") + " "
 
-            s += b + " "
-
+            If (k = VideoEdit1.Motion_Detection.Matrix_Width - 1) Then
+                k = 0
+                s += Environment.NewLine
+            Else
+                k += 1
+            End If
         Next
 
         mmMotDetMatrix.Text = s.Trim()
