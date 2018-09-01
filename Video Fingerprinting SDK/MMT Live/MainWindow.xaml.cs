@@ -36,6 +36,8 @@ namespace VisioForge_MMT
 
         private List<DetectedAd> _results;
 
+        private List<VFRect> _ignoredAreas;
+
         private long _fragmentDuration;
 
         private int _fragmentCount;
@@ -152,6 +154,11 @@ namespace VisioForge_MMT
                     else
                     {
                         var source = new VFPFingerprintSource(filename, engine);
+                        foreach (var area in _ignoredAreas)
+                        {
+                            source.IgnoredAreas.Add(area);
+                        }
+
                         fp = VFPAnalyzer.GetSearchFingerprintForVideoFile(source, out error);
                     }
                     
@@ -335,6 +342,7 @@ namespace VisioForge_MMT
 
             _processingLock = new object();
             _results = new List<DetectedAd>();
+            _ignoredAreas = new List<VFRect>();
         }
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
@@ -448,6 +456,21 @@ namespace VisioForge_MMT
                 if (e.StartTime < _fragmentDuration * _fragmentCount)
                 {
                     ImageHelper.CopyMemory(_tempBuffer, e.Frame.Data, e.Frame.DataSize);
+
+                    // process frame to remove ignored areas
+                    if (_ignoredAreas.Count > 0)
+                    {
+                        foreach (var area in _ignoredAreas)
+                        {
+                            if (area.Right > e.Frame.Width || area.Bottom > e.Frame.Height)
+                            {
+                                continue;
+                            }
+
+                            MFP.FillColor(_tempBuffer, e.Frame.Width, e.Frame.Height, area, 0);
+                        }
+                    }
+
                     VFPSearch.Process(_tempBuffer, e.Frame.Width, e.Frame.Height, e.Frame.Stride, e.StartTime, ref _searchLiveData.Data);
                 }
                 else
@@ -591,5 +614,34 @@ namespace VisioForge_MMT
 
         #endregion
 
+        private void btIgnoredAreaAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var rect = new VFRect()
+            {
+                Left = Convert.ToInt32(edIgnoredAreaLeft.Text),
+                Top = Convert.ToInt32(edIgnoredAreaTop.Text),
+                Right = Convert.ToInt32(edIgnoredAreaRight.Text),
+                Bottom = Convert.ToInt32(edIgnoredAreaBottom.Text)
+            };
+
+            _ignoredAreas.Add(rect);
+            lbIgnoredAreas.Items.Add($"Left: {rect.Left}, Top: {rect.Top}, Right: {rect.Right}, Bottom: {rect.Bottom}");
+        }
+
+        private void btIgnoredAreasRemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            int index = lbIgnoredAreas.SelectedIndex;
+            if (index >= 0)
+            {
+                lbIgnoredAreas.Items.RemoveAt(index);
+                _ignoredAreas.RemoveAt(index);
+            }
+        }
+
+        private void btIgnoredAreasRemoveAll_Click(object sender, RoutedEventArgs e)
+        {
+            lbIgnoredAreas.Items.Clear();
+            _ignoredAreas.Clear();
+        }
     }
 }

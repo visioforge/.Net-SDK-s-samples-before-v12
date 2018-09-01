@@ -4,7 +4,7 @@
 				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
 				xmlns:WPF="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI" x:Class="VisioForge_MMT.MainWindow"
                 DataContext="{Binding RelativeSource={RelativeSource Self}}"
-				Title="VisioForge Media Monitoring Tool Live v10.4.0.0" Height="654.891" Width="1005" Icon="visioforge_main_icon.ico"
+				Title="VisioForge Video Fingerprinting SDK - Media Monitoring Tool Live v10.4.1.0" Height="654.891" Width="1005" Icon="visioforge_main_icon.ico"
                 Loaded="Window_Loaded" Unloaded="Window_Unloaded" Closing="Window_Closing">
     <Grid>
 
@@ -88,9 +88,27 @@
                     <TextBlock HorizontalAlignment="Left" Margin="10,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="77" Width="375"><Run Text="Duration "/><Run Text="of live video to split for analyze. Better to use 60 seconds or more. Minimal duration is longest ad duration + 10 seconds. 0 to calculate automatically."/><LineBreak/><Run Text=" "/></TextBlock>
                 </Grid>
             </TabItem>
+            <TabItem Header="Ignored areas" Height="24" >
+                <Grid Background="Transparent">
+                    <Label Content="Ignored areas (you should add areas before adding ad samples)." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Left" HorizontalAlignment="Left" Margin="26,57,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="edIgnoredAreaLeft" HorizontalAlignment="Left" Height="23" Margin="72,61,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="53"/>
+                    <Label Content="Top" HorizontalAlignment="Left" Margin="26,87,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="edIgnoredAreaTop" HorizontalAlignment="Left" Height="23" Margin="72,91,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="53"/>
+                    <Label Content="Right" HorizontalAlignment="Left" Margin="156,57,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="edIgnoredAreaRight" HorizontalAlignment="Left" Height="23" Margin="212,61,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Width="53"/>
+                    <Label Content="Bottom" HorizontalAlignment="Left" Margin="156,87,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="edIgnoredAreaBottom" HorizontalAlignment="Left" Height="23" Margin="212,91,0,0" TextWrapping="Wrap" Text="50" VerticalAlignment="Top" Width="53"/>
+                    <Button x:Name="btIgnoredAreaAdd" Content="Add" HorizontalAlignment="Left" Margin="310,76,0,0" VerticalAlignment="Top" Width="75" Click="btIgnoredAreaAdd_Click"/>
+                    <ListBox x:Name="lbIgnoredAreas" HorizontalAlignment="Left" Height="93" Margin="10,120,0,0" VerticalAlignment="Top" Width="375"/>
+                    <Button x:Name="btIgnoredAreasRemoveItem" Content="Remove selected" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Width="115" Click="btIgnoredAreasRemoveItem_Click"/>
+                    <Button x:Name="btIgnoredAreasRemoveAll" Content="Remove all" HorizontalAlignment="Left" Margin="130,221,0,0" VerticalAlignment="Top" Width="85" Click="btIgnoredAreasRemoveAll_Click"/>
+                    <Label Content="Regenerate fingerprint files if ignored areas changed." HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="Log" Height="24">
                 <Grid Background="Transparent">
-                    <TextBox x:Name="edLog" HorizontalAlignment="Left" Height="135" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalContentAlignment="Top" VerticalAlignment="Top" Width="379"/>
+                    <TextBox x:Name="edLog" HorizontalAlignment="Left" Margin="10,10,0,10" TextWrapping="Wrap" Text="" VerticalAlignment="Stretch" Width="379"/>
 
                 </Grid>
             </TabItem>

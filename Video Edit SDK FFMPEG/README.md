@@ -1,14 +1,14 @@
 # Video Edit SDK FFMPEG .Net samples
-Video Edit SDK FFMPEG .Net TRIAL can be downloaded on [product page](https://www.visioforge.com/video-edit-sdk-ffmpeg-net.html).
+Video Edit SDK FFMPEG .Net TRIAL can be downloaded on [product page](https://www.visioforge.com/video-edit-sdk-ffmpeg-net).
 
-[Online help](http://www.visioforge.com/online_help/sdks_net/index.html)
+[Online help](http://help.visioforge.com/sdks_net/index.html)
 
-[Tutorials](https://visioforge.com/support/975762-Net-SDKs)
+[Tutorials](https://support.visioforge.com/975762-Net-SDKs)
 
-[Support portal](https://visioforge.com/support/)
+[Support portal](https://support.visioforge.com/)
 
-[Forum](https://visioforge.com/support/379431-Forum)
+[Forum](https://support.visioforge.com/379431-Forum)
 
-[Website](https://visioforge.com/)
+[Website](https://www.visioforge.com/)
 
 [Twitter](https://twitter.com/VisioForge)

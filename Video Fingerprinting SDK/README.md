@@ -1,12 +1,14 @@
 # Video Fingerprinting SDK .Net samples
-Video Fingerprinting SDK .Net TRIAL can be downloaded on [product page](https://www.visioforge.com/video-fingerprinting-sdk.html).
+Video Fingerprinting SDK .Net TRIAL can be downloaded on [product page](https://www.visioforge.com/video-fingerprinting-sdk).
 
-[Online help](http://www.visioforge.com/online_help/sdks_net/index.html)
+[Online help](http://help.visioforge.com/sdks_net/index.html)
 
-[Support portal](https://visioforge.com/support/)
+[Tutorials](https://support.visioforge.com/975762-Net-SDKs)
 
-[Forum](https://visioforge.com/support/379431-Forum)
+[Support portal](https://support.visioforge.com/)
 
-[Website](https://visioforge.com/)
+[Forum](https://support.visioforge.com/379431-Forum)
+
+[Website](https://www.visioforge.com/)
 
 [Twitter](https://twitter.com/VisioForge)

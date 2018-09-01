@@ -8,6 +8,8 @@
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
+    using VisioForge.Types;
+
     public static class Helper
     {
         public static System.Windows.Forms.IWin32Window GetIWin32Window(this System.Windows.Media.Visual visual)
@@ -35,7 +37,7 @@
 
         public static BitmapSource GetImageForFile(string filename)
         {
-            var bitmap = VisioForge.Controls.VideoEdit.VideoEditCore.Helpful_GetFrameFromFile(filename, 3000, false);
+            var bitmap = VisioForge.Controls.VideoEdit.VideoEditCore.Helpful_GetFrameFromFile(filename, 3000, false, VFMediaPlayerSource.File_DS);
 
             if (bitmap == null)
             {

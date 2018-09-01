@@ -18,13 +18,15 @@ namespace VisioForge_MMT
     using VisioForge.Types;
     using VisioForge.VideoFingerPrinting;
 
-    using VisioForge_MMT.Classes;
+    using Classes;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow 
     {
+        private List<VFRect> _ignoredAreas;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -146,6 +148,10 @@ namespace VisioForge_MMT
                 string error;
 
                 var source = new VFPFingerprintSource(filename, engine);
+                foreach (var area in _ignoredAreas)
+                {
+                    source.IgnoredAreas.Add(area);
+                }
 
                 var fp = VFPAnalyzer.GetSearchFingerprintForVideoFile(source, out error);
 
@@ -172,6 +178,10 @@ namespace VisioForge_MMT
                 string error;
 
                 var source = new VFPFingerprintSource(filename, engine);
+                foreach (var area in _ignoredAreas)
+                {
+                    source.IgnoredAreas.Add(area);
+                }
 
                 // source.CustomResolution = new System.Drawing.Size(640, 480);
 
@@ -341,6 +351,8 @@ namespace VisioForge_MMT
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            _ignoredAreas = new List<VFRect>();
+
             LoadSettings();
         }
 
@@ -362,7 +374,7 @@ namespace VisioForge_MMT
             }
         }
 
-        private void btAddBroadcastFile_Click(System.Object sender, RoutedEventArgs e)
+        private void btAddBroadcastFile_Click(Object sender, RoutedEventArgs e)
         {
             var dlg = new System.Windows.Forms.OpenFileDialog
             {
@@ -378,7 +390,7 @@ namespace VisioForge_MMT
             }
         }
 
-        private void btAddAdFile_Click(System.Object sender, RoutedEventArgs e)
+        private void btAddAdFile_Click(Object sender, RoutedEventArgs e)
         {
             var dlg = new System.Windows.Forms.OpenFileDialog
             {
@@ -392,6 +404,37 @@ namespace VisioForge_MMT
                 lbAdFolders.Items.Add(dlg.FileName);
                 Settings.LastPath = Path.GetFullPath(dlg.FileName);
             }
+        }
+
+
+        private void btIgnoredAreaAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var rect = new VFRect()
+            {
+                Left = Convert.ToInt32(edIgnoredAreaLeft.Text),
+                Top = Convert.ToInt32(edIgnoredAreaTop.Text),
+                Right = Convert.ToInt32(edIgnoredAreaRight.Text),
+                Bottom = Convert.ToInt32(edIgnoredAreaBottom.Text)
+            };
+
+            _ignoredAreas.Add(rect);
+            lbIgnoredAreas.Items.Add($"Left: {rect.Left}, Top: {rect.Top}, Right: {rect.Right}, Bottom: {rect.Bottom}");
+        }
+
+        private void btIgnoredAreasRemoveItem_Click(object sender, RoutedEventArgs e)
+        {
+            int index = lbIgnoredAreas.SelectedIndex;
+            if (index >= 0)
+            {
+                lbIgnoredAreas.Items.RemoveAt(index);
+                _ignoredAreas.RemoveAt(index);
+            }
+        }
+
+        private void btIgnoredAreasRemoveAll_Click(object sender, RoutedEventArgs e)
+        {
+            lbIgnoredAreas.Items.Clear();
+            _ignoredAreas.Clear();
         }
     }
 }
