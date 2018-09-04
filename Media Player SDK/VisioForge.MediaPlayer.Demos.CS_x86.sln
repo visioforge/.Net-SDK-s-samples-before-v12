@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seamless Playback Demo x86"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multiple Video Streams Demo x86", "WinForms\CSharp\Multiple Video Streams\Multiple Video Streams Demo x86.csproj", "{BFDCC3A2-6364-43A1-88EE-8950763735FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video Mixing Demo x86", "WinForms\CSharp\Video Mixing Demo\Video Mixing Demo x86.csproj", "{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,12 +101,20 @@ Global
 		{3A2FBF0F-A809-4C9E-8C87-798EC6ABB3BF}.Release|x86.Build.0 = Release|Any CPU
 		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Debug|x86.ActiveCfg = Debug|x86
-		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Debug|x86.Build.0 = Debug|x86
+		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Debug|x86.Build.0 = Debug|Any CPU
 		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Release|x86.ActiveCfg = Release|x86
-		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Release|x86.Build.0 = Release|x86
+		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Release|x86.ActiveCfg = Release|Any CPU
+		{BFDCC3A2-6364-43A1-88EE-8950763735FB}.Release|x86.Build.0 = Release|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Debug|x86.Build.0 = Debug|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Release|x86.ActiveCfg = Release|Any CPU
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,6 +129,7 @@ Global
 		{E412F69E-2111-433E-856E-6ADE54655503} = {C65A40AE-D7BC-4311-85F5-30D463D55564}
 		{3A2FBF0F-A809-4C9E-8C87-798EC6ABB3BF} = {743796DD-6F87-4CD9-8419-0B8CE16B4CB9}
 		{BFDCC3A2-6364-43A1-88EE-8950763735FB} = {743796DD-6F87-4CD9-8419-0B8CE16B4CB9}
+		{F6BB9AA5-9C91-4C28-9414-9BC9781B968A} = {743796DD-6F87-4CD9-8419-0B8CE16B4CB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1B35200F-598E-456A-95F3-A5EE2B532867}
