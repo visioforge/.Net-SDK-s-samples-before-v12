@@ -253,7 +253,7 @@ namespace VisioForge_MMT
 
         #region List view
 
-        private readonly ObservableCollection<ResultsViewModel> resultsView = new ObservableCollection<ResultsViewModel>();
+        private ObservableCollection<ResultsViewModel> resultsView = new ObservableCollection<ResultsViewModel>();
 
         public ObservableCollection<ResultsViewModel> ResultsView
         {
@@ -269,9 +269,12 @@ namespace VisioForge_MMT
         {
             string xml = XmlUtility.Obj2XmlStr(resultsView);
 
-            var dlg = new System.Windows.Forms.SaveFileDialog();
-            dlg.Filter = @"XML file|*.xml";
-            System.Windows.Forms.DialogResult result = dlg.ShowDialog(this.GetIWin32Window());
+            var dlg = new System.Windows.Forms.SaveFileDialog
+            {
+                Filter = @"XML file|*.xml"
+            };
+
+            var result = dlg.ShowDialog(this.GetIWin32Window());
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
@@ -396,15 +399,15 @@ namespace VisioForge_MMT
                                 bool duplicate = false;
                                 foreach (var detectedAd in _results)
                                 {
-                                    int time = 0;
+                                    long time = 0;
 
                                     if (detectedAd.Timestamp > tm)
                                     {
-                                        time = (int)(detectedAd.Timestamp - tm).TotalMilliseconds;
+                                        time = (long)(detectedAd.Timestamp - tm).TotalMilliseconds;
                                     }
                                     else
                                     {
-                                        time = (int)(tm - detectedAd.Timestamp).TotalMilliseconds;
+                                        time = (long)(tm - detectedAd.Timestamp).TotalMilliseconds;
                                     }
 
                                     if (time < 1000)
@@ -425,7 +428,8 @@ namespace VisioForge_MMT
                                     new ResultsViewModel()
                                     {
                                         Sample = ad.OriginalFilename,
-                                        TimeStamp = tm.ToString("HH:mm:ss.fff")
+                                        TimeStamp = tm.ToString("HH:mm:ss.fff"),
+                                        TimeStampMS = tm - new DateTime(1970, 1, 1)
                                     });
                             }
                         }
@@ -642,6 +646,12 @@ namespace VisioForge_MMT
         {
             lbIgnoredAreas.Items.Clear();
             _ignoredAreas.Clear();
+        }
+
+        private void btSortResults_Click(object sender, RoutedEventArgs e)
+        {
+            resultsView = new ObservableCollection<ResultsViewModel>(resultsView.OrderBy(i => i.TimeStampMS.TotalMilliseconds));
+            lvResults.ItemsSource = resultsView;
         }
     }
 }

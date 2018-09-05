@@ -19,7 +19,7 @@
 
         <StatusBar HorizontalAlignment="Stretch" Height="30" VerticalAlignment="Bottom" Grid.ColumnSpan="2"
                    Grid.Column="0">
-            <Label x:Name="lbStatus" Content="" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="450" Height="30"/>
+            <Label x:Name="lbStatus" Content="" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="450" />
         </StatusBar>
 
         <TabControl Grid.Column="0" HorizontalAlignment="Stretch" Margin="10,306,10,35" VerticalAlignment="Stretch">
@@ -113,8 +113,8 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <ProgressBar Grid.Column="1" x:Name="pbProgress" HorizontalAlignment="Left" Height="26" Margin="95,0,0,35" Value="0" VerticalAlignment="Bottom" Width="206"/>
-        <Button Grid.Column="1" x:Name="btStart" Content="Start" HorizontalAlignment="Left" Height="26" Margin="10,0,0,35" Width="80" VerticalAlignment="Bottom" Click="btStart_Click"/>
+        <ProgressBar Grid.Column="1" x:Name="pbProgress" HorizontalAlignment="Left" Height="26" Margin="65,0,0,35" Value="0" VerticalAlignment="Bottom" Width="206"/>
+        <Button Grid.Column="1" x:Name="btStart" Content="Start" HorizontalAlignment="Left" Height="26" Margin="10,0,0,35" Width="50" VerticalAlignment="Bottom" Click="btStart_Click"/>
         <ListView x:Name="lvResults" Grid.Column="1" Margin="10,10,10,70" ItemsSource="{Binding ResultsView}" >
             <ListView.View>
                 <GridView>
@@ -124,8 +124,7 @@
             </ListView.View>
         </ListView>
         <Button x:Name="btSaveResults" Content="Save results" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,35" Height="26" VerticalAlignment="Bottom" Width="97" Click="btSaveResults_Click"/>
-        <Button x:Name="btPlay" Content="Play" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,112,35" Width="75" Height="26" VerticalAlignment="Bottom"/>
-
-
+        <Button x:Name="btPlay" Content="Play" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,239,35" Width="50" Height="26" VerticalAlignment="Bottom"/>
+        <Button x:Name="btSortResults" Content="Sort results" Grid.Column="1" Margin="0,0,112,35" HorizontalAlignment="Right"  VerticalAlignment="Bottom" Height="26" Click="btSortResults_Click" Width="77"/>
     </Grid>
 </Window>

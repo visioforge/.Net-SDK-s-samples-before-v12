@@ -49,13 +49,17 @@ namespace Video_From_Images
                    (string.Compare(GetFileExt(s), ".JPG", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".JPEG", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".GIF", StringComparison.OrdinalIgnoreCase) == 0) ||
-                   (string.Compare(GetFileExt(s), ".PNG", StringComparison.OrdinalIgnoreCase) == 0))
+                   (string.Compare(GetFileExt(s), ".PNG", StringComparison.OrdinalIgnoreCase) == 0) ||
+                   (string.Compare(GetFileExt(s), ".TIF", StringComparison.OrdinalIgnoreCase) == 0) ||
+                   (string.Compare(GetFileExt(s), ".TIFF", StringComparison.OrdinalIgnoreCase) == 0))
                 {
                     VideoEdit1.Input_AddImageFile(s, 2000, -1, VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight);
                 }
                 else if ((string.Compare(GetFileExt(s), ".WAV", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".MP3", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".OGG", StringComparison.OrdinalIgnoreCase) == 0) ||
+                   (string.Compare(GetFileExt(s), ".AAC", StringComparison.OrdinalIgnoreCase) == 0) ||
+                   (string.Compare(GetFileExt(s), ".M4A", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".WMA", StringComparison.OrdinalIgnoreCase) == 0))
                 {
                     var audioFile = new VFVEAudioSource(s, -1, -1, string.Empty, 0, 1.0);
@@ -97,9 +101,9 @@ namespace Video_From_Images
             }
             else
                 if (VideoEdit.Video_Codec_Has_Dialog(name, VFPropertyPage.VFWCompConfig))
-                {
-                    VideoEdit.Video_Codec_Show_Dialog(IntPtr.Zero, name, VFPropertyPage.VFWCompConfig);
-                }
+            {
+                VideoEdit.Video_Codec_Show_Dialog(IntPtr.Zero, name, VFPropertyPage.VFWCompConfig);
+            }
         }
 
         private void btAudioSettings_Click(object sender, EventArgs e)
@@ -112,9 +116,9 @@ namespace Video_From_Images
             }
             else
                 if (VideoEdit.Audio_Codec_Has_Dialog(name, VFPropertyPage.VFWCompConfig))
-                {
-                    VideoEdit.Audio_Codec_Show_Dialog(IntPtr.Zero, name, VFPropertyPage.VFWCompConfig);
-                }
+            {
+                VideoEdit.Audio_Codec_Show_Dialog(IntPtr.Zero, name, VFPropertyPage.VFWCompConfig);
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -293,6 +297,9 @@ namespace Video_From_Images
         {
             VideoEdit1.Stop();
             ProgressBar1.Value = 0;
+
+            VideoEdit1.Input_Clear_List();
+            lbFiles.Items.Clear();
         }
 
         private void cbTextLogo_CheckedChanged(object sender, EventArgs e)
