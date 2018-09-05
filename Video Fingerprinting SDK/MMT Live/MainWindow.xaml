@@ -4,7 +4,15 @@
 				xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
 				xmlns:WPF="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI" x:Class="VisioForge_MMT.MainWindow"
                 DataContext="{Binding RelativeSource={RelativeSource Self}}"
+<<<<<<< HEAD
 				Title="VisioForge Video Fingerprinting SDK - Media Monitoring Tool Live v10.4.1.0" Height="654.891" Width="1005" Icon="visioforge_main_icon.ico"
+=======
+<<<<<<< HEAD
+				Title="VisioForge Video Fingerprinting SDK - Media Monitoring Tool Live v10.4.0.0" Height="654.891" Width="1005" Icon="visioforge_main_icon.ico"
+=======
+				Title="VisioForge Media Monitoring Tool Live v10.4.0.0" Height="654.891" Width="1005" Icon="visioforge_main_icon.ico"
+>>>>>>> 116506398f91c422607987bb35655fcf8979a9fb
+>>>>>>> 98cb417bdba06b77a4e29c768c99ab7cc6b79812
                 Loaded="Window_Loaded" Unloaded="Window_Unloaded" Closing="Window_Closing">
     <Grid>
 
