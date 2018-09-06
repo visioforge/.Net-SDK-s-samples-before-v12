@@ -679,6 +679,7 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
+        Me.btPreviousFrame = New System.Windows.Forms.Button()
         Me.tabControl3.SuspendLayout()
         Me.tabPage10.SuspendLayout()
         Me.tabPage9.SuspendLayout()
@@ -1196,6 +1197,7 @@ Partial Class Form1
         '
         'groupBox2
         '
+        Me.groupBox2.Controls.Add(Me.btPreviousFrame)
         Me.groupBox2.Controls.Add(Me.cbLoop)
         Me.groupBox2.Controls.Add(Me.btNextFrame)
         Me.groupBox2.Controls.Add(Me.btStop)
@@ -1216,7 +1218,7 @@ Partial Class Form1
         'cbLoop
         '
         Me.cbLoop.AutoSize = True
-        Me.cbLoop.Location = New System.Drawing.Point(330, 62)
+        Me.cbLoop.Location = New System.Drawing.Point(217, 11)
         Me.cbLoop.Name = "cbLoop"
         Me.cbLoop.Size = New System.Drawing.Size(50, 17)
         Me.cbLoop.TabIndex = 9
@@ -1225,7 +1227,7 @@ Partial Class Form1
         '
         'btNextFrame
         '
-        Me.btNextFrame.Location = New System.Drawing.Point(249, 58)
+        Me.btNextFrame.Location = New System.Drawing.Point(335, 58)
         Me.btNextFrame.Name = "btNextFrame"
         Me.btNextFrame.Size = New System.Drawing.Size(75, 23)
         Me.btNextFrame.TabIndex = 8
@@ -1292,7 +1294,7 @@ Partial Class Form1
         'lbTime
         '
         Me.lbTime.AutoSize = True
-        Me.lbTime.Location = New System.Drawing.Point(219, 27)
+        Me.lbTime.Location = New System.Drawing.Point(214, 37)
         Me.lbTime.Name = "lbTime"
         Me.lbTime.Size = New System.Drawing.Size(96, 13)
         Me.lbTime.TabIndex = 1
@@ -7632,6 +7634,15 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = True
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
+        'btPreviousFrame
+        '
+        Me.btPreviousFrame.Location = New System.Drawing.Point(259, 58)
+        Me.btPreviousFrame.Name = "btPreviousFrame"
+        Me.btPreviousFrame.Size = New System.Drawing.Size(70, 23)
+        Me.btPreviousFrame.TabIndex = 10
+        Me.btPreviousFrame.Text = "Prev frame"
+        Me.btPreviousFrame.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -8539,4 +8550,5 @@ End Sub
     Private WithEvents cbMotionDetectionEx As CheckBox
     Private WithEvents btReversePlaybackNextFrame As Button
     Private WithEvents btReversePlaybackPrevFrame As Button
+    Friend WithEvents btPreviousFrame As Button
 End Class

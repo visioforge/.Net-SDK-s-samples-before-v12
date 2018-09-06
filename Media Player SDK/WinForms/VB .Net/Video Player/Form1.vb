@@ -155,6 +155,10 @@ Public Class Form1
         End If
 
     End Sub
+
+    Private Sub btPreviousFrame_Click(sender As Object, e As EventArgs) Handles btPreviousFrame.Click
+        MediaPlayer1.PreviousFrame()
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

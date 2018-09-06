@@ -2388,7 +2388,12 @@ namespace Media_Player_Demo
             //byte[,] channels = { { 0, 0 }, { 1, 0 } };
             //MediaPlayer1.Audio_Effects_ChannelOrderEx(-1, 0, channels);
 
-            var frame = MediaPlayer1.Position_Get_Frame();
+           // var frame = MediaPlayer1.Position_Get_Frame();
+
+            //MediaPlayer1.Width -= 30;
+            //MediaPlayer1.Height -= 30;
+
+            File.Move(edFilenameOrURL.Text, edFilenameOrURL.Text + ".zzz");
         }
 
         private void cbZoom_CheckedChanged(object sender, EventArgs e)
@@ -3370,6 +3375,11 @@ namespace Media_Player_Demo
         private void btReversePlaybackNextFrame_Click(object sender, EventArgs e)
         {
             MediaPlayer1.ReversePlayback_NextFrame();
+        }
+
+        private void btPreviousFrame_Click(object sender, EventArgs e)
+        {
+            MediaPlayer1.PreviousFrame();
         }
     }
 }

@@ -866,8 +866,9 @@
                 <Button Content="Resume" Height="23" HorizontalAlignment="Left" Margin="48,35,0,0" x:Name="btResume" VerticalAlignment="Top" Width="49" Click="btResume_Click" />
                 <Button Content="Pause" Height="23" HorizontalAlignment="Left" Margin="103,35,0,0" x:Name="btPause" VerticalAlignment="Top" Width="36" Click="btPause_Click" />
                 <Button Content="Stop" Height="23" HorizontalAlignment="Left" Margin="145,35,0,0" x:Name="btStop" VerticalAlignment="Top" Width="36" FontWeight="Bold" Click="btStop_Click" />
-                <Button Content="Next Frame" Height="23" HorizontalAlignment="Left" Margin="199,35,0,0" x:Name="btNextFrame" VerticalAlignment="Top" Width="73" Click="btNextFrame_Click" />
-                <CheckBox Content="Loop" Height="16" HorizontalAlignment="Left" Margin="316,39,0,0" x:Name="cbLoop" VerticalAlignment="Top" />
+                <Button Content="Next Frame" Height="23" HorizontalAlignment="Left" Margin="308,35,0,0" x:Name="btNextFrame" VerticalAlignment="Top" Width="73" Click="btNextFrame_Click" />
+                <CheckBox Content="Loop" Height="16" HorizontalAlignment="Left" Margin="186,40,0,0" x:Name="cbLoop" VerticalAlignment="Top" />
+                <Button x:Name="btPrevFrame" Content="Prev frame" HorizontalAlignment="Left" Margin="238,35,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="btPrevFrame_Click"/>
             </Grid>
         </GroupBox>
         <GroupBox Header="DVD" Height="91" HorizontalAlignment="Left" Margin="407,554.6,0,0" x:Name="groupBox2" VerticalAlignment="Top" Width="403">

@@ -3121,6 +3121,11 @@ namespace Main_Demo
         {
             MediaPlayer1.ReversePlayback_NextFrame();
         }
+
+        private void btPrevFrame_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.PreviousFrame();
+        }
     }
 }
 

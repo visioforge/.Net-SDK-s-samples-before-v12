@@ -165,6 +165,11 @@ namespace Video_Player_Demo
                 mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
         }
+
+        private void btPreviousFrame_Click(object sender, EventArgs e)
+        {
+            MediaPlayer1.PreviousFrame();
+        }
     }
 }
 
