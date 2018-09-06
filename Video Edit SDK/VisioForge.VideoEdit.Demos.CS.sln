@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{06E594FA-BCB0-4C8C-AEB2-F0FE6E09DA1F}"
 EndProject
@@ -20,6 +20,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video From Images", "WinForms\CSharp\Video from images\Video From Images.csproj", "{C384417A-6BBD-497A-ADF1-4C1A2D8FD05B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video From Images In Memory", "WinForms\CSharp\Video from images in memory\Video From Images In Memory.csproj", "{14581C24-A301-46FE-AEF7-8416CE94D255}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{025921BD-26DB-4C30-9A95-3C545CF0AA33}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{A3B4C236-F0F6-4F4C-A339-2C0A2F128D33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VE Video From Images CLI", "Console\CSharp\Video From Images CLI\VE Video From Images CLI.csproj", "{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +67,14 @@ Global
 		{14581C24-A301-46FE-AEF7-8416CE94D255}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14581C24-A301-46FE-AEF7-8416CE94D255}.Release|x86.ActiveCfg = Release|Any CPU
 		{14581C24-A301-46FE-AEF7-8416CE94D255}.Release|x86.Build.0 = Release|Any CPU
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Debug|x86.ActiveCfg = Debug|x86
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Debug|x86.Build.0 = Debug|x86
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Release|x86.ActiveCfg = Release|x86
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +88,11 @@ Global
 		{A78A3FEC-8284-41F7-9156-5EF8043E012B} = {3F3567FA-DE52-4B4A-90B2-CE0EE171BA30}
 		{C384417A-6BBD-497A-ADF1-4C1A2D8FD05B} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
 		{14581C24-A301-46FE-AEF7-8416CE94D255} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
+		{025921BD-26DB-4C30-9A95-3C545CF0AA33} = {06E594FA-BCB0-4C8C-AEB2-F0FE6E09DA1F}
+		{A3B4C236-F0F6-4F4C-A339-2C0A2F128D33} = {025921BD-26DB-4C30-9A95-3C545CF0AA33}
+		{0631F2FB-54CB-4E8E-B0D6-D26FBFCDA408} = {A3B4C236-F0F6-4F4C-A339-2C0A2F128D33}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {23833106-1A40-4105-9674-C90843B23533}
 	EndGlobalSection
 EndGlobal
