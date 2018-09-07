@@ -298,7 +298,7 @@
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
-            this.MediaPlayer1.Object_Detection = null;
+            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -369,7 +369,7 @@
             this.MediaPlayer2.Motion_Detection = null;
             this.MediaPlayer2.MultiScreen_Enabled = false;
             this.MediaPlayer2.Name = "MediaPlayer2";
-            this.MediaPlayer2.Object_Detection = null;
+            this.MediaPlayer2.Motion_DetectionEx = null;
             this.MediaPlayer2.ReversePlayback_CacheSize = 0;
             this.MediaPlayer2.ReversePlayback_Enabled = false;
             this.MediaPlayer2.Selection_Active = false;

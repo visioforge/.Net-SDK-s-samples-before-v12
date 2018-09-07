@@ -363,7 +363,7 @@ Public Class Form1
         Private Sub ConfigureObjectTracking()
 
         If (cbAFMotionDetection.Checked) Then
-            VideoEdit1.Object_Detection = New ObjectDetectionSettings()
+            VideoEdit1.Object_Detection = New MotionDetectionExSettings()
             If (cbAFMotionHighlight.Checked) Then
                 VideoEdit1.Object_Detection.ProcessorType = MotionProcessorType.MotionAreaHighlighting
             Else
@@ -430,7 +430,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub VideoEdit1_OnAForgeMotionDetection(ByVal sender As System.Object, ByVal e As VisioForge.Types.ObjectDetectionEventArgs) Handles VideoEdit1.OnObjectDetection
+    Private Sub VideoEdit1_OnAForgeMotionDetection(ByVal sender As System.Object, ByVal e As VisioForge.Types.MotionDetectionExEventArgs) Handles VideoEdit1.OnObjectDetection
 
         Dim motdel As AFMotionDelegate = New AFMotionDelegate(AddressOf AFMotionDelegateMethod)
         BeginInvoke(motdel, e.Level)

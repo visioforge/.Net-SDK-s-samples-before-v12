@@ -298,7 +298,7 @@ namespace Main_Demo
         {
             if (cbAFMotionDetection.IsChecked == true)
             {
-                VideoEdit1.Object_Detection = new ObjectDetectionSettings();
+                VideoEdit1.Object_Detection = new MotionDetectionExSettings();
                 if (cbAFMotionHighlight.IsChecked == true)
                 {
                     VideoEdit1.Object_Detection.ProcessorType = MotionProcessorType.MotionAreaHighlighting;
@@ -433,7 +433,7 @@ namespace Main_Demo
             ConfigureObjectDetection();
         }
 
-        private void VideoEdit1_OnAForgeMotionDetection(object sender, ObjectDetectionEventArgs e)
+        private void VideoEdit1_OnAForgeMotionDetection(object sender, MotionDetectionExEventArgs e)
         {
             Dispatcher.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
         }

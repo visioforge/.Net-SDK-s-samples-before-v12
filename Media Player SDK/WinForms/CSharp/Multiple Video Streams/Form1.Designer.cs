@@ -78,9 +78,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(12, 9);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(89, 13);
+            this.label14.Size = new System.Drawing.Size(251, 13);
             this.label14.TabIndex = 5;
-            this.label14.Text = "File name or URL";
+            this.label14.Text = "File name (file should contain several video streams)";
             // 
             // groupBox2
             // 

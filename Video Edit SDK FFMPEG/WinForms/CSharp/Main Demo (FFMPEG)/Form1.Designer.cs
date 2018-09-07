@@ -2827,7 +2827,7 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.OnMotion += new System.EventHandler<VisioForge.Types.MotionDetectionEventArgs>(this.VideoEdit1_OnMotion);
             this.VideoEdit1.OnProgress += new System.EventHandler<VisioForge.Types.ProgressEventArgs>(this.VideoEdit1_OnProgress);
             this.VideoEdit1.OnStop += new System.EventHandler<System.EventArgs>(this.VideoEdit1_OnStop);
-            this.VideoEdit1.OnObjectDetection += new System.EventHandler<VisioForge.Types.ObjectDetectionEventArgs>(this.VideoEdit1_OnAForgeMotionDetection);
+            this.VideoEdit1.OnObjectDetection += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.VideoEdit1_OnAForgeMotionDetection);
             this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
             // 
             // cbLicensing

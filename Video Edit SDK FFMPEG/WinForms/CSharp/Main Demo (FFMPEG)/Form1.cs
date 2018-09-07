@@ -75,7 +75,7 @@ namespace VideoEdit_CS_Demo
         {
             if (cbAFMotionDetection.Checked)
             {
-                VideoEdit1.Object_Detection = new ObjectDetectionSettings();
+                VideoEdit1.Object_Detection = new MotionDetectionExSettings();
                 if (cbAFMotionHighlight.Checked)
                 {
                     VideoEdit1.Object_Detection.ProcessorType = MotionProcessorType.MotionAreaHighlighting;
@@ -456,7 +456,7 @@ namespace VideoEdit_CS_Demo
             pbAFMotionLevel.Value = (int)(level * 100);
         }
 
-        private void VideoEdit1_OnAForgeMotionDetection(object sender, ObjectDetectionEventArgs e)
+        private void VideoEdit1_OnAForgeMotionDetection(object sender, MotionDetectionExEventArgs e)
         {
             BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
         }

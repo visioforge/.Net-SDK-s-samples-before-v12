@@ -94,12 +94,10 @@ namespace Video_Mixing_Demo
         private void btTest_Click(object sender, EventArgs e)
         {
             string filename1 = @"c:\samples\!video.avi";
-            string filename2 = @"c:\samples\!Noel.Fieldings.Luxury.Comedy.s02e01.2014.MPEG4.HDTVRip.mp4";
-            string filename3 = @"c:\samples\!video4K.mp4";
+            string filename2 = @"c:\samples\Biking_Girl_Alpha.mov";
 
             AddFile(filename1);
             AddFile(filename2);
-            AddFile(filename3);
         }
 
         private void btStop_Click(object sender, EventArgs e)
@@ -168,6 +166,11 @@ namespace Video_Mixing_Demo
                 MediaPlayer1.PIP_Sources_SetSourcePosition(index, _pipInfos[index].Rect);
                 MediaPlayer1.PIP_Sources_SetSourceOrder(index, _pipInfos[index].ZOrder);
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            cbSourceMode.SelectedIndex = 0;
         }
     }
 }
