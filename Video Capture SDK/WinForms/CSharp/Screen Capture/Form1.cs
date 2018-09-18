@@ -385,7 +385,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
 
                     if (IsWindows7OrNewer())
                     {
-                        mp4Output.MP4Mode = VFMP4Mode.v11;
+                        mp4Output.MP4Mode = VFMP4Mode.v10;
                     }
                     else
                     {

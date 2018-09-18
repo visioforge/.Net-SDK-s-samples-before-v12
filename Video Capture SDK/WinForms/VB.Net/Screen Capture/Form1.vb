@@ -435,7 +435,7 @@ Public Class Form1
                 Dim mp4Output As VFMP4Output = New VFMP4Output()
 
                 If (IsWindows7OrNewer()) Then
-                    mp4Output.MP4Mode = VFMP4Mode.v11
+                    mp4Output.MP4Mode = VFMP4Mode.v10
                 Else
                     mp4Output.MP4Mode = VFMP4Mode.v8
                 End If
