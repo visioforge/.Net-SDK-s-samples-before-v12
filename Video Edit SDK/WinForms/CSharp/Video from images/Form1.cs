@@ -393,9 +393,18 @@ namespace Video_From_Images
             ProgressBar1.Value = e.Progress;
         }
 
-        private void VideoEdit1_OnStop(object sender, EventArgs e)
+        private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)
         {
             ProgressBar1.Value = 0;
+
+            if (e.Successful)
+            {
+                MessageBox.Show("Completed successfully", string.Empty, MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Stopped with error", string.Empty, MessageBoxButtons.OK);
+            }
         }
 
         private void VideoEdit1_OnLicenseRequired(object sender, LicenseEventArgs e)

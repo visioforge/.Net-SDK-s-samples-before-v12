@@ -2681,7 +2681,7 @@ Public Class Form1
     End Sub
 
 
-    Private Sub MediaPlayer1_OnStop(sender As Object, e As StopEventArgs) Handles MediaPlayer1.OnStop
+    Private Sub MediaPlayer1_OnStop(sender As Object, e As MediaPlayerStopEventArgs) Handles MediaPlayer1.OnStop
 
         BeginInvoke(New StopDelegate(AddressOf StopDelegateMethod))
 

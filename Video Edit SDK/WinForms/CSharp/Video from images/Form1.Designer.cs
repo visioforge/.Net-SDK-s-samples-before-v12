@@ -293,7 +293,7 @@
             this.VideoEdit1.Virtual_Camera_Output_Enabled = false;
             this.VideoEdit1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoEdit1_OnLicenseRequired);
             this.VideoEdit1.OnProgress += new System.EventHandler<VisioForge.Types.ProgressEventArgs>(this.VideoEdit1_OnProgress);
-            this.VideoEdit1.OnStop += new System.EventHandler<System.EventArgs>(this.VideoEdit1_OnStop);
+            this.VideoEdit1.OnStop += new System.EventHandler<VideoEditStopEventArgs>(this.VideoEdit1_OnStop);
             // 
             // tabControl1
             // 

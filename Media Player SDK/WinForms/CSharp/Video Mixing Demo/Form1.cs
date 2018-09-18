@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-
+using VisioForge.Controls.UI.WinForms;
 using VisioForge.Types;
 
 namespace Video_Mixing_Demo
@@ -29,6 +29,7 @@ namespace Video_Mixing_Demo
                 MediaPlayer1.FilenamesOrURL.Add(filename);
                 lbSourceFiles.Items.Add($@"{filename} (entire screen)");
                 info.Rect = new Rectangle(0, 0, 0, 0);
+                info.Alpha = 1.0f;
             }
             else
             {
@@ -40,6 +41,8 @@ namespace Video_Mixing_Demo
                 MediaPlayer1.PIP_Sources_Add(filename, left, top, width, height);
                 lbSourceFiles.Items.Add($@"{filename} ({left}.{top}px, width: {width}px, height: {height}px)");
                 info.Rect = new Rectangle(left, top, width, height);
+
+                info.Alpha = tbStreamTransparency.Value / 100.0f;
             }
 
             info.Filename = filename;
@@ -93,8 +96,11 @@ namespace Video_Mixing_Demo
 
         private void btTest_Click(object sender, EventArgs e)
         {
-            string filename1 = @"c:\samples\!video.avi";
-            string filename2 = @"c:\samples\Biking_Girl_Alpha.mov";
+            string filename1 = @"e:\_movies\The Mighty Boosh.Saliour Tour 2009.mkv";
+            string filename2 = @"e:\_TV\The Mighty Boosh\s02e05.mkv";
+            //string filename2 = @"c:\samples\!video.avi";
+            //string filename2 = @"c:\samples\!video.avi";
+            //string filename2 = @"c:\samples\Biking_Girl_Alpha.mov";
 
             AddFile(filename1);
             AddFile(filename2);
@@ -138,6 +144,7 @@ namespace Video_Mixing_Demo
                 edPIPFileHeight.Text = pip.Rect.Height.ToString();
 
                 edZOrder.Text = pip.ZOrder.ToString();
+                tbStreamTransparency.Value = (int)(pip.Alpha * 100);
             }
         }
 
@@ -153,6 +160,7 @@ namespace Video_Mixing_Demo
                 _pipInfos[index].Rect = new Rectangle(left, top, width, height);
 
                 _pipInfos[index].ZOrder = Convert.ToInt32(edZOrder.Text);
+                _pipInfos[index].Alpha = tbStreamTransparency.Value / 100.0f;
 
                 if (left == 0 && top == 0 && width == 0 && height == 0)
                 {
@@ -163,7 +171,7 @@ namespace Video_Mixing_Demo
                     lbSourceFiles.Items[index] = $@"{_pipInfos[index].Filename} ({left}.{top}px, width: {width}px, height: {height}px)";
                 }
 
-                MediaPlayer1.PIP_Sources_SetSourcePosition(index, _pipInfos[index].Rect);
+                MediaPlayer1.PIP_Sources_SetSourcePosition(index, _pipInfos[index].Rect, tbStreamTransparency.Value / 100.0f);
                 MediaPlayer1.PIP_Sources_SetSourceOrder(index, _pipInfos[index].ZOrder);
             }
         }
@@ -171,6 +179,60 @@ namespace Video_Mixing_Demo
         private void Form1_Load(object sender, EventArgs e)
         {
             cbSourceMode.SelectedIndex = 0;
+        }
+
+        private void tbStreamTransparency_Scroll(object sender, EventArgs e)
+        {
+            lbStreamTransparency.Text = tbStreamTransparency.Value.ToString();
+        }
+
+        private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
+        {
+            BeginInvoke(new StopDelegate(StopDelegateMethod), null);
+        }
+
+        private delegate void StopDelegate();
+
+        private void StopDelegateMethod()
+        {
+            tbTimeline.Value = 0;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Tag = 1;
+            tbTimeline.Maximum = (int)(MediaPlayer1.Duration_Time() / 1000.0);
+
+            int value = (int)(MediaPlayer1.Position_Get_Time() / 1000.0);
+            if ((value > 0) && (value < tbTimeline.Maximum))
+            {
+                tbTimeline.Value = value;
+            }
+
+            lbTime.Text = MediaPlayer.Helpful_SecondsToTimeFormatted(tbTimeline.Value) + "/" + MediaPlayer.Helpful_SecondsToTimeFormatted(tbTimeline.Maximum);
+
+            timer1.Tag = 0;
+        }
+
+        private void tbSpeed_Scroll(object sender, EventArgs e)
+        {
+            MediaPlayer1.SetSpeed(tbSpeed.Value / 10.0);
+        }
+
+        private void tbTimeline_Scroll(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(timer1.Tag) == 0)
+            {
+                MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000);
+            }
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (MediaPlayer1.Status != VFMediaPlayerStatus.Free)
+            {
+                MediaPlayer1.Stop();
+            }
         }
     }
 }

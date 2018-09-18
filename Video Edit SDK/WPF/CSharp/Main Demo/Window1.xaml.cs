@@ -3494,12 +3494,19 @@ namespace Main_Demo
             // Application.DoEvents();
         }
 
-        public delegate void StopDelegate();
+        public delegate void StopDelegate(VideoEditStopEventArgs e);
 
-        public void StopDelegateMethod()
+        public void StopDelegateMethod(VideoEditStopEventArgs e)
         {
             pbProgress.Value = 0;
-            MessageBox.Show("Complete", string.Empty, MessageBoxButton.OK);
+            if (e.Successful)
+            {
+                MessageBox.Show("Completed successfully");
+            }
+            else
+            {
+                MessageBox.Show("Stopped with error");
+            }
 
             VideoEdit1.Input_Clear_List();
             lbFiles.Items.Clear();
@@ -3508,9 +3515,9 @@ namespace Main_Demo
             lbTransitions.Items.Clear();
         }
 
-        private void VideoEdit1_OnStop(object sender, EventArgs e)
+        private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)
         {
-            Dispatcher.BeginInvoke(new StopDelegate(StopDelegateMethod));
+            Dispatcher.BeginInvoke(new StopDelegate(StopDelegateMethod), e);
         }
 
         private void VideoEdit1_OnStart(object sender, EventArgs e)

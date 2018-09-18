@@ -158,7 +158,7 @@ namespace Multiple_Video_Streams_Demo
             
         }
 
-        private void MediaPlayer1_OnStop(object sender, StopEventArgs e)
+        private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
             BeginInvoke(new StopDelegate(StopDelegateMethod), null);
         }

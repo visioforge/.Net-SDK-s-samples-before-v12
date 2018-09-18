@@ -519,10 +519,14 @@ Public Class Form1
 
     End Sub
 
-    Private Sub VideoEdit1_OnStop(ByVal sender As System.Object, ByVal e As EventArgs) Handles VideoEdit1.OnStop
+    Private Sub VideoEdit1_OnStop(ByVal sender As System.Object, ByVal e As VideoEditStopEventArgs) Handles VideoEdit1.OnStop
 
         ProgressBar1.Value = 0
-        MessageBox.Show("Complete", "", MessageBoxButtons.OK)
+        If (e.Successful) Then
+            MessageBox.Show("Completed successfully", String.Empty, MessageBoxButtons.OK)
+        Else
+            MessageBox.Show("Stopped with error", String.Empty, MessageBoxButtons.OK)
+        End If
 
         VideoEdit1.Input_Clear_List()
         lbFiles.Items.Clear()

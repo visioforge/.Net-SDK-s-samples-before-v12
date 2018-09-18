@@ -148,12 +148,12 @@ namespace SeamlessPlaybackDemo
             MediaPlayer2.Pause();
         }
 
-        private void MediaPlayer1_OnStop(object sender, StopEventArgs e)
+        private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
             BeginInvoke(new StopDelegate1(StopDelegateMethod1), null);
         }
 
-        private void MediaPlayer2_OnStop(object sender, StopEventArgs e)
+        private void MediaPlayer2_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
             BeginInvoke(new StopDelegate2(StopDelegateMethod2), null);
         }

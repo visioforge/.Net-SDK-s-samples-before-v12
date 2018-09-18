@@ -331,7 +331,7 @@
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
-            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.StopEventArgs>(this.MediaPlayer1_OnStop);
+            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
             // 
             // timer1
             // 
@@ -402,7 +402,7 @@
             this.MediaPlayer2.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer2.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer2.Video_Stream_Index = 0;
-            this.MediaPlayer2.OnStop += new System.EventHandler<VisioForge.Types.StopEventArgs>(this.MediaPlayer2_OnStop);
+            this.MediaPlayer2.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer2_OnStop);
             // 
             // Form1
             // 

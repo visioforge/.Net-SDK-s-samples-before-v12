@@ -499,7 +499,7 @@ namespace DVD_Player_Demo
             this.MediaPlayer1.OnDVDPlaybackError += new System.EventHandler<VisioForge.Types.DVDEventArgs>(this.MediaPlayer1_OnDVDPlaybackError);
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
             this.MediaPlayer1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.MediaPlayer1_OnLicenseRequired);
-            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.StopEventArgs>(this.MediaPlayer1_OnStop);
+            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
             // 
             // cbLicensing
             // 

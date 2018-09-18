@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -62,8 +63,6 @@
             this.tabPage25 = new System.Windows.Forms.TabPage();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbLoop = new System.Windows.Forms.CheckBox();
-            this.btNextFrame = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.btPause = new System.Windows.Forms.Button();
             this.btResume = new System.Windows.Forms.Button();
@@ -90,6 +89,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.edZOrder = new System.Windows.Forms.TextBox();
+            this.tbStreamTransparency = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbStreamTransparency = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.tabControl3.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPage9.SuspendLayout();
@@ -102,6 +105,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbTimeline)).BeginInit();
             this.groupBox44.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbStreamTransparency)).BeginInit();
             this.SuspendLayout();
             // 
             // linkLabel1
@@ -210,7 +214,7 @@
             // 
             this.btTest.Location = new System.Drawing.Point(205, 9);
             this.btTest.Name = "btTest";
-            this.btTest.Size = new System.Drawing.Size(75, 23);
+            this.btTest.Size = new System.Drawing.Size(75, 21);
             this.btTest.TabIndex = 2;
             this.btTest.Text = "Test";
             this.btTest.UseVisualStyleBackColor = true;
@@ -437,8 +441,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbLoop);
-            this.groupBox2.Controls.Add(this.btNextFrame);
             this.groupBox2.Controls.Add(this.btStop);
             this.groupBox2.Controls.Add(this.btPause);
             this.groupBox2.Controls.Add(this.btResume);
@@ -453,25 +455,6 @@
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
-            // 
-            // cbLoop
-            // 
-            this.cbLoop.AutoSize = true;
-            this.cbLoop.Location = new System.Drawing.Point(330, 62);
-            this.cbLoop.Name = "cbLoop";
-            this.cbLoop.Size = new System.Drawing.Size(50, 17);
-            this.cbLoop.TabIndex = 9;
-            this.cbLoop.Text = "Loop";
-            this.cbLoop.UseVisualStyleBackColor = true;
-            // 
-            // btNextFrame
-            // 
-            this.btNextFrame.Location = new System.Drawing.Point(249, 58);
-            this.btNextFrame.Name = "btNextFrame";
-            this.btNextFrame.Size = new System.Drawing.Size(75, 23);
-            this.btNextFrame.TabIndex = 8;
-            this.btNextFrame.Text = "Next frame";
-            this.btNextFrame.UseVisualStyleBackColor = true;
             // 
             // btStop
             // 
@@ -523,6 +506,7 @@
             this.tbSpeed.Size = new System.Drawing.Size(89, 45);
             this.tbSpeed.TabIndex = 3;
             this.tbSpeed.Value = 10;
+            this.tbSpeed.Scroll += new System.EventHandler(this.tbSpeed_Scroll);
             // 
             // label16
             // 
@@ -549,6 +533,7 @@
             this.tbTimeline.Name = "tbTimeline";
             this.tbTimeline.Size = new System.Drawing.Size(207, 45);
             this.tbTimeline.TabIndex = 0;
+            this.tbTimeline.Scroll += new System.EventHandler(this.tbTimeline_Scroll);
             // 
             // btSelectFile
             // 
@@ -631,7 +616,6 @@
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
             videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
@@ -648,6 +632,7 @@
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
+            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
             // 
             // groupBox44
             // 
@@ -740,7 +725,7 @@
             // 
             // btUpdateRect
             // 
-            this.btUpdateRect.Location = new System.Drawing.Point(129, 126);
+            this.btUpdateRect.Location = new System.Drawing.Point(129, 209);
             this.btUpdateRect.Name = "btUpdateRect";
             this.btUpdateRect.Size = new System.Drawing.Size(75, 23);
             this.btUpdateRect.TabIndex = 66;
@@ -760,7 +745,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(248, 35);
+            this.label2.Location = new System.Drawing.Point(244, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 68;
@@ -768,18 +753,53 @@
             // 
             // edZOrder
             // 
-            this.edZOrder.Location = new System.Drawing.Point(250, 59);
+            this.edZOrder.Location = new System.Drawing.Point(246, 58);
             this.edZOrder.Name = "edZOrder";
             this.edZOrder.Size = new System.Drawing.Size(39, 20);
             this.edZOrder.TabIndex = 69;
             this.edZOrder.Text = "0";
             this.edZOrder.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tbStreamTransparency
+            // 
+            this.tbStreamTransparency.Location = new System.Drawing.Point(17, 148);
+            this.tbStreamTransparency.Maximum = 100;
+            this.tbStreamTransparency.Name = "tbStreamTransparency";
+            this.tbStreamTransparency.Size = new System.Drawing.Size(201, 45);
+            this.tbStreamTransparency.TabIndex = 70;
+            this.tbStreamTransparency.Value = 100;
+            this.tbStreamTransparency.Scroll += new System.EventHandler(this.tbStreamTransparency_Scroll);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 132);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 71;
+            this.label3.Text = "Stream transparency";
+            // 
+            // lbStreamTransparency
+            // 
+            this.lbStreamTransparency.AutoSize = true;
+            this.lbStreamTransparency.Location = new System.Drawing.Point(183, 132);
+            this.lbStreamTransparency.Name = "lbStreamTransparency";
+            this.lbStreamTransparency.Size = new System.Drawing.Size(25, 13);
+            this.lbStreamTransparency.TabIndex = 72;
+            this.lbStreamTransparency.Text = "100";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(755, 642);
+            this.Controls.Add(this.lbStreamTransparency);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.tbStreamTransparency);
             this.Controls.Add(this.edZOrder);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -799,6 +819,7 @@
             this.Controls.Add(this.label14);
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Video Mixing Demo";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.tabControl3.ResumeLayout(false);
@@ -819,6 +840,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tbTimeline)).EndInit();
             this.groupBox44.ResumeLayout(false);
             this.groupBox44.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbStreamTransparency)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,8 +880,6 @@
         private System.Windows.Forms.TabPage tabPage25;
         private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox cbLoop;
-        private System.Windows.Forms.Button btNextFrame;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btPause;
         private System.Windows.Forms.Button btResume;
@@ -886,6 +906,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox edZOrder;
+        private System.Windows.Forms.TrackBar tbStreamTransparency;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbStreamTransparency;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

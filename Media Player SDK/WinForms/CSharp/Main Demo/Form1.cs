@@ -2104,7 +2104,7 @@ namespace Media_Player_Demo
             mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
         }
 
-        private void MediaPlayer1_OnStop(object sender, StopEventArgs e)
+        private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
             BeginInvoke(new StopDelegate(StopDelegateMethod), null);
         }
@@ -3031,71 +3031,7 @@ namespace Media_Player_Demo
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Text += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + "), C#";
 
-            // set combobox indexes
-            cbSourceMode.SelectedIndex = 0;
-            cbImageType.SelectedIndex = 1;
-            cbTextLogoAlign.SelectedIndex = 0;
-            cbTextLogoAntialiasing.SelectedIndex = 0;
-            cbTextLogoDrawMode.SelectedIndex = 0;
-            cbTextLogoEffectrMode.SelectedIndex = 0;
-            cbTextLogoGradMode.SelectedIndex = 0;
-            cbTextLogoShapeType.SelectedIndex = 0;
-            cbMotDetHLColor.SelectedIndex = 1;
-            cbBarcodeType.SelectedIndex = 0;
-
-            cbDirect2DRotate.SelectedIndex = 0;
-
-            rbMotionDetectionExProcessor.SelectedIndex = 1;
-            rbMotionDetectionExDetector.SelectedIndex = 1;
-
-            foreach (string device in MediaPlayer1.Audio_OutputDevices)
-            {
-                cbAudioOutputDevice.Items.Add(device);
-            }
-
-            if (cbAudioOutputDevice.Items.Count > 0)
-            {
-                cbAudioOutputDevice.SelectedIndex = 0;
-            }
-
-            MediaInfo.ReadFilters();
-
-            foreach (string filter in MediaInfo.List_DirectShowFilters())
-            {
-                cbCustomVideoDecoder.Items.Add(filter);
-                cbCustomAudioDecoder.Items.Add(filter);
-                cbCustomSplitter.Items.Add(filter);
-                cbFilters.Items.Add(filter);
-            }
-
-            if (cbFilters.Items.Count > 0)
-            {
-                cbFilters.SelectedIndex = 0;
-                cbFilters_SelectedIndexChanged(null, null);
-            }
-
-            rbEVR.Enabled = MediaPlayer1.Filter_Supported_EVR();
-            rbVMR9.Enabled = MediaPlayer1.Filter_Supported_VMR9();
-
-            if (rbEVR != null && rbEVR.Enabled)
-            {
-                rbEVR.Checked = true;
-            }
-            else if (rbVMR9 != null && !rbVMR9.Enabled)
-            {
-                rbVR.Checked = true;
-            }
-
-            rbVR_CheckedChanged(sender, e);
-
-            // ReSharper disable once CoVariantArrayConversion
-            cbAudEqualizerPreset.Items.AddRange(MediaPlayer1.Audio_Effects_Equalizer_Presets().ToArray());
-            cbAudEqualizerPreset.SelectedIndex = 0;
-
-            edScreenshotsFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
-            MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
         }
 
         private void btReversePlaybackPrevFrame_Click(object sender, EventArgs e)

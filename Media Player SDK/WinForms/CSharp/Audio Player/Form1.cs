@@ -114,7 +114,7 @@ namespace Audio_Player_Demo
             mmError.Text = mmError.Text + e.Message + Environment.NewLine;
         }
 
-        private void MediaPlayer1_OnStop(object sender, StopEventArgs e)
+        private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
             tbTimeline.Value = 0;
         }

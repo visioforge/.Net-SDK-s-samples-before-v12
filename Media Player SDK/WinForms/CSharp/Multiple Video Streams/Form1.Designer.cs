@@ -239,7 +239,7 @@
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
-            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.StopEventArgs>(this.MediaPlayer1_OnStop);
+            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
             // 
             // pnScreen1
             // 

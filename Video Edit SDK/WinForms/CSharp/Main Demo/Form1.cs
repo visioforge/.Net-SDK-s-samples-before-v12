@@ -3580,10 +3580,18 @@ namespace VideoEdit_CS_Demo
             // Application.DoEvents();
         }
 
-        private void VideoEdit1_OnStop(object sender, EventArgs e)
+        private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)
         {
             ProgressBar1.Value = 0;
-            MessageBox.Show("Complete", string.Empty, MessageBoxButtons.OK);
+
+            if (e.Successful)
+            {
+                MessageBox.Show("Completed successfully", string.Empty, MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Stopped with error", string.Empty, MessageBoxButtons.OK);
+            }
 
             lbFiles.Items.Clear();
             VideoEdit1.Input_Clear_List();

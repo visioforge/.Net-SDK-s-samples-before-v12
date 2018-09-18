@@ -2026,7 +2026,7 @@ namespace Main_Demo
             Dispatcher.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
         }
 
-        private void MediaPlayer1_OnStop(object sender, StopEventArgs e)
+        private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
             Dispatcher.BeginInvoke(new StopDelegate(StopDelegateMethod), null);
         }
