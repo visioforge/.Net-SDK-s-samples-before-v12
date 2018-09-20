@@ -10,7 +10,9 @@ namespace Video_Mixing_Demo
 {
     public partial class Form1 : Form
     {
-        private List<PIPInfo> _pipInfos;
+        private readonly List<PIPInfo> _pipInfos;
+
+        private int _lastZOrder = 8;
 
         public Form1()
         {
@@ -46,7 +48,7 @@ namespace Video_Mixing_Demo
             }
 
             info.Filename = filename;
-            info.ZOrder = _pipInfos.Count;
+            info.ZOrder = _lastZOrder--;
 
             _pipInfos.Add(info);
 
@@ -87,6 +89,12 @@ namespace Video_Mixing_Demo
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
 
             MediaPlayer1.Play();
+
+            MediaPlayer1.PIP_Sources_SetSourcePosition(0, _pipInfos[0].Rect, 1.0f);
+
+            lbSourceFiles.SelectedIndex = 0;
+
+            timer1.Start();
         }
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
@@ -108,6 +116,8 @@ namespace Video_Mixing_Demo
 
         private void btStop_Click(object sender, EventArgs e)
         {
+            timer1.Stop();
+            
             MediaPlayer1.Stop();
 
             _pipInfos.Clear();

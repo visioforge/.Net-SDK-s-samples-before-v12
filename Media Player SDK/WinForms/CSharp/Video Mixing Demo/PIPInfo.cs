@@ -14,5 +14,7 @@ namespace Video_Mixing_Demo
         public Rectangle Rect { get; set; }
 
         public int ZOrder { get; set; }
+
+        public float Alpha { get; set; }
     }
 }

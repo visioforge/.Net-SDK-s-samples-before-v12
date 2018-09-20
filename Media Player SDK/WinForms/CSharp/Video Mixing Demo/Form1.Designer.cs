@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btAddFileToPlaylist = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
@@ -93,6 +93,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lbStreamTransparency = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl3.SuspendLayout();
             this.tabPage10.SuspendLayout();
             this.tabPage9.SuspendLayout();
@@ -232,8 +234,6 @@
             // cbDebugMode
             // 
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Checked = true;
-            this.cbDebugMode.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbDebugMode.Location = new System.Drawing.Point(16, 13);
             this.cbDebugMode.Name = "cbDebugMode";
             this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
@@ -612,23 +612,23 @@
             this.MediaPlayer1.Start_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 32;
             this.MediaPlayer1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms2.Flip_Horizontal = false;
+            videoRendererSettingsWinForms2.Flip_Vertical = false;
+            videoRendererSettingsWinForms2.RotationAngle = 0;
+            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
+            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
+            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -792,11 +792,34 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 262);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 73;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.ForeColor = System.Drawing.Color.Transparent;
+            this.textBox1.Location = new System.Drawing.Point(14, 242);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(305, 113);
+            this.textBox1.TabIndex = 74;
+            this.textBox1.Text = "First file will cover entire screen by default. You can set position for each str" +
+    "eam independently.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(755, 642);
+            this.ClientSize = new System.Drawing.Size(755, 637);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.lbStreamTransparency);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tbStreamTransparency);
@@ -910,6 +933,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbStreamTransparency;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
