@@ -32,6 +32,8 @@ namespace Media_Player_Demo
 
         private readonly MediaInfoReader MediaInfo = new MediaInfoReader();
 
+        private List<Form> multiscreenWindows = new List<Form>();
+
         public Form1()
         {
             InitializeComponent();
@@ -1078,6 +1080,24 @@ namespace Media_Player_Demo
             }
         }
 
+        static void ShowOnScreen(Form window, int screenNumber)
+        {
+            if (screenNumber >= 0 && screenNumber < Screen.AllScreens.Length)
+            {
+                window.Location = Screen.AllScreens[screenNumber].WorkingArea.Location;
+
+                window.Show();
+
+                window.Width = Screen.AllScreens[screenNumber].Bounds.Width;
+                window.Height = Screen.AllScreens[screenNumber].Bounds.Height;
+                window.Left = Screen.AllScreens[screenNumber].Bounds.Left;
+                window.Top = Screen.AllScreens[screenNumber].Bounds.Top;
+                window.TopMost = true;
+                window.FormBorderStyle = FormBorderStyle.None;
+                window.WindowState = FormWindowState.Maximized;
+            }
+        }
+
         private void btStart_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
@@ -1250,7 +1270,7 @@ namespace Media_Player_Demo
             MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked;
             MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked;
 
-            // Chromakey.
+            // Chroma-key
             ConfigureChromaKey();
 
             // Audio enhancement
@@ -1302,13 +1322,33 @@ namespace Media_Player_Demo
 
             // Multiscreen
             MediaPlayer1.MultiScreen_Clear();
-            MediaPlayer1.MultiScreen_Enabled = cbUseAdditionalScreens.Checked;
+            MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked || cbMultiscreenDrawOnExternalDisplays.Checked;
 
-            if (MediaPlayer1.MultiScreen_Enabled)
+            if (!MediaPlayer1.MultiScreen_Enabled)
+            {
+                return;
+            }
+
+            if (cbMultiscreenDrawOnPanels.Checked)
             {
                 MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height);
                 MediaPlayer1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height);
             }
+
+            if (cbMultiscreenDrawOnExternalDisplays.Checked)
+            {
+                if (Screen.AllScreens.Length > 1)
+                {
+                    for (int i = 1; i < Screen.AllScreens.Length; i++)
+                    {
+                        var additinalWindow1 = new Form();
+                        ShowOnScreen(additinalWindow1, i);
+                        MediaPlayer1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height);
+                        multiscreenWindows.Add(additinalWindow1);
+                    }
+                }
+            }
+        
 
             // Video effects
             MediaPlayer1.Video_Effects_Enabled = cbEffects.Checked;
@@ -1841,6 +1881,20 @@ namespace Media_Player_Demo
 
             volumeMeter1.Clear();
             volumeMeter2.Clear();
+
+            if (cbMultiscreenDrawOnPanels.Checked)
+            {
+                pnScreen1.Refresh();
+                pnScreen2.Refresh();
+            }
+
+            foreach (var form in multiscreenWindows)
+            {
+                form.Close();
+                form.Dispose();
+            }
+
+            multiscreenWindows.Clear();
         }
 
         private void btResume_Click(object sender, EventArgs e)
@@ -2158,20 +2212,19 @@ namespace Media_Player_Demo
             {
                 MediaPlayer1.Motion_Detection = new MotionDetectionSettings
                 {
-                    Enabled = this.cbMotDetEnabled.Checked,
-                    Compare_Red = this.cbCompareRed.Checked,
-                    Compare_Green = this.cbCompareGreen.Checked,
-                    Compare_Blue = this.cbCompareBlue.Checked,
-                    Compare_Greyscale = this.cbCompareGreyscale.Checked,
-                    Highlight_Color =
-                                                            (VFMotionCHLColor)this.cbMotDetHLColor.SelectedIndex,
-                    Highlight_Enabled = this.cbMotDetHLEnabled.Checked,
-                    Highlight_Threshold = this.tbMotDetHLThreshold.Value,
-                    FrameInterval = Convert.ToInt32(this.edMotDetFrameInterval.Text),
-                    Matrix_Height = Convert.ToInt32(this.edMotDetMatrixHeight.Text),
-                    Matrix_Width = Convert.ToInt32(this.edMotDetMatrixWidth.Text),
-                    DropFrames_Enabled = this.cbMotDetDropFramesEnabled.Checked,
-                    DropFrames_Threshold = this.tbMotDetDropFramesThreshold.Value
+                    Enabled = cbMotDetEnabled.Checked,
+                    Compare_Red = cbCompareRed.Checked,
+                    Compare_Green = cbCompareGreen.Checked,
+                    Compare_Blue = cbCompareBlue.Checked,
+                    Compare_Greyscale = cbCompareGreyscale.Checked,
+                    Highlight_Color = (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
+                    Highlight_Enabled = cbMotDetHLEnabled.Checked,
+                    Highlight_Threshold = tbMotDetHLThreshold.Value,
+                    FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
+                    Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
+                    Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
+                    DropFrames_Enabled = cbMotDetDropFramesEnabled.Checked,
+                    DropFrames_Threshold = tbMotDetDropFramesThreshold.Value
                 };
                 MediaPlayer1.MotionDetection_Update();
             }
@@ -2382,18 +2435,23 @@ namespace Media_Player_Demo
 
         private void btTest_Click(object sender, EventArgs e)
         {
-            //MediaPlayer1.Audio_Effects_Enabled = true;
-            //MediaPlayer1.Audio_Effects_Clear(-1);
-            //MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.ChannelOrder, true, -1, -1);
-            //byte[,] channels = { { 0, 0 }, { 1, 0 } };
-            //MediaPlayer1.Audio_Effects_ChannelOrderEx(-1, 0, channels);
+            var indexer = new ASFIndexer();
+            indexer.OnStop += delegate(object o, EventArgs args)
+            {
+                MessageBox.Show("Indexing complete.");
+            };
 
-           // var frame = MediaPlayer1.Position_Get_Frame();
+            indexer.OnError += delegate(object o, ErrorsEventArgs args)
+                {
+                    MessageBox.Show("Error during indexing: " + args.Message);
+                };
 
-            //MediaPlayer1.Width -= 30;
-            //MediaPlayer1.Height -= 30;
+            indexer.OnProgress += delegate(object o, ProgressEventArgs args)
+            {
+                Debug.WriteLine("Indexing progress: " + args.Progress);
+            };
 
-            File.Move(edFilenameOrURL.Text, edFilenameOrURL.Text + ".zzz");
+            indexer.Start(@"c:\samples\!_LH CAB FRONT 2018-09-10_12_00_03_862.asf", VFWMIndexerType.FrameNumbers, 4000, VFWMIndexType.NearestDataUnit);
         }
 
         private void cbZoom_CheckedChanged(object sender, EventArgs e)

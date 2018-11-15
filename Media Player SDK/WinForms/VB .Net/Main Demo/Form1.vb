@@ -17,6 +17,8 @@ Public Class Form1
 
     Dim zoomShiftY As Integer = 0
 
+    Dim multiscreenWindows as List(of Form) = new List(Of Form)
+
     Private ReadOnly MediaInfo As MediaInfoReader = New MediaInfoReader
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
@@ -1229,6 +1231,22 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub ShowOnScreen(window As Form, screenNumber As Int32)
+        If (screenNumber >= 0 And screenNumber < Screen.AllScreens.Length) Then
+            window.Location = Screen.AllScreens(screenNumber).WorkingArea.Location
+
+            window.Show()
+
+            window.Width = Screen.AllScreens(screenNumber).Bounds.Width
+            window.Height = Screen.AllScreens(screenNumber).Bounds.Height
+            window.Left = Screen.AllScreens(screenNumber).Bounds.Left
+            window.Top = Screen.AllScreens(screenNumber).Bounds.Top
+            window.TopMost = True
+            window.FormBorderStyle = FormBorderStyle.None
+            window.WindowState = FormWindowState.Maximized
+        End If
+    End Sub
+
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         zoom = 1.0
@@ -1372,7 +1390,6 @@ Public Class Form1
             ApplyAudioOutputGains()
 
             MediaPlayer1.Audio_Enhancer_Timeshift(-1, tbAudioTimeshift.Value)
-
         End If
 
         ' Audio channels mapping
@@ -1400,13 +1417,28 @@ Public Class Form1
 
         ' Multiscreen
         MediaPlayer1.MultiScreen_Clear()
-        MediaPlayer1.MultiScreen_Enabled = cbUseAdditionalScreens.Checked
+        MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked Or cbMultiscreenDrawOnExternalDisplays.Checked
 
-        If (MediaPlayer1.MultiScreen_Enabled) Then
+        If (Not MediaPlayer1.MultiScreen_Enabled) Then
+            Return
+        End If
 
+        If (cbMultiscreenDrawOnPanels.Checked) Then
             MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height)
             MediaPlayer1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height)
+        End If
 
+        If (cbMultiscreenDrawOnExternalDisplays.Checked) Then
+
+            If (Screen.AllScreens.Length > 1) Then
+
+                For i As Integer = 1 To Screen.AllScreens.Length
+                    Dim additinalWindow1 As Form = New Form()
+                    ShowOnScreen(additinalWindow1, i)
+                    MediaPlayer1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height)
+                    multiscreenWindows.Add(additinalWindow1)
+                Next
+            End If
         End If
 
         ' VU meters
@@ -1888,6 +1920,18 @@ Public Class Form1
 
         volumeMeter1.Clear()
         volumeMeter2.Clear()
+
+        If cbMultiscreenDrawOnPanels.Checked Then
+            pnScreen1.Refresh()
+            pnScreen2.Refresh()
+        End If
+
+        For Each form As Form In multiscreenWindows
+            form.Close()
+            form.Dispose()
+        Next
+
+        multiscreenWindows.Clear()
 
     End Sub
 

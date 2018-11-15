@@ -2,6 +2,9 @@
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable UnusedParameter.Local
 
+using System.Drawing.Imaging;
+using VisioForge.MediaFramework.MFP;
+
 namespace VideoCapture_CSharp_Demo
 {
     using System;
@@ -54,6 +57,8 @@ namespace VideoCapture_CSharp_Demo
         private int zoomShiftX;
 
         private int zoomShiftY;
+
+        private List<Form> multiscreenWindows = new List<Form>();
 
         // ReSharper disable InconsistentNaming
 
@@ -2441,16 +2446,53 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
+        static void ShowOnScreen(Form window, int screenNumber)
+        {
+            if (screenNumber >= 0 && screenNumber < Screen.AllScreens.Length)
+            {
+                window.Location = Screen.AllScreens[screenNumber].WorkingArea.Location;
+
+                window.Show();
+
+                window.Width = Screen.AllScreens[screenNumber].Bounds.Width;
+                window.Height = Screen.AllScreens[screenNumber].Bounds.Height;
+                window.Left = Screen.AllScreens[screenNumber].Bounds.Left;
+                window.Top = Screen.AllScreens[screenNumber].Bounds.Top;
+                window.TopMost = true;
+                window.FormBorderStyle = FormBorderStyle.None;
+                window.WindowState = FormWindowState.Maximized;
+            }
+        }
+
         private void ConfigureMultiscreen()
         {
             VideoCapture1.MultiScreen_Clear();
-            VideoCapture1.MultiScreen_Enabled = cbUseAdditionalScreens.Checked;
+            VideoCapture1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked || cbMultiscreenDrawOnExternalDisplays.Checked;
 
-            if (VideoCapture1.MultiScreen_Enabled)
+            if (!VideoCapture1.MultiScreen_Enabled)
+            {
+                return;
+            }
+
+            if (cbMultiscreenDrawOnPanels.Checked)
             {
                 VideoCapture1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height);
                 VideoCapture1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height);
                 VideoCapture1.MultiScreen_AddScreen(pnScreen3.Handle, pnScreen3.Width, pnScreen3.Height);
+            }
+
+            if (cbMultiscreenDrawOnExternalDisplays.Checked)
+            {
+                if (Screen.AllScreens.Length > 1)
+                {
+                    for (int i = 1; i < Screen.AllScreens.Length; i++)
+                    {
+                        var additinalWindow1 = new Form();
+                        ShowOnScreen(additinalWindow1, i);
+                        VideoCapture1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height);
+                        multiscreenWindows.Add(additinalWindow1);
+                    }
+                }
             }
         }
 
@@ -3957,12 +3999,20 @@ namespace VideoCapture_CSharp_Demo
 
             VideoCapture1.Stop();
 
-            if (cbUseAdditionalScreens.Checked)
+            if (cbMultiscreenDrawOnPanels.Checked)
             {
                 pnScreen1.Refresh();
                 pnScreen2.Refresh();
                 pnScreen3.Refresh();
             }
+
+            foreach (var form in multiscreenWindows)
+            {
+                form.Close();
+                form.Dispose();
+            }
+
+            multiscreenWindows.Clear();
 
             waveformPainter1.Clear();
             waveformPainter2.Clear();
@@ -4597,7 +4647,6 @@ namespace VideoCapture_CSharp_Demo
             {
                 // must be -1 to use frequency
                 VideoCapture1.TVTuner_Channel = -1;
-
                 VideoCapture1.TVTuner_Frequency = Convert.ToInt32(edChannel.Text);
             }
 
@@ -4749,6 +4798,11 @@ namespace VideoCapture_CSharp_Demo
         {
             if (cbTVSystem.SelectedIndex != -1)
             {
+                if (string.IsNullOrEmpty(VideoCapture1.TVTuner_Name))
+                {
+                    return;
+                }
+
                 VideoCapture1.TVTuner_TVFormat = VideoCapture1.TVTuner_TVFormat_FromString(cbTVSystem.Text);
                 VideoCapture1.TVTuner_Apply();
                 VideoCapture1.TVTuner_Read();
@@ -8725,6 +8779,11 @@ namespace VideoCapture_CSharp_Demo
             {
                 pnPIPChromaKeyColor.BackColor = colorDialog1.Color;
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

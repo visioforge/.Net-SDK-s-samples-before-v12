@@ -37,7 +37,7 @@ namespace VideoCapture_CSharp_Demo
         /// </summary>
         private void InitializeComponent()
         {
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.label8 = new System.Windows.Forms.Label();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
@@ -1369,6 +1369,8 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage48 = new System.Windows.Forms.TabPage();
             this.tabControl15 = new System.Windows.Forms.TabControl();
             this.tabPage144 = new System.Windows.Forms.TabPage();
+            this.edIPUrl = new System.Windows.Forms.TextBox();
+            this.label165 = new System.Windows.Forms.Label();
             this.cbIPCameraONVIF = new System.Windows.Forms.CheckBox();
             this.btShowIPCamDatabase = new System.Windows.Forms.Button();
             this.linkLabel7 = new System.Windows.Forms.LinkLabel();
@@ -1389,6 +1391,10 @@ namespace VideoCapture_CSharp_Demo
             this.edVLCCacheSize = new System.Windows.Forms.TextBox();
             this.label312 = new System.Windows.Forms.Label();
             this.tabPage145 = new System.Windows.Forms.TabPage();
+            this.edONVIFPassword = new System.Windows.Forms.TextBox();
+            this.label378 = new System.Windows.Forms.Label();
+            this.edONVIFLogin = new System.Windows.Forms.TextBox();
+            this.label379 = new System.Windows.Forms.Label();
             this.edONVIFURL = new System.Windows.Forms.TextBox();
             this.edONVIFLiveVideoURL = new System.Windows.Forms.TextBox();
             this.label513 = new System.Windows.Forms.Label();
@@ -1583,6 +1589,7 @@ namespace VideoCapture_CSharp_Demo
             this.pnPIPChromaKeyColor = new System.Windows.Forms.Panel();
             this.label514 = new System.Windows.Forms.Label();
             this.tabPage50 = new System.Windows.Forms.TabPage();
+            this.cbMultiscreenDrawOnExternalDisplays = new System.Windows.Forms.CheckBox();
             this.cbFlipHorizontal3 = new System.Windows.Forms.CheckBox();
             this.cbFlipVertical3 = new System.Windows.Forms.CheckBox();
             this.cbStretch3 = new System.Windows.Forms.CheckBox();
@@ -1597,7 +1604,7 @@ namespace VideoCapture_CSharp_Demo
             this.pnScreen2 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pnScreen1 = new System.Windows.Forms.Panel();
-            this.cbUseAdditionalScreens = new System.Windows.Forms.CheckBox();
+            this.cbMultiscreenDrawOnPanels = new System.Windows.Forms.CheckBox();
             this.tabPage51 = new System.Windows.Forms.TabPage();
             this.tabControl26 = new System.Windows.Forms.TabControl();
             this.tabPage115 = new System.Windows.Forms.TabPage();
@@ -1704,12 +1711,6 @@ namespace VideoCapture_CSharp_Demo
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
-            this.edIPUrl = new System.Windows.Forms.TextBox();
-            this.label165 = new System.Windows.Forms.Label();
-            this.edONVIFPassword = new System.Windows.Forms.TextBox();
-            this.label378 = new System.Windows.Forms.Label();
-            this.edONVIFLogin = new System.Windows.Forms.TextBox();
-            this.label379 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tcOutputFormats.SuspendLayout();
@@ -16726,6 +16727,23 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage144.Text = "Main";
             this.tabPage144.UseVisualStyleBackColor = true;
             // 
+            // edIPUrl
+            // 
+            this.edIPUrl.Location = new System.Drawing.Point(55, 15);
+            this.edIPUrl.Name = "edIPUrl";
+            this.edIPUrl.Size = new System.Drawing.Size(360, 20);
+            this.edIPUrl.TabIndex = 80;
+            this.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg";
+            // 
+            // label165
+            // 
+            this.label165.AutoSize = true;
+            this.label165.Location = new System.Drawing.Point(10, 17);
+            this.label165.Name = "label165";
+            this.label165.Size = new System.Drawing.Size(29, 13);
+            this.label165.TabIndex = 79;
+            this.label165.Text = "URL";
+            // 
             // cbIPCameraONVIF
             // 
             this.cbIPCameraONVIF.AutoSize = true;
@@ -16884,7 +16902,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage146.Location = new System.Drawing.Point(4, 22);
             this.tabPage146.Name = "tabPage146";
             this.tabPage146.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage146.Size = new System.Drawing.Size(439, 213);
+            this.tabPage146.Size = new System.Drawing.Size(439, 247);
             this.tabPage146.TabIndex = 2;
             this.tabPage146.Text = "VLC";
             this.tabPage146.UseVisualStyleBackColor = true;
@@ -16937,6 +16955,38 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage145.TabIndex = 1;
             this.tabPage145.Text = "ONVIF";
             this.tabPage145.UseVisualStyleBackColor = true;
+            // 
+            // edONVIFPassword
+            // 
+            this.edONVIFPassword.Location = new System.Drawing.Point(240, 38);
+            this.edONVIFPassword.Name = "edONVIFPassword";
+            this.edONVIFPassword.Size = new System.Drawing.Size(100, 20);
+            this.edONVIFPassword.TabIndex = 70;
+            // 
+            // label378
+            // 
+            this.label378.AutoSize = true;
+            this.label378.Location = new System.Drawing.Point(182, 41);
+            this.label378.Name = "label378";
+            this.label378.Size = new System.Drawing.Size(53, 13);
+            this.label378.TabIndex = 69;
+            this.label378.Text = "Password";
+            // 
+            // edONVIFLogin
+            // 
+            this.edONVIFLogin.Location = new System.Drawing.Point(75, 38);
+            this.edONVIFLogin.Name = "edONVIFLogin";
+            this.edONVIFLogin.Size = new System.Drawing.Size(100, 20);
+            this.edONVIFLogin.TabIndex = 68;
+            // 
+            // label379
+            // 
+            this.label379.AutoSize = true;
+            this.label379.Location = new System.Drawing.Point(11, 41);
+            this.label379.Name = "label379";
+            this.label379.Size = new System.Drawing.Size(33, 13);
+            this.label379.TabIndex = 67;
+            this.label379.Text = "Login";
             // 
             // edONVIFURL
             // 
@@ -18943,6 +18993,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage50
             // 
+            this.tabPage50.Controls.Add(this.cbMultiscreenDrawOnExternalDisplays);
             this.tabPage50.Controls.Add(this.cbFlipHorizontal3);
             this.tabPage50.Controls.Add(this.cbFlipVertical3);
             this.tabPage50.Controls.Add(this.cbStretch3);
@@ -18957,7 +19008,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage50.Controls.Add(this.pnScreen2);
             this.tabPage50.Controls.Add(this.panel2);
             this.tabPage50.Controls.Add(this.pnScreen1);
-            this.tabPage50.Controls.Add(this.cbUseAdditionalScreens);
+            this.tabPage50.Controls.Add(this.cbMultiscreenDrawOnPanels);
             this.tabPage50.Location = new System.Drawing.Point(4, 22);
             this.tabPage50.Name = "tabPage50";
             this.tabPage50.Padding = new System.Windows.Forms.Padding(3);
@@ -18965,6 +19016,16 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage50.TabIndex = 4;
             this.tabPage50.Text = "Multiscreen";
             this.tabPage50.UseVisualStyleBackColor = true;
+            // 
+            // cbMultiscreenDrawOnExternalDisplays
+            // 
+            this.cbMultiscreenDrawOnExternalDisplays.AutoSize = true;
+            this.cbMultiscreenDrawOnExternalDisplays.Location = new System.Drawing.Point(180, 17);
+            this.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays";
+            this.cbMultiscreenDrawOnExternalDisplays.Size = new System.Drawing.Size(175, 17);
+            this.cbMultiscreenDrawOnExternalDisplays.TabIndex = 15;
+            this.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays";
+            this.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true;
             // 
             // cbFlipHorizontal3
             // 
@@ -19108,15 +19169,15 @@ namespace VideoCapture_CSharp_Demo
             this.pnScreen1.Size = new System.Drawing.Size(120, 100);
             this.pnScreen1.TabIndex = 1;
             // 
-            // cbUseAdditionalScreens
+            // cbMultiscreenDrawOnPanels
             // 
-            this.cbUseAdditionalScreens.AutoSize = true;
-            this.cbUseAdditionalScreens.Location = new System.Drawing.Point(18, 17);
-            this.cbUseAdditionalScreens.Name = "cbUseAdditionalScreens";
-            this.cbUseAdditionalScreens.Size = new System.Drawing.Size(133, 17);
-            this.cbUseAdditionalScreens.TabIndex = 0;
-            this.cbUseAdditionalScreens.Text = "Use additional screens";
-            this.cbUseAdditionalScreens.UseVisualStyleBackColor = true;
+            this.cbMultiscreenDrawOnPanels.AutoSize = true;
+            this.cbMultiscreenDrawOnPanels.Location = new System.Drawing.Point(18, 17);
+            this.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels";
+            this.cbMultiscreenDrawOnPanels.Size = new System.Drawing.Size(129, 17);
+            this.cbMultiscreenDrawOnPanels.TabIndex = 0;
+            this.cbMultiscreenDrawOnPanels.Text = "Draw video on panels";
+            this.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true;
             // 
             // tabPage51
             // 
@@ -20335,24 +20396,23 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms1;
             this.VideoCapture1.Video_Resize = null;
             this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
             this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
@@ -20375,55 +20435,6 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoCapture1_OnBarcodeDetected);
             this.VideoCapture1.OnBDAChannelFound += new System.EventHandler<VisioForge.Types.BDAChannelEventArgs>(this.VideoCapture1_OnBDAChannelFound);
             this.VideoCapture1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoCapture1_MouseDown);
-            // 
-            // edIPUrl
-            // 
-            this.edIPUrl.Location = new System.Drawing.Point(55, 15);
-            this.edIPUrl.Name = "edIPUrl";
-            this.edIPUrl.Size = new System.Drawing.Size(360, 20);
-            this.edIPUrl.TabIndex = 80;
-            this.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg";
-            // 
-            // label165
-            // 
-            this.label165.AutoSize = true;
-            this.label165.Location = new System.Drawing.Point(10, 17);
-            this.label165.Name = "label165";
-            this.label165.Size = new System.Drawing.Size(29, 13);
-            this.label165.TabIndex = 79;
-            this.label165.Text = "URL";
-            // 
-            // edONVIFPassword
-            // 
-            this.edONVIFPassword.Location = new System.Drawing.Point(240, 38);
-            this.edONVIFPassword.Name = "edONVIFPassword";
-            this.edONVIFPassword.Size = new System.Drawing.Size(100, 20);
-            this.edONVIFPassword.TabIndex = 70;
-            // 
-            // label378
-            // 
-            this.label378.AutoSize = true;
-            this.label378.Location = new System.Drawing.Point(182, 41);
-            this.label378.Name = "label378";
-            this.label378.Size = new System.Drawing.Size(53, 13);
-            this.label378.TabIndex = 69;
-            this.label378.Text = "Password";
-            // 
-            // edONVIFLogin
-            // 
-            this.edONVIFLogin.Location = new System.Drawing.Point(75, 38);
-            this.edONVIFLogin.Name = "edONVIFLogin";
-            this.edONVIFLogin.Size = new System.Drawing.Size(100, 20);
-            this.edONVIFLogin.TabIndex = 68;
-            // 
-            // label379
-            // 
-            this.label379.AutoSize = true;
-            this.label379.Location = new System.Drawing.Point(11, 41);
-            this.label379.Name = "label379";
-            this.label379.Size = new System.Drawing.Size(33, 13);
-            this.label379.TabIndex = 67;
-            this.label379.Text = "Login";
             // 
             // Form1
             // 
@@ -21229,7 +21240,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.RadioButton rbScreenCustomArea;
         private System.Windows.Forms.RadioButton rbScreenFullScreen;
-        private System.Windows.Forms.CheckBox cbUseAdditionalScreens;
+        private System.Windows.Forms.CheckBox cbMultiscreenDrawOnPanels;
         private System.Windows.Forms.Panel pnScreen3;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnScreen2;
@@ -22604,6 +22615,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label label378;
         private System.Windows.Forms.TextBox edONVIFLogin;
         private System.Windows.Forms.Label label379;
+        private System.Windows.Forms.CheckBox cbMultiscreenDrawOnExternalDisplays;
     }
 }
 

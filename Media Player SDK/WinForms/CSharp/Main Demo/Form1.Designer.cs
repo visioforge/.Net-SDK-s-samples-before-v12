@@ -32,7 +32,7 @@ namespace Media_Player_Demo
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbUseLibMediaInfo = new System.Windows.Forms.CheckBox();
@@ -115,7 +115,6 @@ namespace Media_Player_Demo
             this.cbStretch1 = new System.Windows.Forms.CheckBox();
             this.pnScreen2 = new System.Windows.Forms.Panel();
             this.pnScreen1 = new System.Windows.Forms.Panel();
-            this.cbUseAdditionalScreens = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl17 = new System.Windows.Forms.TabControl();
             this.tabPage68 = new System.Windows.Forms.TabPage();
@@ -692,6 +691,8 @@ namespace Media_Player_Demo
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
+            this.cbMultiscreenDrawOnExternalDisplays = new System.Windows.Forms.CheckBox();
+            this.cbMultiscreenDrawOnPanels = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1665,6 +1666,8 @@ namespace Media_Player_Demo
             // 
             // tabPage17
             // 
+            this.tabPage17.Controls.Add(this.cbMultiscreenDrawOnExternalDisplays);
+            this.tabPage17.Controls.Add(this.cbMultiscreenDrawOnPanels);
             this.tabPage17.Controls.Add(this.cbFlipHorizontal2);
             this.tabPage17.Controls.Add(this.cbFlipVertical2);
             this.tabPage17.Controls.Add(this.cbStretch2);
@@ -1673,7 +1676,6 @@ namespace Media_Player_Demo
             this.tabPage17.Controls.Add(this.cbStretch1);
             this.tabPage17.Controls.Add(this.pnScreen2);
             this.tabPage17.Controls.Add(this.pnScreen1);
-            this.tabPage17.Controls.Add(this.cbUseAdditionalScreens);
             this.tabPage17.Location = new System.Drawing.Point(4, 22);
             this.tabPage17.Name = "tabPage17";
             this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
@@ -1759,20 +1761,10 @@ namespace Media_Player_Demo
             // pnScreen1
             // 
             this.pnScreen1.BackColor = System.Drawing.Color.Black;
-            this.pnScreen1.Location = new System.Drawing.Point(39, 34);
+            this.pnScreen1.Location = new System.Drawing.Point(46, 63);
             this.pnScreen1.Name = "pnScreen1";
-            this.pnScreen1.Size = new System.Drawing.Size(181, 155);
+            this.pnScreen1.Size = new System.Drawing.Size(174, 126);
             this.pnScreen1.TabIndex = 13;
-            // 
-            // cbUseAdditionalScreens
-            // 
-            this.cbUseAdditionalScreens.AutoSize = true;
-            this.cbUseAdditionalScreens.Location = new System.Drawing.Point(10, 11);
-            this.cbUseAdditionalScreens.Name = "cbUseAdditionalScreens";
-            this.cbUseAdditionalScreens.Size = new System.Drawing.Size(133, 17);
-            this.cbUseAdditionalScreens.TabIndex = 12;
-            this.cbUseAdditionalScreens.Text = "Use additional screens";
-            this.cbUseAdditionalScreens.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -7976,23 +7968,23 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Start_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms2.Flip_Horizontal = false;
+            videoRendererSettingsWinForms2.Flip_Vertical = false;
+            videoRendererSettingsWinForms2.RotationAngle = 0;
+            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -8004,6 +7996,26 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.MediaPlayer1_OnObjectDetection);
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
+            // 
+            // cbMultiscreenDrawOnExternalDisplays
+            // 
+            this.cbMultiscreenDrawOnExternalDisplays.AutoSize = true;
+            this.cbMultiscreenDrawOnExternalDisplays.Location = new System.Drawing.Point(10, 34);
+            this.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays";
+            this.cbMultiscreenDrawOnExternalDisplays.Size = new System.Drawing.Size(175, 17);
+            this.cbMultiscreenDrawOnExternalDisplays.TabIndex = 23;
+            this.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays";
+            this.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true;
+            // 
+            // cbMultiscreenDrawOnPanels
+            // 
+            this.cbMultiscreenDrawOnPanels.AutoSize = true;
+            this.cbMultiscreenDrawOnPanels.Location = new System.Drawing.Point(10, 11);
+            this.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels";
+            this.cbMultiscreenDrawOnPanels.Size = new System.Drawing.Size(129, 17);
+            this.cbMultiscreenDrawOnPanels.TabIndex = 22;
+            this.cbMultiscreenDrawOnPanels.Text = "Draw video on panels";
+            this.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -8680,7 +8692,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbStretch1;
         private System.Windows.Forms.Panel pnScreen2;
         private System.Windows.Forms.Panel pnScreen1;
-        private System.Windows.Forms.CheckBox cbUseAdditionalScreens;
         private System.Windows.Forms.CheckBox cbTextLogoDateTime;
         private System.Windows.Forms.Button btTest;
         private System.Windows.Forms.Label label29;
@@ -8931,5 +8942,7 @@ namespace Media_Player_Demo
         private System.Windows.Forms.RadioButton rbMadVR;
         private System.Windows.Forms.Button btReversePlaybackNextFrame;
         private System.Windows.Forms.Button btPreviousFrame;
+        private System.Windows.Forms.CheckBox cbMultiscreenDrawOnExternalDisplays;
+        private System.Windows.Forms.CheckBox cbMultiscreenDrawOnPanels;
     }
 }
