@@ -281,6 +281,17 @@ namespace Media_Player_Demo
 
         private void cbImageLogo_CheckedChanged(object sender, EventArgs e)
         {
+            if (!File.Exists(edImageLogoFilename.Text))
+            {
+                if (cbImageLogo.Checked)
+                {
+                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
+                    cbImageLogo.Checked = false;
+                }
+
+                return;
+            }
+
             IVFVideoEffectImageLogo imageLogo;
             var effect = MediaPlayer1.Video_Effects_Get("ImageLogo");
             if (effect == null)
@@ -1323,11 +1334,6 @@ namespace Media_Player_Demo
             // Multiscreen
             MediaPlayer1.MultiScreen_Clear();
             MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked || cbMultiscreenDrawOnExternalDisplays.Checked;
-
-            if (!MediaPlayer1.MultiScreen_Enabled)
-            {
-                return;
-            }
 
             if (cbMultiscreenDrawOnPanels.Checked)
             {

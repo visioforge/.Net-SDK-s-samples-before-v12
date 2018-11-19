@@ -430,6 +430,17 @@ namespace Main_Demo
                 return;
             }
 
+            if (!File.Exists(edImageLogoFilename.Text))
+            {
+                if (cbImageLogo.IsChecked == true)
+                {
+                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
+                    cbImageLogo.IsChecked = false;
+                }
+
+                return;
+            }
+
             IVFVideoEffectImageLogo imageLogo;
             var effect = MediaPlayer1.Video_Effects_Get("ImageLogo");
             if (effect == null)

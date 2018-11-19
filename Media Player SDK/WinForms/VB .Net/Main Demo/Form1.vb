@@ -345,7 +345,15 @@ Public Class Form1
 
     Private Sub cbImageLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogo.CheckedChanged
 
-        If string.IsNullOrEmpty(edImageLogoLeft.Text)
+        If String.IsNullOrEmpty(edImageLogoLeft.Text) Then
+            Return
+        End If
+
+        If (Not File.Exists(edImageLogoFilename.Text)) Then
+            If (cbImageLogo.Checked) Then
+                MessageBox.Show("Unable to find " + edImageLogoFilename.Text)
+                cbImageLogo.Checked = False
+            End If
             Return
         End If
 
@@ -1418,10 +1426,6 @@ Public Class Form1
         ' Multiscreen
         MediaPlayer1.MultiScreen_Clear()
         MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked Or cbMultiscreenDrawOnExternalDisplays.Checked
-
-        If (Not MediaPlayer1.MultiScreen_Enabled) Then
-            Return
-        End If
 
         If (cbMultiscreenDrawOnPanels.Checked) Then
             MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height)

@@ -1,6 +1,7 @@
 ' ReSharper disable InconsistentNaming
 
 Imports System.Globalization
+Imports System.IO
 Imports System.Linq
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
@@ -3203,6 +3204,18 @@ Public Class Form1
     End Sub
 
     Private Sub cbImageLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogo.CheckedChanged
+
+        If String.IsNullOrEmpty(edImageLogoLeft.Text) Then
+            Return
+        End If
+
+        If (Not File.Exists(edImageLogoFilename.Text)) Then
+            If (cbImageLogo.Checked) Then
+                MessageBox.Show("Unable to find " + edImageLogoFilename.Text)
+                cbImageLogo.Checked = False
+            End If
+            Return
+        End If
 
         Dim imageLogo As IVFVideoEffectImageLogo
         Dim effect = VideoCapture1.Video_Effects_Get("ImageLogo")

@@ -1,6 +1,9 @@
 // ReSharper disable InconsistentNaming
 
  // ReSharper disable StyleCop.SA1601
+
+using System.IO;
+
 namespace Main_Demo
 {
     using System;
@@ -4166,6 +4169,17 @@ namespace Main_Demo
         {
             if (VideoCapture1 == null)
             {
+                return;
+            }
+
+            if (!File.Exists(edImageLogoFilename.Text))
+            {
+                if (cbImageLogo.IsChecked == true)
+                {
+                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
+                    cbImageLogo.IsChecked = false;
+                }
+
                 return;
             }
 

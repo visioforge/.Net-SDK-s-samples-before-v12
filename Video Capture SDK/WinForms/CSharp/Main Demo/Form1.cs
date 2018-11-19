@@ -4673,6 +4673,17 @@ namespace VideoCapture_CSharp_Demo
 
         private void cbImageLogo_CheckedChanged(object sender, EventArgs e)
         {
+            if (!File.Exists(edImageLogoFilename.Text))
+            {
+                if (cbImageLogo.Checked)
+                {
+                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
+                    cbImageLogo.Checked = false;
+                }
+
+                return;
+            }
+
             IVFVideoEffectImageLogo imageLogo;
             var effect = VideoCapture1.Video_Effects_Get("ImageLogo");
             if (effect == null)

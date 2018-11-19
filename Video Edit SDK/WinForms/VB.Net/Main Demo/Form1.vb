@@ -2230,6 +2230,18 @@ Public Class Form1
 
     Private Sub cbImageLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogo.CheckedChanged
 
+        If String.IsNullOrEmpty(edImageLogoLeft.Text) Then
+            Return
+        End If
+
+        If (Not File.Exists(edImageLogoFilename.Text)) Then
+            If (cbImageLogo.Checked) Then
+                MessageBox.Show("Unable to find " + edImageLogoFilename.Text)
+                cbImageLogo.Checked = False
+            End If
+            Return
+        End If
+
         Dim imageLogo As IVFVideoEffectImageLogo
         Dim effect = VideoEdit1.Video_Effects_Get("ImageLogo")
         If (IsNothing(effect)) Then

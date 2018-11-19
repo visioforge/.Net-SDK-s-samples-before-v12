@@ -1496,7 +1496,7 @@
                                     </TabItem>
                                     <TabItem Header="Image Logo" Name="tabItem23">
                                         <Grid>
-                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="cbImageLogo" VerticalAlignment="Top" Checked="cbImageLogo_CheckedChanged" />
+                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" Name="cbImageLogo" VerticalAlignment="Top" Checked="cbImageLogo_CheckedChanged" Unchecked="cbImageLogo_CheckedChanged" />
                                             <TextBox Height="23" HorizontalAlignment="Left" Margin="96,39,0,0" Name="edImageLogoFilename" VerticalAlignment="Top" Width="200" Text="C:\1.png" />
                                             <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="302,39,0,0" Name="btSelectImage" VerticalAlignment="Top" Width="26" Click="btSelectImage_Click" />
                                             <Label Content="File name" Height="28" HorizontalAlignment="Left" Margin="29,38,0,0" Name="label86" VerticalAlignment="Top" />

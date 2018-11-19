@@ -2695,8 +2695,19 @@ namespace Main_Demo
 
         private void cbImageLogo_CheckedChanged(object sender, RoutedEventArgs e)
         {
-            if (this.VideoEdit1 == null)
+            if (VideoEdit1 == null)
             {
+                return;
+            }
+
+            if (!File.Exists(edImageLogoFilename.Text))
+            {
+                if (cbImageLogo.IsChecked == true)
+                {
+                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
+                    cbImageLogo.IsChecked = false;
+                }
+
                 return;
             }
 
