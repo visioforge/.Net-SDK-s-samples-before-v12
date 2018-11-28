@@ -148,6 +148,8 @@ Partial Class Form1
         Me.edAspectRatioX = New System.Windows.Forms.TextBox()
         Me.cbAspectRatioUseCustom = New System.Windows.Forms.CheckBox()
         Me.tabPage17 = New System.Windows.Forms.TabPage()
+        Me.cbMultiscreenDrawOnExternalDisplays = New System.Windows.Forms.CheckBox()
+        Me.cbMultiscreenDrawOnPanels = New System.Windows.Forms.CheckBox()
         Me.cbFlipHorizontal2 = New System.Windows.Forms.CheckBox()
         Me.cbFlipVertical2 = New System.Windows.Forms.CheckBox()
         Me.cbStretch2 = New System.Windows.Forms.CheckBox()
@@ -679,8 +681,8 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
-        Me.cbMultiscreenDrawOnExternalDisplays = New System.Windows.Forms.CheckBox()
-        Me.cbMultiscreenDrawOnPanels = New System.Windows.Forms.CheckBox()
+        Me.cbTextLogoFadeOut = New System.Windows.Forms.CheckBox()
+        Me.cbTextLogoFadeIn = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -2098,6 +2100,26 @@ Partial Class Form1
         Me.tabPage17.Text = "Multiscreen"
         Me.tabPage17.UseVisualStyleBackColor = true
         '
+        'cbMultiscreenDrawOnExternalDisplays
+        '
+        Me.cbMultiscreenDrawOnExternalDisplays.AutoSize = true
+        Me.cbMultiscreenDrawOnExternalDisplays.Location = New System.Drawing.Point(10, 33)
+        Me.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays"
+        Me.cbMultiscreenDrawOnExternalDisplays.Size = New System.Drawing.Size(175, 17)
+        Me.cbMultiscreenDrawOnExternalDisplays.TabIndex = 23
+        Me.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays"
+        Me.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true
+        '
+        'cbMultiscreenDrawOnPanels
+        '
+        Me.cbMultiscreenDrawOnPanels.AutoSize = true
+        Me.cbMultiscreenDrawOnPanels.Location = New System.Drawing.Point(10, 10)
+        Me.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels"
+        Me.cbMultiscreenDrawOnPanels.Size = New System.Drawing.Size(129, 17)
+        Me.cbMultiscreenDrawOnPanels.TabIndex = 22
+        Me.cbMultiscreenDrawOnPanels.Text = "Draw video on panels"
+        Me.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true
+        '
         'cbFlipHorizontal2
         '
         Me.cbFlipHorizontal2.AutoSize = true
@@ -2291,7 +2313,7 @@ Partial Class Form1
         'cbTextLogoDateTime
         '
         Me.cbTextLogoDateTime.AutoSize = true
-        Me.cbTextLogoDateTime.Location = New System.Drawing.Point(186, 16)
+        Me.cbTextLogoDateTime.Location = New System.Drawing.Point(184, 6)
         Me.cbTextLogoDateTime.Name = "cbTextLogoDateTime"
         Me.cbTextLogoDateTime.Size = New System.Drawing.Size(83, 17)
         Me.cbTextLogoDateTime.TabIndex = 22
@@ -2316,10 +2338,10 @@ Partial Class Form1
         Me.tabControl8.Controls.Add(Me.tabPage39)
         Me.tabControl8.Controls.Add(Me.tabPage40)
         Me.tabControl8.Controls.Add(Me.tabPage41)
-        Me.tabControl8.Location = New System.Drawing.Point(8, 73)
+        Me.tabControl8.Location = New System.Drawing.Point(8, 54)
         Me.tabControl8.Name = "tabControl8"
         Me.tabControl8.SelectedIndex = 0
-        Me.tabControl8.Size = New System.Drawing.Size(261, 140)
+        Me.tabControl8.Size = New System.Drawing.Size(261, 159)
         Me.tabControl8.TabIndex = 18
         '
         'tabPage35
@@ -2663,6 +2685,8 @@ Partial Class Form1
         '
         'tabPage39
         '
+        Me.tabPage39.Controls.Add(Me.cbTextLogoFadeOut)
+        Me.tabPage39.Controls.Add(Me.cbTextLogoFadeIn)
         Me.tabPage39.Controls.Add(Me.edTextLogoOuterSize)
         Me.tabPage39.Controls.Add(Me.label143)
         Me.tabPage39.Controls.Add(Me.edTextLogoInnerSize)
@@ -2676,14 +2700,14 @@ Partial Class Form1
         Me.tabPage39.Location = New System.Drawing.Point(4, 22)
         Me.tabPage39.Name = "tabPage39"
         Me.tabPage39.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage39.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage39.Size = New System.Drawing.Size(253, 133)
         Me.tabPage39.TabIndex = 4
         Me.tabPage39.Text = "Effects"
         Me.tabPage39.UseVisualStyleBackColor = true
         '
         'edTextLogoOuterSize
         '
-        Me.edTextLogoOuterSize.Location = New System.Drawing.Point(214, 88)
+        Me.edTextLogoOuterSize.Location = New System.Drawing.Point(214, 77)
         Me.edTextLogoOuterSize.Name = "edTextLogoOuterSize"
         Me.edTextLogoOuterSize.Size = New System.Drawing.Size(33, 20)
         Me.edTextLogoOuterSize.TabIndex = 37
@@ -2692,7 +2716,7 @@ Partial Class Form1
         'label143
         '
         Me.label143.AutoSize = true
-        Me.label143.Location = New System.Drawing.Point(138, 91)
+        Me.label143.Location = New System.Drawing.Point(138, 80)
         Me.label143.Name = "label143"
         Me.label143.Size = New System.Drawing.Size(65, 13)
         Me.label143.TabIndex = 36
@@ -2700,7 +2724,7 @@ Partial Class Form1
         '
         'edTextLogoInnerSize
         '
-        Me.edTextLogoInnerSize.Location = New System.Drawing.Point(72, 88)
+        Me.edTextLogoInnerSize.Location = New System.Drawing.Point(72, 77)
         Me.edTextLogoInnerSize.Name = "edTextLogoInnerSize"
         Me.edTextLogoInnerSize.Size = New System.Drawing.Size(33, 20)
         Me.edTextLogoInnerSize.TabIndex = 35
@@ -2709,7 +2733,7 @@ Partial Class Form1
         'label144
         '
         Me.label144.AutoSize = true
-        Me.label144.Location = New System.Drawing.Point(14, 91)
+        Me.label144.Location = New System.Drawing.Point(14, 80)
         Me.label144.Name = "label144"
         Me.label144.Size = New System.Drawing.Size(47, 13)
         Me.label144.TabIndex = 34
@@ -3038,7 +3062,7 @@ Partial Class Form1
         '
         'btFont
         '
-        Me.btFont.Location = New System.Drawing.Point(222, 38)
+        Me.btFont.Location = New System.Drawing.Point(220, 28)
         Me.btFont.Name = "btFont"
         Me.btFont.Size = New System.Drawing.Size(47, 23)
         Me.btFont.TabIndex = 16
@@ -3047,7 +3071,7 @@ Partial Class Form1
         '
         'edTextLogo
         '
-        Me.edTextLogo.Location = New System.Drawing.Point(8, 38)
+        Me.edTextLogo.Location = New System.Drawing.Point(6, 28)
         Me.edTextLogo.Name = "edTextLogo"
         Me.edTextLogo.Size = New System.Drawing.Size(208, 20)
         Me.edTextLogo.TabIndex = 15
@@ -3056,7 +3080,7 @@ Partial Class Form1
         'cbTextLogo
         '
         Me.cbTextLogo.AutoSize = true
-        Me.cbTextLogo.Location = New System.Drawing.Point(8, 16)
+        Me.cbTextLogo.Location = New System.Drawing.Point(6, 6)
         Me.cbTextLogo.Name = "cbTextLogo"
         Me.cbTextLogo.Size = New System.Drawing.Size(65, 17)
         Me.cbTextLogo.TabIndex = 14
@@ -7634,25 +7658,25 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
-        'cbMultiscreenDrawOnExternalDisplays
+        'cbTextLogoFadeOut
         '
-        Me.cbMultiscreenDrawOnExternalDisplays.AutoSize = true
-        Me.cbMultiscreenDrawOnExternalDisplays.Location = New System.Drawing.Point(10, 33)
-        Me.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays"
-        Me.cbMultiscreenDrawOnExternalDisplays.Size = New System.Drawing.Size(175, 17)
-        Me.cbMultiscreenDrawOnExternalDisplays.TabIndex = 23
-        Me.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays"
-        Me.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true
+        Me.cbTextLogoFadeOut.AutoSize = true
+        Me.cbTextLogoFadeOut.Location = New System.Drawing.Point(92, 105)
+        Me.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut"
+        Me.cbTextLogoFadeOut.Size = New System.Drawing.Size(142, 17)
+        Me.cbTextLogoFadeOut.TabIndex = 45
+        Me.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)"
+        Me.cbTextLogoFadeOut.UseVisualStyleBackColor = true
         '
-        'cbMultiscreenDrawOnPanels
+        'cbTextLogoFadeIn
         '
-        Me.cbMultiscreenDrawOnPanels.AutoSize = true
-        Me.cbMultiscreenDrawOnPanels.Location = New System.Drawing.Point(10, 10)
-        Me.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels"
-        Me.cbMultiscreenDrawOnPanels.Size = New System.Drawing.Size(129, 17)
-        Me.cbMultiscreenDrawOnPanels.TabIndex = 22
-        Me.cbMultiscreenDrawOnPanels.Text = "Draw video on panels"
-        Me.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true
+        Me.cbTextLogoFadeIn.AutoSize = true
+        Me.cbTextLogoFadeIn.Location = New System.Drawing.Point(18, 105)
+        Me.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn"
+        Me.cbTextLogoFadeIn.Size = New System.Drawing.Size(62, 17)
+        Me.cbTextLogoFadeIn.TabIndex = 44
+        Me.cbTextLogoFadeIn.Text = "Fade-In"
+        Me.cbTextLogoFadeIn.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -8563,4 +8587,6 @@ End Sub
     Friend WithEvents btPreviousFrame As Button
     Private WithEvents cbMultiscreenDrawOnExternalDisplays As CheckBox
     Private WithEvents cbMultiscreenDrawOnPanels As CheckBox
+    Private WithEvents cbTextLogoFadeOut As CheckBox
+    Private WithEvents cbTextLogoFadeIn As CheckBox
 End Class

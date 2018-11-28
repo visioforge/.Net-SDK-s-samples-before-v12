@@ -73,10 +73,10 @@
                     <TabControl Height="525" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="tabControl6" VerticalAlignment="Top" Width="372">
                         <TabItem Header="Effects (SW)" x:Name="tabItem15">
                             <Grid>
-                                <TabControl Height="271" HorizontalAlignment="Left" Margin="0,182,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="362">
+                                <TabControl Height="302" HorizontalAlignment="Left" Margin="0,131,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="362">
                                     <TabItem Header="Text logo">
                                         <Grid>
-                                            <TabControl Height="151" HorizontalAlignment="Left" Margin="0,54,0,0" x:Name="tabControl8" VerticalAlignment="Top" Width="340">
+                                            <TabControl Height="182" HorizontalAlignment="Left" Margin="0,54,0,0" x:Name="tabControl8" VerticalAlignment="Top" Width="356">
                                                 <TabItem Header="Gradient" x:Name="tabItem17">
                                                     <Grid>
                                                         <Rectangle Fill="White" Height="29" HorizontalAlignment="Left" Margin="144,17,0,0" MouseDown="pnTextLogoGradColor1_MouseDown" x:Name="pnTextLogoGradColor1" Stroke="Black" VerticalAlignment="Top" Width="32" />
@@ -151,6 +151,8 @@
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="128,69,0,0" x:Name="edTextLogoInnerSize" Text="1" VerticalAlignment="Top" Width="32" />
                                                         <Label Content="Second size" Height="23" HorizontalAlignment="Left" Margin="176,66,0,0" x:Name="label79" VerticalAlignment="Top" Width="73" />
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="255,69,0,0" x:Name="edTextLogoOuterSize" Text="1" VerticalAlignment="Top" Width="32" />
+                                                        <CheckBox x:Name="cbTextLogoFadeOut" Content="Fade-Out (if duration set)" HorizontalAlignment="Left" Margin="95,114,0,0" VerticalAlignment="Top"/>
+                                                        <CheckBox x:Name="cbTextLogoFadeIn" Content="Fade-In" HorizontalAlignment="Left" Margin="12,114,0,0" VerticalAlignment="Top"/>
                                                     </Grid>
                                                 </TabItem>
                                                 <TabItem Header="Rotation" x:Name="tabItem21">
@@ -214,7 +216,7 @@
                                             <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="17,3,0,0" x:Name="cbTextLogo" VerticalAlignment="Top" Checked="cbTextLogo_Checked" Unchecked="cbTextLogo_Checked" />
                                             <TextBox Height="23" HorizontalAlignment="Left" Margin="17,23,0,0" x:Name="edTextLogo" Text="Hello!" VerticalAlignment="Top" Width="237" />
                                             <Button Click="btFont_Click" Content="Font" Height="23" HorizontalAlignment="Left" Margin="266,23,0,0" x:Name="btFont" VerticalAlignment="Top" Width="62" />
-                                            <Button Click="btTextLogoUpdateParams_Click" Content="Update" Height="23" HorizontalAlignment="Left" Margin="253,210,0,0" x:Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" />
+                                            <Button Click="btTextLogoUpdateParams_Click" Content="Update" Height="23" HorizontalAlignment="Left" Margin="265,241,0,0" x:Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" />
                                             <CheckBox Content="Date / Time" Height="16" HorizontalAlignment="Left" Margin="266,3,0,0" x:Name="cbTextLogoDateTime" VerticalAlignment="Top" />
                                         </Grid>
                                     </TabItem>
@@ -329,16 +331,16 @@
                                     </TabItem>
                                 </TabControl>
                                 <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="10,10,0,0" x:Name="cbEffects" VerticalAlignment="Top" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="44,61,0,0" Maximum="255" x:Name="tbLightness" ValueChanged="tbLightness_Scroll" VerticalAlignment="Top" Width="100" />
-                                <Label Content="Lightness" Height="28" HorizontalAlignment="Left" Margin="69,34,0,0" x:Name="label92" VerticalAlignment="Top" Width="86" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="212,61,0,0" Maximum="255" x:Name="tbSaturation" Value="255" ValueChanged="tbSaturation_Scroll" VerticalAlignment="Top" Width="100" />
-                                <Label Content="Saturation" Height="28" HorizontalAlignment="Left" Margin="235,34,0,0" x:Name="label93" VerticalAlignment="Top" Width="86" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="44,116,0,0" Maximum="255" x:Name="tbContrast" ValueChanged="tbContrast_Scroll" VerticalAlignment="Top" Width="100" />
-                                <Label Content="Contrast" Height="28" HorizontalAlignment="Left" Margin="65,89,0,0" x:Name="label94" VerticalAlignment="Top" Width="60" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="212,116,0,0" Maximum="255" x:Name="tbDarkness" ValueChanged="tbDarkness_Scroll" VerticalAlignment="Top" Width="100" />
-                                <Label Content="Darkness" Height="28" HorizontalAlignment="Left" Margin="235,89,0,0" x:Name="label95" VerticalAlignment="Top" Width="86" />
-                                <CheckBox Content="Grayscale" Height="16" HorizontalAlignment="Left" Margin="44,154,0,0" x:Name="cbGreyscale" VerticalAlignment="Top" Checked="cbGreyscale_Checked" Unchecked="cbGreyscale_Checked" />
-                                <CheckBox Content="Invert" Height="16" HorizontalAlignment="Left" Margin="212,154,0,0" x:Name="cbInvert" VerticalAlignment="Top" Checked="cbInvert_Checked" Unchecked="cbInvert_Checked" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="78,43,0,0" Maximum="255" x:Name="tbLightness" ValueChanged="tbLightness_Scroll" VerticalAlignment="Top" Width="100" />
+                                <Label Content="Lightness" Height="28" HorizontalAlignment="Left" Margin="10,38,0,0" x:Name="label92" VerticalAlignment="Top" Width="86" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="256,43,0,0" Maximum="255" x:Name="tbSaturation" Value="255" ValueChanged="tbSaturation_Scroll" VerticalAlignment="Top" Width="100" />
+                                <Label Content="Saturation" Height="28" HorizontalAlignment="Left" Margin="192,38,0,0" x:Name="label93" VerticalAlignment="Top" Width="64" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="78,76,0,0" Maximum="255" x:Name="tbContrast" ValueChanged="tbContrast_Scroll" VerticalAlignment="Top" Width="100" />
+                                <Label Content="Contrast" Height="28" HorizontalAlignment="Left" Margin="12,71,0,0" x:Name="label94" VerticalAlignment="Top" Width="60" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="256,76,0,0" Maximum="255" x:Name="tbDarkness" ValueChanged="tbDarkness_Scroll" VerticalAlignment="Top" Width="100" />
+                                <Label Content="Darkness" Height="28" HorizontalAlignment="Left" Margin="192,71,0,0" x:Name="label95" VerticalAlignment="Top" Width="86" />
+                                <CheckBox Content="Grayscale" Height="16" HorizontalAlignment="Left" Margin="20,110,0,0" x:Name="cbGreyscale" VerticalAlignment="Top" Checked="cbGreyscale_Checked" Unchecked="cbGreyscale_Checked" />
+                                <CheckBox Content="Invert" Height="16" HorizontalAlignment="Left" Margin="128,110,0,0" x:Name="cbInvert" VerticalAlignment="Top" Checked="cbInvert_Checked" Unchecked="cbInvert_Checked" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Deinterlace (SW)" x:Name="tabItem24">

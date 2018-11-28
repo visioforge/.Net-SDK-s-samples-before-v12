@@ -1346,13 +1346,13 @@
             </TabItem>
             <TabItem Header="Video processing" Name="tabItem14">
                 <Grid>
-                    <TabControl Height="525" HorizontalAlignment="Left" Name="tabControl6" VerticalAlignment="Top" Width="372" Margin="0,10,0,0">
+                    <TabControl Height="542" HorizontalAlignment="Left" Name="tabControl6" VerticalAlignment="Top" Width="372" Margin="0,10,0,0">
                         <TabItem Header="Effects" Name="tabItem15">
                             <Grid>
-                                <TabControl Height="271" HorizontalAlignment="Left" Margin="6,202,0,0" Name="tabControl7" VerticalAlignment="Top" Width="350">
+                                <TabControl Height="292" HorizontalAlignment="Left" Margin="6,202,0,0" Name="tabControl7" VerticalAlignment="Top" Width="350">
                                     <TabItem Header="Text Logo" Name="tabItem16">
                                         <Grid>
-                                            <TabControl Height="151" HorizontalAlignment="Left" Margin="0,54,0,0" Name="tabControl8" VerticalAlignment="Top" Width="340">
+                                            <TabControl Height="172" HorizontalAlignment="Left" Margin="0,54,0,0" Name="tabControl8" VerticalAlignment="Top" Width="340">
                                                 <TabItem Header="Gradient" Name="tabItem17">
                                                     <Grid>
                                                         <Rectangle Height="29" HorizontalAlignment="Left" Margin="144,17,0,0" Name="pnTextLogoGradColor1" Stroke="Black" VerticalAlignment="Top" Width="32" Fill="White" MouseDown="pnTextLogoGradColor1_MouseDown" />
@@ -1427,6 +1427,8 @@
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="128,69,0,0" Name="edTextLogoInnerSize" Text="1" VerticalAlignment="Top" Width="32" />
                                                         <Label Content="Second size" Height="23" HorizontalAlignment="Left" Margin="176,66,0,0" Name="label79" VerticalAlignment="Top" Width="73" />
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="255,69,0,0" Name="edTextLogoOuterSize" Text="1" VerticalAlignment="Top" Width="32" />
+                                                        <CheckBox x:Name="cbTextLogoFadeOut" Content="Fade-Out (if duration set)" HorizontalAlignment="Left" Margin="95,104,0,0" VerticalAlignment="Top"/>
+                                                        <CheckBox x:Name="cbTextLogoFadeIn" Content="Fade-In" HorizontalAlignment="Left" Margin="12,104,0,0" VerticalAlignment="Top"/>
                                                     </Grid>
                                                 </TabItem>
                                                 <TabItem Header="Rotation" Name="tabItem21">
@@ -1490,7 +1492,7 @@
                                             <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="17,3,0,0" Name="cbTextLogo" VerticalAlignment="Top" Click="cbTextLogo_CheckedChanged" />
                                             <TextBox Height="23" HorizontalAlignment="Left" Margin="17,23,0,0" Name="edTextLogo" VerticalAlignment="Top" Width="237" Text="Hello!" />
                                             <Button Content="Font" Height="23" HorizontalAlignment="Left" Margin="266,23,0,0" Name="btFont" VerticalAlignment="Top" Width="62" Click="btFont_Click" />
-                                            <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="253,210,0,0" Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" Click="btTextLogoUpdateParams_Click" />
+                                            <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="259,231,0,0" Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" Click="btTextLogoUpdateParams_Click" />
                                             <CheckBox Content="Date / Time" Height="16" HorizontalAlignment="Left" Margin="248,3,0,0" Name="cbTextLogoDateTime" VerticalAlignment="Top" Width="92" />
                                         </Grid>
                                     </TabItem>

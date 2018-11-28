@@ -5410,6 +5410,26 @@ namespace VideoCapture_CSharp_Demo
             {
                 textLogo.Mode = TextLogoMode.Timestamp;
             }
+            
+            if (cbTextLogoFadeIn.Checked)
+            {
+                textLogo.FadeIn = true;
+                textLogo.FadeInDuration = 5000;
+            }
+            else
+            {
+                textLogo.FadeIn = false;
+            }
+
+            if (cbTextLogoFadeOut.Checked)
+            {
+                textLogo.FadeOut = true;
+                textLogo.FadeOutDuration = 5000;
+            }
+            else
+            {
+                textLogo.FadeOut = false;
+            }
 
             textLogo.Update();
         }

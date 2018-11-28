@@ -420,6 +420,26 @@ namespace Main_Demo
                 textLogo.Mode = TextLogoMode.Text;
             }
 
+            if (cbTextLogoFadeIn.IsChecked == true)
+            {
+                textLogo.FadeIn = true;
+                textLogo.FadeInDuration = 5000;
+            }
+            else
+            {
+                textLogo.FadeIn = false;
+            }
+
+            if (cbTextLogoFadeOut.IsChecked == true)
+            {
+                textLogo.FadeOut = true;
+                textLogo.FadeOutDuration = 5000;
+            }
+            else
+            {
+                textLogo.FadeOut = false;
+            }
+
             textLogo.Update();
         }
 

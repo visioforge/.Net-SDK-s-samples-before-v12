@@ -2223,6 +2223,20 @@ Public Class Form1
         Else
             textLogo.Mode = TextLogoMode.Text
         End If
+        
+        If (cbTextLogoFadeIn.Checked) Then
+            textLogo.FadeIn = True
+            textLogo.FadeInDuration = 5000
+        Else
+            textLogo.FadeIn = False
+        End If
+
+        If (cbTextLogoFadeOut.Checked) Then
+            textLogo.FadeOut = True
+            textLogo.FadeOutDuration = 5000
+        Else
+            textLogo.FadeOut = False
+        End If
 
         textLogo.Update()
 

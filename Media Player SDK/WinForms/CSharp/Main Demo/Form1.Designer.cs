@@ -107,6 +107,8 @@ namespace Media_Player_Demo
             this.edAspectRatioX = new System.Windows.Forms.TextBox();
             this.cbAspectRatioUseCustom = new System.Windows.Forms.CheckBox();
             this.tabPage17 = new System.Windows.Forms.TabPage();
+            this.cbMultiscreenDrawOnExternalDisplays = new System.Windows.Forms.CheckBox();
+            this.cbMultiscreenDrawOnPanels = new System.Windows.Forms.CheckBox();
             this.cbFlipHorizontal2 = new System.Windows.Forms.CheckBox();
             this.cbFlipVertical2 = new System.Windows.Forms.CheckBox();
             this.cbStretch2 = new System.Windows.Forms.CheckBox();
@@ -691,8 +693,8 @@ namespace Media_Player_Demo
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
-            this.cbMultiscreenDrawOnExternalDisplays = new System.Windows.Forms.CheckBox();
-            this.cbMultiscreenDrawOnPanels = new System.Windows.Forms.CheckBox();
+            this.cbTextLogoFadeOut = new System.Windows.Forms.CheckBox();
+            this.cbTextLogoFadeIn = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1684,6 +1686,26 @@ namespace Media_Player_Demo
             this.tabPage17.Text = "Multiscreen";
             this.tabPage17.UseVisualStyleBackColor = true;
             // 
+            // cbMultiscreenDrawOnExternalDisplays
+            // 
+            this.cbMultiscreenDrawOnExternalDisplays.AutoSize = true;
+            this.cbMultiscreenDrawOnExternalDisplays.Location = new System.Drawing.Point(10, 34);
+            this.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays";
+            this.cbMultiscreenDrawOnExternalDisplays.Size = new System.Drawing.Size(175, 17);
+            this.cbMultiscreenDrawOnExternalDisplays.TabIndex = 23;
+            this.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays";
+            this.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true;
+            // 
+            // cbMultiscreenDrawOnPanels
+            // 
+            this.cbMultiscreenDrawOnPanels.AutoSize = true;
+            this.cbMultiscreenDrawOnPanels.Location = new System.Drawing.Point(10, 11);
+            this.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels";
+            this.cbMultiscreenDrawOnPanels.Size = new System.Drawing.Size(129, 17);
+            this.cbMultiscreenDrawOnPanels.TabIndex = 22;
+            this.cbMultiscreenDrawOnPanels.Text = "Draw video on panels";
+            this.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true;
+            // 
             // cbFlipHorizontal2
             // 
             this.cbFlipHorizontal2.AutoSize = true;
@@ -1883,7 +1905,7 @@ namespace Media_Player_Demo
             // cbTextLogoDateTime
             // 
             this.cbTextLogoDateTime.AutoSize = true;
-            this.cbTextLogoDateTime.Location = new System.Drawing.Point(182, 16);
+            this.cbTextLogoDateTime.Location = new System.Drawing.Point(182, 6);
             this.cbTextLogoDateTime.Name = "cbTextLogoDateTime";
             this.cbTextLogoDateTime.Size = new System.Drawing.Size(83, 17);
             this.cbTextLogoDateTime.TabIndex = 21;
@@ -1909,10 +1931,10 @@ namespace Media_Player_Demo
             this.tabControl8.Controls.Add(this.tabPage39);
             this.tabControl8.Controls.Add(this.tabPage40);
             this.tabControl8.Controls.Add(this.tabPage41);
-            this.tabControl8.Location = new System.Drawing.Point(8, 73);
+            this.tabControl8.Location = new System.Drawing.Point(8, 57);
             this.tabControl8.Name = "tabControl8";
             this.tabControl8.SelectedIndex = 0;
-            this.tabControl8.Size = new System.Drawing.Size(261, 140);
+            this.tabControl8.Size = new System.Drawing.Size(261, 156);
             this.tabControl8.TabIndex = 18;
             // 
             // tabPage35
@@ -2280,6 +2302,8 @@ namespace Media_Player_Demo
             // 
             // tabPage39
             // 
+            this.tabPage39.Controls.Add(this.cbTextLogoFadeOut);
+            this.tabPage39.Controls.Add(this.cbTextLogoFadeIn);
             this.tabPage39.Controls.Add(this.edTextLogoOuterSize);
             this.tabPage39.Controls.Add(this.label143);
             this.tabPage39.Controls.Add(this.edTextLogoInnerSize);
@@ -2293,14 +2317,14 @@ namespace Media_Player_Demo
             this.tabPage39.Location = new System.Drawing.Point(4, 22);
             this.tabPage39.Name = "tabPage39";
             this.tabPage39.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage39.Size = new System.Drawing.Size(253, 114);
+            this.tabPage39.Size = new System.Drawing.Size(253, 130);
             this.tabPage39.TabIndex = 4;
             this.tabPage39.Text = "Effects";
             this.tabPage39.UseVisualStyleBackColor = true;
             // 
             // edTextLogoOuterSize
             // 
-            this.edTextLogoOuterSize.Location = new System.Drawing.Point(214, 88);
+            this.edTextLogoOuterSize.Location = new System.Drawing.Point(214, 78);
             this.edTextLogoOuterSize.Name = "edTextLogoOuterSize";
             this.edTextLogoOuterSize.Size = new System.Drawing.Size(33, 20);
             this.edTextLogoOuterSize.TabIndex = 37;
@@ -2309,7 +2333,7 @@ namespace Media_Player_Demo
             // label143
             // 
             this.label143.AutoSize = true;
-            this.label143.Location = new System.Drawing.Point(138, 91);
+            this.label143.Location = new System.Drawing.Point(138, 81);
             this.label143.Name = "label143";
             this.label143.Size = new System.Drawing.Size(65, 13);
             this.label143.TabIndex = 36;
@@ -2317,7 +2341,7 @@ namespace Media_Player_Demo
             // 
             // edTextLogoInnerSize
             // 
-            this.edTextLogoInnerSize.Location = new System.Drawing.Point(72, 88);
+            this.edTextLogoInnerSize.Location = new System.Drawing.Point(72, 78);
             this.edTextLogoInnerSize.Name = "edTextLogoInnerSize";
             this.edTextLogoInnerSize.Size = new System.Drawing.Size(33, 20);
             this.edTextLogoInnerSize.TabIndex = 35;
@@ -2326,7 +2350,7 @@ namespace Media_Player_Demo
             // label144
             // 
             this.label144.AutoSize = true;
-            this.label144.Location = new System.Drawing.Point(14, 91);
+            this.label144.Location = new System.Drawing.Point(14, 81);
             this.label144.Name = "label144";
             this.label144.Size = new System.Drawing.Size(47, 13);
             this.label144.TabIndex = 34;
@@ -2668,7 +2692,7 @@ namespace Media_Player_Demo
             // 
             // btFont
             // 
-            this.btFont.Location = new System.Drawing.Point(222, 38);
+            this.btFont.Location = new System.Drawing.Point(222, 28);
             this.btFont.Name = "btFont";
             this.btFont.Size = new System.Drawing.Size(47, 23);
             this.btFont.TabIndex = 16;
@@ -2678,7 +2702,7 @@ namespace Media_Player_Demo
             // 
             // edTextLogo
             // 
-            this.edTextLogo.Location = new System.Drawing.Point(8, 38);
+            this.edTextLogo.Location = new System.Drawing.Point(8, 28);
             this.edTextLogo.Name = "edTextLogo";
             this.edTextLogo.Size = new System.Drawing.Size(208, 20);
             this.edTextLogo.TabIndex = 15;
@@ -2687,7 +2711,7 @@ namespace Media_Player_Demo
             // cbTextLogo
             // 
             this.cbTextLogo.AutoSize = true;
-            this.cbTextLogo.Location = new System.Drawing.Point(8, 16);
+            this.cbTextLogo.Location = new System.Drawing.Point(8, 6);
             this.cbTextLogo.Name = "cbTextLogo";
             this.cbTextLogo.Size = new System.Drawing.Size(65, 17);
             this.cbTextLogo.TabIndex = 14;
@@ -7997,25 +8021,25 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
             // 
-            // cbMultiscreenDrawOnExternalDisplays
+            // cbTextLogoFadeOut
             // 
-            this.cbMultiscreenDrawOnExternalDisplays.AutoSize = true;
-            this.cbMultiscreenDrawOnExternalDisplays.Location = new System.Drawing.Point(10, 34);
-            this.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays";
-            this.cbMultiscreenDrawOnExternalDisplays.Size = new System.Drawing.Size(175, 17);
-            this.cbMultiscreenDrawOnExternalDisplays.TabIndex = 23;
-            this.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays";
-            this.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true;
+            this.cbTextLogoFadeOut.AutoSize = true;
+            this.cbTextLogoFadeOut.Location = new System.Drawing.Point(91, 107);
+            this.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut";
+            this.cbTextLogoFadeOut.Size = new System.Drawing.Size(142, 17);
+            this.cbTextLogoFadeOut.TabIndex = 43;
+            this.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)";
+            this.cbTextLogoFadeOut.UseVisualStyleBackColor = true;
             // 
-            // cbMultiscreenDrawOnPanels
+            // cbTextLogoFadeIn
             // 
-            this.cbMultiscreenDrawOnPanels.AutoSize = true;
-            this.cbMultiscreenDrawOnPanels.Location = new System.Drawing.Point(10, 11);
-            this.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels";
-            this.cbMultiscreenDrawOnPanels.Size = new System.Drawing.Size(129, 17);
-            this.cbMultiscreenDrawOnPanels.TabIndex = 22;
-            this.cbMultiscreenDrawOnPanels.Text = "Draw video on panels";
-            this.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true;
+            this.cbTextLogoFadeIn.AutoSize = true;
+            this.cbTextLogoFadeIn.Location = new System.Drawing.Point(17, 107);
+            this.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn";
+            this.cbTextLogoFadeIn.Size = new System.Drawing.Size(62, 17);
+            this.cbTextLogoFadeIn.TabIndex = 42;
+            this.cbTextLogoFadeIn.Text = "Fade-In";
+            this.cbTextLogoFadeIn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -8944,5 +8968,7 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Button btPreviousFrame;
         private System.Windows.Forms.CheckBox cbMultiscreenDrawOnExternalDisplays;
         private System.Windows.Forms.CheckBox cbMultiscreenDrawOnPanels;
+        private System.Windows.Forms.CheckBox cbTextLogoFadeOut;
+        private System.Windows.Forms.CheckBox cbTextLogoFadeIn;
     }
 }

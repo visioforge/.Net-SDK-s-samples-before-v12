@@ -1326,10 +1326,10 @@
                     <TabControl Height="550" HorizontalAlignment="Left" x:Name="tabControl6" VerticalAlignment="Top" Width="372" Margin="0,0,0,0">
                         <TabItem Header="Effects" x:Name="tabItem15">
                             <Grid>
-                                <TabControl Height="271" HorizontalAlignment="Left" Margin="0,202,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="364">
+                                <TabControl Height="290" HorizontalAlignment="Left" Margin="0,202,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="364">
                                     <TabItem Header="Text logo">
                                         <Grid>
-                                            <TabControl Height="181" HorizontalAlignment="Left" Margin="8,24,0,0" x:Name="tabControl8" VerticalAlignment="Top" Width="340">
+                                            <TabControl Height="200" HorizontalAlignment="Left" Margin="8,24,0,0" x:Name="tabControl8" VerticalAlignment="Top" Width="340">
                                                 <TabItem Header="Main" >
                                                     <Grid>
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="33,30,0,0" x:Name="edTextLogo" VerticalAlignment="Top" Width="237" Text="Hello!" />
@@ -1431,6 +1431,8 @@
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="128,69,0,0" x:Name="edTextLogoInnerSize" Text="1" VerticalAlignment="Top" Width="32" />
                                                         <Label Content="Second size" Height="23" HorizontalAlignment="Left" Margin="176,66,0,0" x:Name="label79" VerticalAlignment="Top" Width="73" />
                                                         <TextBox Height="23" HorizontalAlignment="Left" Margin="255,69,0,0" x:Name="edTextLogoOuterSize" Text="1" VerticalAlignment="Top" Width="32" />
+                                                        <CheckBox x:Name="cbTextLogoFadeOut" Content="Fade-Out (if duration set)" HorizontalAlignment="Left" Margin="95,114,0,0" VerticalAlignment="Top"/>
+                                                        <CheckBox x:Name="cbTextLogoFadeIn" Content="Fade-In" HorizontalAlignment="Left" Margin="12,114,0,0" VerticalAlignment="Top"/>
                                                     </Grid>
                                                 </TabItem>
                                                 <TabItem Header="Rotation" x:Name="tabItem21">
@@ -1475,7 +1477,7 @@
                                                 </TabItem>
                                             </TabControl>
                                             <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="8,3,0,0" x:Name="cbTextLogo" VerticalAlignment="Top" Click="cbTextLogo_CheckedChanged" />
-                                            <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="253,210,0,0" x:Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" Click="btTextLogoUpdateParams_Click" />
+                                            <Button Content="Update" Height="23" HorizontalAlignment="Left" Margin="273,229,0,0" x:Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" Click="btTextLogoUpdateParams_Click" />
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="Image logo">
@@ -2567,8 +2569,8 @@
                         <TabItem Header="VLC">
                             <Grid>
                                 <Label x:Name="label154" Content="VLC cache size (ms)" HorizontalAlignment="Left" Margin="21,19,0,0" VerticalAlignment="Top"/>
-                                <TextBox x:Name="edVLCCacheSize" HorizontalAlignment="Left" Height="23" Margin="139,23,0,0" TextWrapping="Wrap" Text="1000" VerticalAlignment="Top" Width="32"/>
-                                <CheckBox x:Name="cbVLCZeroClockJitter" Content="VLC zero clock jitter" HorizontalAlignment="Left" Margin="200,25,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edVLCCacheSize" HorizontalAlignment="Left" Height="23" Margin="139,23,0,0" TextWrapping="Wrap" Text="250" VerticalAlignment="Top" Width="32"/>
+                                <CheckBox x:Name="cbVLCZeroClockJitter" Content="VLC low latency mode" HorizontalAlignment="Left" Margin="200,25,0,0" VerticalAlignment="Top"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="ONVIF">

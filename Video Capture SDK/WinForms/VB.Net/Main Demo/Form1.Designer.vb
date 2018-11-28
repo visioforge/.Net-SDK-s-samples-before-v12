@@ -454,6 +454,8 @@ Partial Class Form1
         Me.pnPIPChromaKeyColor = New System.Windows.Forms.Panel()
         Me.label514 = New System.Windows.Forms.Label()
         Me.tabPage50 = New System.Windows.Forms.TabPage()
+        Me.cbMultiscreenDrawOnExternalDisplays = New System.Windows.Forms.CheckBox()
+        Me.cbMultiscreenDrawOnPanels = New System.Windows.Forms.CheckBox()
         Me.cbFlipHorizontal3 = New System.Windows.Forms.CheckBox()
         Me.cbFlipVertical3 = New System.Windows.Forms.CheckBox()
         Me.cbStretch3 = New System.Windows.Forms.CheckBox()
@@ -1670,8 +1672,8 @@ Partial Class Form1
         Me.cbTagEnabled = New System.Windows.Forms.CheckBox()
         Me.openFileDialog3 = New System.Windows.Forms.OpenFileDialog()
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
-        Me.cbMultiscreenDrawOnExternalDisplays = New System.Windows.Forms.CheckBox()
-        Me.cbMultiscreenDrawOnPanels = New System.Windows.Forms.CheckBox()
+        Me.cbTextLogoFadeOut = New System.Windows.Forms.CheckBox()
+        Me.cbTextLogoFadeIn = New System.Windows.Forms.CheckBox()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabPage34.SuspendLayout
@@ -4261,9 +4263,9 @@ Partial Class Form1
         Me.cbVLCZeroClockJitter.AutoSize = true
         Me.cbVLCZeroClockJitter.Location = New System.Drawing.Point(173, 16)
         Me.cbVLCZeroClockJitter.Name = "cbVLCZeroClockJitter"
-        Me.cbVLCZeroClockJitter.Size = New System.Drawing.Size(120, 17)
+        Me.cbVLCZeroClockJitter.Size = New System.Drawing.Size(134, 17)
         Me.cbVLCZeroClockJitter.TabIndex = 78
-        Me.cbVLCZeroClockJitter.Text = "VLC zero clock jitter"
+        Me.cbVLCZeroClockJitter.Text = "VLC  low latency mode"
         Me.cbVLCZeroClockJitter.UseVisualStyleBackColor = true
         '
         'edVLCCacheSize
@@ -4272,7 +4274,7 @@ Partial Class Form1
         Me.edVLCCacheSize.Name = "edVLCCacheSize"
         Me.edVLCCacheSize.Size = New System.Drawing.Size(32, 20)
         Me.edVLCCacheSize.TabIndex = 77
-        Me.edVLCCacheSize.Text = "1000"
+        Me.edVLCCacheSize.Text = "250"
         '
         'label312
         '
@@ -6262,6 +6264,26 @@ Partial Class Form1
         Me.tabPage50.TabIndex = 4
         Me.tabPage50.Text = "Multiscreen"
         Me.tabPage50.UseVisualStyleBackColor = true
+        '
+        'cbMultiscreenDrawOnExternalDisplays
+        '
+        Me.cbMultiscreenDrawOnExternalDisplays.AutoSize = true
+        Me.cbMultiscreenDrawOnExternalDisplays.Location = New System.Drawing.Point(180, 17)
+        Me.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays"
+        Me.cbMultiscreenDrawOnExternalDisplays.Size = New System.Drawing.Size(175, 17)
+        Me.cbMultiscreenDrawOnExternalDisplays.TabIndex = 17
+        Me.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays"
+        Me.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true
+        '
+        'cbMultiscreenDrawOnPanels
+        '
+        Me.cbMultiscreenDrawOnPanels.AutoSize = true
+        Me.cbMultiscreenDrawOnPanels.Location = New System.Drawing.Point(18, 17)
+        Me.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels"
+        Me.cbMultiscreenDrawOnPanels.Size = New System.Drawing.Size(129, 17)
+        Me.cbMultiscreenDrawOnPanels.TabIndex = 16
+        Me.cbMultiscreenDrawOnPanels.Text = "Draw video on panels"
+        Me.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true
         '
         'cbFlipHorizontal3
         '
@@ -13071,6 +13093,8 @@ Partial Class Form1
         '
         'tabPage39
         '
+        Me.tabPage39.Controls.Add(Me.cbTextLogoFadeOut)
+        Me.tabPage39.Controls.Add(Me.cbTextLogoFadeIn)
         Me.tabPage39.Controls.Add(Me.edTextLogoOuterSize)
         Me.tabPage39.Controls.Add(Me.label143)
         Me.tabPage39.Controls.Add(Me.edTextLogoInnerSize)
@@ -18988,25 +19012,25 @@ Partial Class Form1
         Me.VideoCapture1.Virtual_Camera_Output_LicenseKey = Nothing
         Me.VideoCapture1.VLC_Path = Nothing
         '
-        'cbMultiscreenDrawOnExternalDisplays
+        'cbTextLogoFadeOut
         '
-        Me.cbMultiscreenDrawOnExternalDisplays.AutoSize = true
-        Me.cbMultiscreenDrawOnExternalDisplays.Location = New System.Drawing.Point(180, 17)
-        Me.cbMultiscreenDrawOnExternalDisplays.Name = "cbMultiscreenDrawOnExternalDisplays"
-        Me.cbMultiscreenDrawOnExternalDisplays.Size = New System.Drawing.Size(175, 17)
-        Me.cbMultiscreenDrawOnExternalDisplays.TabIndex = 17
-        Me.cbMultiscreenDrawOnExternalDisplays.Text = "Draw video on external displays"
-        Me.cbMultiscreenDrawOnExternalDisplays.UseVisualStyleBackColor = true
+        Me.cbTextLogoFadeOut.AutoSize = true
+        Me.cbTextLogoFadeOut.Location = New System.Drawing.Point(91, 118)
+        Me.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut"
+        Me.cbTextLogoFadeOut.Size = New System.Drawing.Size(142, 17)
+        Me.cbTextLogoFadeOut.TabIndex = 41
+        Me.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)"
+        Me.cbTextLogoFadeOut.UseVisualStyleBackColor = true
         '
-        'cbMultiscreenDrawOnPanels
+        'cbTextLogoFadeIn
         '
-        Me.cbMultiscreenDrawOnPanels.AutoSize = true
-        Me.cbMultiscreenDrawOnPanels.Location = New System.Drawing.Point(18, 17)
-        Me.cbMultiscreenDrawOnPanels.Name = "cbMultiscreenDrawOnPanels"
-        Me.cbMultiscreenDrawOnPanels.Size = New System.Drawing.Size(129, 17)
-        Me.cbMultiscreenDrawOnPanels.TabIndex = 16
-        Me.cbMultiscreenDrawOnPanels.Text = "Draw video on panels"
-        Me.cbMultiscreenDrawOnPanels.UseVisualStyleBackColor = true
+        Me.cbTextLogoFadeIn.AutoSize = true
+        Me.cbTextLogoFadeIn.Location = New System.Drawing.Point(17, 118)
+        Me.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn"
+        Me.cbTextLogoFadeIn.Size = New System.Drawing.Size(62, 17)
+        Me.cbTextLogoFadeIn.TabIndex = 40
+        Me.cbTextLogoFadeIn.Text = "Fade-In"
+        Me.cbTextLogoFadeIn.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -21149,4 +21173,6 @@ End Sub
     Private WithEvents edONVIFURL As TextBox
     Private WithEvents cbMultiscreenDrawOnExternalDisplays As CheckBox
     Private WithEvents cbMultiscreenDrawOnPanels As CheckBox
+    Private WithEvents cbTextLogoFadeOut As CheckBox
+    Private WithEvents cbTextLogoFadeIn As CheckBox
 End Class

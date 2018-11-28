@@ -37,7 +37,7 @@ namespace VideoCapture_CSharp_Demo
         /// </summary>
         private void InitializeComponent()
         {
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.label8 = new System.Windows.Forms.Label();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
@@ -1711,6 +1711,8 @@ namespace VideoCapture_CSharp_Demo
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
+            this.cbTextLogoFadeOut = new System.Windows.Forms.CheckBox();
+            this.cbTextLogoFadeIn = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tcOutputFormats.SuspendLayout();
@@ -8618,6 +8620,8 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage39
             // 
+            this.tabPage39.Controls.Add(this.cbTextLogoFadeOut);
+            this.tabPage39.Controls.Add(this.cbTextLogoFadeIn);
             this.tabPage39.Controls.Add(this.edTextLogoOuterSize);
             this.tabPage39.Controls.Add(this.label143);
             this.tabPage39.Controls.Add(this.edTextLogoInnerSize);
@@ -16912,9 +16916,9 @@ namespace VideoCapture_CSharp_Demo
             this.cbVLCZeroClockJitter.AutoSize = true;
             this.cbVLCZeroClockJitter.Location = new System.Drawing.Point(173, 16);
             this.cbVLCZeroClockJitter.Name = "cbVLCZeroClockJitter";
-            this.cbVLCZeroClockJitter.Size = new System.Drawing.Size(120, 17);
+            this.cbVLCZeroClockJitter.Size = new System.Drawing.Size(131, 17);
             this.cbVLCZeroClockJitter.TabIndex = 78;
-            this.cbVLCZeroClockJitter.Text = "VLC zero clock jitter";
+            this.cbVLCZeroClockJitter.Text = "VLC low latency mode";
             this.cbVLCZeroClockJitter.UseVisualStyleBackColor = true;
             // 
             // edVLCCacheSize
@@ -16923,7 +16927,7 @@ namespace VideoCapture_CSharp_Demo
             this.edVLCCacheSize.Name = "edVLCCacheSize";
             this.edVLCCacheSize.Size = new System.Drawing.Size(32, 20);
             this.edVLCCacheSize.TabIndex = 77;
-            this.edVLCCacheSize.Text = "1000";
+            this.edVLCCacheSize.Text = "250";
             // 
             // label312
             // 
@@ -20396,23 +20400,23 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms1;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms2.Flip_Horizontal = false;
+            videoRendererSettingsWinForms2.Flip_Vertical = false;
+            videoRendererSettingsWinForms2.RotationAngle = 0;
+            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
+            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms2;
             this.VideoCapture1.Video_Resize = null;
             this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
             this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
@@ -20435,6 +20439,26 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoCapture1_OnBarcodeDetected);
             this.VideoCapture1.OnBDAChannelFound += new System.EventHandler<VisioForge.Types.BDAChannelEventArgs>(this.VideoCapture1_OnBDAChannelFound);
             this.VideoCapture1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoCapture1_MouseDown);
+            // 
+            // cbTextLogoFadeOut
+            // 
+            this.cbTextLogoFadeOut.AutoSize = true;
+            this.cbTextLogoFadeOut.Location = new System.Drawing.Point(92, 121);
+            this.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut";
+            this.cbTextLogoFadeOut.Size = new System.Drawing.Size(142, 17);
+            this.cbTextLogoFadeOut.TabIndex = 39;
+            this.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)";
+            this.cbTextLogoFadeOut.UseVisualStyleBackColor = true;
+            // 
+            // cbTextLogoFadeIn
+            // 
+            this.cbTextLogoFadeIn.AutoSize = true;
+            this.cbTextLogoFadeIn.Location = new System.Drawing.Point(17, 121);
+            this.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn";
+            this.cbTextLogoFadeIn.Size = new System.Drawing.Size(62, 17);
+            this.cbTextLogoFadeIn.TabIndex = 38;
+            this.cbTextLogoFadeIn.Text = "Fade-In";
+            this.cbTextLogoFadeIn.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -22616,6 +22640,8 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TextBox edONVIFLogin;
         private System.Windows.Forms.Label label379;
         private System.Windows.Forms.CheckBox cbMultiscreenDrawOnExternalDisplays;
+        private System.Windows.Forms.CheckBox cbTextLogoFadeOut;
+        private System.Windows.Forms.CheckBox cbTextLogoFadeIn;
     }
 }
 
