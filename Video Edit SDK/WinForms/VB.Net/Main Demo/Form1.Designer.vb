@@ -25,7 +25,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms2 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.OpenDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveDialog1 = New System.Windows.Forms.SaveFileDialog()
@@ -613,6 +613,8 @@ Partial Class Form1
         Me.label141 = New System.Windows.Forms.Label()
         Me.label142 = New System.Windows.Forms.Label()
         Me.tabPage39 = New System.Windows.Forms.TabPage()
+        Me.cbTextLogoFadeOut = New System.Windows.Forms.CheckBox()
+        Me.cbTextLogoFadeIn = New System.Windows.Forms.CheckBox()
         Me.edTextLogoOuterSize = New System.Windows.Forms.TextBox()
         Me.label143 = New System.Windows.Forms.Label()
         Me.edTextLogoInnerSize = New System.Windows.Forms.TextBox()
@@ -1083,34 +1085,6 @@ Partial Class Form1
         Me.groupBox43 = New System.Windows.Forms.GroupBox()
         Me.rbEncryptedH264CUDA = New System.Windows.Forms.RadioButton()
         Me.rbEncryptedH264SW = New System.Windows.Forms.RadioButton()
-        Me.TabPage78 = New System.Windows.Forms.TabPage()
-        Me.TabControl32 = New System.Windows.Forms.TabControl()
-        Me.TabPage142 = New System.Windows.Forms.TabPage()
-        Me.edTagTrackID = New System.Windows.Forms.TextBox()
-        Me.Label496 = New System.Windows.Forms.Label()
-        Me.edTagYear = New System.Windows.Forms.TextBox()
-        Me.Label495 = New System.Windows.Forms.Label()
-        Me.edTagComment = New System.Windows.Forms.TextBox()
-        Me.Label493 = New System.Windows.Forms.Label()
-        Me.edTagAlbum = New System.Windows.Forms.TextBox()
-        Me.Label491 = New System.Windows.Forms.Label()
-        Me.edTagArtists = New System.Windows.Forms.TextBox()
-        Me.Label490 = New System.Windows.Forms.Label()
-        Me.edTagCopyright = New System.Windows.Forms.TextBox()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.edTagTitle = New System.Windows.Forms.TextBox()
-        Me.Label23 = New System.Windows.Forms.Label()
-        Me.TabPage143 = New System.Windows.Forms.TabPage()
-        Me.imgTagCover = New System.Windows.Forms.PictureBox()
-        Me.Label499 = New System.Windows.Forms.Label()
-        Me.Label498 = New System.Windows.Forms.Label()
-        Me.edTagLyrics = New System.Windows.Forms.TextBox()
-        Me.Label497 = New System.Windows.Forms.Label()
-        Me.cbTagGenre = New System.Windows.Forms.ComboBox()
-        Me.Label494 = New System.Windows.Forms.Label()
-        Me.edTagComposers = New System.Windows.Forms.TextBox()
-        Me.Label492 = New System.Windows.Forms.Label()
-        Me.cbTagEnabled = New System.Windows.Forms.CheckBox()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.btStop = New System.Windows.Forms.Button()
         Me.btStart = New System.Windows.Forms.Button()
@@ -1188,8 +1162,46 @@ Partial Class Form1
         Me.btTest = New System.Windows.Forms.Button()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.openFileDialogSubtitles = New System.Windows.Forms.OpenFileDialog()
-        Me.cbTextLogoFadeOut = New System.Windows.Forms.CheckBox()
-        Me.cbTextLogoFadeIn = New System.Windows.Forms.CheckBox()
+        Me.cbTagEnabled = New System.Windows.Forms.CheckBox()
+        Me.TabControl32 = New System.Windows.Forms.TabControl()
+        Me.TabPage143 = New System.Windows.Forms.TabPage()
+        Me.Label492 = New System.Windows.Forms.Label()
+        Me.edTagComposers = New System.Windows.Forms.TextBox()
+        Me.Label494 = New System.Windows.Forms.Label()
+        Me.cbTagGenre = New System.Windows.Forms.ComboBox()
+        Me.Label497 = New System.Windows.Forms.Label()
+        Me.edTagLyrics = New System.Windows.Forms.TextBox()
+        Me.Label498 = New System.Windows.Forms.Label()
+        Me.Label499 = New System.Windows.Forms.Label()
+        Me.imgTagCover = New System.Windows.Forms.PictureBox()
+        Me.TabPage142 = New System.Windows.Forms.TabPage()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.edTagTitle = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.edTagCopyright = New System.Windows.Forms.TextBox()
+        Me.Label490 = New System.Windows.Forms.Label()
+        Me.edTagArtists = New System.Windows.Forms.TextBox()
+        Me.Label491 = New System.Windows.Forms.Label()
+        Me.edTagAlbum = New System.Windows.Forms.TextBox()
+        Me.Label493 = New System.Windows.Forms.Label()
+        Me.edTagComment = New System.Windows.Forms.TextBox()
+        Me.Label495 = New System.Windows.Forms.Label()
+        Me.edTagYear = New System.Windows.Forms.TextBox()
+        Me.Label496 = New System.Windows.Forms.Label()
+        Me.edTagTrackID = New System.Windows.Forms.TextBox()
+        Me.TabPage78 = New System.Windows.Forms.TabPage()
+        Me.TabPage22 = New System.Windows.Forms.TabPage()
+        Me.peakMeterCtrl1 = New VisioForge.Controls.UI.WinForms.PeakMeterCtrl()
+        Me.cbVUMeter = New System.Windows.Forms.CheckBox()
+        Me.tbVUMeterBoost = New System.Windows.Forms.TrackBar()
+        Me.label382 = New System.Windows.Forms.Label()
+        Me.label381 = New System.Windows.Forms.Label()
+        Me.tbVUMeterAmplification = New System.Windows.Forms.TrackBar()
+        Me.cbVUMeterPro = New System.Windows.Forms.CheckBox()
+        Me.waveformPainter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter()
+        Me.waveformPainter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter()
+        Me.volumeMeter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
+        Me.volumeMeter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
         Me.tabControl1.SuspendLayout
         Me.tabPage1.SuspendLayout
         Me.tabControl2.SuspendLayout
@@ -1391,11 +1403,6 @@ Partial Class Form1
         Me.groupBox48.SuspendLayout
         Me.groupBox47.SuspendLayout
         Me.groupBox43.SuspendLayout
-        Me.TabPage78.SuspendLayout
-        Me.TabControl32.SuspendLayout
-        Me.TabPage142.SuspendLayout
-        Me.TabPage143.SuspendLayout
-        CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbSeeking,System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabControl3.SuspendLayout
         Me.tabPage52.SuspendLayout
@@ -1405,6 +1412,11 @@ Partial Class Form1
         Me.tabPage53.SuspendLayout
         Me.tabPage54.SuspendLayout
         Me.TabPage74.SuspendLayout
+        CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage78.SuspendLayout
+        Me.TabPage22.SuspendLayout
+        CType(Me.tbVUMeterBoost,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbVUMeterAmplification,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'FontDialog1
@@ -1491,6 +1503,7 @@ Partial Class Form1
         Me.tabControl1.Controls.Add(Me.TabPage34)
         Me.tabControl1.Controls.Add(Me.TabPage43)
         Me.tabControl1.Controls.Add(Me.TabPage78)
+        Me.tabControl1.Controls.Add(Me.TabPage22)
         Me.tabControl1.Location = New System.Drawing.Point(11, 12)
         Me.tabControl1.Name = "tabControl1"
         Me.tabControl1.SelectedIndex = 0
@@ -7141,7 +7154,7 @@ Partial Class Form1
         Me.tabPage35.Location = New System.Drawing.Point(4, 22)
         Me.tabPage35.Name = "tabPage35"
         Me.tabPage35.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage35.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage35.Size = New System.Drawing.Size(253, 131)
         Me.tabPage35.TabIndex = 0
         Me.tabPage35.Text = "Main"
         Me.tabPage35.UseVisualStyleBackColor = true
@@ -7247,7 +7260,7 @@ Partial Class Form1
         Me.tabPage36.Location = New System.Drawing.Point(4, 22)
         Me.tabPage36.Name = "tabPage36"
         Me.tabPage36.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage36.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage36.Size = New System.Drawing.Size(253, 131)
         Me.tabPage36.TabIndex = 1
         Me.tabPage36.Text = "Gradient"
         Me.tabPage36.UseVisualStyleBackColor = true
@@ -7331,7 +7344,7 @@ Partial Class Form1
         Me.tabPage37.Location = New System.Drawing.Point(4, 22)
         Me.tabPage37.Name = "tabPage37"
         Me.tabPage37.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage37.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage37.Size = New System.Drawing.Size(253, 131)
         Me.tabPage37.TabIndex = 2
         Me.tabPage37.Text = "Position"
         Me.tabPage37.UseVisualStyleBackColor = true
@@ -7423,7 +7436,7 @@ Partial Class Form1
         Me.tabPage38.Location = New System.Drawing.Point(4, 22)
         Me.tabPage38.Name = "tabPage38"
         Me.tabPage38.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage38.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage38.Size = New System.Drawing.Size(253, 131)
         Me.tabPage38.TabIndex = 3
         Me.tabPage38.Text = "Quality"
         Me.tabPage38.UseVisualStyleBackColor = true
@@ -7487,6 +7500,26 @@ Partial Class Form1
         Me.tabPage39.TabIndex = 4
         Me.tabPage39.Text = "Effects"
         Me.tabPage39.UseVisualStyleBackColor = true
+        '
+        'cbTextLogoFadeOut
+        '
+        Me.cbTextLogoFadeOut.AutoSize = true
+        Me.cbTextLogoFadeOut.Location = New System.Drawing.Point(91, 108)
+        Me.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut"
+        Me.cbTextLogoFadeOut.Size = New System.Drawing.Size(142, 17)
+        Me.cbTextLogoFadeOut.TabIndex = 41
+        Me.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)"
+        Me.cbTextLogoFadeOut.UseVisualStyleBackColor = true
+        '
+        'cbTextLogoFadeIn
+        '
+        Me.cbTextLogoFadeIn.AutoSize = true
+        Me.cbTextLogoFadeIn.Location = New System.Drawing.Point(16, 108)
+        Me.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn"
+        Me.cbTextLogoFadeIn.Size = New System.Drawing.Size(62, 17)
+        Me.cbTextLogoFadeIn.TabIndex = 40
+        Me.cbTextLogoFadeIn.Text = "Fade-In"
+        Me.cbTextLogoFadeIn.UseVisualStyleBackColor = true
         '
         'edTextLogoOuterSize
         '
@@ -7584,7 +7617,7 @@ Partial Class Form1
         Me.tabPage40.Location = New System.Drawing.Point(4, 22)
         Me.tabPage40.Name = "tabPage40"
         Me.tabPage40.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage40.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage40.Size = New System.Drawing.Size(253, 131)
         Me.tabPage40.TabIndex = 5
         Me.tabPage40.Text = "Rotation"
         Me.tabPage40.UseVisualStyleBackColor = true
@@ -7723,7 +7756,7 @@ Partial Class Form1
         Me.tabPage41.Location = New System.Drawing.Point(4, 22)
         Me.tabPage41.Name = "tabPage41"
         Me.tabPage41.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage41.Size = New System.Drawing.Size(253, 114)
+        Me.tabPage41.Size = New System.Drawing.Size(253, 131)
         Me.tabPage41.TabIndex = 6
         Me.tabPage41.Text = "Shape"
         Me.tabPage41.UseVisualStyleBackColor = true
@@ -12385,280 +12418,6 @@ Partial Class Form1
         Me.rbEncryptedH264SW.Text = "Use MP4 H264 / ACC output format"
         Me.rbEncryptedH264SW.UseVisualStyleBackColor = true
         '
-        'TabPage78
-        '
-        Me.TabPage78.Controls.Add(Me.TabControl32)
-        Me.TabPage78.Controls.Add(Me.cbTagEnabled)
-        Me.TabPage78.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage78.Name = "TabPage78"
-        Me.TabPage78.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage78.Size = New System.Drawing.Size(302, 494)
-        Me.TabPage78.TabIndex = 14
-        Me.TabPage78.Text = "Tags"
-        Me.TabPage78.UseVisualStyleBackColor = true
-        '
-        'TabControl32
-        '
-        Me.TabControl32.Controls.Add(Me.TabPage142)
-        Me.TabControl32.Controls.Add(Me.TabPage143)
-        Me.TabControl32.Location = New System.Drawing.Point(5, 46)
-        Me.TabControl32.Name = "TabControl32"
-        Me.TabControl32.SelectedIndex = 0
-        Me.TabControl32.Size = New System.Drawing.Size(292, 432)
-        Me.TabControl32.TabIndex = 3
-        '
-        'TabPage142
-        '
-        Me.TabPage142.Controls.Add(Me.edTagTrackID)
-        Me.TabPage142.Controls.Add(Me.Label496)
-        Me.TabPage142.Controls.Add(Me.edTagYear)
-        Me.TabPage142.Controls.Add(Me.Label495)
-        Me.TabPage142.Controls.Add(Me.edTagComment)
-        Me.TabPage142.Controls.Add(Me.Label493)
-        Me.TabPage142.Controls.Add(Me.edTagAlbum)
-        Me.TabPage142.Controls.Add(Me.Label491)
-        Me.TabPage142.Controls.Add(Me.edTagArtists)
-        Me.TabPage142.Controls.Add(Me.Label490)
-        Me.TabPage142.Controls.Add(Me.edTagCopyright)
-        Me.TabPage142.Controls.Add(Me.Label22)
-        Me.TabPage142.Controls.Add(Me.edTagTitle)
-        Me.TabPage142.Controls.Add(Me.Label23)
-        Me.TabPage142.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage142.Name = "TabPage142"
-        Me.TabPage142.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage142.Size = New System.Drawing.Size(284, 406)
-        Me.TabPage142.TabIndex = 0
-        Me.TabPage142.Text = "Common"
-        Me.TabPage142.UseVisualStyleBackColor = true
-        '
-        'edTagTrackID
-        '
-        Me.edTagTrackID.Location = New System.Drawing.Point(16, 207)
-        Me.edTagTrackID.Name = "edTagTrackID"
-        Me.edTagTrackID.Size = New System.Drawing.Size(63, 20)
-        Me.edTagTrackID.TabIndex = 13
-        Me.edTagTrackID.Text = "1"
-        '
-        'Label496
-        '
-        Me.Label496.AutoSize = true
-        Me.Label496.Location = New System.Drawing.Point(13, 192)
-        Me.Label496.Name = "Label496"
-        Me.Label496.Size = New System.Drawing.Size(49, 13)
-        Me.Label496.TabIndex = 12
-        Me.Label496.Text = "Track ID"
-        '
-        'edTagYear
-        '
-        Me.edTagYear.Location = New System.Drawing.Point(16, 301)
-        Me.edTagYear.Name = "edTagYear"
-        Me.edTagYear.Size = New System.Drawing.Size(63, 20)
-        Me.edTagYear.TabIndex = 11
-        Me.edTagYear.Text = "2015"
-        '
-        'Label495
-        '
-        Me.Label495.AutoSize = true
-        Me.Label495.Location = New System.Drawing.Point(13, 286)
-        Me.Label495.Name = "Label495"
-        Me.Label495.Size = New System.Drawing.Size(29, 13)
-        Me.Label495.TabIndex = 10
-        Me.Label495.Text = "Year"
-        '
-        'edTagComment
-        '
-        Me.edTagComment.Location = New System.Drawing.Point(16, 160)
-        Me.edTagComment.Name = "edTagComment"
-        Me.edTagComment.Size = New System.Drawing.Size(242, 20)
-        Me.edTagComment.TabIndex = 9
-        Me.edTagComment.Text = "No comments"
-        '
-        'Label493
-        '
-        Me.Label493.AutoSize = true
-        Me.Label493.Location = New System.Drawing.Point(13, 145)
-        Me.Label493.Name = "Label493"
-        Me.Label493.Size = New System.Drawing.Size(51, 13)
-        Me.Label493.TabIndex = 8
-        Me.Label493.Text = "Comment"
-        '
-        'edTagAlbum
-        '
-        Me.edTagAlbum.Location = New System.Drawing.Point(16, 116)
-        Me.edTagAlbum.Name = "edTagAlbum"
-        Me.edTagAlbum.Size = New System.Drawing.Size(242, 20)
-        Me.edTagAlbum.TabIndex = 7
-        Me.edTagAlbum.Text = "Sample album"
-        '
-        'Label491
-        '
-        Me.Label491.AutoSize = true
-        Me.Label491.Location = New System.Drawing.Point(13, 101)
-        Me.Label491.Name = "Label491"
-        Me.Label491.Size = New System.Drawing.Size(36, 13)
-        Me.Label491.TabIndex = 6
-        Me.Label491.Text = "Album"
-        '
-        'edTagArtists
-        '
-        Me.edTagArtists.Location = New System.Drawing.Point(16, 72)
-        Me.edTagArtists.Name = "edTagArtists"
-        Me.edTagArtists.Size = New System.Drawing.Size(242, 20)
-        Me.edTagArtists.TabIndex = 5
-        Me.edTagArtists.Text = "Sample artist"
-        '
-        'Label490
-        '
-        Me.Label490.AutoSize = true
-        Me.Label490.Location = New System.Drawing.Point(13, 57)
-        Me.Label490.Name = "Label490"
-        Me.Label490.Size = New System.Drawing.Size(35, 13)
-        Me.Label490.TabIndex = 4
-        Me.Label490.Text = "Artists"
-        '
-        'edTagCopyright
-        '
-        Me.edTagCopyright.Location = New System.Drawing.Point(16, 255)
-        Me.edTagCopyright.Name = "edTagCopyright"
-        Me.edTagCopyright.Size = New System.Drawing.Size(242, 20)
-        Me.edTagCopyright.TabIndex = 3
-        Me.edTagCopyright.Text = "VisioForge"
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = true
-        Me.Label22.Location = New System.Drawing.Point(13, 240)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(51, 13)
-        Me.Label22.TabIndex = 2
-        Me.Label22.Text = "Copyright"
-        '
-        'edTagTitle
-        '
-        Me.edTagTitle.Location = New System.Drawing.Point(16, 29)
-        Me.edTagTitle.Name = "edTagTitle"
-        Me.edTagTitle.Size = New System.Drawing.Size(242, 20)
-        Me.edTagTitle.TabIndex = 1
-        Me.edTagTitle.Text = "Sample output file"
-        '
-        'Label23
-        '
-        Me.Label23.AutoSize = true
-        Me.Label23.Location = New System.Drawing.Point(13, 14)
-        Me.Label23.Name = "Label23"
-        Me.Label23.Size = New System.Drawing.Size(27, 13)
-        Me.Label23.TabIndex = 0
-        Me.Label23.Text = "Title"
-        '
-        'TabPage143
-        '
-        Me.TabPage143.Controls.Add(Me.imgTagCover)
-        Me.TabPage143.Controls.Add(Me.Label499)
-        Me.TabPage143.Controls.Add(Me.Label498)
-        Me.TabPage143.Controls.Add(Me.edTagLyrics)
-        Me.TabPage143.Controls.Add(Me.Label497)
-        Me.TabPage143.Controls.Add(Me.cbTagGenre)
-        Me.TabPage143.Controls.Add(Me.Label494)
-        Me.TabPage143.Controls.Add(Me.edTagComposers)
-        Me.TabPage143.Controls.Add(Me.Label492)
-        Me.TabPage143.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage143.Name = "TabPage143"
-        Me.TabPage143.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage143.Size = New System.Drawing.Size(284, 406)
-        Me.TabPage143.TabIndex = 1
-        Me.TabPage143.Text = "Special"
-        Me.TabPage143.UseVisualStyleBackColor = true
-        '
-        'imgTagCover
-        '
-        Me.imgTagCover.BackColor = System.Drawing.Color.DimGray
-        Me.imgTagCover.Location = New System.Drawing.Point(15, 178)
-        Me.imgTagCover.Name = "imgTagCover"
-        Me.imgTagCover.Size = New System.Drawing.Size(104, 104)
-        Me.imgTagCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.imgTagCover.TabIndex = 16
-        Me.imgTagCover.TabStop = false
-        '
-        'Label499
-        '
-        Me.Label499.AutoSize = true
-        Me.Label499.Location = New System.Drawing.Point(12, 162)
-        Me.Label499.Name = "Label499"
-        Me.Label499.Size = New System.Drawing.Size(35, 13)
-        Me.Label499.TabIndex = 15
-        Me.Label499.Text = "Cover"
-        '
-        'Label498
-        '
-        Me.Label498.AutoSize = true
-        Me.Label498.Location = New System.Drawing.Point(43, 334)
-        Me.Label498.Name = "Label498"
-        Me.Label498.Size = New System.Drawing.Size(194, 13)
-        Me.Label498.TabIndex = 14
-        Me.Label498.Text = "Many other tags are available using API"
-        '
-        'edTagLyrics
-        '
-        Me.edTagLyrics.Location = New System.Drawing.Point(15, 127)
-        Me.edTagLyrics.Name = "edTagLyrics"
-        Me.edTagLyrics.Size = New System.Drawing.Size(242, 20)
-        Me.edTagLyrics.TabIndex = 13
-        Me.edTagLyrics.Text = "Yo-ho-ho and the buttle of rum"
-        '
-        'Label497
-        '
-        Me.Label497.AutoSize = true
-        Me.Label497.Location = New System.Drawing.Point(12, 112)
-        Me.Label497.Name = "Label497"
-        Me.Label497.Size = New System.Drawing.Size(34, 13)
-        Me.Label497.TabIndex = 12
-        Me.Label497.Text = "Lyrics"
-        '
-        'cbTagGenre
-        '
-        Me.cbTagGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbTagGenre.FormattingEnabled = true
-        Me.cbTagGenre.Location = New System.Drawing.Point(15, 76)
-        Me.cbTagGenre.Name = "cbTagGenre"
-        Me.cbTagGenre.Size = New System.Drawing.Size(242, 21)
-        Me.cbTagGenre.TabIndex = 11
-        '
-        'Label494
-        '
-        Me.Label494.AutoSize = true
-        Me.Label494.Location = New System.Drawing.Point(12, 60)
-        Me.Label494.Name = "Label494"
-        Me.Label494.Size = New System.Drawing.Size(36, 13)
-        Me.Label494.TabIndex = 10
-        Me.Label494.Text = "Genre"
-        '
-        'edTagComposers
-        '
-        Me.edTagComposers.Location = New System.Drawing.Point(15, 29)
-        Me.edTagComposers.Name = "edTagComposers"
-        Me.edTagComposers.Size = New System.Drawing.Size(242, 20)
-        Me.edTagComposers.TabIndex = 9
-        Me.edTagComposers.Text = "Sample composer"
-        '
-        'Label492
-        '
-        Me.Label492.AutoSize = true
-        Me.Label492.Location = New System.Drawing.Point(12, 14)
-        Me.Label492.Name = "Label492"
-        Me.Label492.Size = New System.Drawing.Size(59, 13)
-        Me.Label492.TabIndex = 8
-        Me.Label492.Text = "Composers"
-        '
-        'cbTagEnabled
-        '
-        Me.cbTagEnabled.AutoSize = true
-        Me.cbTagEnabled.Location = New System.Drawing.Point(14, 16)
-        Me.cbTagEnabled.Name = "cbTagEnabled"
-        Me.cbTagEnabled.Size = New System.Drawing.Size(135, 17)
-        Me.cbTagEnabled.TabIndex = 2
-        Me.cbTagEnabled.Text = "Write tags to output file"
-        Me.cbTagEnabled.UseVisualStyleBackColor = true
-        '
         'linkLabel1
         '
         Me.linkLabel1.AutoSize = true
@@ -12715,6 +12474,9 @@ Partial Class Form1
         Me.VideoEdit1.Audio_Effects_UseLegacyEffects = false
         Me.VideoEdit1.Audio_Enhancer_Enabled = false
         Me.VideoEdit1.Audio_Preview_Enabled = false
+        Me.VideoEdit1.Audio_VUMeter_Enabled = false
+        Me.VideoEdit1.Audio_VUMeter_Pro_Enabled = false
+        Me.VideoEdit1.Audio_VUMeter_Pro_Volume = 0
         Me.VideoEdit1.BackColor = System.Drawing.Color.Black
         Me.VideoEdit1.Barcode_Reader_Enabled = false
         Me.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.[Auto]
@@ -12749,23 +12511,23 @@ Partial Class Form1
         Me.VideoEdit1.Video_Effects_Enabled = false
         Me.VideoEdit1.Video_FrameRate = 25R
         Me.VideoEdit1.Video_Preview_Enabled = true
-        VideoRendererSettingsWinForms2.Aspect_Ratio_Override = false
-        VideoRendererSettingsWinForms2.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms2.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false
-        VideoRendererSettingsWinForms2.Flip_Horizontal = false
-        VideoRendererSettingsWinForms2.Flip_Vertical = false
-        VideoRendererSettingsWinForms2.RotationAngle = 0
-        VideoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms2.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms2.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms2.Zoom_ShiftY = 0
-        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms2
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms1.Flip_Horizontal = false
+        VideoRendererSettingsWinForms1.Flip_Vertical = false
+        VideoRendererSettingsWinForms1.RotationAngle = 0
+        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
+        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.VideoEdit1.Video_Resize = false
         Me.VideoEdit1.Video_Resize_Height = 480
         Me.VideoEdit1.Video_Resize_Width = 640
@@ -13453,25 +13215,368 @@ Partial Class Form1
         Me.openFileDialogSubtitles.FileName = "openFileDialog4"
         Me.openFileDialogSubtitles.Filter = "Subtitle files|*.srt;*.ssa;*.ass;*.sub|All files|*.*"
         '
-        'cbTextLogoFadeOut
+        'cbTagEnabled
         '
-        Me.cbTextLogoFadeOut.AutoSize = true
-        Me.cbTextLogoFadeOut.Location = New System.Drawing.Point(91, 108)
-        Me.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut"
-        Me.cbTextLogoFadeOut.Size = New System.Drawing.Size(142, 17)
-        Me.cbTextLogoFadeOut.TabIndex = 41
-        Me.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)"
-        Me.cbTextLogoFadeOut.UseVisualStyleBackColor = true
+        Me.cbTagEnabled.AutoSize = true
+        Me.cbTagEnabled.Location = New System.Drawing.Point(14, 16)
+        Me.cbTagEnabled.Name = "cbTagEnabled"
+        Me.cbTagEnabled.Size = New System.Drawing.Size(135, 17)
+        Me.cbTagEnabled.TabIndex = 2
+        Me.cbTagEnabled.Text = "Write tags to output file"
+        Me.cbTagEnabled.UseVisualStyleBackColor = true
         '
-        'cbTextLogoFadeIn
+        'TabControl32
         '
-        Me.cbTextLogoFadeIn.AutoSize = true
-        Me.cbTextLogoFadeIn.Location = New System.Drawing.Point(16, 108)
-        Me.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn"
-        Me.cbTextLogoFadeIn.Size = New System.Drawing.Size(62, 17)
-        Me.cbTextLogoFadeIn.TabIndex = 40
-        Me.cbTextLogoFadeIn.Text = "Fade-In"
-        Me.cbTextLogoFadeIn.UseVisualStyleBackColor = true
+        Me.TabControl32.Location = New System.Drawing.Point(5, 46)
+        Me.TabControl32.Name = "TabControl32"
+        Me.TabControl32.SelectedIndex = 0
+        Me.TabControl32.Size = New System.Drawing.Size(292, 432)
+        Me.TabControl32.TabIndex = 3
+        '
+        'TabPage143
+        '
+        Me.TabPage143.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage143.Name = "TabPage143"
+        Me.TabPage143.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage143.Size = New System.Drawing.Size(284, 406)
+        Me.TabPage143.TabIndex = 1
+        Me.TabPage143.Text = "Special"
+        Me.TabPage143.UseVisualStyleBackColor = true
+        '
+        'Label492
+        '
+        Me.Label492.AutoSize = true
+        Me.Label492.Location = New System.Drawing.Point(12, 14)
+        Me.Label492.Name = "Label492"
+        Me.Label492.Size = New System.Drawing.Size(59, 13)
+        Me.Label492.TabIndex = 8
+        '
+        'edTagComposers
+        '
+        Me.edTagComposers.Location = New System.Drawing.Point(15, 29)
+        Me.edTagComposers.Name = "edTagComposers"
+        Me.edTagComposers.Size = New System.Drawing.Size(242, 20)
+        Me.edTagComposers.TabIndex = 9
+        '
+        'Label494
+        '
+        Me.Label494.AutoSize = true
+        Me.Label494.Location = New System.Drawing.Point(12, 60)
+        Me.Label494.Name = "Label494"
+        Me.Label494.Size = New System.Drawing.Size(36, 13)
+        Me.Label494.TabIndex = 10
+        '
+        'cbTagGenre
+        '
+        Me.cbTagGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbTagGenre.FormattingEnabled = true
+        Me.cbTagGenre.Location = New System.Drawing.Point(15, 76)
+        Me.cbTagGenre.Name = "cbTagGenre"
+        Me.cbTagGenre.Size = New System.Drawing.Size(242, 21)
+        Me.cbTagGenre.TabIndex = 11
+        '
+        'Label497
+        '
+        Me.Label497.AutoSize = true
+        Me.Label497.Location = New System.Drawing.Point(12, 112)
+        Me.Label497.Name = "Label497"
+        Me.Label497.Size = New System.Drawing.Size(34, 13)
+        Me.Label497.TabIndex = 12
+        '
+        'edTagLyrics
+        '
+        Me.edTagLyrics.Location = New System.Drawing.Point(15, 127)
+        Me.edTagLyrics.Name = "edTagLyrics"
+        Me.edTagLyrics.Size = New System.Drawing.Size(242, 20)
+        Me.edTagLyrics.TabIndex = 13
+        '
+        'Label498
+        '
+        Me.Label498.AutoSize = true
+        Me.Label498.Location = New System.Drawing.Point(43, 334)
+        Me.Label498.Name = "Label498"
+        Me.Label498.Size = New System.Drawing.Size(194, 13)
+        Me.Label498.TabIndex = 14
+        '
+        'Label499
+        '
+        Me.Label499.AutoSize = true
+        Me.Label499.Location = New System.Drawing.Point(12, 162)
+        Me.Label499.Name = "Label499"
+        Me.Label499.Size = New System.Drawing.Size(35, 13)
+        Me.Label499.TabIndex = 15
+        '
+        'imgTagCover
+        '
+        Me.imgTagCover.BackColor = System.Drawing.Color.DimGray
+        Me.imgTagCover.Location = New System.Drawing.Point(15, 178)
+        Me.imgTagCover.Name = "imgTagCover"
+        Me.imgTagCover.Size = New System.Drawing.Size(104, 104)
+        Me.imgTagCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.imgTagCover.TabIndex = 16
+        Me.imgTagCover.TabStop = false
+        '
+        'TabPage142
+        '
+        Me.TabPage142.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage142.Name = "TabPage142"
+        Me.TabPage142.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage142.Size = New System.Drawing.Size(284, 406)
+        Me.TabPage142.TabIndex = 0
+        Me.TabPage142.Text = "Common"
+        Me.TabPage142.UseVisualStyleBackColor = true
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = true
+        Me.Label23.Location = New System.Drawing.Point(13, 14)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(27, 13)
+        Me.Label23.TabIndex = 0
+        '
+        'edTagTitle
+        '
+        Me.edTagTitle.Location = New System.Drawing.Point(16, 29)
+        Me.edTagTitle.Name = "edTagTitle"
+        Me.edTagTitle.Size = New System.Drawing.Size(242, 20)
+        Me.edTagTitle.TabIndex = 1
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = true
+        Me.Label22.Location = New System.Drawing.Point(13, 240)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(51, 13)
+        Me.Label22.TabIndex = 2
+        '
+        'edTagCopyright
+        '
+        Me.edTagCopyright.Location = New System.Drawing.Point(16, 255)
+        Me.edTagCopyright.Name = "edTagCopyright"
+        Me.edTagCopyright.Size = New System.Drawing.Size(242, 20)
+        Me.edTagCopyright.TabIndex = 3
+        '
+        'Label490
+        '
+        Me.Label490.AutoSize = true
+        Me.Label490.Location = New System.Drawing.Point(13, 57)
+        Me.Label490.Name = "Label490"
+        Me.Label490.Size = New System.Drawing.Size(35, 13)
+        Me.Label490.TabIndex = 4
+        '
+        'edTagArtists
+        '
+        Me.edTagArtists.Location = New System.Drawing.Point(16, 72)
+        Me.edTagArtists.Name = "edTagArtists"
+        Me.edTagArtists.Size = New System.Drawing.Size(242, 20)
+        Me.edTagArtists.TabIndex = 5
+        '
+        'Label491
+        '
+        Me.Label491.AutoSize = true
+        Me.Label491.Location = New System.Drawing.Point(13, 101)
+        Me.Label491.Name = "Label491"
+        Me.Label491.Size = New System.Drawing.Size(36, 13)
+        Me.Label491.TabIndex = 6
+        '
+        'edTagAlbum
+        '
+        Me.edTagAlbum.Location = New System.Drawing.Point(16, 116)
+        Me.edTagAlbum.Name = "edTagAlbum"
+        Me.edTagAlbum.Size = New System.Drawing.Size(242, 20)
+        Me.edTagAlbum.TabIndex = 7
+        '
+        'Label493
+        '
+        Me.Label493.AutoSize = true
+        Me.Label493.Location = New System.Drawing.Point(13, 145)
+        Me.Label493.Name = "Label493"
+        Me.Label493.Size = New System.Drawing.Size(51, 13)
+        Me.Label493.TabIndex = 8
+        '
+        'edTagComment
+        '
+        Me.edTagComment.Location = New System.Drawing.Point(16, 160)
+        Me.edTagComment.Name = "edTagComment"
+        Me.edTagComment.Size = New System.Drawing.Size(242, 20)
+        Me.edTagComment.TabIndex = 9
+        '
+        'Label495
+        '
+        Me.Label495.AutoSize = true
+        Me.Label495.Location = New System.Drawing.Point(13, 286)
+        Me.Label495.Name = "Label495"
+        Me.Label495.Size = New System.Drawing.Size(29, 13)
+        Me.Label495.TabIndex = 10
+        '
+        'edTagYear
+        '
+        Me.edTagYear.Location = New System.Drawing.Point(16, 301)
+        Me.edTagYear.Name = "edTagYear"
+        Me.edTagYear.Size = New System.Drawing.Size(63, 20)
+        Me.edTagYear.TabIndex = 11
+        '
+        'Label496
+        '
+        Me.Label496.AutoSize = true
+        Me.Label496.Location = New System.Drawing.Point(13, 192)
+        Me.Label496.Name = "Label496"
+        Me.Label496.Size = New System.Drawing.Size(49, 13)
+        Me.Label496.TabIndex = 12
+        '
+        'edTagTrackID
+        '
+        Me.edTagTrackID.Location = New System.Drawing.Point(16, 207)
+        Me.edTagTrackID.Name = "edTagTrackID"
+        Me.edTagTrackID.Size = New System.Drawing.Size(63, 20)
+        Me.edTagTrackID.TabIndex = 13
+        '
+        'TabPage78
+        '
+        Me.TabPage78.Controls.Add(Me.TabControl32)
+        Me.TabPage78.Controls.Add(Me.cbTagEnabled)
+        Me.TabPage78.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage78.Name = "TabPage78"
+        Me.TabPage78.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage78.Size = New System.Drawing.Size(302, 494)
+        Me.TabPage78.TabIndex = 14
+        Me.TabPage78.Text = "Tags"
+        Me.TabPage78.UseVisualStyleBackColor = true
+        '
+        'TabPage22
+        '
+        Me.TabPage22.Controls.Add(Me.tbVUMeterBoost)
+        Me.TabPage22.Controls.Add(Me.label382)
+        Me.TabPage22.Controls.Add(Me.label381)
+        Me.TabPage22.Controls.Add(Me.tbVUMeterAmplification)
+        Me.TabPage22.Controls.Add(Me.cbVUMeterPro)
+        Me.TabPage22.Controls.Add(Me.waveformPainter2)
+        Me.TabPage22.Controls.Add(Me.waveformPainter1)
+        Me.TabPage22.Controls.Add(Me.volumeMeter2)
+        Me.TabPage22.Controls.Add(Me.volumeMeter1)
+        Me.TabPage22.Controls.Add(Me.peakMeterCtrl1)
+        Me.TabPage22.Controls.Add(Me.cbVUMeter)
+        Me.TabPage22.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage22.Name = "TabPage22"
+        Me.TabPage22.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage22.Size = New System.Drawing.Size(302, 494)
+        Me.TabPage22.TabIndex = 16
+        Me.TabPage22.Text = "Audio output"
+        Me.TabPage22.UseVisualStyleBackColor = true
+        '
+        'peakMeterCtrl1
+        '
+        Me.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red
+        Me.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(150,Byte),Integer), CType(CType(150,Byte),Integer))
+        Me.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow
+        Me.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(150,Byte),Integer))
+        Me.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green
+        Me.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(CType(CType(150,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(150,Byte),Integer))
+        Me.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(CType(CType(180,Byte),Integer), CType(CType(180,Byte),Integer), CType(CType(180,Byte),Integer))
+        Me.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro
+        Me.peakMeterCtrl1.Location = New System.Drawing.Point(125, 12)
+        Me.peakMeterCtrl1.Name = "peakMeterCtrl1"
+        Me.peakMeterCtrl1.Size = New System.Drawing.Size(105, 61)
+        Me.peakMeterCtrl1.TabIndex = 104
+        Me.peakMeterCtrl1.Text = "peakMeterCtrl1"
+        '
+        'cbVUMeter
+        '
+        Me.cbVUMeter.AutoSize = true
+        Me.cbVUMeter.Location = New System.Drawing.Point(12, 12)
+        Me.cbVUMeter.Name = "cbVUMeter"
+        Me.cbVUMeter.Size = New System.Drawing.Size(107, 17)
+        Me.cbVUMeter.TabIndex = 103
+        Me.cbVUMeter.Text = "Enable VU Meter"
+        Me.cbVUMeter.UseVisualStyleBackColor = true
+        '
+        'tbVUMeterBoost
+        '
+        Me.tbVUMeterBoost.Location = New System.Drawing.Point(171, 256)
+        Me.tbVUMeterBoost.Maximum = 30
+        Me.tbVUMeterBoost.Name = "tbVUMeterBoost"
+        Me.tbVUMeterBoost.Size = New System.Drawing.Size(104, 45)
+        Me.tbVUMeterBoost.TabIndex = 133
+        Me.tbVUMeterBoost.Value = 10
+        '
+        'label382
+        '
+        Me.label382.AutoSize = true
+        Me.label382.Location = New System.Drawing.Point(168, 240)
+        Me.label382.Name = "label382"
+        Me.label382.Size = New System.Drawing.Size(68, 13)
+        Me.label382.TabIndex = 132
+        Me.label382.Text = "Meters boost"
+        '
+        'label381
+        '
+        Me.label381.AutoSize = true
+        Me.label381.Location = New System.Drawing.Point(20, 240)
+        Me.label381.Name = "label381"
+        Me.label381.Size = New System.Drawing.Size(120, 13)
+        Me.label381.TabIndex = 128
+        Me.label381.Text = "Volume amplification (%)"
+        '
+        'tbVUMeterAmplification
+        '
+        Me.tbVUMeterAmplification.Location = New System.Drawing.Point(23, 256)
+        Me.tbVUMeterAmplification.Maximum = 100
+        Me.tbVUMeterAmplification.Name = "tbVUMeterAmplification"
+        Me.tbVUMeterAmplification.Size = New System.Drawing.Size(105, 45)
+        Me.tbVUMeterAmplification.TabIndex = 127
+        Me.tbVUMeterAmplification.Value = 100
+        '
+        'cbVUMeterPro
+        '
+        Me.cbVUMeterPro.AutoSize = true
+        Me.cbVUMeterPro.Location = New System.Drawing.Point(12, 88)
+        Me.cbVUMeterPro.Name = "cbVUMeterPro"
+        Me.cbVUMeterPro.Size = New System.Drawing.Size(125, 17)
+        Me.cbVUMeterPro.TabIndex = 126
+        Me.cbVUMeterPro.Text = "Enable VU meter Pro"
+        Me.cbVUMeterPro.UseVisualStyleBackColor = true
+        '
+        'waveformPainter2
+        '
+        Me.waveformPainter2.Boost = 1!
+        Me.waveformPainter2.Location = New System.Drawing.Point(101, 174)
+        Me.waveformPainter2.Name = "waveformPainter2"
+        Me.waveformPainter2.Size = New System.Drawing.Size(174, 60)
+        Me.waveformPainter2.TabIndex = 131
+        Me.waveformPainter2.Text = "waveformPainter2"
+        '
+        'waveformPainter1
+        '
+        Me.waveformPainter1.Boost = 1!
+        Me.waveformPainter1.Location = New System.Drawing.Point(101, 108)
+        Me.waveformPainter1.Name = "waveformPainter1"
+        Me.waveformPainter1.Size = New System.Drawing.Size(174, 60)
+        Me.waveformPainter1.TabIndex = 130
+        Me.waveformPainter1.Text = "waveformPainter1"
+        '
+        'volumeMeter2
+        '
+        Me.volumeMeter2.Amplitude = 0!
+        Me.volumeMeter2.BackColor = System.Drawing.Color.LightGray
+        Me.volumeMeter2.Boost = 1!
+        Me.volumeMeter2.Location = New System.Drawing.Point(51, 108)
+        Me.volumeMeter2.MaxDb = 18!
+        Me.volumeMeter2.MinDb = -60!
+        Me.volumeMeter2.Name = "volumeMeter2"
+        Me.volumeMeter2.Size = New System.Drawing.Size(22, 126)
+        Me.volumeMeter2.TabIndex = 129
+        '
+        'volumeMeter1
+        '
+        Me.volumeMeter1.Amplitude = 0!
+        Me.volumeMeter1.BackColor = System.Drawing.Color.LightGray
+        Me.volumeMeter1.Boost = 1!
+        Me.volumeMeter1.Location = New System.Drawing.Point(23, 108)
+        Me.volumeMeter1.MaxDb = 18!
+        Me.volumeMeter1.MinDb = -60!
+        Me.volumeMeter1.Name = "volumeMeter1"
+        Me.volumeMeter1.Size = New System.Drawing.Size(22, 126)
+        Me.volumeMeter1.TabIndex = 125
         '
         'Form1
         '
@@ -13813,14 +13918,6 @@ Partial Class Form1
         Me.groupBox47.PerformLayout
         Me.groupBox43.ResumeLayout(false)
         Me.groupBox43.PerformLayout
-        Me.TabPage78.ResumeLayout(false)
-        Me.TabPage78.PerformLayout
-        Me.TabControl32.ResumeLayout(false)
-        Me.TabPage142.ResumeLayout(false)
-        Me.TabPage142.PerformLayout
-        Me.TabPage143.ResumeLayout(false)
-        Me.TabPage143.PerformLayout
-        CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbSeeking,System.ComponentModel.ISupportInitialize).EndInit
         Me.tabControl3.ResumeLayout(false)
         Me.tabPage52.ResumeLayout(false)
@@ -13836,6 +13933,13 @@ Partial Class Form1
         Me.tabPage54.PerformLayout
         Me.TabPage74.ResumeLayout(false)
         Me.TabPage74.PerformLayout
+        CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage78.ResumeLayout(false)
+        Me.TabPage78.PerformLayout
+        Me.TabPage22.ResumeLayout(false)
+        Me.TabPage22.PerformLayout
+        CType(Me.tbVUMeterBoost,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbVUMeterAmplification,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 
@@ -14795,34 +14899,6 @@ End Sub
     Private WithEvents lbFiles2 As ListBox
     Private WithEvents label32 As Label
     Private WithEvents cbLicensing As CheckBox
-    Friend WithEvents TabPage78 As TabPage
-    Friend WithEvents TabControl32 As TabControl
-    Friend WithEvents TabPage142 As TabPage
-    Friend WithEvents edTagTrackID As TextBox
-    Friend WithEvents Label496 As Label
-    Friend WithEvents edTagYear As TextBox
-    Friend WithEvents Label495 As Label
-    Friend WithEvents edTagComment As TextBox
-    Friend WithEvents Label493 As Label
-    Friend WithEvents edTagAlbum As TextBox
-    Friend WithEvents Label491 As Label
-    Friend WithEvents edTagArtists As TextBox
-    Friend WithEvents Label490 As Label
-    Friend WithEvents edTagCopyright As TextBox
-    Friend WithEvents Label22 As Label
-    Friend WithEvents edTagTitle As TextBox
-    Friend WithEvents Label23 As Label
-    Friend WithEvents TabPage143 As TabPage
-    Friend WithEvents imgTagCover As PictureBox
-    Friend WithEvents Label499 As Label
-    Friend WithEvents Label498 As Label
-    Friend WithEvents edTagLyrics As TextBox
-    Friend WithEvents Label497 As Label
-    Friend WithEvents cbTagGenre As ComboBox
-    Friend WithEvents Label494 As Label
-    Friend WithEvents edTagComposers As TextBox
-    Friend WithEvents Label492 As Label
-    Friend WithEvents cbTagEnabled As CheckBox
     Friend WithEvents Label24 As Label
     Private WithEvents edCropRight As TextBox
     Private WithEvents label176 As Label
@@ -15004,4 +15080,44 @@ End Sub
     Private WithEvents cbMP4Resize As CheckBox
     Private WithEvents cbTextLogoFadeOut As CheckBox
     Private WithEvents cbTextLogoFadeIn As CheckBox
+    Friend WithEvents TabPage78 As TabPage
+    Friend WithEvents TabControl32 As TabControl
+    Friend WithEvents cbTagEnabled As CheckBox
+    Friend WithEvents TabPage22 As TabPage
+    Friend WithEvents TabPage143 As TabPage
+    Friend WithEvents Label492 As Label
+    Friend WithEvents edTagComposers As TextBox
+    Friend WithEvents Label494 As Label
+    Friend WithEvents cbTagGenre As ComboBox
+    Friend WithEvents Label497 As Label
+    Friend WithEvents edTagLyrics As TextBox
+    Friend WithEvents Label498 As Label
+    Friend WithEvents Label499 As Label
+    Friend WithEvents imgTagCover As PictureBox
+    Friend WithEvents TabPage142 As TabPage
+    Friend WithEvents Label23 As Label
+    Friend WithEvents edTagTitle As TextBox
+    Friend WithEvents Label22 As Label
+    Friend WithEvents edTagCopyright As TextBox
+    Friend WithEvents Label490 As Label
+    Friend WithEvents edTagArtists As TextBox
+    Friend WithEvents Label491 As Label
+    Friend WithEvents edTagAlbum As TextBox
+    Friend WithEvents Label493 As Label
+    Friend WithEvents edTagComment As TextBox
+    Friend WithEvents Label495 As Label
+    Friend WithEvents edTagYear As TextBox
+    Friend WithEvents Label496 As Label
+    Friend WithEvents edTagTrackID As TextBox
+    Private WithEvents peakMeterCtrl1 As VisioForge.Controls.UI.WinForms.PeakMeterCtrl
+    Private WithEvents cbVUMeter As CheckBox
+    Private WithEvents tbVUMeterBoost As TrackBar
+    Private WithEvents label382 As Label
+    Private WithEvents label381 As Label
+    Private WithEvents tbVUMeterAmplification As TrackBar
+    Private WithEvents cbVUMeterPro As CheckBox
+    Private WithEvents waveformPainter2 As VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter
+    Private WithEvents waveformPainter1 As VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter
+    Private WithEvents volumeMeter2 As VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter
+    Private WithEvents volumeMeter1 As VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter
 End Class

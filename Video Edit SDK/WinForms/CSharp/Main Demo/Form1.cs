@@ -1607,7 +1607,24 @@ namespace VideoEdit_CS_Demo
                 ffmpegOutput.Audio_Mode = VFFFMPEGEXEAudioMode.Lossless;
             }
         }
-        
+
+        private void ConfigureVUMeters()
+        {
+            VideoEdit1.Audio_VUMeter_Enabled = cbVUMeter.Checked;
+            VideoEdit1.Audio_VUMeter_Pro_Enabled = cbVUMeterPro.Checked;
+
+            if (VideoEdit1.Audio_VUMeter_Pro_Enabled)
+            {
+                VideoEdit1.Audio_VUMeter_Pro_Volume = tbVUMeterAmplification.Value;
+
+                volumeMeter1.Boost = tbVUMeterBoost.Value / 10.0F;
+                volumeMeter2.Boost = tbVUMeterBoost.Value / 10.0F;
+
+                waveformPainter1.Boost = tbVUMeterBoost.Value / 10.0F;
+                waveformPainter2.Boost = tbVUMeterBoost.Value / 10.0F;
+            }
+        }
+
         private void btStart_Click(object sender, EventArgs e)
         {
             zoom = 1.0;
@@ -2337,6 +2354,9 @@ namespace VideoEdit_CS_Demo
             // Virtual camera output
             VideoEdit1.Virtual_Camera_Output_Enabled = cbVirtualCamera.Checked;
 
+            // Audio VU meters
+            ConfigureVUMeters();
+
             // Deinterlace
             if (rbDeintBlendEnabled.Checked)
             {
@@ -2583,6 +2603,15 @@ namespace VideoEdit_CS_Demo
             lbFiles.Items.Clear();
             VideoEdit1.Input_Clear_List();
             ProgressBar1.Value = 0;
+
+            // clear VU Meters
+            peakMeterCtrl1.SetData(new int[19], 0, 19);
+            peakMeterCtrl1.Stop();
+            waveformPainter1.Clear();
+            waveformPainter2.Clear();
+
+            volumeMeter1.Clear();
+            volumeMeter2.Clear();
         }
 
         private void btAudioSettings2_Click(object sender, EventArgs e)
@@ -3629,6 +3658,15 @@ namespace VideoEdit_CS_Demo
 
             VideoEdit1.Video_Transition_Clear();
             lbTransitions.Items.Clear();
+
+            // clear VU Meters
+            peakMeterCtrl1.SetData(new int[19], 0, 19);
+            peakMeterCtrl1.Stop();
+            waveformPainter1.Clear();
+            waveformPainter2.Clear();
+
+            volumeMeter1.Clear();
+            volumeMeter2.Clear();
         }
 
         private void ConfigureObjectDetection()
@@ -6041,6 +6079,29 @@ namespace VideoEdit_CS_Demo
                     intf.Enabled = cbGPUOldMovie.Checked;
                     intf.Update();
                 }
+            }
+        }
+        public delegate void VUDelegate(VUMeterEventArgs e);
+
+        public void VUDelegateMethod(VUMeterEventArgs e)
+        {
+            peakMeterCtrl1.SetData(e.MeterData, 0, 19);
+        }
+
+        private void VideoEdit1_OnAudioVUMeter(object sender, VUMeterEventArgs e)
+        {
+            BeginInvoke(new VUDelegate(VUDelegateMethod), e);
+        }
+
+        private void VideoEdit1_OnAudioVUMeterProVolume(object sender, AudioLevelEventArgs e)
+        {
+            volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
+            waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
+
+            if (e.ChannelLevelsDb.Length > 1)
+            {
+                volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
+                waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
             }
         }
     }

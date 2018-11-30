@@ -31,7 +31,7 @@ namespace VideoEdit_CS_Demo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btSelectOutput = new System.Windows.Forms.Button();
@@ -601,6 +601,8 @@ namespace VideoEdit_CS_Demo
             this.label141 = new System.Windows.Forms.Label();
             this.label142 = new System.Windows.Forms.Label();
             this.tabPage39 = new System.Windows.Forms.TabPage();
+            this.cbTextLogoFadeOut = new System.Windows.Forms.CheckBox();
+            this.cbTextLogoFadeIn = new System.Windows.Forms.CheckBox();
             this.edTextLogoOuterSize = new System.Windows.Forms.TextBox();
             this.label143 = new System.Windows.Forms.Label();
             this.edTextLogoInnerSize = new System.Windows.Forms.TextBox();
@@ -1196,10 +1198,20 @@ namespace VideoEdit_CS_Demo
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.label130 = new System.Windows.Forms.Label();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
-            this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
             this.openFileDialogSubtitles = new System.Windows.Forms.OpenFileDialog();
-            this.cbTextLogoFadeOut = new System.Windows.Forms.CheckBox();
-            this.cbTextLogoFadeIn = new System.Windows.Forms.CheckBox();
+            this.tabPage24 = new System.Windows.Forms.TabPage();
+            this.tbVUMeterBoost = new System.Windows.Forms.TrackBar();
+            this.label382 = new System.Windows.Forms.Label();
+            this.label381 = new System.Windows.Forms.Label();
+            this.tbVUMeterAmplification = new System.Windows.Forms.TrackBar();
+            this.cbVUMeterPro = new System.Windows.Forms.CheckBox();
+            this.cbVUMeter = new System.Windows.Forms.CheckBox();
+            this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
+            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
+            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
+            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1415,6 +1427,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage53.SuspendLayout();
             this.tabPage54.SuspendLayout();
             this.tabPage74.SuspendLayout();
+            this.tabPage24.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVUMeterBoost)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVUMeterAmplification)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -1433,6 +1448,7 @@ namespace VideoEdit_CS_Demo
             this.tabControl1.Controls.Add(this.tabPage46);
             this.tabControl1.Controls.Add(this.tabPage47);
             this.tabControl1.Controls.Add(this.tabPage79);
+            this.tabControl1.Controls.Add(this.tabPage24);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1449,7 +1465,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(302, 494);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Output";
@@ -1555,7 +1571,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage30.Controls.Add(this.cbResize);
             this.tabPage30.Location = new System.Drawing.Point(4, 22);
             this.tabPage30.Name = "tabPage30";
-            this.tabPage30.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage30.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage30.Size = new System.Drawing.Size(284, 399);
             this.tabPage30.TabIndex = 6;
             this.tabPage30.Text = "Main settings";
@@ -1731,7 +1747,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage48.Controls.Add(this.tabControl24);
             this.tabPage48.Location = new System.Drawing.Point(4, 22);
             this.tabPage48.Name = "tabPage48";
-            this.tabPage48.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage48.Size = new System.Drawing.Size(284, 399);
             this.tabPage48.TabIndex = 14;
             this.tabPage48.Text = "MP4";
@@ -1746,7 +1762,7 @@ namespace VideoEdit_CS_Demo
             this.tabControl24.Controls.Add(this.tabPage90);
             this.tabControl24.Controls.Add(this.tabPage94);
             this.tabControl24.Location = new System.Drawing.Point(2, 5);
-            this.tabControl24.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl24.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl24.Name = "tabControl24";
             this.tabControl24.SelectedIndex = 0;
             this.tabControl24.Size = new System.Drawing.Size(286, 382);
@@ -1763,7 +1779,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage111.Controls.Add(this.label377);
             this.tabPage111.Location = new System.Drawing.Point(4, 22);
             this.tabPage111.Name = "tabPage111";
-            this.tabPage111.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage111.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage111.Size = new System.Drawing.Size(278, 356);
             this.tabPage111.TabIndex = 2;
             this.tabPage111.Text = "Main";
@@ -1851,9 +1867,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage89.Controls.Add(this.groupBox29);
             this.tabPage89.Controls.Add(this.groupBox46);
             this.tabPage89.Location = new System.Drawing.Point(4, 22);
-            this.tabPage89.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage89.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage89.Name = "tabPage89";
-            this.tabPage89.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage89.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage89.Size = new System.Drawing.Size(278, 356);
             this.tabPage89.TabIndex = 0;
             this.tabPage89.Text = "Video (v8/v10)";
@@ -2137,7 +2153,7 @@ namespace VideoEdit_CS_Demo
             this.tpNVENC.Controls.Add(this.groupBox50);
             this.tpNVENC.Location = new System.Drawing.Point(4, 22);
             this.tpNVENC.Name = "tpNVENC";
-            this.tpNVENC.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tpNVENC.Padding = new System.Windows.Forms.Padding(3);
             this.tpNVENC.Size = new System.Drawing.Size(278, 356);
             this.tpNVENC.TabIndex = 3;
             this.tpNVENC.Text = "Video (v10 NVENC)";
@@ -2371,7 +2387,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage148.Controls.Add(this.groupBox53);
             this.tabPage148.Location = new System.Drawing.Point(4, 22);
             this.tabPage148.Name = "tabPage148";
-            this.tabPage148.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage148.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage148.Size = new System.Drawing.Size(278, 356);
             this.tabPage148.TabIndex = 6;
             this.tabPage148.Text = "Video (v11)";
@@ -2619,9 +2635,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage90.Controls.Add(this.cbAACVersion);
             this.tabPage90.Controls.Add(this.label358);
             this.tabPage90.Location = new System.Drawing.Point(4, 22);
-            this.tabPage90.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage90.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage90.Name = "tabPage90";
-            this.tabPage90.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage90.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage90.Size = new System.Drawing.Size(278, 356);
             this.tabPage90.TabIndex = 1;
             this.tabPage90.Text = "Audio";
@@ -2645,7 +2661,7 @@ namespace VideoEdit_CS_Demo
             "RAW",
             "ADTS"});
             this.cbAACOutput.Location = new System.Drawing.Point(105, 130);
-            this.cbAACOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAACOutput.Margin = new System.Windows.Forms.Padding(2);
             this.cbAACOutput.Name = "cbAACOutput";
             this.cbAACOutput.Size = new System.Drawing.Size(156, 21);
             this.cbAACOutput.TabIndex = 7;
@@ -2688,7 +2704,7 @@ namespace VideoEdit_CS_Demo
             "224",
             "256"});
             this.cbAACBitrate.Location = new System.Drawing.Point(105, 92);
-            this.cbAACBitrate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAACBitrate.Margin = new System.Windows.Forms.Padding(2);
             this.cbAACBitrate.Name = "cbAACBitrate";
             this.cbAACBitrate.Size = new System.Drawing.Size(121, 21);
             this.cbAACBitrate.TabIndex = 5;
@@ -2713,7 +2729,7 @@ namespace VideoEdit_CS_Demo
             "Scalable Sampling Rate",
             "Long Term Predictor"});
             this.cbAACObjectType.Location = new System.Drawing.Point(105, 56);
-            this.cbAACObjectType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAACObjectType.Margin = new System.Windows.Forms.Padding(2);
             this.cbAACObjectType.Name = "cbAACObjectType";
             this.cbAACObjectType.Size = new System.Drawing.Size(156, 21);
             this.cbAACObjectType.TabIndex = 3;
@@ -2736,7 +2752,7 @@ namespace VideoEdit_CS_Demo
             "MPEG-4",
             "MPEG-2"});
             this.cbAACVersion.Location = new System.Drawing.Point(105, 21);
-            this.cbAACVersion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbAACVersion.Margin = new System.Windows.Forms.Padding(2);
             this.cbAACVersion.Name = "cbAACVersion";
             this.cbAACVersion.Size = new System.Drawing.Size(156, 21);
             this.cbAACVersion.TabIndex = 1;
@@ -2759,7 +2775,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage94.Controls.Add(this.cbMP4TimeOverride);
             this.tabPage94.Location = new System.Drawing.Point(4, 22);
             this.tabPage94.Name = "tabPage94";
-            this.tabPage94.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage94.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage94.Size = new System.Drawing.Size(278, 356);
             this.tabPage94.TabIndex = 4;
             this.tabPage94.Text = "MP4 (v10)";
@@ -2826,7 +2842,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage4.Controls.Add(this.cbVideoCodec);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(284, 399);
             this.tabPage4.TabIndex = 0;
             this.tabPage4.Text = "AVI/MKV";
@@ -2984,7 +3000,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage5.Controls.Add(this.label8);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(284, 399);
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "WMV/WMA";
@@ -3030,7 +3046,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage13.Controls.Add(this.label175);
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage13.Size = new System.Drawing.Size(280, 180);
             this.tabPage13.TabIndex = 0;
             this.tabPage13.Text = "Video";
@@ -3289,7 +3305,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage19.Controls.Add(this.label197);
             this.tabPage19.Location = new System.Drawing.Point(4, 22);
             this.tabPage19.Name = "tabPage19";
-            this.tabPage19.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage19.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage19.Size = new System.Drawing.Size(280, 180);
             this.tabPage19.TabIndex = 1;
             this.tabPage19.Text = "Audio";
@@ -3486,7 +3502,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage6.Controls.Add(this.groupBox10);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(284, 399);
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "DV";
@@ -3633,7 +3649,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage10.Controls.Add(this.label70);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage10.Size = new System.Drawing.Size(284, 399);
             this.tabPage10.TabIndex = 8;
             this.tabPage10.Text = "PCM/ACM";
@@ -3741,7 +3757,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage11.Controls.Add(this.tabControl4);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.Size = new System.Drawing.Size(284, 399);
             this.tabPage11.TabIndex = 9;
             this.tabPage11.Text = "MP3 (Lame)";
@@ -3768,7 +3784,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage17.Controls.Add(this.groupBox12);
             this.tabPage17.Location = new System.Drawing.Point(4, 22);
             this.tabPage17.Name = "tabPage17";
-            this.tabPage17.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage17.Size = new System.Drawing.Size(273, 357);
             this.tabPage17.TabIndex = 0;
             this.tabPage17.Text = "Main";
@@ -4068,7 +4084,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage18.Controls.Add(this.cbLameCopyright);
             this.tabPage18.Location = new System.Drawing.Point(4, 22);
             this.tabPage18.Name = "tabPage18";
-            this.tabPage18.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage18.Size = new System.Drawing.Size(273, 357);
             this.tabPage18.TabIndex = 1;
             this.tabPage18.Text = "Other";
@@ -4201,7 +4217,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage12.Controls.Add(this.rbOGGQuality);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage12.Size = new System.Drawing.Size(284, 399);
             this.tabPage12.TabIndex = 10;
             this.tabPage12.Text = "Ogg Vorbis";
@@ -4370,7 +4386,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage8.Controls.Add(this.groupBox3);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage8.Size = new System.Drawing.Size(284, 399);
             this.tabPage8.TabIndex = 4;
             this.tabPage8.Text = "Custom";
@@ -4611,7 +4627,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage7.Controls.Add(this.tabControl6);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(284, 399);
             this.tabPage7.TabIndex = 11;
             this.tabPage7.Text = "WebM";
@@ -4654,7 +4670,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage58.Controls.Add(this.label172);
             this.tabPage58.Location = new System.Drawing.Point(4, 22);
             this.tabPage58.Name = "tabPage58";
-            this.tabPage58.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage58.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage58.Size = new System.Drawing.Size(264, 361);
             this.tabPage58.TabIndex = 0;
             this.tabPage58.Text = "Video (VP8/VP9) - Main";
@@ -4864,7 +4880,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage60.Controls.Add(this.label223);
             this.tabPage60.Location = new System.Drawing.Point(4, 22);
             this.tabPage60.Name = "tabPage60";
-            this.tabPage60.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage60.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage60.Size = new System.Drawing.Size(264, 361);
             this.tabPage60.TabIndex = 1;
             this.tabPage60.Text = "Audio (Vorbis)";
@@ -4915,7 +4931,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage61.Controls.Add(this.cbWebMVideoErrorResilent);
             this.tabPage61.Location = new System.Drawing.Point(4, 22);
             this.tabPage61.Name = "tabPage61";
-            this.tabPage61.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage61.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage61.Size = new System.Drawing.Size(264, 361);
             this.tabPage61.TabIndex = 2;
             this.tabPage61.Text = "Video (VP8/VP9) - Advanced";
@@ -5124,7 +5140,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage63.Controls.Add(this.label101);
             this.tabPage63.Location = new System.Drawing.Point(4, 22);
             this.tabPage63.Name = "tabPage63";
-            this.tabPage63.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage63.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage63.Size = new System.Drawing.Size(264, 361);
             this.tabPage63.TabIndex = 3;
             this.tabPage63.Text = "Video (VP8/VP9) - Advanced 2";
@@ -5273,7 +5289,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage14.Controls.Add(this.label267);
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage14.Size = new System.Drawing.Size(284, 399);
             this.tabPage14.TabIndex = 12;
             this.tabPage14.Text = "FFMPEG (DLL)";
@@ -5296,7 +5312,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage62.Controls.Add(this.textBox4);
             this.tabPage62.Location = new System.Drawing.Point(4, 22);
             this.tabPage62.Name = "tabPage62";
-            this.tabPage62.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage62.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage62.Size = new System.Drawing.Size(273, 318);
             this.tabPage62.TabIndex = 0;
             this.tabPage62.Text = "About";
@@ -5342,7 +5358,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage64.Controls.Add(this.label259);
             this.tabPage64.Location = new System.Drawing.Point(4, 22);
             this.tabPage64.Name = "tabPage64";
-            this.tabPage64.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage64.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage64.Size = new System.Drawing.Size(273, 318);
             this.tabPage64.TabIndex = 2;
             this.tabPage64.Text = "Video";
@@ -5536,7 +5552,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage65.Controls.Add(this.label265);
             this.tabPage65.Location = new System.Drawing.Point(4, 22);
             this.tabPage65.Name = "tabPage65";
-            this.tabPage65.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage65.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage65.Size = new System.Drawing.Size(273, 318);
             this.tabPage65.TabIndex = 3;
             this.tabPage65.Text = "Audio";
@@ -5675,7 +5691,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage67.Controls.Add(this.label467);
             this.tabPage67.Location = new System.Drawing.Point(4, 22);
             this.tabPage67.Name = "tabPage67";
-            this.tabPage67.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage67.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage67.Size = new System.Drawing.Size(284, 399);
             this.tabPage67.TabIndex = 17;
             this.tabPage67.Text = "FFMPEG (EXE)";
@@ -5700,7 +5716,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage129.Controls.Add(this.textBox2);
             this.tabPage129.Location = new System.Drawing.Point(4, 22);
             this.tabPage129.Name = "tabPage129";
-            this.tabPage129.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage129.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage129.Size = new System.Drawing.Size(273, 325);
             this.tabPage129.TabIndex = 0;
             this.tabPage129.Text = "About";
@@ -5730,7 +5746,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage132.Controls.Add(this.cbFFEXEOutputFormat);
             this.tabPage132.Location = new System.Drawing.Point(4, 22);
             this.tabPage132.Name = "tabPage132";
-            this.tabPage132.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage132.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage132.Size = new System.Drawing.Size(273, 325);
             this.tabPage132.TabIndex = 4;
             this.tabPage132.Text = "Format";
@@ -5799,7 +5815,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage130.Controls.Add(this.tabControl30);
             this.tabPage130.Location = new System.Drawing.Point(4, 22);
             this.tabPage130.Name = "tabPage130";
-            this.tabPage130.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage130.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage130.Size = new System.Drawing.Size(273, 325);
             this.tabPage130.TabIndex = 2;
             this.tabPage130.Text = "Video";
@@ -5834,7 +5850,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage134.Controls.Add(this.label461);
             this.tabPage134.Location = new System.Drawing.Point(4, 22);
             this.tabPage134.Name = "tabPage134";
-            this.tabPage134.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage134.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage134.Size = new System.Drawing.Size(253, 290);
             this.tabPage134.TabIndex = 0;
             this.tabPage134.Text = "Common";
@@ -6008,7 +6024,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage137.Controls.Add(this.label457);
             this.tabPage137.Location = new System.Drawing.Point(4, 22);
             this.tabPage137.Name = "tabPage137";
-            this.tabPage137.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage137.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage137.Size = new System.Drawing.Size(253, 290);
             this.tabPage137.TabIndex = 3;
             this.tabPage137.Text = "Bitrate / quality";
@@ -6155,7 +6171,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage136.Controls.Add(this.label453);
             this.tabPage136.Location = new System.Drawing.Point(4, 22);
             this.tabPage136.Name = "tabPage136";
-            this.tabPage136.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage136.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage136.Size = new System.Drawing.Size(253, 290);
             this.tabPage136.TabIndex = 2;
             this.tabPage136.Text = "Advanced";
@@ -6241,7 +6257,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage135.Controls.Add(this.label458);
             this.tabPage135.Location = new System.Drawing.Point(4, 22);
             this.tabPage135.Name = "tabPage135";
-            this.tabPage135.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage135.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage135.Size = new System.Drawing.Size(253, 290);
             this.tabPage135.TabIndex = 1;
             this.tabPage135.Text = "H264 / HEVC";
@@ -6453,7 +6469,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage131.Controls.Add(this.label466);
             this.tabPage131.Location = new System.Drawing.Point(4, 22);
             this.tabPage131.Name = "tabPage131";
-            this.tabPage131.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage131.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage131.Size = new System.Drawing.Size(273, 325);
             this.tabPage131.TabIndex = 3;
             this.tabPage131.Text = "Audio";
@@ -6716,7 +6732,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage133.Controls.Add(this.label471);
             this.tabPage133.Location = new System.Drawing.Point(4, 22);
             this.tabPage133.Name = "tabPage133";
-            this.tabPage133.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage133.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage133.Size = new System.Drawing.Size(273, 325);
             this.tabPage133.TabIndex = 5;
             this.tabPage133.Text = "Advanced";
@@ -6847,7 +6863,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage56.Controls.Add(this.tbFLACLevel);
             this.tabPage56.Location = new System.Drawing.Point(4, 22);
             this.tabPage56.Name = "tabPage56";
-            this.tabPage56.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage56.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage56.Size = new System.Drawing.Size(284, 399);
             this.tabPage56.TabIndex = 15;
             this.tabPage56.Text = "FLAC";
@@ -7022,7 +7038,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage57.Controls.Add(this.label33);
             this.tabPage57.Location = new System.Drawing.Point(4, 22);
             this.tabPage57.Name = "tabPage57";
-            this.tabPage57.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage57.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage57.Size = new System.Drawing.Size(284, 399);
             this.tabPage57.TabIndex = 16;
             this.tabPage57.Text = "Speex";
@@ -7198,7 +7214,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage78.Controls.Add(this.TabControl31);
             this.tabPage78.Location = new System.Drawing.Point(4, 22);
             this.tabPage78.Name = "tabPage78";
-            this.tabPage78.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage78.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage78.Size = new System.Drawing.Size(284, 399);
             this.tabPage78.TabIndex = 18;
             this.tabPage78.Text = "M4A";
@@ -7227,7 +7243,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage140.Controls.Add(this.label489);
             this.tabPage140.Location = new System.Drawing.Point(4, 22);
             this.tabPage140.Name = "tabPage140";
-            this.tabPage140.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage140.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage140.Size = new System.Drawing.Size(270, 364);
             this.tabPage140.TabIndex = 0;
             this.tabPage140.Text = "Main";
@@ -7251,7 +7267,7 @@ namespace VideoEdit_CS_Demo
             "RAW",
             "ADTS"});
             this.cbM4AOutput.Location = new System.Drawing.Point(105, 124);
-            this.cbM4AOutput.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbM4AOutput.Margin = new System.Windows.Forms.Padding(2);
             this.cbM4AOutput.Name = "cbM4AOutput";
             this.cbM4AOutput.Size = new System.Drawing.Size(156, 21);
             this.cbM4AOutput.TabIndex = 16;
@@ -7290,7 +7306,7 @@ namespace VideoEdit_CS_Demo
             "224",
             "256"});
             this.cbM4ABitrate.Location = new System.Drawing.Point(105, 86);
-            this.cbM4ABitrate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbM4ABitrate.Margin = new System.Windows.Forms.Padding(2);
             this.cbM4ABitrate.Name = "cbM4ABitrate";
             this.cbM4ABitrate.Size = new System.Drawing.Size(121, 21);
             this.cbM4ABitrate.TabIndex = 14;
@@ -7315,7 +7331,7 @@ namespace VideoEdit_CS_Demo
             "Scalable Sampling Rate",
             "Long Term Predictor"});
             this.cbM4AObjectType.Location = new System.Drawing.Point(105, 50);
-            this.cbM4AObjectType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbM4AObjectType.Margin = new System.Windows.Forms.Padding(2);
             this.cbM4AObjectType.Name = "cbM4AObjectType";
             this.cbM4AObjectType.Size = new System.Drawing.Size(156, 21);
             this.cbM4AObjectType.TabIndex = 12;
@@ -7338,7 +7354,7 @@ namespace VideoEdit_CS_Demo
             "MPEG-4",
             "MPEG-2"});
             this.cbM4AVersion.Location = new System.Drawing.Point(105, 15);
-            this.cbM4AVersion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbM4AVersion.Margin = new System.Windows.Forms.Padding(2);
             this.cbM4AVersion.Name = "cbM4AVersion";
             this.cbM4AVersion.Size = new System.Drawing.Size(156, 21);
             this.cbM4AVersion.TabIndex = 10;
@@ -7357,7 +7373,7 @@ namespace VideoEdit_CS_Demo
             // 
             this.tabPage141.Location = new System.Drawing.Point(4, 22);
             this.tabPage141.Name = "tabPage141";
-            this.tabPage141.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage141.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage141.Size = new System.Drawing.Size(270, 364);
             this.tabPage141.TabIndex = 1;
             this.tabPage141.Text = "Tags";
@@ -7373,7 +7389,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage80.Controls.Add(this.label251);
             this.tabPage80.Location = new System.Drawing.Point(4, 22);
             this.tabPage80.Name = "tabPage80";
-            this.tabPage80.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage80.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage80.Size = new System.Drawing.Size(284, 399);
             this.tabPage80.TabIndex = 19;
             this.tabPage80.Text = "GIF";
@@ -7444,7 +7460,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage31.Controls.Add(this.tabControl17);
             this.tabPage31.Location = new System.Drawing.Point(4, 22);
             this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage31.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage31.Size = new System.Drawing.Size(302, 494);
             this.tabPage31.TabIndex = 4;
             this.tabPage31.Text = "Video processing";
@@ -7482,7 +7498,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage68.Controls.Add(this.cbEffects);
             this.tabPage68.Location = new System.Drawing.Point(4, 22);
             this.tabPage68.Name = "tabPage68";
-            this.tabPage68.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage68.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage68.Size = new System.Drawing.Size(290, 459);
             this.tabPage68.TabIndex = 0;
             this.tabPage68.Text = "Effects";
@@ -7547,7 +7563,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage29.Controls.Add(this.cbTextLogo);
             this.tabPage29.Location = new System.Drawing.Point(4, 22);
             this.tabPage29.Name = "tabPage29";
-            this.tabPage29.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage29.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage29.Size = new System.Drawing.Size(275, 248);
             this.tabPage29.TabIndex = 0;
             this.tabPage29.Text = "Text logo";
@@ -7601,8 +7617,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage35.Controls.Add(this.tbTextLogoTransp);
             this.tabPage35.Location = new System.Drawing.Point(4, 22);
             this.tabPage35.Name = "tabPage35";
-            this.tabPage35.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage35.Size = new System.Drawing.Size(253, 114);
+            this.tabPage35.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage35.Size = new System.Drawing.Size(253, 134);
             this.tabPage35.TabIndex = 0;
             this.tabPage35.Text = "Main";
             this.tabPage35.UseVisualStyleBackColor = true;
@@ -7712,8 +7728,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage36.Controls.Add(this.cbTextLogoGradientEnabled);
             this.tabPage36.Location = new System.Drawing.Point(4, 22);
             this.tabPage36.Name = "tabPage36";
-            this.tabPage36.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage36.Size = new System.Drawing.Size(253, 114);
+            this.tabPage36.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage36.Size = new System.Drawing.Size(253, 134);
             this.tabPage36.TabIndex = 1;
             this.tabPage36.Text = "Gradient";
             this.tabPage36.UseVisualStyleBackColor = true;
@@ -7802,8 +7818,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage37.Controls.Add(this.label140);
             this.tabPage37.Location = new System.Drawing.Point(4, 22);
             this.tabPage37.Name = "tabPage37";
-            this.tabPage37.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage37.Size = new System.Drawing.Size(253, 114);
+            this.tabPage37.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage37.Size = new System.Drawing.Size(253, 134);
             this.tabPage37.TabIndex = 2;
             this.tabPage37.Text = "Position";
             this.tabPage37.UseVisualStyleBackColor = true;
@@ -7894,8 +7910,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage38.Controls.Add(this.label142);
             this.tabPage38.Location = new System.Drawing.Point(4, 22);
             this.tabPage38.Name = "tabPage38";
-            this.tabPage38.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage38.Size = new System.Drawing.Size(253, 114);
+            this.tabPage38.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage38.Size = new System.Drawing.Size(253, 134);
             this.tabPage38.TabIndex = 3;
             this.tabPage38.Text = "Quality";
             this.tabPage38.UseVisualStyleBackColor = true;
@@ -7968,11 +7984,31 @@ namespace VideoEdit_CS_Demo
             this.tabPage39.Controls.Add(this.label147);
             this.tabPage39.Location = new System.Drawing.Point(4, 22);
             this.tabPage39.Name = "tabPage39";
-            this.tabPage39.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage39.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage39.Size = new System.Drawing.Size(253, 134);
             this.tabPage39.TabIndex = 4;
             this.tabPage39.Text = "Effects";
             this.tabPage39.UseVisualStyleBackColor = true;
+            // 
+            // cbTextLogoFadeOut
+            // 
+            this.cbTextLogoFadeOut.AutoSize = true;
+            this.cbTextLogoFadeOut.Location = new System.Drawing.Point(93, 109);
+            this.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut";
+            this.cbTextLogoFadeOut.Size = new System.Drawing.Size(142, 17);
+            this.cbTextLogoFadeOut.TabIndex = 41;
+            this.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)";
+            this.cbTextLogoFadeOut.UseVisualStyleBackColor = true;
+            // 
+            // cbTextLogoFadeIn
+            // 
+            this.cbTextLogoFadeIn.AutoSize = true;
+            this.cbTextLogoFadeIn.Location = new System.Drawing.Point(18, 109);
+            this.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn";
+            this.cbTextLogoFadeIn.Size = new System.Drawing.Size(62, 17);
+            this.cbTextLogoFadeIn.TabIndex = 40;
+            this.cbTextLogoFadeIn.Text = "Fade-In";
+            this.cbTextLogoFadeIn.UseVisualStyleBackColor = true;
             // 
             // edTextLogoOuterSize
             // 
@@ -8079,8 +8115,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage40.Controls.Add(this.groupBox17);
             this.tabPage40.Location = new System.Drawing.Point(4, 22);
             this.tabPage40.Name = "tabPage40";
-            this.tabPage40.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage40.Size = new System.Drawing.Size(253, 114);
+            this.tabPage40.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage40.Size = new System.Drawing.Size(253, 134);
             this.tabPage40.TabIndex = 5;
             this.tabPage40.Text = "Rotation";
             this.tabPage40.UseVisualStyleBackColor = true;
@@ -8218,8 +8254,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage41.Controls.Add(this.cbTextLogoShapeEnabled);
             this.tabPage41.Location = new System.Drawing.Point(4, 22);
             this.tabPage41.Name = "tabPage41";
-            this.tabPage41.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage41.Size = new System.Drawing.Size(253, 114);
+            this.tabPage41.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage41.Size = new System.Drawing.Size(253, 134);
             this.tabPage41.TabIndex = 6;
             this.tabPage41.Text = "Shape";
             this.tabPage41.UseVisualStyleBackColor = true;
@@ -8385,7 +8421,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage42.Controls.Add(this.cbImageLogo);
             this.tabPage42.Location = new System.Drawing.Point(4, 22);
             this.tabPage42.Name = "tabPage42";
-            this.tabPage42.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage42.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage42.Size = new System.Drawing.Size(275, 248);
             this.tabPage42.TabIndex = 1;
             this.tabPage42.Text = "Image logo";
@@ -8590,9 +8626,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage22.Controls.Add(this.groupBox37);
             this.tabPage22.Controls.Add(this.cbZoom);
             this.tabPage22.Location = new System.Drawing.Point(4, 22);
-            this.tabPage22.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage22.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage22.Name = "tabPage22";
-            this.tabPage22.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage22.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage22.Size = new System.Drawing.Size(275, 248);
             this.tabPage22.TabIndex = 2;
             this.tabPage22.Text = "Zoom";
@@ -8691,9 +8727,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage23.Controls.Add(this.groupBox38);
             this.tabPage23.Controls.Add(this.cbPan);
             this.tabPage23.Location = new System.Drawing.Point(4, 22);
-            this.tabPage23.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage23.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage23.Name = "tabPage23";
-            this.tabPage23.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage23.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage23.Size = new System.Drawing.Size(275, 248);
             this.tabPage23.TabIndex = 3;
             this.tabPage23.Text = "Pan";
@@ -8710,9 +8746,9 @@ namespace VideoEdit_CS_Demo
             this.groupBox40.Controls.Add(this.edPanDestLeft);
             this.groupBox40.Controls.Add(this.label305);
             this.groupBox40.Location = new System.Drawing.Point(12, 162);
-            this.groupBox40.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox40.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox40.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox40.Size = new System.Drawing.Size(168, 77);
             this.groupBox40.TabIndex = 58;
             this.groupBox40.TabStop = false;
@@ -8797,9 +8833,9 @@ namespace VideoEdit_CS_Demo
             this.groupBox39.Controls.Add(this.edPanSourceLeft);
             this.groupBox39.Controls.Add(this.label301);
             this.groupBox39.Location = new System.Drawing.Point(12, 80);
-            this.groupBox39.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox39.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox39.Name = "groupBox39";
-            this.groupBox39.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox39.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox39.Size = new System.Drawing.Size(168, 77);
             this.groupBox39.TabIndex = 57;
             this.groupBox39.TabStop = false;
@@ -8941,7 +8977,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage43.Controls.Add(this.cbFadeInOut);
             this.tabPage43.Location = new System.Drawing.Point(4, 22);
             this.tabPage43.Name = "tabPage43";
-            this.tabPage43.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage43.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage43.Size = new System.Drawing.Size(275, 248);
             this.tabPage43.TabIndex = 4;
             this.tabPage43.Text = "Fade-in/out";
@@ -9132,7 +9168,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage69.Controls.Add(this.cbDeinterlace);
             this.tabPage69.Location = new System.Drawing.Point(4, 22);
             this.tabPage69.Name = "tabPage69";
-            this.tabPage69.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage69.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage69.Size = new System.Drawing.Size(290, 459);
             this.tabPage69.TabIndex = 1;
             this.tabPage69.Text = "Deinterlace";
@@ -9343,7 +9379,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage59.Controls.Add(this.cbDenoise);
             this.tabPage59.Location = new System.Drawing.Point(4, 22);
             this.tabPage59.Name = "tabPage59";
-            this.tabPage59.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage59.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage59.Size = new System.Drawing.Size(290, 459);
             this.tabPage59.TabIndex = 4;
             this.tabPage59.Text = "Denoise";
@@ -9387,7 +9423,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage15.Controls.Add(this.label16);
             this.tabPage15.Location = new System.Drawing.Point(4, 22);
             this.tabPage15.Name = "tabPage15";
-            this.tabPage15.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage15.Size = new System.Drawing.Size(290, 459);
             this.tabPage15.TabIndex = 5;
             this.tabPage15.Text = "Object detection";
@@ -9412,7 +9448,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage21.Controls.Add(this.cbAFMotionDetection);
             this.tabPage21.Location = new System.Drawing.Point(4, 22);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage21.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage21.Size = new System.Drawing.Size(270, 360);
             this.tabPage21.TabIndex = 0;
             this.tabPage21.Text = "Motion detection";
@@ -9471,7 +9507,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage26.Controls.Add(this.label66);
             this.tabPage26.Location = new System.Drawing.Point(4, 22);
             this.tabPage26.Name = "tabPage26";
-            this.tabPage26.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage26.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage26.Size = new System.Drawing.Size(270, 360);
             this.tabPage26.TabIndex = 1;
             this.tabPage26.Text = "Effects";
@@ -9518,7 +9554,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage20.Controls.Add(this.cbChromaKeyEnabled);
             this.tabPage20.Location = new System.Drawing.Point(4, 22);
             this.tabPage20.Name = "tabPage20";
-            this.tabPage20.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage20.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage20.Size = new System.Drawing.Size(290, 459);
             this.tabPage20.TabIndex = 6;
             this.tabPage20.Text = "Chroma key";
@@ -9654,7 +9690,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage70.Controls.Add(this.label105);
             this.tabPage70.Location = new System.Drawing.Point(4, 22);
             this.tabPage70.Name = "tabPage70";
-            this.tabPage70.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage70.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage70.Size = new System.Drawing.Size(290, 459);
             this.tabPage70.TabIndex = 3;
             this.tabPage70.Text = "3rd-party filters";
@@ -9747,7 +9783,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage82.Controls.Add(this.cbSubtitlesEnabled);
             this.tabPage82.Location = new System.Drawing.Point(4, 22);
             this.tabPage82.Name = "tabPage82";
-            this.tabPage82.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage82.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage82.Size = new System.Drawing.Size(290, 459);
             this.tabPage82.TabIndex = 7;
             this.tabPage82.Text = "Subtitles";
@@ -9827,7 +9863,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage83.Controls.Add(this.cbGPUGreyscale);
             this.tabPage83.Location = new System.Drawing.Point(4, 22);
             this.tabPage83.Name = "tabPage83";
-            this.tabPage83.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage83.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage83.Size = new System.Drawing.Size(290, 459);
             this.tabPage83.TabIndex = 8;
             this.tabPage83.Text = "GPU effects";
@@ -10009,7 +10045,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage9.Controls.Add(this.label43);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage9.Size = new System.Drawing.Size(302, 494);
             this.tabPage9.TabIndex = 3;
             this.tabPage9.Text = "Transitions";
@@ -10142,7 +10178,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage66.Controls.Add(this.cbAudioEnhancementEnabled);
             this.tabPage66.Location = new System.Drawing.Point(4, 22);
             this.tabPage66.Name = "tabPage66";
-            this.tabPage66.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage66.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage66.Size = new System.Drawing.Size(302, 494);
             this.tabPage66.TabIndex = 13;
             this.tabPage66.Text = "Audio enhancement";
@@ -10631,7 +10667,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage3.Controls.Add(this.cbAudioEffectsEnabled);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(302, 494);
             this.tabPage3.TabIndex = 5;
             this.tabPage3.Text = "Audio effects";
@@ -10669,7 +10705,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage71.Controls.Add(this.cbAudAmplifyEnabled);
             this.tabPage71.Location = new System.Drawing.Point(4, 22);
             this.tabPage71.Name = "tabPage71";
-            this.tabPage71.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage71.Size = new System.Drawing.Size(275, 416);
             this.tabPage71.TabIndex = 0;
             this.tabPage71.Text = "Amplify";
@@ -10754,7 +10790,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage72.Controls.Add(this.cbAudEqualizerEnabled);
             this.tabPage72.Location = new System.Drawing.Point(4, 22);
             this.tabPage72.Name = "tabPage72";
-            this.tabPage72.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage72.Size = new System.Drawing.Size(275, 416);
             this.tabPage72.TabIndex = 1;
             this.tabPage72.Text = "Equlizer";
@@ -11043,7 +11079,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage73.Controls.Add(this.cbAudDynamicAmplifyEnabled);
             this.tabPage73.Location = new System.Drawing.Point(4, 22);
             this.tabPage73.Name = "tabPage73";
-            this.tabPage73.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage73.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage73.Size = new System.Drawing.Size(275, 416);
             this.tabPage73.TabIndex = 2;
             this.tabPage73.Text = "Dynamic amplify";
@@ -11160,7 +11196,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage75.Controls.Add(this.cbAudSound3DEnabled);
             this.tabPage75.Location = new System.Drawing.Point(4, 22);
             this.tabPage75.Name = "tabPage75";
-            this.tabPage75.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage75.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage75.Size = new System.Drawing.Size(275, 416);
             this.tabPage75.TabIndex = 4;
             this.tabPage75.Text = "Sound 3D";
@@ -11205,7 +11241,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage76.Controls.Add(this.cbAudTrueBassEnabled);
             this.tabPage76.Location = new System.Drawing.Point(4, 22);
             this.tabPage76.Name = "tabPage76";
-            this.tabPage76.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage76.Size = new System.Drawing.Size(275, 416);
             this.tabPage76.TabIndex = 5;
             this.tabPage76.Text = "True Bass";
@@ -11257,7 +11293,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage16.Controls.Add(this.label17);
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage16.Size = new System.Drawing.Size(275, 416);
             this.tabPage16.TabIndex = 6;
             this.tabPage16.Text = "Fade-In/Fade-Out";
@@ -11386,7 +11422,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage81.Controls.Add(this.cbAudioChannelMapperEnabled);
             this.tabPage81.Location = new System.Drawing.Point(4, 22);
             this.tabPage81.Name = "tabPage81";
-            this.tabPage81.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage81.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage81.Size = new System.Drawing.Size(302, 494);
             this.tabPage81.TabIndex = 15;
             this.tabPage81.Text = "Audio channel mapper";
@@ -11541,7 +11577,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage27.Controls.Add(this.cbMotDetEnabled);
             this.tabPage27.Location = new System.Drawing.Point(4, 22);
             this.tabPage27.Name = "tabPage27";
-            this.tabPage27.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage27.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage27.Size = new System.Drawing.Size(302, 494);
             this.tabPage27.TabIndex = 7;
             this.tabPage27.Text = "Motion detection";
@@ -11564,7 +11600,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage44.Controls.Add(this.mmMotDetMatrix);
             this.tabPage44.Location = new System.Drawing.Point(4, 22);
             this.tabPage44.Name = "tabPage44";
-            this.tabPage44.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage44.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage44.Size = new System.Drawing.Size(260, 387);
             this.tabPage44.TabIndex = 0;
             this.tabPage44.Text = "Output matrix";
@@ -11604,7 +11640,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage45.Controls.Add(this.groupBox24);
             this.tabPage45.Location = new System.Drawing.Point(4, 22);
             this.tabPage45.Name = "tabPage45";
-            this.tabPage45.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage45.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage45.Size = new System.Drawing.Size(260, 387);
             this.tabPage45.TabIndex = 1;
             this.tabPage45.Text = "Settings";
@@ -11875,7 +11911,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage2.Controls.Add(this.groupBox13);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(302, 494);
             this.tabPage2.TabIndex = 6;
             this.tabPage2.Text = "Display";
@@ -12051,9 +12087,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage25.Controls.Add(this.label89);
             this.tabPage25.Controls.Add(this.cbBarcodeDetectionEnabled);
             this.tabPage25.Location = new System.Drawing.Point(4, 22);
-            this.tabPage25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage25.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage25.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage25.Size = new System.Drawing.Size(302, 494);
             this.tabPage25.TabIndex = 8;
             this.tabPage25.Text = "Barcode reader";
@@ -12062,7 +12098,7 @@ namespace VideoEdit_CS_Demo
             // edBarcodeMetadata
             // 
             this.edBarcodeMetadata.Location = new System.Drawing.Point(14, 161);
-            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcodeMetadata.Multiline = true;
             this.edBarcodeMetadata.Name = "edBarcodeMetadata";
             this.edBarcodeMetadata.Size = new System.Drawing.Size(282, 96);
@@ -12099,7 +12135,7 @@ namespace VideoEdit_CS_Demo
             "QR",
             "PDF-417"});
             this.cbBarcodeType.Location = new System.Drawing.Point(14, 65);
-            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2);
             this.cbBarcodeType.Name = "cbBarcodeType";
             this.cbBarcodeType.Size = new System.Drawing.Size(160, 21);
             this.cbBarcodeType.TabIndex = 22;
@@ -12117,7 +12153,7 @@ namespace VideoEdit_CS_Demo
             // btBarcodeReset
             // 
             this.btBarcodeReset.Location = new System.Drawing.Point(14, 269);
-            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2);
             this.btBarcodeReset.Name = "btBarcodeReset";
             this.btBarcodeReset.Size = new System.Drawing.Size(62, 23);
             this.btBarcodeReset.TabIndex = 20;
@@ -12128,7 +12164,7 @@ namespace VideoEdit_CS_Demo
             // edBarcode
             // 
             this.edBarcode.Location = new System.Drawing.Point(14, 113);
-            this.edBarcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcode.Name = "edBarcode";
             this.edBarcode.Size = new System.Drawing.Size(282, 20);
             this.edBarcode.TabIndex = 19;
@@ -12160,9 +12196,9 @@ namespace VideoEdit_CS_Demo
             this.tabPage28.Controls.Add(this.cbNetworkStreamingAudioEnabled);
             this.tabPage28.Controls.Add(this.cbNetworkStreaming);
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
-            this.tabPage28.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage28.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage28.Name = "tabPage28";
-            this.tabPage28.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage28.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage28.Size = new System.Drawing.Size(302, 494);
             this.tabPage28.TabIndex = 9;
             this.tabPage28.Text = "Network streaming";
@@ -12217,7 +12253,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage32.Controls.Add(this.label23);
             this.tabPage32.Location = new System.Drawing.Point(4, 22);
             this.tabPage32.Name = "tabPage32";
-            this.tabPage32.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage32.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage32.Size = new System.Drawing.Size(284, 352);
             this.tabPage32.TabIndex = 0;
             this.tabPage32.Text = "WMV";
@@ -12366,7 +12402,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage49.Controls.Add(this.label366);
             this.tabPage49.Location = new System.Drawing.Point(4, 22);
             this.tabPage49.Name = "tabPage49";
-            this.tabPage49.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage49.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage49.Size = new System.Drawing.Size(284, 352);
             this.tabPage49.TabIndex = 2;
             this.tabPage49.Text = "RTSP";
@@ -12409,7 +12445,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage50.Controls.Add(this.label369);
             this.tabPage50.Location = new System.Drawing.Point(4, 22);
             this.tabPage50.Name = "tabPage50";
-            this.tabPage50.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage50.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage50.Size = new System.Drawing.Size(284, 352);
             this.tabPage50.TabIndex = 3;
             this.tabPage50.Text = "RTMP";
@@ -12494,7 +12530,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage77.Controls.Add(this.rbNetworkUDPFFMPEG);
             this.tabPage77.Location = new System.Drawing.Point(4, 22);
             this.tabPage77.Name = "tabPage77";
-            this.tabPage77.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage77.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage77.Size = new System.Drawing.Size(284, 352);
             this.tabPage77.TabIndex = 5;
             this.tabPage77.Text = "UDP";
@@ -12562,7 +12598,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage51.Controls.Add(this.rbNetworkSSSoftware);
             this.tabPage51.Location = new System.Drawing.Point(4, 22);
             this.tabPage51.Name = "tabPage51";
-            this.tabPage51.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage51.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage51.Size = new System.Drawing.Size(284, 352);
             this.tabPage51.TabIndex = 4;
             this.tabPage51.Text = "IIS Smooth Streaming";
@@ -12654,7 +12690,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage33.Controls.Add(this.linkLabel5);
             this.tabPage33.Location = new System.Drawing.Point(4, 22);
             this.tabPage33.Name = "tabPage33";
-            this.tabPage33.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage33.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage33.Size = new System.Drawing.Size(284, 352);
             this.tabPage33.TabIndex = 1;
             this.tabPage33.Text = "External";
@@ -12711,7 +12747,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage34.Controls.Add(this.cbVirtualCamera);
             this.tabPage34.Location = new System.Drawing.Point(4, 22);
             this.tabPage34.Name = "tabPage34";
-            this.tabPage34.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage34.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage34.Size = new System.Drawing.Size(302, 494);
             this.tabPage34.TabIndex = 10;
             this.tabPage34.Text = "Virtual camera";
@@ -12786,7 +12822,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage46.Controls.Add(this.cbDecklinkOutput);
             this.tabPage46.Location = new System.Drawing.Point(4, 22);
             this.tabPage46.Name = "tabPage46";
-            this.tabPage46.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage46.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage46.Size = new System.Drawing.Size(302, 494);
             this.tabPage46.TabIndex = 11;
             this.tabPage46.Text = "Decklink output";
@@ -13007,7 +13043,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage47.Controls.Add(this.groupBox43);
             this.tabPage47.Location = new System.Drawing.Point(4, 22);
             this.tabPage47.Name = "tabPage47";
-            this.tabPage47.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage47.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage47.Size = new System.Drawing.Size(302, 494);
             this.tabPage47.TabIndex = 12;
             this.tabPage47.Text = "Encryption";
@@ -13177,7 +13213,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage79.Controls.Add(this.cbTagEnabled);
             this.tabPage79.Location = new System.Drawing.Point(4, 22);
             this.tabPage79.Name = "tabPage79";
-            this.tabPage79.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage79.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage79.Size = new System.Drawing.Size(302, 494);
             this.tabPage79.TabIndex = 14;
             this.tabPage79.Text = "Tags";
@@ -13211,7 +13247,7 @@ namespace VideoEdit_CS_Demo
             this.TabPage142.Controls.Add(this.label498);
             this.TabPage142.Location = new System.Drawing.Point(4, 22);
             this.TabPage142.Name = "TabPage142";
-            this.TabPage142.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TabPage142.Padding = new System.Windows.Forms.Padding(3);
             this.TabPage142.Size = new System.Drawing.Size(284, 406);
             this.TabPage142.TabIndex = 0;
             this.TabPage142.Text = "Common";
@@ -13349,7 +13385,7 @@ namespace VideoEdit_CS_Demo
             this.TabPage143.Controls.Add(this.label503);
             this.TabPage143.Location = new System.Drawing.Point(4, 22);
             this.TabPage143.Name = "TabPage143";
-            this.TabPage143.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TabPage143.Padding = new System.Windows.Forms.Padding(3);
             this.TabPage143.Size = new System.Drawing.Size(284, 406);
             this.TabPage143.TabIndex = 1;
             this.TabPage143.Text = "Special";
@@ -13579,7 +13615,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage52.Controls.Add(this.label10);
             this.tabPage52.Location = new System.Drawing.Point(4, 22);
             this.tabPage52.Name = "tabPage52";
-            this.tabPage52.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage52.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage52.Size = new System.Drawing.Size(429, 278);
             this.tabPage52.TabIndex = 0;
             this.tabPage52.Text = "Edit";
@@ -13814,7 +13850,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage53.Controls.Add(this.label29);
             this.tabPage53.Location = new System.Drawing.Point(4, 22);
             this.tabPage53.Name = "tabPage53";
-            this.tabPage53.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage53.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage53.Size = new System.Drawing.Size(429, 278);
             this.tabPage53.TabIndex = 1;
             this.tabPage53.Text = "Cut file (w/o reencoding)";
@@ -13976,7 +14012,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage54.Controls.Add(this.label32);
             this.tabPage54.Location = new System.Drawing.Point(4, 22);
             this.tabPage54.Name = "tabPage54";
-            this.tabPage54.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage54.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage54.Size = new System.Drawing.Size(429, 278);
             this.tabPage54.TabIndex = 2;
             this.tabPage54.Text = "Join files (w/o reencoding)";
@@ -14085,7 +14121,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage74.Controls.Add(this.label166);
             this.tabPage74.Location = new System.Drawing.Point(4, 22);
             this.tabPage74.Name = "tabPage74";
-            this.tabPage74.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage74.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage74.Size = new System.Drawing.Size(429, 278);
             this.tabPage74.TabIndex = 3;
             this.tabPage74.Text = "Mux streams (w/o reencoding)";
@@ -14272,6 +14308,89 @@ namespace VideoEdit_CS_Demo
             this.cbLicensing.Text = "Licensing info";
             this.cbLicensing.UseVisualStyleBackColor = true;
             // 
+            // openFileDialogSubtitles
+            // 
+            this.openFileDialogSubtitles.FileName = "openFileDialog4";
+            this.openFileDialogSubtitles.Filter = "Subtitle files|*.srt;*.ssa;*.ass;*.sub|All files|*.*";
+            // 
+            // tabPage24
+            // 
+            this.tabPage24.Controls.Add(this.cbVUMeter);
+            this.tabPage24.Controls.Add(this.peakMeterCtrl1);
+            this.tabPage24.Controls.Add(this.tbVUMeterBoost);
+            this.tabPage24.Controls.Add(this.label382);
+            this.tabPage24.Controls.Add(this.label381);
+            this.tabPage24.Controls.Add(this.tbVUMeterAmplification);
+            this.tabPage24.Controls.Add(this.cbVUMeterPro);
+            this.tabPage24.Controls.Add(this.waveformPainter2);
+            this.tabPage24.Controls.Add(this.waveformPainter1);
+            this.tabPage24.Controls.Add(this.volumeMeter2);
+            this.tabPage24.Controls.Add(this.volumeMeter1);
+            this.tabPage24.Location = new System.Drawing.Point(4, 22);
+            this.tabPage24.Name = "tabPage24";
+            this.tabPage24.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage24.Size = new System.Drawing.Size(302, 494);
+            this.tabPage24.TabIndex = 16;
+            this.tabPage24.Text = "Audio output";
+            this.tabPage24.UseVisualStyleBackColor = true;
+            // 
+            // tbVUMeterBoost
+            // 
+            this.tbVUMeterBoost.Location = new System.Drawing.Point(177, 304);
+            this.tbVUMeterBoost.Maximum = 30;
+            this.tbVUMeterBoost.Minimum = 1;
+            this.tbVUMeterBoost.Name = "tbVUMeterBoost";
+            this.tbVUMeterBoost.Size = new System.Drawing.Size(104, 45);
+            this.tbVUMeterBoost.TabIndex = 124;
+            this.tbVUMeterBoost.Value = 10;
+            // 
+            // label382
+            // 
+            this.label382.AutoSize = true;
+            this.label382.Location = new System.Drawing.Point(174, 288);
+            this.label382.Name = "label382";
+            this.label382.Size = new System.Drawing.Size(68, 13);
+            this.label382.TabIndex = 123;
+            this.label382.Text = "Meters boost";
+            // 
+            // label381
+            // 
+            this.label381.AutoSize = true;
+            this.label381.Location = new System.Drawing.Point(26, 288);
+            this.label381.Name = "label381";
+            this.label381.Size = new System.Drawing.Size(120, 13);
+            this.label381.TabIndex = 119;
+            this.label381.Text = "Volume amplification (%)";
+            // 
+            // tbVUMeterAmplification
+            // 
+            this.tbVUMeterAmplification.Location = new System.Drawing.Point(29, 304);
+            this.tbVUMeterAmplification.Maximum = 100;
+            this.tbVUMeterAmplification.Name = "tbVUMeterAmplification";
+            this.tbVUMeterAmplification.Size = new System.Drawing.Size(105, 45);
+            this.tbVUMeterAmplification.TabIndex = 118;
+            this.tbVUMeterAmplification.Value = 100;
+            // 
+            // cbVUMeterPro
+            // 
+            this.cbVUMeterPro.AutoSize = true;
+            this.cbVUMeterPro.Location = new System.Drawing.Point(18, 133);
+            this.cbVUMeterPro.Name = "cbVUMeterPro";
+            this.cbVUMeterPro.Size = new System.Drawing.Size(125, 17);
+            this.cbVUMeterPro.TabIndex = 117;
+            this.cbVUMeterPro.Text = "Enable VU meter Pro";
+            this.cbVUMeterPro.UseVisualStyleBackColor = true;
+            // 
+            // cbVUMeter
+            // 
+            this.cbVUMeter.AutoSize = true;
+            this.cbVUMeter.Location = new System.Drawing.Point(18, 15);
+            this.cbVUMeter.Name = "cbVUMeter";
+            this.cbVUMeter.Size = new System.Drawing.Size(107, 17);
+            this.cbVUMeter.TabIndex = 125;
+            this.cbVUMeter.Text = "Enable VU Meter";
+            this.cbVUMeter.UseVisualStyleBackColor = true;
+            // 
             // VideoEdit1
             // 
             this.VideoEdit1.Audio_Channel_Mapper = null;
@@ -14313,23 +14432,23 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Video_Effects_Enabled = false;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms1;
             this.VideoEdit1.Video_Resize = false;
             this.VideoEdit1.Video_Resize_Height = 480;
             this.VideoEdit1.Video_Resize_Width = 640;
@@ -14339,6 +14458,8 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.VideoEdit1_OnError);
             this.VideoEdit1.OnFFMPEGInfo += new System.EventHandler<VisioForge.Types.FFMPEGInfoEventArgs>(this.VideoEdit1_OnFFMPEGInfo);
             this.VideoEdit1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoEdit1_OnLicenseRequired);
+            this.VideoEdit1.OnAudioVUMeter += new System.EventHandler<VisioForge.Types.VUMeterEventArgs>(this.VideoEdit1_OnAudioVUMeter);
+            this.VideoEdit1.OnAudioVUMeterProVolume += new System.EventHandler<VisioForge.Types.AudioLevelEventArgs>(this.VideoEdit1_OnAudioVUMeterProVolume);
             this.VideoEdit1.OnMotionDetection += new System.EventHandler<VisioForge.Types.MotionDetectionEventArgs>(this.VideoEdit1_OnMotion);
             this.VideoEdit1.OnProgress += new System.EventHandler<VisioForge.Types.ProgressEventArgs>(this.VideoEdit1_OnProgress);
             this.VideoEdit1.OnStart += new System.EventHandler<System.EventArgs>(this.VideoEdit1_OnStart);
@@ -14347,30 +14468,63 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
             this.VideoEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoEdit1_MouseDown);
             // 
-            // openFileDialogSubtitles
+            // peakMeterCtrl1
             // 
-            this.openFileDialogSubtitles.FileName = "openFileDialog4";
-            this.openFileDialogSubtitles.Filter = "Subtitle files|*.srt;*.ssa;*.ass;*.sub|All files|*.*";
+            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
+            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
+            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
+            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
+            this.peakMeterCtrl1.Location = new System.Drawing.Point(137, 15);
+            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
+            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
+            this.peakMeterCtrl1.TabIndex = 126;
+            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
             // 
-            // cbTextLogoFadeOut
+            // waveformPainter2
             // 
-            this.cbTextLogoFadeOut.AutoSize = true;
-            this.cbTextLogoFadeOut.Location = new System.Drawing.Point(93, 109);
-            this.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut";
-            this.cbTextLogoFadeOut.Size = new System.Drawing.Size(142, 17);
-            this.cbTextLogoFadeOut.TabIndex = 41;
-            this.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)";
-            this.cbTextLogoFadeOut.UseVisualStyleBackColor = true;
+            this.waveformPainter2.Boost = 1F;
+            this.waveformPainter2.Location = new System.Drawing.Point(107, 222);
+            this.waveformPainter2.Name = "waveformPainter2";
+            this.waveformPainter2.Size = new System.Drawing.Size(174, 60);
+            this.waveformPainter2.TabIndex = 122;
+            this.waveformPainter2.Text = "waveformPainter2";
             // 
-            // cbTextLogoFadeIn
+            // waveformPainter1
             // 
-            this.cbTextLogoFadeIn.AutoSize = true;
-            this.cbTextLogoFadeIn.Location = new System.Drawing.Point(18, 109);
-            this.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn";
-            this.cbTextLogoFadeIn.Size = new System.Drawing.Size(62, 17);
-            this.cbTextLogoFadeIn.TabIndex = 40;
-            this.cbTextLogoFadeIn.Text = "Fade-In";
-            this.cbTextLogoFadeIn.UseVisualStyleBackColor = true;
+            this.waveformPainter1.Boost = 1F;
+            this.waveformPainter1.Location = new System.Drawing.Point(107, 156);
+            this.waveformPainter1.Name = "waveformPainter1";
+            this.waveformPainter1.Size = new System.Drawing.Size(174, 60);
+            this.waveformPainter1.TabIndex = 121;
+            this.waveformPainter1.Text = "waveformPainter1";
+            // 
+            // volumeMeter2
+            // 
+            this.volumeMeter2.Amplitude = 0F;
+            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter2.Boost = 1F;
+            this.volumeMeter2.Location = new System.Drawing.Point(57, 156);
+            this.volumeMeter2.MaxDb = 18F;
+            this.volumeMeter2.MinDb = -60F;
+            this.volumeMeter2.Name = "volumeMeter2";
+            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter2.TabIndex = 120;
+            // 
+            // volumeMeter1
+            // 
+            this.volumeMeter1.Amplitude = 0F;
+            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter1.Boost = 1F;
+            this.volumeMeter1.Location = new System.Drawing.Point(29, 156);
+            this.volumeMeter1.MaxDb = 18F;
+            this.volumeMeter1.MinDb = -60F;
+            this.volumeMeter1.Name = "volumeMeter1";
+            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter1.TabIndex = 116;
             // 
             // Form1
             // 
@@ -14737,6 +14891,10 @@ namespace VideoEdit_CS_Demo
             this.tabPage54.PerformLayout();
             this.tabPage74.ResumeLayout(false);
             this.tabPage74.PerformLayout();
+            this.tabPage24.ResumeLayout(false);
+            this.tabPage24.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVUMeterBoost)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbVUMeterAmplification)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -15912,6 +16070,18 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.CheckBox cbMP4TimeOverride;
         private System.Windows.Forms.CheckBox cbTextLogoFadeOut;
         private System.Windows.Forms.CheckBox cbTextLogoFadeIn;
+        private System.Windows.Forms.TabPage tabPage24;
+        private System.Windows.Forms.TrackBar tbVUMeterBoost;
+        private System.Windows.Forms.Label label382;
+        private System.Windows.Forms.Label label381;
+        private System.Windows.Forms.TrackBar tbVUMeterAmplification;
+        private System.Windows.Forms.CheckBox cbVUMeterPro;
+        private VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter waveformPainter2;
+        private VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter waveformPainter1;
+        private VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter volumeMeter2;
+        private VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter volumeMeter1;
+        private System.Windows.Forms.CheckBox cbVUMeter;
+        private VisioForge.Controls.UI.WinForms.PeakMeterCtrl peakMeterCtrl1;
     }
 }
 

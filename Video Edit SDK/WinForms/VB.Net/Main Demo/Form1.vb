@@ -534,6 +534,17 @@ Public Class Form1
         VideoEdit1.Video_Transition_Clear()
         lbTransitions.Items.Clear()
 
+        'clear VU Meters
+        Dim data(19) As Int32
+
+        peakMeterCtrl1.SetData(data, 0, 19)
+        peakMeterCtrl1.Stop()
+        waveformPainter1.Clear()
+        waveformPainter2.Clear()
+
+        volumeMeter1.Clear()
+        volumeMeter2.Clear()
+
     End Sub
 
     Private Sub ConfigureDecklink()
@@ -632,6 +643,24 @@ Public Class Form1
         VideoEdit1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
         VideoEdit1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
 
+    End Sub
+
+    Private Sub ConfigureVUMeter()
+
+        VideoEdit1.Audio_VUMeter_Enabled = cbVUMeter.Checked
+        VideoEdit1.Audio_VUMeter_Pro_Enabled = cbVUMeterPro.Checked
+
+        If (VideoEdit1.Audio_VUMeter_Pro_Enabled) Then
+
+            VideoEdit1.Audio_VUMeter_Pro_Volume = tbVUMeterAmplification.Value
+
+            volumeMeter1.Boost = tbVUMeterBoost.Value / 10.0F
+            volumeMeter2.Boost = tbVUMeterBoost.Value / 10.0F
+
+            waveformPainter1.Boost = tbVUMeterBoost.Value / 10.0F
+            waveformPainter2.Boost = tbVUMeterBoost.Value / 10.0F
+
+        End If
     End Sub
 
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
@@ -1519,6 +1548,9 @@ Public Class Form1
 
         End If
 
+        ' VU meter
+        ConfigureVUMeter()
+
         ' Audio channels mapping
         If (cbAudioChannelMapperEnabled.Checked) Then
             VideoEdit1.Audio_Channel_Mapper = New AudioChannelMapperSettings()
@@ -1771,6 +1803,17 @@ Public Class Form1
         VideoEdit1.Input_Clear_List()
 
         ProgressBar1.Value = 0
+
+        'clear VU Meters
+        Dim data(19) As Int32
+
+        peakMeterCtrl1.SetData(data, 0, 19)
+        peakMeterCtrl1.Stop()
+        waveformPainter1.Clear()
+        waveformPainter2.Clear()
+
+        volumeMeter1.Clear()
+        volumeMeter2.Clear()
 
     End Sub
 
@@ -5144,6 +5187,26 @@ Public Class Form1
             End If
         End If
 
+    End Sub
+
+    Private Delegate Sub VUDelegate(ByVal e As VUMeterEventArgs)
+
+    Private Sub VUDelegateMethod(ByVal e As VUMeterEventArgs)
+        peakMeterCtrl1.SetData(e.MeterData, 0, 19)
+    End Sub
+
+    Private Sub VideoEdit1_OnAudioVUMeter(sender As Object, e As VUMeterEventArgs) Handles VideoEdit1.OnAudioVUMeter
+        BeginInvoke(New VUDelegate(AddressOf VUDelegateMethod), e)
+    End Sub
+
+    Private Sub VideoEdit1_OnAudioVUMeterProVolume(sender As Object, e As AudioLevelEventArgs) Handles VideoEdit1.OnAudioVUMeterProVolume
+        volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
+        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
+
+        If (e.ChannelLevelsDb.Length > 1) Then
+            volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
+            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
+        End If
     End Sub
 End Class
 
