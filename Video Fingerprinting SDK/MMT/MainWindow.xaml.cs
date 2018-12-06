@@ -7,6 +7,8 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System.Diagnostics;
+
 namespace VisioForge_MMT
 {
     using System;
@@ -378,15 +380,20 @@ namespace VisioForge_MMT
         {
             var dlg = new System.Windows.Forms.OpenFileDialog
             {
-                InitialDirectory = Settings.LastPath
+                InitialDirectory = Settings.LastPath,
+                Multiselect = true
             };
 
             System.Windows.Forms.DialogResult result = dlg.ShowDialog(this.GetIWin32Window());
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                lbBroadcastFolders.Items.Add(dlg.FileName);
-                Settings.LastPath = Path.GetFullPath(dlg.FileName);
+                foreach (var name in dlg.FileNames)
+                {
+                    lbBroadcastFolders.Items.Add(name);
+                }
+                
+                Settings.LastPath = Path.GetFullPath(dlg.FileNames[0]);
             }
         }
 
@@ -394,18 +401,22 @@ namespace VisioForge_MMT
         {
             var dlg = new System.Windows.Forms.OpenFileDialog
             {
-                InitialDirectory = Settings.LastPath
+                InitialDirectory = Settings.LastPath,
+                Multiselect = true
             };
 
             System.Windows.Forms.DialogResult result = dlg.ShowDialog(this.GetIWin32Window());
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                lbAdFolders.Items.Add(dlg.FileName);
-                Settings.LastPath = Path.GetFullPath(dlg.FileName);
+                foreach (var name in dlg.FileNames)
+                {
+                    lbAdFolders.Items.Add(name);
+                }
+
+                Settings.LastPath = Path.GetFullPath(dlg.FileNames[0]);
             }
         }
-
 
         private void btIgnoredAreaAdd_Click(object sender, RoutedEventArgs e)
         {

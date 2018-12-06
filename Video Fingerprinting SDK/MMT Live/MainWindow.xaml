@@ -68,6 +68,7 @@
                     <ListBox x:Name="lbAdFolders" HorizontalAlignment="Left" Margin="10,10,0,41" Width="379"/>
                     <Button x:Name="btClearAds" Content="Clear list" HorizontalAlignment="Left" Height="26" Margin="299,0,0,10" VerticalAlignment="Bottom" Width="90" Click="btClearAds_Click"/>
                     <Button x:Name="btAddAdFolder" Content="Add folder" HorizontalAlignment="Left" Height="26" Margin="204,0,0,10" VerticalAlignment="Bottom" Width="90" Click="btAddAdFolder_Click"/>
+                    <Button x:Name="btAddAdFile" Content="Add file" HorizontalAlignment="Left" Height="26" Margin="109,0,0,10" Width="90" VerticalAlignment="Bottom" Click="BtAddAdFile_Click" />
                 </Grid>
             </TabItem>
             <TabItem Header="Settings" Height="24">

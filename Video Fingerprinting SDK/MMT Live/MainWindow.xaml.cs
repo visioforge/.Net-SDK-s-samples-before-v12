@@ -653,5 +653,26 @@ namespace VisioForge_MMT
             resultsView = new ObservableCollection<ResultsViewModel>(resultsView.OrderBy(i => i.TimeStampMS.TotalMilliseconds));
             lvResults.ItemsSource = resultsView;
         }
+
+        private void BtAddAdFile_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new System.Windows.Forms.OpenFileDialog
+            {
+                InitialDirectory = Settings.LastPath,
+                Multiselect = true
+            };
+
+            System.Windows.Forms.DialogResult result = dlg.ShowDialog(this.GetIWin32Window());
+
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                foreach (var name in dlg.FileNames)
+                {
+                    lbAdFolders.Items.Add(name);
+                }
+
+                Settings.LastPath = Path.GetFullPath(dlg.FileNames[0]);
+            }
+        }
     }
 }
