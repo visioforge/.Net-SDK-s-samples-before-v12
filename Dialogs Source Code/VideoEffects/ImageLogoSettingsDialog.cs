@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -177,6 +178,13 @@ namespace VisioForge.Controls.UI.Dialogs.VideoEffects
             {
                 pnImageLogoColorKey.BackColor = colorDialog1.Color;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            const string url = "https://github.com/visioforge/.Net-SDK-s-samples/tree/master/Dialogs%20Source%20Code/OutputFormats";
+            var startInfo = new ProcessStartInfo("explorer.exe", url);
+            Process.Start(startInfo);
         }
     }
 }

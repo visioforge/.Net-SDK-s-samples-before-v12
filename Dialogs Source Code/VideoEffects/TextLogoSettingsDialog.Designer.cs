@@ -112,6 +112,7 @@
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.btUpdate = new System.Windows.Forms.Button();
             this.btClose = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.tabControl8.SuspendLayout();
             this.tabPage95.SuspendLayout();
             this.tabPage35.SuspendLayout();
@@ -1026,11 +1027,23 @@
             this.btClose.UseVisualStyleBackColor = true;
             this.btClose.Click += new System.EventHandler(this.btClose_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(152, 198);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(117, 13);
+            this.linkLabel1.TabIndex = 69;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Get dialog source code";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // TextLogoSettingsDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(417, 228);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.btClose);
             this.Controls.Add(this.btUpdate);
             this.Controls.Add(this.tabControl8);
@@ -1062,6 +1075,7 @@
             this.tabPage41.ResumeLayout(false);
             this.tabPage41.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1150,5 +1164,6 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Button btUpdate;
         private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }

@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+using System.Diagnostics;
 using System.Windows.Forms;
 using VisioForge.Types;
 using VisioForge.Types.OutputFormat;
@@ -29,13 +24,10 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
 
         public void FillSettings(ref VFOGGVorbisOutput oggVorbisOutput)
         {
-            oggVorbisOutput = new VFOGGVorbisOutput
-            {
-                Quality = Convert.ToInt32(edOGGQuality.Text),
-                MinBitRate = Convert.ToInt32(cbOGGMinimum.Text),
-                MaxBitRate = Convert.ToInt32(cbOGGMaximum.Text),
-                AvgBitRate = Convert.ToInt32(cbOGGAverage.Text)
-            };
+            oggVorbisOutput.Quality = Convert.ToInt32(edOGGQuality.Text);
+            oggVorbisOutput.MinBitRate = Convert.ToInt32(cbOGGMinimum.Text);
+            oggVorbisOutput.MaxBitRate = Convert.ToInt32(cbOGGMaximum.Text);
+            oggVorbisOutput.AvgBitRate = Convert.ToInt32(cbOGGAverage.Text);
 
             if (rbOGGQuality.Checked)
             {
@@ -50,6 +42,13 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
         private void btClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            const string url = "https://github.com/visioforge/.Net-SDK-s-samples/tree/master/Dialogs%20Source%20Code/OutputFormats";
+            var startInfo = new ProcessStartInfo("explorer.exe", url);
+            Process.Start(startInfo);
         }
     }
 }

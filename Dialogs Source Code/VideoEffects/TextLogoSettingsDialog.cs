@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -435,6 +436,13 @@ namespace VisioForge.Controls.UI.Dialogs.VideoEffects
             {
                 EffectUpdate(_intf);
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            const string url = "https://github.com/visioforge/.Net-SDK-s-samples/tree/master/Dialogs%20Source%20Code/OutputFormats";
+            var startInfo = new ProcessStartInfo("explorer.exe", url);
+            Process.Start(startInfo);
         }
     }
 }
