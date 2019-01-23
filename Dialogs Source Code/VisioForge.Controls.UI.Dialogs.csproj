@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1398FDB3-4AB2-4DD0-8F46-16211FFC58B5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VisioForge.Controls.UI.Dialogs</RootNamespace>
+    <AssemblyName>VisioForge.Controls.UI.Dialogs</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\VisioForge.Controls.UI.Dialogs.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>bin\Release\VisioForge.Controls.UI.Dialogs.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>VisioForge.Controls.UI.Dialogs.key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OutputFormats\AVISettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\AVISettingsDialog.Designer.cs">
+      <DependentUpon>AVISettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\CustomFormatSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\CustomFormatSettingsDialog.Designer.cs">
+      <DependentUpon>CustomFormatSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\DVSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\DVSettingsDialog.Designer.cs">
+      <DependentUpon>DVSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\FFMPEGDLLSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\FFMPEGDLLSettingsDialog.Designer.cs">
+      <DependentUpon>FFMPEGDLLSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\FFMPEGEXESettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\FFMPEGEXESettingsDialog.Designer.cs">
+      <DependentUpon>FFMPEGEXESettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\FLACSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\FLACSettingsDialog.Designer.cs">
+      <DependentUpon>FLACSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\GIFSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\GIFSettingsDialog.Designer.cs">
+      <DependentUpon>GIFSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\M4ASettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\M4ASettingsDialog.Designer.cs">
+      <DependentUpon>M4ASettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\MFSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\MFSettingsDialog.Designer.cs">
+      <DependentUpon>MFSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\MP3SettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\MP3SettingsDialog.Designer.cs">
+      <DependentUpon>MP3SettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\MP4v10SettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\MP4v10SettingsDialog.Designer.cs">
+      <DependentUpon>MP4v10SettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\OggVorbisSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\OggVorbisSettingsDialog.Designer.cs">
+      <DependentUpon>OggVorbisSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\OutputFormatManager.cs" />
+    <Compile Include="OutputFormats\PCMSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\PCMSettingsDialog.Designer.cs">
+      <DependentUpon>PCMSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\SpeexSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\SpeexSettingsDialog.Designer.cs">
+      <DependentUpon>SpeexSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\WebMSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\WebMSettingsDialog.Designer.cs">
+      <DependentUpon>WebMSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputFormats\WMVSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OutputFormats\WMVSettingsDialog.Designer.cs">
+      <DependentUpon>WMVSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VideoEffects\ImageLogoSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VideoEffects\ImageLogoSettingsDialog.Designer.cs">
+      <DependentUpon>ImageLogoSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoEffects\IVFVideoEffectsSettingsDialog.cs" />
+    <Compile Include="VideoEffects\LightnessSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VideoEffects\LightnessSettingsDialog.Designer.cs">
+      <DependentUpon>LightnessSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoEffects\SaturationSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VideoEffects\SaturationSettingsDialog.Designer.cs">
+      <DependentUpon>SaturationSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VideoEffects\TextLogoSettingsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VideoEffects\TextLogoSettingsDialog.Designer.cs">
+      <DependentUpon>TextLogoSettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPFWindowWrapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="OutputFormats\AVISettingsDialog.resx">
+      <DependentUpon>AVISettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\CustomFormatSettingsDialog.resx">
+      <DependentUpon>CustomFormatSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\DVSettingsDialog.resx">
+      <DependentUpon>DVSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\FFMPEGDLLSettingsDialog.resx">
+      <DependentUpon>FFMPEGDLLSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\FFMPEGEXESettingsDialog.resx">
+      <DependentUpon>FFMPEGEXESettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\FLACSettingsDialog.resx">
+      <DependentUpon>FLACSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\GIFSettingsDialog.resx">
+      <DependentUpon>GIFSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\M4ASettingsDialog.resx">
+      <DependentUpon>M4ASettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\MFSettingsDialog.resx">
+      <DependentUpon>MFSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\MP3SettingsDialog.resx">
+      <DependentUpon>MP3SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\MP4v10SettingsDialog.resx">
+      <DependentUpon>MP4v10SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\OggVorbisSettingsDialog.resx">
+      <DependentUpon>OggVorbisSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\PCMSettingsDialog.resx">
+      <DependentUpon>PCMSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\SpeexSettingsDialog.resx">
+      <DependentUpon>SpeexSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\WebMSettingsDialog.resx">
+      <DependentUpon>WebMSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OutputFormats\WMVSettingsDialog.resx">
+      <DependentUpon>WMVSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoEffects\ImageLogoSettingsDialog.resx">
+      <DependentUpon>ImageLogoSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoEffects\LightnessSettingsDialog.resx">
+      <DependentUpon>LightnessSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoEffects\SaturationSettingsDialog.resx">
+      <DependentUpon>SaturationSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VideoEffects\TextLogoSettingsDialog.resx">
+      <DependentUpon>TextLogoSettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VisioForge.Controls.UI\VisioForge.Controls.UI.csproj">
+      <Project>{049cdf65-fc00-4616-8e9d-3c200c043c4b}</Project>
+      <Name>VisioForge.Controls.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisioForge.Controls\VisioForge.Controls.csproj">
+      <Project>{86fedb56-f1bc-48d4-b59a-8bf292621817}</Project>
+      <Name>VisioForge.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisioForge.Types\VisioForge.Types.csproj">
+      <Project>{0d66442e-7a32-42f4-87b1-8eee08e88e91}</Project>
+      <Name>VisioForge.Types</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="VisioForge.Controls.UI.Dialogs.key.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
