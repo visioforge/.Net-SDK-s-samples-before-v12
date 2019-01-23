@@ -272,6 +272,10 @@ Public Class Form1
             mmError.Text = mmError.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
         End If
     End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        btStop_Click(Nothing, Nothing)
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

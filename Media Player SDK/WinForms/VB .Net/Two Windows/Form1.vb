@@ -5,15 +5,17 @@ Imports VisioForge.Controls.UI.WinForms
 
 Public Class Form1
 
-    Dim form2 As Form2
+    Dim WithEvents form2 As Form2
 
-    Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As VisioForge.Types.LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired 
+    private sub form2_SizeChanged Handles form2.OnWindowSizeChanged
+        MediaPlayer1.MultiScreen_UpdateSize(0, form2.Screen.Width, form2.Screen.Height)
+    End sub
 
+    Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired 
         form2.LogLicensing(e.Message)
-
     End Sub
 
-    Private Sub btSelectFile_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectFile.Click
+    Private Sub btSelectFile_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btSelectFile.Click
 
         If (openFileDialog1.ShowDialog() = DialogResult.OK) Then
             edFilename.Text = openFileDialog1.FileName
@@ -21,7 +23,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub tbTimeline_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbTimeline.Scroll
+    Private Sub tbTimeline_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbTimeline.Scroll
 
         If (Convert.ToInt32(timer1.Tag) = 0) Then
             MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000)
@@ -33,7 +35,7 @@ Public Class Form1
 
         MediaPlayer1.FilenamesOrURL.Add(edFilename.Text)
         MediaPlayer1.Audio_PlayAudio = True
-
+        MediaPlayer1.Info_UseLibMediaInfo = true
         MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
 
         MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device"
@@ -134,7 +136,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub LinkLabel1_LinkClicked_1(sender As System.Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+    Private Sub LinkLabel1_LinkClicked_1(sender As System.Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
 
         Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
         Process.Start(startInfo)
@@ -147,6 +149,9 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        btStop_Click(Nothing, Nothing)
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

@@ -1,6 +1,11 @@
 ﻿// ReSharper disable InconsistentNaming
 
 // ReSharper disable StyleCop.SA1600
+// ReSharper disable NotAccessedVariable
+
+using VisioForge.Controls.UI.Dialogs;
+using VisioForge.Controls.UI.Dialogs.VideoEffects;
+
 namespace Main_Demo
 {
     using System;
@@ -8,8 +13,6 @@ namespace Main_Demo
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
-    using System.Drawing.Drawing2D;
-    using System.Drawing.Text;
     using System.Globalization;
     using System.IO;
     using System.Windows;
@@ -17,7 +20,6 @@ namespace Main_Demo
     using System.Windows.Forms;
     using System.Windows.Input;
     using System.Windows.Media;
-    using System.Windows.Media.Imaging;
     using System.Windows.Threading;
 
     using VisioForge.Tools;
@@ -51,7 +53,6 @@ namespace Main_Demo
         private readonly FontDialog fontDialog = new FontDialog();
 
         private readonly Microsoft.Win32.OpenFileDialog openFileDialog1 = new Microsoft.Win32.OpenFileDialog();
-        private readonly Microsoft.Win32.OpenFileDialog openFileDialog2 = new Microsoft.Win32.OpenFileDialog();
         private readonly ColorDialog colorDialog1 = new ColorDialog();
         private readonly FolderBrowserDialog folderDialog = new FolderBrowserDialog();
 
@@ -111,6 +112,8 @@ namespace Main_Demo
         public MainWindow()
         {
             InitializeComponent();
+
+            System.Windows.Forms.Application.EnableVisualStyles();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -124,12 +127,6 @@ namespace Main_Demo
             // set combobox indexes
             cbSourceMode.SelectedIndex = 0;
             cbImageType.SelectedIndex = 1;
-            cbTextLogoAlign.SelectedIndex = 0;
-            cbTextLogoAntialiasing.SelectedIndex = 0;
-            cbTextLogoDrawMode.SelectedIndex = 0;
-            cbTextLogoEffectrMode.SelectedIndex = 0;
-            cbTextLogoGradMode.SelectedIndex = 0;
-            cbTextLogoShapeType.SelectedIndex = 0;
             cbMotDetHLColor.SelectedIndex = 1;
             cbBarcodeType.SelectedIndex = 0;
             cbDirect2DRotate.SelectedIndex = 0;
@@ -137,14 +134,27 @@ namespace Main_Demo
             rbMotionDetectionExProcessor.SelectedIndex = 1;
             rbMotionDetectionExDetector.SelectedIndex = 1;
 
-            foreach (string device in MediaPlayer1.Audio_OutputDevices)
+            string defaultAudioRenderer = string.Empty;
+            foreach (string audioOutputDevice in MediaPlayer1.Audio_OutputDevices)
             {
-                cbAudioOutputDevice.Items.Add(device);
+                cbAudioOutputDevice.Items.Add(audioOutputDevice);
+
+                if (audioOutputDevice.Contains("Default DirectSound Device"))
+                {
+                    defaultAudioRenderer = audioOutputDevice;
+                }
             }
 
             if (cbAudioOutputDevice.Items.Count > 0)
             {
-                cbAudioOutputDevice.SelectedIndex = 0;
+                if (string.IsNullOrEmpty(defaultAudioRenderer))
+                {
+                    cbAudioOutputDevice.SelectedIndex = 0;
+                }
+                else
+                {
+                    cbAudioOutputDevice.Text = defaultAudioRenderer;
+                }
             }
 
             foreach (string directShowFilter in MediaPlayer1.DirectShow_Filters)
@@ -240,11 +250,6 @@ namespace Main_Demo
             }
         }
 
-        private void cbTextLogo_Checked(object sender, RoutedEventArgs e)
-        {
-            btTextLogoUpdateParams_Click(null, null);
-        }
-
         private void cbGreyscale_Checked(object sender, RoutedEventArgs e)
         {
             IVFVideoEffectGrayscale grayscale;
@@ -282,262 +287,7 @@ namespace Main_Demo
                 }
             }
         }
-
-        private void btFont_Click(object sender, RoutedEventArgs e)
-        {
-            if (fontDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                btTextLogoUpdateParams_Click(null, null);
-            }
-        }
-
-        private void btTextLogoUpdateParams_Click(object sender, RoutedEventArgs e)
-        {
-            VFTextRotationMode rotate;
-            VFTextFlipMode flip;
-
-            StringFormat formatFlags = new StringFormat();
-
-            if (cbTextLogoVertical.IsChecked == true)
-            {
-                formatFlags.FormatFlags |= StringFormatFlags.DirectionVertical;
-            }
-
-            if (cbTextLogoRightToLeft.IsChecked == true)
-            {
-                formatFlags.FormatFlags |= StringFormatFlags.DirectionRightToLeft;
-            }
-
-            formatFlags.Alignment = (StringAlignment)cbTextLogoAlign.SelectedIndex;
-
-            IVFVideoEffectTextLogo textLogo;
-            var effect = MediaPlayer1.Video_Effects_Get("TextLogo");
-            if (effect == null)
-            {
-                textLogo = new VFVideoEffectTextLogo(cbTextLogo.IsChecked == true);
-                MediaPlayer1.Video_Effects_Add(textLogo);
-            }
-            else
-            {
-                textLogo = effect as IVFVideoEffectTextLogo;
-            }
-
-            if (textLogo == null)
-            {
-                MessageBox.Show("Unable to configure text logo effect.");
-                return;
-            }
-
-            textLogo.Enabled = cbTextLogo.IsChecked == true;
-            textLogo.Text = edTextLogo.Text;
-            textLogo.Left = Convert.ToInt32(edTextLogoLeft.Text);
-            textLogo.Top = Convert.ToInt32(edTextLogoTop.Text);
-            textLogo.Font = fontDialog.Font;
-            textLogo.FontColor = fontDialog.Color;
-
-            textLogo.BackgroundTransparent = cbTextLogoTranspBG.IsChecked == true;
-            textLogo.BackgroundColor = MediaPlayer.ColorConv(((SolidColorBrush)pnTextLogoBGColor.Fill).Color);
-            textLogo.StringFormat = formatFlags;
-            textLogo.Antialiasing = (TextRenderingHint)cbTextLogoAntialiasing.SelectedIndex;
-            textLogo.DrawQuality = (InterpolationMode)cbTextLogoDrawMode.SelectedIndex;
-
-            if (cbTextLogoUseRect.IsChecked == true)
-            {
-                textLogo.RectWidth = Convert.ToInt32(edTextLogoWidth.Text);
-                textLogo.RectHeight = Convert.ToInt32(edTextLogoHeight.Text);
-            }
-            else
-            {
-                textLogo.RectWidth = 0;
-                textLogo.RectHeight = 0;
-            }
-
-            if (rbTextLogoDegree0.IsChecked == true)
-            {
-                rotate = VFTextRotationMode.RmNone;
-            }
-            else if (rbTextLogoDegree90.IsChecked == true)
-            {
-                rotate = VFTextRotationMode.Rm90;
-            }
-            else if (rbTextLogoDegree180.IsChecked == true)
-            {
-                rotate = VFTextRotationMode.Rm180;
-            }
-            else
-            {
-                rotate = VFTextRotationMode.Rm270;
-            }
-
-            if (rbTextLogoFlipNone.IsChecked == true)
-            {
-                flip = VFTextFlipMode.None;
-            }
-            else if (rbTextLogoFlipX.IsChecked == true)
-            {
-                flip = VFTextFlipMode.X;
-            }
-            else if (rbTextLogoFlipY.IsChecked == true)
-            {
-                flip = VFTextFlipMode.Y;
-            }
-            else
-            {
-                flip = VFTextFlipMode.XAndY;
-            }
-
-            textLogo.RotationMode = rotate;
-            textLogo.FlipMode = flip;
-
-            textLogo.GradientEnabled = cbTextLogoGradientEnabled.IsChecked == true;
-            textLogo.GradientMode = (VFTextGradientMode)cbTextLogoGradMode.SelectedIndex;
-            textLogo.GradientColor1 = MediaPlayer.ColorConv(((SolidColorBrush)pnTextLogoGradColor1.Fill).Color);
-            textLogo.GradientColor2 = MediaPlayer.ColorConv(((SolidColorBrush)pnTextLogoGradColor2.Fill).Color);
-
-            textLogo.BorderMode = (VFTextEffectMode)cbTextLogoEffectrMode.SelectedIndex;
-            textLogo.BorderInnerColor = MediaPlayer.ColorConv(((SolidColorBrush)pnTextLogoInnerColor.Fill).Color);
-            textLogo.BorderOuterColor = MediaPlayer.ColorConv(((SolidColorBrush)pnTextLogoOuterColor.Fill).Color);
-            textLogo.BorderInnerSize = Convert.ToInt32(edTextLogoInnerSize.Text);
-            textLogo.BorderOuterSize = Convert.ToInt32(edTextLogoOuterSize.Text);
-
-            textLogo.Shape = cbTextLogoShapeEnabled.IsChecked == true;
-            textLogo.ShapeLeft = Convert.ToInt32(edTextLogoShapeLeft.Text);
-            textLogo.ShapeTop = Convert.ToInt32(edTextLogoShapeTop.Text);
-            textLogo.ShapeType = (VFTextShapeType)cbTextLogoShapeType.SelectedIndex;
-            textLogo.ShapeWidth = Convert.ToInt32(edTextLogoShapeWidth.Text);
-            textLogo.ShapeHeight = Convert.ToInt32(edTextLogoShapeHeight.Text);
-            textLogo.ShapeColor = MediaPlayer.ColorConv(((SolidColorBrush)pnTextLogoShapeColor.Fill).Color);
-
-            textLogo.TransparencyLevel = (int)tbTextLogoTransp.Value;
-
-            if (cbTextLogoDateTime.IsChecked == true)
-            {
-                textLogo.Mode = TextLogoMode.DateTime;
-                textLogo.DateTimeMask = "yyyy-MM-dd. hh:mm:ss";
-            }
-            else
-            {
-                textLogo.Mode = TextLogoMode.Text;
-            }
-
-            if (cbTextLogoFadeIn.IsChecked == true)
-            {
-                textLogo.FadeIn = true;
-                textLogo.FadeInDuration = 5000;
-            }
-            else
-            {
-                textLogo.FadeIn = false;
-            }
-
-            if (cbTextLogoFadeOut.IsChecked == true)
-            {
-                textLogo.FadeOut = true;
-                textLogo.FadeOutDuration = 5000;
-            }
-            else
-            {
-                textLogo.FadeOut = false;
-            }
-
-            textLogo.Update();
-        }
-
-        private void cbImageLogo_Checked(object sender, RoutedEventArgs e)
-        {
-            if (MediaPlayer1 == null)
-            {
-                return;
-            }
-
-            if (!File.Exists(edImageLogoFilename.Text))
-            {
-                if (cbImageLogo.IsChecked == true)
-                {
-                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
-                    cbImageLogo.IsChecked = false;
-                }
-
-                return;
-            }
-
-            IVFVideoEffectImageLogo imageLogo;
-            var effect = MediaPlayer1.Video_Effects_Get("ImageLogo");
-            if (effect == null)
-            {
-                imageLogo = new VFVideoEffectImageLogo(cbImageLogo.IsChecked == true);
-                MediaPlayer1.Video_Effects_Add(imageLogo);
-            }
-            else
-            {
-                imageLogo = effect as IVFVideoEffectImageLogo;
-            }
-
-            if (imageLogo == null)
-            {
-                MessageBox.Show("Unable to configure image logo effect.");
-                return;
-            }
-
-            imageLogo.Enabled = cbImageLogo.IsChecked == true;
-            imageLogo.Filename = edImageLogoFilename.Text;
-            imageLogo.Left = Convert.ToUInt32(edImageLogoLeft.Text);
-            imageLogo.Top = Convert.ToUInt32(edImageLogoTop.Text);
-            imageLogo.TransparencyLevel = (int)tbImageLogoTransp.Value;
-            imageLogo.ColorKey = MediaPlayer.ColorConv(((SolidColorBrush)pnImageLogoColorKey.Fill).Color);
-            imageLogo.UseColorKey = cbImageLogoUseColorKey.IsChecked == true;
-            imageLogo.AnimationEnabled = true;
-
-            if (cbImageLogoShowAlways.IsChecked == true)
-            {
-                imageLogo.StartTime = 0;
-                imageLogo.StopTime = 0;
-            }
-            else
-            {
-                imageLogo.StartTime = Convert.ToInt32(edImageLogoStartTime.Text);
-                imageLogo.StopTime = Convert.ToInt32(edImageLogoStopTime.Text);
-            }
-        }
-
-        private void btSelectImage_Click(object sender, RoutedEventArgs e)
-        {
-            if (openFileDialog2.ShowDialog() == true)
-            {
-                this.edImageLogoFilename.Text = openFileDialog2.FileName;
-            }
-        }
-
-        private void tbGraphicLogoTransp_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            this.cbImageLogo_Checked(null, null);
-        }
-
-        private void cbGraphicLogoUseColorKey_Checked(object sender, RoutedEventArgs e)
-        {
-            this.cbImageLogo_Checked(null, null);
-        }
-
-        private void pnGraphicLogoColorKey_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)this.pnImageLogoColorKey.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                this.pnImageLogoColorKey.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
-        private void cbGraphicLogoShowAlways_CheckedChanged(object sender, RoutedEventArgs e)
-        {
-            this.edImageLogoStartTime.IsEnabled = !this.cbImageLogoShowAlways.IsChecked == true;
-            this.edImageLogoStopTime.IsEnabled = !this.cbImageLogoShowAlways.IsChecked == true;
-            lbGraphicLogoStartTime.IsEnabled = !this.cbImageLogoShowAlways.IsChecked == true;
-            lbGraphicLogoStopTime.IsEnabled = !this.cbImageLogoShowAlways.IsChecked == true;
-
-            this.cbImageLogo_Checked(null, null);
-        }
-
+        
         private void btSelectScreenshotsFolder_Click(object sender, RoutedEventArgs e)
         {
             if (folderDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -998,7 +748,7 @@ namespace Main_Demo
             memoryFileStream = new FileStream(edFilenameOrURL.Text, FileMode.Open);
             ManagedIStream stream = new ManagedIStream(memoryFileStream);
 
-            // specifing settings
+            // specifying settings
             //MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
             MediaPlayer1.Source_Stream = stream;
             MediaPlayer1.Source_Stream_Size = memoryFileStream.Length;
@@ -1164,10 +914,10 @@ namespace Main_Demo
             {
                 MediaPlayer1.Audio_Channel_Mapper = new AudioChannelMapperSettings
                 {
-                    Routes = this.audioChannelMapperItems.ToArray(),
+                    Routes = audioChannelMapperItems.ToArray(),
                     OutputChannelsCount =
                                                                 Convert.ToInt32(
-                                                                    this.edAudioChannelMapperOutputChannels.Text)
+                                                                    edAudioChannelMapperOutputChannels.Text)
                 };
             }
             else
@@ -1210,6 +960,8 @@ namespace Main_Demo
             // Video effects
             MediaPlayer1.Video_Effects_Enabled = cbEffects.IsChecked == true;
             MediaPlayer1.Video_Effects_Clear();
+            lbTextLogos.Items.Clear();
+            lbImageLogos.Items.Clear();
 
             // Deinterlace
             if (cbDeinterlace.IsChecked == true)
@@ -1378,14 +1130,14 @@ namespace Main_Demo
                 cbFadeInOut_Checked(null, null);
             }
 
-            if (cbImageLogo.IsChecked == true)
+            if (cbFlipX.IsChecked == true)
             {
-                cbImageLogo_Checked(null, null);
+                CbFlipX_Checked(null, null);
             }
 
-            if (cbTextLogo.IsChecked == true)
+            if (cbFlipY.IsChecked == true)
             {
-                btTextLogoUpdateParams_Click(null, null);
+                CbFlipY_Checked(null, null);
             }
 
             if (cbLiveRotation.IsChecked == true)
@@ -1756,145 +1508,85 @@ namespace Main_Demo
         {
             MediaPlayer1.Audio_Effects_Enable(-1, 4, cbAudTrueBassEnabled.IsChecked == true);
         }
-
-        private void pnTextLogoBGColor_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoBGColor.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                pnTextLogoBGColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
-        private void pnTextLogoGradColor1_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoGradColor1.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                pnTextLogoGradColor1.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
-        private void pnTextLogoGradColor2_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoGradColor2.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                pnTextLogoGradColor2.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
-        private void pnTextLogoInnerColor_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoInnerColor.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                pnTextLogoInnerColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
-        private void pnTextLogoOuterColor_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoOuterColor.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                pnTextLogoOuterColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
-        private void pnTextLogoShapeColor_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoShapeColor.Fill).Color);
-
-            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                pnTextLogoShapeColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
-        }
-
+        
         private void tbAud3DSound_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Sound3D(-1, 3, (int)this.tbAud3DSound.Value);
+            MediaPlayer1?.Audio_Effects_Sound3D(-1, 3, (int)tbAud3DSound.Value);
         }
 
         private void tbAudAmplifyAmp_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Amplify(-1, 0, (int)this.tbAudAmplifyAmp.Value * 10, false);
+            MediaPlayer1?.Audio_Effects_Amplify(-1, 0, (int)tbAudAmplifyAmp.Value * 10, false);
         }
 
         private void tbAudAttack_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_DynamicAmplify(-1, 2, (int)this.tbAudAttack.Value, (int)this.tbAudDynAmp.Value, (int)this.tbAudRelease.Value);
+            MediaPlayer1?.Audio_Effects_DynamicAmplify(-1, 2, (int)tbAudAttack.Value, (int)tbAudDynAmp.Value, (int)tbAudRelease.Value);
         }
 
         private void tbAudDynAmp_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_DynamicAmplify(-1, 2, (int)this.tbAudAttack.Value, (int)this.tbAudDynAmp.Value, (int)this.tbAudRelease.Value);
+            MediaPlayer1?.Audio_Effects_DynamicAmplify(-1, 2, (int)tbAudAttack.Value, (int)tbAudDynAmp.Value, (int)tbAudRelease.Value);
         }
 
         private void tbAudEq0_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 0, (int)this.tbAudEq0.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 0, (int)tbAudEq0.Value);
         }
 
         private void tbAudEq1_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 1, (int)this.tbAudEq1.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 1, (int)tbAudEq1.Value);
         }
 
         private void tbAudEq2_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 2, (int)this.tbAudEq2.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 2, (int)tbAudEq2.Value);
         }
 
         private void tbAudEq3_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 3, (int)this.tbAudEq3.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 3, (int)tbAudEq3.Value);
         }
 
         private void tbAudEq4_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 4, (int)this.tbAudEq4.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 4, (int)tbAudEq4.Value);
         }
 
         private void tbAudEq5_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 5, (int)this.tbAudEq5.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 5, (int)tbAudEq5.Value);
         }
 
         private void tbAudEq6_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 6, (int)this.tbAudEq6.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 6, (int)tbAudEq6.Value);
         }
 
         private void tbAudEq7_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 7, (int)this.tbAudEq7.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 7, (int)tbAudEq7.Value);
         }
 
         private void tbAudEq8_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 8, (int)this.tbAudEq8.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 8, (int)tbAudEq8.Value);
         }
 
         private void tbAudEq9_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 9, (int)this.tbAudEq9.Value);
+            MediaPlayer1?.Audio_Effects_Equalizer_Band_Set(-1, 1, 9, (int)tbAudEq9.Value);
         }
 
         private void tbAudRelease_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_DynamicAmplify(-1, 2, (int)this.tbAudAttack.Value, (int)this.tbAudDynAmp.Value, (int)this.tbAudRelease.Value);
+            MediaPlayer1?.Audio_Effects_DynamicAmplify(-1, 2, (int)tbAudAttack.Value, (int)tbAudDynAmp.Value, (int)tbAudRelease.Value);
         }
 
         private void tbAudTrueBass_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            MediaPlayer1?.Audio_Effects_TrueBass(-1, 4, 200, false, (int)this.tbAudTrueBass.Value);
+            MediaPlayer1?.Audio_Effects_TrueBass(-1, 4, 200, false, (int)tbAudTrueBass.Value);
         }
 
         private void tbJPEGQuality_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -1916,21 +1608,21 @@ namespace Main_Demo
             {
                 MediaPlayer1.Motion_Detection = new MotionDetectionSettings
                 {
-                    Enabled = this.cbMotDetEnabled.IsChecked == true,
-                    Compare_Red = this.cbCompareRed.IsChecked == true,
-                    Compare_Green = this.cbCompareGreen.IsChecked == true,
-                    Compare_Blue = this.cbCompareBlue.IsChecked == true,
-                    Compare_Greyscale = this.cbCompareGreyscale.IsChecked == true,
+                    Enabled = cbMotDetEnabled.IsChecked == true,
+                    Compare_Red = cbCompareRed.IsChecked == true,
+                    Compare_Green = cbCompareGreen.IsChecked == true,
+                    Compare_Blue = cbCompareBlue.IsChecked == true,
+                    Compare_Greyscale = cbCompareGreyscale.IsChecked == true,
                     Highlight_Color =
-                                                            (VFMotionCHLColor)this.cbMotDetHLColor.SelectedIndex,
-                    Highlight_Enabled = this.cbMotDetHLEnabled.IsChecked == true,
-                    Highlight_Threshold = (int)this.tbMotDetHLThreshold.Value,
-                    FrameInterval = Convert.ToInt32(this.edMotDetFrameInterval.Text),
-                    Matrix_Height = Convert.ToInt32(this.edMotDetMatrixHeight.Text),
-                    Matrix_Width = Convert.ToInt32(this.edMotDetMatrixWidth.Text),
+                                                            (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
+                    Highlight_Enabled = cbMotDetHLEnabled.IsChecked == true,
+                    Highlight_Threshold = (int)tbMotDetHLThreshold.Value,
+                    FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
+                    Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
+                    Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
                     DropFrames_Enabled =
-                                                            this.cbMotDetDropFramesEnabled.IsChecked == true,
-                    DropFrames_Threshold = (int)this.tbMotDetDropFramesThreshold.Value
+                                                            cbMotDetDropFramesEnabled.IsChecked == true,
+                    DropFrames_Threshold = (int)tbMotDetDropFramesThreshold.Value
                 };
                 MediaPlayer1.MotionDetection_Update();
             }
@@ -1966,7 +1658,7 @@ namespace Main_Demo
 
         private void cbAFMotionDetection_Checked(object sender, RoutedEventArgs e)
         {
-            this.ConfigureMotionDetectionEx();
+            ConfigureMotionDetectionEx();
         }
 
         public delegate void AFMotionDelegate(float level);
@@ -1987,9 +1679,9 @@ namespace Main_Demo
             {
                 MediaPlayer1.ChromaKey = new ChromaKeySettings
                 {
-                    ContrastHigh = (int)this.tbChromaKeyContrastHigh.Value,
-                    ContrastLow = (int)this.tbChromaKeyContrastLow.Value,
-                    ImageFilename = this.edChromaKeyImage.Text
+                    ContrastHigh = (int)tbChromaKeyContrastHigh.Value,
+                    ContrastLow = (int)tbChromaKeyContrastLow.Value,
+                    ImageFilename = edChromaKeyImage.Text
                 };
 
                 if (rbChromaKeyGreen.IsChecked == true)
@@ -2301,9 +1993,7 @@ namespace Main_Demo
 
         private double windowHeight;
 
-        private double controlLeft;
-
-        private double controlTop;
+        private Thickness controlMargin;
 
         private double controlWidth;
 
@@ -2322,10 +2012,9 @@ namespace Main_Demo
                 windowWidth = Width;
                 windowHeight = Height;
 
-                controlLeft = gdMediaPlayer.Margin.Left;
-                controlTop = gdMediaPlayer.Margin.Top;
-                controlWidth = gdMediaPlayer.Width;
-                controlHeight = gdMediaPlayer.Height;
+                controlMargin = MediaPlayer1.Margin;
+                controlWidth = MediaPlayer1.Width;
+                controlHeight = MediaPlayer1.Height;
 
                 // resizing window
                 ResizeMode = ResizeMode.NoResize;
@@ -2340,9 +2029,9 @@ namespace Main_Demo
                 Margin = new Thickness(0);
 
                 // resizing control
-                gdMediaPlayer.Margin = new Thickness(0);
-                gdMediaPlayer.Width = Width + 10;
-                gdMediaPlayer.Height = Height + 10;
+                MediaPlayer1.Margin = new Thickness(0);
+                MediaPlayer1.Width = Width + 10;
+                MediaPlayer1.Height = Height + 10;
 
                 MediaPlayer1.Width = Width + 10;
                 MediaPlayer1.Height = Height + 10;
@@ -2357,9 +2046,9 @@ namespace Main_Demo
                 fullScreen = false;
 
                 // restoring control
-                gdMediaPlayer.Margin = new Thickness(controlLeft, controlTop, 0, 0);
-                gdMediaPlayer.Width = controlWidth;
-                gdMediaPlayer.Height = controlHeight;
+                MediaPlayer1.Margin = controlMargin;
+                MediaPlayer1.Width = controlWidth;
+                MediaPlayer1.Height = controlHeight;
 
                 MediaPlayer1.Width = controlWidth;
                 MediaPlayer1.Height = controlHeight;
@@ -2384,7 +2073,7 @@ namespace Main_Demo
         {
             if (fullScreen)
             {
-                this.btFullScreen_Click(null, null);
+                btFullScreen_Click(null, null);
             }
         }
 
@@ -2577,7 +2266,7 @@ namespace Main_Demo
 
         private void pnVideoRendererBGColor_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            colorDialog1.Color = ColorConv(((SolidColorBrush)pnTextLogoGradColor1.Fill).Color);
+            colorDialog1.Color = ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
 
             if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -2613,8 +2302,7 @@ namespace Main_Demo
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            gdMediaPlayer.Width /= 2;
-            MediaPlayer1.Video_Renderer_Update();
+
         }
 
         private void cbFilters_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
@@ -2870,9 +2558,9 @@ namespace Main_Demo
         {
             var item = new AudioChannelMapperItem
             {
-                SourceChannel = Convert.ToInt32(this.edAudioChannelMapperSourceChannel.Text),
-                TargetChannel = Convert.ToInt32(this.edAudioChannelMapperTargetChannel.Text),
-                TargetChannelVolume = (float)this.tbAudioChannelMapperVolume.Value / 1000.0f
+                SourceChannel = Convert.ToInt32(edAudioChannelMapperSourceChannel.Text),
+                TargetChannel = Convert.ToInt32(edAudioChannelMapperTargetChannel.Text),
+                TargetChannelVolume = (float)tbAudioChannelMapperVolume.Value / 1000.0f
             };
 
             audioChannelMapperItems.Add(item);
@@ -3156,6 +2844,124 @@ namespace Main_Demo
         private void btPrevFrame_Click(object sender, RoutedEventArgs e)
         {
             MediaPlayer1.PreviousFrame();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            btStop_Click(null, null);
+        }
+
+
+        private void BtTextLogoAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new TextLogoSettingsDialog();
+
+            var name = dlg.GenerateNewEffectName(MediaPlayer1.Core);
+            var effect = new VFVideoEffectTextLogo(true, name);
+
+            MediaPlayer1.Video_Effects_Add(effect);
+            lbTextLogos.Items.Add(effect.Name);
+            dlg.Fill(effect);
+
+            dlg.ShowDialog(this);
+            dlg.Dispose();
+        }
+
+        private void BtTextLogoEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbTextLogos.SelectedItem != null)
+            {
+                var dlg = new TextLogoSettingsDialog();
+                var effect = MediaPlayer1.Video_Effects_Get((string)lbTextLogos.SelectedItem);
+                dlg.Attach(effect);
+
+                dlg.ShowDialog(this);
+                dlg.Dispose();
+            }
+        }
+
+        private void BtTextLogoRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbTextLogos.SelectedItem != null)
+            {
+                MediaPlayer1.Video_Effects_Remove((string)lbTextLogos.SelectedItem);
+                lbTextLogos.Items.Remove(lbTextLogos.SelectedItem);
+            }
+        }
+
+        private void BtImageLogoAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new ImageLogoSettingsDialog();
+
+            var name = dlg.GenerateNewEffectName(MediaPlayer1.Core);
+            var effect = new VFVideoEffectImageLogo(true, name);
+
+            MediaPlayer1.Video_Effects_Add(effect);
+            lbImageLogos.Items.Add(effect.Name);
+
+            dlg.Fill(effect);
+            dlg.ShowDialog(this);
+            dlg.Dispose();
+        }
+
+        private void BtImageLogoEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbImageLogos.SelectedItem != null)
+            {
+                var dlg = new ImageLogoSettingsDialog();
+                var effect = MediaPlayer1.Video_Effects_Get((string)lbImageLogos.SelectedItem);
+
+                dlg.Attach(effect);
+                dlg.ShowDialog(this);
+                dlg.Dispose();
+            }
+        }
+
+        private void BtImageLogoRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbImageLogos.SelectedItem != null)
+            {
+                MediaPlayer1.Video_Effects_Remove((string)lbImageLogos.SelectedItem);
+                lbImageLogos.Items.Remove(lbImageLogos.SelectedItem);
+            }
+        }
+
+        private void CbFlipX_Checked(object sender, RoutedEventArgs e)
+        {
+            IVFVideoEffectFlipDown flip;
+            var effect = MediaPlayer1.Video_Effects_Get("FlipDown");
+            if (effect == null)
+            {
+                flip = new VFVideoEffectFlipDown(cbFlipX.IsChecked == true);
+                MediaPlayer1.Video_Effects_Add(flip);
+            }
+            else
+            {
+                flip = effect as IVFVideoEffectFlipDown;
+                if (flip != null)
+                {
+                    flip.Enabled = cbFlipX.IsChecked == true;
+                }
+            }
+        }
+
+        private void CbFlipY_Checked(object sender, RoutedEventArgs e)
+        {
+            IVFVideoEffectFlipRight flip;
+            var effect = MediaPlayer1.Video_Effects_Get("FlipRight");
+            if (effect == null)
+            {
+                flip = new VFVideoEffectFlipRight(cbFlipY.IsChecked == true);
+                MediaPlayer1.Video_Effects_Add(flip);
+            }
+            else
+            {
+                flip = effect as IVFVideoEffectFlipRight;
+                if (flip != null)
+                {
+                    flip.Enabled = cbFlipY.IsChecked == true;
+                }
+            }
         }
     }
 }

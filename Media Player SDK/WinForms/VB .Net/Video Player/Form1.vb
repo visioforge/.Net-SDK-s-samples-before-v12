@@ -34,6 +34,7 @@ Public Class Form1
         MediaPlayer1.FilenamesOrURL.Add(edFilename.Text)
         MediaPlayer1.Loop = cbLoop.Checked
         MediaPlayer1.Audio_PlayAudio = True
+        MediaPlayer1.Info_UseLibMediaInfo = true
 
         Select Case (cbSourceMode.SelectedIndex)
             Case 0
@@ -158,6 +159,10 @@ Public Class Form1
 
     Private Sub btPreviousFrame_Click(sender As Object, e As EventArgs) Handles btPreviousFrame.Click
         MediaPlayer1.PreviousFrame()
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        btStop_Click(Nothing, Nothing)
     End Sub
 End Class
 

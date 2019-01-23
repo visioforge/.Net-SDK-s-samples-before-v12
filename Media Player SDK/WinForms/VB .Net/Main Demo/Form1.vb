@@ -1,4 +1,5 @@
 ﻿Imports System.Globalization
+Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types.GPUVideoEffects
 Imports VisioForge.Types.VideoEffects ' ReSharper disable InconsistentNaming
 
@@ -6,9 +7,10 @@ Imports System.IO
 Imports VisioForge.Tools.MediaInfo
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
+Imports VisioForge.Tools
 
 Public Class Form1
-    Dim audioChannelMapperItems As List(Of AudioChannelMapperItem) = new List(Of AudioChannelMapperItem)
+    Private audioChannelMapperItems As List(Of AudioChannelMapperItem) = new List(Of AudioChannelMapperItem)
 
     ' Zoom
     Dim zoom As Double = 1.0
@@ -28,12 +30,6 @@ Public Class Form1
         ' set combobox indexes
         cbSourceMode.SelectedIndex = 0
         cbImageType.SelectedIndex = 1
-        cbTextLogoAlign.SelectedIndex = 0
-        cbTextLogoAntialiasing.SelectedIndex = 0
-        cbTextLogoDrawMode.SelectedIndex = 0
-        cbTextLogoEffectrMode.SelectedIndex = 0
-        cbTextLogoGradMode.SelectedIndex = 0
-        cbTextLogoShapeType.SelectedIndex = 0
         cbMotDetHLColor.SelectedIndex = 1
         cbBarcodeType.SelectedIndex = 0
         cbDirect2DRotate.SelectedIndex = 0
@@ -93,6 +89,7 @@ Public Class Form1
         edScreenshotsFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
         MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
 
+        Form1_SizeChanged(Me, EventArgs.Empty)
     End Sub
 
     Private Sub tbLightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbLightness.Scroll
@@ -143,13 +140,7 @@ Public Class Form1
         End If
 
     End Sub
-
-    Private Sub cbTextLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbTextLogo.CheckedChanged
-
-        btTextLogoUpdateParams_Click(sender, e)
-
-    End Sub
-
+    
     Private Sub cbGreyscale_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
 
         Dim grayscale As IVFVideoEffectGrayscale
@@ -181,229 +172,7 @@ Public Class Form1
         End If
 
     End Sub
-
-    Private Sub btFont_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btFont.Click
-
-        If (fontDialog1.ShowDialog() = DialogResult.OK) Then
-
-            btTextLogoUpdateParams_Click(sender, e)
-
-        End If
-    End Sub
-
-    Private Sub btTextLogoUpdateParams_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btTextLogoUpdateParams.Click
-
-        Dim rotate As VFTextRotationMode
-        Dim flip As VFTextFlipMode
-
-        Dim stringFormat = New StringFormat()
-
-        If (cbTextLogoVertical.Checked) Then
-            stringFormat.FormatFlags = stringFormat.FormatFlags Xor StringFormatFlags.DirectionVertical
-        End If
-
-        If (cbTextLogoRightToLeft.Checked) Then
-            stringFormat.FormatFlags = stringFormat.FormatFlags Xor StringFormatFlags.DirectionRightToLeft
-        End If
-
-        stringFormat.Alignment = cbTextLogoAlign.SelectedIndex
-
-        Dim textLogo As IVFVideoEffectTextLogo
-        Dim effect = MediaPlayer1.Video_Effects_Get("TextLogo")
-            If (IsNothing(effect)) Then
-            textLogo = New VFVideoEffectTextLogo(cbTextLogo.Checked)
-            MediaPlayer1.Video_Effects_Add(textLogo)
-        Else
-            textLogo = effect
-        End If
-
-        If (IsNothing(textLogo)) Then
-            MessageBox.Show("Unable to configure text logo effect.")
-            Return
-        End If
-
-        textLogo.Enabled = cbTextLogo.Checked
-        textLogo.Text = edTextLogo.Text
-        textLogo.Left = Convert.ToInt32(edTextLogoLeft.Text)
-        textLogo.Top = Convert.ToInt32(edTextLogoTop.Text)
-        textLogo.Font = fontDialog1.Font
-        textLogo.FontColor = fontDialog1.Color
-
-        textLogo.BackgroundTransparent = cbTextLogoTranspBG.Checked
-        textLogo.BackgroundColor = pnTextLogoBGColor.BackColor
-        textLogo.StringFormat = stringFormat
-            textLogo.Antialiasing = cbTextLogoAntialiasing.SelectedIndex
-        textLogo.DrawQuality = cbTextLogoDrawMode.SelectedIndex
-
-        If (cbTextLogoUseRect.Checked) Then
-            textLogo.RectWidth = Convert.ToInt32(edTextLogoWidth.Text)
-            textLogo.RectHeight = Convert.ToInt32(edTextLogoHeight.Text)
-        Else
-            textLogo.RectWidth = 0
-            textLogo.RectHeight = 0
-        End If
-
-        If (rbTextLogoDegree0.Checked) Then
-            rotate = VFTextRotationMode.RmNone
-        ElseIf (rbTextLogoDegree90.Checked) Then
-            rotate = VFTextRotationMode.Rm90
-        ElseIf (rbTextLogoDegree180.Checked) Then
-            rotate = VFTextRotationMode.Rm180
-        Else
-            rotate = VFTextRotationMode.Rm270
-        End If
-
-        If (rbTextLogoFlipNone.Checked) Then
-            flip = VFTextFlipMode.None
-        ElseIf (rbTextLogoFlipX.Checked) Then
-            flip = VFTextFlipMode.X
-        ElseIf (rbTextLogoFlipY.Checked) Then
-            flip = VFTextFlipMode.Y
-        Else
-            flip = VFTextFlipMode.XAndY
-        End If
-
-        textLogo.RotationMode = rotate
-        textLogo.FlipMode = flip
-
-        textLogo.GradientEnabled = cbTextLogoGradientEnabled.Checked
-        textLogo.GradientMode = cbTextLogoGradMode.SelectedIndex
-        textLogo.GradientColor1 = pnTextLogoGradColor1.BackColor
-        textLogo.GradientColor2 = pnTextLogoGradColor2.BackColor
-
-        textLogo.BorderMode = cbTextLogoEffectrMode.SelectedIndex
-        textLogo.BorderInnerColor = pnTextLogoInnerColor.BackColor
-        textLogo.BorderOuterColor = pnTextLogoOuterColor.BackColor
-        textLogo.BorderInnerSize = Convert.ToInt32(edTextLogoInnerSize.Text)
-        textLogo.BorderOuterSize = Convert.ToInt32(edTextLogoOuterSize.Text)
-
-        textLogo.Shape = cbTextLogoShapeEnabled.Checked
-        textLogo.ShapeLeft = Convert.ToInt32(edTextLogoShapeLeft.Text)
-        textLogo.ShapeTop = Convert.ToInt32(edTextLogoShapeTop.Text)
-        textLogo.ShapeType = cbTextLogoShapeType.SelectedIndex
-        textLogo.ShapeWidth = Convert.ToInt32(edTextLogoShapeWidth.Text)
-        textLogo.ShapeHeight = Convert.ToInt32(edTextLogoShapeHeight.Text)
-        textLogo.ShapeColor = pnTextLogoShapeColor.BackColor
-
-        textLogo.TransparencyLevel = tbTextLogoTransp.Value
-
-        If (Not cbTextLogoDateTime.Checked) Then
-            textLogo.Mode = TextLogoMode.Text
-        Else
-            textLogo.Mode = TextLogoMode.DateTime
-            textLogo.DateTimeMask = "yyyy-MM-dd. hh:mm:ss"
-        End If
-        
-        If (cbTextLogoFadeIn.Checked) Then
-            textLogo.FadeIn = True
-            textLogo.FadeInDuration = 5000
-        Else
-            textLogo.FadeIn = False
-        End If
-
-        If (cbTextLogoFadeOut.Checked) Then
-            textLogo.FadeOut = True
-            textLogo.FadeOutDuration = 5000
-        Else
-            textLogo.FadeOut = False
-        End If
-
-        textLogo.Update()
-
-    End Sub
-
-    Private Sub cbGraphicLogoShowAlways_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogoShowAlways.CheckedChanged
-
-        edImageLogoStartTime.Enabled = Not cbImageLogoShowAlways.Checked
-        edImageLogoStopTime.Enabled = Not cbImageLogoShowAlways.Checked
-        lbGraphicLogoStartTime.Enabled = Not cbImageLogoShowAlways.Checked
-        lbGraphicLogoStopTime.Enabled = Not cbImageLogoShowAlways.Checked
-
-        cbImageLogo_CheckedChanged(sender, e)
-
-    End Sub
-
-    Private Sub btSelectImage_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectImage.Click
-
-        If (openFileDialog2.ShowDialog() = DialogResult.OK) Then
-
-            edImageLogoFilename.Text = openFileDialog2.FileName
-
-        End If
-
-    End Sub
-
-    Private Sub tbGraphicLogoTransp_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbImageLogoTransp.Scroll
-
-        cbImageLogo_CheckedChanged(sender, e)
-
-    End Sub
-
-    Private Sub cbGraphicLogoUseColorKey_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogoUseColorKey.CheckedChanged
-
-        cbImageLogo_CheckedChanged(sender, e)
-
-    End Sub
-
-    Private Sub pnGraphicLogoColorKey_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnImageLogoColorKey.Click
-
-        colorDialog1.Color = pnImageLogoColorKey.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnImageLogoColorKey.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
-    Private Sub cbImageLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogo.CheckedChanged
-
-        If String.IsNullOrEmpty(edImageLogoLeft.Text) Then
-            Return
-        End If
-
-        If (Not File.Exists(edImageLogoFilename.Text)) Then
-            If (cbImageLogo.Checked) Then
-                MessageBox.Show("Unable to find " + edImageLogoFilename.Text)
-                cbImageLogo.Checked = False
-            End If
-            Return
-        End If
-
-        Dim imageLogo As IVFVideoEffectImageLogo
-        Dim effect = MediaPlayer1.Video_Effects_Get("ImageLogo")
-        If (IsNothing(effect)) Then
-            imageLogo = New VFVideoEffectImageLogo(cbImageLogo.Checked)
-            MediaPlayer1.Video_Effects_Add(imageLogo)
-        Else
-            imageLogo = effect
-        End If
-
-        If (IsNothing(imageLogo)) Then
-            MessageBox.Show("Unable to configure image logo effect.")
-            Return
-        End If
-
-        imageLogo.Enabled = cbImageLogo.Checked
-        imageLogo.Filename = edImageLogoFilename.Text
-        imageLogo.Left = Convert.ToUInt32(edImageLogoLeft.Text)
-        imageLogo.Top = Convert.ToUInt32(edImageLogoTop.Text)
-        imageLogo.TransparencyLevel = tbImageLogoTransp.Value
-        imageLogo.ColorKey = pnImageLogoColorKey.ForeColor
-        imageLogo.UseColorKey = cbImageLogoUseColorKey.Checked
-        imageLogo.AnimationEnabled = True
-
-        If (cbImageLogoShowAlways.Checked) Then
-            imageLogo.StartTime = 0
-            imageLogo.StopTime = 0
-        Else
-            imageLogo.StartTime = Convert.ToInt32(edImageLogoStartTime.Text)
-            imageLogo.StopTime = Convert.ToInt32(edImageLogoStopTime.Text)
-        End If
-
-    End Sub
-
+    
     Private Sub btOSDInit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDInit.Click
 
         MediaPlayer1.OSD_Init()
@@ -1477,6 +1246,8 @@ Public Class Form1
         ' Video effects
         MediaPlayer1.Video_Effects_Enabled = cbEffects.Checked
         MediaPlayer1.Video_Effects_Clear()
+        lbImageLogos.Items.Clear()
+        lbTextLogos.Items.Clear()
 
         ' Deinterlace
         If cbDeinterlace.Checked Then
@@ -1605,12 +1376,12 @@ Public Class Form1
             cbPan_CheckedChanged(Nothing, Nothing)
         End If
 
-        If cbImageLogo.Checked Then
-            cbImageLogo_CheckedChanged(Nothing, Nothing)
+        If cbFlipX.Checked Then
+            cbFlipX_CheckedChanged(Nothing, Nothing)
         End If
 
-        If cbTextLogo.Checked Then
-            btTextLogoUpdateParams_Click(Nothing, Nothing)
+        If  cbFlipY.Checked Then
+            cbFlipY_CheckedChanged(Nothing, Nothing)
         End If
 
         If cbFadeInOut.Checked Then
@@ -1732,9 +1503,7 @@ Public Class Form1
     Private Sub btSelectFile_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectFile.Click
 
         If (openFileDialog1.ShowDialog() = DialogResult.OK) Then
-
             edFilenameOrURL.Text = openFileDialog1.FileName
-
         End If
 
     End Sub
@@ -2047,79 +1816,7 @@ Public Class Form1
         MediaPlayer1.Audio_Effects_Enable(-1, 4, cbAudTrueBassEnabled.Checked)
 
     End Sub
-
-    Private Sub pnTextLogoBGColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoBGColor.Click
-
-        colorDialog1.Color = pnTextLogoGradColor1.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnTextLogoGradColor1.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoGradColor1_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoGradColor1.Click
-
-        colorDialog1.Color = pnTextLogoGradColor1.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnTextLogoGradColor1.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoGradColor2_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoGradColor2.Click
-
-        colorDialog1.Color = pnTextLogoGradColor2.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnTextLogoGradColor2.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoInnerColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoInnerColor.Click
-
-        colorDialog1.Color = pnTextLogoInnerColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnTextLogoInnerColor.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoOuterColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoOuterColor.Click
-
-        colorDialog1.Color = pnTextLogoOuterColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnTextLogoOuterColor.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoShapeColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoShapeColor.Click
-
-        colorDialog1.Color = pnTextLogoShapeColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
-            pnTextLogoShapeColor.BackColor = colorDialog1.Color
-
-        End If
-
-    End Sub
-
+    
     Private Sub tbAud3DSound_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAud3DSound.Scroll
 
         MediaPlayer1.Audio_Effects_Sound3D(-1, 3, tbAud3DSound.Value)
@@ -3103,6 +2800,8 @@ Public Class Form1
 
         End If
 
+        btStop_Click(Nothing, Nothing)
+
     End Sub
 
     Private Sub btReadTags_Click(sender As Object, e As EventArgs) Handles btReadTags.Click
@@ -3372,6 +3071,104 @@ Public Class Form1
 
         MediaPlayer1.PreviousFrame()
 
+    End Sub
+
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+        MediaPlayer1.Width = Width - MediaPlayer1.Left - 30
+        MediaPlayer1.Height = Height - MediaPlayer1.Top - 260
+    End Sub
+
+
+    Private Sub cbFlipX_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipX.CheckedChanged
+        Dim flip As IVFVideoEffectFlipDown
+        Dim effect = MediaPlayer1.Video_Effects_Get("FlipDown")
+        If (effect Is Nothing) Then
+            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            MediaPlayer1.Video_Effects_Add(flip)
+        Else
+            flip = effect
+            If (flip IsNot Nothing) Then
+                flip.Enabled = cbFlipX.Checked
+            End If
+        End If
+    End Sub
+
+    Private Sub cbFlipY_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipY.CheckedChanged
+        Dim flip As IVFVideoEffectFlipRight
+        Dim effect = MediaPlayer1.Video_Effects_Get("FlipRight")
+        If (effect Is Nothing) Then
+            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            MediaPlayer1.Video_Effects_Add(flip)
+        Else
+            flip = effect
+            If (flip IsNot Nothing) Then
+                flip.Enabled = cbFlipY.Checked
+            End If
+        End If
+    End Sub
+
+    Private Sub btImageLogoRemove_Click(sender As Object, e As EventArgs) Handles btImageLogoRemove.Click
+        If (lbImageLogos.SelectedItem IsNot Nothing) Then
+            MediaPlayer1.Video_Effects_Remove(lbImageLogos.SelectedItem)
+            lbImageLogos.Items.Remove(lbImageLogos.SelectedItem)
+        End If
+    End Sub
+
+    Private Sub btImageLogoEdit_Click(sender As Object, e As EventArgs) Handles btImageLogoEdit.Click
+        If (lbImageLogos.SelectedItem IsNot Nothing) Then
+            Dim dlg = New ImageLogoSettingsDialog()
+            Dim effect = MediaPlayer1.Video_Effects_Get(lbImageLogos.SelectedItem)
+
+            dlg.Attach(effect)
+            dlg.ShowDialog(Me)
+            dlg.Dispose()
+        End If
+    End Sub
+
+    Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
+        Dim dlg = New ImageLogoSettingsDialog()
+
+        Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1.Core)
+        Dim effect = New VFVideoEffectImageLogo(True, effectName)
+
+        MediaPlayer1.Video_Effects_Add(effect)
+        lbImageLogos.Items.Add(effect.Name)
+
+        dlg.Fill(effect)
+        dlg.ShowDialog(Me)
+        dlg.Dispose()
+    End Sub
+
+    Private Sub btTextLogoEdit_Click(sender As Object, e As EventArgs) Handles btTextLogoEdit.Click
+        If (lbTextLogos.SelectedItem IsNot Nothing) Then
+            Dim dlg = New TextLogoSettingsDialog()
+            Dim effect = MediaPlayer1.Video_Effects_Get(lbTextLogos.SelectedItem)
+            dlg.Attach(effect)
+
+            dlg.ShowDialog(Me)
+            dlg.Dispose()
+        End If
+    End Sub
+
+    Private Sub btTextLogoRemove_Click(sender As Object, e As EventArgs) Handles btTextLogoRemove.Click
+        If (lbTextLogos.SelectedItem IsNot Nothing) Then
+            MediaPlayer1.Video_Effects_Remove(lbTextLogos.SelectedItem)
+            lbTextLogos.Items.Remove(lbTextLogos.SelectedItem)
+        End If
+    End Sub
+
+    Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
+        Dim dlg = new TextLogoSettingsDialog()
+
+        Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1.Core)
+        Dim effect = new VFVideoEffectTextLogo(true, effectName)
+
+        MediaPlayer1.Video_Effects_Add(effect)
+        lbTextLogos.Items.Add(effect.Name)
+        dlg.Fill(effect)
+
+        dlg.ShowDialog(Me)
+        dlg.Dispose()
     End Sub
 End Class
 

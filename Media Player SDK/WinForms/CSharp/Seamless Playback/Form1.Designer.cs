@@ -63,8 +63,9 @@
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(699, -17);
+            this.linkLabel1.Location = new System.Drawing.Point(761, 8);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(110, 13);
             this.linkLabel1.TabIndex = 29;
@@ -73,7 +74,8 @@
             // 
             // btAddFileToPlaylist
             // 
-            this.btAddFileToPlaylist.Location = new System.Drawing.Point(366, 31);
+            this.btAddFileToPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btAddFileToPlaylist.Location = new System.Drawing.Point(800, 24);
             this.btAddFileToPlaylist.Margin = new System.Windows.Forms.Padding(2);
             this.btAddFileToPlaylist.Name = "btAddFileToPlaylist";
             this.btAddFileToPlaylist.Size = new System.Drawing.Size(38, 23);
@@ -84,8 +86,9 @@
             // 
             // label30
             // 
+            this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(12, 53);
+            this.label30.Location = new System.Drawing.Point(446, 46);
             this.label30.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(39, 13);
@@ -94,8 +97,9 @@
             // 
             // lbSourceFiles
             // 
+            this.lbSourceFiles.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSourceFiles.FormattingEnabled = true;
-            this.lbSourceFiles.Location = new System.Drawing.Point(14, 69);
+            this.lbSourceFiles.Location = new System.Drawing.Point(448, 62);
             this.lbSourceFiles.Margin = new System.Windows.Forms.Padding(2);
             this.lbSourceFiles.Name = "lbSourceFiles";
             this.lbSourceFiles.Size = new System.Drawing.Size(418, 56);
@@ -103,6 +107,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.cbLoop);
             this.groupBox2.Controls.Add(this.btNextFrame);
             this.groupBox2.Controls.Add(this.btStop);
@@ -113,9 +118,9 @@
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.lbTime);
             this.groupBox2.Controls.Add(this.tbTimeline);
-            this.groupBox2.Location = new System.Drawing.Point(449, 16);
+            this.groupBox2.Location = new System.Drawing.Point(12, 330);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(414, 90);
+            this.groupBox2.Size = new System.Drawing.Size(420, 90);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
@@ -222,7 +227,8 @@
             // 
             // btSelectFile
             // 
-            this.btSelectFile.Location = new System.Drawing.Point(409, 31);
+            this.btSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSelectFile.Location = new System.Drawing.Point(843, 24);
             this.btSelectFile.Name = "btSelectFile";
             this.btSelectFile.Size = new System.Drawing.Size(23, 23);
             this.btSelectFile.TabIndex = 23;
@@ -232,7 +238,8 @@
             // 
             // edFilenameOrURL
             // 
-            this.edFilenameOrURL.Location = new System.Drawing.Point(14, 32);
+            this.edFilenameOrURL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.edFilenameOrURL.Location = new System.Drawing.Point(448, 25);
             this.edFilenameOrURL.Name = "edFilenameOrURL";
             this.edFilenameOrURL.Size = new System.Drawing.Size(348, 20);
             this.edFilenameOrURL.TabIndex = 22;
@@ -240,8 +247,9 @@
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 16);
+            this.label14.Location = new System.Drawing.Point(446, 9);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(89, 13);
             this.label14.TabIndex = 21;
@@ -249,17 +257,19 @@
             // 
             // mmLog
             // 
-            this.mmLog.Location = new System.Drawing.Point(449, 379);
+            this.mmLog.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.mmLog.Location = new System.Drawing.Point(448, 342);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
             this.mmLog.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.mmLog.Size = new System.Drawing.Size(414, 78);
+            this.mmLog.Size = new System.Drawing.Size(418, 78);
             this.mmLog.TabIndex = 32;
             // 
             // cbDebugMode
             // 
+            this.cbDebugMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(449, 356);
+            this.cbDebugMode.Location = new System.Drawing.Point(449, 319);
             this.cbDebugMode.Name = "cbDebugMode";
             this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
             this.cbDebugMode.TabIndex = 31;
@@ -268,6 +278,9 @@
             // 
             // MediaPlayer1
             // 
+            this.MediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MediaPlayer1.Audio_Channel_Mapper = null;
             this.MediaPlayer1.Audio_Effects_Enabled = false;
             this.MediaPlayer1.Audio_Effects_UseLegacyEffects = false;
@@ -290,15 +303,17 @@
             this.MediaPlayer1.Debug_Mode = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
+            this.MediaPlayer1.Face_Tracking = null;
             this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
-            this.MediaPlayer1.Location = new System.Drawing.Point(14, 145);
+            this.MediaPlayer1.Location = new System.Drawing.Point(14, 8);
             this.MediaPlayer1.Loop = false;
+            this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
             this.MediaPlayer1.Motion_Detection = null;
+            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
-            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -311,14 +326,16 @@
             this.MediaPlayer1.Source_Stream_AudioPresent = false;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = false;
-            this.MediaPlayer1.Start_DelayEnabled = false;
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 30;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
             videoRendererSettingsWinForms1.Flip_Horizontal = false;
             videoRendererSettingsWinForms1.Flip_Vertical = false;
             videoRendererSettingsWinForms1.RotationAngle = 0;
@@ -339,6 +356,9 @@
             // 
             // MediaPlayer2
             // 
+            this.MediaPlayer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MediaPlayer2.Audio_Channel_Mapper = null;
             this.MediaPlayer2.Audio_Effects_Enabled = false;
             this.MediaPlayer2.Audio_Effects_UseLegacyEffects = false;
@@ -361,15 +381,17 @@
             this.MediaPlayer2.Debug_Mode = false;
             this.MediaPlayer2.Encryption_Key = "";
             this.MediaPlayer2.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
+            this.MediaPlayer2.Face_Tracking = null;
             this.MediaPlayer2.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer2.FilenamesOrURL")));
             this.MediaPlayer2.Info_UseLibMediaInfo = false;
-            this.MediaPlayer2.Location = new System.Drawing.Point(14, 145);
+            this.MediaPlayer2.Location = new System.Drawing.Point(14, 8);
             this.MediaPlayer2.Loop = false;
+            this.MediaPlayer2.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer2.MaximalSpeedPlayback = false;
             this.MediaPlayer2.Motion_Detection = null;
+            this.MediaPlayer2.Motion_DetectionEx = null;
             this.MediaPlayer2.MultiScreen_Enabled = false;
             this.MediaPlayer2.Name = "MediaPlayer2";
-            this.MediaPlayer2.Motion_DetectionEx = null;
             this.MediaPlayer2.ReversePlayback_CacheSize = 0;
             this.MediaPlayer2.ReversePlayback_Enabled = false;
             this.MediaPlayer2.Selection_Active = false;
@@ -382,14 +404,16 @@
             this.MediaPlayer2.Source_Stream_AudioPresent = false;
             this.MediaPlayer2.Source_Stream_Size = ((long)(0));
             this.MediaPlayer2.Source_Stream_VideoPresent = false;
-            this.MediaPlayer2.Start_DelayEnabled = false;
+            this.MediaPlayer2.Play_DelayEnabled = false;
             this.MediaPlayer2.TabIndex = 33;
             this.MediaPlayer2.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
             videoRendererSettingsWinForms2.Flip_Horizontal = false;
             videoRendererSettingsWinForms2.Flip_Vertical = false;
             videoRendererSettingsWinForms2.RotationAngle = 0;
@@ -408,7 +432,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(883, 470);
+            this.ClientSize = new System.Drawing.Size(883, 431);
             this.Controls.Add(this.MediaPlayer2);
             this.Controls.Add(this.mmLog);
             this.Controls.Add(this.cbDebugMode);
@@ -421,6 +445,7 @@
             this.Controls.Add(this.btSelectFile);
             this.Controls.Add(this.edFilenameOrURL);
             this.Controls.Add(this.label14);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Seamless Playback Demo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);

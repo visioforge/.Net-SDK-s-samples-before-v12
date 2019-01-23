@@ -2,6 +2,8 @@
 
 Public Class Form2
 
+    Public Event OnWindowSizeChanged()
+
     Public Sub LogLicensing(message As String)
 
         If cbLicensing.Checked Then
@@ -24,6 +26,9 @@ Public Class Form2
 	End Get
     End Property
 
+    Private Sub Form2_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+        RaiseEvent OnWindowSizeChanged
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

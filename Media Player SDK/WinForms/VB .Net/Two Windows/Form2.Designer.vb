@@ -24,6 +24,7 @@ Partial Class Form2
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form2))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.mmError = New System.Windows.Forms.TextBox()
@@ -33,6 +34,8 @@ Partial Class Form2
         '
         'GroupBox1
         '
+        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.cbLicensing)
         Me.GroupBox1.Controls.Add(Me.mmError)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 367)
@@ -63,6 +66,9 @@ Partial Class Form2
         '
         'pnScreen
         '
+        Me.pnScreen.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.pnScreen.BackColor = System.Drawing.Color.Black
         Me.pnScreen.Location = New System.Drawing.Point(12, 12)
         Me.pnScreen.Name = "pnScreen"
@@ -76,7 +82,7 @@ Partial Class Form2
         Me.ClientSize = New System.Drawing.Size(499, 496)
         Me.Controls.Add(Me.pnScreen)
         Me.Controls.Add(Me.GroupBox1)
-        Me.MaximizeBox = false
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form2"
         Me.Text = "Media Player SDK .Net - Two Windows Demo"
         Me.GroupBox1.ResumeLayout(false)

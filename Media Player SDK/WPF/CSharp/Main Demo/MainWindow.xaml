@@ -5,7 +5,7 @@
         xmlns:VolumeMeterPro="clr-namespace:VisioForge.Controls.UI.WPF.VolumeMeterPro;assembly=VisioForge.Controls.UI"
         xmlns:wpf="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI"
         x:Class="Main_Demo.MainWindow"
-        Title="VisioForge Media Player SDK .Net Demo" Height="802" Width="843" Loaded="Window_Loaded">
+        Title="VisioForge Media Player SDK .Net Demo" Height="802" Width="843" Loaded="Window_Loaded" Closing="Window_Closing" Icon="visioforge_main_icon.ico">
     <Grid>
         <TabControl Height="567" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="tabControl1" VerticalAlignment="Top" Width="382">
             <TabItem Header="Info" x:Name="tabItem2">
@@ -38,7 +38,7 @@
                     </TabControl>
                     <Button Content="Read info" Height="23" HorizontalAlignment="Left" Margin="10,466.12,0,0" x:Name="btReadInfo" 
 						VerticalAlignment="Top" Width="75" Click="btReadInfo_Click" />
-                    <CheckBox x:Name="cbUseLibMediaInfo" Content="Use libMediaInfo" HorizontalAlignment="Left" Margin="18,409.12,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="cbUseLibMediaInfo" Content="Use libMediaInfo" HorizontalAlignment="Left" Margin="18,409.12,0,0" VerticalAlignment="Top" IsChecked="true"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Audio output" x:Name="tabItem3">
@@ -76,177 +76,18 @@
                                 <TabControl Height="302" HorizontalAlignment="Left" Margin="0,131,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="362">
                                     <TabItem Header="Text logo">
                                         <Grid>
-                                            <TabControl Height="182" HorizontalAlignment="Left" Margin="0,54,0,0" x:Name="tabControl8" VerticalAlignment="Top" Width="356">
-                                                <TabItem Header="Gradient" x:Name="tabItem17">
-                                                    <Grid>
-                                                        <Rectangle Fill="White" Height="29" HorizontalAlignment="Left" Margin="144,17,0,0" MouseDown="pnTextLogoGradColor1_MouseDown" x:Name="pnTextLogoGradColor1" Stroke="Black" VerticalAlignment="Top" Width="32" />
-                                                        <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="cbTextLogoGradientEnabled" VerticalAlignment="Top" />
-                                                        <Rectangle Fill="Black" Height="29" HorizontalAlignment="Left" Margin="144,53,0,0" MouseDown="pnTextLogoGradColor2_MouseDown" x:Name="pnTextLogoGradColor2" Stroke="Black" VerticalAlignment="Top" Width="32" />
-                                                        <Label Content="Color 1" Height="28" HorizontalAlignment="Left" Margin="87,18,0,0" x:Name="label66" VerticalAlignment="Top" />
-                                                        <Label Content="Color 2" Height="28" HorizontalAlignment="Left" Margin="87,53,0,0" x:Name="label67" VerticalAlignment="Top" />
-                                                        <Label Content="Mode" Height="28" HorizontalAlignment="Left" Margin="196,18,0,0" x:Name="label68" VerticalAlignment="Top" />
-                                                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="189,43,0,0" x:Name="cbTextLogoGradMode" VerticalAlignment="Top" Width="120">
-                                                            <ComboBoxItem Content="Horizontal" />
-                                                            <ComboBoxItem Content="Vertical" />
-                                                            <ComboBoxItem Content="Forward diagonal" />
-                                                            <ComboBoxItem Content="Backward diagonal" />
-                                                        </ComboBox>
-                                                    </Grid>
-                                                </TabItem>
-                                                <TabItem Header="Position" x:Name="tabItem18">
-                                                    <Grid>
-                                                        <Label Content="Left" Height="23" HorizontalAlignment="Left" Margin="45,23,0,0" x:Name="label69" VerticalAlignment="Top" Width="31" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="91,25,0,0" x:Name="edTextLogoLeft" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <Label Content="Top" Height="25" HorizontalAlignment="Left" Margin="45,52,0,0" x:Name="label70" VerticalAlignment="Top" Width="31" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="91,54,0,0" x:Name="edTextLogoTop" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <Label Content="Heigth" Height="25" HorizontalAlignment="Left" Margin="206,52,0,0" x:Name="label71" VerticalAlignment="Top" Width="45" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="257,54,0,0" x:Name="edTextLogoHeight" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <Label Content="Width" Height="25" HorizontalAlignment="Left" Margin="206,23,0,0" x:Name="label72" VerticalAlignment="Top" Width="44" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="257,25,0,0" x:Name="edTextLogoWidth" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <CheckBox Content="Use rect" Height="16" Margin="169,6,81,0" x:Name="cbTextLogoUseRect" VerticalAlignment="Top" />
-                                                    </Grid>
-                                                </TabItem>
-                                                <TabItem Header="Quality" x:Name="tabItem19">
-                                                    <Grid>
-                                                        <Label Content="Antialiasing" Height="28" HorizontalAlignment="Left" Margin="12,6,0,0" x:Name="label73" VerticalAlignment="Top" />
-                                                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="102,11,0,0" x:Name="cbTextLogoAntialiasing" VerticalAlignment="Top" Width="104">
-                                                            <ComboBoxItem Content="System default" />
-                                                            <ComboBoxItem Content="Single Bit Per Pixel (Grid Fit)" />
-                                                            <ComboBoxItem Content="Single Bit Per Pixel" />
-                                                            <ComboBoxItem Content="AntiAlias (GridFit)" />
-                                                            <ComboBoxItem Content="AntiAlias" />
-                                                            <ComboBoxItem Content="ClearType" />
-                                                        </ComboBox>
-                                                        <Label Content="Draw mode" Height="28" HorizontalAlignment="Left" Margin="12,40,0,0" x:Name="label74" VerticalAlignment="Top" />
-                                                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="102,45,0,0" x:Name="cbTextLogoDrawMode" VerticalAlignment="Top" Width="104">
-                                                            <ComboBoxItem Content="Bicubic HQ" />
-                                                            <ComboBoxItem Content="Bilinear HQ" />
-                                                            <ComboBoxItem Content="Nearest Neighbor" />
-                                                            <ComboBoxItem Content="Bicubic" />
-                                                            <ComboBoxItem Content="Bilinear" />
-                                                            <ComboBoxItem Content="Standard HQ" />
-                                                            <ComboBoxItem Content="Standard LQ," />
-                                                            <ComboBoxItem Content="System default" />
-                                                        </ComboBox>
-                                                    </Grid>
-                                                </TabItem>
-                                                <TabItem Header="Effects" x:Name="tabItem20">
-                                                    <Grid>
-                                                        <Rectangle Fill="White" Height="29" HorizontalAlignment="Left" Margin="128,36,0,0" MouseDown="pnTextLogoInnerColor_MouseDown" x:Name="pnTextLogoInnerColor" Stroke="Black" VerticalAlignment="Top" Width="32" />
-                                                        <Rectangle Fill="Black" Height="29" HorizontalAlignment="Left" Margin="255,36,0,0" MouseDown="pnTextLogoOuterColor_MouseDown" x:Name="pnTextLogoOuterColor" Stroke="Black" VerticalAlignment="Top" Width="32" />
-                                                        <Label Content="First color" Height="28" HorizontalAlignment="Left" Margin="59,36,0,0" x:Name="label75" VerticalAlignment="Top" Width="65" />
-                                                        <Label Content="Second color" Height="28" HorizontalAlignment="Left" Margin="176,36,0,0" x:Name="label76" VerticalAlignment="Top" Width="80" />
-                                                        <Label Content="Mode" Height="23" HorizontalAlignment="Left" Margin="12,4,0,0" x:Name="label77" VerticalAlignment="Top" />
-                                                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="59,7,0,0" x:Name="cbTextLogoEffectrMode" VerticalAlignment="Top" Width="120">
-                                                            <ComboBoxItem Content="None" />
-                                                            <ComboBoxItem Content="Inner border" />
-                                                            <ComboBoxItem Content="Outer border" />
-                                                            <ComboBoxItem Content="Inner and outer borders" />
-                                                            <ComboBoxItem Content="Embossed" />
-                                                            <ComboBoxItem Content="Outline" />
-                                                            <ComboBoxItem Content="Filled outline" />
-                                                            <ComboBoxItem Content="Halo" />
-                                                        </ComboBox>
-                                                        <Label Content="First size" Height="23" HorizontalAlignment="Left" Margin="59,66,0,0" x:Name="label78" VerticalAlignment="Top" Width="56" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="128,69,0,0" x:Name="edTextLogoInnerSize" Text="1" VerticalAlignment="Top" Width="32" />
-                                                        <Label Content="Second size" Height="23" HorizontalAlignment="Left" Margin="176,66,0,0" x:Name="label79" VerticalAlignment="Top" Width="73" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="255,69,0,0" x:Name="edTextLogoOuterSize" Text="1" VerticalAlignment="Top" Width="32" />
-                                                        <CheckBox x:Name="cbTextLogoFadeOut" Content="Fade-Out (if duration set)" HorizontalAlignment="Left" Margin="95,114,0,0" VerticalAlignment="Top"/>
-                                                        <CheckBox x:Name="cbTextLogoFadeIn" Content="Fade-In" HorizontalAlignment="Left" Margin="12,114,0,0" VerticalAlignment="Top"/>
-                                                    </Grid>
-                                                </TabItem>
-                                                <TabItem Header="Rotation" x:Name="tabItem21">
-                                                    <Grid>
-                                                        <GroupBox Header="Degree" Height="51" HorizontalAlignment="Left" Margin="6,-3,0,0" x:Name="groupBox12" VerticalAlignment="Top" Width="318">
-                                                            <Grid>
-                                                                <RadioButton Content="0" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="37,7,0,0" x:Name="rbTextLogoDegree0" VerticalAlignment="Top" />
-                                                                <RadioButton Content="90" Height="16" HorizontalAlignment="Left" Margin="101,7,0,0" x:Name="rbTextLogoDegree90" VerticalAlignment="Top" />
-                                                                <RadioButton Content="180" Height="16" HorizontalAlignment="Left" Margin="169,7,0,0" x:Name="rbTextLogoDegree180" VerticalAlignment="Top" />
-                                                                <RadioButton Content="270" Height="16" HorizontalAlignment="Left" Margin="243,7,0,0" x:Name="rbTextLogoDegree270" VerticalAlignment="Top" />
-                                                            </Grid>
-                                                        </GroupBox>
-                                                        <GroupBox Header="Flip" Height="51" HorizontalAlignment="Left" Margin="6,45,0,0" x:Name="groupBox13" VerticalAlignment="Top" Width="318">
-                                                            <Grid>
-                                                                <RadioButton Content="None" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="37,6,0,0" x:Name="rbTextLogoFlipNone" VerticalAlignment="Top" />
-                                                                <RadioButton Content="X" Height="16" HorizontalAlignment="Left" Margin="101,6,0,0" x:Name="rbTextLogoFlipX" VerticalAlignment="Top" />
-                                                                <RadioButton Content="Y" Height="16" HorizontalAlignment="Left" Margin="169,6,0,0" x:Name="rbTextLogoFlipY" VerticalAlignment="Top" />
-                                                                <RadioButton Content="X &amp; Y" Height="16" HorizontalAlignment="Left" Margin="243,6,0,0" x:Name="rbTextLogoFlipXY" VerticalAlignment="Top" />
-                                                            </Grid>
-                                                        </GroupBox>
-                                                    </Grid>
-                                                </TabItem>
-                                                <TabItem Header="Shape" x:Name="tabItem22">
-                                                    <Grid>
-                                                        <Rectangle Fill="#FFBABABA" Height="29" HorizontalAlignment="Left" Margin="289,8,0,0" MouseDown="pnTextLogoShapeColor_MouseDown" x:Name="pnTextLogoShapeColor" Stroke="Black" VerticalAlignment="Top" Width="32" />
-                                                        <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="6,6,0,0" x:Name="cbTextLogoShapeEnabled" VerticalAlignment="Top" />
-                                                        <Label Content="Color 1" Height="28" HorizontalAlignment="Left" Margin="243,9,0,0" x:Name="label80" VerticalAlignment="Top" />
-                                                        <Label Content="Mode" Height="28" HorizontalAlignment="Left" Margin="68,9,0,0" x:Name="label81" VerticalAlignment="Top" />
-                                                        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,12,95,0" x:Name="cbTextLogoShapeType" VerticalAlignment="Top" Width="113">
-                                                            <ComboBoxItem Content="Rectangle" />
-                                                            <ComboBoxItem Content="Ellipse" />
-                                                        </ComboBox>
-                                                        <Label Content="Left" Height="23" HorizontalAlignment="Left" Margin="64,41,0,0" x:Name="label82" VerticalAlignment="Top" Width="31" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="108,43,0,0" x:Name="edTextLogoShapeLeft" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <Label Content="Top" Height="25" HorizontalAlignment="Left" Margin="64,64,0,0" x:Name="label83" VerticalAlignment="Top" Width="31" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="108,70,0,0" x:Name="edTextLogoShapeTop" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <Label Content="Heigth" Height="25" HorizontalAlignment="Left" Margin="152,68,0,0" x:Name="label84" VerticalAlignment="Top" Width="45" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="200,70,0,0" x:Name="edTextLogoShapeHeight" Text="50" VerticalAlignment="Top" Width="35" />
-                                                        <Label Content="Width" Height="25" HorizontalAlignment="Left" Margin="152,41,0,0" x:Name="label85" VerticalAlignment="Top" Width="44" />
-                                                        <TextBox Height="23" HorizontalAlignment="Left" Margin="200,43,0,0" x:Name="edTextLogoShapeWidth" Text="50" VerticalAlignment="Top" Width="35" />
-                                                    </Grid>
-                                                </TabItem>
-                                                <TabItem Header="Main" x:Name="tabItem63">
-                                                    <Grid>
-                                                        <Label Content="Align" Height="28" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="label28" VerticalAlignment="Top" Width="43" />
-                                                        <ComboBox Height="23" HorizontalAlignment="Left" Margin="53,13,0,0" x:Name="cbTextLogoAlign" VerticalAlignment="Top" Width="114">
-                                                            <ComboBoxItem Content="Nearest Neighbor" />
-                                                            <ComboBoxItem Content="Bilinear" />
-                                                            <ComboBoxItem Content="Bicubic" />
-                                                            <ComboBoxItem Content="Lancroz" />
-                                                        </ComboBox>
-                                                        <CheckBox Content="Vertical" Height="16" HorizontalAlignment="Left" Margin="204,10,0,0" x:Name="cbTextLogoVertical" VerticalAlignment="Top" />
-                                                        <CheckBox Content="Right-To-Left" Height="16" HorizontalAlignment="Left" Margin="204,32,0,0" x:Name="cbTextLogoRightToLeft" VerticalAlignment="Top" />
-                                                        <CheckBox Content="Transp. background" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="45,43,0,0" x:Name="cbTextLogoTranspBG" VerticalAlignment="Top" />
-                                                        <Slider Height="23" HorizontalAlignment="Left" Margin="204,71,0,0" Maximum="255" x:Name="tbTextLogoTransp" VerticalAlignment="Top" Width="100" />
-                                                        <Label Content="Transparency (layer)" Height="28" HorizontalAlignment="Right" Margin="0,46,16,0" x:Name="label29" VerticalAlignment="Top" Width="118" />
-                                                        <Rectangle Fill="White" Height="29" HorizontalAlignment="Left" Margin="94,63,0,0" MouseDown="pnTextLogoBGColor_MouseDown" x:Name="pnTextLogoBGColor" Stroke="Black" VerticalAlignment="Top" Width="32" />
-                                                    </Grid>
-                                                </TabItem>
-                                            </TabControl>
-                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="17,3,0,0" x:Name="cbTextLogo" VerticalAlignment="Top" Checked="cbTextLogo_Checked" Unchecked="cbTextLogo_Checked" />
-                                            <TextBox Height="23" HorizontalAlignment="Left" Margin="17,23,0,0" x:Name="edTextLogo" Text="Hello!" VerticalAlignment="Top" Width="237" />
-                                            <Button Click="btFont_Click" Content="Font" Height="23" HorizontalAlignment="Left" Margin="266,23,0,0" x:Name="btFont" VerticalAlignment="Top" Width="62" />
-                                            <Button Click="btTextLogoUpdateParams_Click" Content="Update" Height="23" HorizontalAlignment="Left" Margin="265,241,0,0" x:Name="btTextLogoUpdateParams" VerticalAlignment="Top" Width="75" />
-                                            <CheckBox Content="Date / Time" Height="16" HorizontalAlignment="Left" Margin="266,3,0,0" x:Name="cbTextLogoDateTime" VerticalAlignment="Top" />
+                                            <ListBox x:Name="lbTextLogos" HorizontalAlignment="Left" Height="217" VerticalAlignment="Top" Width="338" Margin="10,10,0,0"/>
+                                            <Button x:Name="btTextLogoAdd" Content="Add" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="74" Click="BtTextLogoAdd_Click"/>
+                                            <Button x:Name="btTextLogoEdit" Content="Edit" HorizontalAlignment="Left" Margin="89,232,0,0" VerticalAlignment="Top" Width="76" Click="BtTextLogoEdit_Click"/>
+                                            <Button x:Name="btTextLogoRemove" Content="Remove" HorizontalAlignment="Left" Margin="274,232,0,0" VerticalAlignment="Top" Width="74" Click="BtTextLogoRemove_Click"/>
                                         </Grid>
                                     </TabItem>
-                                    <TabItem Header="Graphical logo">
+                                    <TabItem Header="Image logo">
                                         <Grid>
-                                            <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="cbImageLogo" VerticalAlignment="Top" Checked="cbImageLogo_Checked" Unchecked="cbImageLogo_Checked" />
-                                            <TextBox Height="23" HorizontalAlignment="Left" Margin="96,39,0,0" x:Name="edImageLogoFilename" Text="C:\1.png" VerticalAlignment="Top" Width="200" />
-                                            <Button Click="btSelectImage_Click" Content="..." Height="23" HorizontalAlignment="Left" Margin="302,39,0,0" x:Name="btSelectImage" VerticalAlignment="Top" Width="26" />
-                                            <Label Content="File name" Height="28" HorizontalAlignment="Left" Margin="29,38,0,0" x:Name="label86" VerticalAlignment="Top" />
-                                            <GroupBox Header="Position" Height="98" HorizontalAlignment="Left" Margin="17,72,0,0" x:Name="groupBox14" VerticalAlignment="Top" Width="106">
-                                                <Grid>
-                                                    <Label Content="Left" Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="label87" VerticalAlignment="Top" Width="31" />
-                                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="46,42,0,0" x:Name="edImageLogoTop" Text="50" VerticalAlignment="Top" Width="35" />
-                                                    <Label Content="Top" Height="25" HorizontalAlignment="Left" Margin="10,39,0,0" x:Name="label88" VerticalAlignment="Top" Width="31" />
-                                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="46,13,0,0" x:Name="edImageLogoLeft" Text="50" VerticalAlignment="Top" Width="35" />
-                                                </Grid>
-                                            </GroupBox>
-                                            <GroupBox Header="Duration" Height="98" HorizontalAlignment="Left" Margin="129,72,0,0" x:Name="groupBox15" VerticalAlignment="Top" Width="206">
-                                                <Grid>
-                                                    <Label Content="Start" Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="lbGraphicLogoStartTime" VerticalAlignment="Top" Width="41" />
-                                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="147,13,0,0" x:Name="edImageLogoStopTime" Text="1000" VerticalAlignment="Top" Width="35" />
-                                                    <Label Content="Stop" Height="25" HorizontalAlignment="Left" Margin="111,10,0,0" x:Name="lbGraphicLogoStopTime" VerticalAlignment="Top" Width="35" />
-                                                    <TextBox Height="23" HorizontalAlignment="Left" Margin="46,13,0,0" x:Name="edImageLogoStartTime" Text="0" VerticalAlignment="Top" Width="35" />
-                                                    <CheckBox Checked="cbGraphicLogoShowAlways_CheckedChanged" Content="Show always" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="62,48,0,0" x:Name="cbImageLogoShowAlways" Unchecked="cbGraphicLogoShowAlways_CheckedChanged" VerticalAlignment="Top" />
-                                                </Grid>
-                                            </GroupBox>
-                                            <Slider Height="23" HorizontalAlignment="Left" Margin="23,199,0,0" Maximum="255" x:Name="tbImageLogoTransp" ValueChanged="tbGraphicLogoTransp_ValueChanged" VerticalAlignment="Top" Width="100" />
-                                            <Label Content="Transparency" Height="28" HorizontalAlignment="Left" Margin="32,172,0,0" x:Name="label91" VerticalAlignment="Top" Width="86" />
-                                            <CheckBox Checked="cbGraphicLogoUseColorKey_Checked" Content="Use Color Key" Height="16" HorizontalAlignment="Left" Margin="164,199,0,0" x:Name="cbImageLogoUseColorKey" Unchecked="cbGraphicLogoUseColorKey_Checked" VerticalAlignment="Top" />
-                                            <Rectangle Fill="#FF3873FF" Height="29" HorizontalAlignment="Left" Margin="264,193,0,0" MouseDown="pnGraphicLogoColorKey_MouseDown" x:Name="pnImageLogoColorKey" Stroke="Black" VerticalAlignment="Top" Width="32" />
+                                            <ListBox x:Name="lbImageLogos" HorizontalAlignment="Left" Height="217" VerticalAlignment="Top" Width="338" Margin="10,10,0,0"/>
+                                            <Button x:Name="btImageLogoAdd" Content="Add" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="74" Click="BtImageLogoAdd_Click"/>
+                                            <Button x:Name="btImageLogoEdit" Content="Edit" HorizontalAlignment="Left" Margin="89,232,0,0" VerticalAlignment="Top" Width="76" Click="BtImageLogoEdit_Click"/>
+                                            <Button x:Name="btImageLogoRemove" Content="Remove" HorizontalAlignment="Left" Margin="274,232,0,0" VerticalAlignment="Top" Width="74" Click="BtImageLogoRemove_Click"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="Zoom">
@@ -341,6 +182,8 @@
                                 <Label Content="Darkness" Height="28" HorizontalAlignment="Left" Margin="192,71,0,0" x:Name="label95" VerticalAlignment="Top" Width="86" />
                                 <CheckBox Content="Grayscale" Height="16" HorizontalAlignment="Left" Margin="20,110,0,0" x:Name="cbGreyscale" VerticalAlignment="Top" Checked="cbGreyscale_Checked" Unchecked="cbGreyscale_Checked" />
                                 <CheckBox Content="Invert" Height="16" HorizontalAlignment="Left" Margin="128,110,0,0" x:Name="cbInvert" VerticalAlignment="Top" Checked="cbInvert_Checked" Unchecked="cbInvert_Checked" />
+                                <CheckBox x:Name="cbFlipX" Content="Flip X" HorizontalAlignment="Left" Margin="195,110,0,0" VerticalAlignment="Top" Checked="CbFlipX_Checked" Unchecked="CbFlipX_Checked"/>
+                                <CheckBox x:Name="cbFlipY" Content="Flip Y" HorizontalAlignment="Left" Margin="272,110,0,0" VerticalAlignment="Top" Checked="CbFlipY_Checked" Unchecked="CbFlipY_Checked"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Deinterlace (SW)" x:Name="tabItem24">
@@ -854,11 +697,11 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="Watch tutorials" FontWeight="Bold" Foreground="#FF0016CF" Height="29" HorizontalAlignment="Left" Margin="712,734,0,0" x:Name="label129" VerticalAlignment="Top" MouseDown="label129_MouseDown" />
+        <Label Content="Watch tutorials" FontWeight="Bold" Foreground="#FF0016CF" Height="29" HorizontalAlignment="Left" Margin="714,1,0,0" x:Name="label129" VerticalAlignment="Top" MouseDown="label129_MouseDown" />
         <Label Content="File name" Height="28" HorizontalAlignment="Left" Margin="406,6,0,0" x:Name="label17" VerticalAlignment="Top" />
         <TextBox Height="23" HorizontalAlignment="Left" Margin="407,30,0,0" x:Name="edFilenameOrURL" VerticalAlignment="Top" Width="319.8" Text="c:\Samples\!video.avi" />
         <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="784,30,0,0" x:Name="btSelectFile" VerticalAlignment="Top" Width="23" Click="btSelectFile_Click" />
-        <GroupBox Header="Controls" Height="89" HorizontalAlignment="Left" Margin="407,464.6,0,0" x:Name="groupBox1" VerticalAlignment="Top" Width="403">
+        <GroupBox Header="Controls" Height="89" HorizontalAlignment="Left" Margin="407,0,0,217" x:Name="groupBox1" VerticalAlignment="Bottom" Width="403">
             <Grid>
                 <Slider Height="23" HorizontalAlignment="Left" Margin="8,6,0,0" x:Name="tbTimeline" VerticalAlignment="Top" Width="146" Maximum="100" ValueChanged="tbTimeline_ValueChanged" />
                 <Label Content="00:00:00/00:00:00" Height="28" HorizontalAlignment="Left" Margin="160,1,0,0" x:Name="lbTime" VerticalAlignment="Top" />
@@ -873,7 +716,7 @@
                 <Button x:Name="btPrevFrame" Content="Prev frame" HorizontalAlignment="Left" Margin="238,35,0,0" VerticalAlignment="Top" Width="65" Height="23" Click="btPrevFrame_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="DVD" Height="91" HorizontalAlignment="Left" Margin="407,554.6,0,0" x:Name="groupBox2" VerticalAlignment="Top" Width="403">
+        <GroupBox Header="DVD" Height="91" HorizontalAlignment="Left" Margin="407,0,0,125" x:Name="groupBox2" VerticalAlignment="Bottom" Width="403">
             <Grid>
                 <Label Content="Title" Height="28" HorizontalAlignment="Left" Margin="8,4,0,0" x:Name="label20" VerticalAlignment="Top" />
                 <ComboBox Height="23" HorizontalAlignment="Left" Margin="61,6,0,0" x:Name="cbDVDControlTitle" VerticalAlignment="Top" Width="93" SelectionChanged="cbDVDControlTitle_SelectionChanged" />
@@ -906,11 +749,11 @@
         <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Left" Margin="731.8,30,0,0" VerticalAlignment="Top" Width="47.2" Height="23" Click="btAddFileToPlaylist_Click"/>
         <ListBox x:Name="lbSourceFiles" HorizontalAlignment="Left" Height="46.08" Margin="406,78.96,0,0" VerticalAlignment="Top" Width="404"/>
 
-        <Grid Height="300" HorizontalAlignment="Left" Margin="406,161,0,0" x:Name="gdMediaPlayer" VerticalAlignment="Top" Width="403" Background="Black">
-            <wpf:MediaPlayer HorizontalAlignment="Stretch" 
+        <wpf:MediaPlayer Margin="406,161,26,310" 
+                             Background="Black"
+                             HorizontalAlignment="Stretch" 
                              x:Name="MediaPlayer1"
                              VerticalAlignment="Stretch"
-                             Margin="0"
                              OnError="MediaPlayer1_OnError" 
                              OnMotionDetectionEx="MediaPlayer1_OnObjectDetection"
                              OnMotion="MediaPlayer1_OnMotion" 
@@ -923,6 +766,5 @@
                              OnAudioVUMeterProVolume="MediaPlayer1_OnAudioVUMeterProVolume" 
                              OnLicenseRequired="MediaPlayer1_OnLicenseRequired"
                              />
-        </Grid>
     </Grid>
 </Window>

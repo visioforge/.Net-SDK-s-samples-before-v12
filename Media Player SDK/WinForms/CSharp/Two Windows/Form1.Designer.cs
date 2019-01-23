@@ -276,6 +276,7 @@ namespace Two_Windows_Demo
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(550, 374);
@@ -290,6 +291,9 @@ namespace Two_Windows_Demo
             // 
             // MediaPlayer1
             // 
+            this.MediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MediaPlayer1.Audio_Channel_Mapper = null;
             this.MediaPlayer1.Audio_Effects_Enabled = false;
             this.MediaPlayer1.Audio_Effects_UseLegacyEffects = false;
@@ -312,35 +316,36 @@ namespace Two_Windows_Demo
             this.MediaPlayer1.Debug_Mode = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
+            this.MediaPlayer1.Face_Tracking = null;
             this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(437, 14);
             this.MediaPlayer1.Loop = false;
+            this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
             this.MediaPlayer1.Motion_Detection = null;
+            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
-            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
             this.MediaPlayer1.Selection_Start = 0;
             this.MediaPlayer1.Selection_Stop = 0;
-            this.MediaPlayer1.Size = new System.Drawing.Size(463, 349);
+            this.MediaPlayer1.Size = new System.Drawing.Size(464, 350);
             this.MediaPlayer1.Source_Custom_CLSID = null;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.Start_DelayEnabled = false;
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 36;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
             videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
@@ -372,9 +377,10 @@ namespace Two_Windows_Demo
             this.Controls.Add(this.btSelectFile);
             this.Controls.Add(this.edFilename);
             this.Controls.Add(this.label14);
-            this.MaximizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Media Player SDK - Two Windows Demo - Window 1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

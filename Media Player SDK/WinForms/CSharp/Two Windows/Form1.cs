@@ -27,12 +27,18 @@ namespace Two_Windows_Demo
         private void Form1_Load(object sender, EventArgs e)
         {
             form2 = new Form2();
+            form2.OnWindowSizeChanged += Form2_OnWindowSizeChanged;
             
             MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
 
             Text += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + ")";
 
             form2.Show();
+        }
+
+        private void Form2_OnWindowSizeChanged(object sender, EventArgs e)
+        {
+            MediaPlayer1.MultiScreen_UpdateSize(0, form2.Screen.Width, form2.Screen.Height);
         }
 
         private void tbTimeline_Scroll(object sender, EventArgs e)
@@ -48,7 +54,7 @@ namespace Two_Windows_Demo
             MediaPlayer1.FilenamesOrURL.Add(edFilename.Text);
             MediaPlayer1.Loop = cbLoop.Checked;
             MediaPlayer1.Audio_PlayAudio = true;
-
+            MediaPlayer1.Info_UseLibMediaInfo = true;
             MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device";
 
             if (MediaPlayer1.Filter_Supported_EVR())
@@ -148,6 +154,11 @@ namespace Two_Windows_Demo
         private void MediaPlayer1_OnLicenseRequired(object sender, VisioForge.Types.LicenseEventArgs e)
         {
             form2.LogLicense(e.Message);
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btStop_Click(null, null);
         }
     }
 }

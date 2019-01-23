@@ -94,6 +94,7 @@ namespace SeamlessPlaybackDemo
             player.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             player.Source_Mode = VFMediaPlayerSource.LAV;
             player.Audio_OutputDevice = "Default DirectSound Device";
+            MediaPlayer1.Info_UseLibMediaInfo = true;
 
             if (player.Filter_Supported_EVR())
             {

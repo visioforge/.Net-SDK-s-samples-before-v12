@@ -30,14 +30,13 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
         /// </summary>
         private void InitializeComponent()
         {
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.rbCapture = new System.Windows.Forms.RadioButton();
             this.rbPreview = new System.Windows.Forms.RadioButton();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
-            this.btSelectOutput = new System.Windows.Forms.Button();
-            this.edOutput = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox21 = new System.Windows.Forms.GroupBox();
             this.rbDVResDC = new System.Windows.Forms.RadioButton();
@@ -69,98 +68,71 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.cbAudioOutputDevice = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.rbDVType2 = new System.Windows.Forms.RadioButton();
-            this.rbDVType1 = new System.Windows.Forms.RadioButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.rbDVNTSC = new System.Windows.Forms.RadioButton();
-            this.rbDVPAL = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbDVChannels = new System.Windows.Forms.ComboBox();
-            this.cbDVSampleRate = new System.Windows.Forms.ComboBox();
-            this.rbDV = new System.Windows.Forms.RadioButton();
-            this.cbWMVInternalProfile9 = new System.Windows.Forms.ComboBox();
-            this.rbDVDirectstream = new System.Windows.Forms.RadioButton();
-            this.rbWMV = new System.Windows.Forms.RadioButton();
-            this.rbAVI = new System.Windows.Forms.RadioButton();
-            this.label27 = new System.Windows.Forms.Label();
-            this.btAudioSettings = new System.Windows.Forms.Button();
-            this.btVideoSettings = new System.Windows.Forms.Button();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.cbChannels = new System.Windows.Forms.ComboBox();
-            this.cbBPS = new System.Windows.Forms.ComboBox();
-            this.cbAudioCodecs = new System.Windows.Forms.ComboBox();
-            this.cbSampleRate = new System.Windows.Forms.ComboBox();
-            this.cbVideoCodecs = new System.Windows.Forms.ComboBox();
+            this.btSelectOutput = new System.Windows.Forms.Button();
+            this.edOutput = new System.Windows.Forms.TextBox();
+            this.lbInfo = new System.Windows.Forms.Label();
+            this.btOutputConfigure = new System.Windows.Forms.Button();
+            this.cbOutputFormat = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.edImageLogoTop = new System.Windows.Forms.TextBox();
-            this.cbImageLogo = new System.Windows.Forms.CheckBox();
-            this.label155 = new System.Windows.Forms.Label();
-            this.tbImageLogoTransp = new System.Windows.Forms.TrackBar();
-            this.edImageLogoLeft = new System.Windows.Forms.TextBox();
-            this.label156 = new System.Windows.Forms.Label();
-            this.label154 = new System.Windows.Forms.Label();
-            this.btSelectImage = new System.Windows.Forms.Button();
-            this.label157 = new System.Windows.Forms.Label();
-            this.edImageLogoFilename = new System.Windows.Forms.TextBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.tbTextLogoTransp = new System.Windows.Forms.TrackBar();
-            this.edTextLogoTop = new System.Windows.Forms.TextBox();
-            this.label139 = new System.Windows.Forms.Label();
-            this.edTextLogoLeft = new System.Windows.Forms.TextBox();
-            this.label140 = new System.Windows.Forms.Label();
-            this.btFont = new System.Windows.Forms.Button();
-            this.edTextLogo = new System.Windows.Forms.TextBox();
-            this.cbTextLogo = new System.Windows.Forms.CheckBox();
+            this.cbFlipY = new System.Windows.Forms.CheckBox();
+            this.cbFlipX = new System.Windows.Forms.CheckBox();
+            this.cbInvert = new System.Windows.Forms.CheckBox();
+            this.cbGreyscale = new System.Windows.Forms.CheckBox();
+            this.label201 = new System.Windows.Forms.Label();
+            this.tbDarkness = new System.Windows.Forms.TrackBar();
+            this.label200 = new System.Windows.Forms.Label();
+            this.label199 = new System.Windows.Forms.Label();
+            this.label198 = new System.Windows.Forms.Label();
+            this.tbContrast = new System.Windows.Forms.TrackBar();
+            this.tbLightness = new System.Windows.Forms.TrackBar();
+            this.tbSaturation = new System.Windows.Forms.TrackBar();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btTextLogoAdd = new System.Windows.Forms.Button();
+            this.btLogoRemove = new System.Windows.Forms.Button();
+            this.btLogoEdit = new System.Windows.Forms.Button();
+            this.lbLogos = new System.Windows.Forms.ListBox();
+            this.btImageLogoAdd = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.cbImageType = new System.Windows.Forms.ComboBox();
-            this.lbJPEGQuality = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.btSaveScreenshot = new System.Windows.Forms.Button();
-            this.label63 = new System.Windows.Forms.Label();
-            this.edScreenshotsFolder = new System.Windows.Forms.TextBox();
-            this.tbJPEGQuality = new System.Windows.Forms.TrackBar();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.llVideoTutorials = new System.Windows.Forms.LinkLabel();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
-            this.tabControl1.SuspendLayout();
+            this.lbTimestamp = new System.Windows.Forms.Label();
+            this.btSaveScreenshot = new System.Windows.Forms.Button();
+            this.btResume = new System.Windows.Forms.Button();
+            this.btPause = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.cbDeinterlaceCAVT = new System.Windows.Forms.CheckBox();
+            this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox21.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioBalance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioVolume)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbImageLogoTransp)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbTextLogoTransp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDarkness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbContrast)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLightness)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSaturation)).BeginInit();
             this.tabPage4.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // rbCapture
             // 
             this.rbCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbCapture.AutoSize = true;
-            this.rbCapture.Location = new System.Drawing.Point(459, 424);
+            this.rbCapture.Location = new System.Drawing.Point(918, 737);
+            this.rbCapture.Margin = new System.Windows.Forms.Padding(6);
             this.rbCapture.Name = "rbCapture";
-            this.rbCapture.Size = new System.Drawing.Size(62, 17);
+            this.rbCapture.Size = new System.Drawing.Size(119, 29);
             this.rbCapture.TabIndex = 64;
             this.rbCapture.Text = "Capture";
             this.rbCapture.UseVisualStyleBackColor = true;
@@ -170,9 +142,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.rbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbPreview.AutoSize = true;
             this.rbPreview.Checked = true;
-            this.rbPreview.Location = new System.Drawing.Point(390, 424);
+            this.rbPreview.Location = new System.Drawing.Point(780, 737);
+            this.rbPreview.Margin = new System.Windows.Forms.Padding(6);
             this.rbPreview.Name = "rbPreview";
-            this.rbPreview.Size = new System.Drawing.Size(63, 17);
+            this.rbPreview.Size = new System.Drawing.Size(119, 29);
             this.rbPreview.TabIndex = 63;
             this.rbPreview.TabStop = true;
             this.rbPreview.Text = "Preview";
@@ -182,9 +155,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.btStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStop.Location = new System.Drawing.Point(751, 421);
+            this.btStop.Location = new System.Drawing.Point(1502, 727);
+            this.btStop.Margin = new System.Windows.Forms.Padding(6);
             this.btStop.Name = "btStop";
-            this.btStop.Size = new System.Drawing.Size(62, 23);
+            this.btStop.Size = new System.Drawing.Size(124, 44);
             this.btStop.TabIndex = 62;
             this.btStop.Text = "Stop";
             this.btStop.UseVisualStyleBackColor = true;
@@ -194,57 +168,29 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStart.Location = new System.Drawing.Point(686, 421);
+            this.btStart.Location = new System.Drawing.Point(1372, 727);
+            this.btStart.Margin = new System.Windows.Forms.Padding(6);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(62, 23);
+            this.btStart.Size = new System.Drawing.Size(124, 44);
             this.btStart.TabIndex = 61;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
-            // btSelectOutput
+            // tcMain
             // 
-            this.btSelectOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSelectOutput.Location = new System.Drawing.Point(354, 421);
-            this.btSelectOutput.Name = "btSelectOutput";
-            this.btSelectOutput.Size = new System.Drawing.Size(24, 23);
-            this.btSelectOutput.TabIndex = 60;
-            this.btSelectOutput.Text = "...";
-            this.btSelectOutput.UseVisualStyleBackColor = true;
-            this.btSelectOutput.Click += new System.EventHandler(this.btSelectOutput_Click);
-            // 
-            // edOutput
-            // 
-            this.edOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.edOutput.Location = new System.Drawing.Point(69, 423);
-            this.edOutput.Name = "edOutput";
-            this.edOutput.Size = new System.Drawing.Size(279, 20);
-            this.edOutput.TabIndex = 59;
-            this.edOutput.Text = "c:\\capture.avi";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 426);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
-            this.label9.TabIndex = 58;
-            this.label9.Text = "File name";
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tcMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(378, 410);
-            this.tabControl1.TabIndex = 57;
+            this.tcMain.Controls.Add(this.tabPage1);
+            this.tcMain.Controls.Add(this.tabPage2);
+            this.tcMain.Controls.Add(this.tabPage3);
+            this.tcMain.Controls.Add(this.tabPage4);
+            this.tcMain.Location = new System.Drawing.Point(6, 6);
+            this.tcMain.Margin = new System.Windows.Forms.Padding(6);
+            this.tcMain.Name = "tcMain";
+            this.tcMain.SelectedIndex = 0;
+            this.tcMain.Size = new System.Drawing.Size(756, 760);
+            this.tcMain.TabIndex = 57;
             // 
             // tabPage1
             // 
@@ -266,10 +212,11 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.tabPage1.Controls.Add(this.cbRecordAudio);
             this.tabPage1.Controls.Add(this.cbAudioOutputDevice);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(370, 384);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage1.Size = new System.Drawing.Size(740, 713);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Input";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -280,9 +227,11 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.groupBox21.Controls.Add(this.rbDVResQuarter);
             this.groupBox21.Controls.Add(this.rbDVResHalf);
             this.groupBox21.Controls.Add(this.rbDVResFull);
-            this.groupBox21.Location = new System.Drawing.Point(5, 116);
+            this.groupBox21.Location = new System.Drawing.Point(10, 223);
+            this.groupBox21.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(361, 45);
+            this.groupBox21.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox21.Size = new System.Drawing.Size(722, 87);
             this.groupBox21.TabIndex = 130;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Resolution";
@@ -290,9 +239,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // rbDVResDC
             // 
             this.rbDVResDC.AutoSize = true;
-            this.rbDVResDC.Location = new System.Drawing.Point(279, 19);
+            this.rbDVResDC.Location = new System.Drawing.Point(558, 37);
+            this.rbDVResDC.Margin = new System.Windows.Forms.Padding(6);
             this.rbDVResDC.Name = "rbDVResDC";
-            this.rbDVResDC.Size = new System.Drawing.Size(40, 17);
+            this.rbDVResDC.Size = new System.Drawing.Size(73, 29);
             this.rbDVResDC.TabIndex = 3;
             this.rbDVResDC.Text = "DC";
             this.rbDVResDC.UseVisualStyleBackColor = true;
@@ -300,9 +250,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // rbDVResQuarter
             // 
             this.rbDVResQuarter.AutoSize = true;
-            this.rbDVResQuarter.Location = new System.Drawing.Point(183, 19);
+            this.rbDVResQuarter.Location = new System.Drawing.Point(366, 37);
+            this.rbDVResQuarter.Margin = new System.Windows.Forms.Padding(6);
             this.rbDVResQuarter.Name = "rbDVResQuarter";
-            this.rbDVResQuarter.Size = new System.Drawing.Size(60, 17);
+            this.rbDVResQuarter.Size = new System.Drawing.Size(115, 29);
             this.rbDVResQuarter.TabIndex = 2;
             this.rbDVResQuarter.Text = "Quarter";
             this.rbDVResQuarter.UseVisualStyleBackColor = true;
@@ -310,9 +261,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // rbDVResHalf
             // 
             this.rbDVResHalf.AutoSize = true;
-            this.rbDVResHalf.Location = new System.Drawing.Point(104, 19);
+            this.rbDVResHalf.Location = new System.Drawing.Point(208, 37);
+            this.rbDVResHalf.Margin = new System.Windows.Forms.Padding(6);
             this.rbDVResHalf.Name = "rbDVResHalf";
-            this.rbDVResHalf.Size = new System.Drawing.Size(44, 17);
+            this.rbDVResHalf.Size = new System.Drawing.Size(81, 29);
             this.rbDVResHalf.TabIndex = 1;
             this.rbDVResHalf.Text = "Half";
             this.rbDVResHalf.UseVisualStyleBackColor = true;
@@ -321,9 +273,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.rbDVResFull.AutoSize = true;
             this.rbDVResFull.Checked = true;
-            this.rbDVResFull.Location = new System.Drawing.Point(22, 19);
+            this.rbDVResFull.Location = new System.Drawing.Point(44, 37);
+            this.rbDVResFull.Margin = new System.Windows.Forms.Padding(6);
             this.rbDVResFull.Name = "rbDVResFull";
-            this.rbDVResFull.Size = new System.Drawing.Size(41, 17);
+            this.rbDVResFull.Size = new System.Drawing.Size(78, 29);
             this.rbDVResFull.TabIndex = 0;
             this.rbDVResFull.TabStop = true;
             this.rbDVResFull.Text = "Full";
@@ -338,18 +291,21 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.groupBox3.Controls.Add(this.btDVPause);
             this.groupBox3.Controls.Add(this.btDVPlay);
             this.groupBox3.Controls.Add(this.btDVRewind);
-            this.groupBox3.Location = new System.Drawing.Point(5, 267);
+            this.groupBox3.Location = new System.Drawing.Point(10, 513);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(361, 100);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
+            this.groupBox3.Size = new System.Drawing.Size(722, 192);
             this.groupBox3.TabIndex = 129;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Controls";
             // 
             // btDVStepFWD
             // 
-            this.btDVStepFWD.Location = new System.Drawing.Point(251, 58);
+            this.btDVStepFWD.Location = new System.Drawing.Point(502, 112);
+            this.btDVStepFWD.Margin = new System.Windows.Forms.Padding(6);
             this.btDVStepFWD.Name = "btDVStepFWD";
-            this.btDVStepFWD.Size = new System.Drawing.Size(68, 23);
+            this.btDVStepFWD.Size = new System.Drawing.Size(136, 44);
             this.btDVStepFWD.TabIndex = 6;
             this.btDVStepFWD.Text = "Step FWD";
             this.btDVStepFWD.UseVisualStyleBackColor = true;
@@ -357,9 +313,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVStepRev
             // 
-            this.btDVStepRev.Location = new System.Drawing.Point(52, 58);
+            this.btDVStepRev.Location = new System.Drawing.Point(104, 112);
+            this.btDVStepRev.Margin = new System.Windows.Forms.Padding(6);
             this.btDVStepRev.Name = "btDVStepRev";
-            this.btDVStepRev.Size = new System.Drawing.Size(68, 23);
+            this.btDVStepRev.Size = new System.Drawing.Size(136, 44);
             this.btDVStepRev.TabIndex = 5;
             this.btDVStepRev.Text = "Step REV";
             this.btDVStepRev.UseVisualStyleBackColor = true;
@@ -367,9 +324,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVFF
             // 
-            this.btDVFF.Location = new System.Drawing.Point(286, 23);
+            this.btDVFF.Location = new System.Drawing.Point(572, 44);
+            this.btDVFF.Margin = new System.Windows.Forms.Padding(6);
             this.btDVFF.Name = "btDVFF";
-            this.btDVFF.Size = new System.Drawing.Size(60, 23);
+            this.btDVFF.Size = new System.Drawing.Size(120, 44);
             this.btDVFF.TabIndex = 4;
             this.btDVFF.Text = "F.F.";
             this.btDVFF.UseVisualStyleBackColor = true;
@@ -377,9 +335,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVStop
             // 
-            this.btDVStop.Location = new System.Drawing.Point(220, 23);
+            this.btDVStop.Location = new System.Drawing.Point(440, 44);
+            this.btDVStop.Margin = new System.Windows.Forms.Padding(6);
             this.btDVStop.Name = "btDVStop";
-            this.btDVStop.Size = new System.Drawing.Size(60, 23);
+            this.btDVStop.Size = new System.Drawing.Size(120, 44);
             this.btDVStop.TabIndex = 3;
             this.btDVStop.Text = "Stop";
             this.btDVStop.UseVisualStyleBackColor = true;
@@ -387,9 +346,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVPause
             // 
-            this.btDVPause.Location = new System.Drawing.Point(154, 23);
+            this.btDVPause.Location = new System.Drawing.Point(308, 44);
+            this.btDVPause.Margin = new System.Windows.Forms.Padding(6);
             this.btDVPause.Name = "btDVPause";
-            this.btDVPause.Size = new System.Drawing.Size(60, 23);
+            this.btDVPause.Size = new System.Drawing.Size(120, 44);
             this.btDVPause.TabIndex = 2;
             this.btDVPause.Text = "Pause";
             this.btDVPause.UseVisualStyleBackColor = true;
@@ -397,9 +357,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVPlay
             // 
-            this.btDVPlay.Location = new System.Drawing.Point(88, 23);
+            this.btDVPlay.Location = new System.Drawing.Point(176, 44);
+            this.btDVPlay.Margin = new System.Windows.Forms.Padding(6);
             this.btDVPlay.Name = "btDVPlay";
-            this.btDVPlay.Size = new System.Drawing.Size(60, 23);
+            this.btDVPlay.Size = new System.Drawing.Size(120, 44);
             this.btDVPlay.TabIndex = 1;
             this.btDVPlay.Text = "Play";
             this.btDVPlay.UseVisualStyleBackColor = true;
@@ -407,9 +368,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVRewind
             // 
-            this.btDVRewind.Location = new System.Drawing.Point(22, 23);
+            this.btDVRewind.Location = new System.Drawing.Point(44, 44);
+            this.btDVRewind.Margin = new System.Windows.Forms.Padding(6);
             this.btDVRewind.Name = "btDVRewind";
-            this.btDVRewind.Size = new System.Drawing.Size(60, 23);
+            this.btDVRewind.Size = new System.Drawing.Size(120, 44);
             this.btDVRewind.TabIndex = 0;
             this.btDVRewind.Text = "Rewind";
             this.btDVRewind.UseVisualStyleBackColor = true;
@@ -418,18 +380,20 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(339, 92);
+            this.label1.Location = new System.Drawing.Point(678, 177);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.Size = new System.Drawing.Size(41, 25);
             this.label1.TabIndex = 128;
             this.label1.Text = "fps";
             // 
             // cbUseBestVideoInputFormat
             // 
             this.cbUseBestVideoInputFormat.AutoSize = true;
-            this.cbUseBestVideoInputFormat.Location = new System.Drawing.Point(188, 72);
+            this.cbUseBestVideoInputFormat.Location = new System.Drawing.Point(376, 138);
+            this.cbUseBestVideoInputFormat.Margin = new System.Windows.Forms.Padding(6);
             this.cbUseBestVideoInputFormat.Name = "cbUseBestVideoInputFormat";
-            this.cbUseBestVideoInputFormat.Size = new System.Drawing.Size(68, 17);
+            this.cbUseBestVideoInputFormat.Size = new System.Drawing.Size(129, 29);
             this.cbUseBestVideoInputFormat.TabIndex = 127;
             this.cbUseBestVideoInputFormat.Text = "Use best";
             this.cbUseBestVideoInputFormat.UseVisualStyleBackColor = true;
@@ -437,9 +401,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btVideoCaptureDeviceSettings
             // 
-            this.btVideoCaptureDeviceSettings.Location = new System.Drawing.Point(269, 34);
+            this.btVideoCaptureDeviceSettings.Location = new System.Drawing.Point(538, 65);
+            this.btVideoCaptureDeviceSettings.Margin = new System.Windows.Forms.Padding(6);
             this.btVideoCaptureDeviceSettings.Name = "btVideoCaptureDeviceSettings";
-            this.btVideoCaptureDeviceSettings.Size = new System.Drawing.Size(66, 23);
+            this.btVideoCaptureDeviceSettings.Size = new System.Drawing.Size(132, 44);
             this.btVideoCaptureDeviceSettings.TabIndex = 126;
             this.btVideoCaptureDeviceSettings.Text = "Settings";
             this.btVideoCaptureDeviceSettings.UseVisualStyleBackColor = true;
@@ -448,9 +413,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(266, 73);
+            this.label18.Location = new System.Drawing.Point(532, 140);
+            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(57, 13);
+            this.label18.Size = new System.Drawing.Size(116, 25);
             this.label18.TabIndex = 125;
             this.label18.Text = "Frame rate";
             // 
@@ -458,18 +424,20 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbFramerate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFramerate.FormattingEnabled = true;
-            this.cbFramerate.Location = new System.Drawing.Point(269, 89);
+            this.cbFramerate.Location = new System.Drawing.Point(538, 171);
+            this.cbFramerate.Margin = new System.Windows.Forms.Padding(6);
             this.cbFramerate.Name = "cbFramerate";
-            this.cbFramerate.Size = new System.Drawing.Size(65, 21);
+            this.cbFramerate.Size = new System.Drawing.Size(126, 33);
             this.cbFramerate.TabIndex = 124;
             // 
             // cbVideoInputFormat
             // 
             this.cbVideoInputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVideoInputFormat.FormattingEnabled = true;
-            this.cbVideoInputFormat.Location = new System.Drawing.Point(9, 89);
+            this.cbVideoInputFormat.Location = new System.Drawing.Point(18, 171);
+            this.cbVideoInputFormat.Margin = new System.Windows.Forms.Padding(6);
             this.cbVideoInputFormat.Name = "cbVideoInputFormat";
-            this.cbVideoInputFormat.Size = new System.Drawing.Size(247, 21);
+            this.cbVideoInputFormat.Size = new System.Drawing.Size(490, 33);
             this.cbVideoInputFormat.TabIndex = 123;
             this.cbVideoInputFormat.SelectedIndexChanged += new System.EventHandler(this.cbVideoInputFormat_SelectedIndexChanged);
             // 
@@ -477,47 +445,52 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbVideoInputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVideoInputDevice.FormattingEnabled = true;
-            this.cbVideoInputDevice.Location = new System.Drawing.Point(9, 36);
+            this.cbVideoInputDevice.Location = new System.Drawing.Point(18, 69);
+            this.cbVideoInputDevice.Margin = new System.Windows.Forms.Padding(6);
             this.cbVideoInputDevice.Name = "cbVideoInputDevice";
-            this.cbVideoInputDevice.Size = new System.Drawing.Size(247, 21);
+            this.cbVideoInputDevice.Size = new System.Drawing.Size(490, 33);
             this.cbVideoInputDevice.TabIndex = 122;
             this.cbVideoInputDevice.SelectedIndexChanged += new System.EventHandler(this.cbVideoInputDevice_SelectedIndexChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(5, 73);
+            this.label13.Location = new System.Drawing.Point(10, 140);
+            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 13);
+            this.label13.Size = new System.Drawing.Size(186, 25);
             this.label13.TabIndex = 121;
             this.label13.Text = "Video input format";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 20);
+            this.label11.Location = new System.Drawing.Point(12, 38);
+            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 13);
+            this.label11.Size = new System.Drawing.Size(189, 25);
             this.label11.TabIndex = 120;
             this.label11.Text = "Video input device";
             // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(197, 221);
+            this.label55.Location = new System.Drawing.Point(394, 425);
+            this.label55.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(46, 13);
+            this.label55.Size = new System.Drawing.Size(90, 25);
             this.label55.TabIndex = 90;
             this.label55.Text = "Balance";
             // 
             // tbAudioBalance
             // 
             this.tbAudioBalance.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAudioBalance.Location = new System.Drawing.Point(248, 216);
+            this.tbAudioBalance.Location = new System.Drawing.Point(496, 415);
+            this.tbAudioBalance.Margin = new System.Windows.Forms.Padding(6);
             this.tbAudioBalance.Maximum = 100;
             this.tbAudioBalance.Minimum = -100;
             this.tbAudioBalance.Name = "tbAudioBalance";
-            this.tbAudioBalance.Size = new System.Drawing.Size(114, 45);
+            this.tbAudioBalance.Size = new System.Drawing.Size(228, 90);
             this.tbAudioBalance.TabIndex = 89;
             this.tbAudioBalance.TickFrequency = 5;
             this.tbAudioBalance.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -526,20 +499,22 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(6, 221);
+            this.label54.Location = new System.Drawing.Point(12, 425);
+            this.label54.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(42, 13);
+            this.label54.Size = new System.Drawing.Size(84, 25);
             this.label54.TabIndex = 88;
             this.label54.Text = "Volume";
             // 
             // tbAudioVolume
             // 
             this.tbAudioVolume.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAudioVolume.Location = new System.Drawing.Point(53, 216);
+            this.tbAudioVolume.Location = new System.Drawing.Point(106, 415);
+            this.tbAudioVolume.Margin = new System.Windows.Forms.Padding(6);
             this.tbAudioVolume.Maximum = 100;
             this.tbAudioVolume.Minimum = 20;
             this.tbAudioVolume.Name = "tbAudioVolume";
-            this.tbAudioVolume.Size = new System.Drawing.Size(116, 45);
+            this.tbAudioVolume.Size = new System.Drawing.Size(232, 90);
             this.tbAudioVolume.TabIndex = 87;
             this.tbAudioVolume.TickFrequency = 10;
             this.tbAudioVolume.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -551,9 +526,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.cbRecordAudio.AutoSize = true;
             this.cbRecordAudio.Checked = true;
             this.cbRecordAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRecordAudio.Location = new System.Drawing.Point(252, 172);
+            this.cbRecordAudio.Location = new System.Drawing.Point(504, 331);
+            this.cbRecordAudio.Margin = new System.Windows.Forms.Padding(6);
             this.cbRecordAudio.Name = "cbRecordAudio";
-            this.cbRecordAudio.Size = new System.Drawing.Size(115, 17);
+            this.cbRecordAudio.Size = new System.Drawing.Size(220, 29);
             this.cbRecordAudio.TabIndex = 86;
             this.cbRecordAudio.Text = "Play/Record audio";
             this.cbRecordAudio.UseVisualStyleBackColor = true;
@@ -562,710 +538,399 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbAudioOutputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAudioOutputDevice.FormattingEnabled = true;
-            this.cbAudioOutputDevice.Location = new System.Drawing.Point(8, 189);
+            this.cbAudioOutputDevice.Location = new System.Drawing.Point(16, 363);
+            this.cbAudioOutputDevice.Margin = new System.Windows.Forms.Padding(6);
             this.cbAudioOutputDevice.Name = "cbAudioOutputDevice";
-            this.cbAudioOutputDevice.Size = new System.Drawing.Size(354, 21);
+            this.cbAudioOutputDevice.Size = new System.Drawing.Size(704, 33);
             this.cbAudioOutputDevice.TabIndex = 85;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 173);
+            this.label15.Location = new System.Drawing.Point(10, 333);
+            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(102, 13);
+            this.label15.Size = new System.Drawing.Size(202, 25);
             this.label15.TabIndex = 84;
             this.label15.Text = "Audio output device";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.groupBox6);
-            this.tabPage2.Controls.Add(this.groupBox5);
-            this.tabPage2.Controls.Add(this.groupBox4);
-            this.tabPage2.Controls.Add(this.rbDV);
-            this.tabPage2.Controls.Add(this.cbWMVInternalProfile9);
-            this.tabPage2.Controls.Add(this.rbDVDirectstream);
-            this.tabPage2.Controls.Add(this.rbWMV);
-            this.tabPage2.Controls.Add(this.rbAVI);
-            this.tabPage2.Controls.Add(this.label27);
-            this.tabPage2.Controls.Add(this.btAudioSettings);
-            this.tabPage2.Controls.Add(this.btVideoSettings);
-            this.tabPage2.Controls.Add(this.label28);
-            this.tabPage2.Controls.Add(this.label29);
-            this.tabPage2.Controls.Add(this.label30);
-            this.tabPage2.Controls.Add(this.label31);
-            this.tabPage2.Controls.Add(this.cbChannels);
-            this.tabPage2.Controls.Add(this.cbBPS);
-            this.tabPage2.Controls.Add(this.cbAudioCodecs);
-            this.tabPage2.Controls.Add(this.cbSampleRate);
-            this.tabPage2.Controls.Add(this.cbVideoCodecs);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Controls.Add(this.btSelectOutput);
+            this.tabPage2.Controls.Add(this.edOutput);
+            this.tabPage2.Controls.Add(this.lbInfo);
+            this.tabPage2.Controls.Add(this.btOutputConfigure);
+            this.tabPage2.Controls.Add(this.cbOutputFormat);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Location = new System.Drawing.Point(8, 39);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(370, 384);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage2.Size = new System.Drawing.Size(740, 713);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // groupBox6
+            // btSelectOutput
             // 
-            this.groupBox6.Controls.Add(this.rbDVType2);
-            this.groupBox6.Controls.Add(this.rbDVType1);
-            this.groupBox6.Location = new System.Drawing.Point(178, 265);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(186, 50);
-            this.groupBox6.TabIndex = 105;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "File format";
+            this.btSelectOutput.Location = new System.Drawing.Point(680, 300);
+            this.btSelectOutput.Margin = new System.Windows.Forms.Padding(6);
+            this.btSelectOutput.Name = "btSelectOutput";
+            this.btSelectOutput.Size = new System.Drawing.Size(48, 44);
+            this.btSelectOutput.TabIndex = 113;
+            this.btSelectOutput.Text = "...";
+            this.btSelectOutput.UseVisualStyleBackColor = true;
+            this.btSelectOutput.Click += new System.EventHandler(this.btSelectOutput_Click);
             // 
-            // rbDVType2
+            // edOutput
             // 
-            this.rbDVType2.AutoSize = true;
-            this.rbDVType2.Checked = true;
-            this.rbDVType2.Location = new System.Drawing.Point(97, 25);
-            this.rbDVType2.Name = "rbDVType2";
-            this.rbDVType2.Size = new System.Drawing.Size(76, 17);
-            this.rbDVType2.TabIndex = 1;
-            this.rbDVType2.TabStop = true;
-            this.rbDVType2.Text = "Type-2 DV";
-            this.rbDVType2.UseVisualStyleBackColor = true;
+            this.edOutput.Location = new System.Drawing.Point(24, 304);
+            this.edOutput.Margin = new System.Windows.Forms.Padding(6);
+            this.edOutput.Name = "edOutput";
+            this.edOutput.Size = new System.Drawing.Size(640, 31);
+            this.edOutput.TabIndex = 112;
+            this.edOutput.Text = "c:\\capture.avi";
             // 
-            // rbDVType1
+            // lbInfo
             // 
-            this.rbDVType1.AutoSize = true;
-            this.rbDVType1.Location = new System.Drawing.Point(17, 25);
-            this.rbDVType1.Name = "rbDVType1";
-            this.rbDVType1.Size = new System.Drawing.Size(76, 17);
-            this.rbDVType1.TabIndex = 0;
-            this.rbDVType1.Text = "Type-1 DV";
-            this.rbDVType1.UseVisualStyleBackColor = true;
+            this.lbInfo.AutoSize = true;
+            this.lbInfo.Location = new System.Drawing.Point(18, 112);
+            this.lbInfo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(541, 25);
+            this.lbInfo.TabIndex = 111;
+            this.lbInfo.Text = "You can use dialog or code to configure format settings";
             // 
-            // groupBox5
+            // btOutputConfigure
             // 
-            this.groupBox5.Controls.Add(this.rbDVNTSC);
-            this.groupBox5.Controls.Add(this.rbDVPAL);
-            this.groupBox5.Location = new System.Drawing.Point(21, 265);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(151, 50);
-            this.groupBox5.TabIndex = 104;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Video format";
+            this.btOutputConfigure.Location = new System.Drawing.Point(24, 142);
+            this.btOutputConfigure.Margin = new System.Windows.Forms.Padding(6);
+            this.btOutputConfigure.Name = "btOutputConfigure";
+            this.btOutputConfigure.Size = new System.Drawing.Size(150, 44);
+            this.btOutputConfigure.TabIndex = 110;
+            this.btOutputConfigure.Text = "Configure";
+            this.btOutputConfigure.UseVisualStyleBackColor = true;
+            this.btOutputConfigure.Click += new System.EventHandler(this.btOutputConfigure_Click);
             // 
-            // rbDVNTSC
+            // cbOutputFormat
             // 
-            this.rbDVNTSC.AutoSize = true;
-            this.rbDVNTSC.Location = new System.Drawing.Point(85, 25);
-            this.rbDVNTSC.Name = "rbDVNTSC";
-            this.rbDVNTSC.Size = new System.Drawing.Size(54, 17);
-            this.rbDVNTSC.TabIndex = 1;
-            this.rbDVNTSC.Text = "NTSC";
-            this.rbDVNTSC.UseVisualStyleBackColor = true;
+            this.cbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOutputFormat.FormattingEnabled = true;
+            this.cbOutputFormat.Items.AddRange(new object[] {
+            "AVI",
+            "MKV (Matroska)",
+            "WMV (Windows Media Video)",
+            "DV",
+            "DV (Without reencoding)",
+            "WebM",
+            "FFMPEG (DLL)",
+            "FFMPEG (external exe)",
+            "MP4 v8/v10",
+            "MP4 v11",
+            "Animated GIF",
+            "Encrypted video",
+            "MPEG-TS",
+            "MOV"});
+            this.cbOutputFormat.Location = new System.Drawing.Point(24, 58);
+            this.cbOutputFormat.Margin = new System.Windows.Forms.Padding(6);
+            this.cbOutputFormat.Name = "cbOutputFormat";
+            this.cbOutputFormat.Size = new System.Drawing.Size(554, 33);
+            this.cbOutputFormat.TabIndex = 109;
+            this.cbOutputFormat.SelectedIndexChanged += new System.EventHandler(this.cbOutputFormat_SelectedIndexChanged);
             // 
-            // rbDVPAL
+            // label4
             // 
-            this.rbDVPAL.AutoSize = true;
-            this.rbDVPAL.Checked = true;
-            this.rbDVPAL.Location = new System.Drawing.Point(19, 25);
-            this.rbDVPAL.Name = "rbDVPAL";
-            this.rbDVPAL.Size = new System.Drawing.Size(45, 17);
-            this.rbDVPAL.TabIndex = 0;
-            this.rbDVPAL.TabStop = true;
-            this.rbDVPAL.Text = "PAL";
-            this.rbDVPAL.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 273);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(106, 25);
+            this.label4.TabIndex = 108;
+            this.label4.Text = "File name";
             // 
-            // groupBox4
+            // label7
             // 
-            this.groupBox4.Controls.Add(this.label2);
-            this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.cbDVChannels);
-            this.groupBox4.Controls.Add(this.cbDVSampleRate);
-            this.groupBox4.Location = new System.Drawing.Point(21, 321);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(343, 56);
-            this.groupBox4.TabIndex = 103;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Audio settings";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(171, 27);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 28;
-            this.label2.Text = "Sample rate";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 27);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 13);
-            this.label3.TabIndex = 27;
-            this.label3.Text = "Channels";
-            // 
-            // cbDVChannels
-            // 
-            this.cbDVChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDVChannels.FormattingEnabled = true;
-            this.cbDVChannels.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.cbDVChannels.Location = new System.Drawing.Point(85, 24);
-            this.cbDVChannels.Name = "cbDVChannels";
-            this.cbDVChannels.Size = new System.Drawing.Size(60, 21);
-            this.cbDVChannels.TabIndex = 26;
-            // 
-            // cbDVSampleRate
-            // 
-            this.cbDVSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDVSampleRate.FormattingEnabled = true;
-            this.cbDVSampleRate.Items.AddRange(new object[] {
-            "48000",
-            "44100",
-            "32000",
-            "24000",
-            "22050",
-            "16000",
-            "12000",
-            "11025",
-            "8000"});
-            this.cbDVSampleRate.Location = new System.Drawing.Point(245, 24);
-            this.cbDVSampleRate.Name = "cbDVSampleRate";
-            this.cbDVSampleRate.Size = new System.Drawing.Size(60, 21);
-            this.cbDVSampleRate.TabIndex = 25;
-            // 
-            // rbDV
-            // 
-            this.rbDV.AutoSize = true;
-            this.rbDV.Location = new System.Drawing.Point(12, 242);
-            this.rbDV.Name = "rbDV";
-            this.rbDV.Size = new System.Drawing.Size(40, 17);
-            this.rbDV.TabIndex = 102;
-            this.rbDV.Text = "DV";
-            this.rbDV.UseVisualStyleBackColor = true;
-            // 
-            // cbWMVInternalProfile9
-            // 
-            this.cbWMVInternalProfile9.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbWMVInternalProfile9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbWMVInternalProfile9.FormattingEnabled = true;
-            this.cbWMVInternalProfile9.Location = new System.Drawing.Point(31, 182);
-            this.cbWMVInternalProfile9.Name = "cbWMVInternalProfile9";
-            this.cbWMVInternalProfile9.Size = new System.Drawing.Size(328, 21);
-            this.cbWMVInternalProfile9.TabIndex = 43;
-            // 
-            // rbDVDirectstream
-            // 
-            this.rbDVDirectstream.AutoSize = true;
-            this.rbDVDirectstream.Location = new System.Drawing.Point(12, 219);
-            this.rbDVDirectstream.Name = "rbDVDirectstream";
-            this.rbDVDirectstream.Size = new System.Drawing.Size(139, 17);
-            this.rbDVDirectstream.TabIndex = 42;
-            this.rbDVDirectstream.Text = "DV (without reencoding)";
-            this.rbDVDirectstream.UseVisualStyleBackColor = true;
-            // 
-            // rbWMV
-            // 
-            this.rbWMV.AutoSize = true;
-            this.rbWMV.Location = new System.Drawing.Point(12, 159);
-            this.rbWMV.Name = "rbWMV";
-            this.rbWMV.Size = new System.Drawing.Size(167, 17);
-            this.rbWMV.TabIndex = 41;
-            this.rbWMV.Text = "Windows Media Video (WMV)";
-            this.rbWMV.UseVisualStyleBackColor = true;
-            // 
-            // rbAVI
-            // 
-            this.rbAVI.AutoSize = true;
-            this.rbAVI.Checked = true;
-            this.rbAVI.Location = new System.Drawing.Point(12, 16);
-            this.rbAVI.Name = "rbAVI";
-            this.rbAVI.Size = new System.Drawing.Size(42, 17);
-            this.rbAVI.TabIndex = 40;
-            this.rbAVI.TabStop = true;
-            this.rbAVI.Text = "AVI";
-            this.rbAVI.UseVisualStyleBackColor = true;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(27, 72);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(67, 13);
-            this.label27.TabIndex = 39;
-            this.label27.Text = "Audio codec";
-            // 
-            // btAudioSettings
-            // 
-            this.btAudioSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAudioSettings.Location = new System.Drawing.Point(294, 67);
-            this.btAudioSettings.Name = "btAudioSettings";
-            this.btAudioSettings.Size = new System.Drawing.Size(64, 23);
-            this.btAudioSettings.TabIndex = 38;
-            this.btAudioSettings.Text = "Settings";
-            this.btAudioSettings.UseVisualStyleBackColor = true;
-            this.btAudioSettings.Click += new System.EventHandler(this.btAudioSettings_Click);
-            // 
-            // btVideoSettings
-            // 
-            this.btVideoSettings.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btVideoSettings.Location = new System.Drawing.Point(294, 40);
-            this.btVideoSettings.Name = "btVideoSettings";
-            this.btVideoSettings.Size = new System.Drawing.Size(64, 23);
-            this.btVideoSettings.TabIndex = 37;
-            this.btVideoSettings.Text = "Settings";
-            this.btVideoSettings.UseVisualStyleBackColor = true;
-            this.btVideoSettings.Click += new System.EventHandler(this.btVideoSettings_Click);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(43, 126);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(63, 13);
-            this.label28.TabIndex = 36;
-            this.label28.Text = "Sample rate";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(195, 99);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(28, 13);
-            this.label29.TabIndex = 35;
-            this.label29.Text = "BPS";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(43, 99);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(51, 13);
-            this.label30.TabIndex = 34;
-            this.label30.Text = "Channels";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(28, 45);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(67, 13);
-            this.label31.TabIndex = 33;
-            this.label31.Text = "Video codec";
-            // 
-            // cbChannels
-            // 
-            this.cbChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbChannels.FormattingEnabled = true;
-            this.cbChannels.Items.AddRange(new object[] {
-            "1",
-            "2"});
-            this.cbChannels.Location = new System.Drawing.Point(120, 96);
-            this.cbChannels.Name = "cbChannels";
-            this.cbChannels.Size = new System.Drawing.Size(60, 21);
-            this.cbChannels.TabIndex = 32;
-            // 
-            // cbBPS
-            // 
-            this.cbBPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBPS.FormattingEnabled = true;
-            this.cbBPS.Items.AddRange(new object[] {
-            "8",
-            "16"});
-            this.cbBPS.Location = new System.Drawing.Point(229, 96);
-            this.cbBPS.Name = "cbBPS";
-            this.cbBPS.Size = new System.Drawing.Size(59, 21);
-            this.cbBPS.TabIndex = 31;
-            // 
-            // cbAudioCodecs
-            // 
-            this.cbAudioCodecs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbAudioCodecs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAudioCodecs.FormattingEnabled = true;
-            this.cbAudioCodecs.Location = new System.Drawing.Point(120, 69);
-            this.cbAudioCodecs.Name = "cbAudioCodecs";
-            this.cbAudioCodecs.Size = new System.Drawing.Size(168, 21);
-            this.cbAudioCodecs.TabIndex = 30;
-            this.cbAudioCodecs.SelectedIndexChanged += new System.EventHandler(this.cbAudioCodecs_SelectedIndexChanged);
-            // 
-            // cbSampleRate
-            // 
-            this.cbSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSampleRate.FormattingEnabled = true;
-            this.cbSampleRate.Items.AddRange(new object[] {
-            "48000",
-            "44100",
-            "32000",
-            "24000",
-            "22050",
-            "16000",
-            "12000",
-            "11025",
-            "8000"});
-            this.cbSampleRate.Location = new System.Drawing.Point(120, 123);
-            this.cbSampleRate.Name = "cbSampleRate";
-            this.cbSampleRate.Size = new System.Drawing.Size(60, 21);
-            this.cbSampleRate.TabIndex = 29;
-            // 
-            // cbVideoCodecs
-            // 
-            this.cbVideoCodecs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbVideoCodecs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbVideoCodecs.FormattingEnabled = true;
-            this.cbVideoCodecs.Location = new System.Drawing.Point(120, 42);
-            this.cbVideoCodecs.Name = "cbVideoCodecs";
-            this.cbVideoCodecs.Size = new System.Drawing.Size(168, 21);
-            this.cbVideoCodecs.TabIndex = 28;
-            this.cbVideoCodecs.SelectedIndexChanged += new System.EventHandler(this.cbVideoCodecs_SelectedIndexChanged);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(18, 25);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 25);
+            this.label7.TabIndex = 106;
+            this.label7.Text = "Format";
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.edImageLogoTop);
-            this.tabPage3.Controls.Add(this.cbImageLogo);
-            this.tabPage3.Controls.Add(this.label155);
-            this.tabPage3.Controls.Add(this.tbImageLogoTransp);
-            this.tabPage3.Controls.Add(this.edImageLogoLeft);
-            this.tabPage3.Controls.Add(this.label156);
-            this.tabPage3.Controls.Add(this.label154);
-            this.tabPage3.Controls.Add(this.btSelectImage);
-            this.tabPage3.Controls.Add(this.label157);
-            this.tabPage3.Controls.Add(this.edImageLogoFilename);
-            this.tabPage3.Controls.Add(this.label32);
-            this.tabPage3.Controls.Add(this.tbTextLogoTransp);
-            this.tabPage3.Controls.Add(this.edTextLogoTop);
-            this.tabPage3.Controls.Add(this.label139);
-            this.tabPage3.Controls.Add(this.edTextLogoLeft);
-            this.tabPage3.Controls.Add(this.label140);
-            this.tabPage3.Controls.Add(this.btFont);
-            this.tabPage3.Controls.Add(this.edTextLogo);
-            this.tabPage3.Controls.Add(this.cbTextLogo);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Controls.Add(this.cbDeinterlaceCAVT);
+            this.tabPage3.Controls.Add(this.cbFlipY);
+            this.tabPage3.Controls.Add(this.cbFlipX);
+            this.tabPage3.Controls.Add(this.cbInvert);
+            this.tabPage3.Controls.Add(this.cbGreyscale);
+            this.tabPage3.Controls.Add(this.label201);
+            this.tabPage3.Controls.Add(this.tbDarkness);
+            this.tabPage3.Controls.Add(this.label200);
+            this.tabPage3.Controls.Add(this.label199);
+            this.tabPage3.Controls.Add(this.label198);
+            this.tabPage3.Controls.Add(this.tbContrast);
+            this.tabPage3.Controls.Add(this.tbLightness);
+            this.tabPage3.Controls.Add(this.tbSaturation);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Controls.Add(this.btTextLogoAdd);
+            this.tabPage3.Controls.Add(this.btLogoRemove);
+            this.tabPage3.Controls.Add(this.btLogoEdit);
+            this.tabPage3.Controls.Add(this.lbLogos);
+            this.tabPage3.Controls.Add(this.btImageLogoAdd);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Location = new System.Drawing.Point(8, 39);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(370, 384);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage3.Size = new System.Drawing.Size(740, 713);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Video effects";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // edImageLogoTop
+            // cbFlipY
             // 
-            this.edImageLogoTop.Location = new System.Drawing.Point(65, 278);
-            this.edImageLogoTop.Name = "edImageLogoTop";
-            this.edImageLogoTop.Size = new System.Drawing.Size(39, 20);
-            this.edImageLogoTop.TabIndex = 56;
-            this.edImageLogoTop.Text = "50";
-            this.edImageLogoTop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cbFlipY.AutoSize = true;
+            this.cbFlipY.Location = new System.Drawing.Point(438, 555);
+            this.cbFlipY.Margin = new System.Windows.Forms.Padding(6);
+            this.cbFlipY.Name = "cbFlipY";
+            this.cbFlipY.Size = new System.Drawing.Size(100, 29);
+            this.cbFlipY.TabIndex = 104;
+            this.cbFlipY.Text = "Flip Y";
+            this.cbFlipY.UseVisualStyleBackColor = true;
+            this.cbFlipY.CheckedChanged += new System.EventHandler(this.cbFlipY_CheckedChanged);
             // 
-            // cbImageLogo
+            // cbFlipX
             // 
-            this.cbImageLogo.AutoSize = true;
-            this.cbImageLogo.Location = new System.Drawing.Point(19, 191);
-            this.cbImageLogo.Name = "cbImageLogo";
-            this.cbImageLogo.Size = new System.Drawing.Size(78, 17);
-            this.cbImageLogo.TabIndex = 57;
-            this.cbImageLogo.Text = "Image logo";
-            this.cbImageLogo.UseVisualStyleBackColor = true;
-            this.cbImageLogo.CheckedChanged += new System.EventHandler(this.cbImageLogo_CheckedChanged);
+            this.cbFlipX.AutoSize = true;
+            this.cbFlipX.Location = new System.Drawing.Point(320, 555);
+            this.cbFlipX.Margin = new System.Windows.Forms.Padding(6);
+            this.cbFlipX.Name = "cbFlipX";
+            this.cbFlipX.Size = new System.Drawing.Size(99, 29);
+            this.cbFlipX.TabIndex = 103;
+            this.cbFlipX.Text = "Flip X";
+            this.cbFlipX.UseVisualStyleBackColor = true;
+            this.cbFlipX.CheckedChanged += new System.EventHandler(this.cbFlipX_CheckedChanged);
             // 
-            // label155
+            // cbInvert
             // 
-            this.label155.AutoSize = true;
-            this.label155.Location = new System.Drawing.Point(32, 281);
-            this.label155.Name = "label155";
-            this.label155.Size = new System.Drawing.Size(26, 13);
-            this.label155.TabIndex = 55;
-            this.label155.Text = "Top";
+            this.cbInvert.AutoSize = true;
+            this.cbInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.cbInvert.Location = new System.Drawing.Point(198, 555);
+            this.cbInvert.Margin = new System.Windows.Forms.Padding(6);
+            this.cbInvert.Name = "cbInvert";
+            this.cbInvert.Size = new System.Drawing.Size(97, 29);
+            this.cbInvert.TabIndex = 102;
+            this.cbInvert.Text = "Invert";
+            this.cbInvert.UseVisualStyleBackColor = true;
+            this.cbInvert.CheckedChanged += new System.EventHandler(this.cbInvert_CheckedChanged);
             // 
-            // tbImageLogoTransp
+            // cbGreyscale
             // 
-            this.tbImageLogoTransp.BackColor = System.Drawing.SystemColors.Window;
-            this.tbImageLogoTransp.Location = new System.Drawing.Point(141, 271);
-            this.tbImageLogoTransp.Maximum = 255;
-            this.tbImageLogoTransp.Name = "tbImageLogoTransp";
-            this.tbImageLogoTransp.Size = new System.Drawing.Size(104, 45);
-            this.tbImageLogoTransp.TabIndex = 61;
-            this.tbImageLogoTransp.Scroll += new System.EventHandler(this.tbGraphicLogoTransp_Scroll);
+            this.cbGreyscale.AutoSize = true;
+            this.cbGreyscale.Location = new System.Drawing.Point(38, 555);
+            this.cbGreyscale.Margin = new System.Windows.Forms.Padding(6);
+            this.cbGreyscale.Name = "cbGreyscale";
+            this.cbGreyscale.Size = new System.Drawing.Size(141, 29);
+            this.cbGreyscale.TabIndex = 101;
+            this.cbGreyscale.Text = "Greyscale";
+            this.cbGreyscale.UseVisualStyleBackColor = true;
+            this.cbGreyscale.CheckedChanged += new System.EventHandler(this.cbGreyscale_CheckedChanged);
             // 
-            // edImageLogoLeft
+            // label201
             // 
-            this.edImageLogoLeft.Location = new System.Drawing.Point(65, 252);
-            this.edImageLogoLeft.Name = "edImageLogoLeft";
-            this.edImageLogoLeft.Size = new System.Drawing.Size(39, 20);
-            this.edImageLogoLeft.TabIndex = 54;
-            this.edImageLogoLeft.Text = "50";
-            this.edImageLogoLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label201.AutoSize = true;
+            this.label201.Location = new System.Drawing.Point(304, 420);
+            this.label201.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label201.Name = "label201";
+            this.label201.Size = new System.Drawing.Size(103, 25);
+            this.label201.TabIndex = 100;
+            this.label201.Text = "Darkness";
             // 
-            // label156
+            // tbDarkness
             // 
-            this.label156.AutoSize = true;
-            this.label156.Location = new System.Drawing.Point(32, 255);
-            this.label156.Name = "label156";
-            this.label156.Size = new System.Drawing.Size(25, 13);
-            this.label156.TabIndex = 53;
-            this.label156.Text = "Left";
+            this.tbDarkness.BackColor = System.Drawing.SystemColors.Window;
+            this.tbDarkness.Location = new System.Drawing.Point(304, 457);
+            this.tbDarkness.Margin = new System.Windows.Forms.Padding(6);
+            this.tbDarkness.Maximum = 255;
+            this.tbDarkness.Name = "tbDarkness";
+            this.tbDarkness.Size = new System.Drawing.Size(260, 90);
+            this.tbDarkness.TabIndex = 99;
+            this.tbDarkness.Scroll += new System.EventHandler(this.tbDarkness_Scroll);
             // 
-            // label154
+            // label200
             // 
-            this.label154.AutoSize = true;
-            this.label154.Location = new System.Drawing.Point(142, 255);
-            this.label154.Name = "label154";
-            this.label154.Size = new System.Drawing.Size(72, 13);
-            this.label154.TabIndex = 62;
-            this.label154.Text = "Transparency";
+            this.label200.AutoSize = true;
+            this.label200.Location = new System.Drawing.Point(32, 420);
+            this.label200.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label200.Name = "label200";
+            this.label200.Size = new System.Drawing.Size(93, 25);
+            this.label200.TabIndex = 98;
+            this.label200.Text = "Contrast";
             // 
-            // btSelectImage
+            // label199
             // 
-            this.btSelectImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSelectImage.Location = new System.Drawing.Point(330, 212);
-            this.btSelectImage.Name = "btSelectImage";
-            this.btSelectImage.Size = new System.Drawing.Size(24, 23);
-            this.btSelectImage.TabIndex = 60;
-            this.btSelectImage.Text = "...";
-            this.btSelectImage.UseVisualStyleBackColor = true;
-            this.btSelectImage.Click += new System.EventHandler(this.btSelectImage_Click);
+            this.label199.AutoSize = true;
+            this.label199.Location = new System.Drawing.Point(304, 320);
+            this.label199.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label199.Name = "label199";
+            this.label199.Size = new System.Drawing.Size(110, 25);
+            this.label199.TabIndex = 97;
+            this.label199.Text = "Saturation";
             // 
-            // label157
+            // label198
             // 
-            this.label157.AutoSize = true;
-            this.label157.Location = new System.Drawing.Point(32, 217);
-            this.label157.Name = "label157";
-            this.label157.Size = new System.Drawing.Size(52, 13);
-            this.label157.TabIndex = 59;
-            this.label157.Text = "File name";
+            this.label198.AutoSize = true;
+            this.label198.Location = new System.Drawing.Point(32, 320);
+            this.label198.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label198.Name = "label198";
+            this.label198.Size = new System.Drawing.Size(105, 25);
+            this.label198.TabIndex = 96;
+            this.label198.Text = "Lightness";
             // 
-            // edImageLogoFilename
+            // tbContrast
             // 
-            this.edImageLogoFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.edImageLogoFilename.Location = new System.Drawing.Point(90, 214);
-            this.edImageLogoFilename.Name = "edImageLogoFilename";
-            this.edImageLogoFilename.Size = new System.Drawing.Size(234, 20);
-            this.edImageLogoFilename.TabIndex = 58;
-            this.edImageLogoFilename.Text = "c:\\1.png";
+            this.tbContrast.BackColor = System.Drawing.SystemColors.Window;
+            this.tbContrast.Location = new System.Drawing.Point(26, 457);
+            this.tbContrast.Margin = new System.Windows.Forms.Padding(6);
+            this.tbContrast.Maximum = 255;
+            this.tbContrast.Name = "tbContrast";
+            this.tbContrast.Size = new System.Drawing.Size(260, 90);
+            this.tbContrast.TabIndex = 95;
+            this.tbContrast.Scroll += new System.EventHandler(this.tbContrast_Scroll);
             // 
-            // label32
+            // tbLightness
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(142, 81);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(103, 13);
-            this.label32.TabIndex = 28;
-            this.label32.Text = "Transparency (layer)";
+            this.tbLightness.BackColor = System.Drawing.SystemColors.Window;
+            this.tbLightness.Location = new System.Drawing.Point(26, 349);
+            this.tbLightness.Margin = new System.Windows.Forms.Padding(6);
+            this.tbLightness.Maximum = 255;
+            this.tbLightness.Name = "tbLightness";
+            this.tbLightness.Size = new System.Drawing.Size(260, 90);
+            this.tbLightness.TabIndex = 94;
+            this.tbLightness.Scroll += new System.EventHandler(this.tbLightness_Scroll);
             // 
-            // tbTextLogoTransp
+            // tbSaturation
             // 
-            this.tbTextLogoTransp.BackColor = System.Drawing.SystemColors.Window;
-            this.tbTextLogoTransp.Location = new System.Drawing.Point(142, 97);
-            this.tbTextLogoTransp.Maximum = 255;
-            this.tbTextLogoTransp.Name = "tbTextLogoTransp";
-            this.tbTextLogoTransp.Size = new System.Drawing.Size(103, 45);
-            this.tbTextLogoTransp.TabIndex = 27;
-            this.tbTextLogoTransp.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbTextLogoTransp.Value = 127;
-            this.tbTextLogoTransp.Scroll += new System.EventHandler(this.tbTextLogoTransp_Scroll);
+            this.tbSaturation.BackColor = System.Drawing.SystemColors.Window;
+            this.tbSaturation.Location = new System.Drawing.Point(304, 349);
+            this.tbSaturation.Margin = new System.Windows.Forms.Padding(6);
+            this.tbSaturation.Maximum = 255;
+            this.tbSaturation.Name = "tbSaturation";
+            this.tbSaturation.Size = new System.Drawing.Size(260, 90);
+            this.tbSaturation.TabIndex = 93;
+            this.tbSaturation.Value = 255;
+            this.tbSaturation.Scroll += new System.EventHandler(this.tbSaturation_Scroll);
             // 
-            // edTextLogoTop
+            // label3
             // 
-            this.edTextLogoTop.Location = new System.Drawing.Point(65, 104);
-            this.edTextLogoTop.Name = "edTextLogoTop";
-            this.edTextLogoTop.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoTop.TabIndex = 23;
-            this.edTextLogoTop.Text = "50";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 24);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(188, 25);
+            this.label3.TabIndex = 92;
+            this.label3.Text = "Text / image logos";
             // 
-            // label139
+            // btTextLogoAdd
             // 
-            this.label139.AutoSize = true;
-            this.label139.Location = new System.Drawing.Point(29, 107);
-            this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(26, 13);
-            this.label139.TabIndex = 22;
-            this.label139.Text = "Top";
+            this.btTextLogoAdd.Location = new System.Drawing.Point(236, 249);
+            this.btTextLogoAdd.Margin = new System.Windows.Forms.Padding(6);
+            this.btTextLogoAdd.Name = "btTextLogoAdd";
+            this.btTextLogoAdd.Size = new System.Drawing.Size(198, 44);
+            this.btTextLogoAdd.TabIndex = 91;
+            this.btTextLogoAdd.Text = "Add text logo";
+            this.btTextLogoAdd.UseVisualStyleBackColor = true;
+            this.btTextLogoAdd.Click += new System.EventHandler(this.btTextLogoAdd_Click);
             // 
-            // edTextLogoLeft
+            // btLogoRemove
             // 
-            this.edTextLogoLeft.Location = new System.Drawing.Point(65, 78);
-            this.edTextLogoLeft.Name = "edTextLogoLeft";
-            this.edTextLogoLeft.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoLeft.TabIndex = 21;
-            this.edTextLogoLeft.Text = "50";
+            this.btLogoRemove.Location = new System.Drawing.Point(598, 249);
+            this.btLogoRemove.Margin = new System.Windows.Forms.Padding(6);
+            this.btLogoRemove.Name = "btLogoRemove";
+            this.btLogoRemove.Size = new System.Drawing.Size(118, 44);
+            this.btLogoRemove.TabIndex = 90;
+            this.btLogoRemove.Text = "Remove";
+            this.btLogoRemove.UseVisualStyleBackColor = true;
+            this.btLogoRemove.Click += new System.EventHandler(this.btLogoRemove_Click);
             // 
-            // label140
+            // btLogoEdit
             // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(29, 81);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(25, 13);
-            this.label140.TabIndex = 20;
-            this.label140.Text = "Left";
+            this.btLogoEdit.Location = new System.Drawing.Point(468, 249);
+            this.btLogoEdit.Margin = new System.Windows.Forms.Padding(6);
+            this.btLogoEdit.Name = "btLogoEdit";
+            this.btLogoEdit.Size = new System.Drawing.Size(118, 44);
+            this.btLogoEdit.TabIndex = 89;
+            this.btLogoEdit.Text = "Edit";
+            this.btLogoEdit.UseVisualStyleBackColor = true;
+            this.btLogoEdit.Click += new System.EventHandler(this.btLogoEdit_Click);
             // 
-            // btFont
+            // lbLogos
             // 
-            this.btFont.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btFont.Location = new System.Drawing.Point(307, 44);
-            this.btFont.Name = "btFont";
-            this.btFont.Size = new System.Drawing.Size(47, 23);
-            this.btFont.TabIndex = 19;
-            this.btFont.Text = "Font";
-            this.btFont.UseVisualStyleBackColor = true;
-            this.btFont.Click += new System.EventHandler(this.btFont_Click);
+            this.lbLogos.FormattingEnabled = true;
+            this.lbLogos.ItemHeight = 25;
+            this.lbLogos.Location = new System.Drawing.Point(26, 55);
+            this.lbLogos.Margin = new System.Windows.Forms.Padding(6);
+            this.lbLogos.Name = "lbLogos";
+            this.lbLogos.Size = new System.Drawing.Size(686, 179);
+            this.lbLogos.TabIndex = 88;
             // 
-            // edTextLogo
+            // btImageLogoAdd
             // 
-            this.edTextLogo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.edTextLogo.Location = new System.Drawing.Point(32, 46);
-            this.edTextLogo.Name = "edTextLogo";
-            this.edTextLogo.Size = new System.Drawing.Size(266, 20);
-            this.edTextLogo.TabIndex = 18;
-            this.edTextLogo.Text = "Hello!!!";
+            this.btImageLogoAdd.Location = new System.Drawing.Point(26, 249);
+            this.btImageLogoAdd.Margin = new System.Windows.Forms.Padding(6);
+            this.btImageLogoAdd.Name = "btImageLogoAdd";
+            this.btImageLogoAdd.Size = new System.Drawing.Size(198, 44);
+            this.btImageLogoAdd.TabIndex = 87;
+            this.btImageLogoAdd.Text = "Add image logo";
+            this.btImageLogoAdd.UseVisualStyleBackColor = true;
+            this.btImageLogoAdd.Click += new System.EventHandler(this.btImageLogoAdd_Click);
             // 
-            // cbTextLogo
+            // label5
             // 
-            this.cbTextLogo.AutoSize = true;
-            this.cbTextLogo.Location = new System.Drawing.Point(19, 23);
-            this.cbTextLogo.Name = "cbTextLogo";
-            this.cbTextLogo.Size = new System.Drawing.Size(70, 17);
-            this.cbTextLogo.TabIndex = 17;
-            this.cbTextLogo.Text = "Text logo";
-            this.cbTextLogo.UseVisualStyleBackColor = true;
-            this.cbTextLogo.CheckedChanged += new System.EventHandler(this.cbTextLogo_CheckedChanged);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(134, 667);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(484, 25);
+            this.label5.TabIndex = 86;
+            this.label5.Text = "More effects and settings available in Main Demo";
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.groupBox2);
-            this.tabPage4.Controls.Add(this.groupBox1);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Controls.Add(this.cbLicensing);
+            this.tabPage4.Controls.Add(this.cbDebugMode);
+            this.tabPage4.Controls.Add(this.mmLog);
+            this.tabPage4.Location = new System.Drawing.Point(8, 39);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(370, 384);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(6);
+            this.tabPage4.Size = new System.Drawing.Size(740, 713);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "More";
+            this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.cbImageType);
-            this.groupBox2.Controls.Add(this.lbJPEGQuality);
-            this.groupBox2.Controls.Add(this.label38);
-            this.groupBox2.Controls.Add(this.btSaveScreenshot);
-            this.groupBox2.Controls.Add(this.label63);
-            this.groupBox2.Controls.Add(this.edScreenshotsFolder);
-            this.groupBox2.Controls.Add(this.tbJPEGQuality);
-            this.groupBox2.Location = new System.Drawing.Point(5, 3);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(358, 81);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Screenshot";
-            // 
-            // cbImageType
-            // 
-            this.cbImageType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbImageType.FormattingEnabled = true;
-            this.cbImageType.Items.AddRange(new object[] {
-            "BMP",
-            "JPEG",
-            "GIF",
-            "PNG",
-            "TIFF"});
-            this.cbImageType.Location = new System.Drawing.Point(12, 45);
-            this.cbImageType.Name = "cbImageType";
-            this.cbImageType.Size = new System.Drawing.Size(73, 21);
-            this.cbImageType.TabIndex = 41;
-            // 
-            // lbJPEGQuality
-            // 
-            this.lbJPEGQuality.AutoSize = true;
-            this.lbJPEGQuality.Location = new System.Drawing.Point(263, 48);
-            this.lbJPEGQuality.Name = "lbJPEGQuality";
-            this.lbJPEGQuality.Size = new System.Drawing.Size(19, 13);
-            this.lbJPEGQuality.TabIndex = 40;
-            this.lbJPEGQuality.Text = "85";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(120, 48);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(67, 13);
-            this.label38.TabIndex = 39;
-            this.label38.Text = "JPEG quality";
-            // 
-            // btSaveScreenshot
-            // 
-            this.btSaveScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSaveScreenshot.Location = new System.Drawing.Point(296, 43);
-            this.btSaveScreenshot.Name = "btSaveScreenshot";
-            this.btSaveScreenshot.Size = new System.Drawing.Size(56, 23);
-            this.btSaveScreenshot.TabIndex = 37;
-            this.btSaveScreenshot.Text = "Save";
-            this.btSaveScreenshot.UseVisualStyleBackColor = true;
-            this.btSaveScreenshot.Click += new System.EventHandler(this.btSaveScreenshot_Click);
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(9, 22);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(36, 13);
-            this.label63.TabIndex = 35;
-            this.label63.Text = "Folder";
-            // 
-            // edScreenshotsFolder
-            // 
-            this.edScreenshotsFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.edScreenshotsFolder.Location = new System.Drawing.Point(54, 19);
-            this.edScreenshotsFolder.Name = "edScreenshotsFolder";
-            this.edScreenshotsFolder.Size = new System.Drawing.Size(298, 20);
-            this.edScreenshotsFolder.TabIndex = 34;
-            this.edScreenshotsFolder.Text = "c:\\";
-            // 
-            // tbJPEGQuality
-            // 
-            this.tbJPEGQuality.BackColor = System.Drawing.SystemColors.Window;
-            this.tbJPEGQuality.Location = new System.Drawing.Point(193, 43);
-            this.tbJPEGQuality.Maximum = 100;
-            this.tbJPEGQuality.Name = "tbJPEGQuality";
-            this.tbJPEGQuality.Size = new System.Drawing.Size(64, 45);
-            this.tbJPEGQuality.TabIndex = 38;
-            this.tbJPEGQuality.TickFrequency = 5;
-            this.tbJPEGQuality.Value = 85;
-            this.tbJPEGQuality.Scroll += new System.EventHandler(this.tbJPEGQuality_Scroll);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cbLicensing);
-            this.groupBox1.Controls.Add(this.cbDebugMode);
-            this.groupBox1.Controls.Add(this.mmLog);
-            this.groupBox1.Location = new System.Drawing.Point(6, 90);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(358, 278);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Errors/Warnings";
             // 
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(6, 19);
+            this.cbLicensing.Location = new System.Drawing.Point(202, 12);
+            this.cbLicensing.Margin = new System.Windows.Forms.Padding(6);
             this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 76;
+            this.cbLicensing.Size = new System.Drawing.Size(177, 29);
+            this.cbLicensing.TabIndex = 79;
             this.cbLicensing.Text = "Licensing info";
             this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
-            this.cbDebugMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(265, 19);
+            this.cbDebugMode.Location = new System.Drawing.Point(16, 12);
+            this.cbDebugMode.Margin = new System.Windows.Forms.Padding(6);
             this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
-            this.cbDebugMode.TabIndex = 75;
+            this.cbDebugMode.Size = new System.Drawing.Size(166, 29);
+            this.cbDebugMode.TabIndex = 78;
             this.cbDebugMode.Text = "Debug mode";
             this.cbDebugMode.UseVisualStyleBackColor = true;
             // 
@@ -1274,30 +939,26 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.mmLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mmLog.Location = new System.Drawing.Point(6, 42);
+            this.mmLog.Location = new System.Drawing.Point(16, 56);
+            this.mmLog.Margin = new System.Windows.Forms.Padding(6);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(346, 230);
-            this.mmLog.TabIndex = 74;
+            this.mmLog.Size = new System.Drawing.Size(708, 639);
+            this.mmLog.TabIndex = 77;
             // 
             // openFileDialog2
             // 
             this.openFileDialog2.Filter = "Pictures|*.bmp; *.jpg; *.jpeg; *.jpe; *.png; *.gif; *.tiff;|All files|*.*";
             // 
-            // fontDialog1
-            // 
-            this.fontDialog1.Color = System.Drawing.Color.White;
-            this.fontDialog1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.fontDialog1.FontMustExist = true;
-            this.fontDialog1.ShowColor = true;
-            // 
             // llVideoTutorials
             // 
+            this.llVideoTutorials.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.llVideoTutorials.AutoSize = true;
             this.llVideoTutorials.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.llVideoTutorials.Location = new System.Drawing.Point(744, 3);
+            this.llVideoTutorials.Location = new System.Drawing.Point(1488, 17);
+            this.llVideoTutorials.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.llVideoTutorials.Name = "llVideoTutorials";
-            this.llVideoTutorials.Size = new System.Drawing.Size(68, 13);
+            this.llVideoTutorials.Size = new System.Drawing.Size(138, 25);
             this.llVideoTutorials.TabIndex = 92;
             this.llVideoTutorials.TabStop = true;
             this.llVideoTutorials.Text = "Video tutorial";
@@ -1306,17 +967,25 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // VideoCapture1
             // 
             this.VideoCapture1.Additional_Audio_CaptureDevice_MixChannels = false;
+            this.VideoCapture1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.VideoCapture1.Audio_CaptureDevice = "";
             this.VideoCapture1.Audio_CaptureDevice_CustomLatency = 0;
             this.VideoCapture1.Audio_CaptureDevice_Format = "";
             this.VideoCapture1.Audio_CaptureDevice_Format_UseBest = true;
             this.VideoCapture1.Audio_CaptureDevice_Line = "";
+            this.VideoCapture1.Audio_CaptureDevice_MasterDevice = null;
+            this.VideoCapture1.Audio_CaptureDevice_MasterDevice_Format = null;
             this.VideoCapture1.Audio_CaptureDevice_Path = null;
+            this.VideoCapture1.Audio_CaptureSourceFilter = null;
+            this.VideoCapture1.Audio_Channel_Mapper = null;
             this.VideoCapture1.Audio_Decoder = null;
             this.VideoCapture1.Audio_Effects_Enabled = false;
             this.VideoCapture1.Audio_Effects_UseLegacyEffects = false;
             this.VideoCapture1.Audio_Enhancer_Enabled = false;
             this.VideoCapture1.Audio_OutputDevice = "Default DirectSound Device";
+            this.VideoCapture1.Audio_PCM_Converter = null;
             this.VideoCapture1.Audio_PlayAudio = true;
             this.VideoCapture1.Audio_RecordAudio = true;
             this.VideoCapture1.Audio_Sample_Grabber_Enabled = false;
@@ -1326,17 +995,28 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.BackColor = System.Drawing.Color.Black;
             this.VideoCapture1.Barcode_Reader_Enabled = false;
             this.VideoCapture1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
+            this.VideoCapture1.BDA_Source = null;
+            this.VideoCapture1.ChromaKey = null;
+            this.VideoCapture1.Custom_Source = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
             this.VideoCapture1.Decklink_Input_SMPTE = false;
+            this.VideoCapture1.Decklink_Output = null;
+            this.VideoCapture1.Decklink_Source = null;
             this.VideoCapture1.DirectCapture_Muxer = null;
             this.VideoCapture1.DV_Decoder_Video_Resolution = VisioForge.Types.VFDVVideoResolution.Full;
-            this.VideoCapture1.Location = new System.Drawing.Point(390, 25);
+            this.VideoCapture1.Face_Tracking = null;
+            this.VideoCapture1.IP_Camera_Source = null;
+            this.VideoCapture1.Location = new System.Drawing.Point(780, 48);
+            this.VideoCapture1.Margin = new System.Windows.Forms.Padding(6);
             this.VideoCapture1.Mode = VisioForge.Types.VFVideoCaptureMode.VideoCapture;
+            this.VideoCapture1.Motion_Detection = null;
+            this.VideoCapture1.Motion_DetectionEx = null;
             this.VideoCapture1.MPEG_Audio_Decoder = "";
+            this.VideoCapture1.MPEG_Demuxer = null;
             this.VideoCapture1.MPEG_Video_Decoder = "";
             this.VideoCapture1.MultiScreen_Enabled = false;
             this.VideoCapture1.Name = "VideoCapture1";
@@ -1350,16 +1030,23 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
+            this.VideoCapture1.PIP_ChromaKeySettings = null;
             this.VideoCapture1.PIP_Mode = VisioForge.Types.VFPIPMode.Custom;
+            this.VideoCapture1.PIP_ResizeQuality = VisioForge.Types.VFPIPResizeQuality.RQ_NN;
+            this.VideoCapture1.Push_Source = null;
+            this.VideoCapture1.Screen_Capture_Source = null;
             this.VideoCapture1.SeparateCapture_AutostartCapture = false;
             this.VideoCapture1.SeparateCapture_Enabled = false;
             this.VideoCapture1.SeparateCapture_Filename_Mask = "output %yyyy-%MM-%dd %hh-%mm-%ss.%ext";
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
             this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
-            this.VideoCapture1.Size = new System.Drawing.Size(422, 384);
+            this.VideoCapture1.Size = new System.Drawing.Size(844, 612);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 93;
+            this.VideoCapture1.Tags = null;
+            this.VideoCapture1.Timeshift_Settings = null;
             this.VideoCapture1.TVTuner_Channel = 0;
             this.VideoCapture1.TVTuner_Country = "";
             this.VideoCapture1.TVTuner_FM_Tuning_StartFrequency = 80000000;
@@ -1367,6 +1054,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.TVTuner_FM_Tuning_StopFrequency = 0;
             this.VideoCapture1.TVTuner_Frequency = 0;
             this.VideoCapture1.TVTuner_InputType = "";
+            this.VideoCapture1.TVTuner_Mode = VisioForge.Types.VFTVTunerMode.Default;
             this.VideoCapture1.TVTuner_Name = "";
             this.VideoCapture1.TVTuner_TVFormat = VisioForge.Types.VFTVTunerVideoFormat.PAL_D;
             this.VideoCapture1.Video_CaptureDevice = "";
@@ -1378,8 +1066,28 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.Video_CaptureDevice_Path = null;
             this.VideoCapture1.Video_CaptureDevice_UseClosedCaptions = false;
             this.VideoCapture1.Video_CaptureDevice_UseRAWSampleGrabber = false;
+            this.VideoCapture1.Video_Crop = null;
             this.VideoCapture1.Video_Decoder = null;
+            this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms1;
+            this.VideoCapture1.Video_Resize = null;
             this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
             this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
             this.VideoCapture1.Video_Sample_Grabber_Enabled = false;
@@ -1391,27 +1099,110 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.VideoCapture1_OnError);
             this.VideoCapture1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoCapture1_OnLicenseRequired);
             // 
+            // lbTimestamp
+            // 
+            this.lbTimestamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbTimestamp.AutoSize = true;
+            this.lbTimestamp.Location = new System.Drawing.Point(774, 685);
+            this.lbTimestamp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbTimestamp.Name = "lbTimestamp";
+            this.lbTimestamp.Size = new System.Drawing.Size(252, 25);
+            this.lbTimestamp.TabIndex = 96;
+            this.lbTimestamp.Text = "Recording time: 00:00:00";
+            // 
+            // btSaveScreenshot
+            // 
+            this.btSaveScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSaveScreenshot.Location = new System.Drawing.Point(1372, 671);
+            this.btSaveScreenshot.Margin = new System.Windows.Forms.Padding(6);
+            this.btSaveScreenshot.Name = "btSaveScreenshot";
+            this.btSaveScreenshot.Size = new System.Drawing.Size(254, 44);
+            this.btSaveScreenshot.TabIndex = 99;
+            this.btSaveScreenshot.Text = "Save screenshot";
+            this.btSaveScreenshot.UseVisualStyleBackColor = true;
+            this.btSaveScreenshot.Click += new System.EventHandler(this.btSaveScreenshot_Click);
+            // 
+            // btResume
+            // 
+            this.btResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btResume.Location = new System.Drawing.Point(1232, 727);
+            this.btResume.Margin = new System.Windows.Forms.Padding(6);
+            this.btResume.Name = "btResume";
+            this.btResume.Size = new System.Drawing.Size(110, 44);
+            this.btResume.TabIndex = 98;
+            this.btResume.Text = "Resume";
+            this.btResume.UseVisualStyleBackColor = true;
+            this.btResume.Click += new System.EventHandler(this.btResume_Click);
+            // 
+            // btPause
+            // 
+            this.btPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btPause.Location = new System.Drawing.Point(1110, 727);
+            this.btPause.Margin = new System.Windows.Forms.Padding(6);
+            this.btPause.Name = "btPause";
+            this.btPause.Size = new System.Drawing.Size(110, 44);
+            this.btPause.TabIndex = 97;
+            this.btPause.Text = "Pause";
+            this.btPause.UseVisualStyleBackColor = true;
+            this.btPause.Click += new System.EventHandler(this.btPause_Click);
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(982, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(433, 25);
+            this.label2.TabIndex = 100;
+            this.label2.Text = "Much more features available in Main Demo";
+            // 
+            // fontDialog1
+            // 
+            this.fontDialog1.Color = System.Drawing.Color.White;
+            this.fontDialog1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.fontDialog1.FontMustExist = true;
+            this.fontDialog1.ShowColor = true;
+            // 
+            // cbDeinterlaceCAVT
+            // 
+            this.cbDeinterlaceCAVT.AutoSize = true;
+            this.cbDeinterlaceCAVT.Checked = true;
+            this.cbDeinterlaceCAVT.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDeinterlaceCAVT.Location = new System.Drawing.Point(38, 611);
+            this.cbDeinterlaceCAVT.Name = "cbDeinterlaceCAVT";
+            this.cbDeinterlaceCAVT.Size = new System.Drawing.Size(229, 29);
+            this.cbDeinterlaceCAVT.TabIndex = 105;
+            this.cbDeinterlaceCAVT.Text = "Deinterlace (CAVT)";
+            this.cbDeinterlaceCAVT.UseVisualStyleBackColor = true;
+            this.cbDeinterlaceCAVT.CheckedChanged += new System.EventHandler(this.cbDeinterlaceCAVT_CheckedChanged);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 448);
+            this.ClientSize = new System.Drawing.Size(1648, 779);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.btSaveScreenshot);
+            this.Controls.Add(this.btResume);
+            this.Controls.Add(this.btPause);
+            this.Controls.Add(this.lbTimestamp);
             this.Controls.Add(this.VideoCapture1);
             this.Controls.Add(this.llVideoTutorials);
             this.Controls.Add(this.rbCapture);
             this.Controls.Add(this.rbPreview);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btStart);
-            this.Controls.Add(this.btSelectOutput);
-            this.Controls.Add(this.edOutput);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.tabControl1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.Controls.Add(this.tcMain);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
-            this.Text = "DV Capture Demo - VisioForge Video Capture SDK .Net";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "DV Capture Demo - Video Capture SDK .Net";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox21.ResumeLayout(false);
@@ -1421,22 +1212,14 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioVolume)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbImageLogoTransp)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbTextLogoTransp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbDarkness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbContrast)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbLightness)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbSaturation)).EndInit();
             this.tabPage4.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tabPage4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1448,10 +1231,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
         private System.Windows.Forms.RadioButton rbPreview;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btStart;
-        private System.Windows.Forms.Button btSelectOutput;
-        private System.Windows.Forms.TextBox edOutput;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckBox cbUseBestVideoInputFormat;
@@ -1470,69 +1250,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
         private System.Windows.Forms.ComboBox cbAudioOutputDevice;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ComboBox cbWMVInternalProfile9;
-        private System.Windows.Forms.RadioButton rbDVDirectstream;
-        private System.Windows.Forms.RadioButton rbWMV;
-        private System.Windows.Forms.RadioButton rbAVI;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Button btAudioSettings;
-        private System.Windows.Forms.Button btVideoSettings;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label30;
-        private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.ComboBox cbChannels;
-        private System.Windows.Forms.ComboBox cbBPS;
-        private System.Windows.Forms.ComboBox cbAudioCodecs;
-        private System.Windows.Forms.ComboBox cbSampleRate;
-        private System.Windows.Forms.ComboBox cbVideoCodecs;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TextBox edImageLogoTop;
-        private System.Windows.Forms.CheckBox cbImageLogo;
-        private System.Windows.Forms.Label label155;
-        private System.Windows.Forms.TrackBar tbImageLogoTransp;
-        private System.Windows.Forms.TextBox edImageLogoLeft;
-        private System.Windows.Forms.Label label156;
-        private System.Windows.Forms.Label label154;
-        private System.Windows.Forms.Button btSelectImage;
-        private System.Windows.Forms.Label label157;
-        private System.Windows.Forms.TextBox edImageLogoFilename;
-        private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.TrackBar tbTextLogoTransp;
-        private System.Windows.Forms.TextBox edTextLogoTop;
-        private System.Windows.Forms.Label label139;
-        private System.Windows.Forms.TextBox edTextLogoLeft;
-        private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.Button btFont;
-        private System.Windows.Forms.TextBox edTextLogo;
-        private System.Windows.Forms.CheckBox cbTextLogo;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cbImageType;
-        private System.Windows.Forms.Label lbJPEGQuality;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.Button btSaveScreenshot;
-        private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.TextBox edScreenshotsFolder;
-        private System.Windows.Forms.TrackBar tbJPEGQuality;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cbDebugMode;
-        private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.FontDialog fontDialog1;
-        private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.RadioButton rbDVType2;
-        private System.Windows.Forms.RadioButton rbDVType1;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.RadioButton rbDVNTSC;
-        private System.Windows.Forms.RadioButton rbDVPAL;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbDVChannels;
-        private System.Windows.Forms.ComboBox cbDVSampleRate;
-        private System.Windows.Forms.RadioButton rbDV;
         private System.Windows.Forms.GroupBox groupBox21;
         private System.Windows.Forms.RadioButton rbDVResDC;
         private System.Windows.Forms.RadioButton rbDVResQuarter;
@@ -1549,5 +1270,40 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
         internal System.Windows.Forms.LinkLabel llVideoTutorials;
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
         private System.Windows.Forms.CheckBox cbLicensing;
+        private System.Windows.Forms.CheckBox cbDebugMode;
+        private System.Windows.Forms.TextBox mmLog;
+        private System.Windows.Forms.Label lbInfo;
+        private System.Windows.Forms.Button btOutputConfigure;
+        private System.Windows.Forms.ComboBox cbOutputFormat;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btSelectOutput;
+        private System.Windows.Forms.TextBox edOutput;
+        private System.Windows.Forms.Label lbTimestamp;
+        private System.Windows.Forms.Button btSaveScreenshot;
+        private System.Windows.Forms.Button btResume;
+        private System.Windows.Forms.Button btPause;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.CheckBox cbFlipY;
+        private System.Windows.Forms.CheckBox cbFlipX;
+        private System.Windows.Forms.CheckBox cbInvert;
+        private System.Windows.Forms.CheckBox cbGreyscale;
+        private System.Windows.Forms.Label label201;
+        private System.Windows.Forms.TrackBar tbDarkness;
+        private System.Windows.Forms.Label label200;
+        private System.Windows.Forms.Label label199;
+        private System.Windows.Forms.Label label198;
+        private System.Windows.Forms.TrackBar tbContrast;
+        private System.Windows.Forms.TrackBar tbLightness;
+        private System.Windows.Forms.TrackBar tbSaturation;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btTextLogoAdd;
+        private System.Windows.Forms.Button btLogoRemove;
+        private System.Windows.Forms.Button btLogoEdit;
+        private System.Windows.Forms.ListBox lbLogos;
+        private System.Windows.Forms.Button btImageLogoAdd;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cbDeinterlaceCAVT;
     }
 }

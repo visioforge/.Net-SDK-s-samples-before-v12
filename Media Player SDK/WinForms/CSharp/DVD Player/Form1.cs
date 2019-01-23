@@ -284,6 +284,11 @@ namespace DVD_Player_Demo
                 mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
         }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btStop_Click(null, null);
+        }
     }
 }
 

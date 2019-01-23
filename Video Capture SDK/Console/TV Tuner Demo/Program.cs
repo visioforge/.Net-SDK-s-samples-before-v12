@@ -120,7 +120,7 @@ namespace TV_Tuner_Demo
                         videoCapture.Output_Filename = outputFile;
                         Console.WriteLine(@"Output file: " + outputFile);
 
-                        videoCapture.Output_Format = new VFMP4Output();
+                        videoCapture.Output_Format = new VFMP4v11Output();
                     }
 
                     break;

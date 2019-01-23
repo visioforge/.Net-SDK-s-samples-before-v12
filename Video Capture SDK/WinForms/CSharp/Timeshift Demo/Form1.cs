@@ -205,8 +205,8 @@ namespace VC_Timeshift_Demo
                                                        TempFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\SBE\\",
                                                        Player_AudioOutput_Enabled = cbPlayerPlayAudio.Checked
                                                    };
-            var mp4Settings = new VFMP4Output();
-            mp4Settings.Video_v10.IDR_Period = 5;
+            var mp4Settings = new VFMP4v8v10Output();
+            mp4Settings.Video.IDR_Period = 5;
 
             VideoCapture1.Timeshift_Settings.EncodingSettings = mp4Settings;
 
@@ -227,7 +227,7 @@ namespace VC_Timeshift_Demo
                     {
                         VideoCapture1.Output_Filename = edOutput.Text;
                         VideoCapture1.Mode = VFVideoCaptureMode.VideoCapture;
-                        var output = new VFMP4Output();
+                        var output = new VFMP4v8v10Output();
                         VideoCapture1.Output_Format = output;
                     }
 
@@ -330,6 +330,11 @@ namespace VC_Timeshift_Demo
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.Timeshift;
 
             MediaPlayer1.Play();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btStop_Click(null, null);
         }
     }
 }

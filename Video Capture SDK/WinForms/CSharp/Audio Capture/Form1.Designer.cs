@@ -30,12 +30,10 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
         /// </summary>
         private void InitializeComponent()
         {
-            this.rbCapture = new System.Windows.Forms.RadioButton();
-            this.rbPreview = new System.Windows.Forms.RadioButton();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
@@ -82,59 +80,13 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.label253 = new System.Windows.Forms.Label();
             this.cbAudSound3DEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbInfo = new System.Windows.Forms.Label();
+            this.btOutputConfigure = new System.Windows.Forms.Button();
             this.cbOutputFormat = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btSelectOutput = new System.Windows.Forms.Button();
             this.edOutput = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.btAudioSettings = new System.Windows.Forms.Button();
-            this.label67 = new System.Windows.Forms.Label();
-            this.cbAudioCodecs = new System.Windows.Forms.ComboBox();
-            this.cbSampleRate = new System.Windows.Forms.ComboBox();
-            this.label68 = new System.Windows.Forms.Label();
-            this.cbBPS = new System.Windows.Forms.ComboBox();
-            this.label69 = new System.Windows.Forms.Label();
-            this.cbChannels = new System.Windows.Forms.ComboBox();
-            this.label70 = new System.Windows.Forms.Label();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabControl4 = new System.Windows.Forms.TabControl();
-            this.tabPage17 = new System.Windows.Forms.TabPage();
-            this.label71 = new System.Windows.Forms.Label();
-            this.tbLameEncodingQuality = new System.Windows.Forms.TrackBar();
-            this.label72 = new System.Windows.Forms.Label();
-            this.label73 = new System.Windows.Forms.Label();
-            this.cbLameSampleRate = new System.Windows.Forms.ComboBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.rbLameMono = new System.Windows.Forms.RadioButton();
-            this.rbLameDualChannels = new System.Windows.Forms.RadioButton();
-            this.rbLameJointStereo = new System.Windows.Forms.RadioButton();
-            this.rbLameStandardStereo = new System.Windows.Forms.RadioButton();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.label74 = new System.Windows.Forms.Label();
-            this.tbLameVBRQuality = new System.Windows.Forms.TrackBar();
-            this.cbLameVBRMax = new System.Windows.Forms.ComboBox();
-            this.label75 = new System.Windows.Forms.Label();
-            this.label76 = new System.Windows.Forms.Label();
-            this.cbLameVBRMin = new System.Windows.Forms.ComboBox();
-            this.label77 = new System.Windows.Forms.Label();
-            this.label78 = new System.Windows.Forms.Label();
-            this.cbLameCBRBitrate = new System.Windows.Forms.ComboBox();
-            this.rbLameVBR = new System.Windows.Forms.RadioButton();
-            this.rbLameCBR = new System.Windows.Forms.RadioButton();
-            this.tabPage18 = new System.Windows.Forms.TabPage();
-            this.cbLameVoiceEncodingMode = new System.Windows.Forms.CheckBox();
-            this.cbLameModeFixed = new System.Windows.Forms.CheckBox();
-            this.cbLameEnableXingVBRTag = new System.Windows.Forms.CheckBox();
-            this.cbLameDisableShortBlocks = new System.Windows.Forms.CheckBox();
-            this.cbLameStrictISOCompilance = new System.Windows.Forms.CheckBox();
-            this.cbLameKeepAllFrequencies = new System.Windows.Forms.CheckBox();
-            this.cbLameStrictlyEnforceVBRMinBitrate = new System.Windows.Forms.CheckBox();
-            this.cbLameForceMono = new System.Windows.Forms.CheckBox();
-            this.cbLameCRCProtected = new System.Windows.Forms.CheckBox();
-            this.cbLameOriginal = new System.Windows.Forms.CheckBox();
-            this.cbLameCopyright = new System.Windows.Forms.CheckBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.label55 = new System.Windows.Forms.Label();
             this.tbAudioBalance = new System.Windows.Forms.TrackBar();
@@ -151,12 +103,12 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcMain = new System.Windows.Forms.TabControl();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.llVideoTutorials = new System.Windows.Forms.LinkLabel();
-            this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
+            this.lbTimestamp = new System.Windows.Forms.Label();
+            this.cbMode = new System.Windows.Forms.ComboBox();
             this.tabPage4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabControl18.SuspendLayout();
             this.tabPage71.SuspendLayout();
@@ -177,51 +129,17 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbAud3DSound)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage7.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.tabControl4.SuspendLayout();
-            this.tabPage17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLameEncodingQuality)).BeginInit();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLameVBRQuality)).BeginInit();
-            this.tabPage18.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioBalance)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioVolume)).BeginInit();
-            this.tabControl1.SuspendLayout();
+            this.tcMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // rbCapture
-            // 
-            this.rbCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rbCapture.AutoSize = true;
-            this.rbCapture.Location = new System.Drawing.Point(85, 478);
-            this.rbCapture.Name = "rbCapture";
-            this.rbCapture.Size = new System.Drawing.Size(62, 17);
-            this.rbCapture.TabIndex = 60;
-            this.rbCapture.Text = "Capture";
-            this.rbCapture.UseVisualStyleBackColor = true;
-            // 
-            // rbPreview
-            // 
-            this.rbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.rbPreview.AutoSize = true;
-            this.rbPreview.Checked = true;
-            this.rbPreview.Location = new System.Drawing.Point(16, 478);
-            this.rbPreview.Name = "rbPreview";
-            this.rbPreview.Size = new System.Drawing.Size(63, 17);
-            this.rbPreview.TabIndex = 59;
-            this.rbPreview.TabStop = true;
-            this.rbPreview.Text = "Preview";
-            this.rbPreview.UseVisualStyleBackColor = true;
             // 
             // btStop
             // 
             this.btStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStop.Location = new System.Drawing.Point(301, 475);
+            this.btStop.Location = new System.Drawing.Point(301, 477);
             this.btStop.Name = "btStop";
             this.btStop.Size = new System.Drawing.Size(62, 23);
             this.btStop.TabIndex = 58;
@@ -233,7 +151,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStart.Location = new System.Drawing.Point(236, 475);
+            this.btStart.Location = new System.Drawing.Point(236, 477);
             this.btStart.Name = "btStart";
             this.btStart.Size = new System.Drawing.Size(62, 23);
             this.btStart.TabIndex = 57;
@@ -243,48 +161,34 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.groupBox1);
+            this.tabPage4.Controls.Add(this.cbLicensing);
+            this.tabPage4.Controls.Add(this.cbDebugMode);
+            this.tabPage4.Controls.Add(this.mmLog);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(347, 434);
+            this.tabPage4.Size = new System.Drawing.Size(347, 436);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "More";
+            this.tabPage4.Text = "Logs";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.cbLicensing);
-            this.groupBox1.Controls.Add(this.cbDebugMode);
-            this.groupBox1.Controls.Add(this.mmLog);
-            this.groupBox1.Location = new System.Drawing.Point(6, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(335, 422);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Errors/Warnings";
             // 
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(6, 19);
+            this.cbLicensing.Location = new System.Drawing.Point(105, 6);
             this.cbLicensing.Name = "cbLicensing";
             this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 76;
+            this.cbLicensing.TabIndex = 79;
             this.cbLicensing.Text = "Licensing info";
             this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
-            this.cbDebugMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(242, 19);
+            this.cbDebugMode.Location = new System.Drawing.Point(12, 6);
             this.cbDebugMode.Name = "cbDebugMode";
             this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
-            this.cbDebugMode.TabIndex = 75;
+            this.cbDebugMode.TabIndex = 78;
             this.cbDebugMode.Text = "Debug mode";
             this.cbDebugMode.UseVisualStyleBackColor = true;
             // 
@@ -293,11 +197,11 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.mmLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mmLog.Location = new System.Drawing.Point(6, 42);
+            this.mmLog.Location = new System.Drawing.Point(12, 29);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(323, 374);
-            this.mmLog.TabIndex = 74;
+            this.mmLog.Size = new System.Drawing.Size(323, 389);
+            this.mmLog.TabIndex = 77;
             // 
             // tabPage5
             // 
@@ -305,7 +209,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(347, 434);
+            this.tabPage5.Size = new System.Drawing.Size(347, 436);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Effects";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -322,7 +226,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabControl18.Location = new System.Drawing.Point(7, 6);
             this.tabControl18.Name = "tabControl18";
             this.tabControl18.SelectedIndex = 0;
-            this.tabControl18.Size = new System.Drawing.Size(334, 422);
+            this.tabControl18.Size = new System.Drawing.Size(334, 424);
             this.tabControl18.TabIndex = 2;
             // 
             // tabPage71
@@ -335,7 +239,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage71.Location = new System.Drawing.Point(4, 22);
             this.tabPage71.Name = "tabPage71";
             this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage71.Size = new System.Drawing.Size(326, 396);
+            this.tabPage71.Size = new System.Drawing.Size(326, 398);
             this.tabPage71.TabIndex = 0;
             this.tabPage71.Text = "Amplify";
             this.tabPage71.UseVisualStyleBackColor = true;
@@ -420,7 +324,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage72.Location = new System.Drawing.Point(4, 22);
             this.tabPage72.Name = "tabPage72";
             this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage72.Size = new System.Drawing.Size(326, 396);
+            this.tabPage72.Size = new System.Drawing.Size(326, 398);
             this.tabPage72.TabIndex = 1;
             this.tabPage72.Text = "Equalizer";
             this.tabPage72.UseVisualStyleBackColor = true;
@@ -702,7 +606,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage76.Location = new System.Drawing.Point(4, 22);
             this.tabPage76.Name = "tabPage76";
             this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage76.Size = new System.Drawing.Size(326, 396);
+            this.tabPage76.Size = new System.Drawing.Size(326, 398);
             this.tabPage76.TabIndex = 5;
             this.tabPage76.Text = "True Bass";
             this.tabPage76.UseVisualStyleBackColor = true;
@@ -748,7 +652,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(326, 396);
+            this.tabPage6.Size = new System.Drawing.Size(326, 398);
             this.tabPage6.TabIndex = 7;
             this.tabPage6.Text = "Sound3D";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -789,19 +693,39 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbInfo);
+            this.tabPage2.Controls.Add(this.btOutputConfigure);
             this.tabPage2.Controls.Add(this.cbOutputFormat);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.btSelectOutput);
             this.tabPage2.Controls.Add(this.edOutput);
             this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.tabControl2);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(347, 434);
+            this.tabPage2.Size = new System.Drawing.Size(347, 436);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lbInfo
+            // 
+            this.lbInfo.AutoSize = true;
+            this.lbInfo.Location = new System.Drawing.Point(16, 66);
+            this.lbInfo.Name = "lbInfo";
+            this.lbInfo.Size = new System.Drawing.Size(267, 13);
+            this.lbInfo.TabIndex = 59;
+            this.lbInfo.Text = "You can use dialog or code to configure format settings";
+            // 
+            // btOutputConfigure
+            // 
+            this.btOutputConfigure.Location = new System.Drawing.Point(19, 82);
+            this.btOutputConfigure.Name = "btOutputConfigure";
+            this.btOutputConfigure.Size = new System.Drawing.Size(75, 23);
+            this.btOutputConfigure.TabIndex = 58;
+            this.btOutputConfigure.Text = "Configure";
+            this.btOutputConfigure.UseVisualStyleBackColor = true;
+            this.btOutputConfigure.Click += new System.EventHandler(this.btOutputConfigure_Click);
             // 
             // cbOutputFormat
             // 
@@ -809,16 +733,22 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.cbOutputFormat.FormattingEnabled = true;
             this.cbOutputFormat.Items.AddRange(new object[] {
             "PCM/ACM",
-            "MP3 (Lame)"});
-            this.cbOutputFormat.Location = new System.Drawing.Point(69, 379);
+            "MP3",
+            "WMA",
+            "Ogg Vorbis",
+            "FLAC",
+            "Speex",
+            "M4A (AAC)"});
+            this.cbOutputFormat.Location = new System.Drawing.Point(19, 32);
             this.cbOutputFormat.Name = "cbOutputFormat";
-            this.cbOutputFormat.Size = new System.Drawing.Size(253, 21);
+            this.cbOutputFormat.Size = new System.Drawing.Size(309, 21);
             this.cbOutputFormat.TabIndex = 57;
+            this.cbOutputFormat.SelectedIndexChanged += new System.EventHandler(this.cbOutputFormat_SelectedIndexChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 382);
+            this.label7.Location = new System.Drawing.Point(16, 16);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 56;
@@ -827,7 +757,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // btSelectOutput
             // 
             this.btSelectOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btSelectOutput.Location = new System.Drawing.Point(297, 405);
+            this.btSelectOutput.Location = new System.Drawing.Point(304, 142);
             this.btSelectOutput.Name = "btSelectOutput";
             this.btSelectOutput.Size = new System.Drawing.Size(24, 23);
             this.btSelectOutput.TabIndex = 55;
@@ -838,9 +768,9 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // edOutput
             // 
             this.edOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.edOutput.Location = new System.Drawing.Point(69, 407);
+            this.edOutput.Location = new System.Drawing.Point(19, 144);
             this.edOutput.Name = "edOutput";
-            this.edOutput.Size = new System.Drawing.Size(222, 20);
+            this.edOutput.Size = new System.Drawing.Size(279, 20);
             this.edOutput.TabIndex = 54;
             this.edOutput.Text = "c:\\capture.wav";
             // 
@@ -848,587 +778,11 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 410);
+            this.label9.Location = new System.Drawing.Point(16, 128);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 53;
             this.label9.Text = "File name";
-            // 
-            // tabControl2
-            // 
-            this.tabControl2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl2.Controls.Add(this.tabPage7);
-            this.tabControl2.Controls.Add(this.tabPage8);
-            this.tabControl2.Location = new System.Drawing.Point(6, 6);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(316, 368);
-            this.tabControl2.TabIndex = 0;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.btAudioSettings);
-            this.tabPage7.Controls.Add(this.label67);
-            this.tabPage7.Controls.Add(this.cbAudioCodecs);
-            this.tabPage7.Controls.Add(this.cbSampleRate);
-            this.tabPage7.Controls.Add(this.label68);
-            this.tabPage7.Controls.Add(this.cbBPS);
-            this.tabPage7.Controls.Add(this.label69);
-            this.tabPage7.Controls.Add(this.cbChannels);
-            this.tabPage7.Controls.Add(this.label70);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(308, 342);
-            this.tabPage7.TabIndex = 0;
-            this.tabPage7.Text = "PCM/ACM";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // btAudioSettings
-            // 
-            this.btAudioSettings.Location = new System.Drawing.Point(194, 110);
-            this.btAudioSettings.Name = "btAudioSettings";
-            this.btAudioSettings.Size = new System.Drawing.Size(66, 23);
-            this.btAudioSettings.TabIndex = 52;
-            this.btAudioSettings.Text = "Settings";
-            this.btAudioSettings.UseVisualStyleBackColor = true;
-            this.btAudioSettings.Click += new System.EventHandler(this.btAudioSettings_Click);
-            // 
-            // label67
-            // 
-            this.label67.AutoSize = true;
-            this.label67.Location = new System.Drawing.Point(17, 96);
-            this.label67.Name = "label67";
-            this.label67.Size = new System.Drawing.Size(38, 13);
-            this.label67.TabIndex = 51;
-            this.label67.Text = "Codec";
-            // 
-            // cbAudioCodecs
-            // 
-            this.cbAudioCodecs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAudioCodecs.FormattingEnabled = true;
-            this.cbAudioCodecs.Location = new System.Drawing.Point(20, 112);
-            this.cbAudioCodecs.Name = "cbAudioCodecs";
-            this.cbAudioCodecs.Size = new System.Drawing.Size(166, 21);
-            this.cbAudioCodecs.TabIndex = 50;
-            this.cbAudioCodecs.SelectedIndexChanged += new System.EventHandler(this.cbAudioCodecs_SelectedIndexChanged);
-            // 
-            // cbSampleRate
-            // 
-            this.cbSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSampleRate.FormattingEnabled = true;
-            this.cbSampleRate.Items.AddRange(new object[] {
-            "48000",
-            "44100",
-            "32000",
-            "22050",
-            "16000",
-            "11025",
-            "8000"});
-            this.cbSampleRate.Location = new System.Drawing.Point(86, 53);
-            this.cbSampleRate.Name = "cbSampleRate";
-            this.cbSampleRate.Size = new System.Drawing.Size(65, 21);
-            this.cbSampleRate.TabIndex = 49;
-            // 
-            // label68
-            // 
-            this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(17, 56);
-            this.label68.Name = "label68";
-            this.label68.Size = new System.Drawing.Size(63, 13);
-            this.label68.TabIndex = 48;
-            this.label68.Text = "Sample rate";
-            // 
-            // cbBPS
-            // 
-            this.cbBPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBPS.FormattingEnabled = true;
-            this.cbBPS.Items.AddRange(new object[] {
-            "16",
-            "8"});
-            this.cbBPS.Location = new System.Drawing.Point(203, 16);
-            this.cbBPS.Name = "cbBPS";
-            this.cbBPS.Size = new System.Drawing.Size(55, 21);
-            this.cbBPS.TabIndex = 47;
-            // 
-            // label69
-            // 
-            this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(169, 19);
-            this.label69.Name = "label69";
-            this.label69.Size = new System.Drawing.Size(28, 13);
-            this.label69.TabIndex = 46;
-            this.label69.Text = "BPS";
-            // 
-            // cbChannels
-            // 
-            this.cbChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbChannels.FormattingEnabled = true;
-            this.cbChannels.Items.AddRange(new object[] {
-            "2",
-            "1"});
-            this.cbChannels.Location = new System.Drawing.Point(86, 16);
-            this.cbChannels.Name = "cbChannels";
-            this.cbChannels.Size = new System.Drawing.Size(65, 21);
-            this.cbChannels.TabIndex = 45;
-            // 
-            // label70
-            // 
-            this.label70.AutoSize = true;
-            this.label70.Location = new System.Drawing.Point(17, 19);
-            this.label70.Name = "label70";
-            this.label70.Size = new System.Drawing.Size(51, 13);
-            this.label70.TabIndex = 44;
-            this.label70.Text = "Channels";
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.tabControl4);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(308, 342);
-            this.tabPage8.TabIndex = 1;
-            this.tabPage8.Text = "MP3 (LAME)";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tabControl4
-            // 
-            this.tabControl4.Controls.Add(this.tabPage17);
-            this.tabControl4.Controls.Add(this.tabPage18);
-            this.tabControl4.Location = new System.Drawing.Point(6, 6);
-            this.tabControl4.Name = "tabControl4";
-            this.tabControl4.SelectedIndex = 0;
-            this.tabControl4.Size = new System.Drawing.Size(299, 333);
-            this.tabControl4.TabIndex = 2;
-            // 
-            // tabPage17
-            // 
-            this.tabPage17.Controls.Add(this.label71);
-            this.tabPage17.Controls.Add(this.tbLameEncodingQuality);
-            this.tabPage17.Controls.Add(this.label72);
-            this.tabPage17.Controls.Add(this.label73);
-            this.tabPage17.Controls.Add(this.cbLameSampleRate);
-            this.tabPage17.Controls.Add(this.groupBox9);
-            this.tabPage17.Controls.Add(this.groupBox10);
-            this.tabPage17.Location = new System.Drawing.Point(4, 22);
-            this.tabPage17.Name = "tabPage17";
-            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage17.Size = new System.Drawing.Size(291, 307);
-            this.tabPage17.TabIndex = 0;
-            this.tabPage17.Text = "Main";
-            this.tabPage17.UseVisualStyleBackColor = true;
-            // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(19, 281);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(85, 13);
-            this.label71.TabIndex = 27;
-            this.label71.Text = "Encoding quality";
-            // 
-            // tbLameEncodingQuality
-            // 
-            this.tbLameEncodingQuality.BackColor = System.Drawing.SystemColors.Window;
-            this.tbLameEncodingQuality.Location = new System.Drawing.Point(129, 272);
-            this.tbLameEncodingQuality.Maximum = 8;
-            this.tbLameEncodingQuality.Minimum = 1;
-            this.tbLameEncodingQuality.Name = "tbLameEncodingQuality";
-            this.tbLameEncodingQuality.Size = new System.Drawing.Size(133, 45);
-            this.tbLameEncodingQuality.TabIndex = 26;
-            this.tbLameEncodingQuality.Value = 7;
-            // 
-            // label72
-            // 
-            this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(201, 252);
-            this.label72.Name = "label72";
-            this.label72.Size = new System.Drawing.Size(20, 13);
-            this.label72.TabIndex = 22;
-            this.label72.Text = "Hz";
-            // 
-            // label73
-            // 
-            this.label73.AutoSize = true;
-            this.label73.Location = new System.Drawing.Point(19, 252);
-            this.label73.Name = "label73";
-            this.label73.Size = new System.Drawing.Size(63, 13);
-            this.label73.TabIndex = 21;
-            this.label73.Text = "Sample rate";
-            // 
-            // cbLameSampleRate
-            // 
-            this.cbLameSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLameSampleRate.FormattingEnabled = true;
-            this.cbLameSampleRate.Items.AddRange(new object[] {
-            "48000",
-            "44100",
-            "32000",
-            "22050",
-            "16000",
-            "11025",
-            "8000"});
-            this.cbLameSampleRate.Location = new System.Drawing.Point(129, 249);
-            this.cbLameSampleRate.Name = "cbLameSampleRate";
-            this.cbLameSampleRate.Size = new System.Drawing.Size(66, 21);
-            this.cbLameSampleRate.TabIndex = 20;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.rbLameMono);
-            this.groupBox9.Controls.Add(this.rbLameDualChannels);
-            this.groupBox9.Controls.Add(this.rbLameJointStereo);
-            this.groupBox9.Controls.Add(this.rbLameStandardStereo);
-            this.groupBox9.Location = new System.Drawing.Point(16, 177);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(246, 65);
-            this.groupBox9.TabIndex = 1;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Channels";
-            // 
-            // rbLameMono
-            // 
-            this.rbLameMono.AutoSize = true;
-            this.rbLameMono.Location = new System.Drawing.Point(117, 42);
-            this.rbLameMono.Name = "rbLameMono";
-            this.rbLameMono.Size = new System.Drawing.Size(52, 17);
-            this.rbLameMono.TabIndex = 3;
-            this.rbLameMono.Text = "Mono";
-            this.rbLameMono.UseVisualStyleBackColor = true;
-            // 
-            // rbLameDualChannels
-            // 
-            this.rbLameDualChannels.AutoSize = true;
-            this.rbLameDualChannels.Location = new System.Drawing.Point(117, 19);
-            this.rbLameDualChannels.Name = "rbLameDualChannels";
-            this.rbLameDualChannels.Size = new System.Drawing.Size(93, 17);
-            this.rbLameDualChannels.TabIndex = 2;
-            this.rbLameDualChannels.Text = "Dual channels";
-            this.rbLameDualChannels.UseVisualStyleBackColor = true;
-            // 
-            // rbLameJointStereo
-            // 
-            this.rbLameJointStereo.AutoSize = true;
-            this.rbLameJointStereo.Location = new System.Drawing.Point(11, 42);
-            this.rbLameJointStereo.Name = "rbLameJointStereo";
-            this.rbLameJointStereo.Size = new System.Drawing.Size(79, 17);
-            this.rbLameJointStereo.TabIndex = 1;
-            this.rbLameJointStereo.Text = "Joint stereo";
-            this.rbLameJointStereo.UseVisualStyleBackColor = true;
-            // 
-            // rbLameStandardStereo
-            // 
-            this.rbLameStandardStereo.AutoSize = true;
-            this.rbLameStandardStereo.Checked = true;
-            this.rbLameStandardStereo.Location = new System.Drawing.Point(11, 19);
-            this.rbLameStandardStereo.Name = "rbLameStandardStereo";
-            this.rbLameStandardStereo.Size = new System.Drawing.Size(100, 17);
-            this.rbLameStandardStereo.TabIndex = 0;
-            this.rbLameStandardStereo.TabStop = true;
-            this.rbLameStandardStereo.Text = "Standard stereo";
-            this.rbLameStandardStereo.UseVisualStyleBackColor = true;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.label74);
-            this.groupBox10.Controls.Add(this.tbLameVBRQuality);
-            this.groupBox10.Controls.Add(this.cbLameVBRMax);
-            this.groupBox10.Controls.Add(this.label75);
-            this.groupBox10.Controls.Add(this.label76);
-            this.groupBox10.Controls.Add(this.cbLameVBRMin);
-            this.groupBox10.Controls.Add(this.label77);
-            this.groupBox10.Controls.Add(this.label78);
-            this.groupBox10.Controls.Add(this.cbLameCBRBitrate);
-            this.groupBox10.Controls.Add(this.rbLameVBR);
-            this.groupBox10.Controls.Add(this.rbLameCBR);
-            this.groupBox10.Location = new System.Drawing.Point(16, 6);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(246, 165);
-            this.groupBox10.TabIndex = 0;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Mode";
-            // 
-            // label74
-            // 
-            this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(34, 134);
-            this.label74.Name = "label74";
-            this.label74.Size = new System.Drawing.Size(39, 13);
-            this.label74.TabIndex = 26;
-            this.label74.Text = "Quality";
-            // 
-            // tbLameVBRQuality
-            // 
-            this.tbLameVBRQuality.BackColor = System.Drawing.SystemColors.Window;
-            this.tbLameVBRQuality.Location = new System.Drawing.Point(92, 116);
-            this.tbLameVBRQuality.Name = "tbLameVBRQuality";
-            this.tbLameVBRQuality.Size = new System.Drawing.Size(118, 45);
-            this.tbLameVBRQuality.TabIndex = 25;
-            this.tbLameVBRQuality.Value = 7;
-            // 
-            // cbLameVBRMax
-            // 
-            this.cbLameVBRMax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLameVBRMax.FormattingEnabled = true;
-            this.cbLameVBRMax.Items.AddRange(new object[] {
-            "32",
-            "40",
-            "48",
-            "56",
-            "64",
-            "80",
-            "96",
-            "112",
-            "128",
-            "160",
-            "192",
-            "224",
-            "256",
-            "320"});
-            this.cbLameVBRMax.Location = new System.Drawing.Point(156, 89);
-            this.cbLameVBRMax.Name = "cbLameVBRMax";
-            this.cbLameVBRMax.Size = new System.Drawing.Size(54, 21);
-            this.cbLameVBRMax.TabIndex = 24;
-            // 
-            // label75
-            // 
-            this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(127, 92);
-            this.label75.Name = "label75";
-            this.label75.Size = new System.Drawing.Size(27, 13);
-            this.label75.TabIndex = 23;
-            this.label75.Text = "Max";
-            // 
-            // label76
-            // 
-            this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(34, 92);
-            this.label76.Name = "label76";
-            this.label76.Size = new System.Drawing.Size(24, 13);
-            this.label76.TabIndex = 21;
-            this.label76.Text = "Min";
-            // 
-            // cbLameVBRMin
-            // 
-            this.cbLameVBRMin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLameVBRMin.FormattingEnabled = true;
-            this.cbLameVBRMin.Items.AddRange(new object[] {
-            "32",
-            "40",
-            "48",
-            "56",
-            "64",
-            "80",
-            "96",
-            "112",
-            "128",
-            "160",
-            "192",
-            "224",
-            "256",
-            "320"});
-            this.cbLameVBRMin.Location = new System.Drawing.Point(64, 89);
-            this.cbLameVBRMin.Name = "cbLameVBRMin";
-            this.cbLameVBRMin.Size = new System.Drawing.Size(54, 21);
-            this.cbLameVBRMin.TabIndex = 20;
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(177, 45);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(31, 13);
-            this.label77.TabIndex = 19;
-            this.label77.Text = "Kbps";
-            // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(34, 45);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(40, 13);
-            this.label78.TabIndex = 18;
-            this.label78.Text = "Bit rate";
-            // 
-            // cbLameCBRBitrate
-            // 
-            this.cbLameCBRBitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLameCBRBitrate.FormattingEnabled = true;
-            this.cbLameCBRBitrate.Items.AddRange(new object[] {
-            "32",
-            "40",
-            "48",
-            "56",
-            "64",
-            "80",
-            "96",
-            "112",
-            "128",
-            "160",
-            "192",
-            "224",
-            "256",
-            "320"});
-            this.cbLameCBRBitrate.Location = new System.Drawing.Point(113, 42);
-            this.cbLameCBRBitrate.Name = "cbLameCBRBitrate";
-            this.cbLameCBRBitrate.Size = new System.Drawing.Size(58, 21);
-            this.cbLameCBRBitrate.TabIndex = 17;
-            // 
-            // rbLameVBR
-            // 
-            this.rbLameVBR.AutoSize = true;
-            this.rbLameVBR.Location = new System.Drawing.Point(17, 66);
-            this.rbLameVBR.Name = "rbLameVBR";
-            this.rbLameVBR.Size = new System.Drawing.Size(104, 17);
-            this.rbLameVBR.TabIndex = 1;
-            this.rbLameVBR.Text = "Variable Bit Rate";
-            this.rbLameVBR.UseVisualStyleBackColor = true;
-            // 
-            // rbLameCBR
-            // 
-            this.rbLameCBR.AutoSize = true;
-            this.rbLameCBR.Checked = true;
-            this.rbLameCBR.Location = new System.Drawing.Point(17, 19);
-            this.rbLameCBR.Name = "rbLameCBR";
-            this.rbLameCBR.Size = new System.Drawing.Size(108, 17);
-            this.rbLameCBR.TabIndex = 0;
-            this.rbLameCBR.TabStop = true;
-            this.rbLameCBR.Text = "Constant Bit Rate";
-            this.rbLameCBR.UseVisualStyleBackColor = true;
-            // 
-            // tabPage18
-            // 
-            this.tabPage18.Controls.Add(this.cbLameVoiceEncodingMode);
-            this.tabPage18.Controls.Add(this.cbLameModeFixed);
-            this.tabPage18.Controls.Add(this.cbLameEnableXingVBRTag);
-            this.tabPage18.Controls.Add(this.cbLameDisableShortBlocks);
-            this.tabPage18.Controls.Add(this.cbLameStrictISOCompilance);
-            this.tabPage18.Controls.Add(this.cbLameKeepAllFrequencies);
-            this.tabPage18.Controls.Add(this.cbLameStrictlyEnforceVBRMinBitrate);
-            this.tabPage18.Controls.Add(this.cbLameForceMono);
-            this.tabPage18.Controls.Add(this.cbLameCRCProtected);
-            this.tabPage18.Controls.Add(this.cbLameOriginal);
-            this.tabPage18.Controls.Add(this.cbLameCopyright);
-            this.tabPage18.Location = new System.Drawing.Point(4, 22);
-            this.tabPage18.Name = "tabPage18";
-            this.tabPage18.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage18.Size = new System.Drawing.Size(291, 307);
-            this.tabPage18.TabIndex = 1;
-            this.tabPage18.Text = "Other";
-            this.tabPage18.UseVisualStyleBackColor = true;
-            // 
-            // cbLameVoiceEncodingMode
-            // 
-            this.cbLameVoiceEncodingMode.AutoSize = true;
-            this.cbLameVoiceEncodingMode.Location = new System.Drawing.Point(28, 139);
-            this.cbLameVoiceEncodingMode.Name = "cbLameVoiceEncodingMode";
-            this.cbLameVoiceEncodingMode.Size = new System.Drawing.Size(129, 17);
-            this.cbLameVoiceEncodingMode.TabIndex = 10;
-            this.cbLameVoiceEncodingMode.Text = "Voice encoding mode";
-            this.cbLameVoiceEncodingMode.UseVisualStyleBackColor = true;
-            // 
-            // cbLameModeFixed
-            // 
-            this.cbLameModeFixed.AutoSize = true;
-            this.cbLameModeFixed.Location = new System.Drawing.Point(28, 215);
-            this.cbLameModeFixed.Name = "cbLameModeFixed";
-            this.cbLameModeFixed.Size = new System.Drawing.Size(88, 17);
-            this.cbLameModeFixed.TabIndex = 9;
-            this.cbLameModeFixed.Text = "\"Mode fixed\"";
-            this.cbLameModeFixed.UseVisualStyleBackColor = true;
-            // 
-            // cbLameEnableXingVBRTag
-            // 
-            this.cbLameEnableXingVBRTag.AutoSize = true;
-            this.cbLameEnableXingVBRTag.Location = new System.Drawing.Point(28, 196);
-            this.cbLameEnableXingVBRTag.Name = "cbLameEnableXingVBRTag";
-            this.cbLameEnableXingVBRTag.Size = new System.Drawing.Size(126, 17);
-            this.cbLameEnableXingVBRTag.TabIndex = 8;
-            this.cbLameEnableXingVBRTag.Text = "Enable Xing VBR tag";
-            this.cbLameEnableXingVBRTag.UseVisualStyleBackColor = true;
-            // 
-            // cbLameDisableShortBlocks
-            // 
-            this.cbLameDisableShortBlocks.AutoSize = true;
-            this.cbLameDisableShortBlocks.Location = new System.Drawing.Point(28, 177);
-            this.cbLameDisableShortBlocks.Name = "cbLameDisableShortBlocks";
-            this.cbLameDisableShortBlocks.Size = new System.Drawing.Size(121, 17);
-            this.cbLameDisableShortBlocks.TabIndex = 7;
-            this.cbLameDisableShortBlocks.Text = "Disable short blocks";
-            this.cbLameDisableShortBlocks.UseVisualStyleBackColor = true;
-            // 
-            // cbLameStrictISOCompilance
-            // 
-            this.cbLameStrictISOCompilance.AutoSize = true;
-            this.cbLameStrictISOCompilance.Location = new System.Drawing.Point(28, 158);
-            this.cbLameStrictISOCompilance.Name = "cbLameStrictISOCompilance";
-            this.cbLameStrictISOCompilance.Size = new System.Drawing.Size(128, 17);
-            this.cbLameStrictISOCompilance.TabIndex = 6;
-            this.cbLameStrictISOCompilance.Text = "Strict ISO compilance";
-            this.cbLameStrictISOCompilance.UseVisualStyleBackColor = true;
-            // 
-            // cbLameKeepAllFrequencies
-            // 
-            this.cbLameKeepAllFrequencies.AutoSize = true;
-            this.cbLameKeepAllFrequencies.Location = new System.Drawing.Point(28, 120);
-            this.cbLameKeepAllFrequencies.Name = "cbLameKeepAllFrequencies";
-            this.cbLameKeepAllFrequencies.Size = new System.Drawing.Size(122, 17);
-            this.cbLameKeepAllFrequencies.TabIndex = 5;
-            this.cbLameKeepAllFrequencies.Text = "Keep all frequencies";
-            this.cbLameKeepAllFrequencies.UseVisualStyleBackColor = true;
-            // 
-            // cbLameStrictlyEnforceVBRMinBitrate
-            // 
-            this.cbLameStrictlyEnforceVBRMinBitrate.AutoSize = true;
-            this.cbLameStrictlyEnforceVBRMinBitrate.Location = new System.Drawing.Point(28, 101);
-            this.cbLameStrictlyEnforceVBRMinBitrate.Name = "cbLameStrictlyEnforceVBRMinBitrate";
-            this.cbLameStrictlyEnforceVBRMinBitrate.Size = new System.Drawing.Size(175, 17);
-            this.cbLameStrictlyEnforceVBRMinBitrate.TabIndex = 4;
-            this.cbLameStrictlyEnforceVBRMinBitrate.Text = "Strictly enforce VBR min bit rate";
-            this.cbLameStrictlyEnforceVBRMinBitrate.UseVisualStyleBackColor = true;
-            // 
-            // cbLameForceMono
-            // 
-            this.cbLameForceMono.AutoSize = true;
-            this.cbLameForceMono.Location = new System.Drawing.Point(28, 82);
-            this.cbLameForceMono.Name = "cbLameForceMono";
-            this.cbLameForceMono.Size = new System.Drawing.Size(82, 17);
-            this.cbLameForceMono.TabIndex = 3;
-            this.cbLameForceMono.Text = "Force mono";
-            this.cbLameForceMono.UseVisualStyleBackColor = true;
-            // 
-            // cbLameCRCProtected
-            // 
-            this.cbLameCRCProtected.AutoSize = true;
-            this.cbLameCRCProtected.Location = new System.Drawing.Point(28, 63);
-            this.cbLameCRCProtected.Name = "cbLameCRCProtected";
-            this.cbLameCRCProtected.Size = new System.Drawing.Size(96, 17);
-            this.cbLameCRCProtected.TabIndex = 2;
-            this.cbLameCRCProtected.Text = "CRC protected";
-            this.cbLameCRCProtected.UseVisualStyleBackColor = true;
-            // 
-            // cbLameOriginal
-            // 
-            this.cbLameOriginal.AutoSize = true;
-            this.cbLameOriginal.Location = new System.Drawing.Point(28, 44);
-            this.cbLameOriginal.Name = "cbLameOriginal";
-            this.cbLameOriginal.Size = new System.Drawing.Size(96, 17);
-            this.cbLameOriginal.TabIndex = 1;
-            this.cbLameOriginal.Text = "Original / Copy";
-            this.cbLameOriginal.UseVisualStyleBackColor = true;
-            // 
-            // cbLameCopyright
-            // 
-            this.cbLameCopyright.AutoSize = true;
-            this.cbLameCopyright.Location = new System.Drawing.Point(28, 25);
-            this.cbLameCopyright.Name = "cbLameCopyright";
-            this.cbLameCopyright.Size = new System.Drawing.Size(70, 17);
-            this.cbLameCopyright.TabIndex = 0;
-            this.cbLameCopyright.Text = "Copyright";
-            this.cbLameCopyright.UseVisualStyleBackColor = true;
             // 
             // tabPage1
             // 
@@ -1450,7 +804,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(347, 434);
+            this.tabPage1.Size = new System.Drawing.Size(347, 436);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Input & output devices";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1458,7 +812,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(171, 197);
+            this.label55.Location = new System.Drawing.Point(171, 247);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(46, 13);
             this.label55.TabIndex = 90;
@@ -1467,7 +821,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // tbAudioBalance
             // 
             this.tbAudioBalance.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAudioBalance.Location = new System.Drawing.Point(222, 192);
+            this.tbAudioBalance.Location = new System.Drawing.Point(222, 242);
             this.tbAudioBalance.Maximum = 100;
             this.tbAudioBalance.Minimum = -100;
             this.tbAudioBalance.Name = "tbAudioBalance";
@@ -1480,7 +834,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(7, 197);
+            this.label54.Location = new System.Drawing.Point(7, 247);
             this.label54.Name = "label54";
             this.label54.Size = new System.Drawing.Size(42, 13);
             this.label54.TabIndex = 88;
@@ -1489,7 +843,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // tbAudioVolume
             // 
             this.tbAudioVolume.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAudioVolume.Location = new System.Drawing.Point(54, 192);
+            this.tbAudioVolume.Location = new System.Drawing.Point(54, 242);
             this.tbAudioVolume.Maximum = 100;
             this.tbAudioVolume.Minimum = 20;
             this.tbAudioVolume.Name = "tbAudioVolume";
@@ -1506,7 +860,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.cbPlayAudio.AutoSize = true;
             this.cbPlayAudio.Checked = true;
             this.cbPlayAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbPlayAudio.Location = new System.Drawing.Point(266, 148);
+            this.cbPlayAudio.Location = new System.Drawing.Point(266, 198);
             this.cbPlayAudio.Name = "cbPlayAudio";
             this.cbPlayAudio.Size = new System.Drawing.Size(75, 17);
             this.cbPlayAudio.TabIndex = 86;
@@ -1519,7 +873,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAudioOutputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAudioOutputDevice.FormattingEnabled = true;
-            this.cbAudioOutputDevice.Location = new System.Drawing.Point(9, 165);
+            this.cbAudioOutputDevice.Location = new System.Drawing.Point(9, 215);
             this.cbAudioOutputDevice.Name = "cbAudioOutputDevice";
             this.cbAudioOutputDevice.Size = new System.Drawing.Size(332, 21);
             this.cbAudioOutputDevice.TabIndex = 85;
@@ -1528,17 +882,17 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(6, 149);
+            this.label15.Location = new System.Drawing.Point(6, 199);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(102, 13);
+            this.label15.Size = new System.Drawing.Size(74, 13);
             this.label15.TabIndex = 84;
-            this.label15.Text = "Audio output device";
+            this.label15.Text = "Output device";
             // 
             // cbUseBestAudioInputFormat
             // 
             this.cbUseBestAudioInputFormat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbUseBestAudioInputFormat.AutoSize = true;
-            this.cbUseBestAudioInputFormat.Location = new System.Drawing.Point(276, 67);
+            this.cbUseBestAudioInputFormat.Location = new System.Drawing.Point(191, 122);
             this.cbUseBestAudioInputFormat.Name = "cbUseBestAudioInputFormat";
             this.cbUseBestAudioInputFormat.Size = new System.Drawing.Size(68, 17);
             this.cbUseBestAudioInputFormat.TabIndex = 83;
@@ -1563,7 +917,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.cbAudioInputLine.FormattingEnabled = true;
             this.cbAudioInputLine.Location = new System.Drawing.Point(9, 90);
             this.cbAudioInputLine.Name = "cbAudioInputLine";
-            this.cbAudioInputLine.Size = new System.Drawing.Size(161, 21);
+            this.cbAudioInputLine.Size = new System.Drawing.Size(250, 21);
             this.cbAudioInputLine.TabIndex = 81;
             this.cbAudioInputLine.SelectedIndexChanged += new System.EventHandler(this.cbAudioInputLine_SelectedIndexChanged);
             // 
@@ -1573,9 +927,9 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cbAudioInputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAudioInputFormat.FormattingEnabled = true;
-            this.cbAudioInputFormat.Location = new System.Drawing.Point(176, 90);
+            this.cbAudioInputFormat.Location = new System.Drawing.Point(9, 139);
             this.cbAudioInputFormat.Name = "cbAudioInputFormat";
-            this.cbAudioInputFormat.Size = new System.Drawing.Size(165, 21);
+            this.cbAudioInputFormat.Size = new System.Drawing.Size(250, 21);
             this.cbAudioInputFormat.TabIndex = 80;
             this.cbAudioInputFormat.SelectedIndexChanged += new System.EventHandler(this.cbAudioInputFormat_SelectedIndexChanged);
             // 
@@ -1596,42 +950,41 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(6, 68);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(79, 13);
+            this.label22.Size = new System.Drawing.Size(50, 13);
             this.label22.TabIndex = 78;
-            this.label22.Text = "Audio input line";
+            this.label22.Text = "Input line";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(6, 12);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(95, 13);
+            this.label23.Size = new System.Drawing.Size(66, 13);
             this.label23.TabIndex = 77;
-            this.label23.Text = "Audio input device";
+            this.label23.Text = "Input device";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(173, 68);
+            this.label25.Location = new System.Drawing.Point(6, 123);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(63, 13);
             this.label25.TabIndex = 76;
             this.label25.Text = "Input format";
             // 
-            // tabControl1
+            // tcMain
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tcMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(355, 460);
-            this.tabControl1.TabIndex = 50;
+            this.tcMain.Controls.Add(this.tabPage1);
+            this.tcMain.Controls.Add(this.tabPage2);
+            this.tcMain.Controls.Add(this.tabPage5);
+            this.tcMain.Controls.Add(this.tabPage4);
+            this.tcMain.Location = new System.Drawing.Point(12, 12);
+            this.tcMain.Name = "tcMain";
+            this.tcMain.SelectedIndex = 0;
+            this.tcMain.Size = new System.Drawing.Size(355, 462);
+            this.tcMain.TabIndex = 50;
             // 
             // llVideoTutorials
             // 
@@ -1645,114 +998,47 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.llVideoTutorials.Text = "Video tutorial";
             this.llVideoTutorials.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llVideoTutorials_LinkClicked);
             // 
-            // VideoCapture1
+            // lbTimestamp
             // 
-            this.VideoCapture1.Audio_CaptureDevice = "";
-            this.VideoCapture1.Audio_CaptureDevice_CustomLatency = 0;
-            this.VideoCapture1.Audio_CaptureDevice_Format = "";
-            this.VideoCapture1.Audio_CaptureDevice_Format_UseBest = true;
-            this.VideoCapture1.Audio_CaptureDevice_Line = "";
-            this.VideoCapture1.Audio_CaptureDevice_Path = null;
-            this.VideoCapture1.Audio_Decoder = null;
-            this.VideoCapture1.Audio_Effects_Enabled = false;
-            this.VideoCapture1.Audio_Effects_UseLegacyEffects = false;
-            this.VideoCapture1.Audio_Enhancer_Enabled = false;
-            this.VideoCapture1.Audio_OutputDevice = "Default DirectSound Device";
-            this.VideoCapture1.Audio_PlayAudio = true;
-            this.VideoCapture1.Audio_RecordAudio = true;
-            this.VideoCapture1.Audio_Sample_Grabber_Enabled = false;
-            this.VideoCapture1.Audio_VUMeter_Enabled = false;
-            this.VideoCapture1.Audio_VUMeter_Pro_Enabled = false;
-            this.VideoCapture1.Audio_VUMeter_Pro_Volume = 100;
-            this.VideoCapture1.BackColor = System.Drawing.Color.Black;
-            this.VideoCapture1.Barcode_Reader_Enabled = false;
-            this.VideoCapture1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
-            this.VideoCapture1.Debug_Dir = "";
-            this.VideoCapture1.Debug_Mode = false;
-            this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
-            this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
-            this.VideoCapture1.Decklink_Input_IREUSA = false;
-            this.VideoCapture1.Decklink_Input_SMPTE = false;
-            this.VideoCapture1.DirectCapture_Muxer = null;
-            this.VideoCapture1.DV_Decoder_Video_Resolution = VisioForge.Types.VFDVVideoResolution.Full;
-            this.VideoCapture1.Location = new System.Drawing.Point(173, 475);
-            this.VideoCapture1.Mode = VisioForge.Types.VFVideoCaptureMode.VideoCapture;
-            this.VideoCapture1.MPEG_Audio_Decoder = "";
-            this.VideoCapture1.MPEG_Video_Decoder = "";
-            this.VideoCapture1.MultiScreen_Enabled = false;
-            this.VideoCapture1.Name = "VideoCapture1";
-            this.VideoCapture1.Network_Streaming_Audio_Enabled = false;
-            this.VideoCapture1.Network_Streaming_Enabled = false;
-            this.VideoCapture1.Network_Streaming_Format = VisioForge.Types.VFNetworkStreamingFormat.WMV;
-            this.VideoCapture1.Network_Streaming_Network_Port = 10;
-            this.VideoCapture1.Network_Streaming_Output = null;
-            this.VideoCapture1.Network_Streaming_URL = "";
-            this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
-            this.VideoCapture1.Output_Filename = "";
-            this.VideoCapture1.Output_Format = null;
-            this.VideoCapture1.PIP_AddSampleGrabbers = false;
-            this.VideoCapture1.PIP_Mode = VisioForge.Types.VFPIPMode.Custom;
-            this.VideoCapture1.SeparateCapture_AutostartCapture = false;
-            this.VideoCapture1.SeparateCapture_Enabled = false;
-            this.VideoCapture1.SeparateCapture_Filename_Mask = "output %yyyy-%MM-%dd %hh-%mm-%ss.%ext";
-            this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
-            this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
-            this.VideoCapture1.Size = new System.Drawing.Size(26, 31);
-            this.VideoCapture1.Start_DelayEnabled = false;
-            this.VideoCapture1.TabIndex = 93;
-            this.VideoCapture1.TVTuner_Channel = 0;
-            this.VideoCapture1.TVTuner_Country = "";
-            this.VideoCapture1.TVTuner_FM_Tuning_StartFrequency = 80000000;
-            this.VideoCapture1.TVTuner_FM_Tuning_Step = 160000000;
-            this.VideoCapture1.TVTuner_FM_Tuning_StopFrequency = 0;
-            this.VideoCapture1.TVTuner_Frequency = 0;
-            this.VideoCapture1.TVTuner_InputType = "";
-            this.VideoCapture1.TVTuner_Name = "";
-            this.VideoCapture1.TVTuner_TVFormat = VisioForge.Types.VFTVTunerVideoFormat.PAL_D;
-            this.VideoCapture1.Video_CaptureDevice = "";
-            this.VideoCapture1.Video_CaptureDevice_Format = "";
-            this.VideoCapture1.Video_CaptureDevice_Format_UseBest = true;
-            this.VideoCapture1.Video_CaptureDevice_FrameRate = 0D;
-            this.VideoCapture1.Video_CaptureDevice_InternalMPEGEncoder_Name = "";
-            this.VideoCapture1.Video_CaptureDevice_IsAudioSource = false;
-            this.VideoCapture1.Video_CaptureDevice_Path = null;
-            this.VideoCapture1.Video_CaptureDevice_UseClosedCaptions = false;
-            this.VideoCapture1.Video_CaptureDevice_UseRAWSampleGrabber = false;
-            this.VideoCapture1.Video_Decoder = null;
-            this.VideoCapture1.Video_Effects_Enabled = false;
-            this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
-            this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
-            this.VideoCapture1.Video_Sample_Grabber_Enabled = false;
-            this.VideoCapture1.Video_Sample_Grabber_UseForVideoEffects = false;
-            this.VideoCapture1.Video_Still_Frames_Grabber_Enabled = false;
-            this.VideoCapture1.Virtual_Camera_Output_Enabled = false;
-            this.VideoCapture1.Virtual_Camera_Output_LicenseKey = null;
-            this.VideoCapture1.Visible = false;
-            this.VideoCapture1.VLC_Path = null;
-            this.VideoCapture1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.VideoCapture1_OnError);
-            this.VideoCapture1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoCapture1_OnLicenseRequired);
+            this.lbTimestamp.AutoSize = true;
+            this.lbTimestamp.Location = new System.Drawing.Point(104, 482);
+            this.lbTimestamp.Name = "lbTimestamp";
+            this.lbTimestamp.Size = new System.Drawing.Size(126, 13);
+            this.lbTimestamp.TabIndex = 94;
+            this.lbTimestamp.Text = "Recording time: 00:00:00";
+            // 
+            // cbMode
+            // 
+            this.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMode.FormattingEnabled = true;
+            this.cbMode.Items.AddRange(new object[] {
+            "Preview",
+            "Capture"});
+            this.cbMode.Location = new System.Drawing.Point(12, 477);
+            this.cbMode.Name = "cbMode";
+            this.cbMode.Size = new System.Drawing.Size(86, 21);
+            this.cbMode.TabIndex = 95;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 507);
-            this.Controls.Add(this.VideoCapture1);
+            this.ClientSize = new System.Drawing.Size(380, 509);
+            this.Controls.Add(this.cbMode);
+            this.Controls.Add(this.lbTimestamp);
             this.Controls.Add(this.llVideoTutorials);
-            this.Controls.Add(this.rbCapture);
-            this.Controls.Add(this.rbPreview);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btStart);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tcMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "Audio Capture Demo - VisioForge Video Capture SDK .Net";
+            this.Text = "Audio Capture Demo - Video Capture SDK .Net";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage4.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabControl18.ResumeLayout(false);
             this.tabPage71.ResumeLayout(false);
@@ -1778,41 +1064,20 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             ((System.ComponentModel.ISupportInitialize)(this.tbAud3DSound)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
-            this.tabPage7.PerformLayout();
-            this.tabPage8.ResumeLayout(false);
-            this.tabControl4.ResumeLayout(false);
-            this.tabPage17.ResumeLayout(false);
-            this.tabPage17.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLameEncodingQuality)).EndInit();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbLameVBRQuality)).EndInit();
-            this.tabPage18.ResumeLayout(false);
-            this.tabPage18.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioBalance)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioVolume)).EndInit();
-            this.tabControl1.ResumeLayout(false);
+            this.tcMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.RadioButton rbCapture;
-        private System.Windows.Forms.RadioButton rbPreview;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox cbDebugMode;
-        private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.TabControl tabControl18;
         private System.Windows.Forms.TabPage tabPage71;
@@ -1868,59 +1133,11 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcMain;
         private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.TrackBar tbAud3DSound;
         private System.Windows.Forms.Label label253;
         private System.Windows.Forms.CheckBox cbAudSound3DEnabled;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.Button btAudioSettings;
-        private System.Windows.Forms.Label label67;
-        private System.Windows.Forms.ComboBox cbAudioCodecs;
-        private System.Windows.Forms.ComboBox cbSampleRate;
-        private System.Windows.Forms.Label label68;
-        private System.Windows.Forms.ComboBox cbBPS;
-        private System.Windows.Forms.Label label69;
-        private System.Windows.Forms.ComboBox cbChannels;
-        private System.Windows.Forms.Label label70;
-        private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.TabControl tabControl4;
-        private System.Windows.Forms.TabPage tabPage17;
-        private System.Windows.Forms.Label label71;
-        private System.Windows.Forms.TrackBar tbLameEncodingQuality;
-        private System.Windows.Forms.Label label72;
-        private System.Windows.Forms.Label label73;
-        private System.Windows.Forms.ComboBox cbLameSampleRate;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.RadioButton rbLameMono;
-        private System.Windows.Forms.RadioButton rbLameDualChannels;
-        private System.Windows.Forms.RadioButton rbLameJointStereo;
-        private System.Windows.Forms.RadioButton rbLameStandardStereo;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.Label label74;
-        private System.Windows.Forms.TrackBar tbLameVBRQuality;
-        private System.Windows.Forms.ComboBox cbLameVBRMax;
-        private System.Windows.Forms.Label label75;
-        private System.Windows.Forms.Label label76;
-        private System.Windows.Forms.ComboBox cbLameVBRMin;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.ComboBox cbLameCBRBitrate;
-        private System.Windows.Forms.RadioButton rbLameVBR;
-        private System.Windows.Forms.RadioButton rbLameCBR;
-        private System.Windows.Forms.TabPage tabPage18;
-        private System.Windows.Forms.CheckBox cbLameVoiceEncodingMode;
-        private System.Windows.Forms.CheckBox cbLameModeFixed;
-        private System.Windows.Forms.CheckBox cbLameEnableXingVBRTag;
-        private System.Windows.Forms.CheckBox cbLameDisableShortBlocks;
-        private System.Windows.Forms.CheckBox cbLameStrictISOCompilance;
-        private System.Windows.Forms.CheckBox cbLameKeepAllFrequencies;
-        private System.Windows.Forms.CheckBox cbLameStrictlyEnforceVBRMinBitrate;
-        private System.Windows.Forms.CheckBox cbLameForceMono;
-        private System.Windows.Forms.CheckBox cbLameCRCProtected;
-        private System.Windows.Forms.CheckBox cbLameOriginal;
-        private System.Windows.Forms.CheckBox cbLameCopyright;
         private System.Windows.Forms.ComboBox cbOutputFormat;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btSelectOutput;
@@ -1928,8 +1145,13 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         internal System.Windows.Forms.LinkLabel llVideoTutorials;
-        private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
+        private System.Windows.Forms.Label lbInfo;
+        private System.Windows.Forms.Button btOutputConfigure;
         private System.Windows.Forms.CheckBox cbLicensing;
+        private System.Windows.Forms.CheckBox cbDebugMode;
+        private System.Windows.Forms.TextBox mmLog;
+        private System.Windows.Forms.Label lbTimestamp;
+        private System.Windows.Forms.ComboBox cbMode;
     }
 }
 

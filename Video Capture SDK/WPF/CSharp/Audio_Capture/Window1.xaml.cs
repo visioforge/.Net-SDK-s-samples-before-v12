@@ -1,5 +1,10 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.UI.Dialogs;
+using VisioForge.Controls.UI.Dialogs.OutputFormats;
+using VisioForge.Controls.VideoCapture;
+using VisioForge.Tools;
+
 namespace Audio_Capture
 {
     using System;
@@ -9,7 +14,6 @@ namespace Audio_Capture
     using System.Windows.Controls;
     using System.Windows.Input;
 
-    using VisioForge.Controls.UI.WPF;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
 
@@ -17,27 +21,41 @@ namespace Audio_Capture
     {
         private readonly Microsoft.Win32.SaveFileDialog saveFileDialog1 = new Microsoft.Win32.SaveFileDialog();
 
+        private PCMSettingsDialog pcmSettingsDialog;
+
+        private MP3SettingsDialog mp3SettingsDialog;
+
+        private FLACSettingsDialog flacSettingsDialog;
+
+        private OggVorbisSettingsDialog oggVorbisSettingsDialog;
+
+        private SpeexSettingsDialog speexSettingsDialog;
+
+        private M4ASettingsDialog m4aSettingsDialog;
+
+        private WMVSettingsDialog wmvSettingsDialog;
+
+        private readonly VideoCaptureCore VideoCapture1;
+
         public Window1()
         {
+            VideoCapture1 = new VideoCaptureCore();
+            VideoCapture1.OnError += VideoCapture1_OnError;
+            VideoCapture1.OnAudioFrameBuffer += VideoCapture1_OnAudioFrameBuffer;
+            VideoCapture1.OnLicenseRequired += VideoCapture1_OnLicenseRequired;
+            VideoCapture1.OnStop += VideoCapture1_OnStop;
+
             InitializeComponent();
+
+            System.Windows.Forms.Application.EnableVisualStyles();
         }
         
         private void Form1_Load(object sender, RoutedEventArgs e)
         {
-            Title += " (SDK v" + VideoCapture1.SDK_Version + ", " + VideoCapture1.SDK_State + ")";
+            Title += " (SDK v" + VideoCaptureCore.SDK_Version + ", " + VideoCaptureCore.SDK_State + ")";
+            cbMode.SelectedIndex = 0;
 
-            foreach (var codec in VideoCapture1.Audio_Codecs)
-            {
-                cbAudioCodecs.Items.Add(codec);
-            }
-
-            if (cbAudioCodecs.Items.Count > 0)
-            {
-                cbAudioCodecs.SelectedIndex = 0;
-                cbAudioCodecs_SelectedIndexChanged(null, null);
-            }
-
-            foreach (var device in VideoCapture1.Audio_CaptureDevicesInfo)
+            foreach (var device in VideoCapture1.Audio_CaptureDevices())
             {
                 cbAudioInputDevice.Items.Add(device.Name);
             }
@@ -53,7 +71,7 @@ namespace Audio_Capture
             if (!string.IsNullOrEmpty(cbAudioInputDevice.Text))
             {
                 var deviceItem =
-                    VideoCapture1.Audio_CaptureDevicesInfo.First(device => device.Name == cbAudioInputDevice.Text);
+                    VideoCapture1.Audio_CaptureDevices().First(device => device.Name == cbAudioInputDevice.Text);
                 if (deviceItem != null)
                 {
                     foreach (var line in deviceItem.Lines)
@@ -70,69 +88,40 @@ namespace Audio_Capture
                 }
             }
 
-            foreach (var audioOutputDevice in VideoCapture1.Audio_OutputDevices)
+            string defaultAudioRenderer = string.Empty;
+            foreach (string audioOutputDevice in VideoCapture1.Audio_OutputDevices())
             {
                 cbAudioOutputDevice.Items.Add(audioOutputDevice);
+
+                if (audioOutputDevice.Contains("Default DirectSound Device"))
+                {
+                    defaultAudioRenderer = audioOutputDevice;
+                }
             }
 
             if (cbAudioOutputDevice.Items.Count > 0)
             {
-                cbAudioOutputDevice.SelectedIndex = 0;
-            }
+                if (string.IsNullOrEmpty(defaultAudioRenderer))
+                {
+                    cbAudioOutputDevice.SelectedIndex = 0;
+                }
+                else
+                {
+                    cbAudioOutputDevice.Text = defaultAudioRenderer;
+                }
 
-            if (cbAudioCodecs.Items.IndexOf("PCM") != -1)
-            {
-                cbAudioCodecs.SelectedIndex = cbAudioCodecs.Items.IndexOf("PCM");
+                cbAudioOutputDevice_SelectedIndexChanged(null, null);
             }
-
-            cbAudioCodecs_SelectedIndexChanged(null, null);
 
             foreach (var preset in VideoCapture1.Audio_Effects_Equalizer_Presets())
             {
                 cbAudEqualizerPreset.Items.Add(preset);
             }
 
-            cbOutputFormat.SelectedIndex = 0;
-            cbChannels.SelectedIndex = 0;
-            cbSampleRate.SelectedIndex = 0;
-            cbBPS.SelectedIndex = 0;
-            cbLameCBRBitrate.SelectedIndex = 0;
-            cbLameVBRMax.SelectedIndex = 0;
-            cbLameVBRMin.SelectedIndex = 0;
-            cbLameSampleRate.SelectedIndex = 0;
             cbAudEqualizerPreset.SelectedIndex = 0;
             cbAudEqualizerPreset_SelectedIndexChanged(null, null);
 
-            edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.wav";
-        }
-
-        private void cbAudioCodecs_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (e == null || e.AddedItems.Count == 0)
-            {
-                return;
-            }
-
-            string name = e.AddedItems[0].ToString();
-            btAudioSettings.IsEnabled = VideoCapture.Audio_Codec_Has_Dialog(name, VFPropertyPage.Default) ||
-                VideoCapture.Audio_Codec_Has_Dialog(name, VFPropertyPage.VFWCompConfig);
-        }
-
-        private void btAudioSettings_Click(object sender, RoutedEventArgs e)
-        {
-            string name = cbAudioCodecs.Text;
-
-            if (VideoCapture.Audio_Codec_Has_Dialog(name, VFPropertyPage.Default))
-            {
-                VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, name, VFPropertyPage.Default);
-            }
-            else
-            {
-                if (VideoCapture.Audio_Codec_Has_Dialog(name, VFPropertyPage.VFWCompConfig))
-                {
-                    VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, name, VFPropertyPage.VFWCompConfig);
-                }
-            }
+            edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.mp3";
         }
 
         private void cbAudioInputDevice_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
@@ -142,20 +131,32 @@ namespace Audio_Capture
                 VideoCapture1.Audio_CaptureDevice = e.AddedItems[0].ToString();
                 cbAudioInputFormat.Items.Clear();
 
-                var deviceItem = VideoCapture1.Audio_CaptureDevicesInfo.First(device => device.Name == e.AddedItems[0].ToString());
+                var deviceItem = VideoCapture1.Audio_CaptureDevices().First(device => device.Name == e.AddedItems[0].ToString());
                 if (deviceItem == null)
                 {
                     return;
                 }
 
-                foreach (var format in deviceItem.Formats)
+                var defaultValue = "PCM, 44100 Hz, 16 Bits, 2 Channels";
+                var defaultValueExists = false;
+                foreach (string format in deviceItem.Formats)
                 {
                     cbAudioInputFormat.Items.Add(format);
+
+                    if (defaultValue == format)
+                    {
+                        defaultValueExists = true;
+                    }
                 }
 
                 if (cbAudioInputFormat.Items.Count > 0)
                 {
                     cbAudioInputFormat.SelectedIndex = 0;
+
+                    if (defaultValueExists)
+                    {
+                        cbAudioInputFormat.Text = defaultValue;
+                    }
                 }
 
                 cbAudioInputFormat_SelectedIndexChanged(null, null);
@@ -220,10 +221,7 @@ namespace Audio_Capture
 
         private void tbAudioVolume_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (VideoCapture1 != null)
-            {
-                VideoCapture1.Audio_OutputDevice_Volume_Set((int)tbAudioVolume.Value);
-            }
+            VideoCapture1?.Audio_OutputDevice_Volume_Set((int)tbAudioVolume.Value);
         }
 
         private void tbAudioBalance_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -239,7 +237,7 @@ namespace Audio_Capture
 
         private void tbAudAmplifyAmp_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            this.VideoCapture1?.Audio_Effects_Amplify(-1, 0, (int)this.tbAudAmplifyAmp.Value * 10, false);
+            VideoCapture1?.Audio_Effects_Amplify(-1, 0, (int)tbAudAmplifyAmp.Value * 10, false);
         }
 
         private void cbAudEqualizerEnabled_CheckedChanged(object sender, RoutedEventArgs e)
@@ -350,6 +348,78 @@ namespace Audio_Capture
             }
         }
 
+
+        private void SetWMAOutput(ref VFWMAOutput wmaOutput)
+        {
+            if (wmvSettingsDialog == null)
+            {
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
+            }
+
+            wmvSettingsDialog.WMA = true;
+            wmvSettingsDialog.FillSettings(ref wmaOutput);
+        }
+
+        private void SetACMOutput(ref VFACMOutput acmOutput)
+        {
+            if (pcmSettingsDialog == null)
+            {
+                pcmSettingsDialog = new PCMSettingsDialog(VideoCapture1.Audio_Codecs().ToArray());
+            }
+
+            pcmSettingsDialog.FillSettings(ref acmOutput);
+        }
+
+        private void SetMP3Output(ref VFMP3Output mp3Output)
+        {
+            if (mp3SettingsDialog == null)
+            {
+                mp3SettingsDialog = new MP3SettingsDialog();
+            }
+
+            mp3SettingsDialog.FillSettings(ref mp3Output);
+        }
+
+        private void SetFLACOutput(ref VFFLACOutput flacOutput)
+        {
+            if (flacSettingsDialog == null)
+            {
+                flacSettingsDialog = new FLACSettingsDialog();
+            }
+
+            flacSettingsDialog.FillSettings(ref flacOutput);
+        }
+
+        private void SetSpeexOutput(ref VFSpeexOutput speexOutput)
+        {
+            if (speexSettingsDialog == null)
+            {
+                speexSettingsDialog = new SpeexSettingsDialog();
+            }
+
+            speexSettingsDialog.FillSettings(ref speexOutput);
+        }
+
+        public void SetM4AOutput(ref VFM4AOutput m4aOutput)
+        {
+            if (m4aSettingsDialog == null)
+            {
+                m4aSettingsDialog = new M4ASettingsDialog();
+            }
+
+            m4aSettingsDialog.FillSettings(ref m4aOutput);
+        }
+
+        private void SetOGGOutput(ref VFOGGVorbisOutput oggVorbisOutput)
+        {
+            if (oggVorbisSettingsDialog == null)
+            {
+                oggVorbisSettingsDialog = new OggVorbisSettingsDialog();
+            }
+
+            oggVorbisSettingsDialog.FillSettings(ref oggVorbisOutput);
+        }
+        
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
             mmLog.Clear();
@@ -363,9 +433,9 @@ namespace Audio_Capture
             VideoCapture1.Audio_CaptureDevice_Format_UseBest = false;
             VideoCapture1.Audio_CaptureDevice_Line = cbAudioInputLine.Text;
             VideoCapture1.Audio_PlayAudio = cbPlayAudio.IsChecked == true;
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.None;
+            VideoCapture1.Video_Renderer.VideoRendererInternal = VFVideoRendererInternal.None;
 
-            if (rbPreview.IsChecked == true)
+            if (cbMode.SelectedIndex == 0)
             {
                 VideoCapture1.Mode = VFVideoCaptureMode.AudioPreview;
                 VideoCapture1.Audio_RecordAudio = true;
@@ -376,62 +446,64 @@ namespace Audio_Capture
                 VideoCapture1.Audio_RecordAudio = true;
                 VideoCapture1.Output_Filename = edOutput.Text;
 
-                if (cbOutputFormat.SelectedIndex == 0)
+                switch (cbOutputFormat.SelectedIndex)
                 {
-                    var acmOutput = new VFACMOutput();
+                    case 0:
+                        {
+                            var acmOutput = new VFACMOutput();
+                            SetACMOutput(ref acmOutput);
+                            VideoCapture1.Output_Format = acmOutput;
 
-                    acmOutput.Name = cbAudioCodecs.Text;
-                    acmOutput.Channels = Convert.ToInt32(cbChannels.Text);
-                    acmOutput.BPS = Convert.ToInt32(cbBPS.Text);
-                    acmOutput.SampleRate = Convert.ToInt32(cbSampleRate.Text);
+                            break;
+                        }
+                    case 1:
+                        {
+                            var mp3Output = new VFMP3Output();
+                            SetMP3Output(ref mp3Output);
+                            VideoCapture1.Output_Format = mp3Output;
 
-                    VideoCapture1.Output_Format = acmOutput;
-                }
-                else
-                {
-                    var mp3Output = new VFMP3Output();
-                    
-                    //main
-                    mp3Output.CBR_Bitrate = Convert.ToInt32(cbLameCBRBitrate.Text);
-                    mp3Output.VBR_MinBitrate = Convert.ToInt32(cbLameVBRMin.Text);
-                    mp3Output.VBR_MaxBitrate = Convert.ToInt32(cbLameVBRMax.Text);
-                    mp3Output.SampleRate = Convert.ToInt32(cbLameSampleRate.Text);
-                    mp3Output.VBR_Quality = (int)tbLameVBRQuality.Value;
-                    mp3Output.EncodingQuality = (int)tbLameEncodingQuality.Value;
+                            break;
+                        }
+                    case 2:
+                        {
+                            var wmaOutput = new VFWMAOutput();
+                            SetWMAOutput(ref wmaOutput);
+                            VideoCapture1.Output_Format = wmaOutput;
 
-                    if (rbLameStandardStereo.IsChecked == true)
-                    {
-                        mp3Output.ChannelsMode = VFLameChannelsMode.StandardStereo;
-                    }
-                    else if (rbLameJointStereo.IsChecked == true)
-                    {
-                        mp3Output.ChannelsMode = VFLameChannelsMode.JointStereo;
-                    }
-                    else if (rbLameDualChannels.IsChecked == true)
-                    {
-                        mp3Output.ChannelsMode = VFLameChannelsMode.DualStereo;
-                    }
-                    else
-                    {
-                        mp3Output.ChannelsMode = VFLameChannelsMode.Mono;
-                    }
+                            break;
+                        }
+                    case 3:
+                        {
+                            var oggVorbisOutput = new VFOGGVorbisOutput();
+                            SetOGGOutput(ref oggVorbisOutput);
+                            VideoCapture1.Output_Format = oggVorbisOutput;
 
-                    mp3Output.VBR_Mode = rbLameVBR.IsChecked == true;
+                            break;
+                        }
+                    case 4:
+                        {
+                            var flacOutput = new VFFLACOutput();
+                            SetFLACOutput(ref flacOutput);
+                            VideoCapture1.Output_Format = flacOutput;
 
-                    // other
-                    mp3Output.Copyright = cbLameCopyright.IsChecked == true;
-                    mp3Output.Original = cbLameOriginal.IsChecked == true;
-                    mp3Output.CRCProtected = cbLameCRCProtected.IsChecked == true;
-                    mp3Output.ForceMono = cbLameForceMono.IsChecked == true;
-                    mp3Output.StrictlyEnforceVBRMinBitrate = cbLameStrictlyEnforceVBRMinBitrate.IsChecked == true;
-                    mp3Output.VoiceEncodingMode = cbLameVoiceEncodingMode.IsChecked == true;
-                    mp3Output.KeepAllFrequencies = cbLameKeepAllFrequencies.IsChecked == true;
-                    mp3Output.StrictISOCompliance = cbLameStrictISOCompilance.IsChecked == true;
-                    mp3Output.DisableShortBlocks = cbLameDisableShortBlocks.IsChecked == true;
-                    mp3Output.EnableXingVBRTag = cbLameEnableXingVBRTag.IsChecked == true;
-                    mp3Output.ModeFixed = cbLameModeFixed.IsChecked == true;
+                            break;
+                        }
+                    case 5:
+                        {
+                            var speexOutput = new VFSpeexOutput();
+                            SetSpeexOutput(ref speexOutput);
+                            VideoCapture1.Output_Format = speexOutput;
 
-                    VideoCapture1.Output_Format = mp3Output;
+                            break;
+                        }
+                    case 6:
+                        {
+                            var m4aOutput = new VFM4AOutput();
+                            SetM4AOutput(ref m4aOutput);
+                            VideoCapture1.Output_Format = m4aOutput;
+
+                            break;
+                        }
                 }
             }
 
@@ -469,6 +541,165 @@ namespace Audio_Capture
             {
                 mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
+        }
+
+        private void btOutputConfigure_Click(object sender, RoutedEventArgs e)
+        {
+            switch (cbOutputFormat.SelectedIndex)
+            {
+                case 0:
+                    {
+                        if (pcmSettingsDialog == null)
+                        {
+                            pcmSettingsDialog = new PCMSettingsDialog(VideoCapture1.Audio_Codecs().ToArray());
+                        }
+
+                        pcmSettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+                case 1:
+                    {
+                        if (mp3SettingsDialog == null)
+                        {
+                            mp3SettingsDialog = new MP3SettingsDialog();
+                        }
+
+                        mp3SettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+                case 2:
+                    {
+                        if (wmvSettingsDialog == null)
+                        {
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
+                        }
+
+                        wmvSettingsDialog.WMA = true;
+                        wmvSettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+                case 3:
+                    {
+                        if (oggVorbisSettingsDialog == null)
+                        {
+                            oggVorbisSettingsDialog = new OggVorbisSettingsDialog();
+                        }
+
+                        oggVorbisSettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+                case 4:
+                    {
+                        if (flacSettingsDialog == null)
+                        {
+                            flacSettingsDialog = new FLACSettingsDialog();
+                        }
+
+                        flacSettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+                case 5:
+                    {
+                        if (speexSettingsDialog == null)
+                        {
+                            speexSettingsDialog = new SpeexSettingsDialog();
+                        }
+
+                        speexSettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+                case 6:
+                    {
+                        if (m4aSettingsDialog == null)
+                        {
+                            m4aSettingsDialog = new M4ASettingsDialog();
+                        }
+
+                        m4aSettingsDialog.ShowDialog(this);
+
+                        break;
+                    }
+            }
+        }
+
+        private void cbOutputFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (edOutput == null)
+            {
+                return;
+            }
+
+            switch (cbOutputFormat.SelectedIndex)
+            {
+                case 0:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wav");
+                    break;
+                }
+                case 1:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp3");
+                    break;
+                }
+                case 2:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wma");
+                    break;
+                }
+                case 3:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg");
+                    break;
+                }
+                case 4:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".flac");
+                    break;
+                }
+                case 5:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg");
+                    break;
+                }
+                case 6:
+                {
+                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".m4a");
+                    break;
+                }
+            }
+        }
+
+        private void VideoCapture1_OnAudioFrameBuffer(object sender, AudioFrameBufferEventArgs e)
+        {
+            if (e.Timestamp < 0)
+            {
+                return;
+            }
+
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                TimeSpan ts = TimeSpan.FromMilliseconds(e.Timestamp);
+                lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
+            }));
+        }
+
+        private void VideoCapture1_OnStop(object sender, EventArgs e)
+        {
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                lbTimestamp.Text = "Recording time: 00:00:00";
+            }));
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            btStop_Click(null, null);
         }
     }
 }

@@ -120,107 +120,23 @@ namespace Media_Player_Demo
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabControl17 = new System.Windows.Forms.TabControl();
             this.tabPage68 = new System.Windows.Forms.TabPage();
+            this.cbFlipY = new System.Windows.Forms.CheckBox();
+            this.cbFlipX = new System.Windows.Forms.CheckBox();
             this.label201 = new System.Windows.Forms.Label();
             this.label200 = new System.Windows.Forms.Label();
             this.label199 = new System.Windows.Forms.Label();
             this.label198 = new System.Windows.Forms.Label();
             this.tabControl7 = new System.Windows.Forms.TabControl();
             this.tabPage29 = new System.Windows.Forms.TabPage();
-            this.cbTextLogoDateTime = new System.Windows.Forms.CheckBox();
-            this.btTextLogoUpdateParams = new System.Windows.Forms.Button();
-            this.tabControl8 = new System.Windows.Forms.TabControl();
-            this.tabPage35 = new System.Windows.Forms.TabPage();
-            this.label20 = new System.Windows.Forms.Label();
-            this.pnTextLogoBGColor = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
-            this.cbTextLogoTranspBG = new System.Windows.Forms.CheckBox();
-            this.cbTextLogoRightToLeft = new System.Windows.Forms.CheckBox();
-            this.cbTextLogoVertical = new System.Windows.Forms.CheckBox();
-            this.cbTextLogoAlign = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.tbTextLogoTransp = new System.Windows.Forms.TrackBar();
-            this.tabPage36 = new System.Windows.Forms.TabPage();
-            this.cbTextLogoGradMode = new System.Windows.Forms.ComboBox();
-            this.label107 = new System.Windows.Forms.Label();
-            this.pnTextLogoGradColor2 = new System.Windows.Forms.Panel();
-            this.label135 = new System.Windows.Forms.Label();
-            this.pnTextLogoGradColor1 = new System.Windows.Forms.Panel();
-            this.label136 = new System.Windows.Forms.Label();
-            this.cbTextLogoGradientEnabled = new System.Windows.Forms.CheckBox();
-            this.tabPage37 = new System.Windows.Forms.TabPage();
-            this.edTextLogoHeight = new System.Windows.Forms.TextBox();
-            this.label137 = new System.Windows.Forms.Label();
-            this.edTextLogoWidth = new System.Windows.Forms.TextBox();
-            this.label138 = new System.Windows.Forms.Label();
-            this.cbTextLogoUseRect = new System.Windows.Forms.CheckBox();
-            this.edTextLogoTop = new System.Windows.Forms.TextBox();
-            this.label139 = new System.Windows.Forms.Label();
-            this.edTextLogoLeft = new System.Windows.Forms.TextBox();
-            this.label140 = new System.Windows.Forms.Label();
-            this.tabPage38 = new System.Windows.Forms.TabPage();
-            this.cbTextLogoDrawMode = new System.Windows.Forms.ComboBox();
-            this.cbTextLogoAntialiasing = new System.Windows.Forms.ComboBox();
-            this.label141 = new System.Windows.Forms.Label();
-            this.label142 = new System.Windows.Forms.Label();
-            this.tabPage39 = new System.Windows.Forms.TabPage();
-            this.edTextLogoOuterSize = new System.Windows.Forms.TextBox();
-            this.label143 = new System.Windows.Forms.Label();
-            this.edTextLogoInnerSize = new System.Windows.Forms.TextBox();
-            this.label144 = new System.Windows.Forms.Label();
-            this.pnTextLogoOuterColor = new System.Windows.Forms.Panel();
-            this.label145 = new System.Windows.Forms.Label();
-            this.pnTextLogoInnerColor = new System.Windows.Forms.Panel();
-            this.label146 = new System.Windows.Forms.Label();
-            this.cbTextLogoEffectrMode = new System.Windows.Forms.ComboBox();
-            this.label147 = new System.Windows.Forms.Label();
-            this.tabPage40 = new System.Windows.Forms.TabPage();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.rbTextLogoFlipXY = new System.Windows.Forms.RadioButton();
-            this.rbTextLogoFlipY = new System.Windows.Forms.RadioButton();
-            this.rbTextLogoFlipX = new System.Windows.Forms.RadioButton();
-            this.rbTextLogoFlipNone = new System.Windows.Forms.RadioButton();
-            this.groupBox17 = new System.Windows.Forms.GroupBox();
-            this.rbTextLogoDegree270 = new System.Windows.Forms.RadioButton();
-            this.rbTextLogoDegree180 = new System.Windows.Forms.RadioButton();
-            this.rbTextLogoDegree90 = new System.Windows.Forms.RadioButton();
-            this.rbTextLogoDegree0 = new System.Windows.Forms.RadioButton();
-            this.tabPage41 = new System.Windows.Forms.TabPage();
-            this.edTextLogoShapeHeight = new System.Windows.Forms.TextBox();
-            this.label148 = new System.Windows.Forms.Label();
-            this.edTextLogoShapeWidth = new System.Windows.Forms.TextBox();
-            this.label149 = new System.Windows.Forms.Label();
-            this.edTextLogoShapeTop = new System.Windows.Forms.TextBox();
-            this.label150 = new System.Windows.Forms.Label();
-            this.edTextLogoShapeLeft = new System.Windows.Forms.TextBox();
-            this.label151 = new System.Windows.Forms.Label();
-            this.cbTextLogoShapeType = new System.Windows.Forms.ComboBox();
-            this.label152 = new System.Windows.Forms.Label();
-            this.pnTextLogoShapeColor = new System.Windows.Forms.Panel();
-            this.label153 = new System.Windows.Forms.Label();
-            this.cbTextLogoShapeEnabled = new System.Windows.Forms.CheckBox();
-            this.btFont = new System.Windows.Forms.Button();
-            this.edTextLogo = new System.Windows.Forms.TextBox();
-            this.cbTextLogo = new System.Windows.Forms.CheckBox();
+            this.btTextLogoRemove = new System.Windows.Forms.Button();
+            this.btTextLogoEdit = new System.Windows.Forms.Button();
+            this.lbTextLogos = new System.Windows.Forms.ListBox();
+            this.btTextLogoAdd = new System.Windows.Forms.Button();
             this.tabPage42 = new System.Windows.Forms.TabPage();
-            this.pnImageLogoColorKey = new System.Windows.Forms.Panel();
-            this.cbImageLogoUseColorKey = new System.Windows.Forms.CheckBox();
-            this.label154 = new System.Windows.Forms.Label();
-            this.tbImageLogoTransp = new System.Windows.Forms.TrackBar();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.cbImageLogoShowAlways = new System.Windows.Forms.CheckBox();
-            this.edImageLogoStopTime = new System.Windows.Forms.TextBox();
-            this.lbGraphicLogoStopTime = new System.Windows.Forms.Label();
-            this.edImageLogoStartTime = new System.Windows.Forms.TextBox();
-            this.lbGraphicLogoStartTime = new System.Windows.Forms.Label();
-            this.groupBox23 = new System.Windows.Forms.GroupBox();
-            this.edImageLogoTop = new System.Windows.Forms.TextBox();
-            this.label155 = new System.Windows.Forms.Label();
-            this.edImageLogoLeft = new System.Windows.Forms.TextBox();
-            this.label156 = new System.Windows.Forms.Label();
-            this.btSelectImage = new System.Windows.Forms.Button();
-            this.label157 = new System.Windows.Forms.Label();
-            this.edImageLogoFilename = new System.Windows.Forms.TextBox();
-            this.cbImageLogo = new System.Windows.Forms.CheckBox();
+            this.btImageLogoRemove = new System.Windows.Forms.Button();
+            this.btImageLogoEdit = new System.Windows.Forms.Button();
+            this.lbImageLogos = new System.Windows.Forms.ListBox();
+            this.btImageLogoAdd = new System.Windows.Forms.Button();
             this.tabPage18 = new System.Windows.Forms.TabPage();
             this.groupBox37 = new System.Windows.Forms.GroupBox();
             this.btEffZoomRight = new System.Windows.Forms.Button();
@@ -693,8 +609,6 @@ namespace Media_Player_Demo
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
-            this.cbTextLogoFadeOut = new System.Windows.Forms.CheckBox();
-            this.cbTextLogoFadeIn = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -722,21 +636,7 @@ namespace Media_Player_Demo
             this.tabPage68.SuspendLayout();
             this.tabControl7.SuspendLayout();
             this.tabPage29.SuspendLayout();
-            this.tabControl8.SuspendLayout();
-            this.tabPage35.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbTextLogoTransp)).BeginInit();
-            this.tabPage36.SuspendLayout();
-            this.tabPage37.SuspendLayout();
-            this.tabPage38.SuspendLayout();
-            this.tabPage39.SuspendLayout();
-            this.tabPage40.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox17.SuspendLayout();
-            this.tabPage41.SuspendLayout();
             this.tabPage42.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbImageLogoTransp)).BeginInit();
-            this.groupBox22.SuspendLayout();
-            this.groupBox23.SuspendLayout();
             this.tabPage18.SuspendLayout();
             this.groupBox37.SuspendLayout();
             this.tabPage19.SuspendLayout();
@@ -887,7 +787,7 @@ namespace Media_Player_Demo
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage1.Size = new System.Drawing.Size(301, 492);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Info";
@@ -896,6 +796,8 @@ namespace Media_Player_Demo
             // cbUseLibMediaInfo
             // 
             this.cbUseLibMediaInfo.AutoSize = true;
+            this.cbUseLibMediaInfo.Checked = true;
+            this.cbUseLibMediaInfo.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbUseLibMediaInfo.Location = new System.Drawing.Point(15, 373);
             this.cbUseLibMediaInfo.Name = "cbUseLibMediaInfo";
             this.cbUseLibMediaInfo.Size = new System.Drawing.Size(105, 17);
@@ -929,7 +831,7 @@ namespace Media_Player_Demo
             this.tabPage6.Controls.Add(this.mmInfo);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage6.Size = new System.Drawing.Size(264, 316);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "File";
@@ -956,7 +858,7 @@ namespace Media_Player_Demo
             this.tabPage7.Controls.Add(this.label1);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage7.Size = new System.Drawing.Size(264, 316);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "DVD";
@@ -1039,7 +941,7 @@ namespace Media_Player_Demo
             this.tabPage49.Controls.Add(this.btReadTags);
             this.tabPage49.Location = new System.Drawing.Point(4, 22);
             this.tabPage49.Name = "tabPage49";
-            this.tabPage49.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage49.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage49.Size = new System.Drawing.Size(264, 316);
             this.tabPage49.TabIndex = 2;
             this.tabPage49.Text = "Tags";
@@ -1099,7 +1001,7 @@ namespace Media_Player_Demo
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage2.Size = new System.Drawing.Size(301, 492);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Audio output";
@@ -1344,7 +1246,7 @@ namespace Media_Player_Demo
             this.tabPage3.Controls.Add(this.tabControl4);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage3.Size = new System.Drawing.Size(301, 492);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Display";
@@ -1378,7 +1280,7 @@ namespace Media_Player_Demo
             this.tabPage16.Controls.Add(this.cbAspectRatioUseCustom);
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage16.Size = new System.Drawing.Size(284, 454);
             this.tabPage16.TabIndex = 0;
             this.tabPage16.Text = "Main";
@@ -1680,7 +1582,7 @@ namespace Media_Player_Demo
             this.tabPage17.Controls.Add(this.pnScreen1);
             this.tabPage17.Location = new System.Drawing.Point(4, 22);
             this.tabPage17.Name = "tabPage17";
-            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage17.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage17.Size = new System.Drawing.Size(284, 454);
             this.tabPage17.TabIndex = 1;
             this.tabPage17.Text = "Multiscreen";
@@ -1793,7 +1695,7 @@ namespace Media_Player_Demo
             this.tabPage4.Controls.Add(this.tabControl17);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage4.Size = new System.Drawing.Size(301, 492);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Video processing";
@@ -1816,6 +1718,8 @@ namespace Media_Player_Demo
             // 
             // tabPage68
             // 
+            this.tabPage68.Controls.Add(this.cbFlipY);
+            this.tabPage68.Controls.Add(this.cbFlipX);
             this.tabPage68.Controls.Add(this.label201);
             this.tabPage68.Controls.Add(this.label200);
             this.tabPage68.Controls.Add(this.label199);
@@ -1830,11 +1734,33 @@ namespace Media_Player_Demo
             this.tabPage68.Controls.Add(this.cbEffects);
             this.tabPage68.Location = new System.Drawing.Point(4, 22);
             this.tabPage68.Name = "tabPage68";
-            this.tabPage68.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage68.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage68.Size = new System.Drawing.Size(290, 459);
             this.tabPage68.TabIndex = 0;
             this.tabPage68.Text = "Effects (SW)";
             this.tabPage68.UseVisualStyleBackColor = true;
+            // 
+            // cbFlipY
+            // 
+            this.cbFlipY.AutoSize = true;
+            this.cbFlipY.Location = new System.Drawing.Point(210, 158);
+            this.cbFlipY.Name = "cbFlipY";
+            this.cbFlipY.Size = new System.Drawing.Size(52, 17);
+            this.cbFlipY.TabIndex = 69;
+            this.cbFlipY.Text = "Flip Y";
+            this.cbFlipY.UseVisualStyleBackColor = true;
+            this.cbFlipY.CheckedChanged += new System.EventHandler(this.cbFlipY_CheckedChanged);
+            // 
+            // cbFlipX
+            // 
+            this.cbFlipX.AutoSize = true;
+            this.cbFlipX.Location = new System.Drawing.Point(150, 158);
+            this.cbFlipX.Name = "cbFlipX";
+            this.cbFlipX.Size = new System.Drawing.Size(52, 17);
+            this.cbFlipX.TabIndex = 68;
+            this.cbFlipX.Text = "Flip X";
+            this.cbFlipX.UseVisualStyleBackColor = true;
+            this.cbFlipX.CheckedChanged += new System.EventHandler(this.cbFlipX_CheckedChanged);
             // 
             // label201
             // 
@@ -1888,1059 +1814,116 @@ namespace Media_Player_Demo
             // 
             // tabPage29
             // 
-            this.tabPage29.Controls.Add(this.cbTextLogoDateTime);
-            this.tabPage29.Controls.Add(this.btTextLogoUpdateParams);
-            this.tabPage29.Controls.Add(this.tabControl8);
-            this.tabPage29.Controls.Add(this.btFont);
-            this.tabPage29.Controls.Add(this.edTextLogo);
-            this.tabPage29.Controls.Add(this.cbTextLogo);
+            this.tabPage29.Controls.Add(this.btTextLogoRemove);
+            this.tabPage29.Controls.Add(this.btTextLogoEdit);
+            this.tabPage29.Controls.Add(this.lbTextLogos);
+            this.tabPage29.Controls.Add(this.btTextLogoAdd);
             this.tabPage29.Location = new System.Drawing.Point(4, 22);
             this.tabPage29.Name = "tabPage29";
-            this.tabPage29.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage29.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage29.Size = new System.Drawing.Size(275, 248);
             this.tabPage29.TabIndex = 0;
             this.tabPage29.Text = "Text logo";
             this.tabPage29.UseVisualStyleBackColor = true;
             // 
-            // cbTextLogoDateTime
-            // 
-            this.cbTextLogoDateTime.AutoSize = true;
-            this.cbTextLogoDateTime.Location = new System.Drawing.Point(182, 6);
-            this.cbTextLogoDateTime.Name = "cbTextLogoDateTime";
-            this.cbTextLogoDateTime.Size = new System.Drawing.Size(83, 17);
-            this.cbTextLogoDateTime.TabIndex = 21;
-            this.cbTextLogoDateTime.Text = "Date / Time";
-            this.cbTextLogoDateTime.UseVisualStyleBackColor = true;
-            // 
-            // btTextLogoUpdateParams
-            // 
-            this.btTextLogoUpdateParams.Location = new System.Drawing.Point(194, 219);
-            this.btTextLogoUpdateParams.Name = "btTextLogoUpdateParams";
-            this.btTextLogoUpdateParams.Size = new System.Drawing.Size(75, 23);
-            this.btTextLogoUpdateParams.TabIndex = 19;
-            this.btTextLogoUpdateParams.Text = "Update";
-            this.btTextLogoUpdateParams.UseVisualStyleBackColor = true;
-            this.btTextLogoUpdateParams.Click += new System.EventHandler(this.btTextLogoUpdateParams_Click);
-            // 
-            // tabControl8
-            // 
-            this.tabControl8.Controls.Add(this.tabPage35);
-            this.tabControl8.Controls.Add(this.tabPage36);
-            this.tabControl8.Controls.Add(this.tabPage37);
-            this.tabControl8.Controls.Add(this.tabPage38);
-            this.tabControl8.Controls.Add(this.tabPage39);
-            this.tabControl8.Controls.Add(this.tabPage40);
-            this.tabControl8.Controls.Add(this.tabPage41);
-            this.tabControl8.Location = new System.Drawing.Point(8, 57);
-            this.tabControl8.Name = "tabControl8";
-            this.tabControl8.SelectedIndex = 0;
-            this.tabControl8.Size = new System.Drawing.Size(261, 156);
-            this.tabControl8.TabIndex = 18;
-            // 
-            // tabPage35
-            // 
-            this.tabPage35.Controls.Add(this.label20);
-            this.tabPage35.Controls.Add(this.pnTextLogoBGColor);
-            this.tabPage35.Controls.Add(this.label22);
-            this.tabPage35.Controls.Add(this.cbTextLogoTranspBG);
-            this.tabPage35.Controls.Add(this.cbTextLogoRightToLeft);
-            this.tabPage35.Controls.Add(this.cbTextLogoVertical);
-            this.tabPage35.Controls.Add(this.cbTextLogoAlign);
-            this.tabPage35.Controls.Add(this.label25);
-            this.tabPage35.Controls.Add(this.tbTextLogoTransp);
-            this.tabPage35.Location = new System.Drawing.Point(4, 22);
-            this.tabPage35.Name = "tabPage35";
-            this.tabPage35.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage35.Size = new System.Drawing.Size(253, 114);
-            this.tabPage35.TabIndex = 0;
-            this.tabPage35.Text = "Main";
-            this.tabPage35.UseVisualStyleBackColor = true;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(146, 65);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(103, 13);
-            this.label20.TabIndex = 26;
-            this.label20.Text = "Transparency (layer)";
-            // 
-            // pnTextLogoBGColor
-            // 
-            this.pnTextLogoBGColor.BackColor = System.Drawing.Color.Silver;
-            this.pnTextLogoBGColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnTextLogoBGColor.Location = new System.Drawing.Point(87, 83);
-            this.pnTextLogoBGColor.Name = "pnTextLogoBGColor";
-            this.pnTextLogoBGColor.Size = new System.Drawing.Size(24, 24);
-            this.pnTextLogoBGColor.TabIndex = 25;
-            this.pnTextLogoBGColor.Click += new System.EventHandler(this.pnTextLogoBGColor_Click);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(45, 88);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(31, 13);
-            this.label22.TabIndex = 24;
-            this.label22.Text = "Color";
-            // 
-            // cbTextLogoTranspBG
-            // 
-            this.cbTextLogoTranspBG.AutoSize = true;
-            this.cbTextLogoTranspBG.Checked = true;
-            this.cbTextLogoTranspBG.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbTextLogoTranspBG.Location = new System.Drawing.Point(15, 64);
-            this.cbTextLogoTranspBG.Name = "cbTextLogoTranspBG";
-            this.cbTextLogoTranspBG.Size = new System.Drawing.Size(122, 17);
-            this.cbTextLogoTranspBG.TabIndex = 23;
-            this.cbTextLogoTranspBG.Text = "Transp. background";
-            this.cbTextLogoTranspBG.UseVisualStyleBackColor = true;
-            // 
-            // cbTextLogoRightToLeft
-            // 
-            this.cbTextLogoRightToLeft.AutoSize = true;
-            this.cbTextLogoRightToLeft.Location = new System.Drawing.Point(149, 35);
-            this.cbTextLogoRightToLeft.Name = "cbTextLogoRightToLeft";
-            this.cbTextLogoRightToLeft.Size = new System.Drawing.Size(88, 17);
-            this.cbTextLogoRightToLeft.TabIndex = 22;
-            this.cbTextLogoRightToLeft.Text = "Right-To-Left";
-            this.cbTextLogoRightToLeft.UseVisualStyleBackColor = true;
-            // 
-            // cbTextLogoVertical
-            // 
-            this.cbTextLogoVertical.AutoSize = true;
-            this.cbTextLogoVertical.Location = new System.Drawing.Point(149, 16);
-            this.cbTextLogoVertical.Name = "cbTextLogoVertical";
-            this.cbTextLogoVertical.Size = new System.Drawing.Size(61, 17);
-            this.cbTextLogoVertical.TabIndex = 21;
-            this.cbTextLogoVertical.Text = "Vertical";
-            this.cbTextLogoVertical.UseVisualStyleBackColor = true;
-            // 
-            // cbTextLogoAlign
-            // 
-            this.cbTextLogoAlign.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTextLogoAlign.FormattingEnabled = true;
-            this.cbTextLogoAlign.Items.AddRange(new object[] {
-            "left",
-            "center",
-            "right"});
-            this.cbTextLogoAlign.Location = new System.Drawing.Point(48, 14);
-            this.cbTextLogoAlign.Name = "cbTextLogoAlign";
-            this.cbTextLogoAlign.Size = new System.Drawing.Size(71, 21);
-            this.cbTextLogoAlign.TabIndex = 20;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(12, 17);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(30, 13);
-            this.label25.TabIndex = 19;
-            this.label25.Text = "Align";
-            // 
-            // tbTextLogoTransp
-            // 
-            this.tbTextLogoTransp.BackColor = System.Drawing.SystemColors.Window;
-            this.tbTextLogoTransp.Location = new System.Drawing.Point(146, 84);
-            this.tbTextLogoTransp.Maximum = 255;
-            this.tbTextLogoTransp.Name = "tbTextLogoTransp";
-            this.tbTextLogoTransp.Size = new System.Drawing.Size(104, 45);
-            this.tbTextLogoTransp.TabIndex = 18;
-            this.tbTextLogoTransp.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.tbTextLogoTransp.Value = 127;
-            // 
-            // tabPage36
-            // 
-            this.tabPage36.Controls.Add(this.cbTextLogoGradMode);
-            this.tabPage36.Controls.Add(this.label107);
-            this.tabPage36.Controls.Add(this.pnTextLogoGradColor2);
-            this.tabPage36.Controls.Add(this.label135);
-            this.tabPage36.Controls.Add(this.pnTextLogoGradColor1);
-            this.tabPage36.Controls.Add(this.label136);
-            this.tabPage36.Controls.Add(this.cbTextLogoGradientEnabled);
-            this.tabPage36.Location = new System.Drawing.Point(4, 22);
-            this.tabPage36.Name = "tabPage36";
-            this.tabPage36.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage36.Size = new System.Drawing.Size(253, 114);
-            this.tabPage36.TabIndex = 1;
-            this.tabPage36.Text = "Gradient";
-            this.tabPage36.UseVisualStyleBackColor = true;
-            // 
-            // cbTextLogoGradMode
-            // 
-            this.cbTextLogoGradMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTextLogoGradMode.FormattingEnabled = true;
-            this.cbTextLogoGradMode.Items.AddRange(new object[] {
-            "Horizontal",
-            "Vertical",
-            "Forward diagonal",
-            "Backward diagonal"});
-            this.cbTextLogoGradMode.Location = new System.Drawing.Point(143, 69);
-            this.cbTextLogoGradMode.Name = "cbTextLogoGradMode";
-            this.cbTextLogoGradMode.Size = new System.Drawing.Size(104, 21);
-            this.cbTextLogoGradMode.TabIndex = 31;
-            // 
-            // label107
-            // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(140, 53);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(34, 13);
-            this.label107.TabIndex = 30;
-            this.label107.Text = "Mode";
-            // 
-            // pnTextLogoGradColor2
-            // 
-            this.pnTextLogoGradColor2.BackColor = System.Drawing.Color.Black;
-            this.pnTextLogoGradColor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnTextLogoGradColor2.Location = new System.Drawing.Point(87, 74);
-            this.pnTextLogoGradColor2.Name = "pnTextLogoGradColor2";
-            this.pnTextLogoGradColor2.Size = new System.Drawing.Size(24, 24);
-            this.pnTextLogoGradColor2.TabIndex = 29;
-            this.pnTextLogoGradColor2.Click += new System.EventHandler(this.pnTextLogoGradColor2_Click);
-            // 
-            // label135
-            // 
-            this.label135.AutoSize = true;
-            this.label135.Location = new System.Drawing.Point(37, 80);
-            this.label135.Name = "label135";
-            this.label135.Size = new System.Drawing.Size(40, 13);
-            this.label135.TabIndex = 28;
-            this.label135.Text = "Color 2";
-            // 
-            // pnTextLogoGradColor1
-            // 
-            this.pnTextLogoGradColor1.BackColor = System.Drawing.Color.White;
-            this.pnTextLogoGradColor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnTextLogoGradColor1.Location = new System.Drawing.Point(87, 42);
-            this.pnTextLogoGradColor1.Name = "pnTextLogoGradColor1";
-            this.pnTextLogoGradColor1.Size = new System.Drawing.Size(24, 24);
-            this.pnTextLogoGradColor1.TabIndex = 27;
-            this.pnTextLogoGradColor1.Click += new System.EventHandler(this.pnTextLogoGradColor1_Click);
-            // 
-            // label136
-            // 
-            this.label136.AutoSize = true;
-            this.label136.Location = new System.Drawing.Point(37, 48);
-            this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(40, 13);
-            this.label136.TabIndex = 26;
-            this.label136.Text = "Color 1";
-            // 
-            // cbTextLogoGradientEnabled
-            // 
-            this.cbTextLogoGradientEnabled.AutoSize = true;
-            this.cbTextLogoGradientEnabled.Location = new System.Drawing.Point(12, 12);
-            this.cbTextLogoGradientEnabled.Name = "cbTextLogoGradientEnabled";
-            this.cbTextLogoGradientEnabled.Size = new System.Drawing.Size(65, 17);
-            this.cbTextLogoGradientEnabled.TabIndex = 0;
-            this.cbTextLogoGradientEnabled.Text = "Enabled";
-            this.cbTextLogoGradientEnabled.UseVisualStyleBackColor = true;
-            // 
-            // tabPage37
-            // 
-            this.tabPage37.Controls.Add(this.edTextLogoHeight);
-            this.tabPage37.Controls.Add(this.label137);
-            this.tabPage37.Controls.Add(this.edTextLogoWidth);
-            this.tabPage37.Controls.Add(this.label138);
-            this.tabPage37.Controls.Add(this.cbTextLogoUseRect);
-            this.tabPage37.Controls.Add(this.edTextLogoTop);
-            this.tabPage37.Controls.Add(this.label139);
-            this.tabPage37.Controls.Add(this.edTextLogoLeft);
-            this.tabPage37.Controls.Add(this.label140);
-            this.tabPage37.Location = new System.Drawing.Point(4, 22);
-            this.tabPage37.Name = "tabPage37";
-            this.tabPage37.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage37.Size = new System.Drawing.Size(253, 114);
-            this.tabPage37.TabIndex = 2;
-            this.tabPage37.Text = "Position";
-            this.tabPage37.UseVisualStyleBackColor = true;
-            // 
-            // edTextLogoHeight
-            // 
-            this.edTextLogoHeight.Location = new System.Drawing.Point(193, 71);
-            this.edTextLogoHeight.Name = "edTextLogoHeight";
-            this.edTextLogoHeight.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoHeight.TabIndex = 8;
-            this.edTextLogoHeight.Text = "100";
-            // 
-            // label137
-            // 
-            this.label137.AutoSize = true;
-            this.label137.Location = new System.Drawing.Point(151, 74);
-            this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(38, 13);
-            this.label137.TabIndex = 7;
-            this.label137.Text = "Height";
-            // 
-            // edTextLogoWidth
-            // 
-            this.edTextLogoWidth.Location = new System.Drawing.Point(193, 45);
-            this.edTextLogoWidth.Name = "edTextLogoWidth";
-            this.edTextLogoWidth.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoWidth.TabIndex = 6;
-            this.edTextLogoWidth.Text = "200";
-            // 
-            // label138
-            // 
-            this.label138.AutoSize = true;
-            this.label138.Location = new System.Drawing.Point(151, 48);
-            this.label138.Name = "label138";
-            this.label138.Size = new System.Drawing.Size(35, 13);
-            this.label138.TabIndex = 5;
-            this.label138.Text = "Width";
-            // 
-            // cbTextLogoUseRect
-            // 
-            this.cbTextLogoUseRect.AutoSize = true;
-            this.cbTextLogoUseRect.Location = new System.Drawing.Point(132, 18);
-            this.cbTextLogoUseRect.Name = "cbTextLogoUseRect";
-            this.cbTextLogoUseRect.Size = new System.Drawing.Size(66, 17);
-            this.cbTextLogoUseRect.TabIndex = 4;
-            this.cbTextLogoUseRect.Text = "Use rect";
-            this.cbTextLogoUseRect.UseVisualStyleBackColor = true;
-            // 
-            // edTextLogoTop
-            // 
-            this.edTextLogoTop.Location = new System.Drawing.Point(62, 42);
-            this.edTextLogoTop.Name = "edTextLogoTop";
-            this.edTextLogoTop.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoTop.TabIndex = 3;
-            this.edTextLogoTop.Text = "50";
-            // 
-            // label139
-            // 
-            this.label139.AutoSize = true;
-            this.label139.Location = new System.Drawing.Point(20, 45);
-            this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(26, 13);
-            this.label139.TabIndex = 2;
-            this.label139.Text = "Top";
-            // 
-            // edTextLogoLeft
-            // 
-            this.edTextLogoLeft.Location = new System.Drawing.Point(62, 16);
-            this.edTextLogoLeft.Name = "edTextLogoLeft";
-            this.edTextLogoLeft.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoLeft.TabIndex = 1;
-            this.edTextLogoLeft.Text = "50";
-            // 
-            // label140
-            // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(20, 19);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(25, 13);
-            this.label140.TabIndex = 0;
-            this.label140.Text = "Left";
-            // 
-            // tabPage38
-            // 
-            this.tabPage38.Controls.Add(this.cbTextLogoDrawMode);
-            this.tabPage38.Controls.Add(this.cbTextLogoAntialiasing);
-            this.tabPage38.Controls.Add(this.label141);
-            this.tabPage38.Controls.Add(this.label142);
-            this.tabPage38.Location = new System.Drawing.Point(4, 22);
-            this.tabPage38.Name = "tabPage38";
-            this.tabPage38.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage38.Size = new System.Drawing.Size(253, 114);
-            this.tabPage38.TabIndex = 3;
-            this.tabPage38.Text = "Quality";
-            this.tabPage38.UseVisualStyleBackColor = true;
-            // 
-            // cbTextLogoDrawMode
-            // 
-            this.cbTextLogoDrawMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTextLogoDrawMode.FormattingEnabled = true;
-            this.cbTextLogoDrawMode.Items.AddRange(new object[] {
-            "Bicubic HQ",
-            "Bilinear HQ",
-            "Nearest Neighbor",
-            "Bicubic",
-            "Bilinear",
-            "Standard HQ",
-            "Standard LQ,",
-            "System default"});
-            this.cbTextLogoDrawMode.Location = new System.Drawing.Point(97, 41);
-            this.cbTextLogoDrawMode.Name = "cbTextLogoDrawMode";
-            this.cbTextLogoDrawMode.Size = new System.Drawing.Size(121, 21);
-            this.cbTextLogoDrawMode.TabIndex = 3;
-            // 
-            // cbTextLogoAntialiasing
-            // 
-            this.cbTextLogoAntialiasing.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTextLogoAntialiasing.FormattingEnabled = true;
-            this.cbTextLogoAntialiasing.Items.AddRange(new object[] {
-            "System default",
-            "Single Bit Per Pixel (Grid Fit)",
-            "Single Bit Per Pixel",
-            "AntiAlias (GridFit)",
-            "AntiAlias",
-            "ClearType"});
-            this.cbTextLogoAntialiasing.Location = new System.Drawing.Point(97, 14);
-            this.cbTextLogoAntialiasing.Name = "cbTextLogoAntialiasing";
-            this.cbTextLogoAntialiasing.Size = new System.Drawing.Size(121, 21);
-            this.cbTextLogoAntialiasing.TabIndex = 2;
-            // 
-            // label141
-            // 
-            this.label141.AutoSize = true;
-            this.label141.Location = new System.Drawing.Point(12, 44);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(61, 13);
-            this.label141.TabIndex = 1;
-            this.label141.Text = "Draw mode";
-            // 
-            // label142
-            // 
-            this.label142.AutoSize = true;
-            this.label142.Location = new System.Drawing.Point(12, 17);
-            this.label142.Name = "label142";
-            this.label142.Size = new System.Drawing.Size(60, 13);
-            this.label142.TabIndex = 0;
-            this.label142.Text = "Antialiasing";
-            // 
-            // tabPage39
-            // 
-            this.tabPage39.Controls.Add(this.cbTextLogoFadeOut);
-            this.tabPage39.Controls.Add(this.cbTextLogoFadeIn);
-            this.tabPage39.Controls.Add(this.edTextLogoOuterSize);
-            this.tabPage39.Controls.Add(this.label143);
-            this.tabPage39.Controls.Add(this.edTextLogoInnerSize);
-            this.tabPage39.Controls.Add(this.label144);
-            this.tabPage39.Controls.Add(this.pnTextLogoOuterColor);
-            this.tabPage39.Controls.Add(this.label145);
-            this.tabPage39.Controls.Add(this.pnTextLogoInnerColor);
-            this.tabPage39.Controls.Add(this.label146);
-            this.tabPage39.Controls.Add(this.cbTextLogoEffectrMode);
-            this.tabPage39.Controls.Add(this.label147);
-            this.tabPage39.Location = new System.Drawing.Point(4, 22);
-            this.tabPage39.Name = "tabPage39";
-            this.tabPage39.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage39.Size = new System.Drawing.Size(253, 130);
-            this.tabPage39.TabIndex = 4;
-            this.tabPage39.Text = "Effects";
-            this.tabPage39.UseVisualStyleBackColor = true;
-            // 
-            // edTextLogoOuterSize
-            // 
-            this.edTextLogoOuterSize.Location = new System.Drawing.Point(214, 78);
-            this.edTextLogoOuterSize.Name = "edTextLogoOuterSize";
-            this.edTextLogoOuterSize.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoOuterSize.TabIndex = 37;
-            this.edTextLogoOuterSize.Text = "1";
-            // 
-            // label143
-            // 
-            this.label143.AutoSize = true;
-            this.label143.Location = new System.Drawing.Point(138, 81);
-            this.label143.Name = "label143";
-            this.label143.Size = new System.Drawing.Size(65, 13);
-            this.label143.TabIndex = 36;
-            this.label143.Text = "Second size";
-            // 
-            // edTextLogoInnerSize
-            // 
-            this.edTextLogoInnerSize.Location = new System.Drawing.Point(72, 78);
-            this.edTextLogoInnerSize.Name = "edTextLogoInnerSize";
-            this.edTextLogoInnerSize.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoInnerSize.TabIndex = 35;
-            this.edTextLogoInnerSize.Text = "1";
-            // 
-            // label144
-            // 
-            this.label144.AutoSize = true;
-            this.label144.Location = new System.Drawing.Point(14, 81);
-            this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(47, 13);
-            this.label144.TabIndex = 34;
-            this.label144.Text = "First size";
-            // 
-            // pnTextLogoOuterColor
-            // 
-            this.pnTextLogoOuterColor.BackColor = System.Drawing.Color.Black;
-            this.pnTextLogoOuterColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnTextLogoOuterColor.Location = new System.Drawing.Point(214, 48);
-            this.pnTextLogoOuterColor.Name = "pnTextLogoOuterColor";
-            this.pnTextLogoOuterColor.Size = new System.Drawing.Size(24, 24);
-            this.pnTextLogoOuterColor.TabIndex = 33;
-            this.pnTextLogoOuterColor.Click += new System.EventHandler(this.pnTextLogoOuterColor_Click);
-            // 
-            // label145
-            // 
-            this.label145.AutoSize = true;
-            this.label145.Location = new System.Drawing.Point(138, 54);
-            this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(70, 13);
-            this.label145.TabIndex = 32;
-            this.label145.Text = "Second color";
-            // 
-            // pnTextLogoInnerColor
-            // 
-            this.pnTextLogoInnerColor.BackColor = System.Drawing.Color.White;
-            this.pnTextLogoInnerColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnTextLogoInnerColor.Location = new System.Drawing.Point(72, 48);
-            this.pnTextLogoInnerColor.Name = "pnTextLogoInnerColor";
-            this.pnTextLogoInnerColor.Size = new System.Drawing.Size(24, 24);
-            this.pnTextLogoInnerColor.TabIndex = 31;
-            this.pnTextLogoInnerColor.Click += new System.EventHandler(this.pnTextLogoInnerColor_Click);
-            // 
-            // label146
-            // 
-            this.label146.AutoSize = true;
-            this.label146.Location = new System.Drawing.Point(14, 54);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(52, 13);
-            this.label146.TabIndex = 30;
-            this.label146.Text = "First color";
-            // 
-            // cbTextLogoEffectrMode
-            // 
-            this.cbTextLogoEffectrMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTextLogoEffectrMode.FormattingEnabled = true;
-            this.cbTextLogoEffectrMode.Items.AddRange(new object[] {
-            "None",
-            "Inner border",
-            "Outer border",
-            "Inner and outer borders",
-            "Embossed",
-            "Outline",
-            "Filled outline",
-            "Halo"});
-            this.cbTextLogoEffectrMode.Location = new System.Drawing.Point(72, 14);
-            this.cbTextLogoEffectrMode.Name = "cbTextLogoEffectrMode";
-            this.cbTextLogoEffectrMode.Size = new System.Drawing.Size(166, 21);
-            this.cbTextLogoEffectrMode.TabIndex = 1;
-            // 
-            // label147
-            // 
-            this.label147.AutoSize = true;
-            this.label147.Location = new System.Drawing.Point(14, 17);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(34, 13);
-            this.label147.TabIndex = 0;
-            this.label147.Text = "Mode";
-            // 
-            // tabPage40
-            // 
-            this.tabPage40.Controls.Add(this.groupBox16);
-            this.tabPage40.Controls.Add(this.groupBox17);
-            this.tabPage40.Location = new System.Drawing.Point(4, 22);
-            this.tabPage40.Name = "tabPage40";
-            this.tabPage40.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage40.Size = new System.Drawing.Size(253, 114);
-            this.tabPage40.TabIndex = 5;
-            this.tabPage40.Text = "Rotation";
-            this.tabPage40.UseVisualStyleBackColor = true;
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.rbTextLogoFlipXY);
-            this.groupBox16.Controls.Add(this.rbTextLogoFlipY);
-            this.groupBox16.Controls.Add(this.rbTextLogoFlipX);
-            this.groupBox16.Controls.Add(this.rbTextLogoFlipNone);
-            this.groupBox16.Location = new System.Drawing.Point(6, 58);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(241, 46);
-            this.groupBox16.TabIndex = 1;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Flip";
-            // 
-            // rbTextLogoFlipXY
-            // 
-            this.rbTextLogoFlipXY.AutoSize = true;
-            this.rbTextLogoFlipXY.Location = new System.Drawing.Point(190, 19);
-            this.rbTextLogoFlipXY.Name = "rbTextLogoFlipXY";
-            this.rbTextLogoFlipXY.Size = new System.Drawing.Size(51, 17);
-            this.rbTextLogoFlipXY.TabIndex = 3;
-            this.rbTextLogoFlipXY.TabStop = true;
-            this.rbTextLogoFlipXY.Text = "X && Y";
-            this.rbTextLogoFlipXY.UseVisualStyleBackColor = true;
-            // 
-            // rbTextLogoFlipY
-            // 
-            this.rbTextLogoFlipY.AutoSize = true;
-            this.rbTextLogoFlipY.Location = new System.Drawing.Point(125, 19);
-            this.rbTextLogoFlipY.Name = "rbTextLogoFlipY";
-            this.rbTextLogoFlipY.Size = new System.Drawing.Size(32, 17);
-            this.rbTextLogoFlipY.TabIndex = 2;
-            this.rbTextLogoFlipY.TabStop = true;
-            this.rbTextLogoFlipY.Text = "Y";
-            this.rbTextLogoFlipY.UseVisualStyleBackColor = true;
-            // 
-            // rbTextLogoFlipX
-            // 
-            this.rbTextLogoFlipX.AutoSize = true;
-            this.rbTextLogoFlipX.Location = new System.Drawing.Point(66, 19);
-            this.rbTextLogoFlipX.Name = "rbTextLogoFlipX";
-            this.rbTextLogoFlipX.Size = new System.Drawing.Size(32, 17);
-            this.rbTextLogoFlipX.TabIndex = 1;
-            this.rbTextLogoFlipX.TabStop = true;
-            this.rbTextLogoFlipX.Text = "X";
-            this.rbTextLogoFlipX.UseVisualStyleBackColor = true;
-            // 
-            // rbTextLogoFlipNone
-            // 
-            this.rbTextLogoFlipNone.AutoSize = true;
-            this.rbTextLogoFlipNone.Checked = true;
-            this.rbTextLogoFlipNone.Location = new System.Drawing.Point(13, 19);
-            this.rbTextLogoFlipNone.Name = "rbTextLogoFlipNone";
-            this.rbTextLogoFlipNone.Size = new System.Drawing.Size(51, 17);
-            this.rbTextLogoFlipNone.TabIndex = 0;
-            this.rbTextLogoFlipNone.TabStop = true;
-            this.rbTextLogoFlipNone.Text = "None";
-            this.rbTextLogoFlipNone.UseVisualStyleBackColor = true;
-            // 
-            // groupBox17
-            // 
-            this.groupBox17.Controls.Add(this.rbTextLogoDegree270);
-            this.groupBox17.Controls.Add(this.rbTextLogoDegree180);
-            this.groupBox17.Controls.Add(this.rbTextLogoDegree90);
-            this.groupBox17.Controls.Add(this.rbTextLogoDegree0);
-            this.groupBox17.Location = new System.Drawing.Point(6, 6);
-            this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(241, 46);
-            this.groupBox17.TabIndex = 0;
-            this.groupBox17.TabStop = false;
-            this.groupBox17.Text = "Degree";
-            // 
-            // rbTextLogoDegree270
-            // 
-            this.rbTextLogoDegree270.AutoSize = true;
-            this.rbTextLogoDegree270.Location = new System.Drawing.Point(190, 19);
-            this.rbTextLogoDegree270.Name = "rbTextLogoDegree270";
-            this.rbTextLogoDegree270.Size = new System.Drawing.Size(43, 17);
-            this.rbTextLogoDegree270.TabIndex = 3;
-            this.rbTextLogoDegree270.TabStop = true;
-            this.rbTextLogoDegree270.Text = "270";
-            this.rbTextLogoDegree270.UseVisualStyleBackColor = true;
-            // 
-            // rbTextLogoDegree180
-            // 
-            this.rbTextLogoDegree180.AutoSize = true;
-            this.rbTextLogoDegree180.Location = new System.Drawing.Point(125, 19);
-            this.rbTextLogoDegree180.Name = "rbTextLogoDegree180";
-            this.rbTextLogoDegree180.Size = new System.Drawing.Size(43, 17);
-            this.rbTextLogoDegree180.TabIndex = 2;
-            this.rbTextLogoDegree180.TabStop = true;
-            this.rbTextLogoDegree180.Text = "180";
-            this.rbTextLogoDegree180.UseVisualStyleBackColor = true;
-            // 
-            // rbTextLogoDegree90
-            // 
-            this.rbTextLogoDegree90.AutoSize = true;
-            this.rbTextLogoDegree90.Location = new System.Drawing.Point(66, 19);
-            this.rbTextLogoDegree90.Name = "rbTextLogoDegree90";
-            this.rbTextLogoDegree90.Size = new System.Drawing.Size(37, 17);
-            this.rbTextLogoDegree90.TabIndex = 1;
-            this.rbTextLogoDegree90.TabStop = true;
-            this.rbTextLogoDegree90.Text = "90";
-            this.rbTextLogoDegree90.UseVisualStyleBackColor = true;
-            // 
-            // rbTextLogoDegree0
-            // 
-            this.rbTextLogoDegree0.AutoSize = true;
-            this.rbTextLogoDegree0.Checked = true;
-            this.rbTextLogoDegree0.Location = new System.Drawing.Point(13, 19);
-            this.rbTextLogoDegree0.Name = "rbTextLogoDegree0";
-            this.rbTextLogoDegree0.Size = new System.Drawing.Size(31, 17);
-            this.rbTextLogoDegree0.TabIndex = 0;
-            this.rbTextLogoDegree0.TabStop = true;
-            this.rbTextLogoDegree0.Text = "0";
-            this.rbTextLogoDegree0.UseVisualStyleBackColor = true;
-            // 
-            // tabPage41
-            // 
-            this.tabPage41.Controls.Add(this.edTextLogoShapeHeight);
-            this.tabPage41.Controls.Add(this.label148);
-            this.tabPage41.Controls.Add(this.edTextLogoShapeWidth);
-            this.tabPage41.Controls.Add(this.label149);
-            this.tabPage41.Controls.Add(this.edTextLogoShapeTop);
-            this.tabPage41.Controls.Add(this.label150);
-            this.tabPage41.Controls.Add(this.edTextLogoShapeLeft);
-            this.tabPage41.Controls.Add(this.label151);
-            this.tabPage41.Controls.Add(this.cbTextLogoShapeType);
-            this.tabPage41.Controls.Add(this.label152);
-            this.tabPage41.Controls.Add(this.pnTextLogoShapeColor);
-            this.tabPage41.Controls.Add(this.label153);
-            this.tabPage41.Controls.Add(this.cbTextLogoShapeEnabled);
-            this.tabPage41.Location = new System.Drawing.Point(4, 22);
-            this.tabPage41.Name = "tabPage41";
-            this.tabPage41.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage41.Size = new System.Drawing.Size(253, 114);
-            this.tabPage41.TabIndex = 6;
-            this.tabPage41.Text = "Shape";
-            this.tabPage41.UseVisualStyleBackColor = true;
-            // 
-            // edTextLogoShapeHeight
-            // 
-            this.edTextLogoShapeHeight.Location = new System.Drawing.Point(201, 88);
-            this.edTextLogoShapeHeight.Name = "edTextLogoShapeHeight";
-            this.edTextLogoShapeHeight.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoShapeHeight.TabIndex = 46;
-            this.edTextLogoShapeHeight.Text = "100";
-            // 
-            // label148
-            // 
-            this.label148.AutoSize = true;
-            this.label148.Location = new System.Drawing.Point(154, 91);
-            this.label148.Name = "label148";
-            this.label148.Size = new System.Drawing.Size(38, 13);
-            this.label148.TabIndex = 45;
-            this.label148.Text = "Height";
-            // 
-            // edTextLogoShapeWidth
-            // 
-            this.edTextLogoShapeWidth.Location = new System.Drawing.Point(201, 62);
-            this.edTextLogoShapeWidth.Name = "edTextLogoShapeWidth";
-            this.edTextLogoShapeWidth.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoShapeWidth.TabIndex = 44;
-            this.edTextLogoShapeWidth.Text = "200";
-            // 
-            // label149
-            // 
-            this.label149.AutoSize = true;
-            this.label149.Location = new System.Drawing.Point(154, 65);
-            this.label149.Name = "label149";
-            this.label149.Size = new System.Drawing.Size(35, 13);
-            this.label149.TabIndex = 43;
-            this.label149.Text = "Width";
-            // 
-            // edTextLogoShapeTop
-            // 
-            this.edTextLogoShapeTop.Location = new System.Drawing.Point(56, 88);
-            this.edTextLogoShapeTop.Name = "edTextLogoShapeTop";
-            this.edTextLogoShapeTop.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoShapeTop.TabIndex = 42;
-            this.edTextLogoShapeTop.Text = "50";
-            // 
-            // label150
-            // 
-            this.label150.AutoSize = true;
-            this.label150.Location = new System.Drawing.Point(19, 91);
-            this.label150.Name = "label150";
-            this.label150.Size = new System.Drawing.Size(26, 13);
-            this.label150.TabIndex = 41;
-            this.label150.Text = "Top";
-            // 
-            // edTextLogoShapeLeft
-            // 
-            this.edTextLogoShapeLeft.Location = new System.Drawing.Point(56, 62);
-            this.edTextLogoShapeLeft.Name = "edTextLogoShapeLeft";
-            this.edTextLogoShapeLeft.Size = new System.Drawing.Size(33, 20);
-            this.edTextLogoShapeLeft.TabIndex = 40;
-            this.edTextLogoShapeLeft.Text = "50";
-            // 
-            // label151
-            // 
-            this.label151.AutoSize = true;
-            this.label151.Location = new System.Drawing.Point(19, 65);
-            this.label151.Name = "label151";
-            this.label151.Size = new System.Drawing.Size(25, 13);
-            this.label151.TabIndex = 39;
-            this.label151.Text = "Left";
-            // 
-            // cbTextLogoShapeType
-            // 
-            this.cbTextLogoShapeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTextLogoShapeType.FormattingEnabled = true;
-            this.cbTextLogoShapeType.Items.AddRange(new object[] {
-            "Rectangle",
-            "Ellipse"});
-            this.cbTextLogoShapeType.Location = new System.Drawing.Point(56, 35);
-            this.cbTextLogoShapeType.Name = "cbTextLogoShapeType";
-            this.cbTextLogoShapeType.Size = new System.Drawing.Size(83, 21);
-            this.cbTextLogoShapeType.TabIndex = 38;
-            // 
-            // label152
-            // 
-            this.label152.AutoSize = true;
-            this.label152.Location = new System.Drawing.Point(19, 38);
-            this.label152.Name = "label152";
-            this.label152.Size = new System.Drawing.Size(31, 13);
-            this.label152.TabIndex = 37;
-            this.label152.Text = "Type";
-            // 
-            // pnTextLogoShapeColor
-            // 
-            this.pnTextLogoShapeColor.BackColor = System.Drawing.Color.Silver;
-            this.pnTextLogoShapeColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnTextLogoShapeColor.Location = new System.Drawing.Point(201, 32);
-            this.pnTextLogoShapeColor.Name = "pnTextLogoShapeColor";
-            this.pnTextLogoShapeColor.Size = new System.Drawing.Size(24, 24);
-            this.pnTextLogoShapeColor.TabIndex = 34;
-            this.pnTextLogoShapeColor.Click += new System.EventHandler(this.pnTextLogoShapeColor_Click);
-            // 
-            // label153
-            // 
-            this.label153.AutoSize = true;
-            this.label153.Location = new System.Drawing.Point(154, 38);
-            this.label153.Name = "label153";
-            this.label153.Size = new System.Drawing.Size(31, 13);
-            this.label153.TabIndex = 33;
-            this.label153.Text = "Color";
-            // 
-            // cbTextLogoShapeEnabled
-            // 
-            this.cbTextLogoShapeEnabled.AutoSize = true;
-            this.cbTextLogoShapeEnabled.Location = new System.Drawing.Point(12, 12);
-            this.cbTextLogoShapeEnabled.Name = "cbTextLogoShapeEnabled";
-            this.cbTextLogoShapeEnabled.Size = new System.Drawing.Size(65, 17);
-            this.cbTextLogoShapeEnabled.TabIndex = 32;
-            this.cbTextLogoShapeEnabled.Text = "Enabled";
-            this.cbTextLogoShapeEnabled.UseVisualStyleBackColor = true;
-            // 
-            // btFont
-            // 
-            this.btFont.Location = new System.Drawing.Point(222, 28);
-            this.btFont.Name = "btFont";
-            this.btFont.Size = new System.Drawing.Size(47, 23);
-            this.btFont.TabIndex = 16;
-            this.btFont.Text = "Font";
-            this.btFont.UseVisualStyleBackColor = true;
-            this.btFont.Click += new System.EventHandler(this.btFont_Click);
-            // 
-            // edTextLogo
-            // 
-            this.edTextLogo.Location = new System.Drawing.Point(8, 28);
-            this.edTextLogo.Name = "edTextLogo";
-            this.edTextLogo.Size = new System.Drawing.Size(208, 20);
-            this.edTextLogo.TabIndex = 15;
-            this.edTextLogo.Text = "Hello!!!";
-            // 
-            // cbTextLogo
-            // 
-            this.cbTextLogo.AutoSize = true;
-            this.cbTextLogo.Location = new System.Drawing.Point(8, 6);
-            this.cbTextLogo.Name = "cbTextLogo";
-            this.cbTextLogo.Size = new System.Drawing.Size(65, 17);
-            this.cbTextLogo.TabIndex = 14;
-            this.cbTextLogo.Text = "Enabled";
-            this.cbTextLogo.UseVisualStyleBackColor = true;
-            this.cbTextLogo.CheckedChanged += new System.EventHandler(this.cbTextLogo_CheckedChanged);
+            // btTextLogoRemove
+            // 
+            this.btTextLogoRemove.Location = new System.Drawing.Point(206, 215);
+            this.btTextLogoRemove.Name = "btTextLogoRemove";
+            this.btTextLogoRemove.Size = new System.Drawing.Size(59, 23);
+            this.btTextLogoRemove.TabIndex = 7;
+            this.btTextLogoRemove.Text = "Remove";
+            this.btTextLogoRemove.UseVisualStyleBackColor = true;
+            this.btTextLogoRemove.Click += new System.EventHandler(this.btTextLogoRemove_Click);
+            // 
+            // btTextLogoEdit
+            // 
+            this.btTextLogoEdit.Location = new System.Drawing.Point(74, 215);
+            this.btTextLogoEdit.Name = "btTextLogoEdit";
+            this.btTextLogoEdit.Size = new System.Drawing.Size(59, 23);
+            this.btTextLogoEdit.TabIndex = 6;
+            this.btTextLogoEdit.Text = "Edit";
+            this.btTextLogoEdit.UseVisualStyleBackColor = true;
+            this.btTextLogoEdit.Click += new System.EventHandler(this.btTextLogoEdit_Click);
+            // 
+            // lbTextLogos
+            // 
+            this.lbTextLogos.FormattingEnabled = true;
+            this.lbTextLogos.Location = new System.Drawing.Point(10, 12);
+            this.lbTextLogos.Name = "lbTextLogos";
+            this.lbTextLogos.Size = new System.Drawing.Size(257, 199);
+            this.lbTextLogos.TabIndex = 5;
+            // 
+            // btTextLogoAdd
+            // 
+            this.btTextLogoAdd.Location = new System.Drawing.Point(8, 215);
+            this.btTextLogoAdd.Name = "btTextLogoAdd";
+            this.btTextLogoAdd.Size = new System.Drawing.Size(59, 23);
+            this.btTextLogoAdd.TabIndex = 4;
+            this.btTextLogoAdd.Text = "Add";
+            this.btTextLogoAdd.UseVisualStyleBackColor = true;
+            this.btTextLogoAdd.Click += new System.EventHandler(this.btTextLogoAdd_Click);
             // 
             // tabPage42
             // 
-            this.tabPage42.Controls.Add(this.pnImageLogoColorKey);
-            this.tabPage42.Controls.Add(this.cbImageLogoUseColorKey);
-            this.tabPage42.Controls.Add(this.label154);
-            this.tabPage42.Controls.Add(this.tbImageLogoTransp);
-            this.tabPage42.Controls.Add(this.groupBox22);
-            this.tabPage42.Controls.Add(this.groupBox23);
-            this.tabPage42.Controls.Add(this.btSelectImage);
-            this.tabPage42.Controls.Add(this.label157);
-            this.tabPage42.Controls.Add(this.edImageLogoFilename);
-            this.tabPage42.Controls.Add(this.cbImageLogo);
+            this.tabPage42.Controls.Add(this.btImageLogoRemove);
+            this.tabPage42.Controls.Add(this.btImageLogoEdit);
+            this.tabPage42.Controls.Add(this.lbImageLogos);
+            this.tabPage42.Controls.Add(this.btImageLogoAdd);
             this.tabPage42.Location = new System.Drawing.Point(4, 22);
             this.tabPage42.Name = "tabPage42";
-            this.tabPage42.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage42.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage42.Size = new System.Drawing.Size(275, 248);
             this.tabPage42.TabIndex = 1;
             this.tabPage42.Text = "Image logo";
             this.tabPage42.UseVisualStyleBackColor = true;
             // 
-            // pnImageLogoColorKey
+            // btImageLogoRemove
             // 
-            this.pnImageLogoColorKey.BackColor = System.Drawing.Color.Fuchsia;
-            this.pnImageLogoColorKey.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnImageLogoColorKey.Location = new System.Drawing.Point(241, 186);
-            this.pnImageLogoColorKey.Name = "pnImageLogoColorKey";
-            this.pnImageLogoColorKey.Size = new System.Drawing.Size(24, 24);
-            this.pnImageLogoColorKey.TabIndex = 54;
-            this.pnImageLogoColorKey.Click += new System.EventHandler(this.pnGraphicLogoColorKey_Click);
+            this.btImageLogoRemove.Location = new System.Drawing.Point(206, 215);
+            this.btImageLogoRemove.Name = "btImageLogoRemove";
+            this.btImageLogoRemove.Size = new System.Drawing.Size(59, 23);
+            this.btImageLogoRemove.TabIndex = 11;
+            this.btImageLogoRemove.Text = "Remove";
+            this.btImageLogoRemove.UseVisualStyleBackColor = true;
+            this.btImageLogoRemove.Click += new System.EventHandler(this.btImageLogoRemove_Click);
             // 
-            // cbImageLogoUseColorKey
+            // btImageLogoEdit
             // 
-            this.cbImageLogoUseColorKey.AutoSize = true;
-            this.cbImageLogoUseColorKey.Location = new System.Drawing.Point(127, 191);
-            this.cbImageLogoUseColorKey.Name = "cbImageLogoUseColorKey";
-            this.cbImageLogoUseColorKey.Size = new System.Drawing.Size(91, 17);
-            this.cbImageLogoUseColorKey.TabIndex = 53;
-            this.cbImageLogoUseColorKey.Text = "Use color key";
-            this.cbImageLogoUseColorKey.UseVisualStyleBackColor = true;
-            this.cbImageLogoUseColorKey.CheckedChanged += new System.EventHandler(this.cbGraphicLogoUseColorKey_CheckedChanged);
+            this.btImageLogoEdit.Location = new System.Drawing.Point(74, 215);
+            this.btImageLogoEdit.Name = "btImageLogoEdit";
+            this.btImageLogoEdit.Size = new System.Drawing.Size(59, 23);
+            this.btImageLogoEdit.TabIndex = 10;
+            this.btImageLogoEdit.Text = "Edit";
+            this.btImageLogoEdit.UseVisualStyleBackColor = true;
+            this.btImageLogoEdit.Click += new System.EventHandler(this.btImageLogoEdit_Click);
             // 
-            // label154
+            // lbImageLogos
             // 
-            this.label154.AutoSize = true;
-            this.label154.Location = new System.Drawing.Point(11, 167);
-            this.label154.Name = "label154";
-            this.label154.Size = new System.Drawing.Size(72, 13);
-            this.label154.TabIndex = 52;
-            this.label154.Text = "Transparency";
+            this.lbImageLogos.FormattingEnabled = true;
+            this.lbImageLogos.Location = new System.Drawing.Point(10, 12);
+            this.lbImageLogos.Name = "lbImageLogos";
+            this.lbImageLogos.Size = new System.Drawing.Size(257, 199);
+            this.lbImageLogos.TabIndex = 9;
             // 
-            // tbImageLogoTransp
+            // btImageLogoAdd
             // 
-            this.tbImageLogoTransp.BackColor = System.Drawing.SystemColors.Window;
-            this.tbImageLogoTransp.Location = new System.Drawing.Point(6, 182);
-            this.tbImageLogoTransp.Maximum = 255;
-            this.tbImageLogoTransp.Name = "tbImageLogoTransp";
-            this.tbImageLogoTransp.Size = new System.Drawing.Size(104, 45);
-            this.tbImageLogoTransp.TabIndex = 51;
-            this.tbImageLogoTransp.Scroll += new System.EventHandler(this.tbGraphicLogoTransp_Scroll);
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.Controls.Add(this.cbImageLogoShowAlways);
-            this.groupBox22.Controls.Add(this.edImageLogoStopTime);
-            this.groupBox22.Controls.Add(this.lbGraphicLogoStopTime);
-            this.groupBox22.Controls.Add(this.edImageLogoStartTime);
-            this.groupBox22.Controls.Add(this.lbGraphicLogoStartTime);
-            this.groupBox22.Location = new System.Drawing.Point(111, 78);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(159, 76);
-            this.groupBox22.TabIndex = 50;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Duration";
-            // 
-            // cbImageLogoShowAlways
-            // 
-            this.cbImageLogoShowAlways.AutoSize = true;
-            this.cbImageLogoShowAlways.Checked = true;
-            this.cbImageLogoShowAlways.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbImageLogoShowAlways.Location = new System.Drawing.Point(13, 48);
-            this.cbImageLogoShowAlways.Name = "cbImageLogoShowAlways";
-            this.cbImageLogoShowAlways.Size = new System.Drawing.Size(88, 17);
-            this.cbImageLogoShowAlways.TabIndex = 35;
-            this.cbImageLogoShowAlways.Text = "Show always";
-            this.cbImageLogoShowAlways.UseVisualStyleBackColor = true;
-            this.cbImageLogoShowAlways.CheckedChanged += new System.EventHandler(this.cbGraphicLogoShowAlways_CheckedChanged);
-            // 
-            // edImageLogoStopTime
-            // 
-            this.edImageLogoStopTime.Enabled = false;
-            this.edImageLogoStopTime.Location = new System.Drawing.Point(117, 19);
-            this.edImageLogoStopTime.Name = "edImageLogoStopTime";
-            this.edImageLogoStopTime.Size = new System.Drawing.Size(39, 20);
-            this.edImageLogoStopTime.TabIndex = 34;
-            this.edImageLogoStopTime.Text = "10000";
-            this.edImageLogoStopTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbGraphicLogoStopTime
-            // 
-            this.lbGraphicLogoStopTime.AutoSize = true;
-            this.lbGraphicLogoStopTime.Enabled = false;
-            this.lbGraphicLogoStopTime.Location = new System.Drawing.Point(88, 22);
-            this.lbGraphicLogoStopTime.Name = "lbGraphicLogoStopTime";
-            this.lbGraphicLogoStopTime.Size = new System.Drawing.Size(29, 13);
-            this.lbGraphicLogoStopTime.TabIndex = 33;
-            this.lbGraphicLogoStopTime.Text = "Stop";
-            // 
-            // edImageLogoStartTime
-            // 
-            this.edImageLogoStartTime.Enabled = false;
-            this.edImageLogoStartTime.Location = new System.Drawing.Point(43, 19);
-            this.edImageLogoStartTime.Name = "edImageLogoStartTime";
-            this.edImageLogoStartTime.Size = new System.Drawing.Size(39, 20);
-            this.edImageLogoStartTime.TabIndex = 32;
-            this.edImageLogoStartTime.Text = "0";
-            this.edImageLogoStartTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lbGraphicLogoStartTime
-            // 
-            this.lbGraphicLogoStartTime.AutoSize = true;
-            this.lbGraphicLogoStartTime.Enabled = false;
-            this.lbGraphicLogoStartTime.Location = new System.Drawing.Point(10, 22);
-            this.lbGraphicLogoStartTime.Name = "lbGraphicLogoStartTime";
-            this.lbGraphicLogoStartTime.Size = new System.Drawing.Size(29, 13);
-            this.lbGraphicLogoStartTime.TabIndex = 31;
-            this.lbGraphicLogoStartTime.Text = "Start";
-            // 
-            // groupBox23
-            // 
-            this.groupBox23.Controls.Add(this.edImageLogoTop);
-            this.groupBox23.Controls.Add(this.label155);
-            this.groupBox23.Controls.Add(this.edImageLogoLeft);
-            this.groupBox23.Controls.Add(this.label156);
-            this.groupBox23.Location = new System.Drawing.Point(8, 78);
-            this.groupBox23.Name = "groupBox23";
-            this.groupBox23.Size = new System.Drawing.Size(97, 76);
-            this.groupBox23.TabIndex = 49;
-            this.groupBox23.TabStop = false;
-            this.groupBox23.Text = "Position";
-            // 
-            // edImageLogoTop
-            // 
-            this.edImageLogoTop.Location = new System.Drawing.Point(47, 45);
-            this.edImageLogoTop.Name = "edImageLogoTop";
-            this.edImageLogoTop.Size = new System.Drawing.Size(39, 20);
-            this.edImageLogoTop.TabIndex = 32;
-            this.edImageLogoTop.Text = "50";
-            this.edImageLogoTop.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label155
-            // 
-            this.label155.AutoSize = true;
-            this.label155.Location = new System.Drawing.Point(14, 48);
-            this.label155.Name = "label155";
-            this.label155.Size = new System.Drawing.Size(26, 13);
-            this.label155.TabIndex = 31;
-            this.label155.Text = "Top";
-            // 
-            // edImageLogoLeft
-            // 
-            this.edImageLogoLeft.Location = new System.Drawing.Point(47, 19);
-            this.edImageLogoLeft.Name = "edImageLogoLeft";
-            this.edImageLogoLeft.Size = new System.Drawing.Size(39, 20);
-            this.edImageLogoLeft.TabIndex = 30;
-            this.edImageLogoLeft.Text = "50";
-            this.edImageLogoLeft.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label156
-            // 
-            this.label156.AutoSize = true;
-            this.label156.Location = new System.Drawing.Point(14, 22);
-            this.label156.Name = "label156";
-            this.label156.Size = new System.Drawing.Size(25, 13);
-            this.label156.TabIndex = 29;
-            this.label156.Text = "Left";
-            // 
-            // btSelectImage
-            // 
-            this.btSelectImage.Location = new System.Drawing.Point(246, 43);
-            this.btSelectImage.Name = "btSelectImage";
-            this.btSelectImage.Size = new System.Drawing.Size(24, 23);
-            this.btSelectImage.TabIndex = 48;
-            this.btSelectImage.Text = "...";
-            this.btSelectImage.UseVisualStyleBackColor = true;
-            this.btSelectImage.Click += new System.EventHandler(this.btSelectImage_Click);
-            // 
-            // label157
-            // 
-            this.label157.AutoSize = true;
-            this.label157.Location = new System.Drawing.Point(7, 48);
-            this.label157.Name = "label157";
-            this.label157.Size = new System.Drawing.Size(52, 13);
-            this.label157.TabIndex = 47;
-            this.label157.Text = "File name";
-            // 
-            // edImageLogoFilename
-            // 
-            this.edImageLogoFilename.Location = new System.Drawing.Point(65, 45);
-            this.edImageLogoFilename.Name = "edImageLogoFilename";
-            this.edImageLogoFilename.Size = new System.Drawing.Size(175, 20);
-            this.edImageLogoFilename.TabIndex = 46;
-            this.edImageLogoFilename.Text = "c:\\1.png";
-            // 
-            // cbImageLogo
-            // 
-            this.cbImageLogo.AutoSize = true;
-            this.cbImageLogo.Location = new System.Drawing.Point(8, 16);
-            this.cbImageLogo.Name = "cbImageLogo";
-            this.cbImageLogo.Size = new System.Drawing.Size(65, 17);
-            this.cbImageLogo.TabIndex = 45;
-            this.cbImageLogo.Text = "Enabled";
-            this.cbImageLogo.UseVisualStyleBackColor = true;
-            this.cbImageLogo.CheckedChanged += new System.EventHandler(this.cbImageLogo_CheckedChanged);
+            this.btImageLogoAdd.Location = new System.Drawing.Point(8, 215);
+            this.btImageLogoAdd.Name = "btImageLogoAdd";
+            this.btImageLogoAdd.Size = new System.Drawing.Size(59, 23);
+            this.btImageLogoAdd.TabIndex = 8;
+            this.btImageLogoAdd.Text = "Add";
+            this.btImageLogoAdd.UseVisualStyleBackColor = true;
+            this.btImageLogoAdd.Click += new System.EventHandler(this.btImageLogoAdd_Click);
             // 
             // tabPage18
             // 
             this.tabPage18.Controls.Add(this.groupBox37);
             this.tabPage18.Controls.Add(this.cbZoom);
             this.tabPage18.Location = new System.Drawing.Point(4, 22);
-            this.tabPage18.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage18.Name = "tabPage18";
-            this.tabPage18.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage18.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage18.Size = new System.Drawing.Size(275, 248);
             this.tabPage18.TabIndex = 2;
             this.tabPage18.Text = "Zoom";
@@ -3039,9 +2022,9 @@ namespace Media_Player_Demo
             this.tabPage19.Controls.Add(this.groupBox38);
             this.tabPage19.Controls.Add(this.cbPan);
             this.tabPage19.Location = new System.Drawing.Point(4, 22);
-            this.tabPage19.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage19.Name = "tabPage19";
-            this.tabPage19.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage19.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage19.Size = new System.Drawing.Size(275, 248);
             this.tabPage19.TabIndex = 3;
             this.tabPage19.Text = "Pan";
@@ -3058,9 +2041,9 @@ namespace Media_Player_Demo
             this.groupBox40.Controls.Add(this.edPanDestLeft);
             this.groupBox40.Controls.Add(this.label305);
             this.groupBox40.Location = new System.Drawing.Point(12, 162);
-            this.groupBox40.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox40.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox40.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox40.Size = new System.Drawing.Size(168, 77);
             this.groupBox40.TabIndex = 58;
             this.groupBox40.TabStop = false;
@@ -3145,9 +2128,9 @@ namespace Media_Player_Demo
             this.groupBox39.Controls.Add(this.edPanSourceLeft);
             this.groupBox39.Controls.Add(this.label301);
             this.groupBox39.Location = new System.Drawing.Point(12, 80);
-            this.groupBox39.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox39.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox39.Name = "groupBox39";
-            this.groupBox39.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox39.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox39.Size = new System.Drawing.Size(168, 77);
             this.groupBox39.TabIndex = 57;
             this.groupBox39.TabStop = false;
@@ -3289,7 +2272,7 @@ namespace Media_Player_Demo
             this.tabPage22.Controls.Add(this.cbFadeInOut);
             this.tabPage22.Location = new System.Drawing.Point(4, 22);
             this.tabPage22.Name = "tabPage22";
-            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage22.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage22.Size = new System.Drawing.Size(275, 248);
             this.tabPage22.TabIndex = 4;
             this.tabPage22.Text = "Fade-in/out";
@@ -3388,7 +2371,7 @@ namespace Media_Player_Demo
             this.tabPage43.Controls.Add(this.cbLiveRotation);
             this.tabPage43.Location = new System.Drawing.Point(4, 22);
             this.tabPage43.Name = "tabPage43";
-            this.tabPage43.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage43.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage43.Size = new System.Drawing.Size(275, 248);
             this.tabPage43.TabIndex = 5;
             this.tabPage43.Text = "Live rotation";
@@ -3499,7 +2482,7 @@ namespace Media_Player_Demo
             // 
             this.cbInvert.AutoSize = true;
             this.cbInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbInvert.Location = new System.Drawing.Point(137, 158);
+            this.cbInvert.Location = new System.Drawing.Point(90, 158);
             this.cbInvert.Name = "cbInvert";
             this.cbInvert.Size = new System.Drawing.Size(53, 17);
             this.cbInvert.TabIndex = 41;
@@ -3554,7 +2537,7 @@ namespace Media_Player_Demo
             this.tabPage69.Controls.Add(this.cbDeinterlace);
             this.tabPage69.Location = new System.Drawing.Point(4, 22);
             this.tabPage69.Name = "tabPage69";
-            this.tabPage69.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage69.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage69.Size = new System.Drawing.Size(290, 459);
             this.tabPage69.TabIndex = 1;
             this.tabPage69.Text = "Deinterlace (SW)";
@@ -3765,7 +2748,7 @@ namespace Media_Player_Demo
             this.tabPage59.Controls.Add(this.cbDenoise);
             this.tabPage59.Location = new System.Drawing.Point(4, 22);
             this.tabPage59.Name = "tabPage59";
-            this.tabPage59.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage59.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage59.Size = new System.Drawing.Size(290, 459);
             this.tabPage59.TabIndex = 4;
             this.tabPage59.Text = "Denoise (SW)";
@@ -4021,7 +3004,7 @@ namespace Media_Player_Demo
             this.tabPage8.Controls.Add(this.label24);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage8.Size = new System.Drawing.Size(290, 459);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Effects (Video renderer)";
@@ -4235,7 +3218,7 @@ namespace Media_Player_Demo
             this.tabPage15.Controls.Add(this.cbChromaKeyEnabled);
             this.tabPage15.Location = new System.Drawing.Point(4, 22);
             this.tabPage15.Name = "tabPage15";
-            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage15.Size = new System.Drawing.Size(290, 459);
             this.tabPage15.TabIndex = 7;
             this.tabPage15.Text = "Chroma key";
@@ -4372,7 +3355,7 @@ namespace Media_Player_Demo
             this.tabPage46.Controls.Add(this.label105);
             this.tabPage46.Location = new System.Drawing.Point(4, 22);
             this.tabPage46.Name = "tabPage46";
-            this.tabPage46.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage46.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage46.Size = new System.Drawing.Size(290, 459);
             this.tabPage46.TabIndex = 8;
             this.tabPage46.Text = "3rd-party filters";
@@ -4477,7 +3460,7 @@ namespace Media_Player_Demo
             this.tabPage48.Controls.Add(this.cbAudioEnhancementEnabled);
             this.tabPage48.Location = new System.Drawing.Point(4, 22);
             this.tabPage48.Name = "tabPage48";
-            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage48.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage48.Size = new System.Drawing.Size(301, 492);
             this.tabPage48.TabIndex = 12;
             this.tabPage48.Text = "Audio enhancement";
@@ -4967,7 +3950,7 @@ namespace Media_Player_Demo
             this.tabPage11.Controls.Add(this.cbAudioEffectsEnabled);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage11.Size = new System.Drawing.Size(301, 492);
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Audio effects";
@@ -5005,7 +3988,7 @@ namespace Media_Player_Demo
             this.tabPage71.Controls.Add(this.cbAudAmplifyEnabled);
             this.tabPage71.Location = new System.Drawing.Point(4, 22);
             this.tabPage71.Name = "tabPage71";
-            this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage71.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage71.Size = new System.Drawing.Size(275, 416);
             this.tabPage71.TabIndex = 0;
             this.tabPage71.Text = "Amplify";
@@ -5090,7 +4073,7 @@ namespace Media_Player_Demo
             this.tabPage72.Controls.Add(this.cbAudEqualizerEnabled);
             this.tabPage72.Location = new System.Drawing.Point(4, 22);
             this.tabPage72.Name = "tabPage72";
-            this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage72.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage72.Size = new System.Drawing.Size(275, 416);
             this.tabPage72.TabIndex = 1;
             this.tabPage72.Text = "Equalizer";
@@ -5379,7 +4362,7 @@ namespace Media_Player_Demo
             this.tabPage73.Controls.Add(this.cbAudDynamicAmplifyEnabled);
             this.tabPage73.Location = new System.Drawing.Point(4, 22);
             this.tabPage73.Name = "tabPage73";
-            this.tabPage73.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage73.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage73.Size = new System.Drawing.Size(275, 416);
             this.tabPage73.TabIndex = 2;
             this.tabPage73.Text = "Dynamic amplify";
@@ -5496,7 +4479,7 @@ namespace Media_Player_Demo
             this.tabPage75.Controls.Add(this.cbAudSound3DEnabled);
             this.tabPage75.Location = new System.Drawing.Point(4, 22);
             this.tabPage75.Name = "tabPage75";
-            this.tabPage75.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage75.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage75.Size = new System.Drawing.Size(275, 416);
             this.tabPage75.TabIndex = 4;
             this.tabPage75.Text = "Sound 3D";
@@ -5541,7 +4524,7 @@ namespace Media_Player_Demo
             this.tabPage76.Controls.Add(this.cbAudTrueBassEnabled);
             this.tabPage76.Location = new System.Drawing.Point(4, 22);
             this.tabPage76.Name = "tabPage76";
-            this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage76.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage76.Size = new System.Drawing.Size(275, 416);
             this.tabPage76.TabIndex = 5;
             this.tabPage76.Text = "True Bass";
@@ -5585,7 +4568,7 @@ namespace Media_Player_Demo
             this.tabPage27.Controls.Add(this.cbAudPitchShiftEnabled);
             this.tabPage27.Location = new System.Drawing.Point(4, 22);
             this.tabPage27.Name = "tabPage27";
-            this.tabPage27.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage27.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage27.Size = new System.Drawing.Size(275, 416);
             this.tabPage27.TabIndex = 7;
             this.tabPage27.Text = "Pitch shift";
@@ -5645,7 +4628,7 @@ namespace Media_Player_Demo
             this.tabPage50.Controls.Add(this.cbAudioChannelMapperEnabled);
             this.tabPage50.Location = new System.Drawing.Point(4, 22);
             this.tabPage50.Name = "tabPage50";
-            this.tabPage50.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage50.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage50.Size = new System.Drawing.Size(301, 492);
             this.tabPage50.TabIndex = 13;
             this.tabPage50.Text = "Audio channel mapper";
@@ -5807,7 +4790,7 @@ namespace Media_Player_Demo
             this.tabPage28.Controls.Add(this.volumeMeter1);
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
             this.tabPage28.Name = "tabPage28";
-            this.tabPage28.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage28.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage28.Size = new System.Drawing.Size(301, 492);
             this.tabPage28.TabIndex = 11;
             this.tabPage28.Text = "VU meter";
@@ -5915,7 +4898,7 @@ namespace Media_Player_Demo
             this.tabPage5.Controls.Add(this.btOSDInit);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage5.Size = new System.Drawing.Size(301, 492);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "OSD";
@@ -5968,7 +4951,7 @@ namespace Media_Player_Demo
             this.tabPage30.Controls.Add(this.label113);
             this.tabPage30.Location = new System.Drawing.Point(4, 22);
             this.tabPage30.Name = "tabPage30";
-            this.tabPage30.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage30.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage30.Size = new System.Drawing.Size(242, 170);
             this.tabPage30.TabIndex = 1;
             this.tabPage30.Text = "Image";
@@ -6078,7 +5061,7 @@ namespace Media_Player_Demo
             this.tabPage31.Controls.Add(this.btOSDTextDraw);
             this.tabPage31.Location = new System.Drawing.Point(4, 22);
             this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage31.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage31.Size = new System.Drawing.Size(242, 170);
             this.tabPage31.TabIndex = 2;
             this.tabPage31.Text = "Text";
@@ -6164,7 +5147,7 @@ namespace Media_Player_Demo
             this.tabPage32.Controls.Add(this.label119);
             this.tabPage32.Location = new System.Drawing.Point(4, 22);
             this.tabPage32.Name = "tabPage32";
-            this.tabPage32.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage32.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage32.Size = new System.Drawing.Size(242, 170);
             this.tabPage32.TabIndex = 3;
             this.tabPage32.Text = "Other";
@@ -6349,7 +5332,7 @@ namespace Media_Player_Demo
             this.tabPage12.Controls.Add(this.tabControl5);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage12.Size = new System.Drawing.Size(301, 492);
             this.tabPage12.TabIndex = 6;
             this.tabPage12.Text = "Decoders / Splitter";
@@ -6373,7 +5356,7 @@ namespace Media_Player_Demo
             this.tabPage33.Controls.Add(this.rbSplitterDefault);
             this.tabPage33.Location = new System.Drawing.Point(4, 22);
             this.tabPage33.Name = "tabPage33";
-            this.tabPage33.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage33.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage33.Size = new System.Drawing.Size(284, 454);
             this.tabPage33.TabIndex = 0;
             this.tabPage33.Text = "Splitter";
@@ -6424,7 +5407,7 @@ namespace Media_Player_Demo
             this.tabPage34.Controls.Add(this.rbVideoDecoderDefault);
             this.tabPage34.Location = new System.Drawing.Point(4, 22);
             this.tabPage34.Name = "tabPage34";
-            this.tabPage34.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage34.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage34.Size = new System.Drawing.Size(284, 454);
             this.tabPage34.TabIndex = 1;
             this.tabPage34.Text = "Video decoder";
@@ -6527,7 +5510,7 @@ namespace Media_Player_Demo
             this.tabPage47.Controls.Add(this.rbAudioDecoderDefault);
             this.tabPage47.Location = new System.Drawing.Point(4, 22);
             this.tabPage47.Name = "tabPage47";
-            this.tabPage47.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage47.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage47.Size = new System.Drawing.Size(284, 454);
             this.tabPage47.TabIndex = 2;
             this.tabPage47.Text = "Audio decoder";
@@ -6571,7 +5554,7 @@ namespace Media_Player_Demo
             this.tabPage13.Controls.Add(this.cbMotDetEnabled);
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage13.Size = new System.Drawing.Size(301, 492);
             this.tabPage13.TabIndex = 7;
             this.tabPage13.Text = "Motion detection";
@@ -6594,7 +5577,7 @@ namespace Media_Player_Demo
             this.tabPage44.Controls.Add(this.mmMotDetMatrix);
             this.tabPage44.Location = new System.Drawing.Point(4, 22);
             this.tabPage44.Name = "tabPage44";
-            this.tabPage44.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage44.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage44.Size = new System.Drawing.Size(260, 387);
             this.tabPage44.TabIndex = 0;
             this.tabPage44.Text = "Output matrix";
@@ -6634,7 +5617,7 @@ namespace Media_Player_Demo
             this.tabPage45.Controls.Add(this.groupBox24);
             this.tabPage45.Location = new System.Drawing.Point(4, 22);
             this.tabPage45.Name = "tabPage45";
-            this.tabPage45.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage45.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage45.Size = new System.Drawing.Size(260, 387);
             this.tabPage45.TabIndex = 1;
             this.tabPage45.Text = "Settings";
@@ -6904,7 +5887,7 @@ namespace Media_Player_Demo
             this.tabPage14.Controls.Add(this.cbMotionDetectionEx);
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage14.Size = new System.Drawing.Size(301, 492);
             this.tabPage14.TabIndex = 14;
             this.tabPage14.Text = "Motion detection (Extended)";
@@ -7002,9 +5985,9 @@ namespace Media_Player_Demo
             this.tabPage21.Controls.Add(this.label89);
             this.tabPage21.Controls.Add(this.cbBarcodeDetectionEnabled);
             this.tabPage21.Location = new System.Drawing.Point(4, 22);
-            this.tabPage21.Margin = new System.Windows.Forms.Padding(2);
+            this.tabPage21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage21.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabPage21.Size = new System.Drawing.Size(301, 492);
             this.tabPage21.TabIndex = 8;
             this.tabPage21.Text = "Barcode reader";
@@ -7013,7 +5996,7 @@ namespace Media_Player_Demo
             // edBarcodeMetadata
             // 
             this.edBarcodeMetadata.Location = new System.Drawing.Point(16, 160);
-            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2);
+            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.edBarcodeMetadata.Multiline = true;
             this.edBarcodeMetadata.Name = "edBarcodeMetadata";
             this.edBarcodeMetadata.Size = new System.Drawing.Size(272, 96);
@@ -7050,7 +6033,7 @@ namespace Media_Player_Demo
             "QR",
             "PDF-417"});
             this.cbBarcodeType.Location = new System.Drawing.Point(16, 64);
-            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2);
+            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbBarcodeType.Name = "cbBarcodeType";
             this.cbBarcodeType.Size = new System.Drawing.Size(160, 21);
             this.cbBarcodeType.TabIndex = 14;
@@ -7068,7 +6051,7 @@ namespace Media_Player_Demo
             // btBarcodeReset
             // 
             this.btBarcodeReset.Location = new System.Drawing.Point(16, 268);
-            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2);
+            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btBarcodeReset.Name = "btBarcodeReset";
             this.btBarcodeReset.Size = new System.Drawing.Size(62, 23);
             this.btBarcodeReset.TabIndex = 12;
@@ -7079,7 +6062,7 @@ namespace Media_Player_Demo
             // edBarcode
             // 
             this.edBarcode.Location = new System.Drawing.Point(16, 112);
-            this.edBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.edBarcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.edBarcode.Name = "edBarcode";
             this.edBarcode.Size = new System.Drawing.Size(272, 20);
             this.edBarcode.TabIndex = 11;
@@ -7109,7 +6092,7 @@ namespace Media_Player_Demo
             this.tabPage23.Controls.Add(this.groupBox48);
             this.tabPage23.Location = new System.Drawing.Point(4, 22);
             this.tabPage23.Name = "tabPage23";
-            this.tabPage23.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage23.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage23.Size = new System.Drawing.Size(301, 492);
             this.tabPage23.TabIndex = 9;
             this.tabPage23.Text = "Encryption";
@@ -7218,7 +6201,7 @@ namespace Media_Player_Demo
             this.tabPage24.Controls.Add(this.tbReversePlaybackTrackbar);
             this.tabPage24.Location = new System.Drawing.Point(4, 22);
             this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage24.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage24.Size = new System.Drawing.Size(301, 492);
             this.tabPage24.TabIndex = 10;
             this.tabPage24.Text = "Reverse playback";
@@ -7310,6 +6293,8 @@ namespace Media_Player_Demo
             // 
             // edFilenameOrURL
             // 
+            this.edFilenameOrURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.edFilenameOrURL.Location = new System.Drawing.Point(330, 28);
             this.edFilenameOrURL.Name = "edFilenameOrURL";
             this.edFilenameOrURL.Size = new System.Drawing.Size(348, 20);
@@ -7318,6 +6303,7 @@ namespace Media_Player_Demo
             // 
             // btSelectFile
             // 
+            this.btSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btSelectFile.Location = new System.Drawing.Point(723, 26);
             this.btSelectFile.Name = "btSelectFile";
             this.btSelectFile.Size = new System.Drawing.Size(23, 23);
@@ -7328,6 +6314,7 @@ namespace Media_Player_Demo
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btPreviousFrame);
             this.groupBox2.Controls.Add(this.cbLoop);
             this.groupBox2.Controls.Add(this.btNextFrame);
@@ -7457,6 +6444,7 @@ namespace Media_Player_Demo
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btDVDControlRootMenu);
             this.groupBox3.Controls.Add(this.btDVDControlTitleMenu);
             this.groupBox3.Controls.Add(this.cbDVDControlSubtitles);
@@ -7589,7 +6577,7 @@ namespace Media_Player_Demo
             this.tabPage10.Controls.Add(this.cbDebugMode);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage10.Size = new System.Drawing.Size(301, 120);
             this.tabPage10.TabIndex = 2;
             this.tabPage10.Text = "Debug";
@@ -7639,7 +6627,7 @@ namespace Media_Player_Demo
             this.tabPage9.Controls.Add(this.tabControl13);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage9.Size = new System.Drawing.Size(301, 120);
             this.tabPage9.TabIndex = 1;
             this.tabPage9.Text = "Screenshot";
@@ -7667,7 +6655,7 @@ namespace Media_Player_Demo
             this.tabPage54.Controls.Add(this.tbJPEGQuality);
             this.tabPage54.Location = new System.Drawing.Point(4, 22);
             this.tabPage54.Name = "tabPage54";
-            this.tabPage54.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage54.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage54.Size = new System.Drawing.Size(285, 85);
             this.tabPage54.TabIndex = 0;
             this.tabPage54.Text = "Main";
@@ -7764,7 +6752,7 @@ namespace Media_Player_Demo
             this.tabPage55.Controls.Add(this.cbScreenshotResize);
             this.tabPage55.Location = new System.Drawing.Point(4, 22);
             this.tabPage55.Name = "tabPage55";
-            this.tabPage55.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage55.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage55.Size = new System.Drawing.Size(285, 85);
             this.tabPage55.TabIndex = 1;
             this.tabPage55.Text = "Resize";
@@ -7819,7 +6807,7 @@ namespace Media_Player_Demo
             this.tabPage25.Controls.Add(this.linkLabel2);
             this.tabPage25.Location = new System.Drawing.Point(4, 22);
             this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage25.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.tabPage25.Size = new System.Drawing.Size(301, 120);
             this.tabPage25.TabIndex = 3;
             this.tabPage25.Text = "VLC engine";
@@ -7863,6 +6851,8 @@ namespace Media_Player_Demo
             // 
             // cbSourceMode
             // 
+            this.cbSourceMode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cbSourceMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSourceMode.FormattingEnabled = true;
             this.cbSourceMode.Items.AddRange(new object[] {
@@ -7880,16 +6870,18 @@ namespace Media_Player_Demo
             "Encrypted file (decode using DirectShow)",
             "Custom source filter (specified by CLSID)"});
             this.cbSourceMode.Location = new System.Drawing.Point(432, 125);
-            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2);
+            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbSourceMode.Name = "cbSourceMode";
             this.cbSourceMode.Size = new System.Drawing.Size(312, 21);
             this.cbSourceMode.TabIndex = 15;
             // 
             // lbSourceFiles
             // 
+            this.lbSourceFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSourceFiles.FormattingEnabled = true;
             this.lbSourceFiles.Location = new System.Drawing.Point(330, 65);
-            this.lbSourceFiles.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSourceFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.lbSourceFiles.Name = "lbSourceFiles";
             this.lbSourceFiles.Size = new System.Drawing.Size(414, 56);
             this.lbSourceFiles.TabIndex = 16;
@@ -7906,8 +6898,9 @@ namespace Media_Player_Demo
             // 
             // btAddFileToPlaylist
             // 
+            this.btAddFileToPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btAddFileToPlaylist.Location = new System.Drawing.Point(682, 27);
-            this.btAddFileToPlaylist.Margin = new System.Windows.Forms.Padding(2);
+            this.btAddFileToPlaylist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btAddFileToPlaylist.Name = "btAddFileToPlaylist";
             this.btAddFileToPlaylist.Size = new System.Drawing.Size(38, 22);
             this.btAddFileToPlaylist.TabIndex = 18;
@@ -7917,6 +6910,7 @@ namespace Media_Player_Demo
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(636, 9);
             this.linkLabel1.Name = "linkLabel1";
@@ -7937,6 +6931,8 @@ namespace Media_Player_Demo
             // 
             // edCustomSourceFilter
             // 
+            this.edCustomSourceFilter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.edCustomSourceFilter.Location = new System.Drawing.Point(432, 155);
             this.edCustomSourceFilter.Name = "edCustomSourceFilter";
             this.edCustomSourceFilter.Size = new System.Drawing.Size(312, 20);
@@ -7977,6 +6973,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -7989,7 +6986,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Source_Stream_AudioPresent = false;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = false;
-            this.MediaPlayer1.Start_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
@@ -8021,26 +7017,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
             // 
-            // cbTextLogoFadeOut
-            // 
-            this.cbTextLogoFadeOut.AutoSize = true;
-            this.cbTextLogoFadeOut.Location = new System.Drawing.Point(91, 107);
-            this.cbTextLogoFadeOut.Name = "cbTextLogoFadeOut";
-            this.cbTextLogoFadeOut.Size = new System.Drawing.Size(142, 17);
-            this.cbTextLogoFadeOut.TabIndex = 43;
-            this.cbTextLogoFadeOut.Text = "Fade-Out (if duration set)";
-            this.cbTextLogoFadeOut.UseVisualStyleBackColor = true;
-            // 
-            // cbTextLogoFadeIn
-            // 
-            this.cbTextLogoFadeIn.AutoSize = true;
-            this.cbTextLogoFadeIn.Location = new System.Drawing.Point(17, 107);
-            this.cbTextLogoFadeIn.Name = "cbTextLogoFadeIn";
-            this.cbTextLogoFadeIn.Size = new System.Drawing.Size(62, 17);
-            this.cbTextLogoFadeIn.TabIndex = 42;
-            this.cbTextLogoFadeIn.Text = "Fade-In";
-            this.cbTextLogoFadeIn.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -8062,13 +7038,13 @@ namespace Media_Player_Demo
             this.Controls.Add(this.edFilenameOrURL);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tabControl1);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Main Demo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -8105,33 +7081,7 @@ namespace Media_Player_Demo
             this.tabPage68.PerformLayout();
             this.tabControl7.ResumeLayout(false);
             this.tabPage29.ResumeLayout(false);
-            this.tabPage29.PerformLayout();
-            this.tabControl8.ResumeLayout(false);
-            this.tabPage35.ResumeLayout(false);
-            this.tabPage35.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbTextLogoTransp)).EndInit();
-            this.tabPage36.ResumeLayout(false);
-            this.tabPage36.PerformLayout();
-            this.tabPage37.ResumeLayout(false);
-            this.tabPage37.PerformLayout();
-            this.tabPage38.ResumeLayout(false);
-            this.tabPage38.PerformLayout();
-            this.tabPage39.ResumeLayout(false);
-            this.tabPage39.PerformLayout();
-            this.tabPage40.ResumeLayout(false);
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.groupBox17.ResumeLayout(false);
-            this.groupBox17.PerformLayout();
-            this.tabPage41.ResumeLayout(false);
-            this.tabPage41.PerformLayout();
             this.tabPage42.ResumeLayout(false);
-            this.tabPage42.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbImageLogoTransp)).EndInit();
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
-            this.groupBox23.ResumeLayout(false);
-            this.groupBox23.PerformLayout();
             this.tabPage18.ResumeLayout(false);
             this.tabPage18.PerformLayout();
             this.groupBox37.ResumeLayout(false);
@@ -8489,100 +7439,7 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Label label198;
         private System.Windows.Forms.TabControl tabControl7;
         private System.Windows.Forms.TabPage tabPage29;
-        private System.Windows.Forms.Button btTextLogoUpdateParams;
-        private System.Windows.Forms.TabControl tabControl8;
-        private System.Windows.Forms.TabPage tabPage35;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Panel pnTextLogoBGColor;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckBox cbTextLogoTranspBG;
-        private System.Windows.Forms.CheckBox cbTextLogoRightToLeft;
-        private System.Windows.Forms.CheckBox cbTextLogoVertical;
-        private System.Windows.Forms.ComboBox cbTextLogoAlign;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.TrackBar tbTextLogoTransp;
-        private System.Windows.Forms.TabPage tabPage36;
-        private System.Windows.Forms.ComboBox cbTextLogoGradMode;
-        private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.Panel pnTextLogoGradColor2;
-        private System.Windows.Forms.Label label135;
-        private System.Windows.Forms.Panel pnTextLogoGradColor1;
-        private System.Windows.Forms.Label label136;
-        private System.Windows.Forms.CheckBox cbTextLogoGradientEnabled;
-        private System.Windows.Forms.TabPage tabPage37;
-        private System.Windows.Forms.TextBox edTextLogoHeight;
-        private System.Windows.Forms.Label label137;
-        private System.Windows.Forms.TextBox edTextLogoWidth;
-        private System.Windows.Forms.Label label138;
-        private System.Windows.Forms.CheckBox cbTextLogoUseRect;
-        private System.Windows.Forms.TextBox edTextLogoTop;
-        private System.Windows.Forms.Label label139;
-        private System.Windows.Forms.TextBox edTextLogoLeft;
-        private System.Windows.Forms.Label label140;
-        private System.Windows.Forms.TabPage tabPage38;
-        private System.Windows.Forms.ComboBox cbTextLogoDrawMode;
-        private System.Windows.Forms.ComboBox cbTextLogoAntialiasing;
-        private System.Windows.Forms.Label label141;
-        private System.Windows.Forms.Label label142;
-        private System.Windows.Forms.TabPage tabPage39;
-        private System.Windows.Forms.TextBox edTextLogoOuterSize;
-        private System.Windows.Forms.Label label143;
-        private System.Windows.Forms.TextBox edTextLogoInnerSize;
-        private System.Windows.Forms.Label label144;
-        private System.Windows.Forms.Panel pnTextLogoOuterColor;
-        private System.Windows.Forms.Label label145;
-        private System.Windows.Forms.Panel pnTextLogoInnerColor;
-        private System.Windows.Forms.Label label146;
-        private System.Windows.Forms.ComboBox cbTextLogoEffectrMode;
-        private System.Windows.Forms.Label label147;
-        private System.Windows.Forms.TabPage tabPage40;
-        private System.Windows.Forms.GroupBox groupBox16;
-        private System.Windows.Forms.RadioButton rbTextLogoFlipXY;
-        private System.Windows.Forms.RadioButton rbTextLogoFlipY;
-        private System.Windows.Forms.RadioButton rbTextLogoFlipX;
-        private System.Windows.Forms.RadioButton rbTextLogoFlipNone;
-        private System.Windows.Forms.GroupBox groupBox17;
-        private System.Windows.Forms.RadioButton rbTextLogoDegree270;
-        private System.Windows.Forms.RadioButton rbTextLogoDegree180;
-        private System.Windows.Forms.RadioButton rbTextLogoDegree90;
-        private System.Windows.Forms.RadioButton rbTextLogoDegree0;
-        private System.Windows.Forms.TabPage tabPage41;
-        private System.Windows.Forms.TextBox edTextLogoShapeHeight;
-        private System.Windows.Forms.Label label148;
-        private System.Windows.Forms.TextBox edTextLogoShapeWidth;
-        private System.Windows.Forms.Label label149;
-        private System.Windows.Forms.TextBox edTextLogoShapeTop;
-        private System.Windows.Forms.Label label150;
-        private System.Windows.Forms.TextBox edTextLogoShapeLeft;
-        private System.Windows.Forms.Label label151;
-        private System.Windows.Forms.ComboBox cbTextLogoShapeType;
-        private System.Windows.Forms.Label label152;
-        private System.Windows.Forms.Panel pnTextLogoShapeColor;
-        private System.Windows.Forms.Label label153;
-        private System.Windows.Forms.CheckBox cbTextLogoShapeEnabled;
-        private System.Windows.Forms.Button btFont;
-        private System.Windows.Forms.TextBox edTextLogo;
-        private System.Windows.Forms.CheckBox cbTextLogo;
         private System.Windows.Forms.TabPage tabPage42;
-        private System.Windows.Forms.Panel pnImageLogoColorKey;
-        private System.Windows.Forms.CheckBox cbImageLogoUseColorKey;
-        private System.Windows.Forms.Label label154;
-        private System.Windows.Forms.TrackBar tbImageLogoTransp;
-        private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.CheckBox cbImageLogoShowAlways;
-        private System.Windows.Forms.TextBox edImageLogoStopTime;
-        private System.Windows.Forms.Label lbGraphicLogoStopTime;
-        private System.Windows.Forms.TextBox edImageLogoStartTime;
-        private System.Windows.Forms.Label lbGraphicLogoStartTime;
-        private System.Windows.Forms.GroupBox groupBox23;
-        private System.Windows.Forms.TextBox edImageLogoTop;
-        private System.Windows.Forms.Label label155;
-        private System.Windows.Forms.TextBox edImageLogoLeft;
-        private System.Windows.Forms.Label label156;
-        private System.Windows.Forms.Button btSelectImage;
-        private System.Windows.Forms.Label label157;
-        private System.Windows.Forms.TextBox edImageLogoFilename;
-        private System.Windows.Forms.CheckBox cbImageLogo;
         private System.Windows.Forms.TrackBar tbContrast;
         private System.Windows.Forms.TrackBar tbDarkness;
         private System.Windows.Forms.TrackBar tbLightness;
@@ -8716,7 +7573,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbStretch1;
         private System.Windows.Forms.Panel pnScreen2;
         private System.Windows.Forms.Panel pnScreen1;
-        private System.Windows.Forms.CheckBox cbTextLogoDateTime;
         private System.Windows.Forms.Button btTest;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox cbSourceMode;
@@ -8968,7 +7824,15 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Button btPreviousFrame;
         private System.Windows.Forms.CheckBox cbMultiscreenDrawOnExternalDisplays;
         private System.Windows.Forms.CheckBox cbMultiscreenDrawOnPanels;
-        private System.Windows.Forms.CheckBox cbTextLogoFadeOut;
-        private System.Windows.Forms.CheckBox cbTextLogoFadeIn;
+        private System.Windows.Forms.Button btTextLogoRemove;
+        private System.Windows.Forms.Button btTextLogoEdit;
+        private System.Windows.Forms.ListBox lbTextLogos;
+        private System.Windows.Forms.Button btTextLogoAdd;
+        private System.Windows.Forms.Button btImageLogoRemove;
+        private System.Windows.Forms.Button btImageLogoEdit;
+        private System.Windows.Forms.ListBox lbImageLogos;
+        private System.Windows.Forms.Button btImageLogoAdd;
+        private System.Windows.Forms.CheckBox cbFlipY;
+        private System.Windows.Forms.CheckBox cbFlipX;
     }
 }

@@ -47,7 +47,7 @@ namespace Memory_Stream_Demo
                 FileStream fs = new FileStream(edFilename.Text, FileMode.Open);
                 ManagedIStream stream = new ManagedIStream(fs);
 
-                // specifing settings
+                // specifying settings
                 // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
                 MediaPlayer1.Source_Stream = stream;
                 MediaPlayer1.Source_Stream_Size = fs.Length;
@@ -59,7 +59,7 @@ namespace Memory_Stream_Demo
 
                 ManagedIStream stream = new ManagedIStream(ms);
 
-                // specifing settings
+                // specifying settings
                 // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
                 MediaPlayer1.Source_Stream = stream;
                 MediaPlayer1.Source_Stream_Size = ms.Length;
@@ -159,6 +159,7 @@ namespace Memory_Stream_Demo
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            btStop_Click(null, null);
         }
 
         private void MediaPlayer1_OnLicenseRequired(object sender, LicenseEventArgs e)

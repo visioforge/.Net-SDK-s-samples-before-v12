@@ -8,7 +8,7 @@ namespace multiple_video_streams
     using System.Linq;
     using System.Windows.Forms;
 
-    using multiple_video_streams.Properties;
+    using Properties;
 
     using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
@@ -23,10 +23,9 @@ namespace multiple_video_streams
             InitializeComponent();
         }
 
-        // private const string url = "http://212.162.177.75/mjpg/video.mjpg";
-        // private const string url = "rtsp://media1.law.harvard.edu/Media/policy_a/2012/02/02_unger.mov";
+        private readonly System.Timers.Timer tmRecording = new System.Timers.Timer(1000);
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btStart_Click(object sender, EventArgs e)
         {
             // 1st device
             videoCapture1.Video_CaptureDevice = cbCamera1.Text;
@@ -45,26 +44,6 @@ namespace multiple_video_streams
                 0,
                 320,
                 240);
-
-            // video encoder
-            // videoCapture1.MP4_Video_H264_Profile = VFH264Profile.ProfileHigh422;
-            // videoCapture1.MP4_Video_H264_Level = VFH264Level.Level5;
-            // videoCapture1.MP4_Video_H264_Target_Usage = VFH264TargetUsage.Auto;
-            // videoCapture1.MP4_Video_H264_PictureType = VFH264PictureType.Auto;
-            // videoCapture1.MP4_Video_H264_RateControl = VFH264RateControl.VBR;
-            // videoCapture1.MP4_Video_H264_MBEncoding = VFH264MBEncoding.CABAC;
-            // videoCapture1.MP4_Video_H264_GOP = true;
-            // videoCapture1.MP4_Video_H264_BitrateAuto = false;
-            // videoCapture1.MP4_Video_H264_IDR_Period = 15;
-            // videoCapture1.MP4_Video_H264_P_Period = 3;
-            // videoCapture1.MP4_Video_H264_Bitrate = 2000;
-
-            // videoCapture1.MP4_Audio_AAC_Bitrate = 128;
-            // videoCapture1.MP4_Audio_AAC_Version = VFAACVersion.MPEG4;
-            // videoCapture1.MP4_Audio_AAC_Output = VFAACOutput.ADTS;
-            // videoCapture1.MP4_Audio_AAC_Object = VFAACObject.Main;
-
-            // videoCapture1.Output_Format = VFVideoCaptureOutputFormat.MP4;
 
             var wmvOutput = new VFWMVOutput
                                 {
@@ -87,6 +66,7 @@ namespace multiple_video_streams
             videoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             
             videoCapture1.Start();
+            tmRecording.Start();
         }
 
         private void VideoCapture1OnOnError(object sender, ErrorsEventArgs errorsEventArgs)
@@ -94,8 +74,9 @@ namespace multiple_video_streams
             edLog.Text += errorsEventArgs.Message + Environment.NewLine;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btStop_Click(object sender, EventArgs e)
         {
+            tmRecording.Stop();
             videoCapture1.Stop();
 
             videoScreen2.Image = null;
@@ -133,6 +114,11 @@ namespace multiple_video_streams
             {
                 videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
             }
+
+            tmRecording.Elapsed += (senderx, args) =>
+            {
+                UpdateRecordingTime();
+            };
         }
 
         private void cbCamera1_SelectedIndexChanged(object sender, EventArgs e)
@@ -223,6 +209,27 @@ namespace multiple_video_streams
             {
                 edLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
+        }
+
+        private void UpdateRecordingTime()
+        {
+            long timestamp = videoCapture1.Duration_Time();
+
+            if (timestamp < 0)
+            {
+                return;
+            }
+
+            BeginInvoke((Action)(() =>
+            {
+                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
+                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
+            }));
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btStop_Click(null, null);
         }
     }
 }

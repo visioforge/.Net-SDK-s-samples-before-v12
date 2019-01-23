@@ -5,8 +5,6 @@ namespace Two_Windows_Demo
     using System;
     using System.Windows.Forms;
 
-    using VisioForge.Controls.UI.WinForms;
-
     public partial class Form2 : Form
     {
         public Control Screen
@@ -16,6 +14,8 @@ namespace Two_Windows_Demo
                 return pnScreen;
             }
         }
+
+        public event EventHandler<EventArgs> OnWindowSizeChanged; 
 
         public void LogLicense(string message)
         {
@@ -40,8 +40,10 @@ namespace Two_Windows_Demo
             mmError.Clear();
         }
 
-
-
+        private void Form2_SizeChanged(object sender, EventArgs e)
+        {
+            OnWindowSizeChanged?.Invoke(this, new EventArgs());
+        }
     }
 }
 

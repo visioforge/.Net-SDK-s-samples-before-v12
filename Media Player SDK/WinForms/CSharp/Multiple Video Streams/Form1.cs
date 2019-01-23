@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using VisioForge.Controls.UI.WinForms;
 using VisioForge.Tools.MediaInfo;
@@ -37,8 +31,10 @@ namespace Multiple_Video_Streams_Demo
             MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0;
             MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0;
 
-            var info = new MediaInfoReader();
-            info.Filename = edFilenameOrURL.Text;
+            var info = new MediaInfoReader
+            {
+                Filename = edFilenameOrURL.Text
+            };
             info.ReadFileInfo(true);
 
             MediaPlayer1.Multiple_Video_Streams_Mappings_Clear();
@@ -79,6 +75,7 @@ namespace Multiple_Video_Streams_Demo
             MediaPlayer1.FilenamesOrURL.Add(edFilenameOrURL.Text);
 
             MediaPlayer1.Audio_PlayAudio = true;
+            MediaPlayer1.Info_UseLibMediaInfo = true;
 
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
             
@@ -168,6 +165,11 @@ namespace Multiple_Video_Streams_Demo
         private void StopDelegateMethod()
         {
             tbTimeline.Value = 0;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btStop_Click(null, null);
         }
     }
 }

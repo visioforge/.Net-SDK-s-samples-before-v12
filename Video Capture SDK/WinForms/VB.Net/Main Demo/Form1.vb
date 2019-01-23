@@ -6,6 +6,8 @@ Imports System.Linq
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
 Imports System.Runtime.InteropServices
+Imports VisioForge.Controls.UI.Dialogs.OutputFormats
+Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types.OutputFormat
 Imports VisioForge.Types.Sources
 Imports VisioForge.Types.VideoEffects
@@ -20,6 +22,44 @@ Public Class Form1
      ByVal lpClassName As String,
      ByVal zero As IntPtr) As IntPtr
     End Function
+
+    Dim mp4v11SettingsDialog As MFSettingsDialog
+
+    Dim mpegTSSettingsDialog As MFSettingsDialog
+
+    Dim movSettingsDialog As MFSettingsDialog
+
+    Dim mp4V10SettingsDialog As MP4v10SettingsDialog
+
+    Dim aviSettingsDialog As AVISettingsDialog
+
+    Dim wmvSettingsDialog As WMVSettingsDialog
+
+    Dim dvSettingsDialog As DVSettingsDialog
+
+    Dim pcmSettingsDialog As PCMSettingsDialog
+
+    Dim mp3SettingsDialog As MP3SettingsDialog
+
+    Dim webmSettingsDialog As WebMSettingsDialog
+
+    Dim ffmpegDLLSettingsDialog As FFMPEGDLLSettingsDialog
+
+    Dim ffmpegEXESettingsDialog As FFMPEGEXESettingsDialog
+
+    Dim flacSettingsDialog As FLACSettingsDialog
+
+    Dim customFormatSettingsDialog As CustomFormatSettingsDialog
+
+    Dim oggVorbisSettingsDialog As OggVorbisSettingsDialog
+
+    Dim speexSettingsDialog As SpeexSettingsDialog
+
+    Dim m4aSettingsDialog As M4ASettingsDialog
+
+    Dim gifSettingsDialog As GIFSettingsDialog
+
+    Dim screenshotSaveDialog as SaveFileDialog
 
     Dim onvifControl As ONVIFControl
 
@@ -41,29 +81,9 @@ Public Class Form1
     ReadOnly multiscreenWindows As List(Of Form) = New List(Of Form)
 
     ReadOnly audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
-
-    Private Function IsWindows8OrNewer() As Boolean
-
-        Dim os = Environment.OSVersion
-        Return os.Platform = PlatformID.Win32NT And (os.Version.Major > 6 Or (os.Version.Major = 6 And os.Version.Minor >= 2))
-
-    End Function
-
-    Private Function IsWindows7OrNewer() As Boolean
-
-        Dim Version = Environment.OSVersion.Version
-        If (Version.Major > 6) Then
-            Return True
-        End If
-
-        If (Version.Major = 6 And Version.Minor >= 1) Then
-            Return True
-        End If
-
-        Return False
-
-    End Function
-
+    
+    private readonly tmRecording as Timers.Timer = new Timers.Timer(1000)
+    
     Private Sub AddAudioEffects()
 
         VideoCapture1.Audio_Effects_Clear(-1)
@@ -75,155 +95,29 @@ Public Class Form1
         VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
     End Sub
 
-    Private Sub FillWMVSettings(ByRef wmvOutput As VFWMVOutput)
-
-        Dim s As String
-
-        If rbWMVInternal9.Checked Then
-
-            wmvOutput.Mode = VFWMVMode.InternalProfile
-
-            If cbWMVInternalProfile9.SelectedIndex <> -1 Then
-                wmvOutput.Internal_Profile_Name = cbWMVInternalProfile9.Text
-            End If
-
-        ElseIf rbWMVInternal8.Checked Then
-
-            wmvOutput.Mode = VFWMVMode.V8SystemProfile
-
-            If (cbWMVInternalProfile8.SelectedIndex <> -1) Then
-                wmvOutput.V8ProfileName = cbWMVInternalProfile8.Text
-            End If
-
-        ElseIf rbWMVExternal.Checked Then
-
-            wmvOutput.Mode = VFWMVMode.ExternalProfile
-            wmvOutput.External_Profile_FileName = edWMVProfile.Text
-
-        Else
-
-            wmvOutput.Mode = VFWMVMode.CustomSettings
-
-            wmvOutput.Custom_Audio_Codec = cbWMVAudioCodec.Text
-            wmvOutput.Custom_Audio_Format = cbWMVAudioFormat.Text
-            wmvOutput.Custom_Audio_PeakBitrate = Convert.ToInt32(edWMVAudioPeakBitrate.Text)
-
-            s = cbWMVAudioMode.Text
-            If s = "CBR" Then
-                wmvOutput.Custom_Audio_Mode = VFWMVStreamMode.CBR
-            ElseIf s = "VBR" Then
-                wmvOutput.Custom_Audio_Mode = VFWMVStreamMode.VBRBitrate
-            ElseIf s = "VBR (Peak)" Then
-                wmvOutput.Custom_Audio_Mode = VFWMVStreamMode.VBRPeakBitrate
-            Else
-                wmvOutput.Custom_Audio_Mode = VFWMVStreamMode.VBRQuality
-            End If
-
-            wmvOutput.Custom_Audio_StreamPresent = cbWMVAudioEnabled.Checked
-
-            wmvOutput.Custom_Video_Codec = cbWMVVideoCodec.Text
-            wmvOutput.Custom_Video_Width = Convert.ToInt32(edWMVWidth.Text)
-            wmvOutput.Custom_Video_Height = Convert.ToInt32(edWMVHeight.Text)
-            wmvOutput.Custom_Video_SizeSameAsInput = cbWMVSizeSameAsInput.Checked
-            wmvOutput.Custom_Video_FrameRate = Convert.ToDouble(edWMVFrameRate.Text)
-            wmvOutput.Custom_Video_KeyFrameInterval = Convert.ToByte(edWMVKeyFrameInterval.Text)
-            wmvOutput.Custom_Video_Bitrate = Convert.ToInt32(edWMVVideoBitrate.Text)
-            wmvOutput.Custom_Video_Quality = Convert.ToByte(edWMVVideoQuality.Text)
-
-            s = cbWMVVideoMode.Text
-            If s = "CBR" Then
-                wmvOutput.Custom_Video_Mode = VFWMVStreamMode.CBR
-            ElseIf s = "VBR" Then
-                wmvOutput.Custom_Video_Mode = VFWMVStreamMode.VBRBitrate
-            ElseIf s = "VBR (Peak)" Then
-                wmvOutput.Custom_Video_Mode = VFWMVStreamMode.VBRPeakBitrate
-            Else
-                wmvOutput.Custom_Video_Mode = VFWMVStreamMode.VBRQuality
-            End If
-
-            If cbWMVTVFormat.Text = "PAL" Then
-                wmvOutput.Custom_Video_TVSystem = VFWMVTVSystem.PAL
-            ElseIf cbWMVTVFormat.Text = "NTSC" Then
-                wmvOutput.Custom_Video_TVSystem = VFWMVTVSystem.NTSC
-            Else
-                wmvOutput.Custom_Video_TVSystem = VFWMVTVSystem.Other
-            End If
-
-            wmvOutput.Custom_Video_StreamPresent = cbWMVVideoEnabled.Checked
-
-            wmvOutput.Custom_Profile_Name = "My_Profile_1"
-
-        End If
-
-    End Sub
-
-    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
+    Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
 
         Text += " (SDK v" + VideoCapture1.SDK_Version.ToString() + " date " + VideoCapture1.SDK_BuildDate.Date.ToString("d") + ", " + VideoCapture1.SDK_State + ")"
 
         Tag = 1
 
+        AddHandler tmRecording.Elapsed, AddressOf UpdateRecordingTime
+
+        screenshotSaveDialog = new SaveFileDialog()
+        screenshotSaveDialog.FileName = "image.jpg"
+        screenshotSaveDialog.Filter = "JPEG|*.jpg|BMP|*.bmp|PNG|*.png|GIF|*.gif|TIFF|*.tiff"
+        screenshotSaveDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
+
         ' set combobox indexes
         cbMode.SelectedIndex = 0
-        cbOutputFormat.SelectedIndex = 21
-        cbOGGAverage.SelectedIndex = 6
-        cbOGGMaximum.SelectedIndex = 8
-        cbOGGMinimum.SelectedIndex = 5
+        cbOutputFormat.SelectedIndex = 22
+
         cbResizeMode.SelectedIndex = 0
-        cbImageType.SelectedIndex = 1
-        cbTextLogoAlign.SelectedIndex = 0
-        cbTextLogoAntialiasing.SelectedIndex = 0
-        cbTextLogoDrawMode.SelectedIndex = 0
-        cbTextLogoEffectrMode.SelectedIndex = 0
-        cbTextLogoGradMode.SelectedIndex = 0
-        cbTextLogoShapeType.SelectedIndex = 0
         cbMotDetHLColor.SelectedIndex = 1
         cbIPCameraType.SelectedIndex = 2
         cbRotate.SelectedIndex = 0
         cbBarcodeType.SelectedIndex = 0
         cbNetworkStreamingMode.SelectedIndex = 0
-        cbFLACBlockSize.SelectedIndex = 4
-        cbSpeexBitrateControl.SelectedIndex = 2
-        cbSpeexMode.SelectedIndex = 0
-
-        cbDVChannels.SelectedIndex = 1
-        cbDVSampleRate.SelectedIndex = 0
-        cbBPS.SelectedIndex = 1
-        cbChannels.SelectedIndex = 1
-        cbSampleRate.SelectedIndex = 0
-        cbBPS2.SelectedIndex = 0
-        cbChannels2.SelectedIndex = 0
-        cbSampleRate2.SelectedIndex = 0
-        cbLameCBRBitrate.SelectedIndex = 8
-        cbLameVBRMin.SelectedIndex = 8
-        cbLameVBRMax.SelectedIndex = 10
-        cbLameSampleRate.SelectedIndex = 0
-
-        cbMFProfile.SelectedIndex = 1
-        cbMFLevel.SelectedIndex = 12
-        cbMFRateControl.SelectedIndex = 3
-
-        Dim encoders As MFTEncoders
-        Dim FiltersAvailableInfo = RedistChecker.GetFiltersAvailable(encoders)
-        If (FiltersAvailableInfo.V11_NVENC_H264) Then
-            lbMFHWAvailableEncoders.Text += "NVENC "
-        End If
-
-        If (FiltersAvailableInfo.V11_AMD_H264) Then
-            lbMFHWAvailableEncoders.Text = lbMFHWAvailableEncoders.Text + "AMD "
-        End If
-
-        If (FiltersAvailableInfo.V11_QSV_H264) Then
-            lbMFHWAvailableEncoders.Text += "INTEL QSV"
-        End If
-
-        If (IsWindows8OrNewer()) Then
-            cbMP4Mode.SelectedIndex = 3
-        ElseIf (IsWindows7OrNewer()) Then
-            cbMP4Mode.SelectedIndex = 1
-        Else
-            cbMP4Mode.SelectedIndex = 0
-        End If
 
         cbCustomAudioSourceCategory.SelectedIndex = 0
         cbCustomVideoSourceCategory.SelectedIndex = 0
@@ -233,51 +127,6 @@ Public Class Form1
         Next
 
         cbScreenCaptureDisplayIndex.SelectedIndex = 0
-
-        cbWebMVideoEndUsageMode.SelectedIndex = 0
-        edWebMVideoThreadCount.Text = Environment.ProcessorCount.ToString(CultureInfo.InvariantCulture)
-        cbWebMVideoEncoder.SelectedIndex = 0
-        cbWebMVideoEndUsageMode.SelectedIndex = 0
-        cbWebMVideoKeyframeMode.SelectedIndex = 0
-        cbWebMVideoQualityMode.SelectedIndex = 0
-
-        cbFFAspectRatio.SelectedIndex = 0
-        cbFFAudioBitrate.SelectedIndex = 8
-        cbFFAudioChannels.SelectedIndex = 0
-        cbFFAudioSampleRate.SelectedIndex = 1
-        cbFFConstaint.SelectedIndex = 0
-        cbFFOutputFormat.SelectedIndex = 0
-
-        cbFFEXEAspectRatio.SelectedIndex = 0
-        cbFFEXEAudioBitrate.SelectedIndex = 8
-        cbFFEXEAudioChannels.SelectedIndex = 0
-        cbFFEXEAudioSampleRate.SelectedIndex = 0
-        cbFFEXEProfile.SelectedIndex = 7
-        cbFFEXEH264Mode.SelectedIndex = 0
-        cbFFEXEH264Level.SelectedIndex = 0
-        cbFFEXEH264Preset.SelectedIndex = 0
-        cbFFEXEH264Profile.SelectedIndex = 0
-        cbFFEXEVideoConstraint.SelectedIndex = 0
-
-        cbH264Profile.SelectedIndex = 2
-        cbH264Level.SelectedIndex = 0
-        cbH264RateControl.SelectedIndex = 1
-        cbH264MBEncoding.SelectedIndex = 0
-        cbAACOutput.SelectedIndex = 0
-        cbAACVersion.SelectedIndex = 0
-        cbAACObjectType.SelectedIndex = 1
-        cbAACBitrate.SelectedIndex = 16
-        cbH264PictureType.SelectedIndex = 0
-        cbH264TargetUsage.SelectedIndex = 3
-
-        cbNVENCProfile.SelectedIndex = 2
-        cbNVENCLevel.SelectedIndex = 0
-        cbNVENCRateControl.SelectedIndex = 1
-
-        cbM4AOutput.SelectedIndex = 0
-        cbM4AVersion.SelectedIndex = 0
-        cbM4AObjectType.SelectedIndex = 1
-        cbM4ABitrate.SelectedIndex = 12
 
         cbDecklinkOutputAnalog.SelectedIndex = 0
         cbDecklinkOutputBlackToDeck.SelectedIndex = 0
@@ -319,18 +168,6 @@ Public Class Form1
 
         cbDirect2DRotate.SelectedIndex = 0
 
-        For i As Integer = 0 To VideoCapture1.Video_Codecs.Count - 1
-            cbVideoCodecs.Items.Add(VideoCapture1.Video_Codecs.Item(i))
-            cbCustomVideoCodecs.Items.Add(VideoCapture1.Video_Codecs.Item(i))
-        Next i
-
-        If cbVideoCodecs.Items.Count > 0 Then
-            cbVideoCodecs.SelectedIndex = 0
-            cbVideoCodecs_SelectedIndexChanged(sender, e)
-            cbCustomVideoCodecs.SelectedIndex = 0
-            cbCustomVideoCodecs_SelectedIndexChanged(sender, e)
-        End If
-
         VideoCapture1.TVTuner_Read()
 
         For i As Integer = 0 To VideoCapture1.TVTuner_Devices.Count - 1
@@ -366,24 +203,6 @@ Public Class Form1
             cbPIPDevice.SelectedIndex = 0
             'cbPIPDevice_SelectedIndexChanged(sender, e)
         End If
-
-        For i As Integer = 0 To VideoCapture1.Audio_Codecs.Count - 1
-            cbAudioCodecs.Items.Add(VideoCapture1.Audio_Codecs.Item(i))
-            cbAudioCodecs2.Items.Add(VideoCapture1.Audio_Codecs.Item(i))
-            cbCustomAudioCodecs.Items.Add(VideoCapture1.Audio_Codecs.Item(i))
-        Next i
-
-        If cbAudioCodecs.Items.Count > 0 Then
-            cbAudioCodecs.SelectedIndex = 0
-            'cbAudioCodecs_SelectedIndexChanged(sender, e)
-            cbAudioCodecs2.SelectedIndex = 0
-            'cbAudioCodecs2_SelectedIndexChanged(sender, e)
-            cbCustomAudioCodecs.SelectedIndex = 0
-            'cbCustomAudioCodecs_SelectedIndexChanged(sender, e)
-        End If
-
-        cbAudioCodecs.Text = "PCM"
-        cbAudioCodecs2.Text = "PCM"
 
         For Each info As AudioCaptureDeviceInfo In VideoCapture1.Audio_CaptureDevicesInfo
             cbAudioInputDevice.Items.Add(info.Name)
@@ -434,24 +253,6 @@ Public Class Form1
         cbAudioInputSelectedIndexChanged(sender, e)
         cbVideoInputSelectedIndexChanged(sender, e)
 
-        For i As Integer = 0 To VideoCapture1.DirectShow_Filters.Count - 1
-            cbCustomDSFilterA.Items.Add(VideoCapture1.DirectShow_Filters.Item(i))
-            cbCustomDSFilterV.Items.Add(VideoCapture1.DirectShow_Filters.Item(i))
-            cbCustomMuxer.Items.Add(VideoCapture1.DirectShow_Filters.Item(i))
-            cbCustomFilewriter.Items.Add(VideoCapture1.DirectShow_Filters.Item(i))
-        Next i
-
-        If cbCustomDSFilterA.Items.Count > 0 Then
-            cbCustomDSFilterA.SelectedIndex = 0
-            'cbCustomDSFilterA_SelectedIndexChanged(sender, e)
-            cbCustomDSFilterV.SelectedIndex = 0
-            'cbCustomDSFilterV_SelectedIndexChanged(sender, e)
-            cbCustomMuxer.SelectedIndex = 0
-            'cbCustomMuxer_SelectedIndexChanged(sender, e)
-            cbCustomFilewriter.SelectedIndex = 0
-            'cbCustomFilewriter_SelectedIndexChanged(sender, e)
-        End If
-
         rbEVR.Enabled = VideoCapture.Filter_Supported_EVR()
         rbVMR9.Enabled = VideoCapture.Filter_Supported_VMR9()
 
@@ -493,48 +294,18 @@ Public Class Form1
         cbMPEGVideoDecoder.SelectedIndex = 0
         cbMPEGAudioDecoder.SelectedIndex = 0
 
-        If cbVideoCodecs.Items.IndexOf("MJPEG Compressor") <> -1 Then
-            cbVideoCodecs.SelectedIndex = cbVideoCodecs.Items.IndexOf("MJPEG Compressor")
-        End If
-
-        If cbAudioCodecs.Items.IndexOf("PCM") <> -1 Then
-            cbAudioCodecs.SelectedIndex = cbAudioCodecs.Items.IndexOf("PCM")
-        End If
-
-        cbWMVAudioSelectedIndexChanged(sender, e)
-        cbWMVVideoSelectedIndexChanged(sender, e)
-        cbWMVAudioCodec.SelectedIndex = 0
-        cbWMVVideoCodec.SelectedIndex = 0
-        cbWMVAudioCodec_SelectedIndexChanged(sender, e)
-
-        If cbWMVAudioFormat.Items.Count > 0 Then
-            cbWMVAudioFormat.SelectedIndex = 0
-        End If
-
-        For i As Integer = 0 To VideoCapture1.WMV_Internal_Profiles.Count - 1
-            cbWMVInternalProfile9.Items.Add(VideoCapture1.WMV_Internal_Profiles.Item(i))
-        Next i
-        cbWMVInternalProfile9.SelectedIndex = 7
-
         Dim names As List(Of String) = New List(Of String)
 
         Dim descs As List(Of String) = New List(Of String)
 
         VideoCapture1.WMV_V8_Profiles(names, descs)
 
-        For i As Integer = 0 To names.Count - 1
-            cbWMVInternalProfile8.Items.Add(names.Item(i))
-        Next i
-
-        cbWMVInternalProfile8.SelectedIndex = 0
-
         'audio effects
         For i As Integer = 0 To VideoCapture1.Audio_Effects_Equalizer_Presets.Count - 1
             cbAudEqualizerPreset.Items.Add(VideoCapture1.Audio_Effects_Equalizer_Presets.Item(i))
         Next i
 
-        edScreenshotsFolder.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
-        edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\" + "output.avi"
+        edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\" + "output.mp4"
 
         cbPIPMode.SelectedIndex = 0
 
@@ -828,32 +599,10 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btAudioSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btAudioSettings.Click
-
-        Dim sName As String = cbAudioCodecs.Text
-
-        If VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
     Private Sub btSelectOutput_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectOutput.Click
 
         If saveFileDialog1.ShowDialog() = DialogResult.OK Then
             edOutput.Text = saveFileDialog1.FileName
-        End If
-
-    End Sub
-
-    Private Sub btSelectWM_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectWM.Click
-
-        If openFileDialog1.ShowDialog() = DialogResult.OK Then
-            edWMVProfile.Text = openFileDialog1.FileName
         End If
 
     End Sub
@@ -889,6 +638,8 @@ Public Class Form1
         VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH")
 
         VideoCapture1.Video_Effects_Clear()
+        lbTextLogos.Items.Clear()
+        lbImageLogos.Items.Clear()
 
         Select Case cbMode.SelectedIndex
             Case 0 : VideoCapture1.Mode = VFVideoCaptureMode.VideoPreview
@@ -947,7 +698,13 @@ Public Class Form1
 
         End If
 
-        If (VideoCapture1.Mode = VFVideoCaptureMode.ScreenCapture) Or (VideoCapture1.Mode = VFVideoCaptureMode.VideoCapture) Or (VideoCapture1.Mode = VFVideoCaptureMode.AudioCapture) Or (VideoCapture1.Mode = VFVideoCaptureMode.IPCapture) Or (VideoCapture1.Mode = VFVideoCaptureMode.BDACapture) Then
+
+        Dim captureMode = (VideoCapture1.Mode = VFVideoCaptureMode.AudioCapture Or VideoCapture1.Mode = VFVideoCaptureMode.BDACapture Or
+                           VideoCapture1.Mode = VFVideoCaptureMode.CustomCapture Or VideoCapture1.Mode = VFVideoCaptureMode.IPCapture Or
+                           VideoCapture1.Mode = VFVideoCaptureMode.KinectCapture Or VideoCapture1.Mode = VFVideoCaptureMode.ScreenCapture Or
+                           VideoCapture1.Mode = VFVideoCaptureMode.DecklinkSourceCapture Or VideoCapture1.Mode = VFVideoCaptureMode.VideoCapture)
+
+        If (captureMode) Then
             VideoCapture1.Output_Filename = edOutput.Text
         End If
 
@@ -964,179 +721,203 @@ Public Class Form1
         ' multiscreen
         ConfigureMultiscreen()
 
-        Dim outputFormat = VFVideoCaptureOutputFormat.AVI
-        Select Case cbOutputFormat.SelectedIndex
-            Case 0 : outputFormat = VFVideoCaptureOutputFormat.AVI
-            Case 1 : outputFormat = VFVideoCaptureOutputFormat.MKV
-            Case 2
-                outputFormat = VFVideoCaptureOutputFormat.WMV
+        If captureMode Then
+            Dim outputFormat = VFVideoCaptureOutputFormat.AVI
+            Select Case cbOutputFormat.SelectedIndex
+                Case 0
+                    outputFormat = VFVideoCaptureOutputFormat.AVI
 
-                Dim wmvOutput As VFWMVOutput = New VFWMVOutput
-                FillWMVSettings(wmvOutput)
-                VideoCapture1.Output_Format = wmvOutput
-            Case 3 : outputFormat = VFVideoCaptureOutputFormat.DV
-            Case 4 : outputFormat = VFVideoCaptureOutputFormat.PCM_ACM
-            Case 5 : outputFormat = VFVideoCaptureOutputFormat.MP3
-            Case 6 : outputFormat = VFVideoCaptureOutputFormat.M4A
-            Case 7
-                outputFormat = VFVideoCaptureOutputFormat.WMA
+                    Dim aviOutput = New VFAVIOutput()
+                    SetAVIOutput(aviOutput)
+                    VideoCapture1.Output_Format = aviOutput
+                Case 1
+                    outputFormat = VFVideoCaptureOutputFormat.MKVv1
 
-                Dim wmaOutput As VFWMAOutput = New VFWMAOutput()
-                wmaOutput.ProfileFilename = edWMVProfile.Text
-                VideoCapture1.Output_Format = wmaOutput
-            Case 8 : outputFormat = VFVideoCaptureOutputFormat.FLAC
-            Case 9 : outputFormat = VFVideoCaptureOutputFormat.OggVorbis
-            Case 10 : outputFormat = VFVideoCaptureOutputFormat.Speex
-            Case 11 : outputFormat = VFVideoCaptureOutputFormat.Custom
-            Case 12 : outputFormat = VFVideoCaptureOutputFormat.DirectCaptureDV
-            Case 13 : outputFormat = VFVideoCaptureOutputFormat.DirectCaptureAVI
-            Case 14 : outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMPEG
-            Case 15 : outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMKV
-            Case 16 : outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMP4_GDCL
-            Case 17 : outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMP4_Monogram
-            Case 18 : outputFormat = VFVideoCaptureOutputFormat.WebM
-            Case 19 : outputFormat = VFVideoCaptureOutputFormat.FFMPEG_DLL
-            Case 20 : outputFormat = VFVideoCaptureOutputFormat.FFMPEG_EXE
-            Case 21 : outputFormat = VFVideoCaptureOutputFormat.MP4
-            Case 22 : outputFormat = VFVideoCaptureOutputFormat.AnimatedGIF
-            Case 23 : outputFormat = VFVideoCaptureOutputFormat.Encrypted
-        End Select
+                    Dim mkvOutput = New VFMKVv1Output()
+                    SetMKVOutput(mkvOutput)
+                    VideoCapture1.Output_Format = mkvOutput
+                Case 2
+                    outputFormat = VFVideoCaptureOutputFormat.WMV
 
-        If (outputFormat = VFVideoCaptureOutputFormat.AVI) Then
+                    Dim wmvOutput As VFWMVOutput = New VFWMVOutput
+                    SetWMVOutput(wmvOutput)
+                    VideoCapture1.Output_Format = wmvOutput
+                Case 3
+                    outputFormat = VFVideoCaptureOutputFormat.DV
 
-            Dim aviOutput As VFAVIOutput = New VFAVIOutput
-            SetAVIOutput(aviOutput)
-            VideoCapture1.Output_Format = aviOutput
+                    Dim dvOutput = New VFDVOutput()
+                    SetDVOutput(dvOutput)
+                    VideoCapture1.Output_Format = dvOutput
+                Case 4
+                    outputFormat = VFVideoCaptureOutputFormat.PCM_ACM
 
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.MKV) Then
+                    Dim acmOutput = New VFACMOutput()
+                    SetACMOutput(acmOutput)
+                    VideoCapture1.Output_Format = acmOutput
+                Case 5
+                    outputFormat = VFVideoCaptureOutputFormat.MP3
 
-            Dim mkvOutput As VFMKVOutput = New VFMKVOutput
-            SetMKVOutput(mkvOutput)
-            VideoCapture1.Output_Format = mkvOutput
+                    Dim mp3Output = New VFMP3Output()
+                    SetMP3Output(mp3Output)
+                    VideoCapture1.Output_Format = mp3Output
+                Case 6
+                    outputFormat = VFVideoCaptureOutputFormat.M4A
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.WMA Then
+                    Dim m4aOutput = New VFM4AOutput()
+                    SetM4AOutput(m4aOutput)
+                    VideoCapture1.Output_Format = m4aOutput
+                Case 7
+                    outputFormat = VFVideoCaptureOutputFormat.WMA
 
-            Dim wmaOutput As VFWMAOutput = New VFWMAOutput()
-            wmaOutput.ProfileFilename = edWMVProfile.Text
-            VideoCapture1.Output_Format = wmaOutput
+                    Dim wmaOutput As VFWMAOutput = New VFWMAOutput()
+                    SetWMAOutput(wmaOutput)
+                    VideoCapture1.Output_Format = wmaOutput
+                Case 8
+                    outputFormat = VFVideoCaptureOutputFormat.FLAC
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.WMV Then
+                    Dim flacOutput = New VFFLACOutput()
+                    SetFLACOutput(flacOutput)
+                    VideoCapture1.Output_Format = flacOutput
+                Case 9
+                    outputFormat = VFVideoCaptureOutputFormat.OggVorbis
 
-            'nothing, already applied in FillWMVSettings
+                    Dim oggVorbisOutput = New VFOGGVorbisOutput()
+                    SetOGGOutput(oggVorbisOutput)
+                    VideoCapture1.Output_Format = oggVorbisOutput
+                Case 10
+                    outputFormat = VFVideoCaptureOutputFormat.Speex
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.DV Then
+                    Dim speexOutput = New VFSpeexOutput()
+                    SetSpeexOutput(speexOutput)
+                    VideoCapture1.Output_Format = speexOutput
+                Case 11
+                    outputFormat = VFVideoCaptureOutputFormat.Custom
 
-            Dim dvOutput As VFDVOutput = New VFDVOutput
-            SetDVOutput(dvOutput)
-            VideoCapture1.Output_Format = dvOutput
+                    Dim customOutput = New VFCustomOutput()
+                    SetCustomOutput(customOutput)
+                    VideoCapture1.Output_Format = customOutput
+                Case 12
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureDV
+                    VideoCapture1.Output_Format = New VFDirectCaptureDVOutput()
+                Case 13
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureAVI
+                    VideoCapture1.Output_Format = New VFDirectCaptureAVIOutput()
+                Case 14
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMPEG
+                    VideoCapture1.Output_Format = New VFDirectCaptureMPEGOutput()
+                Case 15
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMKV
+                    VideoCapture1.Output_Format = New VFDirectCaptureMKVOutput()
+                Case 16
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMP4_GDCL
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.Custom Then
+                    Dim directCaptureOutputGDCL = New VFDirectCaptureMP4Output()
+                    SetDirectCaptureCustomOutput(directCaptureOutputGDCL)
+                    directCaptureOutputGDCL.Muxer = VFDirectCaptureMP4Muxer.GDCL
+                    VideoCapture1.Output_Format = directCaptureOutputGDCL
+                Case 17
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMP4_Monogram
 
-            Dim customOutput As VFCustomOutput = New VFCustomOutput
-            SetCustomOutput(customOutput)
-            VideoCapture1.Output_Format = customOutput
+                    Dim directCaptureOutputMG = New VFDirectCaptureMP4Output()
+                    SetDirectCaptureCustomOutput(directCaptureOutputMG)
+                    directCaptureOutputMG.Muxer = VFDirectCaptureMP4Muxer.Monogram
+                    VideoCapture1.Output_Format = directCaptureOutputMG
+                Case 18
+                    outputFormat = VFVideoCaptureOutputFormat.DirectCaptureCustom
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMPEG Then
+                    Dim directCaptureOutput = New VFDirectCaptureCustomOutput()
+                    SetDirectCaptureCustomOutput(directCaptureOutput)
+                    VideoCapture1.Output_Format = directCaptureOutput
+                Case 19
+                    outputFormat = VFVideoCaptureOutputFormat.WebM
 
-            If cbMPEGEncoder.SelectedIndex <> -1 Then
-                VideoCapture1.Video_CaptureDevice_InternalMPEGEncoder_Name = cbMPEGEncoder.Text
-            End If
+                    Dim webmOutput = New VFWebMOutput()
+                    SetWebMOutput(webmOutput)
+                    VideoCapture1.Output_Format = webmOutput
+                Case 20
+                    outputFormat = VFVideoCaptureOutputFormat.FFMPEG_DLL
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.PCM_ACM Then
+                    Dim ffmpegDLLOutput = New VFFFMPEGDLLOutput()
+                    SetFFMPEGDLLOutput(ffmpegDLLOutput)
+                    VideoCapture1.Output_Format = ffmpegDLLOutput
+                Case 21
+                    outputFormat = VFVideoCaptureOutputFormat.FFMPEG_EXE
 
-            Dim acmOutput As VFACMOutput = New VFACMOutput
-            SetPCMOutput(acmOutput)
-            VideoCapture1.Output_Format = acmOutput
+                    Dim ffmpegOutput = New VFFFMPEGEXEOutput()
+                    SetFFMPEGEXEOutput(ffmpegOutput)
+                    VideoCapture1.Output_Format = ffmpegOutput
+                Case 22
+                    outputFormat = VFVideoCaptureOutputFormat.MP4v8v10
+                Case 23
+                    outputFormat = VFVideoCaptureOutputFormat.MP4v11
 
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.MP3 Then
+                    Dim mp4Output = New VFMP4v11Output()
+                    SetMP4v11Output(mp4Output)
+                    VideoCapture1.Output_Format = mp4Output
+                Case 24
+                    outputFormat = VFVideoCaptureOutputFormat.AnimatedGIF
 
-            Dim mp3Output As VFMP3Output = New VFMP3Output()
-            SetMP3Output(mp3Output)
-            VideoCapture1.Output_Format = mp3Output
+                    Dim gifOutput = New VFAnimatedGIFOutput()
+                    SetGIFOutput(gifOutput)
+                    VideoCapture1.Output_Format = gifOutput
+                Case 25
+                    outputFormat = VFVideoCaptureOutputFormat.Encrypted
+                                    Case 26
+                    Dim tsOutput = New VFMPEGTSOutput()
+                    SetMPEGTSOutput(tsOutput)
+                    VideoCapture1.Output_Format = tsOutput
+                Case 27
+                    Dim movOutput = New VFMOVOutput()
+                    SetMOVOutput(movOutput)
+                    VideoCapture1.Output_Format = movOutput
+            End Select
 
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.FLAC) Then
+            If outputFormat = VFVideoCaptureOutputFormat.DirectCaptureMPEG Then
 
-            Dim flacOutput As VFFLACOutput = New VFFLACOutput()
-            SetFLACOutput(flacOutput)
-            VideoCapture1.Output_Format = flacOutput
-
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.Speex) Then
-
-            SetSpeexOutput()
-
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.OggVorbis) Then
-
-            SetOggOutput()
-
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.M4A) Then
-
-            Dim m4aOutput As VFM4AOutput = New VFM4AOutput()
-            SetM4AOutput(m4aOutput)
-            VideoCapture1.Output_Format = m4aOutput
-
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.WebM Then
-
-            Dim webmOutput As VFWebMOutput = New VFWebMOutput
-            SetWebMOutput(webmOutput)
-            VideoCapture1.Output_Format = webmOutput
-
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.FFMPEG_DLL) Then
-
-            Dim ffmpegOutput As VFFFMPEGDLLOutput = New VFFFMPEGDLLOutput()
-            SetFFMPEGDLLOutput(ffmpegOutput)
-            VideoCapture1.Output_Format = ffmpegOutput
-
-        ElseIf (outputFormat = VFVideoCaptureOutputFormat.FFMPEG_EXE) Then
-
-            Dim ffmpegOutput As VFFFMPEGEXEOutput = New VFFFMPEGEXEOutput()
-            FillFFMPEGEXESettings(ffmpegOutput)
-            VideoCapture1.Output_Format = ffmpegOutput
-
-        ElseIf ((outputFormat = VFVideoCaptureOutputFormat.MP4) Or
-            ((outputFormat = VFVideoCaptureOutputFormat.Encrypted) And (rbEncryptedH264SW.Checked)) Or
-                    (VideoCapture1.Network_Streaming_Enabled And (VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.RTSP_H264_AAC_SW))) Then
-
-            Dim mp4Output As VFMP4Output = New VFMP4Output()
-            SetMP4Output(mp4Output)
-
-            If (outputFormat = VFVideoCaptureOutputFormat.Encrypted) Then
-
-                mp4Output.Encryption = True
-                mp4Output.Encryption_Format = VFEncryptionFormat.MP4_H264_SW_AAC
-
-                If (rbEncryptionKeyString.Checked) Then
-
-                    mp4Output.Encryption_KeyType = VFEncryptionKeyType.String
-                    mp4Output.Encryption_Key = edEncryptionKeyString.Text
-
-                ElseIf (rbEncryptionKeyFile.Checked) Then
-
-                    mp4Output.Encryption_KeyType = VFEncryptionKeyType.File
-                    mp4Output.Encryption_Key = edEncryptionKeyFile.Text
-
-                Else
-
-                    mp4Output.Encryption_KeyType = VFEncryptionKeyType.Binary
-                    mp4Output.Encryption_Key = VideoCapture.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text)
-
+                If cbMPEGEncoder.SelectedIndex <> -1 Then
+                    VideoCapture1.Video_CaptureDevice_InternalMPEGEncoder_Name = cbMPEGEncoder.Text
                 End If
 
-                If (rbEncryptionModeAES128.Checked) Then
-                    mp4Output.Encryption_Mode = VFEncryptionMode.v8_AES128
-                Else
-                    mp4Output.Encryption_Mode = VFEncryptionMode.v9_AES256
+            ElseIf ((outputFormat = VFVideoCaptureOutputFormat.MP4v8v10) Or
+                ((outputFormat = VFVideoCaptureOutputFormat.Encrypted) And (rbEncryptedH264SW.Checked)) Or
+                        (VideoCapture1.Network_Streaming_Enabled And (VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.RTSP_H264_AAC_SW))) Then
+
+                Dim mp4Output As VFMP4v8v10Output = New VFMP4v8v10Output()
+                SetMP4v10Output(mp4Output)
+
+                If (outputFormat = VFVideoCaptureOutputFormat.Encrypted) Then
+                    mp4Output.Encryption_Format = VFEncryptionFormat.MP4_H264_SW_AAC
+
+                    If (rbEncryptionKeyString.Checked) Then
+
+                        mp4Output.Encryption_KeyType = VFEncryptionKeyType.String
+                        mp4Output.Encryption_Key = edEncryptionKeyString.Text
+
+
+                        mp4Output.Encryption = True
+
+                    ElseIf (rbEncryptionKeyFile.Checked) Then
+                        mp4Output.Encryption_KeyType = VFEncryptionKeyType.File
+                        mp4Output.Encryption_Key = edEncryptionKeyFile.Text
+
+                    Else
+
+                        mp4Output.Encryption_KeyType = VFEncryptionKeyType.Binary
+                        mp4Output.Encryption_Key = VideoCapture.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text)
+
+                    End If
+
+                    If (rbEncryptionModeAES128.Checked) Then
+                        mp4Output.Encryption_Mode = VFEncryptionMode.v8_AES128
+                    Else
+                        mp4Output.Encryption_Mode = VFEncryptionMode.v9_AES256
+                    End If
                 End If
+
+                VideoCapture1.Output_Format = mp4Output
             End If
-
-            VideoCapture1.Output_Format = mp4Output
-
-        ElseIf outputFormat = VFVideoCaptureOutputFormat.AnimatedGIF Then
-
-            Dim gifOutput As VFAnimatedGIFOutput = New VFAnimatedGIFOutput
-            SetGIFOutput(gifOutput)
-            VideoCapture1.Output_Format = gifOutput
-
         End If
+
 
         'crossbar
         SelectCrossbar()
@@ -1232,7 +1013,8 @@ Public Class Form1
         VideoCapture1.Start()
 
         edNetworkURL.Text = VideoCapture1.Network_Streaming_URL
-
+        
+        tmRecording.Start()
     End Sub
 
     Private Sub ConfigureMotionDetectionEx()
@@ -1612,16 +1394,16 @@ Public Class Form1
             cbLiveRotation_CheckedChanged(Nothing, Nothing)
         End If
 
-        If cbImageLogo.Checked Then
-            cbImageLogo_CheckedChanged(Nothing, Nothing)
-        End If
-
-        If cbTextLogo.Checked Then
-            btTextLogoUpdateParams_Click(Nothing, Nothing)
-        End If
-
         If cbFadeInOut.Checked Then
             cbFadeInOut_CheckedChanged(Nothing, Nothing)
+        End If
+
+        If cbFlipX.Checked Then
+            cbFlipX_CheckedChanged(Nothing, Nothing)
+        End If
+
+        If cbFlipY.Checked Then
+            cbFlipY_CheckedChanged(Nothing, Nothing)
         End If
     End Sub
 
@@ -1640,639 +1422,211 @@ Public Class Form1
             End If
         End If
     End Sub
-
-    Private Sub SetMP4Output(ByRef mp4Output As VFMP4Output)
-
-        Dim tmp = 0
-
-        ' Main settings
-        Select Case (cbMP4Mode.SelectedIndex)
-            Case 0
-                ' v8 Legacy(XP compatible, CPU Or Intel QuickSync GPU)
-                mp4Output.MP4Mode = VFMP4Mode.v8
-            Case 1
-                ' v10(CPU Or Intel QuickSync GPU)
-                mp4Output.MP4Mode = VFMP4Mode.v10
-            Case 2
-                ' v10 nVidia NVENC
-                mp4Output.MP4Mode = VFMP4Mode.v10_NVENC
-            Case Else
-                mp4Output.MP4Mode = VFMP4Mode.v11
-        End Select
-
-        If (mp4Output.MP4Mode = VFMP4Mode.v8 Or mp4Output.MP4Mode = VFMP4Mode.v10) Then
-            ' Video H264 settings
-            Select Case (cbH264Profile.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v10.Profile = VFH264Profile.ProfileAuto
-                Case 1
-                    mp4Output.Video_v10.Profile = VFH264Profile.ProfileBaseline
-                Case 2
-                    mp4Output.Video_v10.Profile = VFH264Profile.ProfileMain
-                Case 3
-                    mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh
-                Case 4
-                    mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh10
-                Case 5
-                    mp4Output.Video_v10.Profile = VFH264Profile.ProfileHigh422
-            End Select
-
-            Select Case (cbH264Level.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v10.Level = VFH264Level.LevelAuto
-                Case 1
-                    mp4Output.Video_v10.Level = VFH264Level.Level1
-                Case 2
-                    mp4Output.Video_v10.Level = VFH264Level.Level11
-                Case 3
-                    mp4Output.Video_v10.Level = VFH264Level.Level12
-                Case 4
-                    mp4Output.Video_v10.Level = VFH264Level.Level13
-                Case 5
-                    mp4Output.Video_v10.Level = VFH264Level.Level2
-                Case 6
-                    mp4Output.Video_v10.Level = VFH264Level.Level21
-                Case 7
-                    mp4Output.Video_v10.Level = VFH264Level.Level22
-                Case 8
-                    mp4Output.Video_v10.Level = VFH264Level.Level3
-                Case 9
-                    mp4Output.Video_v10.Level = VFH264Level.Level31
-                Case 10
-                    mp4Output.Video_v10.Level = VFH264Level.Level32
-                Case 11
-                    mp4Output.Video_v10.Level = VFH264Level.Level4
-                Case 12
-                    mp4Output.Video_v10.Level = VFH264Level.Level41
-                Case 13
-                    mp4Output.Video_v10.Level = VFH264Level.Level42
-                Case 14
-                    mp4Output.Video_v10.Level = VFH264Level.Level5
-                Case 15
-                    mp4Output.Video_v10.Level = VFH264Level.Level51
-            End Select
-
-            Select Case (cbH264TargetUsage.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.Auto
-                Case 1
-                    mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.BestQuality
-                Case 2
-                    mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.Balanced
-                Case 3
-                    mp4Output.Video_v10.TargetUsage = VFH264TargetUsage.BestSpeed
-            End Select
-
-            Select Case (cbH264PictureType.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v10.PictureType = VFH264PictureType.Auto
-                Case 1
-                    mp4Output.Video_v10.PictureType = VFH264PictureType.Frame
-                Case 2
-                    mp4Output.Video_v10.PictureType = VFH264PictureType.TFF
-                Case 3
-                    mp4Output.Video_v10.PictureType = VFH264PictureType.BFF
-            End Select
-
-            mp4Output.Video_v10.RateControl = cbH264RateControl.SelectedIndex
-            mp4Output.Video_v10.MBEncoding = cbH264MBEncoding.SelectedIndex
-            mp4Output.Video_v10.GOP = cbH264GOP.Checked
-            mp4Output.Video_v10.BitrateAuto = cbH264AutoBitrate.Checked
-
-            Int32.TryParse(edH264IDR.Text, tmp)
-            mp4Output.Video_v10.IDR_Period = tmp
-
-            Int32.TryParse(edH264P.Text, tmp)
-            mp4Output.Video_v10.P_Period = tmp
-
-            Int32.TryParse(edH264Bitrate.Text, tmp)
-            mp4Output.Video_v10.Bitrate = tmp
-
-        ElseIf (mp4Output.MP4Mode = VFMP4Mode.v10_NVENC) Then
-
-            ' NVENC settings
-            Select Case (cbNVENCProfile.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.Auto
-                Case 1
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_Baseline
-                Case 2
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_Main
-                Case 3
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_High
-                Case 4
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_High444
-                Case 5
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_ProgressiveHigh
-                Case 6
-                    mp4Output.Video_v10_NVENC.Profile = VFNVENCVideoEncoderProfile.H264_ConstrainedHigh
-            End Select
-
-            Select Case (cbNVENCLevel.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.Auto
-                Case 1
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_1
-                Case 2
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_11
-                Case 3
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_12
-                Case 4
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_13
-                Case 5
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_2
-                Case 6
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_21
-                Case 7
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_22
-                Case 8
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_3
-                Case 9
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_31
-                Case 10
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_32
-                Case 11
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_4
-                Case 12
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_41
-                Case 13
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_42
-                Case 14
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_5
-                Case 15
-                    mp4Output.Video_v10_NVENC.Level = VFNVENCEncoderLevel.H264_51
-            End Select
-
-            mp4Output.Video_v10_NVENC.Bitrate = Convert.ToInt32(edNVENCBitrate.Text)
-            mp4Output.Video_v10_NVENC.QP = Convert.ToInt32(edNVENCQP.Text)
-            mp4Output.Video_v10_NVENC.RateControl = cbNVENCRateControl.SelectedIndex
-            mp4Output.Video_v10_NVENC.GOP = Convert.ToInt32(edNVENCGOP.Text)
-            mp4Output.Video_v10_NVENC.BFrames = Convert.ToInt32(edNVENCBFrames.Text)
-        Else
-            Select Case (cbMP4Mode.SelectedIndex)
-                Case 3
-                    '  v11 (CPU) H264
-                    mp4Output.Video_v11.Codec = VFMFVideoEncoder.MS_H264
-                Case 4
-                    '  v11 nVidia NVENC H264
-                    mp4Output.Video_v11.Codec = VFMFVideoEncoder.NVENC_H264
-                Case 5
-                    '  v11 Intel QuickSync H264
-                    mp4Output.Video_v11.Codec = VFMFVideoEncoder.QSV_H264
-                Case 6
-                    '  v11 AMD Radeon H264
-                    mp4Output.Video_v11.Codec = VFMFVideoEncoder.AMD_H264
-                Case 7
-                    '  v11 nVidia NVENC H265
-                    mp4Output.Video_v11.Codec = VFMFVideoEncoder.NVENC_H265
-                Case 8
-                    '  v11 AMD Radeon H265
-                    mp4Output.Video_v11.Codec = VFMFVideoEncoder.AMD_H265
-            End Select
-
-            ' Video H264 settings
-            Select Case (cbMFProfile.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v11.Profile = VFMFH264Profile.Base
-                Case 1
-                    mp4Output.Video_v11.Profile = VFMFH264Profile.Main
-                Case 2
-                    mp4Output.Video_v11.Profile = VFMFH264Profile.High
-            End Select
-
-            Select Case (cbMFLevel.SelectedIndex)
-                Case 0
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level1
-                Case 1
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level11
-                Case 2
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level12
-                Case 3
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level13
-                Case 4
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level2
-                Case 5
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level21
-                Case 6
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level22
-                Case 7
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level3
-                Case 8
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level31
-                Case 9
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level32
-                Case 10
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level4
-                Case 11
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level41
-                Case 12
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level42
-                Case 13
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level5
-                Case 14
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level51
-                Case 15
-                    mp4Output.Video_v11.Level = VFMFH264Level.Level51
-            End Select
-
-            mp4Output.Video_v11.RateControl = cbMFRateControl.SelectedIndex
-
-            mp4Output.Video_v11.CABAC = cbMFCABAC.Checked
-            mp4Output.Video_v11.LowLatencyMode = cbMFLowLatency.Checked
-
-            Int32.TryParse(edMFBFramesCount.Text, tmp)
-            mp4Output.Video_v11.DefaultBPictureCount = tmp
-
-            Int32.TryParse(edMFKeyFrameSpacing.Text, tmp)
-            mp4Output.Video_v11.MaxKeyFrameSpacing = tmp
-
-            Int32.TryParse(edMFBitrate.Text, tmp)
-            mp4Output.Video_v11.AvgBitrate = tmp
-
-            Int32.TryParse(edMFMaxBitrate.Text, tmp)
-            mp4Output.Video_v11.MaxBitrate = tmp
-
-            Int32.TryParse(edMFQuality.Text, tmp)
-            mp4Output.Video_v11.Quality = tmp
+    Private Sub SetMP4v11Output(ByRef mp4Output As VFMP4v11Output)
+        If (mp4v11SettingsDialog Is Nothing) Then
+            mp4v11SettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MP4v11)
         End If
 
-        ' video resize
-        If (cbMP4Resize.Checked) Then
-            mp4Output.Video_Resize = New VideoResizeSettings()
+        mp4v11SettingsDialog.FillSettings(mp4Output)
+    End Sub
 
-            mp4Output.Video_Resize.Width = Convert.ToInt32(edMP4ResizeWidth.Text)
-            mp4Output.Video_Resize.Height = Convert.ToInt32(edMP4ResizeHeight.Text)
-            mp4Output.Video_Resize.LetterBox = cbMP4ResizeLetterbox.Checked
+    Private Sub SetMPEGTSOutput(ByRef mpegTSOutput As VFMPEGTSOutput)
 
-            Select Case (cbResizeMode.SelectedIndex)
-                Case 0
-                    mp4Output.Video_Resize.Mode = VFResizeMode.NearestNeighbor
-                Case 1
-                    mp4Output.Video_Resize.Mode = VFResizeMode.Bilinear
-                Case 2
-                    mp4Output.Video_Resize.Mode = VFResizeMode.Bicubic
-                Case 3
-                    mp4Output.Video_Resize.Mode = VFResizeMode.Lancroz
-            End Select
+        If (mpegTSSettingsDialog Is Nothing) Then
+            mpegTSSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MPEGTS)
         End If
 
-        ' Audio AAC settings
-        Int32.TryParse(cbAACBitrate.Text, tmp)
-        mp4Output.Audio_AAC.Bitrate = tmp
+        mpegTSSettingsDialog.FillSettings(mpegTSOutput)
+    End Sub
 
-        mp4Output.Audio_AAC.Version = cbAACVersion.SelectedIndex
-        mp4Output.Audio_AAC.Output = cbAACOutput.SelectedIndex
-        mp4Output.Audio_AAC.Object = (cbAACObjectType.SelectedIndex + 1)
+    Private Sub SetMOVOutput(ByRef mkvOutput As VFMOVOutput)
 
-        ' MP4 
-        If (cbMP4CustomAVSettings.Checked) Then
-            mp4Output.MP4V10Flags = 0
-
-            If (cbMP4TimeAdjust.Checked) Then
-                mp4Output.MP4V10Flags = mp4Output.MP4V10Flags Or MP4V10Flags.TimeAdjust
-            End If
-
-            If (cbMP4TimeOverride.Checked) Then
-
-                mp4Output.MP4V10Flags = mp4Output.MP4V10Flags Or MP4V10Flags.TimeOverride
-            End If
+        If (movSettingsDialog Is Nothing) Then
+            movSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MOV)
         End If
+
+        movSettingsDialog.FillSettings(mkvOutput)
+    End Sub
+
+    Private Sub SetMP4v10Output(ByRef mp4Output As VFMP4v8v10Output)
+        If (mp4V10SettingsDialog Is Nothing) Then
+            mp4V10SettingsDialog = New MP4v10SettingsDialog()
+        End If
+
+        mp4V10SettingsDialog.FillSettings(mp4Output)
     End Sub
 
     Private Sub SetFFMPEGDLLOutput(ByRef ffmpegDLLOutput As VFFFMPEGDLLOutput)
+        If (ffmpegDLLSettingsDialog Is Nothing) Then
+            ffmpegDLLSettingsDialog = New FFMPEGDLLSettingsDialog()
+        End If
 
-        Select Case (cbFFOutputFormat.SelectedIndex)
+        ffmpegDLLSettingsDialog.FillSettings(ffmpegDLLOutput)
+    End Sub
 
-            Case 0
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.MPEG1
+    Private Sub SetFFMPEGEXEOutput(ByRef ffmpegOutput As VFFFMPEGEXEOutput)
+        If (ffmpegEXESettingsDialog Is Nothing) Then
+            ffmpegEXESettingsDialog = New FFMPEGEXESettingsDialog()
+        End If
 
-            Case 1
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.MPEG1VCD
-
-            Case 2
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.MPEG2
-
-            Case 3
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.MPEG2SVCD
-
-            Case 4
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.MPEG2DVD
-
-            Case 5
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.MPEG2TS
-
-            Case 6
-                ffmpegDLLOutput.OutputFormat = VFFFMPEGDLLOutputFormat.FLV
-        End Select
-
-        Select Case (cbFFAspectRatio.SelectedIndex)
-
-            Case 0
-                ffmpegDLLOutput.Video_AspectRatio_W = 0
-                ffmpegDLLOutput.Video_AspectRatio_H = 1
-
-            Case 1
-                ffmpegDLLOutput.Video_AspectRatio_W = 1
-                ffmpegDLLOutput.Video_AspectRatio_H = 1
-
-            Case 2
-                ffmpegDLLOutput.Video_AspectRatio_W = 4
-                ffmpegDLLOutput.Video_AspectRatio_H = 3
-
-            Case 3
-                ffmpegDLLOutput.Video_AspectRatio_W = 16
-                ffmpegDLLOutput.Video_AspectRatio_H = 9
-
-        End Select
-
-        Select Case (cbFFConstaint.SelectedIndex)
-
-            Case 0
-                ffmpegDLLOutput.Video_TVSystem = VFFFMPEGDLLTVSystem.None
-
-            Case 1
-                ffmpegDLLOutput.Video_TVSystem = VFFFMPEGDLLTVSystem.PAL
-
-            Case 2
-                ffmpegDLLOutput.Video_TVSystem = VFFFMPEGDLLTVSystem.NTSC
-
-            Case 3
-                ffmpegDLLOutput.Video_TVSystem = VFFFMPEGDLLTVSystem.Film
-
-        End Select
-
-        ffmpegDLLOutput.Video_Width = Convert.ToInt32(edFFVideoWidth.Text)
-        ffmpegDLLOutput.Video_Height = Convert.ToInt32(edFFVideoHeight.Text)
-        ffmpegDLLOutput.Video_Bitrate = Convert.ToInt32(edFFTargetBitrate.Text) * 1000
-        ffmpegDLLOutput.Video_MaxBitrate = Convert.ToInt32(edFFVideoBitrateMax.Text) * 1000
-        ffmpegDLLOutput.Video_MinBitrate = Convert.ToInt32(edFFVideoBitrateMin.Text) * 1000
-        ffmpegDLLOutput.Video_BufferSize = Convert.ToInt32(edFFVBVBufferSize.Text)
-        ffmpegDLLOutput.Audio_Channels = Convert.ToInt32(cbFFAudioChannels.Text)
-        ffmpegDLLOutput.Audio_SampleRate = Convert.ToInt32(cbFFAudioSampleRate.Text)
-        ffmpegDLLOutput.Audio_Bitrate = Convert.ToInt32(cbFFAudioBitrate.Text) * 1000
-        ffmpegDLLOutput.Video_Interlace = cbFFVideoInterlace.Checked
+        ffmpegEXESettingsDialog.FillSettings(ffmpegOutput)
     End Sub
 
     Private Sub SetGIFOutput(ByRef gifOutput As VFAnimatedGIFOutput)
+        If (gifSettingsDialog Is Nothing) Then
+            gifSettingsDialog = New GIFSettingsDialog()
+        End If
 
-        gifOutput.FrameRate = Convert.ToDouble(edGIFFrameRate.Text)
-        gifOutput.ForcedVideoWidth = Convert.ToInt32(edGIFWidth.Text)
-        gifOutput.ForcedVideoHeight = Convert.ToInt32(edGIFHeight.Text)
+        gifSettingsDialog.FillSettings(gifOutput)
+    End Sub
 
+    Private Sub SetDirectCaptureCustomOutput(ByRef directCaptureOutput As VFDirectCaptureCustomOutput)
+        If (customFormatSettingsDialog Is Nothing) Then
+            customFormatSettingsDialog = New CustomFormatSettingsDialog(
+                VideoCapture1.Video_Codecs.ToArray(),
+                VideoCapture1.Audio_Codecs.ToArray(),
+                VideoCapture1.DirectShow_Filters.ToArray())
+        End If
+
+        customFormatSettingsDialog.FillSettings(directCaptureOutput)
+    End Sub
+
+    Private Sub SetDirectCaptureCustomOutput(ByRef directCaptureOutput As VFDirectCaptureMP4Output)
+        If (customFormatSettingsDialog Is Nothing) Then
+
+            customFormatSettingsDialog = New CustomFormatSettingsDialog(
+                VideoCapture1.Video_Codecs.ToArray(),
+                VideoCapture1.Audio_Codecs.ToArray(),
+                VideoCapture1.DirectShow_Filters.ToArray())
+        End If
+
+        customFormatSettingsDialog.FillSettings(directCaptureOutput)
     End Sub
 
     Private Sub SetWebMOutput(ByRef webmOutput As VFWebMOutput)
+        If (webmSettingsDialog Is Nothing) Then
+            webmSettingsDialog = New WebMSettingsDialog()
+        End If
 
-        webmOutput.Audio_Quality = tbWebMAudioQuality.Value
-
-        webmOutput.Video_Bitrate = Convert.ToInt32(edWebMVideoBitrate.Text)
-        webmOutput.Video_ARNR_MaxFrames = Convert.ToInt32(edWebMVideoARNRMaxFrames.Text)
-        webmOutput.Video_ARNR_Strength = Convert.ToInt32(edWebMVideoARNRStrenght.Text)
-        webmOutput.Video_ARNR_Type = Convert.ToInt32(edWebMVideoARNRType.Text)
-        webmOutput.Video_CPUUsed = Convert.ToInt32(edWebMVideoCPUUsed.Text)
-        webmOutput.Video_Decimate = Convert.ToInt32(edWebMVideoDecimate.Text)
-        webmOutput.Video_Decoder_Buffer_Size = Convert.ToInt32(edWebMVideoDecoderBufferSize.Text)
-        webmOutput.Video_Decoder_Buffer_InitialSize = Convert.ToInt32(edWebMVideoDecoderInitialBuffer.Text)
-        webmOutput.Video_Decoder_Buffer_OptimalSize = Convert.ToInt32(edWebMVideoDecoderOptimalBuffer.Text)
-        webmOutput.Video_FixedKeyframeInterval = Convert.ToInt32(edWebMVideoFixedKeyframeInterval.Text)
-        webmOutput.Video_Keyframe_MaxInterval = Convert.ToInt32(edWebMVideoKeyframeMaxInterval.Text)
-        webmOutput.Video_Keyframe_MinInterval = Convert.ToInt32(edWebMVideoKeyframeMinInterval.Text)
-        webmOutput.Video_LagInFrames = Convert.ToInt32(edWebMVideoLagInFrames.Text)
-        webmOutput.Video_MaxQuantizer = Convert.ToInt32(edWebMVideoMaxQuantizer.Text)
-        webmOutput.Video_MinQuantizer = Convert.ToInt32(edWebMVideoMinQuantizer.Text)
-        webmOutput.Video_OvershootPct = Convert.ToInt32(edWebMVideoOvershootPct.Text)
-        webmOutput.Video_SpatialResampling_DownThreshold = Convert.ToInt32(edWebMVideoSpatialDownThreshold.Text)
-        webmOutput.Video_SpatialResampling_UpThreshold = Convert.ToInt32(edWebMVideoSpatialUpThreshold.Text)
-        webmOutput.Video_StaticThreshold = Convert.ToInt32(edWebMVideoStaticThreshold.Text)
-        webmOutput.Video_ThreadCount = Convert.ToInt32(edWebMVideoThreadCount.Text)
-        webmOutput.Video_TokenPartition = Convert.ToInt32(edWebMVideoTokenPartition.Text)
-        webmOutput.Video_UndershootPct = Convert.ToInt32(edWebMVideoUndershootPct.Text)
-        webmOutput.Video_AutoAltRef = cbWebMVideoAutoAltRef.Checked
-        webmOutput.Video_ErrorResilient = cbWebMVideoErrorResilent.Checked
-        webmOutput.Video_SpatialResampling_Allowed = cbWebMVideoSpatialResamplingAllowed.Checked
-        webmOutput.Video_Encoder = cbWebMVideoEncoder.SelectedIndex
-
-        Select Case cbWebMVideoEndUsageMode.SelectedIndex
-            Case 0
-                webmOutput.Video_EndUsage = VP8EndUsageMode.Default
-            Case 1
-                webmOutput.Video_EndUsage = VP8EndUsageMode.CBR
-            Case 2
-                webmOutput.Video_EndUsage = VP8EndUsageMode.VBR
-        End Select
-
-        Select Case cbWebMVideoQualityMode.SelectedIndex
-            Case 0
-                webmOutput.Video_Mode = VP8QualityMode.Realtime
-            Case 1
-                webmOutput.Video_Mode = VP8QualityMode.GoodQuality
-            Case 2
-                webmOutput.Video_Mode = VP8QualityMode.BestQualityBetaDoNotUse
-        End Select
-
-        Select Case cbWebMVideoKeyframeMode.SelectedIndex
-            Case 0
-                webmOutput.Video_Keyframe_Mode = VP8KeyframeMode.Auto
-            Case 1
-                webmOutput.Video_Keyframe_Mode = VP8KeyframeMode.Default
-            Case 2
-                webmOutput.Video_Keyframe_Mode = VP8KeyframeMode.Disabled
-        End Select
+        webmSettingsDialog.FillSettings(webmOutput)
     End Sub
 
     Private Sub SetM4AOutput(ByRef m4aOutput As VFM4AOutput)
-
-        Dim tmp = 0
-        Int32.TryParse(cbM4ABitrate.Text, tmp)
-        m4aOutput.Bitrate = tmp
-
-        m4aOutput.Version = cbM4AVersion.SelectedIndex
-        m4aOutput.Output = cbM4AOutput.SelectedIndex
-        m4aOutput.Object = (cbM4AObjectType.SelectedIndex + 1)
-    End Sub
-
-    Private Sub SetOggOutput()
-
-        Dim oggVorbisOutput As VFOGGVorbisOutput = New VFOGGVorbisOutput()
-
-        oggVorbisOutput.Quality = Convert.ToInt32(edOGGQuality.Text)
-        oggVorbisOutput.MinBitRate = Convert.ToInt32(cbOGGMinimum.Text)
-        oggVorbisOutput.MaxBitRate = Convert.ToInt32(cbOGGMaximum.Text)
-        oggVorbisOutput.AvgBitRate = Convert.ToInt32(cbOGGAverage.Text)
-
-        If (rbOGGQuality.Checked) Then
-            oggVorbisOutput.Mode = VFVorbisMode.Quality
-        Else
-            oggVorbisOutput.Mode = VFVorbisMode.Bitrate
+        If (m4aSettingsDialog Is Nothing) Then
+            m4aSettingsDialog = New M4ASettingsDialog()
         End If
 
-        VideoCapture1.Output_Format = oggVorbisOutput
-
+        m4aSettingsDialog.FillSettings(m4aOutput)
     End Sub
 
-    Private Sub SetSpeexOutput()
+    Private Sub SetWMVOutput(ByRef wmvOutput As VFWMVOutput)
+        If (wmvSettingsDialog Is Nothing) Then
+            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+        End If
 
-        Dim speexOutput As VFSpeexOutput = New VFSpeexOutput()
-        speexOutput.BitRate = tbSpeexBitrate.Value
-        speexOutput.BitrateControl = cbSpeexBitrateControl.SelectedIndex
-        speexOutput.Mode = cbSpeexMode.SelectedIndex
-        speexOutput.MaxBitRate = tbSpeexMaxBitrate.Value
-        speexOutput.Complexity = tbSpeexComplexity.Value
-        speexOutput.Quality = tbSpeexQuality.Value
-        speexOutput.UseAGC = cbSpeexAGC.Checked
-        speexOutput.UseDTX = cbSpeexDTX.Checked
-        speexOutput.UseDenoise = cbSpeexDenoise.Checked
-        speexOutput.UseVAD = cbSpeexVAD.Checked
-        VideoCapture1.Output_Format = speexOutput
+        wmvSettingsDialog.WMA = False
+        wmvSettingsDialog.FillSettings(wmvOutput)
+    End Sub
 
+    Private Sub SetWMAOutput(ByRef wmaOutput As VFWMAOutput)
+        If (wmvSettingsDialog Is Nothing) Then
+            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+        End If
+
+        wmvSettingsDialog.WMA = True
+        wmvSettingsDialog.FillSettings(wmaOutput)
+    End Sub
+
+    Private Sub SetOGGOutput(ByRef oggVorbisOutput As VFOGGVorbisOutput)
+        If (oggVorbisSettingsDialog Is Nothing) Then
+            oggVorbisSettingsDialog = New OggVorbisSettingsDialog()
+        End If
+
+        oggVorbisSettingsDialog.FillSettings(oggVorbisOutput)
+    End Sub
+
+    Private Sub SetSpeexOutput(ByRef speexOutput As VFSpeexOutput)
+        If (speexSettingsDialog Is Nothing) Then
+            speexSettingsDialog = New SpeexSettingsDialog()
+        End If
+
+        speexSettingsDialog.FillSettings(speexOutput)
     End Sub
 
     Private Sub SetFLACOutput(ByRef flacOutput As VFFLACOutput)
+        If (flacSettingsDialog Is Nothing) Then
+            flacSettingsDialog = New FLACSettingsDialog()
+        End If
 
-        flacOutput.Level = tbFLACLevel.Value
-        flacOutput.BlockSize = Convert.ToInt32(cbFLACBlockSize.Text)
-        flacOutput.AdaptiveMidSideCoding = cbFLACAdaptiveMidSideCoding.Checked
-        flacOutput.ExhaustiveModelSearch = cbFLACExhaustiveModelSearch.Checked
-        flacOutput.LPCOrder = tbFLACLPCOrder.Value
-        flacOutput.MidSideCoding = cbFLACMidSideCoding.Checked
-        flacOutput.RiceMin = Convert.ToInt32(edFLACRiceMin.Text)
-        flacOutput.RiceMax = Convert.ToInt32(edFLACRiceMax.Text)
-
+        flacSettingsDialog.FillSettings(flacOutput)
     End Sub
 
     Private Sub SetMP3Output(ByRef mp3Output As VFMP3Output)
-
-        'main
-        mp3Output.CBR_Bitrate = Convert.ToInt32(cbLameCBRBitrate.Text)
-        mp3Output.VBR_MinBitrate = Convert.ToInt32(cbLameVBRMin.Text)
-        mp3Output.VBR_MaxBitrate = Convert.ToInt32(cbLameVBRMax.Text)
-        mp3Output.SampleRate = Convert.ToInt32(cbLameSampleRate.Text)
-        mp3Output.VBR_Quality = tbLameVBRQuality.Value
-        mp3Output.EncodingQuality = tbLameEncodingQuality.Value
-
-        If rbLameStandardStereo.Checked Then
-            mp3Output.ChannelsMode = VFLameChannelsMode.StandardStereo
-        ElseIf rbLameJointStereo.Checked Then
-            mp3Output.ChannelsMode = VFLameChannelsMode.JointStereo
-        ElseIf rbLameDualChannels.Checked Then
-            mp3Output.ChannelsMode = VFLameChannelsMode.DualStereo
-        Else
-            mp3Output.ChannelsMode = VFLameChannelsMode.Mono
+        If (mp3SettingsDialog Is Nothing) Then
+            mp3SettingsDialog = New MP3SettingsDialog()
         End If
 
-        mp3Output.VBR_Mode = rbLameVBR.Checked
-
-        'Other
-        mp3Output.Copyright = cbLameCopyright.Checked
-        mp3Output.Original = cbLameOriginal.Checked
-        mp3Output.CRCProtected = cbLameCRCProtected.Checked
-        mp3Output.ForceMono = cbLameForceMono.Checked
-        mp3Output.StrictlyEnforceVBRMinBitrate = cbLameStrictlyEnforceVBRMinBitrate.Checked
-        mp3Output.VoiceEncodingMode = cbLameVoiceEncodingMode.Checked
-        mp3Output.KeepAllFrequencies = cbLameKeepAllFrequences.Checked
-        mp3Output.StrictISOCompliance = cbLameStrictISOCompilance.Checked
-        mp3Output.DisableShortBlocks = cbLameDisableShortBlocks.Checked
-        mp3Output.EnableXingVBRTag = cbLameEnableXingVBRTag.Checked
-        mp3Output.ModeFixed = cbLameModeFixed.Checked
-
+        mp3SettingsDialog.FillSettings(mp3Output)
     End Sub
 
-    Private Sub SetPCMOutput(ByRef acmOutput As VFACMOutput)
+    Private Sub SetACMOutput(ByRef acmOutput As VFACMOutput)
+        If (pcmSettingsDialog Is Nothing) Then
+            pcmSettingsDialog = New PCMSettingsDialog(VideoCapture1.Audio_Codecs.ToArray())
+        End If
 
-        acmOutput.Channels = Convert.ToInt32(cbChannels2.Text)
-        acmOutput.BPS = Convert.ToInt32(cbBPS2.Text)
-        acmOutput.SampleRate = Convert.ToInt32(cbSampleRate2.Text)
-
-        acmOutput.Name = cbAudioCodecs2.Text
-
+        pcmSettingsDialog.FillSettings(acmOutput)
     End Sub
 
     Private Sub SetCustomOutput(ByRef customOutput As VFCustomOutput)
-
-        If rbCustomUseVideoCodecsCat.Checked Then
-
-            customOutput.Video_Codec = cbCustomVideoCodecs.Text
-            customOutput.Video_Codec_UseFiltersCategory = False
-
-        Else
-
-            customOutput.Video_Codec = cbCustomDSFilterV.Text
-            customOutput.Video_Codec_UseFiltersCategory = True
+        If (customFormatSettingsDialog Is Nothing) Then
+            customFormatSettingsDialog = New CustomFormatSettingsDialog(
+                        VideoCapture1.Video_Codecs.ToArray(),
+                        VideoCapture1.Audio_Codecs.ToArray(),
+                        VideoCapture1.DirectShow_Filters.ToArray())
         End If
 
-        If rbCustomUseAudioCodecsCat.Checked Then
-
-            customOutput.Audio_Codec = cbCustomAudioCodecs.Text
-            customOutput.Audio_Codec_UseFiltersCategory = False
-
-        Else
-
-            customOutput.Audio_Codec = cbCustomDSFilterA.Text
-            customOutput.Audio_Codec_UseFiltersCategory = True
-        End If
-
-        customOutput.MuxFilter_Name = cbCustomMuxer.Text
-        customOutput.MuxFilter_IsEncoder = cbCustomMuxFilterIsEncoder.Checked
-        customOutput.SpecialFileWriter_Needed = cbUseSpecialFilewriter.Checked
-        customOutput.SpecialFileWriter_FilterName = cbCustomFilewriter.Text
+        customFormatSettingsDialog.FillSettings(customOutput)
     End Sub
 
     Private Sub SetDVOutput(ByRef dvOutput As VFDVOutput)
-
-        dvOutput.Audio_Channels = Convert.ToInt32(cbDVChannels.Text)
-        dvOutput.Audio_SampleRate = Convert.ToInt32(cbDVSampleRate.Text)
-
-        If rbDVPAL.Checked Then
-            dvOutput.Video_Format = VFDVVideoFormat.PAL
-        Else
-            dvOutput.Video_Format = VFDVVideoFormat.NTSC
+        If (dvSettingsDialog Is Nothing) Then
+            dvSettingsDialog = New DVSettingsDialog()
         End If
 
-        dvOutput.Type2 = rbDVType2.Checked
+        dvSettingsDialog.FillSettings(dvOutput)
     End Sub
 
     Private Sub SetAVIOutput(ByRef aviOutput As VFAVIOutput)
+        If (aviSettingsDialog Is Nothing) Then
+            aviSettingsDialog = New AVISettingsDialog(
+                VideoCapture1.Video_Codecs.ToArray(),
+                VideoCapture1.Audio_Codecs.ToArray())
+        End If
 
-        aviOutput.ACM.Name = cbAudioCodecs.Text
-        aviOutput.ACM.Channels = Convert.ToInt32(cbChannels.Text)
-        aviOutput.ACM.BPS = Convert.ToInt32(cbBPS.Text)
-        aviOutput.ACM.SampleRate = Convert.ToInt32(cbSampleRate.Text)
+        aviSettingsDialog.FillSettings(aviOutput)
 
-        aviOutput.Video_Codec = cbVideoCodecs.Text
+        If (aviOutput.Audio_UseMP3Encoder) Then
 
-        aviOutput.Video_UseCompression = Not cbUncVideo.Checked
-        aviOutput.Video_UseCompression_DecodeUncompressedToRGB = cbDecodeToRGB.Checked
-        aviOutput.ACM.UseCompression = Not cbUncAudio.Checked
-
-        If cbUseLameInAVI.Checked Then
-            aviOutput.Audio_UseMP3Encoder = True
-            Dim mp3Output As VFMP3Output = New VFMP3Output
+            Dim mp3Output = New VFMP3Output()
             SetMP3Output(mp3Output)
             aviOutput.MP3 = mp3Output
         End If
-
     End Sub
 
-    Private Sub SetMKVOutput(ByRef mkvOutput As VFMKVOutput)
+    Private Sub SetMKVOutput(ByRef mkvOutput As VFMKVv1Output)
+        If (aviSettingsDialog Is Nothing) Then
+            aviSettingsDialog = New AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
+                    VideoCapture1.Audio_Codecs.ToArray())
+        End If
 
-        mkvOutput.ACM.Name = cbAudioCodecs.Text
-        mkvOutput.ACM.Channels = Convert.ToInt32(cbChannels.Text)
-        mkvOutput.ACM.BPS = Convert.ToInt32(cbBPS.Text)
-        mkvOutput.ACM.SampleRate = Convert.ToInt32(cbSampleRate.Text)
+        aviSettingsDialog.FillSettings(mkvOutput)
 
-        mkvOutput.Video_Codec = cbVideoCodecs.Text
-
-        mkvOutput.Video_UseCompression = Not cbUncVideo.Checked
-        mkvOutput.Video_UseCompression_DecodeUncompressedToRGB = cbDecodeToRGB.Checked
-        mkvOutput.ACM.UseCompression = Not cbUncAudio.Checked
-
-        If cbUseLameInAVI.Checked Then
-            mkvOutput.Audio_UseMP3Encoder = True
-            Dim mp3Output As VFMP3Output = New VFMP3Output
+        If (mkvOutput.Audio_UseMP3Encoder) Then
+            Dim mp3Output = New VFMP3Output()
             SetMP3Output(mp3Output)
             mkvOutput.MP3 = mp3Output
         End If
-
     End Sub
 
     Private Sub ShowOnScreen(window As Form, screenNumber As Int32)
@@ -2331,7 +1685,7 @@ Public Class Form1
                 If (rbNetworkStreamingUseMainWMVSettings.Checked) Then
 
                     Dim wmvOutput As VFWMVOutput = New VFWMVOutput()
-                    FillWMVSettings(wmvOutput)
+                    SetWMVOutput(wmvOutput)
                     VideoCapture1.Network_Streaming_Output = wmvOutput
 
                 Else
@@ -2349,8 +1703,8 @@ Public Class Form1
             Case 1
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.RTSP_H264_AAC_SW
 
-                Dim mp4Output As VFMP4Output = New VFMP4Output()
-                SetMP4Output(mp4Output)
+                Dim mp4Output As VFMP4v8v10Output = New VFMP4v8v10Output()
+                SetMP4v10Output(mp4Output)
                 VideoCapture1.Network_Streaming_Output = mp4Output
 
                 VideoCapture1.Network_Streaming_URL = edNetworkRTSPURL.Text
@@ -2367,7 +1721,7 @@ Public Class Form1
 
                 Else
 
-                    FillFFMPEGEXESettings(ffmpegOutput)
+                    SetFFMPEGEXEOutput(ffmpegOutput)
 
                 End If
 
@@ -2383,13 +1737,9 @@ Public Class Form1
                 Dim ffmpegOutput As VFFFMPEGEXEOutput = New VFFFMPEGEXEOutput()
 
                 If (rbNetworkUDPFFMPEG.Checked) Then
-
                     ffmpegOutput.FillDefaults(VFFFMPEGEXEDefaultsProfile.MP4_H264_AAC, True)
-
                 Else
-
-                    FillFFMPEGEXESettings(ffmpegOutput)
-
+                    SetFFMPEGEXEOutput(ffmpegOutput)
                 End If
 
                 ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MPEGTS
@@ -2403,8 +1753,8 @@ Public Class Form1
 
                     VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.SSF_H264_AAC_SW
 
-                    Dim mp4Output As VFMP4Output = New VFMP4Output()
-                    SetMP4Output(mp4Output)
+                    Dim mp4Output As VFMP4v8v10Output = New VFMP4v8v10Output()
+                    SetMP4v10Output(mp4Output)
                     VideoCapture1.Network_Streaming_Output = mp4Output
 
                 Else
@@ -2414,13 +1764,9 @@ Public Class Form1
                     Dim ffmpegOutput As VFFFMPEGEXEOutput = New VFFFMPEGEXEOutput()
 
                     If (rbNetworkSSFFMPEGDefault.Checked) Then
-
                         ffmpegOutput.FillDefaults(VFFFMPEGEXEDefaultsProfile.MP4_H264_AAC, True)
-
                     Else
-
-                        FillFFMPEGEXESettings(ffmpegOutput)
-
+                        SetFFMPEGEXEOutput(ffmpegOutput)
                     End If
 
                     ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.ISMV
@@ -2431,6 +1777,16 @@ Public Class Form1
                 VideoCapture1.Network_Streaming_URL = edNetworkSSURL.Text
 
             Case 5
+
+                VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.HLS
+
+                Dim hls As VFHLSOutput = New VFHLSOutput()
+                hls.HLS.SegmentDuration = Convert.ToInt32(edHLSSegmentDuration.Text)
+                hls.HLS.NumSegments = Convert.ToInt32(edHLSSegmentCount.Text)
+                hls.HLS.OutputFolder = edHLSOutputFolder.Text
+                VideoCapture1.Network_Streaming_Output = hls
+
+            Case 6
 
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.External
 
@@ -2609,11 +1965,7 @@ Public Class Form1
 
     Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
 
-        'clear VU Meters
-        Dim data(19) As Int32
-
-        peakMeterCtrl1.SetData(data, 0, 19)
-        peakMeterCtrl1.Stop()
+        tmRecording.Stop()
 
         VideoCapture1.Stop()
 
@@ -2630,6 +1982,11 @@ Public Class Form1
 
         multiscreenWindows.Clear()
 
+        'clear VU Meters
+        Dim data(19) As Int32
+
+        peakMeterCtrl1.SetData(data, 0, 19)
+        peakMeterCtrl1.Stop()
         waveformPainter1.Clear()
         waveformPainter2.Clear()
 
@@ -2640,61 +1997,30 @@ Public Class Form1
 
         lbFilters.Items.Clear()
         VideoCapture1.Video_Filters_Clear()
-
     End Sub
 
-    Private Sub btVideoSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btVideoSettings.Click
-
-        Dim sName As String = cbVideoCodecs.Text
-
-        If VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.Video_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-
-            If VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.Video_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub cbAudioCodecs_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudioCodecs.SelectedIndexChanged
-
-        Dim sName As String = cbAudioCodecs.Text
-        btAudioSettings.Enabled = VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig)
-
-    End Sub
-
-    Private Sub cbAudioInputSelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-
+' ReSharper disable once UnusedParameter.Local
+    Private Sub cbAudioInputSelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         VideoCapture1.Audio_CaptureDevice_Format = cbAudioInputFormat.Text
-
     End Sub
 
-    Private Sub cbAudioInputLine_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs)
-
+    Private Sub cbAudioInputLine_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         VideoCapture1.Audio_CaptureDevice_Line = cbAudioInputLine.Text
-
     End Sub
 
-    Private Sub cbAudioOutputDevice_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudioOutputDevice.SelectedIndexChanged
-
+    Private Sub cbAudioOutputDevice_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbAudioOutputDevice.SelectedIndexChanged
         VideoCapture1.Audio_OutputDevice = cbAudioOutputDevice.Text
-
     End Sub
 
-    Private Sub cbCrossbarInput_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCrossbarInput.SelectedIndexChanged
-
+    Private Sub cbCrossbarInput_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbCrossbarInput.SelectedIndexChanged
         Dim RelatedInput As String = "", RelatedOutput As String = ""
 
         If cbCrossbarInput.SelectedIndex <> -1 Then
             VideoCapture1.Video_CaptureDevice_CrossBar_GetRelated(cbCrossbarInput.Text, cbCrossbarOutput.Text, RelatedInput, RelatedOutput)
         End If
+        End Sub
 
-    End Sub
-
-    Private Sub cbCrossbarOutput_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCrossbarOutput.SelectedIndexChanged
-
+    Private Sub cbCrossbarOutput_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbCrossbarOutput.SelectedIndexChanged
         cbCrossbarInput.Items.Clear()
 
         If cbCrossbarOutput.SelectedIndex <> -1 Then
@@ -2717,10 +2043,9 @@ Public Class Form1
         End If
 
         cbCrossbarInput_SelectedIndexChanged(sender, e)
-
     End Sub
 
-    Private Sub cbTVChannel_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbTVChannel.SelectedIndexChanged
+    Private Sub cbTVChannel_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbTVChannel.SelectedIndexChanged
         If cbTVChannel.SelectedIndex <> -1 Then
 
             Dim k As Integer = Convert.ToInt32(cbTVChannel.Text)
@@ -2736,12 +2061,15 @@ Public Class Form1
                 VideoCapture1.TVTuner_Frequency = k
             End If
 
+            If String.IsNullOrEmpty(VideoCapture1.TVTuner_Name) Then
+                Return
+            End If
+
             VideoCapture1.TVTuner_Apply()
             VideoCapture1.TVTuner_Read()
             edVideoFreq.Text = VideoCapture1.TVTuner_VideoFrequency.ToString()
             edAudioFreq.Text = VideoCapture1.TVTuner_AudioFrequency.ToString()
         End If
-
     End Sub
 
     Private Sub cbTVTuner_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbTVTuner.SelectedIndexChanged
@@ -2765,14 +2093,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbVideoCodecs_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbVideoCodecs.SelectedIndexChanged
-
-        Dim sName As String = cbVideoCodecs.Text
-        btVideoSettings.Enabled = VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig)
-
-    End Sub
-
-    Private Sub Form1_FormClosed(ByVal sender As System.Object, ByVal e As FormClosedEventArgs) Handles MyBase.FormClosed
+    Private Sub Form1_FormClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles MyBase.FormClosed
 
         If VideoCapture1.Status = VFVideoCaptureStatus.Work Then
             VideoCapture1.Stop()
@@ -2780,7 +2101,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbGreyscale_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
+    Private Sub cbGreyscale_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
 
         Dim intf As IVFVideoEffectGrayscale
         Dim effect = VideoCapture1.Video_Effects_Get("Grayscale")
@@ -2796,46 +2117,26 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btSaveScreenshot_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSaveScreenshot.Click
-
-        Dim s As String
-
-        Dim dt As DateTime = DateTime.Now
-
-        s = dt.Hour.ToString() + "_" + dt.Minute.ToString() + "_" + dt.Second.ToString() + "_" + dt.Millisecond.ToString()
-
-        Select Case (cbImageType.SelectedIndex)
-            Case 0 : VideoCapture1.Frame_Save(edScreenshotsFolder.Text + "\" + s + ".bmp", VFImageFormat.BMP, 0)
-            Case 1 : VideoCapture1.Frame_Save(edScreenshotsFolder.Text + "\" + s + ".jpg", VFImageFormat.JPEG, tbJPEGQuality.Value)
-            Case 2 : VideoCapture1.Frame_Save(edScreenshotsFolder.Text + "\" + s + ".gif", VFImageFormat.GIF, 0)
-            Case 3 : VideoCapture1.Frame_Save(edScreenshotsFolder.Text + "\" + s + ".png", VFImageFormat.PNG, 0)
-            Case 4 : VideoCapture1.Frame_Save(edScreenshotsFolder.Text + "\" + s + ".tiff", VFImageFormat.TIFF, 0)
-        End Select
-
-    End Sub
-
-    Private Sub tbJPEGQuality_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbJPEGQuality.Scroll
-
-        lbJPEGQuality.Text = tbJPEGQuality.Value.ToString()
-
-    End Sub
-
-    Private Sub btFont_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btFont.Click
-
-        If fontDialog1.ShowDialog() = DialogResult.OK Then
-            edTextLogoSampleText.Font = fontDialog1.Font
-            btTextLogoUpdateParams_Click(sender, e)
+    Private Sub btSaveScreenshot_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btSaveScreenshot.Click
+        If (screenshotSaveDialog.ShowDialog(Me) = DialogResult.OK) Then
+            Dim filename = screenshotSaveDialog.FileName
+            Dim ext = Path.GetExtension(filename)?.ToLowerInvariant()
+            Select Case (ext)
+                Case ".bmp"
+                    VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0)
+                Case ".jpg"
+                    VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85)
+                Case ".gif"
+                    VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0)
+                Case ".png"
+                    VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0)
+                Case ".tiff"
+                    VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0)
+            End Select
         End If
-
     End Sub
 
-    Private Sub cbTextLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbTextLogo.CheckedChanged
-
-        btTextLogoUpdateParams_Click(sender, e)
-
-    End Sub
-
-    Private Sub cbInvert_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbInvert.CheckedChanged
+    Private Sub cbInvert_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbInvert.CheckedChanged
 
         Dim intf As IVFVideoEffectInvert
         Dim effect = VideoCapture1.Video_Effects_Get("Invert")
@@ -2891,55 +2192,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbCustomVideoCodecs_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCustomVideoCodecs.SelectedIndexChanged
-
-        Dim sName As String = cbCustomVideoCodecs.Text
-        btCustomVideoCodecSettings.Enabled = (VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
-    Private Sub cbCustomAudioCodecs_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCustomAudioCodecs.SelectedIndexChanged
-
-        Dim sName As String = cbCustomAudioCodecs.Text
-        btCustomAudioCodecSettings.Enabled = (VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
-    Private Sub cbAudioCodecs2_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudioCodecs2.SelectedIndexChanged
-
-        Dim sName As String = cbAudioCodecs2.Text
-        btAudioSettings2.Enabled = (VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
-    Private Sub cbCustomDSFilterV_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCustomDSFilterV.SelectedIndexChanged
-
-        Dim sName As String = cbCustomDSFilterV.Text
-        btCustomDSFiltersVSettings.Enabled = (VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
-    Private Sub cbCustomDSFilterA_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCustomDSFilterA.SelectedIndexChanged
-
-        Dim sName As String = cbCustomDSFilterA.Text
-        btCustomDSFiltersASettings.Enabled = (VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
-    Private Sub cbCustomMuxer_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCustomMuxer.SelectedIndexChanged
-
-        Dim sName As String = cbCustomMuxer.Text
-        btCustomMuxerSettings.Enabled = (VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
-    Private Sub cbCustomFilewriter_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbCustomFilewriter.SelectedIndexChanged
-
-        Dim sName As String = cbCustomFilewriter.Text
-        btCustomFilewriterSettings.Enabled = (VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Or VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig))
-
-    End Sub
-
     Private Sub rbVR_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles rbVR.CheckedChanged, rbVMR9.CheckedChanged, rbNone.CheckedChanged, rbEVR.CheckedChanged, rbDirect2D.CheckedChanged
 
         cbScreenFlipVertical.Enabled = rbVMR9.Checked Or rbDirect2D.Checked
@@ -2988,90 +2240,6 @@ Public Class Form1
                 lbRotes.Items.Add("Input: " + input1 + ", Output: " + cbCrossbarOutput.Items.Item(i))
 
             Next i
-        End If
-
-    End Sub
-
-    Private Sub btCustomAudioCodecSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btCustomAudioCodecSettings.Click
-
-        Dim sName As String = cbCustomAudioCodecs.Text
-
-        If VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub btCustomDSFiltersASettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btCustomDSFiltersASettings.Click
-
-        Dim sName As String = cbCustomDSFilterA.Text
-
-        If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub btCustomDSFiltersVSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btCustomDSFiltersVSettings.Click
-
-        Dim sName As String = cbCustomDSFilterV.Text
-
-        If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub btCustomFilewriterSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btCustomFilewriterSettings.Click
-
-        Dim sName As String = cbCustomFilewriter.Text
-
-        If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub btCustomMuxerSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btCustomMuxerSettings.Click
-
-        Dim sName As String = cbCustomMuxer.Text
-
-        If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.DirectShow_Filter_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.DirectShow_Filter_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub btCustomVideoCodecSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btCustomVideoCodecSettings.Click
-
-        Dim sName As String = cbCustomVideoCodecs.Text
-
-        If VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.Video_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.Video_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.Video_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
         End If
 
     End Sub
@@ -3137,14 +2305,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btSelectImage_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectImage.Click
-
-        If openFileDialog2.ShowDialog() = DialogResult.OK Then
-            edImageLogoFilename.Text = openFileDialog2.FileName
-        End If
-
-    End Sub
-
     Private Sub btStartTune_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStartTune.Click
 
         Const KHz As Integer = 1000
@@ -3182,6 +2342,10 @@ Public Class Form1
 
         End If
 
+        If String.IsNullOrEmpty(VideoCapture1.TVTuner_Name) Then
+            Return
+        End If
+
         VideoCapture1.TVTuner_Apply()
         VideoCapture1.TVTuner_Read()
         edVideoFreq.Text = VideoCapture1.TVTuner_VideoFrequency.ToString()
@@ -3195,6 +2359,10 @@ Public Class Form1
             VideoCapture1.TVTuner_Country = cbTVCountry.Text
             edTVDefaultFormat.Text = VideoCapture1.TVTuner_Countries_GetPreferredFormatForCountry(VideoCapture1.TVTuner_Country)
 
+            If String.IsNullOrEmpty(VideoCapture1.TVTuner_Name) Then
+                Return
+            End If
+
             If VideoCapture1.Status = VFVideoCaptureStatus.Work Then
                 VideoCapture1.TVTuner_Apply()
                 VideoCapture1.TVTuner_Read()
@@ -3202,67 +2370,7 @@ Public Class Form1
 
         End If
     End Sub
-
-    Private Sub cbImageLogo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogo.CheckedChanged
-
-        If String.IsNullOrEmpty(edImageLogoLeft.Text) Then
-            Return
-        End If
-
-        If (Not File.Exists(edImageLogoFilename.Text)) Then
-            If (cbImageLogo.Checked) Then
-                MessageBox.Show("Unable to find " + edImageLogoFilename.Text)
-                cbImageLogo.Checked = False
-            End If
-            Return
-        End If
-
-        Dim imageLogo As IVFVideoEffectImageLogo
-        Dim effect = VideoCapture1.Video_Effects_Get("ImageLogo")
-        If (IsNothing(effect)) Then
-            imageLogo = New VFVideoEffectImageLogo(cbImageLogo.Checked)
-            VideoCapture1.Video_Effects_Add(imageLogo)
-        Else
-            imageLogo = effect
-        End If
-
-        If (IsNothing(imageLogo)) Then
-            MessageBox.Show("Unable to configure image logo effect.")
-            Return
-        End If
-
-        imageLogo.Enabled = cbImageLogo.Checked
-        imageLogo.Filename = edImageLogoFilename.Text
-        imageLogo.Left = Convert.ToUInt32(edImageLogoLeft.Text)
-        imageLogo.Top = Convert.ToUInt32(edImageLogoTop.Text)
-        imageLogo.TransparencyLevel = tbImageLogoTransp.Value
-        imageLogo.ColorKey = pnImageLogoColorKey.ForeColor
-        imageLogo.UseColorKey = cbImageLogoUseColorKey.Checked
-        imageLogo.AnimationEnabled = True
-
-        If (cbImageLogoShowAlways.Checked) Then
-            imageLogo.StartTime = 0
-            imageLogo.StopTime = 0
-        Else
-            imageLogo.StartTime = Convert.ToInt32(edImageLogoStartTime.Text)
-            imageLogo.StopTime = Convert.ToInt32(edImageLogoStopTime.Text)
-        End If
-
-    End Sub
-
-    Private Sub cbImageLogoShowAlways_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogoShowAlways.CheckedChanged
-
-        If Tag = 1 Then
-            edImageLogoStartTime.Enabled = Not cbImageLogoShowAlways.Checked
-            edImageLogoStopTime.Enabled = Not cbImageLogoShowAlways.Checked
-            lbGraphicLogoStartTime.Enabled = Not cbImageLogoShowAlways.Checked
-            lbGraphicLogoStopTime.Enabled = Not cbImageLogoShowAlways.Checked
-
-            cbImageLogo_CheckedChanged(sender, e)
-        End If
-
-    End Sub
-
+    
     Private Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
 
         VideoCapture1.Video_Renderer.StretchMode = cbStretch.Checked
@@ -3274,6 +2382,11 @@ Public Class Form1
 
         If cbTVMode.SelectedIndex <> -1 Then
             VideoCapture1.TVTuner_Mode = cbTVMode.Text
+
+            If String.IsNullOrEmpty(VideoCapture1.TVTuner_Name) Then
+                Return
+            End If
+
             VideoCapture1.TVTuner_Apply()
             VideoCapture1.TVTuner_Read()
             cbTVChannel.Items.Clear()
@@ -3286,6 +2399,11 @@ Public Class Form1
     Private Sub cbTVInput_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbTVInput.SelectedIndexChanged
         If cbTVInput.SelectedIndex <> -1 Then
             VideoCapture1.TVTuner_InputType = cbTVInput.Text
+
+            If String.IsNullOrEmpty(VideoCapture1.TVTuner_Name) Then
+                Return
+            End If
+
             VideoCapture1.TVTuner_Apply()
             VideoCapture1.TVTuner_Read()
             edVideoFreq.Text = VideoCapture1.TVTuner_VideoFrequency.ToString()
@@ -3298,6 +2416,11 @@ Public Class Form1
 
         If cbTVSystem.SelectedIndex <> -1 Then
             VideoCapture1.TVTuner_TVFormat = VideoCapture1.TVTuner_TVFormat_FromString(cbTVSystem.Text)
+
+            If String.IsNullOrEmpty(VideoCapture1.TVTuner_Name) Then
+                Return
+            End If
+
             VideoCapture1.TVTuner_Apply()
             VideoCapture1.TVTuner_Read()
             edVideoFreq.Text = VideoCapture1.TVTuner_VideoFrequency.ToString()
@@ -3318,13 +2441,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbUseSpecialFilewriter_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbUseSpecialFilewriter.CheckedChanged
-
-        cbCustomFilewriter.Enabled = cbUseSpecialFilewriter.Checked
-        btCustomFilewriterSettings.Enabled = cbUseSpecialFilewriter.Checked
-
-    End Sub
-
     Private Sub tbAudioVolume_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAudioVolume.Scroll
 
         VideoCapture1.Audio_OutputDevice_Volume_Set(tbAudioVolume.Value)
@@ -3335,28 +2451,6 @@ Public Class Form1
 
         VideoCapture1.Audio_OutputDevice_Balance_Set(tbAudioBalance.Value)
         VideoCapture1.Audio_OutputDevice_Balance_Get()
-
-    End Sub
-
-    Private Sub btAudioSettings2_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btAudioSettings2.Click
-
-        Dim sName As String = cbAudioCodecs2.Text
-
-        If VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.Default) Then
-            VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.Default)
-        Else
-            If VideoCapture.Audio_Codec_Has_Dialog(sName, VFPropertyPage.VFWCompConfig) Then
-                VideoCapture.Audio_Codec_Show_Dialog(IntPtr.Zero, sName, VFPropertyPage.VFWCompConfig)
-            End If
-        End If
-
-    End Sub
-
-    Private Sub btSelectScreenshotsFolder_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectScreenshotsFolder.Click
-
-        If folderBrowserDialog1.ShowDialog() = DialogResult.OK Then
-            edScreenshotsFolder.Text = folderBrowserDialog1.SelectedPath
-        End If
 
     End Sub
 
@@ -3386,14 +2480,6 @@ Public Class Form1
             VideoCapture1.Video_CaptureDevice_InternalMPEGEncoder_Name = cbMPEGEncoder.Text
             VideoCapture1.Video_CaptureDevice_InternalMPEGEncoder_ShowDialog(IntPtr.Zero)
         End If
-
-    End Sub
-
-    Private Sub cbUncVideo_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbUncVideo.CheckedChanged
-
-        cbVideoCodecs.Enabled = Not cbUncVideo.Checked
-        btVideoSettings.Enabled = Not cbUncVideo.Checked
-        cbDecodeToRGB.Enabled = cbUncVideo.Checked
 
     End Sub
 
@@ -3455,29 +2541,7 @@ Public Class Form1
         VideoCapture1.Video_Filters_Clear()
 
     End Sub
-
-    Private Sub tbGraphicLogoTransp_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbImageLogoTransp.Scroll
-
-        cbImageLogo_CheckedChanged(sender, e)
-
-    End Sub
-
-    Private Sub cbGraphicLogoUseColorKey_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbImageLogoUseColorKey.CheckedChanged
-
-        cbImageLogo_CheckedChanged(sender, e)
-
-    End Sub
-
-    Private Sub pnGraphicLogoColorKey_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnImageLogoColorKey.Click
-
-        colorDialog1.Color = pnImageLogoColorKey.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnImageLogoColorKey.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
-
+    
     Private Sub btOSDInit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDInit.Click
 
         VideoCapture1.OSD_Init()
@@ -3722,190 +2786,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btTextLogoUpdateParams_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btTextLogoUpdateParams.Click
-
-        Dim rotate As VFTextRotationMode
-        Dim flip As VFTextFlipMode
-
-        Dim stringFormat = New StringFormat()
-
-        If (cbTextLogoVertical.Checked) Then
-            stringFormat.FormatFlags = stringFormat.FormatFlags Xor StringFormatFlags.DirectionVertical
-        End If
-
-        If (cbTextLogoRightToLeft.Checked) Then
-            stringFormat.FormatFlags = stringFormat.FormatFlags Xor StringFormatFlags.DirectionRightToLeft
-        End If
-
-        stringFormat.Alignment = cbTextLogoAlign.SelectedIndex
-
-        Dim textLogo As IVFVideoEffectTextLogo
-        Dim effect = VideoCapture1.Video_Effects_Get("TextLogo")
-        If (IsNothing(effect)) Then
-            textLogo = New VFVideoEffectTextLogo(cbTextLogo.Checked)
-            VideoCapture1.Video_Effects_Add(textLogo)
-        Else
-            textLogo = effect
-        End If
-
-        If (IsNothing(textLogo)) Then
-            MessageBox.Show("Unable to configure text logo effect.")
-            Return
-        End If
-
-        textLogo.Enabled = cbTextLogo.Checked
-        textLogo.Text = edTextLogo.Text
-        textLogo.Left = Convert.ToInt32(edTextLogoLeft.Text)
-        textLogo.Top = Convert.ToInt32(edTextLogoTop.Text)
-        textLogo.Font = fontDialog1.Font
-        textLogo.FontColor = fontDialog1.Color
-
-        textLogo.BackgroundTransparent = cbTextLogoTranspBG.Checked
-        textLogo.BackgroundColor = pnTextLogoBGColor.BackColor
-        textLogo.StringFormat = stringFormat
-        textLogo.Antialiasing = cbTextLogoAntialiasing.SelectedIndex
-        textLogo.DrawQuality = cbTextLogoDrawMode.SelectedIndex
-
-        If (cbTextLogoUseRect.Checked) Then
-            textLogo.RectWidth = Convert.ToInt32(edTextLogoWidth.Text)
-            textLogo.RectHeight = Convert.ToInt32(edTextLogoHeight.Text)
-        Else
-            textLogo.RectWidth = 0
-            textLogo.RectHeight = 0
-        End If
-
-        If (rbTextLogoDegree0.Checked) Then
-            rotate = VFTextRotationMode.RmNone
-        ElseIf (rbTextLogoDegree90.Checked) Then
-            rotate = VFTextRotationMode.Rm90
-        ElseIf (rbTextLogoDegree180.Checked) Then
-            rotate = VFTextRotationMode.Rm180
-        Else
-            rotate = VFTextRotationMode.Rm270
-        End If
-
-        If (rbTextLogoFlipNone.Checked) Then
-            flip = VFTextFlipMode.None
-        ElseIf (rbTextLogoFlipX.Checked) Then
-            flip = VFTextFlipMode.X
-        ElseIf (rbTextLogoFlipY.Checked) Then
-            flip = VFTextFlipMode.Y
-        Else
-            flip = VFTextFlipMode.XAndY
-        End If
-
-        textLogo.RotationMode = rotate
-        textLogo.FlipMode = flip
-
-        textLogo.GradientEnabled = cbTextLogoGradientEnabled.Checked
-        textLogo.GradientMode = cbTextLogoGradMode.SelectedIndex
-        textLogo.GradientColor1 = pnTextLogoGradColor1.BackColor
-        textLogo.GradientColor2 = pnTextLogoGradColor2.BackColor
-
-        textLogo.BorderMode = cbTextLogoEffectrMode.SelectedIndex
-        textLogo.BorderInnerColor = pnTextLogoInnerColor.BackColor
-        textLogo.BorderOuterColor = pnTextLogoOuterColor.BackColor
-        textLogo.BorderInnerSize = Convert.ToInt32(edTextLogoInnerSize.Text)
-        textLogo.BorderOuterSize = Convert.ToInt32(edTextLogoOuterSize.Text)
-
-        textLogo.Shape = cbTextLogoShapeEnabled.Checked
-        textLogo.ShapeLeft = Convert.ToInt32(edTextLogoShapeLeft.Text)
-        textLogo.ShapeTop = Convert.ToInt32(edTextLogoShapeTop.Text)
-        textLogo.ShapeType = cbTextLogoShapeType.SelectedIndex
-        textLogo.ShapeWidth = Convert.ToInt32(edTextLogoShapeWidth.Text)
-        textLogo.ShapeHeight = Convert.ToInt32(edTextLogoShapeHeight.Text)
-        textLogo.ShapeColor = pnTextLogoShapeColor.BackColor
-
-        textLogo.TransparencyLevel = tbTextLogoTransp.Value
-
-        If (rbTextLogoDrawText.Checked) Then
-            textLogo.Mode = TextLogoMode.Text
-        ElseIf (rbTextLogoDrawDate.Checked) Then
-            textLogo.Mode = TextLogoMode.DateTime
-            textLogo.DateTimeMask = "yyyy-MM-dd. hh:mm:ss"
-        ElseIf (rbTextLogoDrawFrameNumber.Checked) Then
-            textLogo.Mode = TextLogoMode.FrameNumber
-        Else
-            textLogo.Mode = TextLogoMode.Timestamp
-        End If
-
-        If (cbTextLogoFadeIn.Checked) Then
-            textLogo.FadeIn = True
-            textLogo.FadeInDuration = 5000
-        Else
-            textLogo.FadeIn = False
-        End If
-
-        If (cbTextLogoFadeOut.Checked) Then
-            textLogo.FadeOut = True
-            textLogo.FadeOutDuration = 5000
-        Else
-            textLogo.FadeOut = False
-        End If
-
-        textLogo.Update()
-
-    End Sub
-
-    Private Sub pnTextLogoBGColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoBGColor.Click
-
-        colorDialog1.Color = pnTextLogoBGColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnTextLogoBGColor.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoGradColor1_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoGradColor1.Click
-
-        colorDialog1.Color = pnTextLogoGradColor1.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnTextLogoGradColor1.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoGradColor2_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoGradColor2.Click
-
-        colorDialog1.Color = pnTextLogoGradColor2.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnTextLogoGradColor2.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoInnerColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoInnerColor.Click
-
-        colorDialog1.Color = pnTextLogoInnerColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnTextLogoInnerColor.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoOuterColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoOuterColor.Click
-
-        colorDialog1.Color = pnTextLogoOuterColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnTextLogoOuterColor.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
-
-    Private Sub pnTextLogoShapeColor_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnTextLogoShapeColor.Click
-
-        colorDialog1.Color = pnTextLogoShapeColor.BackColor
-
-        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-            pnTextLogoShapeColor.BackColor = colorDialog1.Color
-        End If
-
-    End Sub
 
     Private Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
 
@@ -4012,66 +2892,6 @@ Public Class Form1
         VideoCapture1.MultiScreen_SetParameters(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
 
     End Sub
-
-    Private Sub cbWMVVideoSelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbWMVVideoMode.SelectedIndexChanged
-
-        Dim mode = VFWMVStreamMode.CBR
-        Select Case (cbWMVVideoMode.SelectedIndex)
-            Case 0
-                mode = VFWMVStreamMode.CBR
-                edWMVVideoBitrate.Enabled = True
-                edWMVVideoPeakBitrate.Enabled = False
-                edWMVVideoQuality.Enabled = False
-            Case 1
-                mode = VFWMVStreamMode.VBRBitrate
-                edWMVVideoBitrate.Enabled = True
-                edWMVVideoPeakBitrate.Enabled = False
-                edWMVVideoQuality.Enabled = False
-            Case 2
-                mode = VFWMVStreamMode.VBRPeakBitrate
-                edWMVVideoBitrate.Enabled = True
-                edWMVVideoPeakBitrate.Enabled = True
-                edWMVVideoQuality.Enabled = False
-            Case 3
-                mode = VFWMVStreamMode.VBRQuality
-                edWMVVideoBitrate.Enabled = False
-                edWMVVideoPeakBitrate.Enabled = False
-                edWMVVideoQuality.Enabled = True
-        End Select
-
-        cbWMVVideoCodec.Items.Clear()
-        Dim codecs = VideoCapture1.WMV_CustomProfile_VideoCodecs(mode)
-        For i As Integer = 0 To codecs.Count - 1
-            cbWMVVideoCodec.Items.Add(codecs.Item(i))
-        Next i
-
-    End Sub
-
-    Private Sub cbWMVAudioCodec_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbWMVAudioCodec.SelectedIndexChanged
-
-        Dim mode = VFWMVStreamMode.CBR
-        Select Case (cbWMVAudioMode.SelectedIndex)
-            Case 0 : mode = VFWMVStreamMode.CBR
-            Case 1 : mode = VFWMVStreamMode.VBRBitrate
-            Case 2 : mode = VFWMVStreamMode.VBRPeakBitrate
-            Case 3 : mode = VFWMVStreamMode.VBRQuality
-        End Select
-
-        cbWMVAudioFormat.Items.Clear()
-
-        If cbWMVAudioCodec.SelectedIndex <> -1 Then
-
-            Dim list As List(Of String)
-            list = VideoCapture1.WMV_CustomProfile_AudioFormats(cbWMVAudioCodec.Text, mode)
-
-            For i As Integer = 0 To list.Count - 1
-                cbWMVAudioFormat.Items.Add(list.Item(i))
-            Next i
-
-        End If
-
-    End Sub
-
 
     Private Sub tbLightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbLightness.Scroll
 
@@ -4330,26 +3150,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbWMVAudioSelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbWMVAudioMode.SelectedIndexChanged
-
-        Dim mode = VFWMVStreamMode.CBR
-        Select Case (cbWMVAudioMode.SelectedIndex)
-            Case 0 : mode = VFWMVStreamMode.CBR
-            Case 1 : mode = VFWMVStreamMode.VBRBitrate
-            Case 2 : mode = VFWMVStreamMode.VBRPeakBitrate
-            Case 3 : mode = VFWMVStreamMode.VBRQuality
-        End Select
-
-        cbWMVAudioCodec.Items.Clear()
-        Dim codecs = VideoCapture1.WMV_CustomProfile_AudioCodecs(mode)
-        For i As Integer = 0 To codecs.Count - 1
-            cbWMVAudioCodec.Items.Add(codecs.Item(i))
-        Next i
-
-        cbWMVAudioCodec_SelectedIndexChanged(sender, e)
-
-    End Sub
-
     Private Sub tbAudDynAmp_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAudDynAmp.Scroll
 
         VideoCapture1.Audio_Effects_Amplify(-1, 0, tbAudAmplifyAmp.Value * 10, False)
@@ -4409,9 +3209,9 @@ Public Class Form1
 
     End Sub
 
-    Public Delegate Sub MotionDelegate(ByVal e As MotionDetectionEventArgs)
+    Private Delegate Sub MotionDelegate(ByVal e As MotionDetectionEventArgs)
 
-    Public Sub MotionDelegateMethod(ByVal e As MotionDetectionEventArgs)
+    Private Sub MotionDelegateMethod(ByVal e As MotionDetectionEventArgs)
 
         Dim s As String = String.Empty
 
@@ -4459,6 +3259,7 @@ Public Class Form1
 
     End Sub
 
+' ReSharper disable once MemberCanBePrivate.Global
     Public Sub New()
 
         ' This call is required by the designer.
@@ -4483,9 +3284,9 @@ Public Class Form1
 
     End Sub
 
-    Public Delegate Sub AFMotionDelegate(ByVal level As System.Single)
+    Private Delegate Sub AFMotionDelegate(ByVal level As System.Single)
 
-    Public Sub AFMotionDelegateMethod(ByVal level As System.Single)
+    Private Sub AFMotionDelegateMethod(ByVal level As System.Single)
 
         pbAFMotionLevel.Value = level * 100
 
@@ -4822,7 +3623,7 @@ Public Class Form1
 
     Private Sub linkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel2.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/support/878966-Streaming-to-Adobe-Flash-Media-Server")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/878966-Streaming-to-Adobe-Flash-Media-Server")
         Process.Start(startInfo)
 
     End Sub
@@ -4844,8 +3645,7 @@ Public Class Form1
         e.Channel.AudioPid.ToString(CultureInfo.InvariantCulture),
         e.Channel.VideoPid.ToString(CultureInfo.InvariantCulture),
         e.Channel.ServId.ToString(CultureInfo.InvariantCulture),
-        e.Channel.SymbolRate.ToString(CultureInfo.InvariantCulture)
-                                            }
+        e.Channel.SymbolRate.ToString(CultureInfo.InvariantCulture)}
 
         Dim lvi As ListViewItem = New ListViewItem(list)
 
@@ -4856,7 +3656,7 @@ Public Class Form1
 
     Private Sub linkLabel4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel4.LinkClicked
 
-        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/support/300487-Streaming-using-Microsoft-Expression-Encoder")
+        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/300487-Streaming-using-Microsoft-Expression-Encoder")
         Process.Start(startInfo)
 
     End Sub
@@ -4978,7 +3778,7 @@ Public Class Form1
 
     Private Sub linkLabel5_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel5.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/support/240078-How-to-configure-IIS-Smooth-Streaming-in-SDK-demo-application")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/240078-How-to-configure-IIS-Smooth-Streaming-in-SDK-demo-application")
         Process.Start(startInfo)
 
     End Sub
@@ -5365,1239 +4165,9 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbFFEXEProfile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFFEXEProfile.SelectedIndexChanged
+    Private Delegate Sub FFMPEGInfoDelegate(ByVal message As String)
 
-        Select Case (cbFFEXEProfile.SelectedIndex)
-            ' MPEG-1
-            Case 0
-                cbFFEXEOutputFormat.SelectedIndex = 23
-
-                cbFFEXEVideoCodec.SelectedIndex = 12
-                cbFFEXEAudioCodec.SelectedIndex = 12
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MPEG-1 VCD
-            Case 1
-                cbFFEXEOutputFormat.SelectedIndex = 34
-
-                cbFFEXEVideoCodec.SelectedIndex = 12
-                cbFFEXEAudioCodec.SelectedIndex = 12
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MPEG-2
-            Case 2
-                cbFFEXEOutputFormat.SelectedIndex = 23
-
-                cbFFEXEVideoCodec.SelectedIndex = 13
-                cbFFEXEAudioCodec.SelectedIndex = 12
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MPEG-2 SVCD
-            Case 3
-                cbFFEXEOutputFormat.SelectedIndex = 30
-
-                cbFFEXEVideoCodec.SelectedIndex = 13
-                cbFFEXEAudioCodec.SelectedIndex = 12
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MPEG-2 DVD
-            Case 4
-                cbFFEXEOutputFormat.SelectedIndex = 7
-
-                cbFFEXEVideoCodec.SelectedIndex = 13
-                cbFFEXEAudioCodec.SelectedIndex = 12
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MPEG-2 TS
-            Case 5
-                cbFFEXEOutputFormat.SelectedIndex = 24
-
-                cbFFEXEVideoCodec.SelectedIndex = 13
-                cbFFEXEAudioCodec.SelectedIndex = 12
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' Flash Video (FLV)
-            Case 6
-                cbFFEXEOutputFormat.SelectedIndex = 11
-
-                cbFFEXEVideoCodec.SelectedIndex = 5
-                cbFFEXEAudioCodec.SelectedIndex = 1
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MP4 H264 / AAC
-            Case 7
-                cbFFEXEOutputFormat.SelectedIndex = 22
-
-                cbFFEXEVideoCodec.SelectedIndex = 5
-                cbFFEXEAudioCodec.SelectedIndex = 1
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MP4 HEVC / AAC
-            Case 8
-                cbFFEXEOutputFormat.SelectedIndex = 22
-
-                cbFFEXEVideoCodec.SelectedIndex = 6
-                cbFFEXEAudioCodec.SelectedIndex = 1
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' WebM
-            Case 9
-                cbFFEXEOutputFormat.SelectedIndex = 36
-
-                cbFFEXEVideoCodec.SelectedIndex = 17
-                cbFFEXEAudioCodec.SelectedIndex = 41
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' AVI
-            Case 10
-                cbFFEXEOutputFormat.SelectedIndex = 4
-
-                cbFFEXEVideoCodec.SelectedIndex = 14
-                cbFFEXEAudioCodec.SelectedIndex = 13
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' OGG Vorbis
-            Case 11
-                cbFFEXEOutputFormat.SelectedIndex = 26
-
-                cbFFEXEVideoCodec.SelectedIndex = 0
-                cbFFEXEAudioCodec.SelectedIndex = 41
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' Opus
-            Case 12
-                cbFFEXEOutputFormat.SelectedIndex = 27
-
-                cbFFEXEVideoCodec.SelectedIndex = 0
-                cbFFEXEAudioCodec.SelectedIndex = 14
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' Speex
-            Case 13
-                cbFFEXEOutputFormat.SelectedIndex = 26
-
-                cbFFEXEVideoCodec.SelectedIndex = 0
-                cbFFEXEAudioCodec.SelectedIndex = 40
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' FLAC
-            Case 14
-                cbFFEXEOutputFormat.SelectedIndex = 10
-
-                cbFFEXEVideoCodec.SelectedIndex = 0
-                cbFFEXEAudioCodec.SelectedIndex = 10
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' MP3
-            Case 15
-                cbFFEXEOutputFormat.SelectedIndex = 21
-
-                cbFFEXEVideoCodec.SelectedIndex = 0
-                cbFFEXEAudioCodec.SelectedIndex = 13
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-            ' DV
-            Case 16
-                cbFFEXEOutputFormat.SelectedIndex = 4
-
-                cbFFEXEVideoCodec.SelectedIndex = 1
-                cbFFEXEAudioCodec.SelectedIndex = 23
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-                cbFFEXEAudioChannels.SelectedIndex = 1
-                cbFFEXEAudioSampleRate.SelectedIndex = 1
-
-            ' Custom
-            Case 17
-                cbFFEXEOutputFormat.SelectedIndex = 4
-
-                cbFFEXEVideoCodec.SelectedIndex = 14
-                cbFFEXEAudioCodec.SelectedIndex = 13
-
-                cbFFEXEVideoCodec_SelectedIndexChanged(Nothing, Nothing)
-                cbFFEXEAudioCodec_SelectedIndexChanged(Nothing, Nothing)
-
-        End Select
-
-    End Sub
-
-    Private Sub FFEXEDisableVideoMode()
-
-        rbFFEXEVideoModeABR.Enabled = False
-        rbFFEXEVideoModeABR.Checked = False
-        rbFFEXEVideoModeCBR.Enabled = False
-        rbFFEXEVideoModeCBR.Checked = False
-        rbFFEXEVideoModeQuality.Enabled = False
-        rbFFEXEVideoModeQuality.Checked = False
-
-        tbFFEXEVideoQuality.Enabled = False
-        edFFEXEVideoTargetBitrate.Enabled = False
-        edFFEXEVideoBitrateMax.Enabled = False
-        edFFEXEVideoBitrateMin.Enabled = False
-
-    End Sub
-
-    Private Sub FFEXEEnableVideoCBR()
-
-        rbFFEXEVideoModeCBR.Enabled = True
-        rbFFEXEVideoModeCBR.Checked = True
-
-        edFFEXEVideoTargetBitrate.Enabled = True
-
-    End Sub
-
-    Private Sub FFEXEEnableVideoABR()
-
-        rbFFEXEVideoModeABR.Enabled = True
-        rbFFEXEVideoModeABR.Checked = True
-
-        edFFEXEVideoTargetBitrate.Enabled = True
-        edFFEXEVideoBitrateMax.Enabled = True
-        edFFEXEVideoBitrateMin.Enabled = True
-
-    End Sub
-
-    Private Sub FFEXEEnableVideoQuality()
-
-        rbFFEXEVideoModeQuality.Enabled = True
-        rbFFEXEVideoModeQuality.Checked = True
-
-        tbFFEXEVideoQuality.Enabled = True
-
-    End Sub
-
-    Private Sub cbFFEXEVideoCodec_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFFEXEVideoCodec.SelectedIndexChanged
-
-        edFFEXEVBVBufferSize.Text = "0"
-        edFFEXEVideoGOPSize.Text = "0"
-        edFFEXEVideoBFramesCount.Text = "0"
-        tbFFEXEVideoQuality.Minimum = 1
-        tbFFEXEVideoQuality.Maximum = 31
-
-        lbFFEXEVideoNotes.Text = "Notes: None."
-
-        FFEXEDisableVideoMode()
-
-        Select Case (cbFFEXEVideoCodec.SelectedIndex)
-
-            ' Auto / None
-            Case 0
-                FFEXEEnableVideoABR()
-                FFEXEEnableVideoQuality()
-
-            ' DV
-            Case 1
-
-                lbFFEXEVideoNotes.Text = "Notes: Specify constraint settings for PAL or NTSC DV output."
-                cbFFEXEVideoConstraint.SelectedIndex = 1
-
-            ' FLV1
-            Case 2
-                FFEXEEnableVideoCBR()
-                FFEXEEnableVideoQuality()
-
-            ' GIF
-            Case 3
-
-                ' H263
-            Case 4
-
-                ' H264
-            Case 5
-                cbFFEXEH264Mode.SelectedIndex = 0
-                cbFFEXEH264Level.SelectedIndex = 0
-                cbFFEXEH264Preset.SelectedIndex = 0
-                cbFFEXEH264Profile.SelectedIndex = 0
-                tbFFEXEH264Quantizer.Value = 23
-                cbFFEXEH264QuickTimeCompatibility.Checked = True
-                cbFFEXEH264ZeroTolerance.Checked = False
-                cbFFEXEH264WebFastStart.Checked = False
-
-            ' HEVC
-            Case 6
-                cbFFEXEH264Mode.SelectedIndex = 0
-                cbFFEXEH264Level.SelectedIndex = 0
-                cbFFEXEH264Preset.SelectedIndex = 0
-                cbFFEXEH264Profile.SelectedIndex = 0
-                tbFFEXEH264Quantizer.Value = 23
-                cbFFEXEH264QuickTimeCompatibility.Checked = True
-                cbFFEXEH264ZeroTolerance.Checked = False
-                cbFFEXEH264WebFastStart.Checked = False
-
-
-            ' HuffYUV
-            Case 7
-
-
-                ' JPEG 2000
-            Case 8
-
-
-                ' JPEG-LS
-            Case 9
-
-
-                ' LJPEG
-            Case 10
-
-
-                ' MJPEG
-            Case 11
-                FFEXEEnableVideoQuality()
-
-                tbFFEXEVideoQuality.Value = 4
-                tbFFEXEVideoQuality_Scroll(Nothing, Nothing)
-
-            ' MPEG-1
-            Case 12
-                FFEXEEnableVideoCBR()
-
-                edFFEXEVideoBitrateMin.Text = "1000"
-                edFFEXEVideoBitrateMax.Text = "2000"
-                edFFEXEVideoTargetBitrate.Text = "1800"
-
-            ' MPEG-2
-            Case 13
-                FFEXEEnableVideoCBR()
-
-                edFFEXEVideoBitrateMin.Text = "2000"
-                edFFEXEVideoBitrateMax.Text = "5000"
-                edFFEXEVideoTargetBitrate.Text = "4000"
-
-                edFFEXEVideoGOPSize.Text = "45"
-                edFFEXEVideoBFramesCount.Text = "2"
-
-            ' MPEG-4
-            Case 14
-                FFEXEEnableVideoCBR()
-
-                edFFEXEVideoBitrateMin.Text = "2000"
-                edFFEXEVideoBitrateMax.Text = "5000"
-                edFFEXEVideoTargetBitrate.Text = "4000"
-
-            ' PNG
-            Case 15
-
-                ' Theora
-            Case 16
-                FFEXEEnableVideoQuality()
-
-                tbFFEXEVideoQuality.Minimum = 0
-                tbFFEXEVideoQuality.Maximum = 10
-                tbFFEXEVideoQuality.Value = 7
-                tbFFEXEVideoQuality_Scroll(Nothing, Nothing)
-
-                edFFEXEVideoTargetBitrate.Text = "2000"
-
-            ' VP8
-            Case 17
-                FFEXEEnableVideoQuality()
-                FFEXEEnableVideoCBR()
-
-                tbFFEXEVideoQuality.Minimum = 4
-                tbFFEXEVideoQuality.Maximum = 63
-                tbFFEXEVideoQuality.Value = 10
-                tbFFEXEVideoQuality_Scroll(Nothing, Nothing)
-
-                edFFEXEVideoTargetBitrate.Text = "2000"
-
-            ' VP9   
-            Case 18
-
-                FFEXEEnableVideoQuality()
-                FFEXEEnableVideoCBR()
-
-                tbFFEXEVideoQuality.Minimum = 4
-                tbFFEXEVideoQuality.Maximum = 63
-                tbFFEXEVideoQuality.Value = 10
-                tbFFEXEVideoQuality_Scroll(Nothing, Nothing)
-
-                edFFEXEVideoTargetBitrate.Text = "2000"
-
-        End Select
-
-    End Sub
-
-    Private Sub FFEXEDisableAudioMode()
-
-        rbFFEXEAudioModeABR.Enabled = False
-        rbFFEXEAudioModeABR.Checked = False
-        rbFFEXEAudioModeCBR.Enabled = False
-        rbFFEXEAudioModeCBR.Checked = False
-        rbFFEXEAudioModeQuality.Enabled = False
-        rbFFEXEAudioModeQuality.Checked = False
-        rbFFEXEAudioModeLossless.Enabled = False
-        rbFFEXEAudioModeLossless.Checked = False
-
-        tbFFEXEAudioQuality.Enabled = False
-        cbFFEXEAudioBitrate.Enabled = False
-
-    End Sub
-
-    Private Sub FFEXEEnableAudioCBR()
-
-        rbFFEXEAudioModeCBR.Enabled = True
-        rbFFEXEAudioModeCBR.Checked = True
-
-        cbFFEXEAudioBitrate.Enabled = True
-
-    End Sub
-
-    Private Sub FFEXEEnableAudioQuality()
-
-        rbFFEXEAudioModeQuality.Enabled = True
-        rbFFEXEAudioModeQuality.Checked = True
-
-        tbFFEXEAudioQuality.Enabled = True
-
-    End Sub
-
-    Private Sub FFEXEEnableAudioLossless()
-
-        rbFFEXEAudioModeLossless.Enabled = True
-        rbFFEXEAudioModeLossless.Checked = True
-
-        ' tbFFEXEAudioQuality.Enabled = true
-
-    End Sub
-
-    Private Sub cbFFEXEAudioCodec_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFFEXEAudioCodec.SelectedIndexChanged
-
-        FFEXEDisableAudioMode()
-        lbFFEXEAudioNotes.Text = "Notes: None."
-
-        Select Case (cbFFEXEAudioCodec.SelectedIndex)
-            ' Auto / None
-            Case 0
-
-
-                ' AAC
-            Case 1
-                FFEXEEnableAudioCBR()
-
-            ' AC3
-            Case 2
-                FFEXEEnableAudioCBR()
-
-            ' G722
-            Case 3
-
-                ' G726
-            Case 4
-
-                ' ADPCM
-            Case 5
-
-                ' ALAC
-            Case 6
-                FFEXEEnableAudioCBR()
-                FFEXEEnableAudioLossless()
-
-            ' AMR-NB
-            Case 7
-
-                ' AMR-WB
-            Case 8
-
-                ' E-AC3
-            Case 9
-                FFEXEEnableAudioCBR()
-
-            ' FLAC
-            Case 10
-
-                lbFFEXEAudioNotes.Text = "Notes: Use Quality mode, trackbar set compression level (0-12, ."
-
-                FFEXEEnableAudioQuality()
-
-                tbFFEXEAudioQuality.Minimum = 0
-                tbFFEXEAudioQuality.Maximum = 12
-                tbFFEXEAudioQuality.Value = 5
-                lbFFEXEAudioQuality.Text = tbFFEXEAudioQuality.Value.ToString()
-
-            ' G723
-            Case 11
-
-                ' MP2
-            Case 12
-                FFEXEEnableAudioQuality()
-                FFEXEEnableAudioCBR()
-
-                tbFFEXEAudioQuality.Minimum = 0
-                tbFFEXEAudioQuality.Maximum = 9
-                tbFFEXEAudioQuality.Value = 0
-                lbFFEXEAudioQuality.Text = tbFFEXEAudioQuality.Value.ToString()
-
-            ' MP3
-            Case 13
-                FFEXEEnableAudioQuality()
-                FFEXEEnableAudioCBR()
-
-                tbFFEXEAudioQuality.Minimum = 0
-                tbFFEXEAudioQuality.Maximum = 9
-                tbFFEXEAudioQuality.Value = 4
-                lbFFEXEAudioQuality.Text = tbFFEXEAudioQuality.Value.ToString()
-
-            ' OPUS
-            Case 14
-                FFEXEEnableAudioCBR()
-
-            ' PCM ALAW
-            Case 15
-
-                ' PCM F32BE
-            Case 16
-
-                ' PCM F32LE
-            Case 17
-
-                ' PCM F64BE
-            Case 18
-
-                ' PCM F64LE
-            Case 19
-
-                ' PCM MULAW
-            Case 20
-
-                ' PCM S16BE
-            Case 21
-
-                ' PCM S16BE Planar
-            Case 22
-
-                ' PCM S16LE
-            Case 23
-
-                ' PCM S16LE Planar
-            Case 24
-
-                ' PCM S24BE
-            Case 25
-
-                ' PCM S24LE
-            Case 26
-
-                ' PCM S24LE Planar
-            Case 27
-
-                ' PCM S32BE
-            Case 28
-
-                ' PCM S32LE
-            Case 29
-
-                ' PCM S32LE Planar
-            Case 30
-
-                ' PCM S8
-            Case 31
-
-                ' PCM S8 Planar
-            Case 32
-
-                ' PCM U16BE
-            Case 33
-
-                ' PCM U16LE
-            Case 34
-
-                ' PCM U24BE
-            Case 35
-
-                ' PCM U24LE
-            Case 36
-
-                ' PCM U32BE     
-            Case 37
-
-                ' PCM U32LE
-            Case 38
-
-                ' PCM U8
-            Case 39
-
-                ' Speex
-            Case 40
-                FFEXEEnableAudioQuality()
-                FFEXEEnableAudioCBR()
-
-                tbFFEXEAudioQuality.Minimum = 0
-                tbFFEXEAudioQuality.Maximum = 10
-                tbFFEXEAudioQuality.Value = 5
-                tbFFEXEAudioQuality_Scroll(Nothing, Nothing)
-
-            ' Vorbis
-            Case 41
-                FFEXEEnableAudioQuality()
-                FFEXEEnableAudioCBR()
-
-                tbFFEXEAudioQuality.Minimum = -1
-                tbFFEXEAudioQuality.Maximum = 10
-                tbFFEXEAudioQuality.Value = 5
-                tbFFEXEAudioQuality_Scroll(Nothing, Nothing)
-
-            ' WavPack
-            Case 42
-        End Select
-
-    End Sub
-
-    Private Sub tbFFEXEVideoQuality_Scroll(sender As Object, e As EventArgs) Handles tbFFEXEVideoQuality.Scroll
-
-        lbFFEXEVideoQuality.Text = tbFFEXEVideoQuality.Value.ToString()
-
-    End Sub
-
-    Private Sub tbFFEXEH264Quantizer_Scroll(sender As Object, e As EventArgs) Handles tbFFEXEH264Quantizer.Scroll
-
-        lbFFEXEH264Quantizer.Text = tbFFEXEH264Quantizer.Value.ToString()
-
-    End Sub
-
-    Private Sub tbFFEXEAudioQuality_Scroll(sender As Object, e As EventArgs) Handles tbFFEXEAudioQuality.Scroll
-
-        lbFFEXEAudioQuality.Text = tbFFEXEAudioQuality.Value.ToString()
-
-    End Sub
-
-    Private Sub FillFFMPEGEXESettings(ByRef ffmpegOutput As VFFFMPEGEXEOutput)
-
-        ffmpegOutput.Custom_AdditionalAudioArgs = edFFEXECustomParametersAudio.Text
-        ffmpegOutput.Custom_AdditionalVideoArgs = edFFEXECustomParametersVideo.Text
-
-        If (cbFFEXEUseOnlyAdditionalParameters.Checked) Then
-
-            ffmpegOutput.Custom_AllFFMPEGArgs = edFFEXECustomParametersCommon.Text
-
-        Else
-
-            ffmpegOutput.Custom_AdditionalCommonArgs = edFFEXECustomParametersCommon.Text
-
-        End If
-
-        Select Case (cbFFEXEOutputFormat.SelectedIndex)
-            Case 0
-                ' 3G2
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.Mobile3G2
-
-            Case 1
-                ' 3GP
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.Mobile3GP
-
-            Case 2
-                ' AC3
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.AC3
-
-            Case 3
-                ' ADTS
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.ADTS
-
-            Case 4
-                ' AVI
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.AVI
-
-            Case 5
-                ' DTS
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.DTS
-
-            Case 6
-                ' DTS-HD
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.DTSHD
-
-            Case 7
-                ' DVD (VOB)
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.VOB
-
-            Case 8
-                ' E-AC3
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.EAC3
-
-            Case 9
-                ' F4V
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.F4V
-
-            Case 10
-                ' FLAC
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.FLAC
-
-            Case 11
-                ' FLV
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.FLV
-
-            Case 12
-                ' GIF
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.GIF
-
-            Case 13
-                ' H263
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.H263
-
-            Case 14
-                ' H264
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.H264
-
-            Case 15
-                ' HEVC
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.HEVC
-
-            Case 16
-                ' Matroska
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.Matroska
-
-            Case 17
-                ' M4V
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.M4V
-
-            Case 18
-                ' MJPEG
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MJPEG
-
-            Case 19
-                ' MOV
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MOV
-
-            Case 20
-                ' MP2
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MP2
-
-            Case 21
-                ' MP3
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MP3
-
-            Case 22
-                ' MP4
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MP4
-
-            Case 23
-                ' MPEG
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MPEG
-
-            Case 24
-                ' MPEGTS
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MPEGTS
-
-            Case 25
-                ' MXF
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MXF
-
-            Case 26
-                ' OGG
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.OGG
-
-            Case 27
-                ' OPUS
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.OPUS
-
-            Case 28
-                ' PSP MP4
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.PSP
-
-            Case 29
-                ' RAWVideo
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.RAWVideo
-
-            Case 30
-                ' SVCD
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.SVCD
-
-            Case 31
-                ' SWF
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.SWF
-
-            Case 32
-                ' TrueHD
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.TrueHD
-
-            Case 33
-                ' VC1
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.VC1
-
-            Case 34
-                ' VCD
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.VCD
-
-            Case 35
-                ' WAV
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.WAV
-
-            Case 36
-                ' WebM
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.WebM
-
-            Case 37
-                ' WTV
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.WTV
-
-            Case 38
-                ' WV (WavPack)
-                ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.WV
-
-        End Select
-
-        Select Case (cbFFEXEVideoCodec.SelectedIndex)
-
-            Case 0
-                ' Auto
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.Auto
-
-            Case 1
-                ' DV
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.DVVideo
-
-            Case 2
-                ' FLV1
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.FLV1
-
-            Case 3
-                ' GIF
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.GIF
-
-            Case 4
-                ' H263
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.H263
-
-            Case 5
-                ' H264
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.H264
-
-            Case 6
-                ' HEVC
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.HEVC
-
-            Case 7
-                ' HuffYUV
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.HuffYUV
-
-            Case 8
-                ' JPEG 2000
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.JPEG2000
-
-            Case 9
-                ' JPEG-LS
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.JPEGLS
-
-            Case 10
-                ' LJPEG
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.LJPEG
-
-            Case 11
-                ' MJPEG
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.MJPEG
-
-            Case 12
-                ' MPEG-1
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.MPEG1Video
-
-            Case 13
-                ' MPEG-2
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.MPEG2Video
-
-            Case 14
-                ' MPEG-4
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.MPEG4
-
-            Case 15
-                ' PNG
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.PNG
-
-            Case 16
-                ' Theora
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.Theora
-
-            Case 17
-                ' VP8
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.VP8
-
-            Case 18
-                ' VP9
-                ffmpegOutput.Video_Encoder = VFFFMPEGEXEVideoEncoder.VP9
-
-        End Select
-
-        Select Case (cbFFEXEAspectRatio.SelectedIndex)
-
-            Case 0
-                ffmpegOutput.Video_AspectRatioW = 0
-                ffmpegOutput.Video_AspectRatioH = 1
-
-            Case 1
-                ffmpegOutput.Video_AspectRatioW = 1
-                ffmpegOutput.Video_AspectRatioH = 1
-
-            Case 2
-                ffmpegOutput.Video_AspectRatioW = 4
-                ffmpegOutput.Video_AspectRatioH = 3
-
-            Case 3
-                ffmpegOutput.Video_AspectRatioW = 16
-                ffmpegOutput.Video_AspectRatioH = 9
-
-        End Select
-
-        If (cbFFEXEVideoResolutionOriginal.Checked) Then
-
-            ffmpegOutput.Video_Width = 0
-            ffmpegOutput.Video_Height = 0
-
-        Else
-
-            ffmpegOutput.Video_Width = Convert.ToInt32(edFFEXEVideoWidth.Text)
-            ffmpegOutput.Video_Height = Convert.ToInt32(edFFEXEVideoHeight.Text)
-
-        End If
-
-        If (rbFFEXEVideoModeCBR.Checked) Then
-
-            ffmpegOutput.Video_Mode = VFFFMPEGEXEVideoMode.CBR
-
-        ElseIf (rbFFEXEVideoModeQuality.Checked) Then
-
-            ffmpegOutput.Video_Mode = VFFFMPEGEXEVideoMode.Quality
-
-        ElseIf (rbFFEXEVideoModeABR.Checked) Then
-
-            ffmpegOutput.Video_Mode = VFFFMPEGEXEVideoMode.ABR
-
-        End If
-
-        ffmpegOutput.Video_Bitrate = Convert.ToInt32(edFFEXEVideoTargetBitrate.Text) * 1000
-        ffmpegOutput.Video_MaxBitrate = Convert.ToInt32(edFFEXEVideoBitrateMax.Text) * 1000
-        ffmpegOutput.Video_MinBitrate = Convert.ToInt32(edFFEXEVideoBitrateMin.Text) * 1000
-        ffmpegOutput.Video_BufferSize = Convert.ToInt32(edFFEXEVBVBufferSize.Text)
-        ffmpegOutput.Video_GOPSize = Convert.ToInt32(edFFEXEVideoGOPSize.Text)
-        ffmpegOutput.Video_BFrames = Convert.ToInt32(edFFEXEVideoBFramesCount.Text)
-        ffmpegOutput.Video_Interlace = cbFFEXEVideoInterlace.Checked
-        ffmpegOutput.Video_Letterbox = cbFFEXEVideoResolutionLetterbox.Checked
-        ffmpegOutput.Video_Quality = tbFFEXEVideoQuality.Value
-
-        ffmpegOutput.Video_H264_Quantizer = tbFFEXEH264Quantizer.Value
-        ffmpegOutput.Video_H264_Mode = cbFFEXEH264Mode.SelectedIndex
-        ffmpegOutput.Video_H264_Preset = cbFFEXEH264Preset.SelectedIndex
-        ffmpegOutput.Video_H264_Profile = cbFFEXEH264Profile.SelectedIndex
-        ffmpegOutput.Video_H264_QuickTime_Compatibility = cbFFEXEH264QuickTimeCompatibility.Checked
-        ffmpegOutput.Video_H264_ZeroTolerance = cbFFEXEH264ZeroTolerance.Checked
-        ffmpegOutput.Video_H264_WebFastStart = cbFFEXEH264WebFastStart.Checked
-        ffmpegOutput.Video_TVSystem = cbFFEXEVideoConstraint.SelectedIndex
-
-        Select Case (cbFFEXEH264Level.SelectedIndex)
-
-            Case 0
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.None
-
-            Case 1
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level1
-
-            Case 2
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level11
-
-            Case 3
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level12
-
-            Case 4
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level13
-
-            Case 5
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level2
-
-            Case 6
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level21
-
-            Case 7
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level22
-
-            Case 8
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level3
-
-            Case 9
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level31
-
-            Case 10
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level32
-
-            Case 11
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level4
-
-            Case 12
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level41
-
-            Case 13
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level42
-
-            Case 14
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level5
-
-            Case 15
-                ffmpegOutput.Video_H264_Level = VFFFMPEGEXEH264Level.Level51
-
-        End Select
-
-        Select Case (cbFFEXEAudioCodec.SelectedIndex)
-
-            Case 0
-                ' Auto
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.Auto
-
-            Case 1
-                ' AAC
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.AAC
-
-            Case 2
-                ' AC3
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.AC3
-
-            Case 3
-                ' G722
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.adpcm_g722
-
-            Case 4
-                ' G726
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.adpcm_g726
-
-            Case 5
-                ' ADPCM
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.adpcm_ms
-
-            Case 6
-                ' ALAC
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.ALAC
-
-            Case 7
-                ' AMR-NB
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.AMR_NB
-
-            Case 8
-                ' AMR-WB
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.AMR_WB
-
-            Case 9
-                ' E-AC3
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.EAC3
-
-            Case 10
-                ' FLAC
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.FLAC
-
-            Case 11
-                ' G723
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.G723_1
-
-            Case 12
-                ' MP2
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.MP2
-
-            Case 13
-                ' MP3
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.MP3
-
-            Case 14
-                ' OPUS
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.OPUS
-
-            Case 15
-                ' PCM ALAW
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_ALAW
-
-            Case 16
-                ' PCM F32BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_F32BE
-
-            Case 17
-                ' PCM F32LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_F32LE
-
-            Case 18
-                ' PCM F64BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_F64BE
-
-            Case 19
-                ' PCM F64LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_F64LE
-
-            Case 20
-                ' PCM MULAW
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_MULAW
-
-            Case 21
-                ' PCM S16BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S16BE
-
-            Case 22
-                ' PCM S16BE Planar
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S16BE_Planar
-
-            Case 23
-                ' PCM S16LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S16LE
-
-            Case 24
-                ' PCM S16LE Planar
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S16LE_Planar
-
-            Case 25
-                ' PCM S24BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S24BE
-
-            Case 26
-                ' PCM S24LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S24LE
-
-            Case 27
-                ' PCM S24LE Planar
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S24LE_Planar
-
-            Case 28
-                ' PCM S32BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S32BE
-
-            Case 29
-                ' PCM S32LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S32LE
-
-            Case 30
-                ' PCM S32LE Planar
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S32LE_Planar
-
-            Case 31
-                ' PCM S8
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S8
-
-            Case 32
-                ' PCM S8 Planar
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_S8_Planar
-
-            Case 33
-                ' PCM U16BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U16BE
-
-            Case 34
-                ' PCM U16LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U16LE
-
-            Case 35
-                ' PCM U24BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U24BE
-
-            Case 36
-                ' PCM U24LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U24LE
-
-            Case 37
-                ' PCM U32BE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U32BE
-
-            Case 38
-                ' PCM U32LE
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U32LE
-
-            Case 39
-                ' PCM U8
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.PCM_U8
-
-            Case 40
-                ' Speex
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.Speex
-
-            Case 41
-                ' Vorbis
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.Vorbis
-
-            Case 42
-                ' WavPack
-                ffmpegOutput.Audio_Encoder = VFFFMPEGEXEAudioEncoder.WavPack
-
-        End Select
-
-        If (cbFFEXEAudioChannels.SelectedIndex = 0) Then
-
-            ffmpegOutput.Audio_Channels = 0
-
-        Else
-
-            ffmpegOutput.Audio_Channels = Convert.ToInt32(cbFFEXEAudioChannels.Text)
-
-        End If
-
-        If (cbFFEXEAudioSampleRate.SelectedIndex = 0) Then
-
-            ffmpegOutput.Audio_SampleRate = 0
-
-        Else
-
-            ffmpegOutput.Audio_SampleRate = Convert.ToInt32(cbFFEXEAudioSampleRate.Text)
-
-        End If
-
-
-        If (cbFFEXEAudioBitrate.SelectedIndex = 0) Then
-
-            ffmpegOutput.Audio_Bitrate = 0
-
-        Else
-
-            ffmpegOutput.Audio_Bitrate = Convert.ToInt32(cbFFEXEAudioBitrate.Text) * 1000
-
-        End If
-
-        ffmpegOutput.Audio_Quality = tbFFEXEAudioQuality.Value
-
-        If (rbFFEXEAudioModeCBR.Checked) Then
-
-            ffmpegOutput.Audio_Mode = VFFFMPEGEXEAudioMode.CBR
-
-        ElseIf (rbFFEXEAudioModeQuality.Checked) Then
-
-            ffmpegOutput.Audio_Mode = VFFFMPEGEXEAudioMode.Quality
-
-        ElseIf (rbFFEXEAudioModeABR.Checked) Then
-
-            ffmpegOutput.Audio_Mode = VFFFMPEGEXEAudioMode.ABR
-
-        ElseIf (rbFFEXEAudioModeLossless.Checked) Then
-
-            ffmpegOutput.Audio_Mode = VFFFMPEGEXEAudioMode.Lossless
-
-        End If
-    End Sub
-
-
-    Public Delegate Sub FFMPEGInfoDelegate(ByVal message As String)
-
-    Public Sub FFMPEGInfoDelegateMethod(ByVal message As String)
+    Private Sub FFMPEGInfoDelegateMethod(ByVal message As String)
 
         mmLog.Text += "(NOT ERROR) FFMPEG " + message + Environment.NewLine
 
@@ -6620,35 +4190,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbFFEXEH264Mode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFFEXEH264Mode.SelectedIndexChanged
-
-        FFEXEDisableVideoMode()
-
-        Select Case (cbFFEXEH264Mode.SelectedIndex)
-            Case 0
-                'CRF
-            Case 1
-                'CRF (limited bitrate)
-                FFEXEEnableVideoCBR()
-            Case 2
-                'CBR
-                FFEXEEnableVideoCBR()
-            Case 3
-                'ABR
-                FFEXEEnableVideoABR()
-            Case 4
-                'Lossless
-        End Select
-
-    End Sub
-
-    Private Sub linkLabel6_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel6.LinkClicked
-
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/support/934037-MP4-H264--AAC-output-for-2K--4K-resolution-memory-problem")
-        Process.Start(startInfo)
-
-    End Sub
-
     Private Sub imgTagCover_Click(sender As Object, e As EventArgs) Handles imgTagCover.Click
 
         If (openFileDialog2.ShowDialog() = DialogResult.OK) Then
@@ -6667,7 +4208,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub FFMPEGDownloadLinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel3.LinkClicked, LinkLabel9.LinkClicked, LinkLabel8.LinkClicked, linkLabel10.LinkClicked
+    Private Sub FFMPEGDownloadLinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel9.LinkClicked, LinkLabel8.LinkClicked, linkLabel10.LinkClicked
 
         Dim startInfo = New ProcessStartInfo("explorer.exe", "https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_ffmpeg_exe_x86_x64.exe")
         Process.Start(startInfo)
@@ -6723,14 +4264,14 @@ Public Class Form1
 
     Private Sub linkLabel11_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel11.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://visioforge.com/support/577349-Network-streaming-to-YouTube")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://support.visioforge.com/577349-Network-streaming-to-YouTube")
         Process.Start(startInfo)
 
     End Sub
 
-    Public Delegate Sub NetworkStopDelegate()
+    Private Delegate Sub NetworkStopDelegate()
 
-    Public Sub NetworkStopDelegateMethod()
+    Private Sub NetworkStopDelegateMethod()
 
         VideoCapture1.Stop()
 
@@ -6742,25 +4283,6 @@ Public Class Form1
 
         Dim del As NetworkStopDelegate = New NetworkStopDelegate(AddressOf NetworkStopDelegateMethod)
         BeginInvoke(del, e)
-
-    End Sub
-
-    Private Sub tpNVENC_Enter(sender As Object, e As EventArgs) Handles tpNVENC.Enter
-
-        If (lbNVENCStatus.Tag.ToString() = "0") Then
-
-            lbNVENCStatus.Tag = 1
-
-            Dim errorCode As NVENCErrorCode
-            Dim res As Boolean = VideoCapture.Filter_Supported_NVENC(errorCode)
-
-            If (res) Then
-                lbNVENCStatus.Text = "Available"
-            Else
-                lbNVENCStatus.Text = "Not available. Error code: " + errorCode
-            End If
-
-        End If
 
     End Sub
 
@@ -7171,12 +4693,338 @@ Public Class Form1
 
     End Sub
 
-    Private Sub label434_Click(sender As Object, e As EventArgs) Handles label434.Click
-
-    End Sub
 
     Private Sub cbAudioInputFormat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbAudioInputFormat.SelectedIndexChanged
 
+    End Sub
+
+    Private Sub btSelectHLSOutputFolder_Click(sender As Object, e As EventArgs) Handles btSelectHLSOutputFolder.Click
+        If (folderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
+            edHLSOutputFolder.Text = folderBrowserDialog1.SelectedPath
+        End If
+    End Sub
+
+    Private Sub lbHLSConfigure_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbHLSConfigure.LinkClicked
+        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", "https://support.visioforge.com/608296-HLS-streaming")
+        Process.Start(startInfo)
+    End Sub
+
+    Private Sub cbOutputFormat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbOutputFormat.SelectedIndexChanged
+
+        Select Case (cbOutputFormat.SelectedIndex)
+            Case 0
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 1
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mkv")
+            Case 2
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wmv")
+            Case 3
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 4
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wav")
+            Case 5
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp3")
+            Case 6
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".m4a")
+            Case 7
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wma")
+            Case 8
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".flac")
+            Case 9
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg")
+            Case 10
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg")
+            Case 11
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 12
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 13
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 14
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mpg")
+            Case 15
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mkv")
+            Case 16
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4")
+            Case 17
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4")
+            Case 18
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 19
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".webm")
+            Case 20
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 21
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
+            Case 22
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4")
+            Case 23
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4")
+            Case 24
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".gif")
+            Case 25
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".enc")
+            Case 26
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ts")
+            Case 27
+                edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mov")
+        End Select
+    End Sub
+
+    Private Sub btOutputConfigure_Click(sender As Object, e As EventArgs) Handles btOutputConfigure.Click
+        Select Case (cbOutputFormat.SelectedIndex)
+            Case 0
+                If (aviSettingsDialog Is Nothing) Then
+                    aviSettingsDialog = New AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(), VideoCapture1.Audio_Codecs.ToArray())
+                End If
+
+                aviSettingsDialog.ShowDialog(Me)
+            Case 1
+                If (aviSettingsDialog Is Nothing) Then
+                    aviSettingsDialog = New AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(), VideoCapture1.Audio_Codecs.ToArray())
+                End If
+
+                aviSettingsDialog.ShowDialog(Me)
+            Case 2
+                If (wmvSettingsDialog Is Nothing) Then
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+                End If
+
+                wmvSettingsDialog.WMA = False
+                wmvSettingsDialog.ShowDialog(Me)
+            Case 3
+                If (dvSettingsDialog Is Nothing) Then
+                    dvSettingsDialog = New DVSettingsDialog()
+                End If
+
+                dvSettingsDialog.ShowDialog(Me)
+            Case 4
+                If (pcmSettingsDialog Is Nothing) Then
+                    pcmSettingsDialog = New PCMSettingsDialog(VideoCapture1.Audio_Codecs.ToArray())
+                End If
+
+                pcmSettingsDialog.ShowDialog(Me)
+            Case 5
+                If (mp3SettingsDialog Is Nothing) Then
+                    mp3SettingsDialog = New MP3SettingsDialog()
+                End If
+
+                mp3SettingsDialog.ShowDialog(Me)
+            Case 6
+                If (m4aSettingsDialog Is Nothing) Then
+                    m4aSettingsDialog = New M4ASettingsDialog()
+                End If
+
+                m4aSettingsDialog.ShowDialog(Me)
+            Case 7
+                If (wmvSettingsDialog Is Nothing) Then
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+                End If
+
+                wmvSettingsDialog.WMA = True
+                wmvSettingsDialog.ShowDialog(Me)
+            Case 8
+                If (flacSettingsDialog Is Nothing) Then
+                    flacSettingsDialog = New FLACSettingsDialog()
+                End If
+
+                flacSettingsDialog.ShowDialog(Me)
+            Case 9
+                If (oggVorbisSettingsDialog Is Nothing) Then
+                    oggVorbisSettingsDialog = New OggVorbisSettingsDialog()
+                End If
+
+                oggVorbisSettingsDialog.ShowDialog(Me)
+            Case 10
+                If (speexSettingsDialog Is Nothing) Then
+                    speexSettingsDialog = New SpeexSettingsDialog()
+                End If
+
+                speexSettingsDialog.ShowDialog(Me)
+            Case 11
+                If (customFormatSettingsDialog Is Nothing) Then
+                    customFormatSettingsDialog = New CustomFormatSettingsDialog(VideoCapture1.Video_Codecs.ToArray(), VideoCapture1.Audio_Codecs.ToArray(), VideoCapture1.DirectShow_Filters.ToArray())
+                End If
+
+                customFormatSettingsDialog.ShowDialog(Me)
+            Case 12
+            Case 13
+            Case 14
+            Case 15
+                MessageBox.Show("No settings available for selected output format.")
+            Case 16
+            Case 17
+            Case 18
+                If (customFormatSettingsDialog Is Nothing) Then
+                    customFormatSettingsDialog = New CustomFormatSettingsDialog(VideoCapture1.Video_Codecs.ToArray(), VideoCapture1.Audio_Codecs.ToArray(), VideoCapture1.DirectShow_Filters.ToArray())
+                End If
+
+                customFormatSettingsDialog.ShowDialog(Me)
+            Case 19
+                If (webmSettingsDialog Is Nothing) Then
+                    webmSettingsDialog = New WebMSettingsDialog()
+                End If
+
+                webmSettingsDialog.ShowDialog(Me)
+            Case 20
+                If (ffmpegDLLSettingsDialog Is Nothing) Then
+                    ffmpegDLLSettingsDialog = New FFMPEGDLLSettingsDialog()
+                End If
+
+                ffmpegDLLSettingsDialog.ShowDialog(Me)
+            Case 21
+                If (ffmpegEXESettingsDialog Is Nothing) Then
+                    ffmpegEXESettingsDialog = New FFMPEGEXESettingsDialog()
+                End If
+
+                ffmpegEXESettingsDialog.ShowDialog(Me)
+            Case 22
+                If (mp4V10SettingsDialog Is Nothing) Then
+                    mp4V10SettingsDialog = New MP4v10SettingsDialog()
+                End If
+
+                mp4V10SettingsDialog.ShowDialog(Me)
+            Case 23
+                If (mp4v11SettingsDialog Is Nothing) Then
+                    mp4v11SettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MP4v11)
+                End If
+
+                mp4v11SettingsDialog.ShowDialog(Me)
+            Case 24
+                If (gifSettingsDialog Is Nothing) Then
+                    gifSettingsDialog = New GIFSettingsDialog()
+                End If
+
+                gifSettingsDialog.ShowDialog(Me)
+            Case 25
+                If (mp4V10SettingsDialog Is Nothing) Then
+                    mp4V10SettingsDialog = New MP4v10SettingsDialog()
+                End If
+
+                mp4V10SettingsDialog.ShowDialog(Me)
+                            Case 26
+                If (mpegTSSettingsDialog Is Nothing) Then
+                    mpegTSSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MPEGTS)
+                End If
+
+                mpegTSSettingsDialog.ShowDialog(Me)
+            Case 27
+                If (movSettingsDialog Is Nothing) Then
+                    movSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MOV)
+                End If
+
+                movSettingsDialog.ShowDialog(Me)
+        End Select
+    End Sub
+
+    Private Sub UpdateRecordingTime()
+        Dim timestamp As Long = VideoCapture1.Duration_Time()
+
+        If (timestamp < 0) Then
+            Return
+        End If
+
+        BeginInvoke(Sub()
+                        Dim ts = TimeSpan.FromMilliseconds(timestamp)
+                        lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
+                    End Sub)
+    End Sub
+
+    Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
+        VideoCapture1.Width = Width - VideoCapture1.Left - 30
+        VideoCapture1.Height = Height - VideoCapture1.Top - 120
+    End Sub
+
+    Private Sub cbFlipX_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipX.CheckedChanged
+        Dim flip As IVFVideoEffectFlipDown
+        Dim effect = VideoCapture1.Video_Effects_Get("FlipDown")
+        If (effect Is Nothing) Then
+            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            VideoCapture1.Video_Effects_Add(flip)
+        Else
+            flip = effect
+            If (flip IsNot Nothing) Then
+                flip.Enabled = cbFlipX.Checked
+            End If
+        End If
+    End Sub
+
+    Private Sub cbFlipY_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipY.CheckedChanged
+        Dim flip As IVFVideoEffectFlipRight
+        Dim effect = VideoCapture1.Video_Effects_Get("FlipRight")
+        If (effect Is Nothing) Then
+            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            VideoCapture1.Video_Effects_Add(flip)
+        Else
+            flip = effect
+            If (flip IsNot Nothing) Then
+                flip.Enabled = cbFlipY.Checked
+            End If
+        End If
+    End Sub
+
+    Private Sub btImageLogoRemove_Click(sender As Object, e As EventArgs) Handles btImageLogoRemove.Click
+        If (lbImageLogos.SelectedItem IsNot Nothing) Then
+            VideoCapture1.Video_Effects_Remove(lbImageLogos.SelectedItem)
+            lbImageLogos.Items.Remove(lbImageLogos.SelectedItem)
+        End If
+    End Sub
+
+    Private Sub btImageLogoEdit_Click(sender As Object, e As EventArgs) Handles btImageLogoEdit.Click
+        If (lbImageLogos.SelectedItem IsNot Nothing) Then
+            Dim dlg = New ImageLogoSettingsDialog()
+            Dim effect = VideoCapture1.Video_Effects_Get(lbImageLogos.SelectedItem)
+
+            dlg.Attach(effect)
+            dlg.ShowDialog(Me)
+            dlg.Dispose()
+        End If
+    End Sub
+
+    Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
+        Dim dlg = New ImageLogoSettingsDialog()
+
+        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
+        Dim effect = New VFVideoEffectImageLogo(True, effectName)
+
+        VideoCapture1.Video_Effects_Add(effect)
+        lbImageLogos.Items.Add(effect.Name)
+
+        dlg.Fill(effect)
+        dlg.ShowDialog(Me)
+        dlg.Dispose()
+    End Sub
+
+    Private Sub btTextLogoEdit_Click(sender As Object, e As EventArgs) Handles btTextLogoEdit.Click
+        If (lbTextLogos.SelectedItem IsNot Nothing) Then
+            Dim dlg = New TextLogoSettingsDialog()
+            Dim effect = VideoCapture1.Video_Effects_Get(lbTextLogos.SelectedItem)
+            dlg.Attach(effect)
+
+            dlg.ShowDialog(Me)
+            dlg.Dispose()
+        End If
+    End Sub
+
+    Private Sub btTextLogoRemove_Click(sender As Object, e As EventArgs) Handles btTextLogoRemove.Click
+        If (lbTextLogos.SelectedItem IsNot Nothing) Then
+            VideoCapture1.Video_Effects_Remove(lbTextLogos.SelectedItem)
+            lbTextLogos.Items.Remove(lbTextLogos.SelectedItem)
+        End If
+    End Sub
+
+    Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
+        Dim dlg = new TextLogoSettingsDialog()
+
+        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
+        Dim effect = new VFVideoEffectTextLogo(true, effectName)
+
+        VideoCapture1.Video_Effects_Add(effect)
+        lbTextLogos.Items.Add(effect.Name)
+        dlg.Fill(effect)
+
+        dlg.ShowDialog(Me)
+        dlg.Dispose()
     End Sub
 End Class
 

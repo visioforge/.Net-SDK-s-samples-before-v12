@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btAddFileToPlaylist = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
@@ -182,7 +182,7 @@
             this.tabControl3.Controls.Add(this.tabPage10);
             this.tabControl3.Controls.Add(this.tabPage9);
             this.tabControl3.Controls.Add(this.tabPage25);
-            this.tabControl3.Location = new System.Drawing.Point(14, 482);
+            this.tabControl3.Location = new System.Drawing.Point(10, 479);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
             this.tabControl3.Size = new System.Drawing.Size(309, 146);
@@ -441,6 +441,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.btStop);
             this.groupBox2.Controls.Add(this.btPause);
             this.groupBox2.Controls.Add(this.btResume);
@@ -449,7 +450,7 @@
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.lbTime);
             this.groupBox2.Controls.Add(this.tbTimeline);
-            this.groupBox2.Location = new System.Drawing.Point(330, 493);
+            this.groupBox2.Location = new System.Drawing.Point(328, 479);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(414, 90);
             this.groupBox2.TabIndex = 24;
@@ -564,6 +565,9 @@
             // 
             // MediaPlayer1
             // 
+            this.MediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MediaPlayer1.Audio_Channel_Mapper = null;
             this.MediaPlayer1.Audio_Effects_Enabled = false;
             this.MediaPlayer1.Audio_Effects_UseLegacyEffects = false;
@@ -602,33 +606,33 @@
             this.MediaPlayer1.Selection_Active = false;
             this.MediaPlayer1.Selection_Start = 0;
             this.MediaPlayer1.Selection_Stop = 0;
-            this.MediaPlayer1.Size = new System.Drawing.Size(414, 318);
+            this.MediaPlayer1.Size = new System.Drawing.Size(414, 311);
             this.MediaPlayer1.Source_Custom_CLSID = null;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.Start_DelayEnabled = false;
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 32;
             this.MediaPlayer1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Black;
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -840,6 +844,7 @@
             this.Controls.Add(this.btSelectFile);
             this.Controls.Add(this.edFilenameOrURL);
             this.Controls.Add(this.label14);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Video Mixing Demo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);

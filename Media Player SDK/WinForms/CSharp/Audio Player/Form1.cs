@@ -1,5 +1,7 @@
 // ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.MediaPlayer;
+
 namespace Audio_Player_Demo
 {
     using System;
@@ -11,8 +13,15 @@ namespace Audio_Player_Demo
 
     public partial class Form1 : Form
     {
+        private readonly MediaPlayerCore MediaPlayer1;
+
         public Form1()
         {
+            MediaPlayer1 = new MediaPlayerCore();
+            MediaPlayer1.OnError += MediaPlayer1_OnError;
+            MediaPlayer1.OnLicenseRequired += MediaPlayer1_OnLicenseRequired;
+            MediaPlayer1.OnStop += MediaPlayer1_OnStop;
+
             InitializeComponent();
         }
 
@@ -42,9 +51,10 @@ namespace Audio_Player_Demo
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
             MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device";
 
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None;
+            MediaPlayer1.Video_Renderer.VideoRendererInternal = VFVideoRendererInternal.None;
 
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
+            MediaPlayer1.Info_UseLibMediaInfo = true;
 
             MediaPlayer1.Play();
 
@@ -83,7 +93,7 @@ namespace Audio_Player_Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + ")";
+            Text += " (SDK v" + MediaPlayerCore.SDK_Version + ", " + MediaPlayerCore.SDK_State + ")";
             MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
         }
 
@@ -125,6 +135,11 @@ namespace Audio_Player_Demo
             {
                 mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            btStop_Click(null, null);
         }
     }
 }

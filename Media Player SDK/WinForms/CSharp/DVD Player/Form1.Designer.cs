@@ -32,6 +32,7 @@ namespace DVD_Player_Demo
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.btSelectFile = new System.Windows.Forms.Button();
             this.edFilename = new System.Windows.Forms.TextBox();
@@ -60,6 +61,7 @@ namespace DVD_Player_Demo
             this.tbTimeline = new System.Windows.Forms.TrackBar();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.mmError = new System.Windows.Forms.TextBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -70,7 +72,6 @@ namespace DVD_Player_Demo
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbSpeed)).BeginInit();
@@ -83,6 +84,7 @@ namespace DVD_Player_Demo
             // 
             // linkLabel1
             // 
+            this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(318, 6);
             this.linkLabel1.Name = "linkLabel1";
@@ -94,6 +96,7 @@ namespace DVD_Player_Demo
             // 
             // btSelectFile
             // 
+            this.btSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btSelectFile.Location = new System.Drawing.Point(405, 23);
             this.btSelectFile.Name = "btSelectFile";
             this.btSelectFile.Size = new System.Drawing.Size(23, 23);
@@ -104,6 +107,8 @@ namespace DVD_Player_Demo
             // 
             // edFilename
             // 
+            this.edFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.edFilename.Location = new System.Drawing.Point(12, 25);
             this.edFilename.Name = "edFilename";
             this.edFilename.Size = new System.Drawing.Size(387, 20);
@@ -121,6 +126,7 @@ namespace DVD_Player_Demo
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox3.Controls.Add(this.btDVDControlRootMenu);
             this.groupBox3.Controls.Add(this.btDVDControlTitleMenu);
             this.groupBox3.Controls.Add(this.cbDVDControlSubtitles);
@@ -236,6 +242,7 @@ namespace DVD_Player_Demo
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox2.Controls.Add(this.cbLoop);
             this.groupBox2.Controls.Add(this.btNextFrame);
             this.groupBox2.Controls.Add(this.btStop);
@@ -355,6 +362,7 @@ namespace DVD_Player_Demo
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(92, 555);
@@ -365,6 +373,7 @@ namespace DVD_Player_Demo
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.cbLicensing);
             this.groupBox1.Controls.Add(this.mmError);
             this.groupBox1.Controls.Add(this.cbDebugMode);
@@ -374,6 +383,16 @@ namespace DVD_Player_Demo
             this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Errors and warnings";
+            // 
+            // cbLicensing
+            // 
+            this.cbLicensing.AutoSize = true;
+            this.cbLicensing.Location = new System.Drawing.Point(106, 19);
+            this.cbLicensing.Name = "cbLicensing";
+            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
+            this.cbLicensing.TabIndex = 4;
+            this.cbLicensing.Text = "Licensing info";
+            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // mmError
             // 
@@ -396,6 +415,7 @@ namespace DVD_Player_Demo
             // 
             // groupBox4
             // 
+            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.tbBalance1);
             this.groupBox4.Controls.Add(this.label6);
@@ -454,7 +474,12 @@ namespace DVD_Player_Demo
             // 
             // MediaPlayer1
             // 
+            this.MediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.MediaPlayer1.Audio_Channel_Mapper = null;
             this.MediaPlayer1.Audio_Effects_Enabled = false;
+            this.MediaPlayer1.Audio_Effects_UseLegacyEffects = false;
             this.MediaPlayer1.Audio_Enhancer_Enabled = false;
             this.MediaPlayer1.Audio_OutputDevice = "";
             this.MediaPlayer1.Audio_PlayAudio = true;
@@ -465,6 +490,7 @@ namespace DVD_Player_Demo
             this.MediaPlayer1.BackColor = System.Drawing.Color.Black;
             this.MediaPlayer1.Barcode_Reader_Enabled = false;
             this.MediaPlayer1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
+            this.MediaPlayer1.ChromaKey = null;
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
@@ -473,11 +499,15 @@ namespace DVD_Player_Demo
             this.MediaPlayer1.Debug_Mode = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
+            this.MediaPlayer1.Face_Tracking = null;
             this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(12, 54);
             this.MediaPlayer1.Loop = false;
+            this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
+            this.MediaPlayer1.Motion_Detection = null;
+            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
@@ -492,24 +522,32 @@ namespace DVD_Player_Demo
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 25;
             this.MediaPlayer1.Video_Effects_Enabled = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnDVDPlaybackError += new System.EventHandler<VisioForge.Types.DVDEventArgs>(this.MediaPlayer1_OnDVDPlaybackError);
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
             this.MediaPlayer1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.MediaPlayer1_OnLicenseRequired);
             this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(106, 19);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 4;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -526,9 +564,10 @@ namespace DVD_Player_Demo
             this.Controls.Add(this.btSelectFile);
             this.Controls.Add(this.edFilename);
             this.Controls.Add(this.label14);
-            this.MaximizeBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - DVD Player Demo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();

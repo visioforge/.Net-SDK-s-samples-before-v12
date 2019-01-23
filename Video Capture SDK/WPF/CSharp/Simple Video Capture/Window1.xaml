@@ -1,10 +1,10 @@
 ﻿<Window x:Class="Simple_Video_Capture.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Simple Video Capture - VisioForge Video Capture SDK .Net" Height="512" Width="864" 
-        xmlns:my="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI" Loaded="Window_Loaded" ResizeMode="CanMinimize">
+    Title="Simple Video Capture Demo - Video Capture SDK .Net" Height="512" Width="864" 
+        xmlns:my="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI" Loaded="Window_Loaded" Closing="Window_Closing" Icon="visioforge_main_icon.ico">
     <Grid>
-        <TabControl HorizontalAlignment="Left" Margin="12,12,0,0" Name="tabControl1" Width="408" Height="419" VerticalAlignment="Top">
+        <TabControl HorizontalAlignment="Left" Margin="12,12,0,0" Name="tcMain" Width="408" Height="419" VerticalAlignment="Top">
             <TabItem Header="Devices" Name="tabItem1">
                 <Grid>
                     <Label Height="28" HorizontalAlignment="Left" Margin="6,6,0,0" Name="label1" VerticalAlignment="Top" Width="120">Video input device</Label>
@@ -36,123 +36,71 @@
             </TabItem>
             <TabItem Header="Output" Name="tabItem2">
                 <Grid>
-                    <TabControl HorizontalAlignment="Left" Height="371" Margin="10,10,0,0" VerticalAlignment="Top" Width="382">
-                        <TabItem Header="AVI">
-                            <Grid>
-                                <Label Height="28" HorizontalAlignment="Left" Margin="5,7,0,0" x:Name="label12" VerticalAlignment="Top" Width="84" Content="Video codec"/>
-                                <ComboBox Height="23" Margin="81,7,0,0" x:Name="cbVideoCodecs" VerticalAlignment="Top" SelectionChanged="cbVideoCodecs_SelectedIndexChanged" HorizontalAlignment="Left" Width="162" />
-                                <Button Height="23" HorizontalAlignment="Left" IsEnabled="True" Margin="248,7,0,0" x:Name="btVideoSettings" VerticalAlignment="Top" Width="63" Click="btVideoSettings_Click" Content="Settings"/>
-                                <Label Height="28" HorizontalAlignment="Left" Margin="5,34,0,0" x:Name="label13" VerticalAlignment="Top" Width="84" Content="Audio codec"/>
-                                <ComboBox Height="23" Margin="81,34,0,0" x:Name="cbAudioCodecs" VerticalAlignment="Top" SelectionChanged="cbAudioCodecs_SelectedIndexChanged" HorizontalAlignment="Left" Width="162" />
-                                <Button Height="23" HorizontalAlignment="Left" IsEnabled="True" Margin="248,34,0,0" x:Name="btAudioSettings" VerticalAlignment="Top" Width="63" Click="btAudioSettings_Click" Content="Settings"/>
-                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="81,60,0,0" x:Name="cbChannels" VerticalAlignment="Top" Width="67">
-                                    <ComboBoxItem Content="1"/>
-                                    <ComboBoxItem Content="2"/>
-                                </ComboBox>
-                                <Label Height="28" HorizontalAlignment="Left" Margin="5,60,0,0" x:Name="label14" VerticalAlignment="Top" Width="60" Content="Channels"/>
-                                <Label Height="28" HorizontalAlignment="Left" Margin="5,86,0,0" x:Name="label15" VerticalAlignment="Top" Width="84" Content="Sample rate"/>
-                                <Label Height="28" HorizontalAlignment="Left" Margin="155,60,0,0" x:Name="label16" VerticalAlignment="Top" Width="29" Content="BPS"/>
-                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="81,86,0,0" x:Name="cbSampleRate" VerticalAlignment="Top" Width="67">
-                                    <ComboBoxItem Content="48000"/>
-                                    <ComboBoxItem Content="44100"/>
-                                    <ComboBoxItem Content="32000"/>
-                                    <ComboBoxItem Content="22050"/>
-                                    <ComboBoxItem Content="16000"/>
-                                    <ComboBoxItem Content="11025"/>
-                                    <ComboBoxItem Content="8000"/>
-                                </ComboBox>
-                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="187,60,0,0" x:Name="cbBPS" VerticalAlignment="Top" Width="56">
-                                    <ComboBoxItem Content="16"/>
-                                    <ComboBoxItem Content="8"/>
-                                </ComboBox>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="WMV">
-                            <Grid>
-
-                                <ComboBox Height="20.723" IsDropDownOpen="False" Margin="10,27,0,0" x:Name="cbWMVInternalProfile9" VerticalAlignment="Top" HorizontalAlignment="Left" Width="297" />
-                                <Label Content="Profile name" HorizontalAlignment="Left" Margin="10,1,0,0" VerticalAlignment="Top"/>
-                            </Grid>
-                        </TabItem>
-                        <TabItem Header="MP4">
-                            <Grid>
-                                <Label Content="Use Main Demo to configure CPU encoder or use GPU." HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-                                <Label Content="Supported GPUs: Intel, nVidia, AMD. H264 H265 codecs." HorizontalAlignment="Left" Margin="10,36,0,0" VerticalAlignment="Top"/>
-                            </Grid>
-                        </TabItem>
-                    </TabControl>
+                    <Label Content="Format" Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="51" />
+                    <ComboBox Height="23" Margin="10,33,0,0" x:Name="cbOutputFormat" VerticalAlignment="Top" HorizontalAlignment="Left" Width="323" SelectionChanged="cbOutputFormat_SelectionChanged">
+                        <ComboBoxItem Content="AVI" />
+                        <ComboBoxItem Content="MKV (Matroska)" />
+                        <ComboBoxItem Content="WMV (Windows Media Video)" />
+                        <ComboBoxItem Content="DV" />
+                        <ComboBoxItem Content="WebM" />
+                        <ComboBoxItem Content="FFMPEG (DLL)" />
+                        <ComboBoxItem Content="FFMPEG (EXE)" />
+                        <ComboBoxItem Content="MP4 v8/v10" />
+                        <ComboBoxItem Content="MP4 v11" />
+                        <ComboBoxItem Content="Animated GIF" />
+                        <ComboBoxItem Content="Encrypted video" />
+                        <ComboBoxItem Content="MPEG-TS" />
+                        <ComboBoxItem Content="MOV" />
+                    </ComboBox>
+                    <Label Content="File name" Height="23" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Width="62" />
+                    <TextBox Height="23" HorizontalAlignment="Left" Margin="10,176,0,0" x:Name="edOutput" VerticalAlignment="Top" Width="353" Text="c:\capture.avi" />
+                    <Button Content="..." Height="23" HorizontalAlignment="Right" Margin="0,176,10,0" x:Name="btSelectOutput" VerticalAlignment="Top" Width="24" Click="btSelectOutput_Click" />
+                    <Button x:Name="btOutputConfigure" Content="Configure" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Width="75" Click="BtOutputConfigure_Click"/>
+                    <Label Content="You can use dialog or code to configure format settings" HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Video effects" Name="tabItem3">
                 <Grid>
-
-                    <TextBox Name="edImageLogoTop" Height="20" Width="39" TabIndex="56" Margin="104,229,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" >50</TextBox>
-                    <CheckBox Name="cbImageLogo" Height="17" Width="94" TabIndex="57" Margin="19,143,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="cbImageLogo_CheckedChanged" >Image logo</CheckBox>
-                    <Label Name="label155" Height="27" TabIndex="55" Margin="32,0,0,137" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="41">Top</Label>
-                    <TextBox Name="edImageLogoLeft" Height="20" Width="39" TabIndex="54" Margin="104,202,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" >50</TextBox>
-                    <Label Name="label156" Width="42" TabIndex="53" Margin="32,0,0,161" HorizontalAlignment="Left" Height="28" VerticalAlignment="Bottom">Left</Label>
-                    <Label Name="label154" TabIndex="62" Margin="198,0,108,164" Height="28" VerticalAlignment="Bottom">Transparency</Label>
-                    <Button Name="btSelectImage" Width="24" TabIndex="60" Click="btSelectImage_Click" Margin="0,167.48,30,0" HorizontalAlignment="Right" Height="23" VerticalAlignment="Top">...</Button>
-                    <Label Name="label157" Height="27" Width="66" TabIndex="59" Margin="32,166,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >File name</Label>
-                    <TextBox Name="edImageLogoFilename" Height="20" TabIndex="58" Margin="104,170,60,0" VerticalAlignment="Top" TextWrapping="Wrap" >c:\1.bmp</TextBox>
-                    <Label Name="label32" Height="29" TabIndex="28" Margin="132,72,140,0" VerticalAlignment="Top" >Transparency (layer)</Label>
-                    <TextBox Name="edTextLogoTop" Height="20" Width="33" TabIndex="23" Margin="65,104,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" >50</TextBox>
-                    <Label Name="label139" Height="27" Width="30" TabIndex="22" Margin="29,100,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Top</Label>
-                    <TextBox Name="edTextLogoLeft" Height="20" Width="33" TabIndex="21" Margin="65,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" >50</TextBox>
-                    <Label Name="label140" Height="29" Width="30" TabIndex="20" Margin="29,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Left</Label>
-                    <Button Name="btFont" Height="23" Width="47" TabIndex="19" Click="btFont_Click" Margin="307,44,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Font</Button>
-                    <TextBox Name="edTextLogo" Height="20" Width="266" TabIndex="18" Margin="32,46,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" >Hello!!!</TextBox>
-                    <CheckBox Name="cbTextLogo" Height="17" Width="70" TabIndex="17" Margin="19,23,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Checked="cbTextLogo_CheckedChanged" >Text logo</CheckBox>
-                    <Slider Height="22" Margin="137,100,156,0" Name="tbTextLogoTransp" VerticalAlignment="Top" Maximum="255" Value="127" ValueChanged="tbTextLogoTransp_ValueChanged" />
-                    <Slider Height="22" Margin="205,0,95,142" Name="tbImageLogoTransp" VerticalAlignment="Bottom" Maximum="255" ValueChanged="tbGraphicLogoTransp_ValueChanged" />
+                    <ListBox x:Name="lbLogos" HorizontalAlignment="Left" Height="119" VerticalAlignment="Top" Width="325" Margin="10,36,0,0"/>
+                    <Button x:Name="btImageLogoAdd" Content="Add image logo" HorizontalAlignment="Left" Margin="10,160,0,0" VerticalAlignment="Top" Width="95" Click="BtImageLogoAdd_Click" />
+                    <Button x:Name="btTextLogoAdd" Content="Add text logo" HorizontalAlignment="Left" Margin="110,160,0,0" VerticalAlignment="Top" Width="90" Click="BtTextLogoAdd_Click" />
+                    <Button x:Name="btLogoEdit" Content="Edit" HorizontalAlignment="Left" Margin="230,160,0,0" VerticalAlignment="Top" Width="50" Click="BtLogoEdit_Click"/>
+                    <Button x:Name="btLogoRemove" Content="Remove" HorizontalAlignment="Left" Margin="285,160,0,0" VerticalAlignment="Top" Width="50" Click="BtLogoRemove_Click" />
+                    <Label x:Name="label" Content="Image / text logos" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="46,220,0,0" Maximum="255" x:Name="tbLightness" VerticalAlignment="Top" Width="100" ValueChanged="tbLightness_Scroll" />
+                    <Label Content="Lightness" HorizontalAlignment="Left" Margin="71,193,0,0" x:Name="label92" Width="86" Height="28" VerticalAlignment="Top" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="214,220,0,0" Maximum="255" x:Name="tbSaturation" VerticalAlignment="Top" Width="100" Value="255" ValueChanged="tbSaturation_Scroll" />
+                    <Label Content="Saturation" HorizontalAlignment="Left" Margin="237,193,0,0" x:Name="label93" Width="86" Height="28" VerticalAlignment="Top" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="46,286,0,0" Maximum="255" x:Name="tbContrast" VerticalAlignment="Top" Width="100" ValueChanged="tbContrast_Scroll" />
+                    <Label Content="Contrast" Height="28" HorizontalAlignment="Left" Margin="67,259,0,0" x:Name="label94" VerticalAlignment="Top" Width="60" />
+                    <Slider Height="23" HorizontalAlignment="Left" Margin="214,286,0,0" Maximum="255" x:Name="tbDarkness" VerticalAlignment="Top" Width="100" ValueChanged="tbDarkness_Scroll" />
+                    <Label Content="Darkness" Height="28" HorizontalAlignment="Left" Margin="237,259,0,0" x:Name="label95" VerticalAlignment="Top" Width="86" />
+                    <CheckBox Content="Grayscale" Height="16" HorizontalAlignment="Left" Margin="21,330,0,0" x:Name="cbGreyscale" VerticalAlignment="Top" Click="cbGreyscale_CheckedChanged"  />
+                    <CheckBox Content="Invert" Height="16" HorizontalAlignment="Left" Margin="96,330,0,0" x:Name="cbInvert" VerticalAlignment="Top" Click="cbInvert_CheckedChanged" />
+                    <CheckBox x:Name="cbFlipX" Content="Flip X" HorizontalAlignment="Left" Margin="202,330,0,0" VerticalAlignment="Top" Checked="CbFlipX_Checked" Unchecked="CbFlipX_Checked"/>
+                    <CheckBox x:Name="cbFlipY" Content="Flip Y" HorizontalAlignment="Left" Margin="265,330,0,0" VerticalAlignment="Top" Checked="CbFlipY_Checked" Unchecked="CbFlipY_Checked"/>
+                    <Label x:Name="label114" Content="More effects and settings available in Main Demo" HorizontalAlignment="Left" Margin="33,363,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="More" Name="tabItem5">
+            <TabItem Header="Log" Name="tabItem5">
                 <Grid>
-                    <GroupBox Header="Screenshot" Height="91" Margin="6,9,6,0" Name="groupBox3" VerticalAlignment="Top">
-                        <Grid>
-                            <Label Name="lbJPEGQuality" TabIndex="40" Margin="0,35,72,0" HorizontalAlignment="Right" Width="27" Height="30.04" VerticalAlignment="Top">85</Label>
-                            <Label Name="label38" TabIndex="39" Margin="95,35,0,0" HorizontalAlignment="Left" Width="78" Height="27.04" VerticalAlignment="Top">JPEG quality</Label>
-                            <Button Name="btSaveScreenshot" Width="60" TabIndex="37" Click="btSaveScreenshot_Click" Margin="0,38,6,0" HorizontalAlignment="Right" Height="23.04" VerticalAlignment="Top">Save</Button>
-                            <Label Name="label63" Height="26" Width="46" TabIndex="35" Margin="6,6,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Folder</Label>
-                            <TextBox Name="edScreenshotsFolder" TabIndex="34" Margin="58,9,6,0" TextWrapping="Wrap" Height="20" VerticalAlignment="Top">c:\</TextBox>
-                            <ComboBox Name="cbImageType" Width="73" TabIndex="41" Margin="8,38,0,0" HorizontalAlignment="Left" Height="21.04" VerticalAlignment="Top">
-                                <ComboBoxItem>BMP</ComboBoxItem>
-                                <ComboBoxItem>JPEG</ComboBoxItem>
-                                <ComboBoxItem>GIF</ComboBoxItem>
-                                <ComboBoxItem>PNG</ComboBoxItem>
-                                <ComboBoxItem>TIFF</ComboBoxItem>
-                            </ComboBox>
-                            <Slider Margin="179,38,105,0" Name="tbJPEGQuality" Height="22.04" VerticalAlignment="Top" Maximum="100" Value="85" ValueChanged="tbJPEGQuality_ValueChanged" />
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="Errors/Warnings" Margin="6,106,6,7" Name="groupBox4">
-                        <Grid>
-                            <CheckBox Name="cbDebugMode" Height="17" Width="94" TabIndex="75" Margin="0,6,12,0" HorizontalAlignment="Right" VerticalAlignment="Top">Debug mode</CheckBox>
-                            <TextBox Name="mmLog" TabIndex="74" Margin="8,29,6,6" TextWrapping="Wrap"></TextBox>
-                            <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="165,6,0,0" VerticalAlignment="Top"/>
-                        </Grid>
-                    </GroupBox>
+                    <CheckBox x:Name="cbDebugMode" Height="17" Width="94" TabIndex="75" Margin="0,10,298,0" HorizontalAlignment="Right" VerticalAlignment="Top" Content="Debug mode"/>
+                    <TextBox x:Name="mmLog" TabIndex="74" Margin="10,32,10,10" TextWrapping="Wrap"/>
+                    <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="120,10,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Height="28" HorizontalAlignment="Left" Margin="12,437,0,0" Name="label11" VerticalAlignment="Top" Width="69">File name</Label>
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="77,440,0,0" Name="edOutput" VerticalAlignment="Top" Width="314" Text="c:\vf\output.avi" />
-        <Button Height="23" Margin="397,440,0,0" Name="btSelectOutput" VerticalAlignment="Top" HorizontalAlignment="Left" Width="23" Click="btSelectOutput_Click">...</Button>
-        <Button Name="btStop" Height="23" Width="62" TabIndex="54" Click="btStop_Click" Margin="0,437,23,0" HorizontalAlignment="Right" VerticalAlignment="Top" >Stop</Button>
-        <Button Name="btStart" Height="23" Width="62" TabIndex="53" Click="btStart_Click" Margin="0,437,88,0" HorizontalAlignment="Right" VerticalAlignment="Top" >Start</Button>
-        <Grid HorizontalAlignment="Left" Margin="434,33,0,0" Height="296" VerticalAlignment="Top" Width="396" Background="Black">
-            <my:VideoCapture Name="VideoCapture1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" OnError="VideoCapture1_OnError" OnLicenseRequired="VideoCapture1_OnLicenseRequired" />
-        </Grid>
-        <Label Content="View video tutorials" Height="28" HorizontalAlignment="Left" Margin="716,0,0,0" Name="lbViewVideoTutorials" VerticalAlignment="Top" 
+        <Button Name="btStop" Height="23" Width="62" TabIndex="54" Click="btStop_Click" Margin="0,0,295,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Stop</Button>
+        <Button Name="btStart" Height="23" Width="62" TabIndex="53" Click="btStart_Click" Margin="0,0,362,10" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Start</Button>
+        <my:VideoCapture Name="VideoCapture1" Margin="434,33,10,145" Background="Black" OnError="VideoCapture1_OnError" OnLicenseRequired="VideoCapture1_OnLicenseRequired" />
+        <Label Content="View video tutorials" Height="28" HorizontalAlignment="Right" Margin="0,0,17,0" Name="lbViewVideoTutorials" VerticalAlignment="Top" 
                Foreground="Blue" MouseLeftButtonDown="lbViewVideoTutorials_MouseLeftButtonDown" FontWeight="Bold" />
-        <ComboBox x:Name="cbMode" HorizontalAlignment="Left" Margin="477,438,0,0" VerticalAlignment="Top" Width="132">
-            <ComboBoxItem Content="Preview"/>
-            <ComboBoxItem Content="Capture to AVI"/>
-            <ComboBoxItem Content="Capture to WMV"/>
-            <ComboBoxItem Content="Capture to MP4"/>
-        </ComboBox>
-        <Label Content="Mode" HorizontalAlignment="Left" Margin="431,436,0,0" VerticalAlignment="Top"/>
-        <Label Content="Much more features available in Main Demo" HorizontalAlignment="Left" Margin="513,334,0,0" VerticalAlignment="Top"/>
+        <Label Content="Much more features available in Main Demo" HorizontalAlignment="Right" Margin="0,0,178,0" Height="26" VerticalAlignment="Top"/>
+        <RadioButton Height="16" HorizontalAlignment="Left" Margin="17,0,0,10" x:Name="rbPreview" VerticalAlignment="Bottom" Width="77" IsChecked="True" Content="Preview"/>
+        <RadioButton Height="16" HorizontalAlignment="Left" Margin="115,0,0,10" x:Name="rbCapture" VerticalAlignment="Bottom" Width="112" Content="Capture"/>
+        <TextBlock x:Name="lbTimestamp" HorizontalAlignment="Left" Margin="225,0,0,10" TextWrapping="Wrap" Text="Recording time: 00:00:00" VerticalAlignment="Bottom" Width="139"/>
+        <Button Content="Resume" Margin="0,0,148,10" x:Name="btResume" Click="BtResume_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="58"  />
+        <Button Content="Pause" Margin="0,0,211,10" x:Name="btPause" Click="BtPause_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="62"  />
+        <Button Content="Save screenshot" IsDefault="False" IsEnabled="True" Margin="0,0,10,10" x:Name="btSaveScreenshot_Copy" Click="btSaveScreenshot_Click" Height="23" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="118" />
     </Grid>
 </Window>

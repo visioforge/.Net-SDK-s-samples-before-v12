@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
@@ -75,7 +74,7 @@
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -408,7 +407,10 @@
             this.VideoCapture1.Audio_CaptureDevice_Format = "";
             this.VideoCapture1.Audio_CaptureDevice_Format_UseBest = true;
             this.VideoCapture1.Audio_CaptureDevice_Line = "";
+            this.VideoCapture1.Audio_CaptureDevice_MasterDevice = null;
+            this.VideoCapture1.Audio_CaptureDevice_MasterDevice_Format = null;
             this.VideoCapture1.Audio_CaptureDevice_Path = null;
+            this.VideoCapture1.Audio_CaptureSourceFilter = null;
             this.VideoCapture1.Audio_Channel_Mapper = null;
             this.VideoCapture1.Audio_Decoder = null;
             this.VideoCapture1.Audio_Effects_Enabled = false;
@@ -443,7 +445,9 @@
             this.VideoCapture1.Location = new System.Drawing.Point(6, 165);
             this.VideoCapture1.Mode = VisioForge.Types.VFVideoCaptureMode.VideoCapture;
             this.VideoCapture1.Motion_Detection = null;
+            this.VideoCapture1.Motion_DetectionEx = null;
             this.VideoCapture1.MPEG_Audio_Decoder = "";
+            this.VideoCapture1.MPEG_Demuxer = null;
             this.VideoCapture1.MPEG_Video_Decoder = "";
             this.VideoCapture1.MultiScreen_Enabled = false;
             this.VideoCapture1.Name = "VideoCapture1";
@@ -454,11 +458,12 @@
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
-            this.VideoCapture1.Motion_DetectionEx = null;
             this.VideoCapture1.Output_Filename = "C:\\Users\\roman\\Documents\\VisioForge\\output.avi";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
+            this.VideoCapture1.PIP_ChromaKeySettings = null;
             this.VideoCapture1.PIP_Mode = VisioForge.Types.VFPIPMode.Custom;
+            this.VideoCapture1.PIP_ResizeQuality = VisioForge.Types.VFPIPResizeQuality.RQ_NN;
             this.VideoCapture1.Push_Source = null;
             this.VideoCapture1.Screen_Capture_Source = null;
             this.VideoCapture1.SeparateCapture_AutostartCapture = false;
@@ -480,6 +485,7 @@
             this.VideoCapture1.TVTuner_FM_Tuning_StopFrequency = 0;
             this.VideoCapture1.TVTuner_Frequency = 0;
             this.VideoCapture1.TVTuner_InputType = "";
+            this.VideoCapture1.TVTuner_Mode = VisioForge.Types.VFTVTunerMode.Default;
             this.VideoCapture1.TVTuner_Name = "";
             this.VideoCapture1.TVTuner_TVFormat = VisioForge.Types.VFTVTunerVideoFormat.PAL_D;
             this.VideoCapture1.Video_CaptureDevice = "";
@@ -499,7 +505,7 @@
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
             videoRendererSettingsWinForms1.Flip_Horizontal = false;
@@ -565,15 +571,17 @@
             this.MediaPlayer1.Debug_Mode = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
+            this.MediaPlayer1.Face_Tracking = null;
             this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(6, 73);
             this.MediaPlayer1.Loop = false;
+            this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
             this.MediaPlayer1.Motion_Detection = null;
+            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
-            this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -586,14 +594,14 @@
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.Start_DelayEnabled = false;
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 8;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Black;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
             videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
             videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
             videoRendererSettingsWinForms2.Flip_Horizontal = false;
@@ -706,13 +714,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(938, 542);
+            this.ClientSize = new System.Drawing.Size(938, 532);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btStart);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
-            this.Text = "VisioForge Video Capture SDK .Net - Timeshift Demo";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Video Capture SDK .Net - Timeshift Demo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);

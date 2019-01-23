@@ -78,6 +78,7 @@ namespace Video_Mixing_Demo
         private void btStart_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
+            MediaPlayer1.Info_UseLibMediaInfo = true;
 
             mmLog.Clear();
 

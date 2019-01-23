@@ -21,55 +21,7 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.rbLameMono = New System.Windows.Forms.RadioButton()
-        Me.rbLameJointStereo = New System.Windows.Forms.RadioButton()
-        Me.rbLameDualChannels = New System.Windows.Forms.RadioButton()
-        Me.rbLameStandardStereo = New System.Windows.Forms.RadioButton()
-        Me.label71 = New System.Windows.Forms.Label()
-        Me.tabPage17 = New System.Windows.Forms.TabPage()
-        Me.tbLameEncodingQuality = New System.Windows.Forms.TrackBar()
-        Me.label72 = New System.Windows.Forms.Label()
-        Me.label73 = New System.Windows.Forms.Label()
-        Me.cbLameSampleRate = New System.Windows.Forms.ComboBox()
-        Me.groupBox9 = New System.Windows.Forms.GroupBox()
-        Me.groupBox10 = New System.Windows.Forms.GroupBox()
-        Me.label74 = New System.Windows.Forms.Label()
-        Me.tbLameVBRQuality = New System.Windows.Forms.TrackBar()
-        Me.cbLameVBRMax = New System.Windows.Forms.ComboBox()
-        Me.label75 = New System.Windows.Forms.Label()
-        Me.label76 = New System.Windows.Forms.Label()
-        Me.cbLameVBRMin = New System.Windows.Forms.ComboBox()
-        Me.label77 = New System.Windows.Forms.Label()
-        Me.label78 = New System.Windows.Forms.Label()
-        Me.cbLameCBRBitrate = New System.Windows.Forms.ComboBox()
-        Me.rbLameVBR = New System.Windows.Forms.RadioButton()
-        Me.rbLameCBR = New System.Windows.Forms.RadioButton()
-        Me.tabControl4 = New System.Windows.Forms.TabControl()
-        Me.tabPage18 = New System.Windows.Forms.TabPage()
-        Me.cbLameVoiceEncodingMode = New System.Windows.Forms.CheckBox()
-        Me.cbLameModeFixed = New System.Windows.Forms.CheckBox()
-        Me.cbLameEnableXingVBRTag = New System.Windows.Forms.CheckBox()
-        Me.cbLameDisableShortBlocks = New System.Windows.Forms.CheckBox()
-        Me.cbLameStrictISOCompilance = New System.Windows.Forms.CheckBox()
-        Me.cbLameKeepAllFrequencies = New System.Windows.Forms.CheckBox()
-        Me.cbLameStrictlyEnforceVBRMinBitrate = New System.Windows.Forms.CheckBox()
-        Me.cbLameForceMono = New System.Windows.Forms.CheckBox()
-        Me.cbLameCRCProtected = New System.Windows.Forms.CheckBox()
-        Me.cbLameOriginal = New System.Windows.Forms.CheckBox()
-        Me.cbLameCopyright = New System.Windows.Forms.CheckBox()
-        Me.cbAudioCodecs = New System.Windows.Forms.ComboBox()
-        Me.tabPage8 = New System.Windows.Forms.TabPage()
-        Me.cbOutputFormat = New System.Windows.Forms.ComboBox()
-        Me.cbSampleRate = New System.Windows.Forms.ComboBox()
-        Me.label7 = New System.Windows.Forms.Label()
-        Me.label67 = New System.Windows.Forms.Label()
-        Me.btSelectOutput = New System.Windows.Forms.Button()
-        Me.label68 = New System.Windows.Forms.Label()
-        Me.edOutput = New System.Windows.Forms.TextBox()
-        Me.cbBPS = New System.Windows.Forms.ComboBox()
-        Me.label70 = New System.Windows.Forms.Label()
-        Me.cbChannels = New System.Windows.Forms.ComboBox()
-        Me.label69 = New System.Windows.Forms.Label()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.label55 = New System.Windows.Forms.Label()
         Me.tbAudioBalance = New System.Windows.Forms.TrackBar()
         Me.label54 = New System.Windows.Forms.Label()
@@ -88,10 +40,13 @@ Partial Class Form1
         Me.label23 = New System.Windows.Forms.Label()
         Me.label25 = New System.Windows.Forms.Label()
         Me.tabPage2 = New System.Windows.Forms.TabPage()
+        Me.lbInfo = New System.Windows.Forms.Label()
+        Me.btOutputConfigure = New System.Windows.Forms.Button()
+        Me.cbOutputFormat = New System.Windows.Forms.ComboBox()
+        Me.label7 = New System.Windows.Forms.Label()
+        Me.btSelectOutput = New System.Windows.Forms.Button()
+        Me.edOutput = New System.Windows.Forms.TextBox()
         Me.label9 = New System.Windows.Forms.Label()
-        Me.tabControl2 = New System.Windows.Forms.TabControl()
-        Me.tabPage7 = New System.Windows.Forms.TabPage()
-        Me.btAudioSettings = New System.Windows.Forms.Button()
         Me.tabPage5 = New System.Windows.Forms.TabPage()
         Me.tabControl18 = New System.Windows.Forms.TabControl()
         Me.tabPage71 = New System.Windows.Forms.TabPage()
@@ -135,32 +90,20 @@ Partial Class Form1
         Me.label253 = New System.Windows.Forms.Label()
         Me.cbAudSound3DEnabled = New System.Windows.Forms.CheckBox()
         Me.tabPage4 = New System.Windows.Forms.TabPage()
-        Me.groupBox1 = New System.Windows.Forms.GroupBox()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
         Me.mmLog = New System.Windows.Forms.TextBox()
-        Me.rbCapture = New System.Windows.Forms.RadioButton()
-        Me.rbPreview = New System.Windows.Forms.RadioButton()
         Me.btStop = New System.Windows.Forms.Button()
         Me.btStart = New System.Windows.Forms.Button()
         Me.saveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
         Me.llVideoTutorials = New System.Windows.Forms.LinkLabel()
-        Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
-        Me.tabPage17.SuspendLayout
-        CType(Me.tbLameEncodingQuality,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.groupBox9.SuspendLayout
-        Me.groupBox10.SuspendLayout
-        CType(Me.tbLameVBRQuality,System.ComponentModel.ISupportInitialize).BeginInit
-        Me.tabControl4.SuspendLayout
-        Me.tabPage18.SuspendLayout
-        Me.tabPage8.SuspendLayout
+        Me.cbMode = New System.Windows.Forms.ComboBox()
+        Me.lbTimestamp = New System.Windows.Forms.Label()
         CType(Me.tbAudioBalance,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbAudioVolume,System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabControl1.SuspendLayout
         Me.tabPage1.SuspendLayout
         Me.tabPage2.SuspendLayout
-        Me.tabControl2.SuspendLayout
-        Me.tabPage7.SuspendLayout
         Me.tabPage5.SuspendLayout
         Me.tabControl18.SuspendLayout
         Me.tabPage71.SuspendLayout
@@ -181,526 +124,12 @@ Partial Class Form1
         Me.tabPage6.SuspendLayout
         CType(Me.tbAud3DSound,System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabPage4.SuspendLayout
-        Me.groupBox1.SuspendLayout
         Me.SuspendLayout
-        '
-        'rbLameMono
-        '
-        Me.rbLameMono.AutoSize = true
-        Me.rbLameMono.Location = New System.Drawing.Point(117, 42)
-        Me.rbLameMono.Name = "rbLameMono"
-        Me.rbLameMono.Size = New System.Drawing.Size(52, 17)
-        Me.rbLameMono.TabIndex = 3
-        Me.rbLameMono.Text = "Mono"
-        Me.rbLameMono.UseVisualStyleBackColor = true
-        '
-        'rbLameJointStereo
-        '
-        Me.rbLameJointStereo.AutoSize = true
-        Me.rbLameJointStereo.Location = New System.Drawing.Point(11, 42)
-        Me.rbLameJointStereo.Name = "rbLameJointStereo"
-        Me.rbLameJointStereo.Size = New System.Drawing.Size(79, 17)
-        Me.rbLameJointStereo.TabIndex = 1
-        Me.rbLameJointStereo.Text = "Joint stereo"
-        Me.rbLameJointStereo.UseVisualStyleBackColor = true
-        '
-        'rbLameDualChannels
-        '
-        Me.rbLameDualChannels.AutoSize = true
-        Me.rbLameDualChannels.Location = New System.Drawing.Point(117, 19)
-        Me.rbLameDualChannels.Name = "rbLameDualChannels"
-        Me.rbLameDualChannels.Size = New System.Drawing.Size(93, 17)
-        Me.rbLameDualChannels.TabIndex = 2
-        Me.rbLameDualChannels.Text = "Dual channels"
-        Me.rbLameDualChannels.UseVisualStyleBackColor = true
-        '
-        'rbLameStandardStereo
-        '
-        Me.rbLameStandardStereo.AutoSize = true
-        Me.rbLameStandardStereo.Checked = true
-        Me.rbLameStandardStereo.Location = New System.Drawing.Point(11, 19)
-        Me.rbLameStandardStereo.Name = "rbLameStandardStereo"
-        Me.rbLameStandardStereo.Size = New System.Drawing.Size(100, 17)
-        Me.rbLameStandardStereo.TabIndex = 0
-        Me.rbLameStandardStereo.TabStop = true
-        Me.rbLameStandardStereo.Text = "Standard stereo"
-        Me.rbLameStandardStereo.UseVisualStyleBackColor = true
-        '
-        'label71
-        '
-        Me.label71.AutoSize = true
-        Me.label71.Location = New System.Drawing.Point(19, 281)
-        Me.label71.Name = "label71"
-        Me.label71.Size = New System.Drawing.Size(85, 13)
-        Me.label71.TabIndex = 27
-        Me.label71.Text = "Encoding quality"
-        '
-        'tabPage17
-        '
-        Me.tabPage17.Controls.Add(Me.label71)
-        Me.tabPage17.Controls.Add(Me.tbLameEncodingQuality)
-        Me.tabPage17.Controls.Add(Me.label72)
-        Me.tabPage17.Controls.Add(Me.label73)
-        Me.tabPage17.Controls.Add(Me.cbLameSampleRate)
-        Me.tabPage17.Controls.Add(Me.groupBox9)
-        Me.tabPage17.Controls.Add(Me.groupBox10)
-        Me.tabPage17.Location = New System.Drawing.Point(4, 22)
-        Me.tabPage17.Name = "tabPage17"
-        Me.tabPage17.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage17.Size = New System.Drawing.Size(291, 307)
-        Me.tabPage17.TabIndex = 0
-        Me.tabPage17.Text = "Main"
-        Me.tabPage17.UseVisualStyleBackColor = true
-        '
-        'tbLameEncodingQuality
-        '
-        Me.tbLameEncodingQuality.BackColor = System.Drawing.SystemColors.Window
-        Me.tbLameEncodingQuality.Location = New System.Drawing.Point(129, 272)
-        Me.tbLameEncodingQuality.Maximum = 8
-        Me.tbLameEncodingQuality.Minimum = 1
-        Me.tbLameEncodingQuality.Name = "tbLameEncodingQuality"
-        Me.tbLameEncodingQuality.Size = New System.Drawing.Size(133, 45)
-        Me.tbLameEncodingQuality.TabIndex = 26
-        Me.tbLameEncodingQuality.Value = 7
-        '
-        'label72
-        '
-        Me.label72.AutoSize = true
-        Me.label72.Location = New System.Drawing.Point(201, 252)
-        Me.label72.Name = "label72"
-        Me.label72.Size = New System.Drawing.Size(20, 13)
-        Me.label72.TabIndex = 22
-        Me.label72.Text = "Hz"
-        '
-        'label73
-        '
-        Me.label73.AutoSize = true
-        Me.label73.Location = New System.Drawing.Point(19, 252)
-        Me.label73.Name = "label73"
-        Me.label73.Size = New System.Drawing.Size(63, 13)
-        Me.label73.TabIndex = 21
-        Me.label73.Text = "Sample rate"
-        '
-        'cbLameSampleRate
-        '
-        Me.cbLameSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbLameSampleRate.FormattingEnabled = true
-        Me.cbLameSampleRate.Items.AddRange(New Object() {"48000", "44100", "32000", "22050", "16000", "11025", "8000"})
-        Me.cbLameSampleRate.Location = New System.Drawing.Point(129, 249)
-        Me.cbLameSampleRate.Name = "cbLameSampleRate"
-        Me.cbLameSampleRate.Size = New System.Drawing.Size(66, 21)
-        Me.cbLameSampleRate.TabIndex = 20
-        '
-        'groupBox9
-        '
-        Me.groupBox9.Controls.Add(Me.rbLameMono)
-        Me.groupBox9.Controls.Add(Me.rbLameDualChannels)
-        Me.groupBox9.Controls.Add(Me.rbLameJointStereo)
-        Me.groupBox9.Controls.Add(Me.rbLameStandardStereo)
-        Me.groupBox9.Location = New System.Drawing.Point(16, 177)
-        Me.groupBox9.Name = "groupBox9"
-        Me.groupBox9.Size = New System.Drawing.Size(246, 65)
-        Me.groupBox9.TabIndex = 1
-        Me.groupBox9.TabStop = false
-        Me.groupBox9.Text = "Channels"
-        '
-        'groupBox10
-        '
-        Me.groupBox10.Controls.Add(Me.label74)
-        Me.groupBox10.Controls.Add(Me.tbLameVBRQuality)
-        Me.groupBox10.Controls.Add(Me.cbLameVBRMax)
-        Me.groupBox10.Controls.Add(Me.label75)
-        Me.groupBox10.Controls.Add(Me.label76)
-        Me.groupBox10.Controls.Add(Me.cbLameVBRMin)
-        Me.groupBox10.Controls.Add(Me.label77)
-        Me.groupBox10.Controls.Add(Me.label78)
-        Me.groupBox10.Controls.Add(Me.cbLameCBRBitrate)
-        Me.groupBox10.Controls.Add(Me.rbLameVBR)
-        Me.groupBox10.Controls.Add(Me.rbLameCBR)
-        Me.groupBox10.Location = New System.Drawing.Point(16, 6)
-        Me.groupBox10.Name = "groupBox10"
-        Me.groupBox10.Size = New System.Drawing.Size(246, 165)
-        Me.groupBox10.TabIndex = 0
-        Me.groupBox10.TabStop = false
-        Me.groupBox10.Text = "Mode"
-        '
-        'label74
-        '
-        Me.label74.AutoSize = true
-        Me.label74.Location = New System.Drawing.Point(34, 134)
-        Me.label74.Name = "label74"
-        Me.label74.Size = New System.Drawing.Size(39, 13)
-        Me.label74.TabIndex = 26
-        Me.label74.Text = "Quality"
-        '
-        'tbLameVBRQuality
-        '
-        Me.tbLameVBRQuality.BackColor = System.Drawing.SystemColors.Window
-        Me.tbLameVBRQuality.Location = New System.Drawing.Point(92, 116)
-        Me.tbLameVBRQuality.Maximum = 9
-        Me.tbLameVBRQuality.Minimum = 1
-        Me.tbLameVBRQuality.Name = "tbLameVBRQuality"
-        Me.tbLameVBRQuality.Size = New System.Drawing.Size(118, 45)
-        Me.tbLameVBRQuality.TabIndex = 25
-        Me.tbLameVBRQuality.Value = 7
-        '
-        'cbLameVBRMax
-        '
-        Me.cbLameVBRMax.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbLameVBRMax.FormattingEnabled = true
-        Me.cbLameVBRMax.Items.AddRange(New Object() {"32", "40", "48", "56", "64", "80", "96", "112", "128", "160", "192", "224", "256", "320"})
-        Me.cbLameVBRMax.Location = New System.Drawing.Point(156, 89)
-        Me.cbLameVBRMax.Name = "cbLameVBRMax"
-        Me.cbLameVBRMax.Size = New System.Drawing.Size(54, 21)
-        Me.cbLameVBRMax.TabIndex = 24
-        '
-        'label75
-        '
-        Me.label75.AutoSize = true
-        Me.label75.Location = New System.Drawing.Point(127, 92)
-        Me.label75.Name = "label75"
-        Me.label75.Size = New System.Drawing.Size(27, 13)
-        Me.label75.TabIndex = 23
-        Me.label75.Text = "Max"
-        '
-        'label76
-        '
-        Me.label76.AutoSize = true
-        Me.label76.Location = New System.Drawing.Point(34, 92)
-        Me.label76.Name = "label76"
-        Me.label76.Size = New System.Drawing.Size(24, 13)
-        Me.label76.TabIndex = 21
-        Me.label76.Text = "Min"
-        '
-        'cbLameVBRMin
-        '
-        Me.cbLameVBRMin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbLameVBRMin.FormattingEnabled = true
-        Me.cbLameVBRMin.Items.AddRange(New Object() {"32", "40", "48", "56", "64", "80", "96", "112", "128", "160", "192", "224", "256", "320"})
-        Me.cbLameVBRMin.Location = New System.Drawing.Point(64, 89)
-        Me.cbLameVBRMin.Name = "cbLameVBRMin"
-        Me.cbLameVBRMin.Size = New System.Drawing.Size(54, 21)
-        Me.cbLameVBRMin.TabIndex = 20
-        '
-        'label77
-        '
-        Me.label77.AutoSize = true
-        Me.label77.Location = New System.Drawing.Point(177, 45)
-        Me.label77.Name = "label77"
-        Me.label77.Size = New System.Drawing.Size(31, 13)
-        Me.label77.TabIndex = 19
-        Me.label77.Text = "Kbps"
-        '
-        'label78
-        '
-        Me.label78.AutoSize = true
-        Me.label78.Location = New System.Drawing.Point(34, 45)
-        Me.label78.Name = "label78"
-        Me.label78.Size = New System.Drawing.Size(40, 13)
-        Me.label78.TabIndex = 18
-        Me.label78.Text = "Bit rate"
-        '
-        'cbLameCBRBitrate
-        '
-        Me.cbLameCBRBitrate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbLameCBRBitrate.FormattingEnabled = true
-        Me.cbLameCBRBitrate.Items.AddRange(New Object() {"32", "40", "48", "56", "64", "80", "96", "112", "128", "160", "192", "224", "256", "320"})
-        Me.cbLameCBRBitrate.Location = New System.Drawing.Point(113, 42)
-        Me.cbLameCBRBitrate.Name = "cbLameCBRBitrate"
-        Me.cbLameCBRBitrate.Size = New System.Drawing.Size(58, 21)
-        Me.cbLameCBRBitrate.TabIndex = 17
-        '
-        'rbLameVBR
-        '
-        Me.rbLameVBR.AutoSize = true
-        Me.rbLameVBR.Location = New System.Drawing.Point(17, 66)
-        Me.rbLameVBR.Name = "rbLameVBR"
-        Me.rbLameVBR.Size = New System.Drawing.Size(104, 17)
-        Me.rbLameVBR.TabIndex = 1
-        Me.rbLameVBR.Text = "Variable Bit Rate"
-        Me.rbLameVBR.UseVisualStyleBackColor = true
-        '
-        'rbLameCBR
-        '
-        Me.rbLameCBR.AutoSize = true
-        Me.rbLameCBR.Checked = true
-        Me.rbLameCBR.Location = New System.Drawing.Point(17, 19)
-        Me.rbLameCBR.Name = "rbLameCBR"
-        Me.rbLameCBR.Size = New System.Drawing.Size(108, 17)
-        Me.rbLameCBR.TabIndex = 0
-        Me.rbLameCBR.TabStop = true
-        Me.rbLameCBR.Text = "Constant Bit Rate"
-        Me.rbLameCBR.UseVisualStyleBackColor = true
-        '
-        'tabControl4
-        '
-        Me.tabControl4.Controls.Add(Me.tabPage17)
-        Me.tabControl4.Controls.Add(Me.tabPage18)
-        Me.tabControl4.Location = New System.Drawing.Point(6, 6)
-        Me.tabControl4.Name = "tabControl4"
-        Me.tabControl4.SelectedIndex = 0
-        Me.tabControl4.Size = New System.Drawing.Size(299, 333)
-        Me.tabControl4.TabIndex = 2
-        '
-        'tabPage18
-        '
-        Me.tabPage18.Controls.Add(Me.cbLameVoiceEncodingMode)
-        Me.tabPage18.Controls.Add(Me.cbLameModeFixed)
-        Me.tabPage18.Controls.Add(Me.cbLameEnableXingVBRTag)
-        Me.tabPage18.Controls.Add(Me.cbLameDisableShortBlocks)
-        Me.tabPage18.Controls.Add(Me.cbLameStrictISOCompilance)
-        Me.tabPage18.Controls.Add(Me.cbLameKeepAllFrequencies)
-        Me.tabPage18.Controls.Add(Me.cbLameStrictlyEnforceVBRMinBitrate)
-        Me.tabPage18.Controls.Add(Me.cbLameForceMono)
-        Me.tabPage18.Controls.Add(Me.cbLameCRCProtected)
-        Me.tabPage18.Controls.Add(Me.cbLameOriginal)
-        Me.tabPage18.Controls.Add(Me.cbLameCopyright)
-        Me.tabPage18.Location = New System.Drawing.Point(4, 22)
-        Me.tabPage18.Name = "tabPage18"
-        Me.tabPage18.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage18.Size = New System.Drawing.Size(291, 307)
-        Me.tabPage18.TabIndex = 1
-        Me.tabPage18.Text = "Other"
-        Me.tabPage18.UseVisualStyleBackColor = true
-        '
-        'cbLameVoiceEncodingMode
-        '
-        Me.cbLameVoiceEncodingMode.AutoSize = true
-        Me.cbLameVoiceEncodingMode.Location = New System.Drawing.Point(28, 139)
-        Me.cbLameVoiceEncodingMode.Name = "cbLameVoiceEncodingMode"
-        Me.cbLameVoiceEncodingMode.Size = New System.Drawing.Size(129, 17)
-        Me.cbLameVoiceEncodingMode.TabIndex = 10
-        Me.cbLameVoiceEncodingMode.Text = "Voice encoding mode"
-        Me.cbLameVoiceEncodingMode.UseVisualStyleBackColor = true
-        '
-        'cbLameModeFixed
-        '
-        Me.cbLameModeFixed.AutoSize = true
-        Me.cbLameModeFixed.Location = New System.Drawing.Point(28, 215)
-        Me.cbLameModeFixed.Name = "cbLameModeFixed"
-        Me.cbLameModeFixed.Size = New System.Drawing.Size(88, 17)
-        Me.cbLameModeFixed.TabIndex = 9
-        Me.cbLameModeFixed.Text = """Mode fixed"""
-        Me.cbLameModeFixed.UseVisualStyleBackColor = true
-        '
-        'cbLameEnableXingVBRTag
-        '
-        Me.cbLameEnableXingVBRTag.AutoSize = true
-        Me.cbLameEnableXingVBRTag.Location = New System.Drawing.Point(28, 196)
-        Me.cbLameEnableXingVBRTag.Name = "cbLameEnableXingVBRTag"
-        Me.cbLameEnableXingVBRTag.Size = New System.Drawing.Size(126, 17)
-        Me.cbLameEnableXingVBRTag.TabIndex = 8
-        Me.cbLameEnableXingVBRTag.Text = "Enable Xing VBR tag"
-        Me.cbLameEnableXingVBRTag.UseVisualStyleBackColor = true
-        '
-        'cbLameDisableShortBlocks
-        '
-        Me.cbLameDisableShortBlocks.AutoSize = true
-        Me.cbLameDisableShortBlocks.Location = New System.Drawing.Point(28, 177)
-        Me.cbLameDisableShortBlocks.Name = "cbLameDisableShortBlocks"
-        Me.cbLameDisableShortBlocks.Size = New System.Drawing.Size(121, 17)
-        Me.cbLameDisableShortBlocks.TabIndex = 7
-        Me.cbLameDisableShortBlocks.Text = "Disable short blocks"
-        Me.cbLameDisableShortBlocks.UseVisualStyleBackColor = true
-        '
-        'cbLameStrictISOCompilance
-        '
-        Me.cbLameStrictISOCompilance.AutoSize = true
-        Me.cbLameStrictISOCompilance.Location = New System.Drawing.Point(28, 158)
-        Me.cbLameStrictISOCompilance.Name = "cbLameStrictISOCompilance"
-        Me.cbLameStrictISOCompilance.Size = New System.Drawing.Size(128, 17)
-        Me.cbLameStrictISOCompilance.TabIndex = 6
-        Me.cbLameStrictISOCompilance.Text = "Strict ISO compilance"
-        Me.cbLameStrictISOCompilance.UseVisualStyleBackColor = true
-        '
-        'cbLameKeepAllFrequencies
-        '
-        Me.cbLameKeepAllFrequencies.AutoSize = true
-        Me.cbLameKeepAllFrequencies.Location = New System.Drawing.Point(28, 120)
-        Me.cbLameKeepAllFrequencies.Name = "cbLameKeepAllFrequencies"
-        Me.cbLameKeepAllFrequencies.Size = New System.Drawing.Size(122, 17)
-        Me.cbLameKeepAllFrequencies.TabIndex = 5
-        Me.cbLameKeepAllFrequencies.Text = "Keep all frequencies"
-        Me.cbLameKeepAllFrequencies.UseVisualStyleBackColor = true
-        '
-        'cbLameStrictlyEnforceVBRMinBitrate
-        '
-        Me.cbLameStrictlyEnforceVBRMinBitrate.AutoSize = true
-        Me.cbLameStrictlyEnforceVBRMinBitrate.Location = New System.Drawing.Point(28, 101)
-        Me.cbLameStrictlyEnforceVBRMinBitrate.Name = "cbLameStrictlyEnforceVBRMinBitrate"
-        Me.cbLameStrictlyEnforceVBRMinBitrate.Size = New System.Drawing.Size(175, 17)
-        Me.cbLameStrictlyEnforceVBRMinBitrate.TabIndex = 4
-        Me.cbLameStrictlyEnforceVBRMinBitrate.Text = "Strictly enforce VBR min bit rate"
-        Me.cbLameStrictlyEnforceVBRMinBitrate.UseVisualStyleBackColor = true
-        '
-        'cbLameForceMono
-        '
-        Me.cbLameForceMono.AutoSize = true
-        Me.cbLameForceMono.Location = New System.Drawing.Point(28, 82)
-        Me.cbLameForceMono.Name = "cbLameForceMono"
-        Me.cbLameForceMono.Size = New System.Drawing.Size(82, 17)
-        Me.cbLameForceMono.TabIndex = 3
-        Me.cbLameForceMono.Text = "Force mono"
-        Me.cbLameForceMono.UseVisualStyleBackColor = true
-        '
-        'cbLameCRCProtected
-        '
-        Me.cbLameCRCProtected.AutoSize = true
-        Me.cbLameCRCProtected.Location = New System.Drawing.Point(28, 63)
-        Me.cbLameCRCProtected.Name = "cbLameCRCProtected"
-        Me.cbLameCRCProtected.Size = New System.Drawing.Size(96, 17)
-        Me.cbLameCRCProtected.TabIndex = 2
-        Me.cbLameCRCProtected.Text = "CRC protected"
-        Me.cbLameCRCProtected.UseVisualStyleBackColor = true
-        '
-        'cbLameOriginal
-        '
-        Me.cbLameOriginal.AutoSize = true
-        Me.cbLameOriginal.Location = New System.Drawing.Point(28, 44)
-        Me.cbLameOriginal.Name = "cbLameOriginal"
-        Me.cbLameOriginal.Size = New System.Drawing.Size(96, 17)
-        Me.cbLameOriginal.TabIndex = 1
-        Me.cbLameOriginal.Text = "Original / Copy"
-        Me.cbLameOriginal.UseVisualStyleBackColor = true
-        '
-        'cbLameCopyright
-        '
-        Me.cbLameCopyright.AutoSize = true
-        Me.cbLameCopyright.Location = New System.Drawing.Point(28, 25)
-        Me.cbLameCopyright.Name = "cbLameCopyright"
-        Me.cbLameCopyright.Size = New System.Drawing.Size(70, 17)
-        Me.cbLameCopyright.TabIndex = 0
-        Me.cbLameCopyright.Text = "Copyright"
-        Me.cbLameCopyright.UseVisualStyleBackColor = true
-        '
-        'cbAudioCodecs
-        '
-        Me.cbAudioCodecs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbAudioCodecs.FormattingEnabled = true
-        Me.cbAudioCodecs.Location = New System.Drawing.Point(20, 112)
-        Me.cbAudioCodecs.Name = "cbAudioCodecs"
-        Me.cbAudioCodecs.Size = New System.Drawing.Size(166, 21)
-        Me.cbAudioCodecs.TabIndex = 50
-        '
-        'tabPage8
-        '
-        Me.tabPage8.Controls.Add(Me.tabControl4)
-        Me.tabPage8.Location = New System.Drawing.Point(4, 22)
-        Me.tabPage8.Name = "tabPage8"
-        Me.tabPage8.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage8.Size = New System.Drawing.Size(311, 341)
-        Me.tabPage8.TabIndex = 1
-        Me.tabPage8.Text = "MP3 (LAME)"
-        Me.tabPage8.UseVisualStyleBackColor = true
-        '
-        'cbOutputFormat
-        '
-        Me.cbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbOutputFormat.FormattingEnabled = true
-        Me.cbOutputFormat.Items.AddRange(New Object() {"PCM/ACM", "MP3 (Lame)"})
-        Me.cbOutputFormat.Location = New System.Drawing.Point(69, 379)
-        Me.cbOutputFormat.Name = "cbOutputFormat"
-        Me.cbOutputFormat.Size = New System.Drawing.Size(118, 21)
-        Me.cbOutputFormat.TabIndex = 57
-        '
-        'cbSampleRate
-        '
-        Me.cbSampleRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbSampleRate.FormattingEnabled = true
-        Me.cbSampleRate.Items.AddRange(New Object() {"48000", "44100", "32000", "22050", "16000", "11025", "8000"})
-        Me.cbSampleRate.Location = New System.Drawing.Point(86, 53)
-        Me.cbSampleRate.Name = "cbSampleRate"
-        Me.cbSampleRate.Size = New System.Drawing.Size(65, 21)
-        Me.cbSampleRate.TabIndex = 49
-        '
-        'label7
-        '
-        Me.label7.AutoSize = true
-        Me.label7.Location = New System.Drawing.Point(12, 382)
-        Me.label7.Name = "label7"
-        Me.label7.Size = New System.Drawing.Size(39, 13)
-        Me.label7.TabIndex = 56
-        Me.label7.Text = "Format"
-        '
-        'label67
-        '
-        Me.label67.AutoSize = true
-        Me.label67.Location = New System.Drawing.Point(17, 96)
-        Me.label67.Name = "label67"
-        Me.label67.Size = New System.Drawing.Size(38, 13)
-        Me.label67.TabIndex = 51
-        Me.label67.Text = "Codec"
-        '
-        'btSelectOutput
-        '
-        Me.btSelectOutput.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.btSelectOutput.Location = New System.Drawing.Point(297, 404)
-        Me.btSelectOutput.Name = "btSelectOutput"
-        Me.btSelectOutput.Size = New System.Drawing.Size(24, 23)
-        Me.btSelectOutput.TabIndex = 55
-        Me.btSelectOutput.Text = "..."
-        Me.btSelectOutput.UseVisualStyleBackColor = true
-        '
-        'label68
-        '
-        Me.label68.AutoSize = true
-        Me.label68.Location = New System.Drawing.Point(17, 56)
-        Me.label68.Name = "label68"
-        Me.label68.Size = New System.Drawing.Size(63, 13)
-        Me.label68.TabIndex = 48
-        Me.label68.Text = "Sample rate"
-        '
-        'edOutput
-        '
-        Me.edOutput.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.edOutput.Location = New System.Drawing.Point(69, 406)
-        Me.edOutput.Name = "edOutput"
-        Me.edOutput.Size = New System.Drawing.Size(222, 20)
-        Me.edOutput.TabIndex = 54
-        Me.edOutput.Text = "c:\capture.avi"
-        '
-        'cbBPS
-        '
-        Me.cbBPS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbBPS.FormattingEnabled = true
-        Me.cbBPS.Items.AddRange(New Object() {"16", "8"})
-        Me.cbBPS.Location = New System.Drawing.Point(203, 16)
-        Me.cbBPS.Name = "cbBPS"
-        Me.cbBPS.Size = New System.Drawing.Size(55, 21)
-        Me.cbBPS.TabIndex = 47
-        '
-        'label70
-        '
-        Me.label70.AutoSize = true
-        Me.label70.Location = New System.Drawing.Point(17, 19)
-        Me.label70.Name = "label70"
-        Me.label70.Size = New System.Drawing.Size(51, 13)
-        Me.label70.TabIndex = 44
-        Me.label70.Text = "Channels"
-        '
-        'cbChannels
-        '
-        Me.cbChannels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbChannels.FormattingEnabled = true
-        Me.cbChannels.Items.AddRange(New Object() {"2", "1"})
-        Me.cbChannels.Location = New System.Drawing.Point(86, 16)
-        Me.cbChannels.Name = "cbChannels"
-        Me.cbChannels.Size = New System.Drawing.Size(65, 21)
-        Me.cbChannels.TabIndex = 45
-        '
-        'label69
-        '
-        Me.label69.AutoSize = true
-        Me.label69.Location = New System.Drawing.Point(169, 19)
-        Me.label69.Name = "label69"
-        Me.label69.Size = New System.Drawing.Size(28, 13)
-        Me.label69.TabIndex = 46
-        Me.label69.Text = "BPS"
         '
         'label55
         '
         Me.label55.AutoSize = true
-        Me.label55.Location = New System.Drawing.Point(171, 197)
+        Me.label55.Location = New System.Drawing.Point(171, 262)
         Me.label55.Name = "label55"
         Me.label55.Size = New System.Drawing.Size(46, 13)
         Me.label55.TabIndex = 90
@@ -709,7 +138,7 @@ Partial Class Form1
         'tbAudioBalance
         '
         Me.tbAudioBalance.BackColor = System.Drawing.SystemColors.Window
-        Me.tbAudioBalance.Location = New System.Drawing.Point(222, 192)
+        Me.tbAudioBalance.Location = New System.Drawing.Point(222, 257)
         Me.tbAudioBalance.Maximum = 100
         Me.tbAudioBalance.Minimum = -100
         Me.tbAudioBalance.Name = "tbAudioBalance"
@@ -721,7 +150,7 @@ Partial Class Form1
         'label54
         '
         Me.label54.AutoSize = true
-        Me.label54.Location = New System.Drawing.Point(7, 197)
+        Me.label54.Location = New System.Drawing.Point(7, 262)
         Me.label54.Name = "label54"
         Me.label54.Size = New System.Drawing.Size(42, 13)
         Me.label54.TabIndex = 88
@@ -730,7 +159,7 @@ Partial Class Form1
         'tbAudioVolume
         '
         Me.tbAudioVolume.BackColor = System.Drawing.SystemColors.Window
-        Me.tbAudioVolume.Location = New System.Drawing.Point(54, 192)
+        Me.tbAudioVolume.Location = New System.Drawing.Point(54, 257)
         Me.tbAudioVolume.Maximum = 100
         Me.tbAudioVolume.Minimum = 20
         Me.tbAudioVolume.Name = "tbAudioVolume"
@@ -746,7 +175,7 @@ Partial Class Form1
         Me.cbPlayAudio.AutoSize = true
         Me.cbPlayAudio.Checked = true
         Me.cbPlayAudio.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbPlayAudio.Location = New System.Drawing.Point(250, 148)
+        Me.cbPlayAudio.Location = New System.Drawing.Point(250, 213)
         Me.cbPlayAudio.Name = "cbPlayAudio"
         Me.cbPlayAudio.Size = New System.Drawing.Size(75, 17)
         Me.cbPlayAudio.TabIndex = 86
@@ -759,7 +188,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbAudioOutputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAudioOutputDevice.FormattingEnabled = true
-        Me.cbAudioOutputDevice.Location = New System.Drawing.Point(9, 165)
+        Me.cbAudioOutputDevice.Location = New System.Drawing.Point(9, 230)
         Me.cbAudioOutputDevice.Name = "cbAudioOutputDevice"
         Me.cbAudioOutputDevice.Size = New System.Drawing.Size(316, 21)
         Me.cbAudioOutputDevice.TabIndex = 85
@@ -767,7 +196,7 @@ Partial Class Form1
         'label15
         '
         Me.label15.AutoSize = true
-        Me.label15.Location = New System.Drawing.Point(6, 149)
+        Me.label15.Location = New System.Drawing.Point(6, 214)
         Me.label15.Name = "label15"
         Me.label15.Size = New System.Drawing.Size(102, 13)
         Me.label15.TabIndex = 84
@@ -777,7 +206,7 @@ Partial Class Form1
         '
         Me.cbUseBestAudioInputFormat.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbUseBestAudioInputFormat.AutoSize = true
-        Me.cbUseBestAudioInputFormat.Location = New System.Drawing.Point(260, 67)
+        Me.cbUseBestAudioInputFormat.Location = New System.Drawing.Point(174, 120)
         Me.cbUseBestAudioInputFormat.Name = "cbUseBestAudioInputFormat"
         Me.cbUseBestAudioInputFormat.Size = New System.Drawing.Size(68, 17)
         Me.cbUseBestAudioInputFormat.TabIndex = 83
@@ -787,7 +216,7 @@ Partial Class Form1
         'btAudioInputDeviceSettings
         '
         Me.btAudioInputDeviceSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btAudioInputDeviceSettings.Location = New System.Drawing.Point(249, 34)
+        Me.btAudioInputDeviceSettings.Location = New System.Drawing.Point(249, 26)
         Me.btAudioInputDeviceSettings.Name = "btAudioInputDeviceSettings"
         Me.btAudioInputDeviceSettings.Size = New System.Drawing.Size(76, 23)
         Me.btAudioInputDeviceSettings.TabIndex = 82
@@ -798,9 +227,9 @@ Partial Class Form1
         '
         Me.cbAudioInputLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAudioInputLine.FormattingEnabled = true
-        Me.cbAudioInputLine.Location = New System.Drawing.Point(9, 90)
+        Me.cbAudioInputLine.Location = New System.Drawing.Point(9, 84)
         Me.cbAudioInputLine.Name = "cbAudioInputLine"
-        Me.cbAudioInputLine.Size = New System.Drawing.Size(161, 21)
+        Me.cbAudioInputLine.Size = New System.Drawing.Size(234, 21)
         Me.cbAudioInputLine.TabIndex = 81
         '
         'cbAudioInputFormat
@@ -809,9 +238,9 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbAudioInputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAudioInputFormat.FormattingEnabled = true
-        Me.cbAudioInputFormat.Location = New System.Drawing.Point(176, 90)
+        Me.cbAudioInputFormat.Location = New System.Drawing.Point(9, 140)
         Me.cbAudioInputFormat.Name = "cbAudioInputFormat"
-        Me.cbAudioInputFormat.Size = New System.Drawing.Size(149, 21)
+        Me.cbAudioInputFormat.Size = New System.Drawing.Size(234, 21)
         Me.cbAudioInputFormat.TabIndex = 80
         '
         'cbAudioInputDevice
@@ -820,7 +249,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbAudioInputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbAudioInputDevice.FormattingEnabled = true
-        Me.cbAudioInputDevice.Location = New System.Drawing.Point(9, 36)
+        Me.cbAudioInputDevice.Location = New System.Drawing.Point(9, 28)
         Me.cbAudioInputDevice.Name = "cbAudioInputDevice"
         Me.cbAudioInputDevice.Size = New System.Drawing.Size(234, 21)
         Me.cbAudioInputDevice.TabIndex = 79
@@ -870,23 +299,23 @@ Partial Class Form1
         Me.label22.AutoSize = true
         Me.label22.Location = New System.Drawing.Point(6, 68)
         Me.label22.Name = "label22"
-        Me.label22.Size = New System.Drawing.Size(79, 13)
+        Me.label22.Size = New System.Drawing.Size(50, 13)
         Me.label22.TabIndex = 78
-        Me.label22.Text = "Audio input line"
+        Me.label22.Text = "Input line"
         '
         'label23
         '
         Me.label23.AutoSize = true
         Me.label23.Location = New System.Drawing.Point(6, 12)
         Me.label23.Name = "label23"
-        Me.label23.Size = New System.Drawing.Size(95, 13)
+        Me.label23.Size = New System.Drawing.Size(66, 13)
         Me.label23.TabIndex = 77
-        Me.label23.Text = "Audio input device"
+        Me.label23.Text = "Input device"
         '
         'label25
         '
         Me.label25.AutoSize = true
-        Me.label25.Location = New System.Drawing.Point(173, 68)
+        Me.label25.Location = New System.Drawing.Point(7, 124)
         Me.label25.Name = "label25"
         Me.label25.Size = New System.Drawing.Size(63, 13)
         Me.label25.TabIndex = 76
@@ -894,12 +323,13 @@ Partial Class Form1
         '
         'tabPage2
         '
+        Me.tabPage2.Controls.Add(Me.lbInfo)
+        Me.tabPage2.Controls.Add(Me.btOutputConfigure)
         Me.tabPage2.Controls.Add(Me.cbOutputFormat)
         Me.tabPage2.Controls.Add(Me.label7)
         Me.tabPage2.Controls.Add(Me.btSelectOutput)
         Me.tabPage2.Controls.Add(Me.edOutput)
         Me.tabPage2.Controls.Add(Me.label9)
-        Me.tabPage2.Controls.Add(Me.tabControl2)
         Me.tabPage2.Location = New System.Drawing.Point(4, 22)
         Me.tabPage2.Name = "tabPage2"
         Me.tabPage2.Padding = New System.Windows.Forms.Padding(3)
@@ -908,56 +338,71 @@ Partial Class Form1
         Me.tabPage2.Text = "Output"
         Me.tabPage2.UseVisualStyleBackColor = true
         '
+        'lbInfo
+        '
+        Me.lbInfo.AutoSize = true
+        Me.lbInfo.Location = New System.Drawing.Point(11, 62)
+        Me.lbInfo.Name = "lbInfo"
+        Me.lbInfo.Size = New System.Drawing.Size(267, 13)
+        Me.lbInfo.TabIndex = 66
+        Me.lbInfo.Text = "You can use dialog or code to configure format settings"
+        '
+        'btOutputConfigure
+        '
+        Me.btOutputConfigure.Location = New System.Drawing.Point(14, 78)
+        Me.btOutputConfigure.Name = "btOutputConfigure"
+        Me.btOutputConfigure.Size = New System.Drawing.Size(75, 23)
+        Me.btOutputConfigure.TabIndex = 65
+        Me.btOutputConfigure.Text = "Configure"
+        Me.btOutputConfigure.UseVisualStyleBackColor = true
+        '
+        'cbOutputFormat
+        '
+        Me.cbOutputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbOutputFormat.FormattingEnabled = true
+        Me.cbOutputFormat.Items.AddRange(New Object() {"PCM/ACM", "MP3", "WMA", "Ogg Vorbis", "FLAC", "Speex", "M4A (AAC)"})
+        Me.cbOutputFormat.Location = New System.Drawing.Point(14, 28)
+        Me.cbOutputFormat.Name = "cbOutputFormat"
+        Me.cbOutputFormat.Size = New System.Drawing.Size(309, 21)
+        Me.cbOutputFormat.TabIndex = 64
+        '
+        'label7
+        '
+        Me.label7.AutoSize = true
+        Me.label7.Location = New System.Drawing.Point(11, 12)
+        Me.label7.Name = "label7"
+        Me.label7.Size = New System.Drawing.Size(39, 13)
+        Me.label7.TabIndex = 63
+        Me.label7.Text = "Format"
+        '
+        'btSelectOutput
+        '
+        Me.btSelectOutput.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.btSelectOutput.Location = New System.Drawing.Point(299, 138)
+        Me.btSelectOutput.Name = "btSelectOutput"
+        Me.btSelectOutput.Size = New System.Drawing.Size(24, 23)
+        Me.btSelectOutput.TabIndex = 62
+        Me.btSelectOutput.Text = "..."
+        Me.btSelectOutput.UseVisualStyleBackColor = true
+        '
+        'edOutput
+        '
+        Me.edOutput.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.edOutput.Location = New System.Drawing.Point(14, 140)
+        Me.edOutput.Name = "edOutput"
+        Me.edOutput.Size = New System.Drawing.Size(279, 20)
+        Me.edOutput.TabIndex = 61
+        Me.edOutput.Text = "c:\capture.wav"
+        '
         'label9
         '
         Me.label9.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
         Me.label9.AutoSize = true
-        Me.label9.Location = New System.Drawing.Point(12, 409)
+        Me.label9.Location = New System.Drawing.Point(11, 124)
         Me.label9.Name = "label9"
         Me.label9.Size = New System.Drawing.Size(52, 13)
-        Me.label9.TabIndex = 53
+        Me.label9.TabIndex = 60
         Me.label9.Text = "File name"
-        '
-        'tabControl2
-        '
-        Me.tabControl2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.tabControl2.Controls.Add(Me.tabPage7)
-        Me.tabControl2.Controls.Add(Me.tabPage8)
-        Me.tabControl2.Location = New System.Drawing.Point(6, 6)
-        Me.tabControl2.Name = "tabControl2"
-        Me.tabControl2.SelectedIndex = 0
-        Me.tabControl2.Size = New System.Drawing.Size(319, 367)
-        Me.tabControl2.TabIndex = 0
-        '
-        'tabPage7
-        '
-        Me.tabPage7.Controls.Add(Me.btAudioSettings)
-        Me.tabPage7.Controls.Add(Me.label67)
-        Me.tabPage7.Controls.Add(Me.cbAudioCodecs)
-        Me.tabPage7.Controls.Add(Me.cbSampleRate)
-        Me.tabPage7.Controls.Add(Me.label68)
-        Me.tabPage7.Controls.Add(Me.cbBPS)
-        Me.tabPage7.Controls.Add(Me.label69)
-        Me.tabPage7.Controls.Add(Me.cbChannels)
-        Me.tabPage7.Controls.Add(Me.label70)
-        Me.tabPage7.Location = New System.Drawing.Point(4, 22)
-        Me.tabPage7.Name = "tabPage7"
-        Me.tabPage7.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabPage7.Size = New System.Drawing.Size(311, 341)
-        Me.tabPage7.TabIndex = 0
-        Me.tabPage7.Text = "PCM/ACM"
-        Me.tabPage7.UseVisualStyleBackColor = true
-        '
-        'btAudioSettings
-        '
-        Me.btAudioSettings.Location = New System.Drawing.Point(194, 110)
-        Me.btAudioSettings.Name = "btAudioSettings"
-        Me.btAudioSettings.Size = New System.Drawing.Size(66, 23)
-        Me.btAudioSettings.TabIndex = 52
-        Me.btAudioSettings.Text = "Settings"
-        Me.btAudioSettings.UseVisualStyleBackColor = true
         '
         'tabPage5
         '
@@ -1430,37 +875,24 @@ Partial Class Form1
         '
         'tabPage4
         '
-        Me.tabPage4.Controls.Add(Me.groupBox1)
+        Me.tabPage4.Controls.Add(Me.cbLicensing)
+        Me.tabPage4.Controls.Add(Me.cbDebugMode)
+        Me.tabPage4.Controls.Add(Me.mmLog)
         Me.tabPage4.Location = New System.Drawing.Point(4, 22)
         Me.tabPage4.Name = "tabPage4"
         Me.tabPage4.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage4.Size = New System.Drawing.Size(331, 433)
         Me.tabPage4.TabIndex = 3
-        Me.tabPage4.Text = "More"
+        Me.tabPage4.Text = "Logs"
         Me.tabPage4.UseVisualStyleBackColor = true
-        '
-        'groupBox1
-        '
-        Me.groupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
-            Or System.Windows.Forms.AnchorStyles.Left)  _
-            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.groupBox1.Controls.Add(Me.cbLicensing)
-        Me.groupBox1.Controls.Add(Me.cbDebugMode)
-        Me.groupBox1.Controls.Add(Me.mmLog)
-        Me.groupBox1.Location = New System.Drawing.Point(6, 6)
-        Me.groupBox1.Name = "groupBox1"
-        Me.groupBox1.Size = New System.Drawing.Size(319, 421)
-        Me.groupBox1.TabIndex = 0
-        Me.groupBox1.TabStop = false
-        Me.groupBox1.Text = "Errors/Warnings"
         '
         'cbLicensing
         '
         Me.cbLicensing.AutoSize = true
-        Me.cbLicensing.Location = New System.Drawing.Point(129, 19)
+        Me.cbLicensing.Location = New System.Drawing.Point(141, 6)
         Me.cbLicensing.Name = "cbLicensing"
         Me.cbLicensing.Size = New System.Drawing.Size(91, 17)
-        Me.cbLicensing.TabIndex = 76
+        Me.cbLicensing.TabIndex = 79
         Me.cbLicensing.Text = "Licensing info"
         Me.cbLicensing.UseVisualStyleBackColor = true
         '
@@ -1468,10 +900,10 @@ Partial Class Form1
         '
         Me.cbDebugMode.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.cbDebugMode.AutoSize = true
-        Me.cbDebugMode.Location = New System.Drawing.Point(226, 19)
+        Me.cbDebugMode.Location = New System.Drawing.Point(238, 6)
         Me.cbDebugMode.Name = "cbDebugMode"
         Me.cbDebugMode.Size = New System.Drawing.Size(87, 17)
-        Me.cbDebugMode.TabIndex = 75
+        Me.cbDebugMode.TabIndex = 78
         Me.cbDebugMode.Text = "Debug mode"
         Me.cbDebugMode.UseVisualStyleBackColor = true
         '
@@ -1480,43 +912,19 @@ Partial Class Form1
         Me.mmLog.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
             Or System.Windows.Forms.AnchorStyles.Left)  _
             Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.mmLog.Location = New System.Drawing.Point(6, 42)
+        Me.mmLog.Location = New System.Drawing.Point(6, 29)
         Me.mmLog.Multiline = true
         Me.mmLog.Name = "mmLog"
-        Me.mmLog.Size = New System.Drawing.Size(307, 373)
-        Me.mmLog.TabIndex = 74
-        '
-        'rbCapture
-        '
-        Me.rbCapture.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.rbCapture.AutoSize = true
-        Me.rbCapture.Location = New System.Drawing.Point(86, 476)
-        Me.rbCapture.Name = "rbCapture"
-        Me.rbCapture.Size = New System.Drawing.Size(62, 17)
-        Me.rbCapture.TabIndex = 65
-        Me.rbCapture.Text = "Capture"
-        Me.rbCapture.UseVisualStyleBackColor = true
-        '
-        'rbPreview
-        '
-        Me.rbPreview.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
-        Me.rbPreview.AutoSize = true
-        Me.rbPreview.Checked = true
-        Me.rbPreview.Location = New System.Drawing.Point(17, 476)
-        Me.rbPreview.Name = "rbPreview"
-        Me.rbPreview.Size = New System.Drawing.Size(63, 17)
-        Me.rbPreview.TabIndex = 64
-        Me.rbPreview.TabStop = true
-        Me.rbPreview.Text = "Preview"
-        Me.rbPreview.UseVisualStyleBackColor = true
+        Me.mmLog.Size = New System.Drawing.Size(319, 398)
+        Me.mmLog.TabIndex = 77
         '
         'btStop
         '
         Me.btStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.btStop.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
-        Me.btStop.Location = New System.Drawing.Point(286, 473)
+        Me.btStop.Location = New System.Drawing.Point(292, 473)
         Me.btStop.Name = "btStop"
-        Me.btStop.Size = New System.Drawing.Size(62, 23)
+        Me.btStop.Size = New System.Drawing.Size(56, 23)
         Me.btStop.TabIndex = 63
         Me.btStop.Text = "Stop"
         Me.btStop.UseVisualStyleBackColor = true
@@ -1525,9 +933,9 @@ Partial Class Form1
         '
         Me.btStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.btStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
-        Me.btStart.Location = New System.Drawing.Point(221, 473)
+        Me.btStart.Location = New System.Drawing.Point(230, 473)
         Me.btStart.Name = "btStart"
-        Me.btStart.Size = New System.Drawing.Size(62, 23)
+        Me.btStart.Size = New System.Drawing.Size(56, 23)
         Me.btStart.TabIndex = 62
         Me.btStart.Text = "Start"
         Me.btStart.UseVisualStyleBackColor = true
@@ -1543,120 +951,42 @@ Partial Class Form1
         Me.llVideoTutorials.TabStop = true
         Me.llVideoTutorials.Text = "Video tutorial"
         '
-        'VideoCapture1
+        'cbMode
         '
-        Me.VideoCapture1.Additional_Audio_CaptureDevice_MixChannels = false
-        Me.VideoCapture1.Audio_CaptureDevice = ""
-        Me.VideoCapture1.Audio_CaptureDevice_CustomLatency = 0
-        Me.VideoCapture1.Audio_CaptureDevice_Format = ""
-        Me.VideoCapture1.Audio_CaptureDevice_Format_UseBest = true
-        Me.VideoCapture1.Audio_CaptureDevice_Line = ""
-        Me.VideoCapture1.Audio_CaptureDevice_Path = Nothing
-        Me.VideoCapture1.Audio_Decoder = Nothing
-        Me.VideoCapture1.Audio_Effects_Enabled = false
-        Me.VideoCapture1.Audio_Effects_UseLegacyEffects = false
-        Me.VideoCapture1.Audio_Enhancer_Enabled = false
-        Me.VideoCapture1.Audio_OutputDevice = "Default DirectSound Device"
-        Me.VideoCapture1.Audio_PlayAudio = true
-        Me.VideoCapture1.Audio_RecordAudio = true
-        Me.VideoCapture1.Audio_Sample_Grabber_Enabled = false
-        Me.VideoCapture1.Audio_VUMeter_Enabled = false
-        Me.VideoCapture1.Audio_VUMeter_Pro_Enabled = false
-        Me.VideoCapture1.Audio_VUMeter_Pro_Volume = 100
-        Me.VideoCapture1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.VideoCapture1.Barcode_Reader_Enabled = false
-        Me.VideoCapture1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.[Auto]
-        Me.VideoCapture1.Debug_Dir = "False"
-        Me.VideoCapture1.Debug_Mode = false
-        Me.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.[Auto]
-        Me.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.[Auto]
-        Me.VideoCapture1.Decklink_Input_IREUSA = false
-        Me.VideoCapture1.Decklink_Input_SMPTE = false
-        Me.VideoCapture1.DirectCapture_Muxer = Nothing
-        Me.VideoCapture1.DV_Decoder_Video_Resolution = VisioForge.Types.VFDVVideoResolution.Full
-        Me.VideoCapture1.Location = New System.Drawing.Point(150, 476)
-        Me.VideoCapture1.Mode = VisioForge.Types.VFVideoCaptureMode.VideoCapture
-        Me.VideoCapture1.MPEG_Audio_Decoder = ""
-        Me.VideoCapture1.MPEG_Video_Decoder = ""
-        Me.VideoCapture1.MultiScreen_Enabled = false
-        Me.VideoCapture1.Name = "VideoCapture1"
-        Me.VideoCapture1.Network_Streaming_Audio_Enabled = false
-        Me.VideoCapture1.Network_Streaming_Enabled = false
-        Me.VideoCapture1.Network_Streaming_Format = VisioForge.Types.VFNetworkStreamingFormat.WMV
-        Me.VideoCapture1.Network_Streaming_Network_Port = 100
-        Me.VideoCapture1.Network_Streaming_Output = Nothing
-        Me.VideoCapture1.Network_Streaming_URL = ""
-        Me.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10
-        Me.VideoCapture1.Output_Filename = ""
-        Me.VideoCapture1.Output_Format = Nothing
-        Me.VideoCapture1.PIP_AddSampleGrabbers = false
-        Me.VideoCapture1.PIP_Mode = VisioForge.Types.VFPIPMode.Custom
-        Me.VideoCapture1.SeparateCapture_AutostartCapture = false
-        Me.VideoCapture1.SeparateCapture_Enabled = false
-        Me.VideoCapture1.SeparateCapture_Filename_Mask = "output %yyyy-%MM-%dd %hh-%mm-%ss.%ext"
-        Me.VideoCapture1.SeparateCapture_FileSizeThreshold = CType(0,Long)
-        Me.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal
-        Me.VideoCapture1.SeparateCapture_TimeThreshold = CType(0,Long)
-        Me.VideoCapture1.Size = New System.Drawing.Size(18, 20)
-        Me.VideoCapture1.Start_DelayEnabled = false
-        Me.VideoCapture1.TabIndex = 92
-        Me.VideoCapture1.TVTuner_Channel = 0
-        Me.VideoCapture1.TVTuner_Country = ""
-        Me.VideoCapture1.TVTuner_FM_Tuning_StartFrequency = 80000000
-        Me.VideoCapture1.TVTuner_FM_Tuning_Step = 160000000
-        Me.VideoCapture1.TVTuner_FM_Tuning_StopFrequency = 0
-        Me.VideoCapture1.TVTuner_Frequency = 0
-        Me.VideoCapture1.TVTuner_InputType = ""
-        Me.VideoCapture1.TVTuner_Name = ""
-        Me.VideoCapture1.TVTuner_TVFormat = VisioForge.Types.VFTVTunerVideoFormat.PAL_D
-        Me.VideoCapture1.Video_CaptureDevice = ""
-        Me.VideoCapture1.Video_CaptureDevice_Format = ""
-        Me.VideoCapture1.Video_CaptureDevice_Format_UseBest = true
-        Me.VideoCapture1.Video_CaptureDevice_FrameRate = 0R
-        Me.VideoCapture1.Video_CaptureDevice_InternalMPEGEncoder_Name = ""
-        Me.VideoCapture1.Video_CaptureDevice_IsAudioSource = false
-        Me.VideoCapture1.Video_CaptureDevice_Path = Nothing
-        Me.VideoCapture1.Video_CaptureDevice_UseClosedCaptions = false
-        Me.VideoCapture1.Video_CaptureDevice_UseRAWSampleGrabber = false
-        Me.VideoCapture1.Video_Decoder = Nothing
-        Me.VideoCapture1.Video_Effects_Enabled = false
-        Me.VideoCapture1.Video_ResizeOrCrop_Enabled = false
-        Me.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone
-        Me.VideoCapture1.Video_Sample_Grabber_Enabled = false
-        Me.VideoCapture1.Video_Sample_Grabber_UseForVideoEffects = false
-        Me.VideoCapture1.Video_Still_Frames_Grabber_Enabled = false
-        Me.VideoCapture1.Virtual_Camera_Output_Enabled = false
-        Me.VideoCapture1.Virtual_Camera_Output_LicenseKey = Nothing
-        Me.VideoCapture1.VLC_Path = Nothing
+        Me.cbMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbMode.FormattingEnabled = true
+        Me.cbMode.Items.AddRange(New Object() {"Preview", "Capture"})
+        Me.cbMode.Location = New System.Drawing.Point(11, 475)
+        Me.cbMode.Name = "cbMode"
+        Me.cbMode.Size = New System.Drawing.Size(86, 21)
+        Me.cbMode.TabIndex = 96
+        '
+        'lbTimestamp
+        '
+        Me.lbTimestamp.AutoSize = true
+        Me.lbTimestamp.Location = New System.Drawing.Point(103, 478)
+        Me.lbTimestamp.Name = "lbTimestamp"
+        Me.lbTimestamp.Size = New System.Drawing.Size(126, 13)
+        Me.lbTimestamp.TabIndex = 97
+        Me.lbTimestamp.Text = "Recording time: 00:00:00"
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(364, 506)
-        Me.Controls.Add(Me.VideoCapture1)
+        Me.Controls.Add(Me.lbTimestamp)
+        Me.Controls.Add(Me.cbMode)
         Me.Controls.Add(Me.llVideoTutorials)
         Me.Controls.Add(Me.tabControl1)
-        Me.Controls.Add(Me.rbCapture)
-        Me.Controls.Add(Me.rbPreview)
         Me.Controls.Add(Me.btStop)
         Me.Controls.Add(Me.btStart)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "Form1"
-        Me.Text = "Audio Capture Demo - VisioForge Video Capture SDK .Net"
-        Me.tabPage17.ResumeLayout(false)
-        Me.tabPage17.PerformLayout
-        CType(Me.tbLameEncodingQuality,System.ComponentModel.ISupportInitialize).EndInit
-        Me.groupBox9.ResumeLayout(false)
-        Me.groupBox9.PerformLayout
-        Me.groupBox10.ResumeLayout(false)
-        Me.groupBox10.PerformLayout
-        CType(Me.tbLameVBRQuality,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabControl4.ResumeLayout(false)
-        Me.tabPage18.ResumeLayout(false)
-        Me.tabPage18.PerformLayout
-        Me.tabPage8.ResumeLayout(false)
+        Me.Text = "Audio Capture Demo - Video Capture SDK .Net"
         CType(Me.tbAudioBalance,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbAudioVolume,System.ComponentModel.ISupportInitialize).EndInit
         Me.tabControl1.ResumeLayout(false)
@@ -1664,9 +994,6 @@ Partial Class Form1
         Me.tabPage1.PerformLayout
         Me.tabPage2.ResumeLayout(false)
         Me.tabPage2.PerformLayout
-        Me.tabControl2.ResumeLayout(false)
-        Me.tabPage7.ResumeLayout(false)
-        Me.tabPage7.PerformLayout
         Me.tabPage5.ResumeLayout(false)
         Me.tabControl18.ResumeLayout(false)
         Me.tabPage71.ResumeLayout(false)
@@ -1691,61 +1018,11 @@ Partial Class Form1
         Me.tabPage6.PerformLayout
         CType(Me.tbAud3DSound,System.ComponentModel.ISupportInitialize).EndInit
         Me.tabPage4.ResumeLayout(false)
-        Me.groupBox1.ResumeLayout(false)
-        Me.groupBox1.PerformLayout
+        Me.tabPage4.PerformLayout
         Me.ResumeLayout(false)
         Me.PerformLayout
 
 End Sub
-    Private WithEvents rbLameMono As System.Windows.Forms.RadioButton
-    Private WithEvents rbLameJointStereo As System.Windows.Forms.RadioButton
-    Private WithEvents rbLameDualChannels As System.Windows.Forms.RadioButton
-    Private WithEvents rbLameStandardStereo As System.Windows.Forms.RadioButton
-    Private WithEvents label71 As System.Windows.Forms.Label
-    Private WithEvents tabPage17 As System.Windows.Forms.TabPage
-    Private WithEvents tbLameEncodingQuality As System.Windows.Forms.TrackBar
-    Private WithEvents label72 As System.Windows.Forms.Label
-    Private WithEvents label73 As System.Windows.Forms.Label
-    Private WithEvents cbLameSampleRate As System.Windows.Forms.ComboBox
-    Private WithEvents groupBox9 As System.Windows.Forms.GroupBox
-    Private WithEvents groupBox10 As System.Windows.Forms.GroupBox
-    Private WithEvents label74 As System.Windows.Forms.Label
-    Private WithEvents tbLameVBRQuality As System.Windows.Forms.TrackBar
-    Private WithEvents cbLameVBRMax As System.Windows.Forms.ComboBox
-    Private WithEvents label75 As System.Windows.Forms.Label
-    Private WithEvents label76 As System.Windows.Forms.Label
-    Private WithEvents cbLameVBRMin As System.Windows.Forms.ComboBox
-    Private WithEvents label77 As System.Windows.Forms.Label
-    Private WithEvents label78 As System.Windows.Forms.Label
-    Private WithEvents cbLameCBRBitrate As System.Windows.Forms.ComboBox
-    Private WithEvents rbLameVBR As System.Windows.Forms.RadioButton
-    Private WithEvents rbLameCBR As System.Windows.Forms.RadioButton
-    Private WithEvents tabControl4 As System.Windows.Forms.TabControl
-    Private WithEvents tabPage18 As System.Windows.Forms.TabPage
-    Private WithEvents cbLameVoiceEncodingMode As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameModeFixed As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameEnableXingVBRTag As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameDisableShortBlocks As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameStrictISOCompilance As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameKeepAllFrequencies As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameStrictlyEnforceVBRMinBitrate As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameForceMono As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameCRCProtected As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameOriginal As System.Windows.Forms.CheckBox
-    Private WithEvents cbLameCopyright As System.Windows.Forms.CheckBox
-    Private WithEvents cbAudioCodecs As System.Windows.Forms.ComboBox
-    Private WithEvents tabPage8 As System.Windows.Forms.TabPage
-    Private WithEvents cbOutputFormat As System.Windows.Forms.ComboBox
-    Private WithEvents cbSampleRate As System.Windows.Forms.ComboBox
-    Private WithEvents label7 As System.Windows.Forms.Label
-    Private WithEvents label67 As System.Windows.Forms.Label
-    Private WithEvents btSelectOutput As System.Windows.Forms.Button
-    Private WithEvents label68 As System.Windows.Forms.Label
-    Private WithEvents edOutput As System.Windows.Forms.TextBox
-    Private WithEvents cbBPS As System.Windows.Forms.ComboBox
-    Private WithEvents label70 As System.Windows.Forms.Label
-    Private WithEvents cbChannels As System.Windows.Forms.ComboBox
-    Private WithEvents label69 As System.Windows.Forms.Label
     Private WithEvents label55 As System.Windows.Forms.Label
     Private WithEvents tbAudioBalance As System.Windows.Forms.TrackBar
     Private WithEvents label54 As System.Windows.Forms.Label
@@ -1764,10 +1041,6 @@ End Sub
     Private WithEvents label23 As System.Windows.Forms.Label
     Private WithEvents label25 As System.Windows.Forms.Label
     Private WithEvents tabPage2 As System.Windows.Forms.TabPage
-    Private WithEvents label9 As System.Windows.Forms.Label
-    Private WithEvents tabControl2 As System.Windows.Forms.TabControl
-    Private WithEvents tabPage7 As System.Windows.Forms.TabPage
-    Private WithEvents btAudioSettings As System.Windows.Forms.Button
     Private WithEvents tabPage5 As System.Windows.Forms.TabPage
     Private WithEvents tabControl18 As System.Windows.Forms.TabControl
     Private WithEvents tabPage71 As System.Windows.Forms.TabPage
@@ -1811,15 +1084,20 @@ End Sub
     Private WithEvents label253 As System.Windows.Forms.Label
     Private WithEvents cbAudSound3DEnabled As System.Windows.Forms.CheckBox
     Private WithEvents tabPage4 As System.Windows.Forms.TabPage
-    Private WithEvents groupBox1 As System.Windows.Forms.GroupBox
-    Private WithEvents cbDebugMode As System.Windows.Forms.CheckBox
-    Private WithEvents mmLog As System.Windows.Forms.TextBox
-    Private WithEvents rbCapture As System.Windows.Forms.RadioButton
-    Private WithEvents rbPreview As System.Windows.Forms.RadioButton
     Private WithEvents btStop As System.Windows.Forms.Button
     Private WithEvents btStart As System.Windows.Forms.Button
     Private WithEvents saveFileDialog1 As System.Windows.Forms.SaveFileDialog
     Friend WithEvents llVideoTutorials As System.Windows.Forms.LinkLabel
-    Friend WithEvents VideoCapture1 As VisioForge.Controls.UI.WinForms.VideoCapture
+    Private WithEvents cbMode As ComboBox
+    Private WithEvents lbTimestamp As Label
     Private WithEvents cbLicensing As CheckBox
+    Private WithEvents cbDebugMode As CheckBox
+    Private WithEvents mmLog As TextBox
+    Private WithEvents lbInfo As Label
+    Private WithEvents btOutputConfigure As Button
+    Private WithEvents cbOutputFormat As ComboBox
+    Private WithEvents label7 As Label
+    Private WithEvents btSelectOutput As Button
+    Private WithEvents edOutput As TextBox
+    Private WithEvents label9 As Label
 End Class

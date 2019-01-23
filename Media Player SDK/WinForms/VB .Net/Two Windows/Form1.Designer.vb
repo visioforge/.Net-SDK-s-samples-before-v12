@@ -240,6 +240,7 @@ Partial Class Form1
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = true
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
         Me.Label1.Location = New System.Drawing.Point(577, 361)
@@ -260,6 +261,9 @@ Partial Class Form1
         '
         'MediaPlayer1
         '
+        Me.MediaPlayer1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.MediaPlayer1.Audio_Channel_Mapper = Nothing
         Me.MediaPlayer1.Audio_Effects_Enabled = false
         Me.MediaPlayer1.Audio_Effects_UseLegacyEffects = false
@@ -282,15 +286,17 @@ Partial Class Form1
         Me.MediaPlayer1.Debug_Mode = false
         Me.MediaPlayer1.Encryption_Key = ""
         Me.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.[String]
+        Me.MediaPlayer1.Face_Tracking = Nothing
         Me.MediaPlayer1.FilenamesOrURL = CType(resources.GetObject("MediaPlayer1.FilenamesOrURL"),System.Collections.Generic.List(Of String))
         Me.MediaPlayer1.Info_UseLibMediaInfo = false
         Me.MediaPlayer1.Location = New System.Drawing.Point(447, 9)
         Me.MediaPlayer1.Loop = false
+        Me.MediaPlayer1.Loop_DoNotSeekToBeginning = false
         Me.MediaPlayer1.MaximalSpeedPlayback = false
         Me.MediaPlayer1.Motion_Detection = Nothing
+        Me.MediaPlayer1.Motion_DetectionEx = Nothing
         Me.MediaPlayer1.MultiScreen_Enabled = false
         Me.MediaPlayer1.Name = "MediaPlayer1"
-        Me.MediaPlayer1.Motion_DetectionEx = Nothing
         Me.MediaPlayer1.ReversePlayback_CacheSize = 0
         Me.MediaPlayer1.ReversePlayback_Enabled = false
         Me.MediaPlayer1.Selection_Active = false
@@ -303,14 +309,13 @@ Partial Class Form1
         Me.MediaPlayer1.Source_Stream_AudioPresent = true
         Me.MediaPlayer1.Source_Stream_Size = CType(0,Long)
         Me.MediaPlayer1.Source_Stream_VideoPresent = true
-        Me.MediaPlayer1.Start_DelayEnabled = false
+        Me.MediaPlayer1.Play_DelayEnabled = false
         Me.MediaPlayer1.TabIndex = 32
         Me.MediaPlayer1.Video_Effects_Enabled = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
         VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
         VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black
-'TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
         VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
         VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
         VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true
@@ -340,7 +345,7 @@ Partial Class Form1
         Me.Controls.Add(Me.label14)
         Me.Controls.Add(Me.btSelectFile)
         Me.Controls.Add(Me.edFilename)
-        Me.MaximizeBox = false
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "Media Player SDK .Net - Two Windows Demo"
         Me.groupBox2.ResumeLayout(false)

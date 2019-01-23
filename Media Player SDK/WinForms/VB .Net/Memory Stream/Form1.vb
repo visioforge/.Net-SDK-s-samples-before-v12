@@ -21,7 +21,7 @@ Public Class Form1
             Dim fs As FileStream = New FileStream(edFilename.Text, FileMode.Open)
             Dim stream As ManagedIStream = New ManagedIStream(fs)
 
-            ' specifing settings
+            ' specifying settings
             ' MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
             MediaPlayer1.Source_Stream = stream
             MediaPlayer1.Source_Stream_Size = fs.Length
@@ -126,13 +126,13 @@ Public Class Form1
 
     End Sub
 
-    Private Sub MediaPlayer1_OnError(sender As System.Object, e As VisioForge.Types.ErrorsEventArgs) Handles MediaPlayer1.OnError
+    Private Sub MediaPlayer1_OnError(sender As System.Object, e As ErrorsEventArgs) Handles MediaPlayer1.OnError
 
         mmError.Text = mmError.Text + e.Message + Environment.NewLine
 
     End Sub
 
-    Private Sub linkLabel1_LinkClicked(sender As System.Object, e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
+    Private Sub linkLabel1_LinkClicked(sender As System.Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
 
         Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
         Process.Start(startInfo)
@@ -145,6 +145,16 @@ Public Class Form1
             mmError.Text = mmError.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
         End If
 
+    End Sub
+
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        btStop_Click(Nothing, Nothing)
+    End Sub
+
+    Private Sub btSelectFile_Click(sender As Object, e As EventArgs) Handles btSelectFile.Click
+        If (openFileDialog1.ShowDialog() = DialogResult.OK) Then
+            edFilename.Text = openFileDialog1.FileName
+        End If
     End Sub
 End Class
 

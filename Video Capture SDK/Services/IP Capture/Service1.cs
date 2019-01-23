@@ -48,9 +48,10 @@ namespace IPCaptureService
             VideoCapture1.IP_Camera_Source.Type = VFIPSource.Auto_FFMPEG;
             VideoCapture1.IP_Camera_Source.URL = "http://212.162.177.75/mjpg/video.mjpg";
 
-            VideoCapture1.Output_Filename = "d:\\ip_capture_output.mp4"; // Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\service_output.wmv";
+            VideoCapture1.Output_Filename = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\service_output.wmv";
+            VideoCapture1.Output_Filename = "d:\\ip_capture_output.mp4"; 
 
-            var mp4Output = new VFMP4Output();
+            var mp4Output = new VFMP4v8v10Output();
             mp4Output.MP4Mode = VFMP4Mode.v10;
             VideoCapture1.Output_Format = mp4Output;
 

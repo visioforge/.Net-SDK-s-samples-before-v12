@@ -1,4 +1,5 @@
 using System.Threading;
+using VisioForge.Controls.UI.Dialogs.VideoEffects;
 
 namespace Media_Player_Demo
 {
@@ -96,11 +97,6 @@ namespace Media_Player_Demo
             }
         }
 
-        private void cbTextLogo_CheckedChanged(object sender, EventArgs e)
-        {
-            btTextLogoUpdateParams_Click(null, null);
-        }
-
         private void cbGreyscale_CheckedChanged(object sender, EventArgs e)
         {
             IVFVideoEffectGrayscale grayscale;
@@ -137,256 +133,6 @@ namespace Media_Player_Demo
                     invert.Enabled = cbInvert.Checked;
                 }
             }
-        }
-
-        private void btFont_Click(object sender, EventArgs e)
-        {
-            if (fontDialog1.ShowDialog() == DialogResult.OK)
-            {
-                btTextLogoUpdateParams_Click(null, null);
-            }
-        }
-
-        private void btTextLogoUpdateParams_Click(object sender, EventArgs e)
-        {
-            VFTextRotationMode rotate;
-            VFTextFlipMode flip;
-
-            StringFormat formatFlags = new StringFormat();
-
-            if (cbTextLogoVertical.Checked)
-            {
-                formatFlags.FormatFlags |= StringFormatFlags.DirectionVertical;
-            }
-
-            if (cbTextLogoRightToLeft.Checked)
-            {
-                formatFlags.FormatFlags |= StringFormatFlags.DirectionRightToLeft;
-            }
-
-            formatFlags.Alignment = (StringAlignment)cbTextLogoAlign.SelectedIndex;
-
-            IVFVideoEffectTextLogo textLogo;
-            var effect = MediaPlayer1.Video_Effects_Get("TextLogo");
-            if (effect == null)
-            {
-                textLogo = new VFVideoEffectTextLogo(cbTextLogo.Checked);
-                MediaPlayer1.Video_Effects_Add(textLogo);
-            }
-            else
-            {
-                textLogo = effect as IVFVideoEffectTextLogo;
-            }
-
-            if (textLogo == null)
-            {
-                MessageBox.Show("Unable to configure text logo effect.");
-                return;
-            }
-
-            textLogo.Enabled = cbTextLogo.Checked;
-            textLogo.Text = edTextLogo.Text;
-            textLogo.Left = Convert.ToInt32(edTextLogoLeft.Text);
-            textLogo.Top = Convert.ToInt32(edTextLogoTop.Text);
-            textLogo.Font = fontDialog1.Font;
-            textLogo.FontColor = fontDialog1.Color;
-
-            textLogo.BackgroundTransparent = cbTextLogoTranspBG.Checked;
-            textLogo.BackgroundColor = pnTextLogoBGColor.BackColor;
-            textLogo.StringFormat = formatFlags;
-            textLogo.Antialiasing = (TextRenderingHint)cbTextLogoAntialiasing.SelectedIndex;
-            textLogo.DrawQuality = (InterpolationMode)cbTextLogoDrawMode.SelectedIndex;
-
-            if (cbTextLogoUseRect.Checked)
-            {
-                textLogo.RectWidth = Convert.ToInt32(edTextLogoWidth.Text);
-                textLogo.RectHeight = Convert.ToInt32(edTextLogoHeight.Text);
-            }
-            else
-            {
-                textLogo.RectWidth = 0;
-                textLogo.RectHeight = 0;
-            }
-
-            if (rbTextLogoDegree0.Checked)
-            {
-                rotate = VFTextRotationMode.RmNone;
-            }
-            else if (rbTextLogoDegree90.Checked)
-            {
-                rotate = VFTextRotationMode.Rm90;
-            }
-            else if (rbTextLogoDegree180.Checked)
-            {
-                rotate = VFTextRotationMode.Rm180;
-            }
-            else
-            {
-                rotate = VFTextRotationMode.Rm270;
-            }
-
-            if (rbTextLogoFlipNone.Checked)
-            {
-                flip = VFTextFlipMode.None;
-            }
-            else if (rbTextLogoFlipX.Checked)
-            {
-                flip = VFTextFlipMode.X;
-            }
-            else if (rbTextLogoFlipY.Checked)
-            {
-                flip = VFTextFlipMode.Y;
-            }
-            else
-            {
-                flip = VFTextFlipMode.XAndY;
-            }
-
-            textLogo.RotationMode = rotate;
-            textLogo.FlipMode = flip;
-
-            textLogo.GradientEnabled = cbTextLogoGradientEnabled.Checked;
-            textLogo.GradientMode = (VFTextGradientMode)cbTextLogoGradMode.SelectedIndex;
-            textLogo.GradientColor1 = pnTextLogoGradColor1.BackColor;
-            textLogo.GradientColor2 = pnTextLogoGradColor2.BackColor;
-
-            textLogo.BorderMode = (VFTextEffectMode)cbTextLogoEffectrMode.SelectedIndex;
-            textLogo.BorderInnerColor = pnTextLogoInnerColor.BackColor;
-            textLogo.BorderOuterColor = pnTextLogoOuterColor.BackColor;
-            textLogo.BorderInnerSize = Convert.ToInt32(edTextLogoInnerSize.Text);
-            textLogo.BorderOuterSize = Convert.ToInt32(edTextLogoOuterSize.Text);
-
-            textLogo.Shape = cbTextLogoShapeEnabled.Checked;
-            textLogo.ShapeLeft = Convert.ToInt32(edTextLogoShapeLeft.Text);
-            textLogo.ShapeTop = Convert.ToInt32(edTextLogoShapeTop.Text);
-            textLogo.ShapeType = (VFTextShapeType)cbTextLogoShapeType.SelectedIndex;
-            textLogo.ShapeWidth = Convert.ToInt32(edTextLogoShapeWidth.Text);
-            textLogo.ShapeHeight = Convert.ToInt32(edTextLogoShapeHeight.Text);
-            textLogo.ShapeColor = pnTextLogoShapeColor.BackColor;
-
-            textLogo.TransparencyLevel = tbTextLogoTransp.Value;
-
-            if (cbTextLogoDateTime.Checked)
-            {
-                textLogo.Mode = TextLogoMode.DateTime;
-                textLogo.DateTimeMask = "yyyy-MM-dd. hh:mm:ss";
-            }
-            else
-            {
-                textLogo.Mode = TextLogoMode.Text;
-            }
-
-            if (cbTextLogoFadeIn.Checked)
-            {
-                textLogo.FadeIn = true;
-                textLogo.FadeInDuration = 5000;
-            }
-            else
-            {
-                textLogo.FadeIn = false;
-            }
-
-            if (cbTextLogoFadeOut.Checked)
-            {
-                textLogo.FadeOut = true;
-                textLogo.FadeOutDuration = 5000;
-            }
-            else
-            {
-                textLogo.FadeOut = false;
-            }
-
-            textLogo.Update();
-        }
-
-        private void cbImageLogo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!File.Exists(edImageLogoFilename.Text))
-            {
-                if (cbImageLogo.Checked)
-                {
-                    MessageBox.Show("Unable to find " + edImageLogoFilename.Text);
-                    cbImageLogo.Checked = false;
-                }
-
-                return;
-            }
-
-            IVFVideoEffectImageLogo imageLogo;
-            var effect = MediaPlayer1.Video_Effects_Get("ImageLogo");
-            if (effect == null)
-            {
-                imageLogo = new VFVideoEffectImageLogo(cbImageLogo.Checked);
-                MediaPlayer1.Video_Effects_Add(imageLogo);
-            }
-            else
-            {
-                imageLogo = effect as IVFVideoEffectImageLogo;
-            }
-
-            if (imageLogo == null)
-            {
-                MessageBox.Show("Unable to configure image logo effect.");
-                return;
-            }
-
-            imageLogo.Enabled = cbImageLogo.Checked;
-            imageLogo.Filename = edImageLogoFilename.Text;
-            imageLogo.Left = Convert.ToUInt32(edImageLogoLeft.Text);
-            imageLogo.Top = Convert.ToUInt32(edImageLogoTop.Text);
-            imageLogo.TransparencyLevel = tbImageLogoTransp.Value;
-            imageLogo.ColorKey = pnImageLogoColorKey.ForeColor;
-            imageLogo.UseColorKey = cbImageLogoUseColorKey.Checked;
-            imageLogo.AnimationEnabled = true;
-
-            if (cbImageLogoShowAlways.Checked)
-            {
-                imageLogo.StartTime = 0;
-                imageLogo.StopTime = 0;
-            }
-            else
-            {
-                imageLogo.StartTime = Convert.ToInt32(edImageLogoStartTime.Text);
-                imageLogo.StopTime = Convert.ToInt32(edImageLogoStopTime.Text);
-            }
-        }
-
-        private void btSelectImage_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog2.ShowDialog() == DialogResult.OK)
-            {
-                this.edImageLogoFilename.Text = openFileDialog2.FileName;
-            }
-        }
-
-        private void tbGraphicLogoTransp_Scroll(object sender, EventArgs e)
-        {
-            this.cbImageLogo_CheckedChanged(null, null);
-        }
-
-        private void cbGraphicLogoUseColorKey_CheckedChanged(object sender, EventArgs e)
-        {
-            this.cbImageLogo_CheckedChanged(null, null);
-        }
-
-        private void pnGraphicLogoColorKey_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = this.pnImageLogoColorKey.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                this.pnImageLogoColorKey.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void cbGraphicLogoShowAlways_CheckedChanged(object sender, EventArgs e)
-        {
-            this.edImageLogoStartTime.Enabled = !this.cbImageLogoShowAlways.Checked;
-            this.edImageLogoStopTime.Enabled = !this.cbImageLogoShowAlways.Checked;
-            lbGraphicLogoStartTime.Enabled = !this.cbImageLogoShowAlways.Checked;
-            lbGraphicLogoStopTime.Enabled = !this.cbImageLogoShowAlways.Checked;
-
-            this.cbImageLogo_CheckedChanged(null, null);
         }
 
         private void btOSDInit_Click(object sender, EventArgs e)
@@ -1375,10 +1121,11 @@ namespace Media_Player_Demo
                 }
             }
         
-
             // Video effects
             MediaPlayer1.Video_Effects_Enabled = cbEffects.Checked;
             MediaPlayer1.Video_Effects_Clear();
+            lbTextLogos.Items.Clear();
+            lbImageLogos.Items.Clear();
 
             // Deinterlace
             if (cbDeinterlace.Checked)
@@ -1547,14 +1294,14 @@ namespace Media_Player_Demo
                 cbPan_CheckedChanged(null, null);
             }
 
-            if (cbImageLogo.Checked)
+            if (cbFlipX.Checked)
             {
-                cbImageLogo_CheckedChanged(null, null);
+                cbFlipX_CheckedChanged(null, null);
             }
 
-            if (cbTextLogo.Checked)
+            if (cbFlipY.Checked)
             {
-                btTextLogoUpdateParams_Click(null, null);
+                cbFlipY_CheckedChanged(null, null);
             }
 
             if (cbFadeInOut.Checked)
@@ -2033,67 +1780,7 @@ namespace Media_Player_Demo
         {
             MediaPlayer1.Audio_Effects_Enable(-1, 4, cbAudTrueBassEnabled.Checked);
         }
-
-        private void pnTextLogoBGColor_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = pnTextLogoGradColor1.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pnTextLogoGradColor1.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void pnTextLogoGradColor1_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = pnTextLogoGradColor1.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pnTextLogoGradColor1.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void pnTextLogoGradColor2_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = pnTextLogoGradColor2.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pnTextLogoGradColor2.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void pnTextLogoInnerColor_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = pnTextLogoInnerColor.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pnTextLogoInnerColor.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void pnTextLogoOuterColor_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = pnTextLogoOuterColor.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pnTextLogoOuterColor.BackColor = colorDialog1.Color;
-            }
-        }
-
-        private void pnTextLogoShapeColor_Click(object sender, EventArgs e)
-        {
-            colorDialog1.Color = pnTextLogoShapeColor.BackColor;
-
-            if (colorDialog1.ShowDialog() == DialogResult.OK)
-            {
-                pnTextLogoShapeColor.BackColor = colorDialog1.Color;
-            }
-        }
-
+        
         private void tbAud3DSound_Scroll(object sender, EventArgs e)
         {
             MediaPlayer1.Audio_Effects_Sound3D(-1, 3, tbAud3DSound.Value);
@@ -2462,7 +2149,7 @@ namespace Media_Player_Demo
         private void btTest_Click(object sender, EventArgs e)
         {
             var indexer = new ASFIndexer();
-            indexer.OnStop += delegate(object o, EventArgs args)
+            indexer.OnStop += delegate
             {
                 MessageBox.Show("Indexing complete.");
             };
@@ -3404,17 +3091,11 @@ namespace Media_Player_Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text += " (SDK v" + MediaPlayer1.SDK_Version.ToString() + ", " + MediaPlayer1.SDK_State + "), VB.Net";
+            Text += " (SDK v" + MediaPlayer1.SDK_Version.ToString() + ", " + MediaPlayer1.SDK_State + "), C#";
 
             // set combobox indexes
             cbSourceMode.SelectedIndex = 0;
             cbImageType.SelectedIndex = 1;
-            cbTextLogoAlign.SelectedIndex = 0;
-            cbTextLogoAntialiasing.SelectedIndex = 0;
-            cbTextLogoDrawMode.SelectedIndex = 0;
-            cbTextLogoEffectrMode.SelectedIndex = 0;
-            cbTextLogoGradMode.SelectedIndex = 0;
-            cbTextLogoShapeType.SelectedIndex = 0;
             cbMotDetHLColor.SelectedIndex = 1;
             cbBarcodeType.SelectedIndex = 0;
             cbDirect2DRotate.SelectedIndex = 0;
@@ -3422,14 +3103,27 @@ namespace Media_Player_Demo
             rbMotionDetectionExProcessor.SelectedIndex = 1;
             rbMotionDetectionExDetector.SelectedIndex = 1;
 
-            foreach (var device in MediaPlayer1.Audio_OutputDevices)
+            string defaultAudioRenderer = string.Empty;
+            foreach (string audioOutputDevice in MediaPlayer1.Audio_OutputDevices)
             {
-                cbAudioOutputDevice.Items.Add(device);
+                cbAudioOutputDevice.Items.Add(audioOutputDevice);
+
+                if (audioOutputDevice.Contains("Default DirectSound Device"))
+                {
+                    defaultAudioRenderer = audioOutputDevice;
+                }
             }
-            
+
             if (cbAudioOutputDevice.Items.Count > 0)
             {
-                cbAudioOutputDevice.SelectedIndex = 0;
+                if (string.IsNullOrEmpty(defaultAudioRenderer))
+                {
+                    cbAudioOutputDevice.SelectedIndex = 0;
+                }
+                else
+                {
+                    cbAudioOutputDevice.Text = defaultAudioRenderer;
+                }
             }
 
             MediaInfo.ReadFilters();
@@ -3471,6 +3165,124 @@ namespace Media_Player_Demo
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             MediaPlayer1.Debug_Dir =
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
+        }
+
+        private void Form1_SizeChanged(object sender, EventArgs e)
+        {
+            MediaPlayer1.Width = Width - MediaPlayer1.Left - 30;
+            MediaPlayer1.Height = Height - MediaPlayer1.Top - 230;
+        }
+
+        private void btTextLogoAdd_Click(object sender, EventArgs e)
+        {
+            var dlg = new TextLogoSettingsDialog();
+
+            var name = dlg.GenerateNewEffectName(MediaPlayer1.Core);
+            var effect = new VFVideoEffectTextLogo(true, name);
+
+            MediaPlayer1.Video_Effects_Add(effect);
+            lbTextLogos.Items.Add(effect.Name);
+            dlg.Fill(effect);
+
+            dlg.ShowDialog(this);
+            dlg.Dispose();
+        }
+
+        private void btTextLogoEdit_Click(object sender, EventArgs e)
+        {
+            if (lbTextLogos.SelectedItem != null)
+            {
+                var dlg = new TextLogoSettingsDialog();
+                var effect = MediaPlayer1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                dlg.Attach(effect);
+
+                dlg.ShowDialog(this);
+                dlg.Dispose();
+            }
+        }
+
+        private void btTextLogoRemove_Click(object sender, EventArgs e)
+        {
+            if (lbTextLogos.SelectedItem != null)
+            {
+                MediaPlayer1.Video_Effects_Remove((string)lbTextLogos.SelectedItem);
+                lbTextLogos.Items.Remove(lbTextLogos.SelectedItem);
+            }
+        }
+
+        private void btImageLogoAdd_Click(object sender, EventArgs e)
+        {
+            var dlg = new ImageLogoSettingsDialog();
+
+            var name = dlg.GenerateNewEffectName(MediaPlayer1.Core);
+            var effect = new VFVideoEffectImageLogo(true, name);
+
+            MediaPlayer1.Video_Effects_Add(effect);
+            lbImageLogos.Items.Add(effect.Name);
+
+            dlg.Fill(effect);
+            dlg.ShowDialog(this);
+            dlg.Dispose();
+        }
+
+        private void btImageLogoEdit_Click(object sender, EventArgs e)
+        {
+            if (lbTextLogos.SelectedItem != null)
+            {
+                var dlg = new TextLogoSettingsDialog();
+                var effect = MediaPlayer1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                dlg.Attach(effect);
+
+                dlg.ShowDialog(this);
+                dlg.Dispose();
+            }
+        }
+
+        private void btImageLogoRemove_Click(object sender, EventArgs e)
+        {
+            if (lbImageLogos.SelectedItem != null)
+            {
+                MediaPlayer1.Video_Effects_Remove((string)lbImageLogos.SelectedItem);
+                lbImageLogos.Items.Remove(lbImageLogos.SelectedItem);
+            }
+        }
+
+        private void cbFlipX_CheckedChanged(object sender, EventArgs e)
+        {
+            IVFVideoEffectFlipDown flip;
+            var effect = MediaPlayer1.Video_Effects_Get("FlipDown");
+            if (effect == null)
+            {
+                flip = new VFVideoEffectFlipDown(cbFlipX.Checked);
+                MediaPlayer1.Video_Effects_Add(flip);
+            }
+            else
+            {
+                flip = effect as IVFVideoEffectFlipDown;
+                if (flip != null)
+                {
+                    flip.Enabled = cbFlipX.Checked;
+                }
+            }
+        }
+
+        private void cbFlipY_CheckedChanged(object sender, EventArgs e)
+        {
+            IVFVideoEffectFlipRight flip;
+            var effect = MediaPlayer1.Video_Effects_Get("FlipRight");
+            if (effect == null)
+            {
+                flip = new VFVideoEffectFlipRight(cbFlipY.Checked);
+                MediaPlayer1.Video_Effects_Add(flip);
+            }
+            else
+            {
+                flip = effect as IVFVideoEffectFlipRight;
+                if (flip != null)
+                {
+                    flip.Enabled = cbFlipY.Checked;
+                }
+            }
         }
     }
 }

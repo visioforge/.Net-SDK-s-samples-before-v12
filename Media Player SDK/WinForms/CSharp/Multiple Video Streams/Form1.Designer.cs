@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.btSelectFile = new System.Windows.Forms.Button();
@@ -50,7 +49,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer1 = new System.Windows.Forms.Timer();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbTimeline)).BeginInit();
             this.SuspendLayout();
@@ -215,14 +214,13 @@
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.Start_DelayEnabled = false;
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 9;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
             videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Black;
-// TODO: Code generation for '' failed because of Exception 'Invalid Primitive Type: System.IntPtr. Consider using CodeObjectCreateExpression.'.
             videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
             videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
@@ -312,8 +310,13 @@
             this.Controls.Add(this.btSelectFile);
             this.Controls.Add(this.edFilenameOrURL);
             this.Controls.Add(this.label14);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Multiple Video Streams Demo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

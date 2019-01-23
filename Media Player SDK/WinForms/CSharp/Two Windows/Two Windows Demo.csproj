@@ -44,7 +44,8 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\..\..\..\..\VisioForge.MediaFramework\StaticCodeAnalyses.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -53,7 +54,10 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>visioforge_main_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,9 +66,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="VisioForge.Types" />
-    <Reference Include="VisioForge.Controls.UI" />
-    <Reference Include="VisioForge.Tools" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Form1.cs">
@@ -120,10 +121,17 @@
       <Isolated>False</Isolated>
     </COMReference>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="VisioForge.Types" />
+    <Reference Include="VisioForge.Controls.UI" />
+    <Reference Include="VisioForge.Controls.UI.Dialogs" />
+    <Reference Include="VisioForge.Controls" />
+    <Reference Include="VisioForge.Tools" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="visioforge_main_icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <AssemblySearchPaths>$(AssemblySearchPaths);{GAC}</AssemblySearchPaths>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

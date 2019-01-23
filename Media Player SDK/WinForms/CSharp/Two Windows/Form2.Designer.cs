@@ -30,6 +30,7 @@ namespace Two_Windows_Demo
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.mmError = new System.Windows.Forms.TextBox();
@@ -39,6 +40,8 @@ namespace Two_Windows_Demo
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.cbLicensing);
             this.groupBox1.Controls.Add(this.mmError);
             this.groupBox1.Location = new System.Drawing.Point(12, 483);
@@ -69,6 +72,9 @@ namespace Two_Windows_Demo
             // 
             // pnScreen
             // 
+            this.pnScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnScreen.BackColor = System.Drawing.Color.Black;
             this.pnScreen.Location = new System.Drawing.Point(12, 12);
             this.pnScreen.Name = "pnScreen";
@@ -82,10 +88,12 @@ namespace Two_Windows_Demo
             this.ClientSize = new System.Drawing.Size(664, 604);
             this.Controls.Add(this.pnScreen);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form2";
             this.Text = "Media Player SDK - Two Windows Demo - Window 2";
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.SizeChanged += new System.EventHandler(this.Form2_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

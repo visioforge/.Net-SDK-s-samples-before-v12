@@ -52,7 +52,6 @@ namespace Audio_Player_Demo
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbTimeline)).BeginInit();
@@ -247,54 +246,6 @@ namespace Audio_Player_Demo
             this.linkLabel1.Text = "Watch video tutorials!";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // MediaPlayer1
-            // 
-            this.MediaPlayer1.Audio_Effects_Enabled = false;
-            this.MediaPlayer1.Audio_Enhancer_Enabled = false;
-            this.MediaPlayer1.Audio_OutputDevice = "";
-            this.MediaPlayer1.Audio_PlayAudio = true;
-            this.MediaPlayer1.Audio_Sample_Grabber_Enabled = false;
-            this.MediaPlayer1.Audio_VUMeter_Enabled = false;
-            this.MediaPlayer1.Audio_VUMeter_Pro_Enabled = false;
-            this.MediaPlayer1.Audio_VUMeter_Pro_Volume = 0;
-            this.MediaPlayer1.BackColor = System.Drawing.Color.Black;
-            this.MediaPlayer1.Barcode_Reader_Enabled = false;
-            this.MediaPlayer1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
-            this.MediaPlayer1.Custom_Audio_Decoder = null;
-            this.MediaPlayer1.Custom_Splitter = null;
-            this.MediaPlayer1.Custom_Video_Decoder = null;
-            this.MediaPlayer1.Debug_DeepCleanUp = false;
-            this.MediaPlayer1.Debug_Dir = null;
-            this.MediaPlayer1.Debug_Mode = false;
-            this.MediaPlayer1.Encryption_Key = "";
-            this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
-            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
-            this.MediaPlayer1.Info_UseLibMediaInfo = false;
-            this.MediaPlayer1.Location = new System.Drawing.Point(354, 331);
-            this.MediaPlayer1.Loop = false;
-            this.MediaPlayer1.MaximalSpeedPlayback = false;
-            this.MediaPlayer1.MultiScreen_Enabled = false;
-            this.MediaPlayer1.Name = "MediaPlayer1";
-            this.MediaPlayer1.ReversePlayback_CacheSize = 0;
-            this.MediaPlayer1.ReversePlayback_Enabled = false;
-            this.MediaPlayer1.Selection_Active = false;
-            this.MediaPlayer1.Selection_Start = 0;
-            this.MediaPlayer1.Selection_Stop = 0;
-            this.MediaPlayer1.Size = new System.Drawing.Size(17, 16);
-            this.MediaPlayer1.Source_Custom_CLSID = null;
-            this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
-            this.MediaPlayer1.Source_Stream = null;
-            this.MediaPlayer1.Source_Stream_AudioPresent = true;
-            this.MediaPlayer1.Source_Stream_Size = ((long)(0));
-            this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.TabIndex = 18;
-            this.MediaPlayer1.Video_Effects_Enabled = false;
-            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
-            this.MediaPlayer1.Video_Stream_Index = 0;
-            this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
-            this.MediaPlayer1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.MediaPlayer1_OnLicenseRequired);
-            this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
-            // 
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
@@ -311,7 +262,6 @@ namespace Audio_Player_Demo
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 356);
             this.Controls.Add(this.cbLicensing);
-            this.Controls.Add(this.MediaPlayer1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mmError);
@@ -324,9 +274,13 @@ namespace Audio_Player_Demo
             this.Controls.Add(this.btSelectFile);
             this.Controls.Add(this.edFilename);
             this.Controls.Add(this.label14);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Audio Player Demo";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -360,7 +314,7 @@ namespace Audio_Player_Demo
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private VisioForge.Controls.UI.WinForms.MediaPlayer MediaPlayer1;
+
         private System.Windows.Forms.CheckBox cbLicensing;
     }
 }
