@@ -96,27 +96,27 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             // Main settings
             switch (cbMP4Mode.SelectedIndex)
             {
-                case 3:
+                case 0:
                     //  v11 (CPU) H264
                    video.Codec = VFMFVideoEncoder.MS_H264;
                     break;
-                case 4:
+                case 1:
                     //  v11 nVidia NVENC H264
                    video.Codec = VFMFVideoEncoder.NVENC_H264;
                     break;
-                case 5:
+                case 2:
                     //  v11 Intel QuickSync H264
                    video.Codec = VFMFVideoEncoder.QSV_H264;
                     break;
-                case 6:
+                case 3:
                     //  v11 AMD Radeon H264
                    video.Codec = VFMFVideoEncoder.AMD_H264;
                     break;
-                case 7:
+                case 4:
                     //  v11 nVidia NVENC H265
                    video.Codec = VFMFVideoEncoder.NVENC_H265;
                     break;
-                case 8:
+                case 5:
                     //  v11 AMD Radeon H265
                    video.Codec = VFMFVideoEncoder.AMD_H265;
                     break;
