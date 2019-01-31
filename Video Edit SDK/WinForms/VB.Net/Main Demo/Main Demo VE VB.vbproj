@@ -68,9 +68,9 @@
     <DocumentationFile>VB.Net_Demo.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <DebugType>full</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <CodeAnalysisRuleSet>..\..\..\..\..\VisioForge.MediaFramework\StaticCodeAnalyses.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <DefineTrace>true</DefineTrace>
@@ -79,8 +79,8 @@
     <Optimize>true</Optimize>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>visioforge_main_icon.ico</ApplicationIcon>
@@ -92,6 +92,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VisioForge.Types, Version=14.0.9.0, Culture=neutral, PublicKeyToken=722de1c1c0a7f49e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Types.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -152,6 +155,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">
@@ -164,20 +168,35 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="VisioForge.Types" />
-    <Reference Include="VisioForge.Controls.UI" />
-    <Reference Include="VisioForge.Controls.UI.Dialogs" />
-    <Reference Include="VisioForge.Controls" />
-    <Reference Include="VisioForge.Tools" />
+    <Reference Include="VisioForge.Controls, Version=14.0.9.0, Culture=neutral, PublicKeyToken=5873e863f1bcda5d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Controls.UI, Version=14.0.9.0, Culture=neutral, PublicKeyToken=eafa6bd21aa991fd, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Controls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Controls.UI.Dialogs, Version=14.0.9.0, Culture=neutral, PublicKeyToken=3d84672df68c33ac, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Controls.UI.Dialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.DirectX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=2f064561f42d5b6a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.MediaFramework, Version=14.0.9.0, Culture=neutral, PublicKeyToken=14e66dd726c53f11, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.MediaFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Shared, Version=14.0.9.0, Culture=neutral, PublicKeyToken=4cb7f6778cad43a2, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Tools, Version=14.0.9.0, Culture=neutral, PublicKeyToken=33c6ded9724deec2, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Tools.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="visioforge_main_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
-    <PostBuildEvent>if "$(ConfigurationName)" == "Debug" (
-vfeditbin.cmd "$(TargetPath)"
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
