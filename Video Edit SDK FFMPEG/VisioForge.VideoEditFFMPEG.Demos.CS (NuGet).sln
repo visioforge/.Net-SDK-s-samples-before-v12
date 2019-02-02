@@ -13,9 +13,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{BEB35102-F43
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CSharp", "CSharp", "{3F3567FA-DE52-4B4A-90B2-CE0EE171BA30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo VE FFMPEG", "WinForms\CSharp\Main Demo\Main Demo VE FFMPEG (NuGet).csproj", "{4CABE607-37A4-461C-B965-142E0E677232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo VE FFMPEG (NuGet)", "WinForms\CSharp\Main Demo\Main Demo VE FFMPEG (NuGet).csproj", "{4CABE607-37A4-461C-B965-142E0E677232}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo FFMPEG WPF", "WPF\CSharp\Main Demo\Main Demo FFMPEG WPF (NuGet).csproj", "{C8EBEC6E-F1CF-460D-B0B2-2A2F0675E000}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo FFMPEG WPF (NuGet)", "WPF\CSharp\Main Demo\Main Demo FFMPEG WPF (NuGet).csproj", "{C8EBEC6E-F1CF-460D-B0B2-2A2F0675E000}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C789576D-6C9B-45D7-83AF-69454BB3B4C3}"
+	ProjectSection(SolutionItems) = preProject
+		README_NUGET.txt = README_NUGET.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

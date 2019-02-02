@@ -3,29 +3,34 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2011
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio Player Demo", "WinForms\CSharp\Audio Player\Audio Player Demo (NuGet).csproj", "{AEBEA0DD-44E1-4351-A9F2-FC6E46CFFB93}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audio Player Demo (NuGet)", "WinForms\CSharp\Audio Player\Audio Player Demo (NuGet).csproj", "{AEBEA0DD-44E1-4351-A9F2-FC6E46CFFB93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVD Player Demo", "WinForms\CSharp\DVD Player\DVD Player Demo (NuGet).csproj", "{5D95E60B-D07E-4ACE-89E6-C28C09F4151B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DVD Player Demo (NuGet)", "WinForms\CSharp\DVD Player\DVD Player Demo (NuGet).csproj", "{5D95E60B-D07E-4ACE-89E6-C28C09F4151B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memory Playback Demo", "WinForms\CSharp\Memory Stream\Memory Playback Demo (NuGet).csproj", "{25DA5DDB-F811-4D93-A359-28C76185E9C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Memory Playback Demo (NuGet)", "WinForms\CSharp\Memory Stream\Memory Playback Demo (NuGet).csproj", "{25DA5DDB-F811-4D93-A359-28C76185E9C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Two Windows Demo", "WinForms\CSharp\Two Windows\Two Windows Demo (NuGet).csproj", "{04E1EC37-8636-4E41-85D7-A3934C6C023D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Two Windows Demo (NuGet)", "WinForms\CSharp\Two Windows\Two Windows Demo (NuGet).csproj", "{04E1EC37-8636-4E41-85D7-A3934C6C023D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WinForms", "WinForms", "{743796DD-6F87-4CD9-8419-0B8CE16B4CB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{C65A40AE-D7BC-4311-85F5-30D463D55564}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seamless Playback Demo", "WinForms\CSharp\Seamless Playback\Seamless Playback Demo (NuGet).csproj", "{3A2FBF0F-A809-4C9E-8C87-798EC6ABB3BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seamless Playback Demo (NuGet)", "WinForms\CSharp\Seamless Playback\Seamless Playback Demo (NuGet).csproj", "{3A2FBF0F-A809-4C9E-8C87-798EC6ABB3BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multiple Video Streams Demo", "WinForms\CSharp\Multiple Video Streams\Multiple Video Streams Demo (NuGet).csproj", "{BFDCC3A2-6364-43A1-88EE-8950763735FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Multiple Video Streams Demo (NuGet)", "WinForms\CSharp\Multiple Video Streams\Multiple Video Streams Demo (NuGet).csproj", "{BFDCC3A2-6364-43A1-88EE-8950763735FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video Mixing Demo", "WinForms\CSharp\Video Mixing Demo\Video Mixing Demo (NuGet).csproj", "{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video Mixing Demo (NuGet)", "WinForms\CSharp\Video Mixing Demo\Video Mixing Demo (NuGet).csproj", "{F6BB9AA5-9C91-4C28-9414-9BC9781B968A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Video Player Demo", "WinForms\CSharp\Simple Video Player\Simple Video Player Demo (NuGet).csproj", "{32BB8666-08DB-448E-B758-893EF8D26D92}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Video Player Demo (NuGet)", "WinForms\CSharp\Simple Video Player\Simple Video Player Demo (NuGet).csproj", "{32BB8666-08DB-448E-B758-893EF8D26D92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo MP", "WinForms\CSharp\Main Demo\Main Demo MP (NuGet).csproj", "{F3381D78-62A8-4730-A559-3B5ACDE8F667}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo MP (NuGet)", "WinForms\CSharp\Main Demo\Main Demo MP (NuGet).csproj", "{F3381D78-62A8-4730-A559-3B5ACDE8F667}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo MP WPF", "WPF\CSharp\Main Demo\Main Demo MP WPF (NuGet).csproj", "{E412F69E-2111-433E-856E-6ADE54655503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main Demo MP WPF (NuGet)", "WPF\CSharp\Main Demo\Main Demo MP WPF (NuGet).csproj", "{E412F69E-2111-433E-856E-6ADE54655503}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6D3D9298-BCDF-4A9E-94BC-1004B99A7EEE}"
+	ProjectSection(SolutionItems) = preProject
+		README_NUGET.txt = README_NUGET.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

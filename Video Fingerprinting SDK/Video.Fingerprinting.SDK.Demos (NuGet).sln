@@ -3,19 +3,24 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge DVS", "DVS\VisioForge DVS (NuGet).csproj", "{6A1CC026-CAE8-4C24-9431-FCAC02E53707}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge DVS (NuGet)", "DVS\VisioForge DVS (NuGet).csproj", "{6A1CC026-CAE8-4C24-9431-FCAC02E53707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge MMT", "MMT\VisioForge MMT (NuGet).csproj", "{2E6512D7-5DD4-424D-8035-9E6055151F2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge MMT (NuGet)", "MMT\VisioForge MMT (NuGet).csproj", "{2E6512D7-5DD4-424D-8035-9E6055151F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge MMT Live", "MMT Live\VisioForge MMT Live (NuGet).csproj", "{3035E133-6140-46EF-BAEE-3803EF20DE6E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VisioForge MMT Live (NuGet)", "MMT Live\VisioForge MMT Live (NuGet).csproj", "{3035E133-6140-46EF-BAEE-3803EF20DE6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_compare", "Console\vfp_compare\vfp_compare (NuGet).csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B7706AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_compare (NuGet)", "Console\vfp_compare\vfp_compare (NuGet).csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B7706AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_gen", "Console\vfp_gen\vfp_gen (NuGet).csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B77065F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_gen (NuGet)", "Console\vfp_gen\vfp_gen (NuGet).csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B77065F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_search", "Console\vfp_search\vfp_search (NuGet).csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B7706EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vfp_search (NuGet)", "Console\vfp_search\vfp_search (NuGet).csproj", "{BC3C6DBD-A913-4D60-9960-D01E9B7706EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageComparer", "Image Comparer\ImageComparer (NuGet).csproj", "{71B4B524-9080-4F39-B9F5-D9DBD589A115}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageComparer (NuGet)", "Image Comparer\ImageComparer (NuGet).csproj", "{71B4B524-9080-4F39-B9F5-D9DBD589A115}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{65AB50DF-8BEB-40FD-88F8-3617CE625125}"
+	ProjectSection(SolutionItems) = preProject
+		README_NUGET.txt = README_NUGET.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
