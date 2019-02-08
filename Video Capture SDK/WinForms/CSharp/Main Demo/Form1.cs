@@ -430,6 +430,8 @@ namespace VideoCapture_CSharp_Demo
                 cbDecklinkCaptureDevice.SelectedIndex = 0;
                 cbDecklinkCaptureDevice_SelectedIndexChanged(null, null);
             }
+
+            Form1_SizeChanged(this, EventArgs.Empty);
         }
 
         private void cbVideoInputDevice_SelectedIndexChanged(object sender, EventArgs e)
@@ -2463,7 +2465,7 @@ namespace VideoCapture_CSharp_Demo
             foreach (var form in multiscreenWindows)
             {
                 form.Close();
-                form.Dispose();
+                //form.Dispose();
             }
 
             multiscreenWindows.Clear();
