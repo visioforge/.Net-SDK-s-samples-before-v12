@@ -1,12 +1,12 @@
 ﻿Imports System.Globalization
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
+Imports VisioForge.Controls.UI.WinForms
 Imports VisioForge.Types.GPUVideoEffects
 Imports VisioForge.Types.VideoEffects ' ReSharper disable InconsistentNaming
 
 Imports System.IO
 Imports VisioForge.Tools.MediaInfo
 Imports VisioForge.Types
-Imports VisioForge.Controls.UI.WinForms
 Imports VisioForge.Tools
 
 Public Class Form1
@@ -1715,7 +1715,7 @@ Public Class Form1
 
         For Each form As Form In multiscreenWindows
             form.Close()
-            form.Dispose()
+            ' form.Dispose()
         Next
 
         multiscreenWindows.Clear()

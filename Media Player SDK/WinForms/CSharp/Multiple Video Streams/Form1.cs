@@ -92,7 +92,7 @@ namespace Multiple_Video_Streams_Demo
                 MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
             }
 
-            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
+            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
 
             MediaPlayer1.Play();
             

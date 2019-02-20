@@ -346,7 +346,7 @@
             videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
             videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
-            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
+            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
             // 
@@ -424,7 +424,7 @@
             videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
             videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
             this.MediaPlayer2.Video_Renderer = videoRendererSettingsWinForms2;
-            this.MediaPlayer2.Video_Sample_Grabber_UseForVideoEffects = true;
+            this.MediaPlayer2.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer2.Video_Stream_Index = 0;
             this.MediaPlayer2.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer2_OnStop);
             // 

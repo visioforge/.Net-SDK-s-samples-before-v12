@@ -436,7 +436,7 @@ Partial Class Form1
         VideoRendererSettingsWinForms3.Zoom_ShiftX = 0
         VideoRendererSettingsWinForms3.Zoom_ShiftY = 0
         Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms3
-        Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true
+        Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
         'groupBox3

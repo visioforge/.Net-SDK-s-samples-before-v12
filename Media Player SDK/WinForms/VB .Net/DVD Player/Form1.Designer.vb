@@ -519,7 +519,7 @@ Partial Class Form1
         VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
         VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
         Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
-        Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true
+        Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
         'Form1

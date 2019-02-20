@@ -2,7 +2,7 @@
 
 Public Class Form2
 
-    Public Event OnWindowSizeChanged()
+    Public Event OnWindowSizeChanged(sender As Object, e As EventArgs)
 
     Public Sub LogLicensing(message As String)
 
@@ -27,7 +27,7 @@ Public Class Form2
     End Property
 
     Private Sub Form2_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
-        RaiseEvent OnWindowSizeChanged
+        RaiseEvent OnWindowSizeChanged(sender, e)
     End Sub
 End Class
 

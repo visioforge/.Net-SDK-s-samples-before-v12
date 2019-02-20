@@ -1,5 +1,8 @@
 using System.Threading;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
+// ReSharper disable NotAccessedVariable
+// ReSharper disable InconsistentNaming
+// ReSharper disable InlineOutVariableDeclaration
 
 namespace Media_Player_Demo
 {
@@ -7,8 +10,6 @@ namespace Media_Player_Demo
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
-    using System.Drawing.Drawing2D;
-    using System.Drawing.Text;
     using System.Globalization;
     using System.IO;
     using System.Windows.Forms;
@@ -833,9 +834,9 @@ namespace Media_Player_Demo
             {
                 MediaPlayer1.ChromaKey = new ChromaKeySettings
                 {
-                    ContrastHigh = this.tbChromaKeyContrastHigh.Value,
-                    ContrastLow = this.tbChromaKeyContrastLow.Value,
-                    ImageFilename = this.edChromaKeyImage.Text
+                    ContrastHigh = tbChromaKeyContrastHigh.Value,
+                    ContrastLow = tbChromaKeyContrastLow.Value,
+                    ImageFilename = edChromaKeyImage.Text
                 };
 
                 if (rbChromaKeyGreen.Checked)
@@ -1068,10 +1069,8 @@ namespace Media_Player_Demo
             {
                 MediaPlayer1.Audio_Channel_Mapper = new AudioChannelMapperSettings
                 {
-                    Routes = this.audioChannelMapperItems.ToArray(),
-                    OutputChannelsCount =
-                                                                Convert.ToInt32(
-                                                                    this.edAudioChannelMapperOutputChannels.Text)
+                    Routes = audioChannelMapperItems.ToArray(),
+                    OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
                 };
             }
             else
@@ -1339,7 +1338,7 @@ namespace Media_Player_Demo
             // Motion detection-ex
             ConfigureMotionDetectionEx();
 
-            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
+            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
 
             MediaPlayer1.Play();
 
@@ -1664,7 +1663,7 @@ namespace Media_Player_Demo
             foreach (var form in multiscreenWindows)
             {
                 form.Close();
-                form.Dispose();
+                //form.Dispose();
             }
 
             multiscreenWindows.Clear();
@@ -2148,23 +2147,6 @@ namespace Media_Player_Demo
 
         private void btTest_Click(object sender, EventArgs e)
         {
-            var indexer = new ASFIndexer();
-            indexer.OnStop += delegate
-            {
-                MessageBox.Show("Indexing complete.");
-            };
-
-            indexer.OnError += delegate(object o, ErrorsEventArgs args)
-                {
-                    MessageBox.Show("Error during indexing: " + args.Message);
-                };
-
-            indexer.OnProgress += delegate(object o, ProgressEventArgs args)
-            {
-                Debug.WriteLine("Indexing progress: " + args.Progress);
-            };
-
-            indexer.Start(@"c:\samples\!_LH CAB FRONT 2018-09-10_12_00_03_862.asf", VFWMIndexerType.FrameNumbers, 4000, VFWMIndexType.NearestDataUnit);
         }
 
         private void cbZoom_CheckedChanged(object sender, EventArgs e)
@@ -2826,9 +2808,9 @@ namespace Media_Player_Demo
         {
             var item = new AudioChannelMapperItem
             {
-                SourceChannel = Convert.ToInt32(this.edAudioChannelMapperSourceChannel.Text),
-                TargetChannel = Convert.ToInt32(this.edAudioChannelMapperTargetChannel.Text),
-                TargetChannelVolume = this.tbAudioChannelMapperVolume.Value / 1000.0f
+                SourceChannel = Convert.ToInt32(edAudioChannelMapperSourceChannel.Text),
+                TargetChannel = Convert.ToInt32(edAudioChannelMapperTargetChannel.Text),
+                TargetChannelVolume = tbAudioChannelMapperVolume.Value / 1000.0f
             };
 
             audioChannelMapperItems.Add(item);
@@ -3091,7 +3073,7 @@ namespace Media_Player_Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Text += " (SDK v" + MediaPlayer1.SDK_Version.ToString() + ", " + MediaPlayer1.SDK_State + "), C#";
+            Text += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + "), C#";
 
             // set combobox indexes
             cbSourceMode.SelectedIndex = 0;

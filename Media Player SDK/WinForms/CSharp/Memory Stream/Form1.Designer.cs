@@ -453,7 +453,7 @@ namespace Memory_Stream_Demo
             videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
             videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
-            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
+            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
             this.MediaPlayer1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.MediaPlayer1_OnLicenseRequired);
