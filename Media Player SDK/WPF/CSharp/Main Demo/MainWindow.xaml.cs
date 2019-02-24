@@ -760,6 +760,9 @@ namespace Main_Demo
 
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
+            MediaPlayer1.Debug_Telemetry = cbTelemetry.IsChecked == true;
+            MediaPlayer1.Debug_Mode = cbDebugMode.IsChecked == true;
+
             zoom = 1.0;
             zoomShiftX = 0;
             zoomShiftY = 0;
@@ -893,9 +896,7 @@ namespace Main_Demo
             MediaPlayer1.Video_Renderer.BackgroundColor = MediaPlayer.ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
             MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.IsChecked == true;
             MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.IsChecked == true;
-
-            MediaPlayer1.Debug_Mode = cbDebugMode.IsChecked == true;
-
+            
             // Audio enhancement
             MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.IsChecked == true;
             if (MediaPlayer1.Audio_Enhancer_Enabled)

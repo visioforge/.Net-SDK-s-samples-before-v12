@@ -700,6 +700,10 @@ namespace VideoCapture_CSharp_Demo
         /// </param>
         private void btStart_Click(object sender, EventArgs e)
         {
+            VideoCapture1.Debug_Mode = cbDebugMode.Checked;
+            VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
+            VideoCapture1.Debug_Telemetry = cbTelemetry.Checked;
+
             zoom = 1.0;
             zoomShiftX = 0;
             zoomShiftY = 0;
@@ -727,8 +731,7 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.Video_Renderer.Zoom_ShiftX = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftY = 0;
 
-            VideoCapture1.Debug_Mode = cbDebugMode.Checked;
-            VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
+            
             VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH");
 
             VideoCapture1.Video_Effects_Clear();

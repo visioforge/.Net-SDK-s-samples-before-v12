@@ -597,6 +597,7 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
+        Me.cbTelemetry = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout()
         Me.tabPage10.SuspendLayout()
         Me.tabPage9.SuspendLayout()
@@ -756,12 +757,13 @@ Partial Class Form1
         '
         'tabPage10
         '
+        Me.tabPage10.Controls.Add(Me.cbTelemetry)
         Me.tabPage10.Controls.Add(Me.cbLicensing)
         Me.tabPage10.Controls.Add(Me.mmLog)
         Me.tabPage10.Controls.Add(Me.cbDebugMode)
         Me.tabPage10.Location = New System.Drawing.Point(4, 22)
         Me.tabPage10.Name = "tabPage10"
-        Me.tabPage10.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage10.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage10.Size = New System.Drawing.Size(301, 120)
         Me.tabPage10.TabIndex = 2
         Me.tabPage10.Text = "Debug"
@@ -770,7 +772,7 @@ Partial Class Form1
         'cbLicensing
         '
         Me.cbLicensing.AutoSize = True
-        Me.cbLicensing.Location = New System.Drawing.Point(128, 13)
+        Me.cbLicensing.Location = New System.Drawing.Point(109, 13)
         Me.cbLicensing.Name = "cbLicensing"
         Me.cbLicensing.Size = New System.Drawing.Size(91, 17)
         Me.cbLicensing.TabIndex = 4
@@ -801,7 +803,7 @@ Partial Class Form1
         Me.tabPage9.Controls.Add(Me.tabControl13)
         Me.tabPage9.Location = New System.Drawing.Point(4, 22)
         Me.tabPage9.Name = "tabPage9"
-        Me.tabPage9.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage9.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage9.Size = New System.Drawing.Size(301, 120)
         Me.tabPage9.TabIndex = 1
         Me.tabPage9.Text = "Screenshot"
@@ -829,7 +831,7 @@ Partial Class Form1
         Me.tabPage54.Controls.Add(Me.tbJPEGQuality)
         Me.tabPage54.Location = New System.Drawing.Point(4, 22)
         Me.tabPage54.Name = "tabPage54"
-        Me.tabPage54.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage54.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage54.Size = New System.Drawing.Size(285, 85)
         Me.tabPage54.TabIndex = 0
         Me.tabPage54.Text = "Main"
@@ -918,7 +920,7 @@ Partial Class Form1
         Me.tabPage55.Controls.Add(Me.cbScreenshotResize)
         Me.tabPage55.Location = New System.Drawing.Point(4, 22)
         Me.tabPage55.Name = "tabPage55"
-        Me.tabPage55.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage55.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage55.Size = New System.Drawing.Size(285, 85)
         Me.tabPage55.TabIndex = 1
         Me.tabPage55.Text = "Resize"
@@ -973,7 +975,7 @@ Partial Class Form1
         Me.TabPage48.Controls.Add(Me.linkLabel2)
         Me.TabPage48.Location = New System.Drawing.Point(4, 22)
         Me.TabPage48.Name = "TabPage48"
-        Me.TabPage48.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage48.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage48.Size = New System.Drawing.Size(301, 120)
         Me.TabPage48.TabIndex = 3
         Me.TabPage48.Text = "VLC engine"
@@ -1252,7 +1254,7 @@ Partial Class Form1
         Me.tabPage1.Controls.Add(Me.tabControl2)
         Me.tabPage1.Location = New System.Drawing.Point(4, 22)
         Me.tabPage1.Name = "tabPage1"
-        Me.tabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage1.Size = New System.Drawing.Size(301, 492)
         Me.tabPage1.TabIndex = 0
         Me.tabPage1.Text = "Info"
@@ -1295,7 +1297,7 @@ Partial Class Form1
         Me.tabPage6.Controls.Add(Me.mmInfo)
         Me.tabPage6.Location = New System.Drawing.Point(4, 22)
         Me.tabPage6.Name = "tabPage6"
-        Me.tabPage6.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage6.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage6.Size = New System.Drawing.Size(264, 316)
         Me.tabPage6.TabIndex = 0
         Me.tabPage6.Text = "File"
@@ -1322,7 +1324,7 @@ Partial Class Form1
         Me.tabPage7.Controls.Add(Me.label1)
         Me.tabPage7.Location = New System.Drawing.Point(4, 22)
         Me.tabPage7.Name = "tabPage7"
-        Me.tabPage7.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage7.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage7.Size = New System.Drawing.Size(264, 316)
         Me.tabPage7.TabIndex = 1
         Me.tabPage7.Text = "DVD"
@@ -1404,7 +1406,7 @@ Partial Class Form1
         Me.TabPage47.Controls.Add(Me.btReadTags)
         Me.TabPage47.Location = New System.Drawing.Point(4, 22)
         Me.TabPage47.Name = "TabPage47"
-        Me.TabPage47.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage47.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage47.Size = New System.Drawing.Size(264, 316)
         Me.TabPage47.TabIndex = 2
         Me.TabPage47.Text = "Tags"
@@ -1463,7 +1465,7 @@ Partial Class Form1
         Me.tabPage2.Controls.Add(Me.label5)
         Me.tabPage2.Location = New System.Drawing.Point(4, 22)
         Me.tabPage2.Name = "tabPage2"
-        Me.tabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage2.Size = New System.Drawing.Size(301, 492)
         Me.tabPage2.TabIndex = 1
         Me.tabPage2.Text = "Audio output"
@@ -1696,7 +1698,7 @@ Partial Class Form1
         Me.tabPage3.Controls.Add(Me.tabControl4)
         Me.tabPage3.Location = New System.Drawing.Point(4, 22)
         Me.tabPage3.Name = "tabPage3"
-        Me.tabPage3.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage3.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage3.Size = New System.Drawing.Size(301, 492)
         Me.tabPage3.TabIndex = 2
         Me.tabPage3.Text = "Display"
@@ -1730,7 +1732,7 @@ Partial Class Form1
         Me.tabPage16.Controls.Add(Me.cbAspectRatioUseCustom)
         Me.tabPage16.Location = New System.Drawing.Point(4, 22)
         Me.tabPage16.Name = "tabPage16"
-        Me.tabPage16.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage16.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage16.Size = New System.Drawing.Size(284, 454)
         Me.tabPage16.TabIndex = 0
         Me.tabPage16.Text = "Main"
@@ -1998,7 +2000,7 @@ Partial Class Form1
         Me.tabPage17.Controls.Add(Me.pnScreen1)
         Me.tabPage17.Location = New System.Drawing.Point(4, 22)
         Me.tabPage17.Name = "tabPage17"
-        Me.tabPage17.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage17.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage17.Size = New System.Drawing.Size(284, 454)
         Me.tabPage17.TabIndex = 1
         Me.tabPage17.Text = "Multiscreen"
@@ -2105,7 +2107,7 @@ Partial Class Form1
         Me.tabPage4.Controls.Add(Me.tabControl17)
         Me.tabPage4.Location = New System.Drawing.Point(4, 22)
         Me.tabPage4.Name = "tabPage4"
-        Me.tabPage4.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage4.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage4.Size = New System.Drawing.Size(301, 492)
         Me.tabPage4.TabIndex = 3
         Me.tabPage4.Text = "Video processing"
@@ -2144,7 +2146,7 @@ Partial Class Form1
         Me.tabPage68.Controls.Add(Me.cbEffects)
         Me.tabPage68.Location = New System.Drawing.Point(4, 22)
         Me.tabPage68.Name = "tabPage68"
-        Me.tabPage68.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage68.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage68.Size = New System.Drawing.Size(290, 459)
         Me.tabPage68.TabIndex = 0
         Me.tabPage68.Text = "Effects (SW)"
@@ -2228,7 +2230,7 @@ Partial Class Form1
         Me.tabPage29.Controls.Add(Me.btTextLogoAdd)
         Me.tabPage29.Location = New System.Drawing.Point(4, 22)
         Me.tabPage29.Name = "tabPage29"
-        Me.tabPage29.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage29.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage29.Size = New System.Drawing.Size(275, 248)
         Me.tabPage29.TabIndex = 0
         Me.tabPage29.Text = "Text logo"
@@ -2277,7 +2279,7 @@ Partial Class Form1
         Me.tabPage42.Controls.Add(Me.btImageLogoAdd)
         Me.tabPage42.Location = New System.Drawing.Point(4, 22)
         Me.tabPage42.Name = "tabPage42"
-        Me.tabPage42.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage42.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage42.Size = New System.Drawing.Size(275, 248)
         Me.tabPage42.TabIndex = 1
         Me.tabPage42.Text = "Image logo"
@@ -2323,9 +2325,9 @@ Partial Class Form1
         Me.TabPage18.Controls.Add(Me.groupBox37)
         Me.TabPage18.Controls.Add(Me.cbZoom)
         Me.TabPage18.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage18.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage18.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage18.Name = "TabPage18"
-        Me.TabPage18.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage18.Padding = New System.Windows.Forms.Padding(2)
         Me.TabPage18.Size = New System.Drawing.Size(275, 248)
         Me.TabPage18.TabIndex = 2
         Me.TabPage18.Text = "Zoom"
@@ -2417,9 +2419,9 @@ Partial Class Form1
         Me.TabPage19.Controls.Add(Me.groupBox38)
         Me.TabPage19.Controls.Add(Me.cbPan)
         Me.TabPage19.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage19.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage19.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage19.Name = "TabPage19"
-        Me.TabPage19.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage19.Padding = New System.Windows.Forms.Padding(2)
         Me.TabPage19.Size = New System.Drawing.Size(275, 248)
         Me.TabPage19.TabIndex = 3
         Me.TabPage19.Text = "Pan"
@@ -2436,9 +2438,9 @@ Partial Class Form1
         Me.groupBox40.Controls.Add(Me.edPanDestLeft)
         Me.groupBox40.Controls.Add(Me.label305)
         Me.groupBox40.Location = New System.Drawing.Point(12, 162)
-        Me.groupBox40.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.groupBox40.Margin = New System.Windows.Forms.Padding(2)
         Me.groupBox40.Name = "groupBox40"
-        Me.groupBox40.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.groupBox40.Padding = New System.Windows.Forms.Padding(2)
         Me.groupBox40.Size = New System.Drawing.Size(168, 77)
         Me.groupBox40.TabIndex = 58
         Me.groupBox40.TabStop = False
@@ -2523,9 +2525,9 @@ Partial Class Form1
         Me.groupBox39.Controls.Add(Me.edPanSourceLeft)
         Me.groupBox39.Controls.Add(Me.label301)
         Me.groupBox39.Location = New System.Drawing.Point(12, 80)
-        Me.groupBox39.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.groupBox39.Margin = New System.Windows.Forms.Padding(2)
         Me.groupBox39.Name = "groupBox39"
-        Me.groupBox39.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.groupBox39.Padding = New System.Windows.Forms.Padding(2)
         Me.groupBox39.Size = New System.Drawing.Size(168, 77)
         Me.groupBox39.TabIndex = 57
         Me.groupBox39.TabStop = False
@@ -2666,7 +2668,7 @@ Partial Class Form1
         Me.TabPage22.Controls.Add(Me.cbFadeInOut)
         Me.TabPage22.Location = New System.Drawing.Point(4, 22)
         Me.TabPage22.Name = "TabPage22"
-        Me.TabPage22.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage22.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage22.Size = New System.Drawing.Size(275, 248)
         Me.TabPage22.TabIndex = 4
         Me.TabPage22.Text = "Fade-in/out"
@@ -2764,7 +2766,7 @@ Partial Class Form1
         Me.TabPage27.Controls.Add(Me.cbLiveRotation)
         Me.TabPage27.Location = New System.Drawing.Point(4, 22)
         Me.TabPage27.Name = "TabPage27"
-        Me.TabPage27.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage27.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage27.Size = New System.Drawing.Size(275, 248)
         Me.TabPage27.TabIndex = 5
         Me.TabPage27.Text = "Live rotation"
@@ -2923,7 +2925,7 @@ Partial Class Form1
         Me.tabPage69.Controls.Add(Me.cbDeinterlace)
         Me.tabPage69.Location = New System.Drawing.Point(4, 22)
         Me.tabPage69.Name = "tabPage69"
-        Me.tabPage69.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage69.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage69.Size = New System.Drawing.Size(290, 459)
         Me.tabPage69.TabIndex = 1
         Me.tabPage69.Text = "Deinterlace (SW)"
@@ -3134,7 +3136,7 @@ Partial Class Form1
         Me.tabPage59.Controls.Add(Me.cbDenoise)
         Me.tabPage59.Location = New System.Drawing.Point(4, 22)
         Me.tabPage59.Name = "tabPage59"
-        Me.tabPage59.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage59.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage59.Size = New System.Drawing.Size(290, 459)
         Me.tabPage59.TabIndex = 4
         Me.tabPage59.Text = "Denoise (SW)"
@@ -3192,7 +3194,7 @@ Partial Class Form1
         Me.TabPage50.Controls.Add(Me.cbGPUGreyscale)
         Me.TabPage50.Location = New System.Drawing.Point(4, 22)
         Me.TabPage50.Name = "TabPage50"
-        Me.TabPage50.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage50.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage50.Size = New System.Drawing.Size(290, 459)
         Me.TabPage50.TabIndex = 9
         Me.TabPage50.Text = "Effects (GPU)"
@@ -3379,7 +3381,7 @@ Partial Class Form1
         Me.tabPage8.Controls.Add(Me.label24)
         Me.tabPage8.Location = New System.Drawing.Point(4, 22)
         Me.tabPage8.Name = "tabPage8"
-        Me.tabPage8.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage8.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage8.Size = New System.Drawing.Size(290, 459)
         Me.tabPage8.TabIndex = 5
         Me.tabPage8.Text = "Effects (Video renderer)"
@@ -3589,7 +3591,7 @@ Partial Class Form1
         Me.tabPage15.Controls.Add(Me.cbChromaKeyEnabled)
         Me.tabPage15.Location = New System.Drawing.Point(4, 22)
         Me.tabPage15.Name = "tabPage15"
-        Me.tabPage15.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage15.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage15.Size = New System.Drawing.Size(290, 459)
         Me.tabPage15.TabIndex = 7
         Me.tabPage15.Text = "Chroma key"
@@ -3723,7 +3725,7 @@ Partial Class Form1
         Me.TabPage28.Controls.Add(Me.label105)
         Me.TabPage28.Location = New System.Drawing.Point(4, 22)
         Me.TabPage28.Name = "TabPage28"
-        Me.TabPage28.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage28.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage28.Size = New System.Drawing.Size(290, 459)
         Me.TabPage28.TabIndex = 8
         Me.TabPage28.Text = "3rd-party filters"
@@ -3816,7 +3818,7 @@ Partial Class Form1
         Me.tabPage11.Controls.Add(Me.cbAudioEffectsEnabled)
         Me.tabPage11.Location = New System.Drawing.Point(4, 22)
         Me.tabPage11.Name = "tabPage11"
-        Me.tabPage11.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage11.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage11.Size = New System.Drawing.Size(301, 492)
         Me.tabPage11.TabIndex = 5
         Me.tabPage11.Text = "Audio effects"
@@ -3853,7 +3855,7 @@ Partial Class Form1
         Me.tabPage71.Controls.Add(Me.cbAudAmplifyEnabled)
         Me.tabPage71.Location = New System.Drawing.Point(4, 22)
         Me.tabPage71.Name = "tabPage71"
-        Me.tabPage71.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage71.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage71.Size = New System.Drawing.Size(275, 416)
         Me.tabPage71.TabIndex = 0
         Me.tabPage71.Text = "Amplify"
@@ -3936,7 +3938,7 @@ Partial Class Form1
         Me.tabPage72.Controls.Add(Me.cbAudEqualizerEnabled)
         Me.tabPage72.Location = New System.Drawing.Point(4, 22)
         Me.tabPage72.Name = "tabPage72"
-        Me.tabPage72.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage72.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage72.Size = New System.Drawing.Size(275, 416)
         Me.tabPage72.TabIndex = 1
         Me.tabPage72.Text = "Equlizer"
@@ -4212,7 +4214,7 @@ Partial Class Form1
         Me.tabPage73.Controls.Add(Me.cbAudDynamicAmplifyEnabled)
         Me.tabPage73.Location = New System.Drawing.Point(4, 22)
         Me.tabPage73.Name = "tabPage73"
-        Me.tabPage73.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage73.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage73.Size = New System.Drawing.Size(275, 416)
         Me.tabPage73.TabIndex = 2
         Me.tabPage73.Text = "Dynamic amplify"
@@ -4325,7 +4327,7 @@ Partial Class Form1
         Me.tabPage75.Controls.Add(Me.cbAudSound3DEnabled)
         Me.tabPage75.Location = New System.Drawing.Point(4, 22)
         Me.tabPage75.Name = "tabPage75"
-        Me.tabPage75.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage75.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage75.Size = New System.Drawing.Size(275, 416)
         Me.tabPage75.TabIndex = 4
         Me.tabPage75.Text = "Sound 3D"
@@ -4368,7 +4370,7 @@ Partial Class Form1
         Me.tabPage76.Controls.Add(Me.cbAudTrueBassEnabled)
         Me.tabPage76.Location = New System.Drawing.Point(4, 22)
         Me.tabPage76.Name = "tabPage76"
-        Me.tabPage76.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage76.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage76.Size = New System.Drawing.Size(275, 416)
         Me.tabPage76.TabIndex = 5
         Me.tabPage76.Text = "True Bass"
@@ -4425,7 +4427,7 @@ Partial Class Form1
         Me.TabPage46.Controls.Add(Me.cbAudioEnhancementEnabled)
         Me.TabPage46.Location = New System.Drawing.Point(4, 22)
         Me.TabPage46.Name = "TabPage46"
-        Me.TabPage46.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage46.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage46.Size = New System.Drawing.Size(301, 492)
         Me.TabPage46.TabIndex = 12
         Me.TabPage46.Text = "Audio enhancement"
@@ -4904,7 +4906,7 @@ Partial Class Form1
         Me.TabPage49.Controls.Add(Me.cbAudioChannelMapperEnabled)
         Me.TabPage49.Location = New System.Drawing.Point(4, 22)
         Me.TabPage49.Name = "TabPage49"
-        Me.TabPage49.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage49.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage49.Size = New System.Drawing.Size(301, 492)
         Me.TabPage49.TabIndex = 13
         Me.TabPage49.Text = "Audio channel mapper"
@@ -5064,7 +5066,7 @@ Partial Class Form1
         Me.TabPage25.Controls.Add(Me.volumeMeter1)
         Me.TabPage25.Location = New System.Drawing.Point(4, 22)
         Me.TabPage25.Name = "TabPage25"
-        Me.TabPage25.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage25.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage25.Size = New System.Drawing.Size(301, 492)
         Me.TabPage25.TabIndex = 11
         Me.TabPage25.Text = "VU meter"
@@ -5170,7 +5172,7 @@ Partial Class Form1
         Me.tabPage5.Controls.Add(Me.btOSDInit)
         Me.tabPage5.Location = New System.Drawing.Point(4, 22)
         Me.tabPage5.Name = "tabPage5"
-        Me.tabPage5.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage5.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage5.Size = New System.Drawing.Size(301, 492)
         Me.tabPage5.TabIndex = 4
         Me.tabPage5.Text = "OSD"
@@ -5222,7 +5224,7 @@ Partial Class Form1
         Me.tabPage30.Controls.Add(Me.label113)
         Me.tabPage30.Location = New System.Drawing.Point(4, 22)
         Me.tabPage30.Name = "tabPage30"
-        Me.tabPage30.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage30.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage30.Size = New System.Drawing.Size(242, 170)
         Me.tabPage30.TabIndex = 1
         Me.tabPage30.Text = "Image"
@@ -5329,7 +5331,7 @@ Partial Class Form1
         Me.tabPage31.Controls.Add(Me.btOSDTextDraw)
         Me.tabPage31.Location = New System.Drawing.Point(4, 22)
         Me.tabPage31.Name = "tabPage31"
-        Me.tabPage31.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage31.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage31.Size = New System.Drawing.Size(242, 170)
         Me.tabPage31.TabIndex = 2
         Me.tabPage31.Text = "Text"
@@ -5413,7 +5415,7 @@ Partial Class Form1
         Me.tabPage32.Controls.Add(Me.label119)
         Me.tabPage32.Location = New System.Drawing.Point(4, 22)
         Me.tabPage32.Name = "tabPage32"
-        Me.tabPage32.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage32.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage32.Size = New System.Drawing.Size(242, 170)
         Me.tabPage32.TabIndex = 3
         Me.tabPage32.Text = "Other"
@@ -5593,7 +5595,7 @@ Partial Class Form1
         Me.tabPage12.Controls.Add(Me.tabControl5)
         Me.tabPage12.Location = New System.Drawing.Point(4, 22)
         Me.tabPage12.Name = "tabPage12"
-        Me.tabPage12.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage12.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage12.Size = New System.Drawing.Size(301, 492)
         Me.tabPage12.TabIndex = 6
         Me.tabPage12.Text = "Decoders / Splitter"
@@ -5617,7 +5619,7 @@ Partial Class Form1
         Me.tabPage33.Controls.Add(Me.rbSplitterDefault)
         Me.tabPage33.Location = New System.Drawing.Point(4, 22)
         Me.tabPage33.Name = "tabPage33"
-        Me.tabPage33.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage33.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage33.Size = New System.Drawing.Size(284, 454)
         Me.tabPage33.TabIndex = 0
         Me.tabPage33.Text = "Splitter"
@@ -5668,7 +5670,7 @@ Partial Class Form1
         Me.tabPage34.Controls.Add(Me.rbVideoDecoderDefault)
         Me.tabPage34.Location = New System.Drawing.Point(4, 22)
         Me.tabPage34.Name = "tabPage34"
-        Me.tabPage34.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage34.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage34.Size = New System.Drawing.Size(284, 454)
         Me.tabPage34.TabIndex = 1
         Me.tabPage34.Text = "Video decoder"
@@ -5771,7 +5773,7 @@ Partial Class Form1
         Me.TabPage43.Controls.Add(Me.rbAudioDecoderDefault)
         Me.TabPage43.Location = New System.Drawing.Point(4, 22)
         Me.TabPage43.Name = "TabPage43"
-        Me.TabPage43.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage43.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage43.Size = New System.Drawing.Size(284, 454)
         Me.TabPage43.TabIndex = 2
         Me.TabPage43.Text = "Audio decoder"
@@ -5815,7 +5817,7 @@ Partial Class Form1
         Me.tabPage13.Controls.Add(Me.cbMotDetEnabled)
         Me.tabPage13.Location = New System.Drawing.Point(4, 22)
         Me.tabPage13.Name = "tabPage13"
-        Me.tabPage13.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage13.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage13.Size = New System.Drawing.Size(301, 492)
         Me.tabPage13.TabIndex = 7
         Me.tabPage13.Text = "Motion detection"
@@ -5838,7 +5840,7 @@ Partial Class Form1
         Me.tabPage44.Controls.Add(Me.mmMotDetMatrix)
         Me.tabPage44.Location = New System.Drawing.Point(4, 22)
         Me.tabPage44.Name = "tabPage44"
-        Me.tabPage44.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage44.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage44.Size = New System.Drawing.Size(260, 387)
         Me.tabPage44.TabIndex = 0
         Me.tabPage44.Text = "Output matrix"
@@ -5878,7 +5880,7 @@ Partial Class Form1
         Me.tabPage45.Controls.Add(Me.groupBox24)
         Me.tabPage45.Location = New System.Drawing.Point(4, 22)
         Me.tabPage45.Name = "tabPage45"
-        Me.tabPage45.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage45.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage45.Size = New System.Drawing.Size(260, 387)
         Me.tabPage45.TabIndex = 1
         Me.tabPage45.Text = "Settings"
@@ -6143,9 +6145,9 @@ Partial Class Form1
         Me.TabPage21.Controls.Add(Me.label89)
         Me.TabPage21.Controls.Add(Me.cbBarcodeDetectionEnabled)
         Me.TabPage21.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage21.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage21.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage21.Name = "TabPage21"
-        Me.TabPage21.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage21.Padding = New System.Windows.Forms.Padding(2)
         Me.TabPage21.Size = New System.Drawing.Size(301, 492)
         Me.TabPage21.TabIndex = 8
         Me.TabPage21.Text = "Barcode reader"
@@ -6154,7 +6156,7 @@ Partial Class Form1
         'edBarcodeMetadata
         '
         Me.edBarcodeMetadata.Location = New System.Drawing.Point(12, 157)
-        Me.edBarcodeMetadata.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.edBarcodeMetadata.Margin = New System.Windows.Forms.Padding(2)
         Me.edBarcodeMetadata.Multiline = True
         Me.edBarcodeMetadata.Name = "edBarcodeMetadata"
         Me.edBarcodeMetadata.Size = New System.Drawing.Size(282, 96)
@@ -6176,7 +6178,7 @@ Partial Class Form1
         Me.cbBarcodeType.FormattingEnabled = True
         Me.cbBarcodeType.Items.AddRange(New Object() {"Autodetect", "UPC-A", "UPC-E", "EAN-8", "EAN-13", "Code 39", "Code 93", "Code 128", "ITF", "CodaBar", "RSS-14", "Data matrix", "Aztec", "QR", "PDF-417"})
         Me.cbBarcodeType.Location = New System.Drawing.Point(12, 61)
-        Me.cbBarcodeType.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbBarcodeType.Margin = New System.Windows.Forms.Padding(2)
         Me.cbBarcodeType.Name = "cbBarcodeType"
         Me.cbBarcodeType.Size = New System.Drawing.Size(160, 21)
         Me.cbBarcodeType.TabIndex = 22
@@ -6194,7 +6196,7 @@ Partial Class Form1
         'btBarcodeReset
         '
         Me.btBarcodeReset.Location = New System.Drawing.Point(12, 265)
-        Me.btBarcodeReset.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btBarcodeReset.Margin = New System.Windows.Forms.Padding(2)
         Me.btBarcodeReset.Name = "btBarcodeReset"
         Me.btBarcodeReset.Size = New System.Drawing.Size(62, 23)
         Me.btBarcodeReset.TabIndex = 20
@@ -6204,7 +6206,7 @@ Partial Class Form1
         'edBarcode
         '
         Me.edBarcode.Location = New System.Drawing.Point(12, 109)
-        Me.edBarcode.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.edBarcode.Margin = New System.Windows.Forms.Padding(2)
         Me.edBarcode.Name = "edBarcode"
         Me.edBarcode.Size = New System.Drawing.Size(282, 20)
         Me.edBarcode.TabIndex = 19
@@ -6234,7 +6236,7 @@ Partial Class Form1
         Me.TabPage23.Controls.Add(Me.groupBox48)
         Me.TabPage23.Location = New System.Drawing.Point(4, 22)
         Me.TabPage23.Name = "TabPage23"
-        Me.TabPage23.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage23.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage23.Size = New System.Drawing.Size(301, 492)
         Me.TabPage23.TabIndex = 9
         Me.TabPage23.Text = "Encryption"
@@ -6343,7 +6345,7 @@ Partial Class Form1
         Me.TabPage24.Controls.Add(Me.tbReversePlaybackTrackbar)
         Me.TabPage24.Location = New System.Drawing.Point(4, 22)
         Me.TabPage24.Name = "TabPage24"
-        Me.TabPage24.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage24.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage24.Size = New System.Drawing.Size(301, 492)
         Me.TabPage24.TabIndex = 10
         Me.TabPage24.Text = "Reverse playback"
@@ -6432,7 +6434,7 @@ Partial Class Form1
         Me.TabPage14.Controls.Add(Me.cbMotionDetectionEx)
         Me.TabPage14.Location = New System.Drawing.Point(4, 22)
         Me.TabPage14.Name = "TabPage14"
-        Me.TabPage14.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage14.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage14.Size = New System.Drawing.Size(301, 492)
         Me.TabPage14.TabIndex = 14
         Me.TabPage14.Text = "Motion detection (Extended)"
@@ -6529,7 +6531,7 @@ Partial Class Form1
         '
         Me.btAddFileToPlaylist.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btAddFileToPlaylist.Location = New System.Drawing.Point(682, 24)
-        Me.btAddFileToPlaylist.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btAddFileToPlaylist.Margin = New System.Windows.Forms.Padding(2)
         Me.btAddFileToPlaylist.Name = "btAddFileToPlaylist"
         Me.btAddFileToPlaylist.Size = New System.Drawing.Size(38, 22)
         Me.btAddFileToPlaylist.TabIndex = 33
@@ -6552,7 +6554,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lbSourceFiles.FormattingEnabled = True
         Me.lbSourceFiles.Location = New System.Drawing.Point(329, 62)
-        Me.lbSourceFiles.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lbSourceFiles.Margin = New System.Windows.Forms.Padding(2)
         Me.lbSourceFiles.Name = "lbSourceFiles"
         Me.lbSourceFiles.Size = New System.Drawing.Size(415, 56)
         Me.lbSourceFiles.TabIndex = 31
@@ -6565,7 +6567,7 @@ Partial Class Form1
         Me.cbSourceMode.FormattingEnabled = True
         Me.cbSourceMode.Items.AddRange(New Object() {"File / Network stream (decode using LAV) ", "File (decode using FFMPEG)", "File (decode using DirectShow)", "File (decode using VLC)", "DVD", "Blu-Ray", "File from memory (decode using DirectShow)", "File from memory (decode using FFMPEG)", "MMS / WMV (network stream)", "HTTP / RTSP / RTMP (decoding using FFMPEG)", "HTTP / RTSP / RTMP (decoding using VLC)", "Encrypted file (decode using DirectShow)"})
         Me.cbSourceMode.Location = New System.Drawing.Point(394, 122)
-        Me.cbSourceMode.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.cbSourceMode.Margin = New System.Windows.Forms.Padding(2)
         Me.cbSourceMode.Name = "cbSourceMode"
         Me.cbSourceMode.Size = New System.Drawing.Size(350, 21)
         Me.cbSourceMode.TabIndex = 30
@@ -6642,6 +6644,7 @@ Partial Class Form1
         Me.MediaPlayer1.Debug_DeepCleanUp = False
         Me.MediaPlayer1.Debug_Dir = Nothing
         Me.MediaPlayer1.Debug_Mode = False
+        Me.MediaPlayer1.Debug_Telemetry = True
         Me.MediaPlayer1.Encryption_Key = ""
         Me.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.[String]
         Me.MediaPlayer1.Face_Tracking = Nothing
@@ -6689,6 +6692,18 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
+        '
+        'cbTelemetry
+        '
+        Me.cbTelemetry.AutoSize = True
+        Me.cbTelemetry.Checked = True
+        Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbTelemetry.Location = New System.Drawing.Point(206, 13)
+        Me.cbTelemetry.Name = "cbTelemetry"
+        Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
+        Me.cbTelemetry.TabIndex = 5
+        Me.cbTelemetry.Text = "Telemetry"
+        Me.cbTelemetry.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -7488,4 +7503,5 @@ End Sub
     Private WithEvents btImageLogoAdd As Button
     Private WithEvents cbFlipY As CheckBox
     Private WithEvents cbFlipX As CheckBox
+    Private WithEvents cbTelemetry As CheckBox
 End Class

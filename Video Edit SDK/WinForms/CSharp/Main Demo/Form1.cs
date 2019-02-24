@@ -519,13 +519,14 @@ namespace VideoEdit_CS_Demo
         
         private void btStart_Click(object sender, EventArgs e)
         {
+            VideoEdit1.Debug_Mode = cbDebugMode.Checked;
+            VideoEdit1.Debug_Telemetry = cbTelemetry.Checked;
+
             zoom = 1.0;
             zoomShiftX = 0;
             zoomShiftY = 0;
 
             mmLog.Clear();
-
-            VideoEdit1.Debug_Mode = cbDebugMode.Checked;
 
             VideoEdit1.Mode = (VFVideoEditMode)cbMode.SelectedIndex;
 
@@ -1774,7 +1775,7 @@ namespace VideoEdit_CS_Demo
 
         private void btTest_Click(object sender, EventArgs e)
         {
-
+            VideoEdit1.Test();
         }
 
         private void btFadesAdd_Click(object sender, EventArgs e)

@@ -507,13 +507,14 @@ Public Class Form1
 
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
+        VideoEdit1.Debug_Mode = cbDebugMode.Checked
+        VideoEdit1.Debug_Telemetry = cbTelemetry.Checked
+
         zoom = 1.0
         zoomShiftX = 0
         zoomShiftY = 0
 
         mmLog.Clear()
-
-        VideoEdit1.Debug_Mode = cbDebugMode.Checked
 
         VideoEdit1.Video_Effects_Clear()
         lbImageLogos.Items.Clear()
@@ -2084,7 +2085,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btTest_Click(sender As Object, e As EventArgs) Handles btTest.Click
+    Private Sub btTest_Click(sender As Object, e As EventArgs)
 
     End Sub
 

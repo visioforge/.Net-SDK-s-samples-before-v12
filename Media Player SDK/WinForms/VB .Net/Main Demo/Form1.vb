@@ -1040,6 +1040,9 @@ Public Class Form1
 
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
+        MediaPlayer1.Debug_Mode = cbDebugMode.Checked
+        MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked
+
         zoom = 1.0
         zoomShiftX = 0
         zoomShiftY = 0
@@ -1167,8 +1170,6 @@ Public Class Form1
         MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
         MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
         MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
-
-        MediaPlayer1.Debug_Mode = cbDebugMode.Checked
 
         ' Audio enhancement
         MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.Checked

@@ -609,6 +609,10 @@ Public Class Form1
 
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
+        VideoCapture1.Debug_Mode = cbDebugMode.Checked
+        VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
+        VideoCapture1.Debug_Telemetry = cbTelemetry.Checked
+
         If (onvifControl IsNot Nothing) Then
             onvifControl.Disconnect()
             onvifControl.Dispose()
@@ -633,8 +637,6 @@ Public Class Form1
         VideoCapture1.Video_Renderer.Zoom_ShiftX = 0
         VideoCapture1.Video_Renderer.Zoom_ShiftY = 0
 
-        VideoCapture1.Debug_Mode = cbDebugMode.Checked
-        VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
         VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH")
 
         VideoCapture1.Video_Effects_Clear()
@@ -862,7 +864,7 @@ Public Class Form1
                     VideoCapture1.Output_Format = gifOutput
                 Case 25
                     outputFormat = VFVideoCaptureOutputFormat.Encrypted
-                                    Case 26
+                Case 26
                     Dim tsOutput = New VFMPEGTSOutput()
                     SetMPEGTSOutput(tsOutput)
                     VideoCapture1.Output_Format = tsOutput
@@ -1013,7 +1015,7 @@ Public Class Form1
         VideoCapture1.Start()
 
         edNetworkURL.Text = VideoCapture1.Network_Streaming_URL
-        
+
         tmRecording.Start()
     End Sub
 
@@ -1977,7 +1979,7 @@ Public Class Form1
 
         For Each form As Form In multiscreenWindows
             form.Close()
-            form.Dispose()
+            'form.Dispose()
         Next
 
         multiscreenWindows.Clear()

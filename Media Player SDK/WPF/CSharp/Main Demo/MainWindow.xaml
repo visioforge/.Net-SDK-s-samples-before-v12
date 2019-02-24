@@ -651,10 +651,10 @@
         <TabControl Height="172" HorizontalAlignment="Left" Margin="12,583,0,0" x:Name="tabControl12" VerticalAlignment="Top" Width="377">
             <TabItem Header="Errors" x:Name="tabItem47">
                 <Grid>
-                    <CheckBox Content="Debug mode" Height="16" HorizontalAlignment="Left" Margin="269,6,0,0" x:Name="cbDebugMode" VerticalAlignment="Top" />
+                    <CheckBox Content="Debug mode" Height="16" HorizontalAlignment="Left" Margin="16,6,0,0" x:Name="cbDebugMode" VerticalAlignment="Top" />
                     <TextBox Height="91" HorizontalAlignment="Left" Margin="16,28,0,0" x:Name="mmLog" VerticalAlignment="Top" Width="337" />
-                    <Button Content="Test" HorizontalAlignment="Left" Margin="16,6,0,0" VerticalAlignment="Top" Width="56" Click="Button_Click"/>
-                    <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="163,6,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="121,6,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="cbTelemetry" Content="Telemetry" HorizontalAlignment="Left" Margin="228,6,0,0" VerticalAlignment="Top" IsChecked="True"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Screenshot" x:Name="tabItem44">

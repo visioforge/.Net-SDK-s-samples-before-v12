@@ -31,7 +31,7 @@ namespace VideoEdit_CS_Demo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms4 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -552,14 +552,10 @@ namespace VideoEdit_CS_Demo
             this.FontDialog1 = new System.Windows.Forms.FontDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.cbDebugMode = new System.Windows.Forms.CheckBox();
-            this.label120 = new System.Windows.Forms.Label();
-            this.mmLog = new System.Windows.Forms.TextBox();
             this.tbSeeking = new System.Windows.Forms.TrackBar();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btTest = new System.Windows.Forms.Button();
             this.ProgressBar1 = new System.Windows.Forms.ProgressBar();
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage52 = new System.Windows.Forms.TabPage();
@@ -629,9 +625,12 @@ namespace VideoEdit_CS_Demo
             this.label166 = new System.Windows.Forms.Label();
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.label130 = new System.Windows.Forms.Label();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.openFileDialogSubtitles = new System.Windows.Forms.OpenFileDialog();
             this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
+            this.cbTelemetry = new System.Windows.Forms.CheckBox();
+            this.cbLicensing = new System.Windows.Forms.CheckBox();
+            this.cbDebugMode = new System.Windows.Forms.CheckBox();
+            this.mmLog = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -6366,35 +6365,6 @@ namespace VideoEdit_CS_Demo
             // 
             this.openFileDialog2.Filter = "Pictures|*.bmp; *.jpg; *.jpeg; *.jpe; *.png; *.gif; *.tiff;|All files|*.*";
             // 
-            // cbDebugMode
-            // 
-            this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(180, 542);
-            this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
-            this.cbDebugMode.TabIndex = 42;
-            this.cbDebugMode.Text = "Debug mode";
-            this.cbDebugMode.UseVisualStyleBackColor = true;
-            this.cbDebugMode.CheckedChanged += new System.EventHandler(this.cbDebugMode_CheckedChanged);
-            // 
-            // label120
-            // 
-            this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(9, 572);
-            this.label120.Name = "label120";
-            this.label120.Size = new System.Drawing.Size(100, 13);
-            this.label120.TabIndex = 43;
-            this.label120.Text = "Errors and warnings";
-            // 
-            // mmLog
-            // 
-            this.mmLog.Location = new System.Drawing.Point(12, 588);
-            this.mmLog.Multiline = true;
-            this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(310, 55);
-            this.mmLog.TabIndex = 44;
-            this.mmLog.Text = " ";
-            // 
             // tbSeeking
             // 
             this.tbSeeking.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -6407,7 +6377,7 @@ namespace VideoEdit_CS_Demo
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(244, 572);
+            this.linkLabel1.Location = new System.Drawing.Point(244, 543);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(78, 13);
             this.linkLabel1.TabIndex = 77;
@@ -6419,16 +6389,6 @@ namespace VideoEdit_CS_Demo
             // 
             this.openFileDialog3.FileName = "openFileDialog3";
             this.openFileDialog3.Filter = "Windows Media profile|*.prx";
-            // 
-            // btTest
-            // 
-            this.btTest.Location = new System.Drawing.Point(272, 538);
-            this.btTest.Name = "btTest";
-            this.btTest.Size = new System.Drawing.Size(46, 23);
-            this.btTest.TabIndex = 79;
-            this.btTest.Text = "Test";
-            this.btTest.UseVisualStyleBackColor = true;
-            this.btTest.Click += new System.EventHandler(this.btTest_Click);
             // 
             // ProgressBar1
             // 
@@ -7132,7 +7092,7 @@ namespace VideoEdit_CS_Demo
             "Preview"});
             this.cbMode.Location = new System.Drawing.Point(53, 540);
             this.cbMode.Name = "cbMode";
-            this.cbMode.Size = new System.Drawing.Size(121, 21);
+            this.cbMode.Size = new System.Drawing.Size(185, 21);
             this.cbMode.TabIndex = 81;
             // 
             // label130
@@ -7143,16 +7103,6 @@ namespace VideoEdit_CS_Demo
             this.label130.Size = new System.Drawing.Size(34, 13);
             this.label130.TabIndex = 82;
             this.label130.Text = "Mode";
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(138, 571);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 83;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // openFileDialogSubtitles
             // 
@@ -7178,6 +7128,7 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.ChromaKey = null;
             this.VideoEdit1.Debug_Dir = "";
             this.VideoEdit1.Debug_Mode = false;
+            this.VideoEdit1.Debug_Telemetry = false;
             this.VideoEdit1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoEdit1.Decklink_Output = null;
             this.VideoEdit1.Dynamic_Reconnection = false;
@@ -7206,23 +7157,23 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Video_Effects_Enabled = false;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms1;
+            videoRendererSettingsWinForms4.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms4.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms4.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms4.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms4.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms4.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms4.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms4.Flip_Horizontal = false;
+            videoRendererSettingsWinForms4.Flip_Vertical = false;
+            videoRendererSettingsWinForms4.RotationAngle = 0;
+            videoRendererSettingsWinForms4.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms4.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms4.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms4.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms4.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms4.Zoom_ShiftY = 0;
+            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms4;
             this.VideoEdit1.Video_Resize = false;
             this.VideoEdit1.Video_Resize_Height = 480;
             this.VideoEdit1.Video_Resize_Width = 640;
@@ -7242,21 +7193,61 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
             this.VideoEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoEdit1_MouseDown);
             // 
+            // cbTelemetry
+            // 
+            this.cbTelemetry.AutoSize = true;
+            this.cbTelemetry.Checked = true;
+            this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTelemetry.Location = new System.Drawing.Point(153, 573);
+            this.cbTelemetry.Name = "cbTelemetry";
+            this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
+            this.cbTelemetry.TabIndex = 86;
+            this.cbTelemetry.Text = "Telemetry";
+            this.cbTelemetry.UseVisualStyleBackColor = true;
+            // 
+            // cbLicensing
+            // 
+            this.cbLicensing.AutoSize = true;
+            this.cbLicensing.Location = new System.Drawing.Point(76, 573);
+            this.cbLicensing.Name = "cbLicensing";
+            this.cbLicensing.Size = new System.Drawing.Size(71, 17);
+            this.cbLicensing.TabIndex = 85;
+            this.cbLicensing.Text = "Licensing";
+            this.cbLicensing.UseVisualStyleBackColor = true;
+            // 
+            // cbDebugMode
+            // 
+            this.cbDebugMode.AutoSize = true;
+            this.cbDebugMode.Location = new System.Drawing.Point(12, 573);
+            this.cbDebugMode.Name = "cbDebugMode";
+            this.cbDebugMode.Size = new System.Drawing.Size(58, 17);
+            this.cbDebugMode.TabIndex = 84;
+            this.cbDebugMode.Text = "Debug";
+            this.cbDebugMode.UseVisualStyleBackColor = true;
+            // 
+            // mmLog
+            // 
+            this.mmLog.Location = new System.Drawing.Point(12, 596);
+            this.mmLog.Multiline = true;
+            this.mmLog.Name = "mmLog";
+            this.mmLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.mmLog.Size = new System.Drawing.Size(306, 45);
+            this.mmLog.TabIndex = 83;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 653);
+            this.Controls.Add(this.cbTelemetry);
             this.Controls.Add(this.cbLicensing);
+            this.Controls.Add(this.cbDebugMode);
+            this.Controls.Add(this.mmLog);
             this.Controls.Add(this.label130);
             this.Controls.Add(this.cbMode);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.tabControl3);
             this.Controls.Add(this.VideoEdit1);
-            this.Controls.Add(this.btTest);
-            this.Controls.Add(this.mmLog);
-            this.Controls.Add(this.label120);
-            this.Controls.Add(this.cbDebugMode);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btStart);
             this.Controls.Add(this.ProgressBar1);
@@ -7489,9 +7480,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.TabPage tabPage30;
-        private System.Windows.Forms.CheckBox cbDebugMode;
-        private System.Windows.Forms.Label label120;
-        private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.TabPage tabPage31;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage2;
@@ -7661,7 +7649,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.CheckBox cbCompareGreen;
         private System.Windows.Forms.CheckBox cbCompareRed;
         private System.Windows.Forms.CheckBox cbMotDetEnabled;
-        private System.Windows.Forms.Button btTest;
         private System.Windows.Forms.TabPage tabPage16;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox edFadeStopTime;
@@ -7925,7 +7912,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Label label132;
         private System.Windows.Forms.Button btStopJoin;
         private System.Windows.Forms.Button btStartJoin;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.TabPage tabPage79;
         internal System.Windows.Forms.TabControl TabControl32;
         internal System.Windows.Forms.TabPage TabPage142;
@@ -8065,6 +8051,10 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Button btImageLogoAdd;
         private System.Windows.Forms.CheckBox cbFlipY;
         private System.Windows.Forms.CheckBox cbFlipX;
+        private System.Windows.Forms.CheckBox cbTelemetry;
+        private System.Windows.Forms.CheckBox cbLicensing;
+        private System.Windows.Forms.CheckBox cbDebugMode;
+        private System.Windows.Forms.TextBox mmLog;
     }
 }
 

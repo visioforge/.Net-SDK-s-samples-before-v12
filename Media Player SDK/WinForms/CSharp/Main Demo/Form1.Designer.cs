@@ -572,7 +572,6 @@ namespace Media_Player_Demo
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
-            this.btTest = new System.Windows.Forms.Button();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
@@ -609,6 +608,7 @@ namespace Media_Player_Demo
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
+            this.cbTelemetry = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -787,7 +787,7 @@ namespace Media_Player_Demo
             this.tabPage1.Controls.Add(this.tabControl2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(301, 492);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Info";
@@ -831,7 +831,7 @@ namespace Media_Player_Demo
             this.tabPage6.Controls.Add(this.mmInfo);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(264, 316);
             this.tabPage6.TabIndex = 0;
             this.tabPage6.Text = "File";
@@ -858,7 +858,7 @@ namespace Media_Player_Demo
             this.tabPage7.Controls.Add(this.label1);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(264, 316);
             this.tabPage7.TabIndex = 1;
             this.tabPage7.Text = "DVD";
@@ -941,7 +941,7 @@ namespace Media_Player_Demo
             this.tabPage49.Controls.Add(this.btReadTags);
             this.tabPage49.Location = new System.Drawing.Point(4, 22);
             this.tabPage49.Name = "tabPage49";
-            this.tabPage49.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage49.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage49.Size = new System.Drawing.Size(264, 316);
             this.tabPage49.TabIndex = 2;
             this.tabPage49.Text = "Tags";
@@ -1001,7 +1001,7 @@ namespace Media_Player_Demo
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(301, 492);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Audio output";
@@ -1246,7 +1246,7 @@ namespace Media_Player_Demo
             this.tabPage3.Controls.Add(this.tabControl4);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(301, 492);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Display";
@@ -1280,7 +1280,7 @@ namespace Media_Player_Demo
             this.tabPage16.Controls.Add(this.cbAspectRatioUseCustom);
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
-            this.tabPage16.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage16.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage16.Size = new System.Drawing.Size(284, 454);
             this.tabPage16.TabIndex = 0;
             this.tabPage16.Text = "Main";
@@ -1582,7 +1582,7 @@ namespace Media_Player_Demo
             this.tabPage17.Controls.Add(this.pnScreen1);
             this.tabPage17.Location = new System.Drawing.Point(4, 22);
             this.tabPage17.Name = "tabPage17";
-            this.tabPage17.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage17.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage17.Size = new System.Drawing.Size(284, 454);
             this.tabPage17.TabIndex = 1;
             this.tabPage17.Text = "Multiscreen";
@@ -1695,7 +1695,7 @@ namespace Media_Player_Demo
             this.tabPage4.Controls.Add(this.tabControl17);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(301, 492);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Video processing";
@@ -1734,7 +1734,7 @@ namespace Media_Player_Demo
             this.tabPage68.Controls.Add(this.cbEffects);
             this.tabPage68.Location = new System.Drawing.Point(4, 22);
             this.tabPage68.Name = "tabPage68";
-            this.tabPage68.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage68.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage68.Size = new System.Drawing.Size(290, 459);
             this.tabPage68.TabIndex = 0;
             this.tabPage68.Text = "Effects (SW)";
@@ -1820,7 +1820,7 @@ namespace Media_Player_Demo
             this.tabPage29.Controls.Add(this.btTextLogoAdd);
             this.tabPage29.Location = new System.Drawing.Point(4, 22);
             this.tabPage29.Name = "tabPage29";
-            this.tabPage29.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage29.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage29.Size = new System.Drawing.Size(275, 248);
             this.tabPage29.TabIndex = 0;
             this.tabPage29.Text = "Text logo";
@@ -1872,7 +1872,7 @@ namespace Media_Player_Demo
             this.tabPage42.Controls.Add(this.btImageLogoAdd);
             this.tabPage42.Location = new System.Drawing.Point(4, 22);
             this.tabPage42.Name = "tabPage42";
-            this.tabPage42.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage42.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage42.Size = new System.Drawing.Size(275, 248);
             this.tabPage42.TabIndex = 1;
             this.tabPage42.Text = "Image logo";
@@ -1921,9 +1921,9 @@ namespace Media_Player_Demo
             this.tabPage18.Controls.Add(this.groupBox37);
             this.tabPage18.Controls.Add(this.cbZoom);
             this.tabPage18.Location = new System.Drawing.Point(4, 22);
-            this.tabPage18.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage18.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage18.Name = "tabPage18";
-            this.tabPage18.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage18.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage18.Size = new System.Drawing.Size(275, 248);
             this.tabPage18.TabIndex = 2;
             this.tabPage18.Text = "Zoom";
@@ -2022,9 +2022,9 @@ namespace Media_Player_Demo
             this.tabPage19.Controls.Add(this.groupBox38);
             this.tabPage19.Controls.Add(this.cbPan);
             this.tabPage19.Location = new System.Drawing.Point(4, 22);
-            this.tabPage19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage19.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage19.Name = "tabPage19";
-            this.tabPage19.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage19.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage19.Size = new System.Drawing.Size(275, 248);
             this.tabPage19.TabIndex = 3;
             this.tabPage19.Text = "Pan";
@@ -2041,9 +2041,9 @@ namespace Media_Player_Demo
             this.groupBox40.Controls.Add(this.edPanDestLeft);
             this.groupBox40.Controls.Add(this.label305);
             this.groupBox40.Location = new System.Drawing.Point(12, 162);
-            this.groupBox40.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox40.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox40.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox40.Size = new System.Drawing.Size(168, 77);
             this.groupBox40.TabIndex = 58;
             this.groupBox40.TabStop = false;
@@ -2128,9 +2128,9 @@ namespace Media_Player_Demo
             this.groupBox39.Controls.Add(this.edPanSourceLeft);
             this.groupBox39.Controls.Add(this.label301);
             this.groupBox39.Location = new System.Drawing.Point(12, 80);
-            this.groupBox39.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox39.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox39.Name = "groupBox39";
-            this.groupBox39.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox39.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox39.Size = new System.Drawing.Size(168, 77);
             this.groupBox39.TabIndex = 57;
             this.groupBox39.TabStop = false;
@@ -2272,7 +2272,7 @@ namespace Media_Player_Demo
             this.tabPage22.Controls.Add(this.cbFadeInOut);
             this.tabPage22.Location = new System.Drawing.Point(4, 22);
             this.tabPage22.Name = "tabPage22";
-            this.tabPage22.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage22.Size = new System.Drawing.Size(275, 248);
             this.tabPage22.TabIndex = 4;
             this.tabPage22.Text = "Fade-in/out";
@@ -2371,7 +2371,7 @@ namespace Media_Player_Demo
             this.tabPage43.Controls.Add(this.cbLiveRotation);
             this.tabPage43.Location = new System.Drawing.Point(4, 22);
             this.tabPage43.Name = "tabPage43";
-            this.tabPage43.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage43.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage43.Size = new System.Drawing.Size(275, 248);
             this.tabPage43.TabIndex = 5;
             this.tabPage43.Text = "Live rotation";
@@ -2537,7 +2537,7 @@ namespace Media_Player_Demo
             this.tabPage69.Controls.Add(this.cbDeinterlace);
             this.tabPage69.Location = new System.Drawing.Point(4, 22);
             this.tabPage69.Name = "tabPage69";
-            this.tabPage69.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage69.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage69.Size = new System.Drawing.Size(290, 459);
             this.tabPage69.TabIndex = 1;
             this.tabPage69.Text = "Deinterlace (SW)";
@@ -2748,7 +2748,7 @@ namespace Media_Player_Demo
             this.tabPage59.Controls.Add(this.cbDenoise);
             this.tabPage59.Location = new System.Drawing.Point(4, 22);
             this.tabPage59.Name = "tabPage59";
-            this.tabPage59.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage59.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage59.Size = new System.Drawing.Size(290, 459);
             this.tabPage59.TabIndex = 4;
             this.tabPage59.Text = "Denoise (SW)";
@@ -3004,7 +3004,7 @@ namespace Media_Player_Demo
             this.tabPage8.Controls.Add(this.label24);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage8.Size = new System.Drawing.Size(290, 459);
             this.tabPage8.TabIndex = 5;
             this.tabPage8.Text = "Effects (Video renderer)";
@@ -3218,7 +3218,7 @@ namespace Media_Player_Demo
             this.tabPage15.Controls.Add(this.cbChromaKeyEnabled);
             this.tabPage15.Location = new System.Drawing.Point(4, 22);
             this.tabPage15.Name = "tabPage15";
-            this.tabPage15.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage15.Size = new System.Drawing.Size(290, 459);
             this.tabPage15.TabIndex = 7;
             this.tabPage15.Text = "Chroma key";
@@ -3355,7 +3355,7 @@ namespace Media_Player_Demo
             this.tabPage46.Controls.Add(this.label105);
             this.tabPage46.Location = new System.Drawing.Point(4, 22);
             this.tabPage46.Name = "tabPage46";
-            this.tabPage46.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage46.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage46.Size = new System.Drawing.Size(290, 459);
             this.tabPage46.TabIndex = 8;
             this.tabPage46.Text = "3rd-party filters";
@@ -3460,7 +3460,7 @@ namespace Media_Player_Demo
             this.tabPage48.Controls.Add(this.cbAudioEnhancementEnabled);
             this.tabPage48.Location = new System.Drawing.Point(4, 22);
             this.tabPage48.Name = "tabPage48";
-            this.tabPage48.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage48.Size = new System.Drawing.Size(301, 492);
             this.tabPage48.TabIndex = 12;
             this.tabPage48.Text = "Audio enhancement";
@@ -3950,7 +3950,7 @@ namespace Media_Player_Demo
             this.tabPage11.Controls.Add(this.cbAudioEffectsEnabled);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.Size = new System.Drawing.Size(301, 492);
             this.tabPage11.TabIndex = 5;
             this.tabPage11.Text = "Audio effects";
@@ -3988,7 +3988,7 @@ namespace Media_Player_Demo
             this.tabPage71.Controls.Add(this.cbAudAmplifyEnabled);
             this.tabPage71.Location = new System.Drawing.Point(4, 22);
             this.tabPage71.Name = "tabPage71";
-            this.tabPage71.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage71.Size = new System.Drawing.Size(275, 416);
             this.tabPage71.TabIndex = 0;
             this.tabPage71.Text = "Amplify";
@@ -4073,7 +4073,7 @@ namespace Media_Player_Demo
             this.tabPage72.Controls.Add(this.cbAudEqualizerEnabled);
             this.tabPage72.Location = new System.Drawing.Point(4, 22);
             this.tabPage72.Name = "tabPage72";
-            this.tabPage72.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage72.Size = new System.Drawing.Size(275, 416);
             this.tabPage72.TabIndex = 1;
             this.tabPage72.Text = "Equalizer";
@@ -4362,7 +4362,7 @@ namespace Media_Player_Demo
             this.tabPage73.Controls.Add(this.cbAudDynamicAmplifyEnabled);
             this.tabPage73.Location = new System.Drawing.Point(4, 22);
             this.tabPage73.Name = "tabPage73";
-            this.tabPage73.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage73.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage73.Size = new System.Drawing.Size(275, 416);
             this.tabPage73.TabIndex = 2;
             this.tabPage73.Text = "Dynamic amplify";
@@ -4479,7 +4479,7 @@ namespace Media_Player_Demo
             this.tabPage75.Controls.Add(this.cbAudSound3DEnabled);
             this.tabPage75.Location = new System.Drawing.Point(4, 22);
             this.tabPage75.Name = "tabPage75";
-            this.tabPage75.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage75.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage75.Size = new System.Drawing.Size(275, 416);
             this.tabPage75.TabIndex = 4;
             this.tabPage75.Text = "Sound 3D";
@@ -4524,7 +4524,7 @@ namespace Media_Player_Demo
             this.tabPage76.Controls.Add(this.cbAudTrueBassEnabled);
             this.tabPage76.Location = new System.Drawing.Point(4, 22);
             this.tabPage76.Name = "tabPage76";
-            this.tabPage76.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage76.Size = new System.Drawing.Size(275, 416);
             this.tabPage76.TabIndex = 5;
             this.tabPage76.Text = "True Bass";
@@ -4568,7 +4568,7 @@ namespace Media_Player_Demo
             this.tabPage27.Controls.Add(this.cbAudPitchShiftEnabled);
             this.tabPage27.Location = new System.Drawing.Point(4, 22);
             this.tabPage27.Name = "tabPage27";
-            this.tabPage27.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage27.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage27.Size = new System.Drawing.Size(275, 416);
             this.tabPage27.TabIndex = 7;
             this.tabPage27.Text = "Pitch shift";
@@ -4628,7 +4628,7 @@ namespace Media_Player_Demo
             this.tabPage50.Controls.Add(this.cbAudioChannelMapperEnabled);
             this.tabPage50.Location = new System.Drawing.Point(4, 22);
             this.tabPage50.Name = "tabPage50";
-            this.tabPage50.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage50.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage50.Size = new System.Drawing.Size(301, 492);
             this.tabPage50.TabIndex = 13;
             this.tabPage50.Text = "Audio channel mapper";
@@ -4790,7 +4790,7 @@ namespace Media_Player_Demo
             this.tabPage28.Controls.Add(this.volumeMeter1);
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
             this.tabPage28.Name = "tabPage28";
-            this.tabPage28.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage28.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage28.Size = new System.Drawing.Size(301, 492);
             this.tabPage28.TabIndex = 11;
             this.tabPage28.Text = "VU meter";
@@ -4898,7 +4898,7 @@ namespace Media_Player_Demo
             this.tabPage5.Controls.Add(this.btOSDInit);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(301, 492);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "OSD";
@@ -4951,7 +4951,7 @@ namespace Media_Player_Demo
             this.tabPage30.Controls.Add(this.label113);
             this.tabPage30.Location = new System.Drawing.Point(4, 22);
             this.tabPage30.Name = "tabPage30";
-            this.tabPage30.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage30.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage30.Size = new System.Drawing.Size(242, 170);
             this.tabPage30.TabIndex = 1;
             this.tabPage30.Text = "Image";
@@ -5061,7 +5061,7 @@ namespace Media_Player_Demo
             this.tabPage31.Controls.Add(this.btOSDTextDraw);
             this.tabPage31.Location = new System.Drawing.Point(4, 22);
             this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage31.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage31.Size = new System.Drawing.Size(242, 170);
             this.tabPage31.TabIndex = 2;
             this.tabPage31.Text = "Text";
@@ -5147,7 +5147,7 @@ namespace Media_Player_Demo
             this.tabPage32.Controls.Add(this.label119);
             this.tabPage32.Location = new System.Drawing.Point(4, 22);
             this.tabPage32.Name = "tabPage32";
-            this.tabPage32.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage32.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage32.Size = new System.Drawing.Size(242, 170);
             this.tabPage32.TabIndex = 3;
             this.tabPage32.Text = "Other";
@@ -5332,7 +5332,7 @@ namespace Media_Player_Demo
             this.tabPage12.Controls.Add(this.tabControl5);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage12.Size = new System.Drawing.Size(301, 492);
             this.tabPage12.TabIndex = 6;
             this.tabPage12.Text = "Decoders / Splitter";
@@ -5356,7 +5356,7 @@ namespace Media_Player_Demo
             this.tabPage33.Controls.Add(this.rbSplitterDefault);
             this.tabPage33.Location = new System.Drawing.Point(4, 22);
             this.tabPage33.Name = "tabPage33";
-            this.tabPage33.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage33.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage33.Size = new System.Drawing.Size(284, 454);
             this.tabPage33.TabIndex = 0;
             this.tabPage33.Text = "Splitter";
@@ -5407,7 +5407,7 @@ namespace Media_Player_Demo
             this.tabPage34.Controls.Add(this.rbVideoDecoderDefault);
             this.tabPage34.Location = new System.Drawing.Point(4, 22);
             this.tabPage34.Name = "tabPage34";
-            this.tabPage34.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage34.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage34.Size = new System.Drawing.Size(284, 454);
             this.tabPage34.TabIndex = 1;
             this.tabPage34.Text = "Video decoder";
@@ -5510,7 +5510,7 @@ namespace Media_Player_Demo
             this.tabPage47.Controls.Add(this.rbAudioDecoderDefault);
             this.tabPage47.Location = new System.Drawing.Point(4, 22);
             this.tabPage47.Name = "tabPage47";
-            this.tabPage47.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage47.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage47.Size = new System.Drawing.Size(284, 454);
             this.tabPage47.TabIndex = 2;
             this.tabPage47.Text = "Audio decoder";
@@ -5554,7 +5554,7 @@ namespace Media_Player_Demo
             this.tabPage13.Controls.Add(this.cbMotDetEnabled);
             this.tabPage13.Location = new System.Drawing.Point(4, 22);
             this.tabPage13.Name = "tabPage13";
-            this.tabPage13.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage13.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage13.Size = new System.Drawing.Size(301, 492);
             this.tabPage13.TabIndex = 7;
             this.tabPage13.Text = "Motion detection";
@@ -5577,7 +5577,7 @@ namespace Media_Player_Demo
             this.tabPage44.Controls.Add(this.mmMotDetMatrix);
             this.tabPage44.Location = new System.Drawing.Point(4, 22);
             this.tabPage44.Name = "tabPage44";
-            this.tabPage44.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage44.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage44.Size = new System.Drawing.Size(260, 387);
             this.tabPage44.TabIndex = 0;
             this.tabPage44.Text = "Output matrix";
@@ -5617,7 +5617,7 @@ namespace Media_Player_Demo
             this.tabPage45.Controls.Add(this.groupBox24);
             this.tabPage45.Location = new System.Drawing.Point(4, 22);
             this.tabPage45.Name = "tabPage45";
-            this.tabPage45.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage45.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage45.Size = new System.Drawing.Size(260, 387);
             this.tabPage45.TabIndex = 1;
             this.tabPage45.Text = "Settings";
@@ -5887,7 +5887,7 @@ namespace Media_Player_Demo
             this.tabPage14.Controls.Add(this.cbMotionDetectionEx);
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage14.Size = new System.Drawing.Size(301, 492);
             this.tabPage14.TabIndex = 14;
             this.tabPage14.Text = "Motion detection (Extended)";
@@ -5985,9 +5985,9 @@ namespace Media_Player_Demo
             this.tabPage21.Controls.Add(this.label89);
             this.tabPage21.Controls.Add(this.cbBarcodeDetectionEnabled);
             this.tabPage21.Location = new System.Drawing.Point(4, 22);
-            this.tabPage21.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage21.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage21.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage21.Size = new System.Drawing.Size(301, 492);
             this.tabPage21.TabIndex = 8;
             this.tabPage21.Text = "Barcode reader";
@@ -5996,7 +5996,7 @@ namespace Media_Player_Demo
             // edBarcodeMetadata
             // 
             this.edBarcodeMetadata.Location = new System.Drawing.Point(16, 160);
-            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcodeMetadata.Multiline = true;
             this.edBarcodeMetadata.Name = "edBarcodeMetadata";
             this.edBarcodeMetadata.Size = new System.Drawing.Size(272, 96);
@@ -6033,7 +6033,7 @@ namespace Media_Player_Demo
             "QR",
             "PDF-417"});
             this.cbBarcodeType.Location = new System.Drawing.Point(16, 64);
-            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2);
             this.cbBarcodeType.Name = "cbBarcodeType";
             this.cbBarcodeType.Size = new System.Drawing.Size(160, 21);
             this.cbBarcodeType.TabIndex = 14;
@@ -6051,7 +6051,7 @@ namespace Media_Player_Demo
             // btBarcodeReset
             // 
             this.btBarcodeReset.Location = new System.Drawing.Point(16, 268);
-            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2);
             this.btBarcodeReset.Name = "btBarcodeReset";
             this.btBarcodeReset.Size = new System.Drawing.Size(62, 23);
             this.btBarcodeReset.TabIndex = 12;
@@ -6062,7 +6062,7 @@ namespace Media_Player_Demo
             // edBarcode
             // 
             this.edBarcode.Location = new System.Drawing.Point(16, 112);
-            this.edBarcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcode.Name = "edBarcode";
             this.edBarcode.Size = new System.Drawing.Size(272, 20);
             this.edBarcode.TabIndex = 11;
@@ -6092,7 +6092,7 @@ namespace Media_Player_Demo
             this.tabPage23.Controls.Add(this.groupBox48);
             this.tabPage23.Location = new System.Drawing.Point(4, 22);
             this.tabPage23.Name = "tabPage23";
-            this.tabPage23.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage23.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage23.Size = new System.Drawing.Size(301, 492);
             this.tabPage23.TabIndex = 9;
             this.tabPage23.Text = "Encryption";
@@ -6201,7 +6201,7 @@ namespace Media_Player_Demo
             this.tabPage24.Controls.Add(this.tbReversePlaybackTrackbar);
             this.tabPage24.Location = new System.Drawing.Point(4, 22);
             this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage24.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage24.Size = new System.Drawing.Size(301, 492);
             this.tabPage24.TabIndex = 10;
             this.tabPage24.Text = "Reverse playback";
@@ -6571,13 +6571,13 @@ namespace Media_Player_Demo
             // 
             // tabPage10
             // 
+            this.tabPage10.Controls.Add(this.cbTelemetry);
             this.tabPage10.Controls.Add(this.cbLicensing);
-            this.tabPage10.Controls.Add(this.btTest);
             this.tabPage10.Controls.Add(this.mmLog);
             this.tabPage10.Controls.Add(this.cbDebugMode);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage10.Size = new System.Drawing.Size(301, 120);
             this.tabPage10.TabIndex = 2;
             this.tabPage10.Text = "Debug";
@@ -6592,16 +6592,6 @@ namespace Media_Player_Demo
             this.cbLicensing.TabIndex = 3;
             this.cbLicensing.Text = "Licensing info";
             this.cbLicensing.UseVisualStyleBackColor = true;
-            // 
-            // btTest
-            // 
-            this.btTest.Location = new System.Drawing.Point(205, 9);
-            this.btTest.Name = "btTest";
-            this.btTest.Size = new System.Drawing.Size(75, 23);
-            this.btTest.TabIndex = 2;
-            this.btTest.Text = "Test";
-            this.btTest.UseVisualStyleBackColor = true;
-            this.btTest.Click += new System.EventHandler(this.btTest_Click);
             // 
             // mmLog
             // 
@@ -6627,7 +6617,7 @@ namespace Media_Player_Demo
             this.tabPage9.Controls.Add(this.tabControl13);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage9.Size = new System.Drawing.Size(301, 120);
             this.tabPage9.TabIndex = 1;
             this.tabPage9.Text = "Screenshot";
@@ -6655,7 +6645,7 @@ namespace Media_Player_Demo
             this.tabPage54.Controls.Add(this.tbJPEGQuality);
             this.tabPage54.Location = new System.Drawing.Point(4, 22);
             this.tabPage54.Name = "tabPage54";
-            this.tabPage54.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage54.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage54.Size = new System.Drawing.Size(285, 85);
             this.tabPage54.TabIndex = 0;
             this.tabPage54.Text = "Main";
@@ -6752,7 +6742,7 @@ namespace Media_Player_Demo
             this.tabPage55.Controls.Add(this.cbScreenshotResize);
             this.tabPage55.Location = new System.Drawing.Point(4, 22);
             this.tabPage55.Name = "tabPage55";
-            this.tabPage55.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage55.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage55.Size = new System.Drawing.Size(285, 85);
             this.tabPage55.TabIndex = 1;
             this.tabPage55.Text = "Resize";
@@ -6807,7 +6797,7 @@ namespace Media_Player_Demo
             this.tabPage25.Controls.Add(this.linkLabel2);
             this.tabPage25.Location = new System.Drawing.Point(4, 22);
             this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage25.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage25.Size = new System.Drawing.Size(301, 120);
             this.tabPage25.TabIndex = 3;
             this.tabPage25.Text = "VLC engine";
@@ -6870,7 +6860,7 @@ namespace Media_Player_Demo
             "Encrypted file (decode using DirectShow)",
             "Custom source filter (specified by CLSID)"});
             this.cbSourceMode.Location = new System.Drawing.Point(432, 125);
-            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2);
             this.cbSourceMode.Name = "cbSourceMode";
             this.cbSourceMode.Size = new System.Drawing.Size(312, 21);
             this.cbSourceMode.TabIndex = 15;
@@ -6881,7 +6871,7 @@ namespace Media_Player_Demo
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbSourceFiles.FormattingEnabled = true;
             this.lbSourceFiles.Location = new System.Drawing.Point(330, 65);
-            this.lbSourceFiles.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbSourceFiles.Margin = new System.Windows.Forms.Padding(2);
             this.lbSourceFiles.Name = "lbSourceFiles";
             this.lbSourceFiles.Size = new System.Drawing.Size(414, 56);
             this.lbSourceFiles.TabIndex = 16;
@@ -6900,7 +6890,7 @@ namespace Media_Player_Demo
             // 
             this.btAddFileToPlaylist.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btAddFileToPlaylist.Location = new System.Drawing.Point(682, 27);
-            this.btAddFileToPlaylist.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btAddFileToPlaylist.Margin = new System.Windows.Forms.Padding(2);
             this.btAddFileToPlaylist.Name = "btAddFileToPlaylist";
             this.btAddFileToPlaylist.Size = new System.Drawing.Size(38, 22);
             this.btAddFileToPlaylist.TabIndex = 18;
@@ -6960,6 +6950,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
+            this.MediaPlayer1.Debug_Telemetry = true;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
@@ -7016,6 +7007,18 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.MediaPlayer1_OnObjectDetection);
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
+            // 
+            // cbTelemetry
+            // 
+            this.cbTelemetry.AutoSize = true;
+            this.cbTelemetry.Checked = true;
+            this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTelemetry.Location = new System.Drawing.Point(206, 13);
+            this.cbTelemetry.Name = "cbTelemetry";
+            this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
+            this.cbTelemetry.TabIndex = 4;
+            this.cbTelemetry.Text = "Telemetry";
+            this.cbTelemetry.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -7573,7 +7576,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbStretch1;
         private System.Windows.Forms.Panel pnScreen2;
         private System.Windows.Forms.Panel pnScreen1;
-        private System.Windows.Forms.Button btTest;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.ComboBox cbSourceMode;
         private System.Windows.Forms.TabPage tabPage18;
@@ -7834,5 +7836,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Button btImageLogoAdd;
         private System.Windows.Forms.CheckBox cbFlipY;
         private System.Windows.Forms.CheckBox cbFlipX;
+        private System.Windows.Forms.CheckBox cbTelemetry;
     }
 }

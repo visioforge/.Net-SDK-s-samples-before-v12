@@ -828,15 +828,14 @@
         <Label Content="Watch tutorials" Height="29" HorizontalAlignment="Left" Margin="14,43,0,0" Name="label129" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0016CF"
                MouseDown="linkLabel1_LinkClicked" Grid.Row="1" />
 
-        <CheckBox Content="Debug mode" Height="16" HorizontalAlignment="Left" Margin="304.428,658,0,0" Name="cbDebugMode" VerticalAlignment="Top" Click="cbDebugMode_Click" />
+        <CheckBox Content="Debug mode" Height="16" HorizontalAlignment="Left" Margin="63,658,0,0" Name="cbDebugMode" VerticalAlignment="Top" Click="cbDebugMode_Click" />
 
         <TextBox Height="86" HorizontalAlignment="Left" Margin="12,679,0,0" Name="mmLog" VerticalAlignment="Top" Width="382" Grid.RowSpan="2" />
-        <Label Content="Errors and Warnings" Height="28" HorizontalAlignment="Left" Margin="14.428,653,0,0" Name="label144" VerticalAlignment="Top" />
+        <Label Content="Log" Height="28" HorizontalAlignment="Left" Margin="14.428,653,0,0" Name="label144" VerticalAlignment="Top" />
         <RadioButton Content="Convert video or audio" Height="16" HorizontalAlignment="Left" Margin="12,637,0,0" Name="rbConvert" VerticalAlignment="Top" IsChecked="True" />
         <RadioButton Content="Preview mode" Height="16" HorizontalAlignment="Left" Margin="168,637,0,0" Name="rbPreview" VerticalAlignment="Top" />
         <Slider Height="23" HorizontalAlignment="Left" Margin="411,0,0,32" Name="tbSeeking" VerticalAlignment="Bottom" Width="396" ValueChanged="tbSeeking_ValueChanged" Grid.Row="1" />
         <ProgressBar Height="21" HorizontalAlignment="Left" Margin="411,0,0,5" Name="pbProgress" VerticalAlignment="Bottom" Width="396" Grid.Row="1" />
-        <Button Content="Test" HorizontalAlignment="Left" Margin="348,637,0,0" VerticalAlignment="Top" Width="46" Click="Button_Click"/>
         <TabControl HorizontalAlignment="Left" Height="339" Margin="411,13,0,0" VerticalAlignment="Top" Width="530">
             <TabItem Header="Edit">
                 <Grid>
@@ -937,7 +936,7 @@
             </TabItem>
 
         </TabControl>
-        <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="198,658,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="168,658,0,0" VerticalAlignment="Top"/>
         <my:VideoEdit HorizontalAlignment="Stretch" 
                           Margin="411,360,25,70"
                           Background="Black"
@@ -954,6 +953,7 @@
                           MouseDown="VideoEdit1_MouseDown"
                           OnLicenseRequired="VideoEdit1_OnLicenseRequired"
                           OnFFMPEGInfo="VideoEdit1_OnFFMPEGInfo" />
+        <CheckBox x:Name="cbTelemetry" Content="Telemetry" HorizontalAlignment="Left" Margin="280,658,0,0" VerticalAlignment="Top" IsChecked="True"/>
 
     </Grid>
 </Window>

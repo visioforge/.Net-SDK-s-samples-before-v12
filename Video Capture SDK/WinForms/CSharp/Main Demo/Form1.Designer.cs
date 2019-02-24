@@ -1086,6 +1086,7 @@ namespace VideoCapture_CSharp_Demo
             this.cbCustomAudioSourceCategory = new System.Windows.Forms.ComboBox();
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage53 = new System.Windows.Forms.TabPage();
+            this.cbTelemetry = new System.Windows.Forms.CheckBox();
             this.cbIndependentThread = new System.Windows.Forms.CheckBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
@@ -1375,7 +1376,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(307, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Capture";
@@ -1501,7 +1502,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage2.Controls.Add(this.tabControl14);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(307, 484);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Video processing";
@@ -1542,7 +1543,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage68.Controls.Add(this.cbEffects);
             this.tabPage68.Location = new System.Drawing.Point(4, 22);
             this.tabPage68.Name = "tabPage68";
-            this.tabPage68.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage68.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage68.Size = new System.Drawing.Size(290, 459);
             this.tabPage68.TabIndex = 0;
             this.tabPage68.Text = "Effects";
@@ -1638,7 +1639,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage29.Controls.Add(this.btTextLogoAdd);
             this.tabPage29.Location = new System.Drawing.Point(4, 22);
             this.tabPage29.Name = "tabPage29";
-            this.tabPage29.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage29.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage29.Size = new System.Drawing.Size(275, 248);
             this.tabPage29.TabIndex = 0;
             this.tabPage29.Text = "Text logo";
@@ -1690,7 +1691,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage42.Controls.Add(this.btImageLogoAdd);
             this.tabPage42.Location = new System.Drawing.Point(4, 22);
             this.tabPage42.Name = "tabPage42";
-            this.tabPage42.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage42.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage42.Size = new System.Drawing.Size(275, 248);
             this.tabPage42.TabIndex = 1;
             this.tabPage42.Text = "Image logo";
@@ -1739,9 +1740,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage91.Controls.Add(this.groupBox37);
             this.tabPage91.Controls.Add(this.cbZoom);
             this.tabPage91.Location = new System.Drawing.Point(4, 22);
-            this.tabPage91.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage91.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage91.Name = "tabPage91";
-            this.tabPage91.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage91.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage91.Size = new System.Drawing.Size(275, 248);
             this.tabPage91.TabIndex = 2;
             this.tabPage91.Text = "Zoom";
@@ -1840,9 +1841,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage92.Controls.Add(this.groupBox38);
             this.tabPage92.Controls.Add(this.cbPan);
             this.tabPage92.Location = new System.Drawing.Point(4, 22);
-            this.tabPage92.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage92.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage92.Name = "tabPage92";
-            this.tabPage92.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage92.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage92.Size = new System.Drawing.Size(275, 248);
             this.tabPage92.TabIndex = 3;
             this.tabPage92.Text = "Pan";
@@ -1859,9 +1860,9 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox40.Controls.Add(this.edPanDestLeft);
             this.groupBox40.Controls.Add(this.label305);
             this.groupBox40.Location = new System.Drawing.Point(12, 168);
-            this.groupBox40.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox40.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox40.Name = "groupBox40";
-            this.groupBox40.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox40.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox40.Size = new System.Drawing.Size(168, 77);
             this.groupBox40.TabIndex = 54;
             this.groupBox40.TabStop = false;
@@ -1946,9 +1947,9 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox39.Controls.Add(this.edPanSourceLeft);
             this.groupBox39.Controls.Add(this.label301);
             this.groupBox39.Location = new System.Drawing.Point(12, 87);
-            this.groupBox39.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox39.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox39.Name = "groupBox39";
-            this.groupBox39.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox39.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox39.Size = new System.Drawing.Size(168, 77);
             this.groupBox39.TabIndex = 53;
             this.groupBox39.TabStop = false;
@@ -2090,7 +2091,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage102.Controls.Add(this.cbFadeInOut);
             this.tabPage102.Location = new System.Drawing.Point(4, 22);
             this.tabPage102.Name = "tabPage102";
-            this.tabPage102.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage102.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage102.Size = new System.Drawing.Size(275, 248);
             this.tabPage102.TabIndex = 4;
             this.tabPage102.Text = "Fade-in/out";
@@ -2189,7 +2190,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage114.Controls.Add(this.cbLiveRotation);
             this.tabPage114.Location = new System.Drawing.Point(4, 22);
             this.tabPage114.Name = "tabPage114";
-            this.tabPage114.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage114.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage114.Size = new System.Drawing.Size(275, 248);
             this.tabPage114.TabIndex = 5;
             this.tabPage114.Text = "Live rotation";
@@ -2357,7 +2358,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage69.Controls.Add(this.cbDeinterlace);
             this.tabPage69.Location = new System.Drawing.Point(4, 22);
             this.tabPage69.Name = "tabPage69";
-            this.tabPage69.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage69.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage69.Size = new System.Drawing.Size(290, 459);
             this.tabPage69.TabIndex = 1;
             this.tabPage69.Text = "Deinterlace";
@@ -2568,7 +2569,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage59.Controls.Add(this.cbDenoise);
             this.tabPage59.Location = new System.Drawing.Point(4, 22);
             this.tabPage59.Name = "tabPage59";
-            this.tabPage59.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage59.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage59.Size = new System.Drawing.Size(290, 459);
             this.tabPage59.TabIndex = 4;
             this.tabPage59.Text = "Denoise";
@@ -2626,7 +2627,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage20.Controls.Add(this.cbGPUGreyscale);
             this.tabPage20.Location = new System.Drawing.Point(4, 22);
             this.tabPage20.Name = "tabPage20";
-            this.tabPage20.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage20.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage20.Size = new System.Drawing.Size(290, 459);
             this.tabPage20.TabIndex = 9;
             this.tabPage20.Text = "GPU effects";
@@ -2823,9 +2824,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage9.Controls.Add(this.label29);
             this.tabPage9.Controls.Add(this.cbResize);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
-            this.tabPage9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage9.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage9.Size = new System.Drawing.Size(290, 459);
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Resize / crop";
@@ -3019,7 +3020,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage22.Controls.Add(this.cbOpenCLEnabled);
             this.tabPage22.Location = new System.Drawing.Point(4, 22);
             this.tabPage22.Name = "tabPage22";
-            this.tabPage22.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage22.Size = new System.Drawing.Size(290, 459);
             this.tabPage22.TabIndex = 7;
             this.tabPage22.Text = "OpenCL";
@@ -3087,7 +3088,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage60.Controls.Add(this.cbChromaKeyEnabled);
             this.tabPage60.Location = new System.Drawing.Point(4, 22);
             this.tabPage60.Name = "tabPage60";
-            this.tabPage60.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage60.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage60.Size = new System.Drawing.Size(290, 459);
             this.tabPage60.TabIndex = 5;
             this.tabPage60.Text = "Chroma key";
@@ -3223,7 +3224,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage70.Controls.Add(this.label105);
             this.tabPage70.Location = new System.Drawing.Point(4, 22);
             this.tabPage70.Name = "tabPage70";
-            this.tabPage70.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage70.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage70.Size = new System.Drawing.Size(290, 459);
             this.tabPage70.TabIndex = 3;
             this.tabPage70.Text = "3rd-party filters";
@@ -3320,7 +3321,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(9, 20);
             this.tabPage5.TabIndex = 0;
             this.tabPage5.Text = "tabPage5";
@@ -3330,7 +3331,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.tabPage58.Location = new System.Drawing.Point(4, 22);
             this.tabPage58.Name = "tabPage58";
-            this.tabPage58.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage58.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage58.Size = new System.Drawing.Size(9, 20);
             this.tabPage58.TabIndex = 1;
             this.tabPage58.Text = "tabPage58";
@@ -3348,7 +3349,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage127.Controls.Add(this.cbAudioEnhancementEnabled);
             this.tabPage127.Location = new System.Drawing.Point(4, 22);
             this.tabPage127.Name = "tabPage127";
-            this.tabPage127.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage127.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage127.Size = new System.Drawing.Size(307, 484);
             this.tabPage127.TabIndex = 18;
             this.tabPage127.Text = "Audio enhancement";
@@ -3838,7 +3839,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage27.Controls.Add(this.cbAudioEffectsEnabled);
             this.tabPage27.Location = new System.Drawing.Point(4, 22);
             this.tabPage27.Name = "tabPage27";
-            this.tabPage27.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage27.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage27.Size = new System.Drawing.Size(307, 484);
             this.tabPage27.TabIndex = 12;
             this.tabPage27.Text = "Audio effects";
@@ -3875,7 +3876,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage71.Controls.Add(this.cbAudAmplifyEnabled);
             this.tabPage71.Location = new System.Drawing.Point(4, 22);
             this.tabPage71.Name = "tabPage71";
-            this.tabPage71.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage71.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage71.Size = new System.Drawing.Size(275, 416);
             this.tabPage71.TabIndex = 0;
             this.tabPage71.Text = "Amplify";
@@ -3960,7 +3961,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage72.Controls.Add(this.cbAudEqualizerEnabled);
             this.tabPage72.Location = new System.Drawing.Point(4, 22);
             this.tabPage72.Name = "tabPage72";
-            this.tabPage72.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage72.Size = new System.Drawing.Size(275, 416);
             this.tabPage72.TabIndex = 1;
             this.tabPage72.Text = "Equlizer";
@@ -4249,7 +4250,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage73.Controls.Add(this.cbAudDynamicAmplifyEnabled);
             this.tabPage73.Location = new System.Drawing.Point(4, 22);
             this.tabPage73.Name = "tabPage73";
-            this.tabPage73.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage73.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage73.Size = new System.Drawing.Size(275, 416);
             this.tabPage73.TabIndex = 2;
             this.tabPage73.Text = "Dynamic amplify";
@@ -4366,7 +4367,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage75.Controls.Add(this.cbAudSound3DEnabled);
             this.tabPage75.Location = new System.Drawing.Point(4, 22);
             this.tabPage75.Name = "tabPage75";
-            this.tabPage75.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage75.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage75.Size = new System.Drawing.Size(275, 416);
             this.tabPage75.TabIndex = 4;
             this.tabPage75.Text = "Sound 3D";
@@ -4411,7 +4412,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage76.Controls.Add(this.cbAudTrueBassEnabled);
             this.tabPage76.Location = new System.Drawing.Point(4, 22);
             this.tabPage76.Name = "tabPage76";
-            this.tabPage76.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage76.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage76.Size = new System.Drawing.Size(275, 416);
             this.tabPage76.TabIndex = 5;
             this.tabPage76.Text = "True bass";
@@ -4469,7 +4470,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage93.Controls.Add(this.cbAudioChannelMapperEnabled);
             this.tabPage93.Location = new System.Drawing.Point(4, 22);
             this.tabPage93.Name = "tabPage93";
-            this.tabPage93.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage93.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage93.Size = new System.Drawing.Size(307, 484);
             this.tabPage93.TabIndex = 21;
             this.tabPage93.Text = "Audio channel mapper";
@@ -4637,7 +4638,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage107.Controls.Add(this.cbFaceTrackingEnabled);
             this.tabPage107.Location = new System.Drawing.Point(4, 22);
             this.tabPage107.Name = "tabPage107";
-            this.tabPage107.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage107.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage107.Size = new System.Drawing.Size(307, 484);
             this.tabPage107.TabIndex = 17;
             this.tabPage107.Text = "Face tracking";
@@ -4799,7 +4800,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage7.Controls.Add(this.cbNetworkStreaming);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(307, 484);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Network streaming";
@@ -4856,7 +4857,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage23.Controls.Add(this.label44);
             this.tabPage23.Location = new System.Drawing.Point(4, 22);
             this.tabPage23.Name = "tabPage23";
-            this.tabPage23.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage23.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage23.Size = new System.Drawing.Size(284, 356);
             this.tabPage23.TabIndex = 0;
             this.tabPage23.Text = "WMV";
@@ -5005,7 +5006,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage108.Controls.Add(this.label366);
             this.tabPage108.Location = new System.Drawing.Point(4, 22);
             this.tabPage108.Name = "tabPage108";
-            this.tabPage108.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage108.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage108.Size = new System.Drawing.Size(284, 356);
             this.tabPage108.TabIndex = 2;
             this.tabPage108.Text = "RTSP";
@@ -5048,7 +5049,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage109.Controls.Add(this.label369);
             this.tabPage109.Location = new System.Drawing.Point(4, 22);
             this.tabPage109.Name = "tabPage109";
-            this.tabPage109.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage109.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage109.Size = new System.Drawing.Size(284, 356);
             this.tabPage109.TabIndex = 3;
             this.tabPage109.Text = "RTMP";
@@ -5136,7 +5137,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage138.Controls.Add(this.rbNetworkUDPFFMPEG);
             this.tabPage138.Location = new System.Drawing.Point(4, 22);
             this.tabPage138.Name = "tabPage138";
-            this.tabPage138.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage138.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage138.Size = new System.Drawing.Size(284, 356);
             this.tabPage138.TabIndex = 5;
             this.tabPage138.Text = "UDP";
@@ -5231,7 +5232,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage110.Controls.Add(this.rbNetworkSSSoftware);
             this.tabPage110.Location = new System.Drawing.Point(4, 22);
             this.tabPage110.Name = "tabPage110";
-            this.tabPage110.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage110.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage110.Size = new System.Drawing.Size(284, 356);
             this.tabPage110.TabIndex = 4;
             this.tabPage110.Text = "IIS Smooth Streaming";
@@ -5332,7 +5333,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage104.Controls.Add(this.label380);
             this.tabPage104.Location = new System.Drawing.Point(4, 22);
             this.tabPage104.Name = "tabPage104";
-            this.tabPage104.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage104.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage104.Size = new System.Drawing.Size(284, 356);
             this.tabPage104.TabIndex = 6;
             this.tabPage104.Text = "HLS";
@@ -5443,7 +5444,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage24.Controls.Add(this.linkLabel2);
             this.tabPage24.Location = new System.Drawing.Point(4, 22);
             this.tabPage24.Name = "tabPage24";
-            this.tabPage24.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage24.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage24.Size = new System.Drawing.Size(284, 356);
             this.tabPage24.TabIndex = 1;
             this.tabPage24.Text = "External virtual devices";
@@ -5502,7 +5503,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage28.Controls.Add(this.btOSDInit);
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
             this.tabPage28.Name = "tabPage28";
-            this.tabPage28.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage28.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage28.Size = new System.Drawing.Size(307, 484);
             this.tabPage28.TabIndex = 10;
             this.tabPage28.Text = "OSD";
@@ -5555,7 +5556,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage30.Controls.Add(this.label113);
             this.tabPage30.Location = new System.Drawing.Point(4, 22);
             this.tabPage30.Name = "tabPage30";
-            this.tabPage30.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage30.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage30.Size = new System.Drawing.Size(242, 170);
             this.tabPage30.TabIndex = 1;
             this.tabPage30.Text = "Image";
@@ -5665,7 +5666,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage31.Controls.Add(this.btOSDTextDraw);
             this.tabPage31.Location = new System.Drawing.Point(4, 22);
             this.tabPage31.Name = "tabPage31";
-            this.tabPage31.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage31.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage31.Size = new System.Drawing.Size(242, 170);
             this.tabPage31.TabIndex = 2;
             this.tabPage31.Text = "Text";
@@ -5751,7 +5752,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage32.Controls.Add(this.label119);
             this.tabPage32.Location = new System.Drawing.Point(4, 22);
             this.tabPage32.Name = "tabPage32";
-            this.tabPage32.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage32.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage32.Size = new System.Drawing.Size(242, 170);
             this.tabPage32.TabIndex = 3;
             this.tabPage32.Text = "Other";
@@ -5937,7 +5938,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage43.Controls.Add(this.cbMotDetEnabled);
             this.tabPage43.Location = new System.Drawing.Point(4, 22);
             this.tabPage43.Name = "tabPage43";
-            this.tabPage43.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage43.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage43.Size = new System.Drawing.Size(307, 484);
             this.tabPage43.TabIndex = 11;
             this.tabPage43.Text = "Motion detection";
@@ -5960,7 +5961,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage44.Controls.Add(this.mmMotDetMatrix);
             this.tabPage44.Location = new System.Drawing.Point(4, 22);
             this.tabPage44.Name = "tabPage44";
-            this.tabPage44.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage44.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage44.Size = new System.Drawing.Size(260, 387);
             this.tabPage44.TabIndex = 0;
             this.tabPage44.Text = "Output matrix";
@@ -6000,7 +6001,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage45.Controls.Add(this.groupBox24);
             this.tabPage45.Location = new System.Drawing.Point(4, 22);
             this.tabPage45.Name = "tabPage45";
-            this.tabPage45.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage45.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage45.Size = new System.Drawing.Size(260, 387);
             this.tabPage45.TabIndex = 1;
             this.tabPage45.Text = "Settings";
@@ -6270,7 +6271,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage26.Controls.Add(this.cbMotionDetectionEx);
             this.tabPage26.Location = new System.Drawing.Point(4, 22);
             this.tabPage26.Name = "tabPage26";
-            this.tabPage26.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage26.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage26.Size = new System.Drawing.Size(307, 484);
             this.tabPage26.TabIndex = 20;
             this.tabPage26.Text = "Motion detection (Extended)";
@@ -6369,9 +6370,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage25.Controls.Add(this.label89);
             this.tabPage25.Controls.Add(this.cbBarcodeDetectionEnabled);
             this.tabPage25.Location = new System.Drawing.Point(4, 22);
-            this.tabPage25.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage25.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage25.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage25.Size = new System.Drawing.Size(307, 484);
             this.tabPage25.TabIndex = 13;
             this.tabPage25.Text = "Barcode reader";
@@ -6380,7 +6381,7 @@ namespace VideoCapture_CSharp_Demo
             // edBarcodeMetadata
             // 
             this.edBarcodeMetadata.Location = new System.Drawing.Point(16, 160);
-            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edBarcodeMetadata.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcodeMetadata.Multiline = true;
             this.edBarcodeMetadata.Name = "edBarcodeMetadata";
             this.edBarcodeMetadata.Size = new System.Drawing.Size(282, 96);
@@ -6417,7 +6418,7 @@ namespace VideoCapture_CSharp_Demo
             "QR",
             "PDF-417"});
             this.cbBarcodeType.Location = new System.Drawing.Point(16, 64);
-            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbBarcodeType.Margin = new System.Windows.Forms.Padding(2);
             this.cbBarcodeType.Name = "cbBarcodeType";
             this.cbBarcodeType.Size = new System.Drawing.Size(160, 21);
             this.cbBarcodeType.TabIndex = 6;
@@ -6435,7 +6436,7 @@ namespace VideoCapture_CSharp_Demo
             // btBarcodeReset
             // 
             this.btBarcodeReset.Location = new System.Drawing.Point(16, 268);
-            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btBarcodeReset.Margin = new System.Windows.Forms.Padding(2);
             this.btBarcodeReset.Name = "btBarcodeReset";
             this.btBarcodeReset.Size = new System.Drawing.Size(62, 23);
             this.btBarcodeReset.TabIndex = 4;
@@ -6446,7 +6447,7 @@ namespace VideoCapture_CSharp_Demo
             // edBarcode
             // 
             this.edBarcode.Location = new System.Drawing.Point(16, 112);
-            this.edBarcode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edBarcode.Margin = new System.Windows.Forms.Padding(2);
             this.edBarcode.Name = "edBarcode";
             this.edBarcode.Size = new System.Drawing.Size(282, 20);
             this.edBarcode.TabIndex = 3;
@@ -6480,7 +6481,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage101.Controls.Add(this.cbVirtualCamera);
             this.tabPage101.Location = new System.Drawing.Point(4, 22);
             this.tabPage101.Name = "tabPage101";
-            this.tabPage101.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage101.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage101.Size = new System.Drawing.Size(307, 484);
             this.tabPage101.TabIndex = 14;
             this.tabPage101.Text = "Virtual camera";
@@ -6555,7 +6556,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage103.Controls.Add(this.cbDecklinkOutput);
             this.tabPage103.Location = new System.Drawing.Point(4, 22);
             this.tabPage103.Name = "tabPage103";
-            this.tabPage103.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage103.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage103.Size = new System.Drawing.Size(307, 484);
             this.tabPage103.TabIndex = 15;
             this.tabPage103.Text = "Decklink output";
@@ -6775,7 +6776,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage141.Controls.Add(this.cbTagEnabled);
             this.tabPage141.Location = new System.Drawing.Point(4, 22);
             this.tabPage141.Name = "tabPage141";
-            this.tabPage141.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage141.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage141.Size = new System.Drawing.Size(307, 484);
             this.tabPage141.TabIndex = 19;
             this.tabPage141.Text = "Tags";
@@ -6809,7 +6810,7 @@ namespace VideoCapture_CSharp_Demo
             this.TabPage142.Controls.Add(this.label498);
             this.TabPage142.Location = new System.Drawing.Point(4, 22);
             this.TabPage142.Name = "TabPage142";
-            this.TabPage142.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TabPage142.Padding = new System.Windows.Forms.Padding(3);
             this.TabPage142.Size = new System.Drawing.Size(284, 406);
             this.TabPage142.TabIndex = 0;
             this.TabPage142.Text = "Common";
@@ -6947,7 +6948,7 @@ namespace VideoCapture_CSharp_Demo
             this.TabPage143.Controls.Add(this.label503);
             this.TabPage143.Location = new System.Drawing.Point(4, 22);
             this.TabPage143.Name = "TabPage143";
-            this.TabPage143.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.TabPage143.Padding = new System.Windows.Forms.Padding(3);
             this.TabPage143.Size = new System.Drawing.Size(284, 406);
             this.TabPage143.TabIndex = 1;
             this.TabPage143.Text = "Special";
@@ -7118,7 +7119,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage46.Controls.Add(this.tabControl2);
             this.tabPage46.Location = new System.Drawing.Point(4, 22);
             this.tabPage46.Name = "tabPage46";
-            this.tabPage46.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage46.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage46.Size = new System.Drawing.Size(459, 285);
             this.tabPage46.TabIndex = 0;
             this.tabPage46.Text = "Video capture device";
@@ -7152,7 +7153,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage8.Controls.Add(this.label11);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage8.Size = new System.Drawing.Size(448, 246);
             this.tabPage8.TabIndex = 0;
             this.tabPage8.Text = "Video input";
@@ -7271,7 +7272,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage52.Controls.Add(this.label16);
             this.tabPage52.Location = new System.Drawing.Point(4, 22);
             this.tabPage52.Name = "tabPage52";
-            this.tabPage52.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage52.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage52.Size = new System.Drawing.Size(448, 246);
             this.tabPage52.TabIndex = 7;
             this.tabPage52.Text = "Crossbar (Source)";
@@ -7410,7 +7411,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage10.Controls.Add(this.tabControl3);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
             this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage10.Size = new System.Drawing.Size(448, 246);
             this.tabPage10.TabIndex = 2;
             this.tabPage10.Text = "TV tuner";
@@ -7442,7 +7443,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage14.Controls.Add(this.label27);
             this.tabPage14.Location = new System.Drawing.Point(4, 22);
             this.tabPage14.Name = "tabPage14";
-            this.tabPage14.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage14.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage14.Size = new System.Drawing.Size(431, 208);
             this.tabPage14.TabIndex = 0;
             this.tabPage14.Text = "Main settings";
@@ -7573,7 +7574,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage15.Controls.Add(this.label34);
             this.tabPage15.Location = new System.Drawing.Point(4, 22);
             this.tabPage15.Name = "tabPage15";
-            this.tabPage15.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage15.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage15.Size = new System.Drawing.Size(431, 208);
             this.tabPage15.TabIndex = 1;
             this.tabPage15.Text = "Tuning";
@@ -7715,7 +7716,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage21.Controls.Add(this.label21);
             this.tabPage21.Location = new System.Drawing.Point(4, 22);
             this.tabPage21.Name = "tabPage21";
-            this.tabPage21.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage21.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage21.Size = new System.Drawing.Size(431, 208);
             this.tabPage21.TabIndex = 3;
             this.tabPage21.Text = "MPEG Encoder";
@@ -7755,7 +7756,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage11.Controls.Add(this.groupBox2);
             this.tabPage11.Location = new System.Drawing.Point(4, 22);
             this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage11.Size = new System.Drawing.Size(448, 246);
             this.tabPage11.TabIndex = 3;
             this.tabPage11.Text = "DV";
@@ -7930,7 +7931,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage57.Controls.Add(this.label17);
             this.tabPage57.Location = new System.Drawing.Point(4, 22);
             this.tabPage57.Name = "tabPage57";
-            this.tabPage57.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage57.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage57.Size = new System.Drawing.Size(448, 246);
             this.tabPage57.TabIndex = 8;
             this.tabPage57.Text = "Video adjustments";
@@ -8195,7 +8196,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage66.Controls.Add(this.label96);
             this.tabPage66.Location = new System.Drawing.Point(4, 22);
             this.tabPage66.Name = "tabPage66";
-            this.tabPage66.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage66.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage66.Size = new System.Drawing.Size(448, 246);
             this.tabPage66.TabIndex = 9;
             this.tabPage66.Text = "Camera control";
@@ -8390,9 +8391,9 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.tabPage63.Controls.Add(this.tabControl19);
             this.tabPage63.Location = new System.Drawing.Point(4, 22);
-            this.tabPage63.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage63.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage63.Name = "tabPage63";
-            this.tabPage63.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage63.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage63.Size = new System.Drawing.Size(459, 285);
             this.tabPage63.TabIndex = 9;
             this.tabPage63.Text = "Audio input / output";
@@ -8406,7 +8407,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabControl19.Controls.Add(this.tabPage112);
             this.tabControl19.Controls.Add(this.tabPage99);
             this.tabControl19.Location = new System.Drawing.Point(4, 6);
-            this.tabControl19.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabControl19.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl19.Name = "tabControl19";
             this.tabControl19.SelectedIndex = 0;
             this.tabControl19.Size = new System.Drawing.Size(455, 277);
@@ -8424,9 +8425,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage96.Controls.Add(this.label12);
             this.tabPage96.Controls.Add(this.label10);
             this.tabPage96.Location = new System.Drawing.Point(4, 22);
-            this.tabPage96.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage96.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage96.Name = "tabPage96";
-            this.tabPage96.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage96.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage96.Size = new System.Drawing.Size(447, 251);
             this.tabPage96.TabIndex = 0;
             this.tabPage96.Text = "Main audio input";
@@ -8529,9 +8530,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage97.Controls.Add(this.cbAudioOutputDevice);
             this.tabPage97.Controls.Add(this.label15);
             this.tabPage97.Location = new System.Drawing.Point(4, 22);
-            this.tabPage97.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage97.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage97.Name = "tabPage97";
-            this.tabPage97.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage97.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage97.Size = new System.Drawing.Size(447, 251);
             this.tabPage97.TabIndex = 1;
             this.tabPage97.Text = "Audio output";
@@ -8614,9 +8615,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage98.Controls.Add(this.cbVUMeter);
             this.tabPage98.Controls.Add(this.peakMeterCtrl1);
             this.tabPage98.Location = new System.Drawing.Point(4, 22);
-            this.tabPage98.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage98.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage98.Name = "tabPage98";
-            this.tabPage98.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage98.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage98.Size = new System.Drawing.Size(447, 251);
             this.tabPage98.TabIndex = 2;
             this.tabPage98.Text = "VU meter";
@@ -8661,7 +8662,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage112.Controls.Add(this.volumeMeter1);
             this.tabPage112.Location = new System.Drawing.Point(4, 22);
             this.tabPage112.Name = "tabPage112";
-            this.tabPage112.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage112.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage112.Size = new System.Drawing.Size(447, 251);
             this.tabPage112.TabIndex = 4;
             this.tabPage112.Text = "VU meter Pro";
@@ -8768,9 +8769,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage99.Controls.Add(this.cbAdditionalAudioSource);
             this.tabPage99.Controls.Add(this.label180);
             this.tabPage99.Location = new System.Drawing.Point(4, 22);
-            this.tabPage99.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage99.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage99.Name = "tabPage99";
-            this.tabPage99.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage99.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage99.Size = new System.Drawing.Size(447, 251);
             this.tabPage99.TabIndex = 3;
             this.tabPage99.Text = "Additional audio inputs";
@@ -8821,7 +8822,7 @@ namespace VideoCapture_CSharp_Demo
             // btAddAdditionalAudioSource
             // 
             this.btAddAdditionalAudioSource.Location = new System.Drawing.Point(366, 33);
-            this.btAddAdditionalAudioSource.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btAddAdditionalAudioSource.Margin = new System.Windows.Forms.Padding(2);
             this.btAddAdditionalAudioSource.Name = "btAddAdditionalAudioSource";
             this.btAddAdditionalAudioSource.Size = new System.Drawing.Size(56, 23);
             this.btAddAdditionalAudioSource.TabIndex = 89;
@@ -8876,7 +8877,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage47.Controls.Add(this.rbScreenFullScreen);
             this.tabPage47.Location = new System.Drawing.Point(4, 22);
             this.tabPage47.Name = "tabPage47";
-            this.tabPage47.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage47.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage47.Size = new System.Drawing.Size(459, 285);
             this.tabPage47.TabIndex = 1;
             this.tabPage47.Text = "Screen source";
@@ -9121,7 +9122,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage48.Controls.Add(this.tabControl15);
             this.tabPage48.Location = new System.Drawing.Point(4, 22);
             this.tabPage48.Name = "tabPage48";
-            this.tabPage48.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage48.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage48.Size = new System.Drawing.Size(459, 285);
             this.tabPage48.TabIndex = 2;
             this.tabPage48.Text = "IP camera / Network stream";
@@ -9159,7 +9160,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage144.Controls.Add(this.label168);
             this.tabPage144.Location = new System.Drawing.Point(4, 22);
             this.tabPage144.Name = "tabPage144";
-            this.tabPage144.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage144.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage144.Size = new System.Drawing.Size(439, 247);
             this.tabPage144.TabIndex = 0;
             this.tabPage144.Text = "Main";
@@ -9226,7 +9227,7 @@ namespace VideoCapture_CSharp_Demo
             // edIPForcedFramerateID
             // 
             this.edIPForcedFramerateID.Location = new System.Drawing.Point(265, 140);
-            this.edIPForcedFramerateID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edIPForcedFramerateID.Margin = new System.Windows.Forms.Padding(2);
             this.edIPForcedFramerateID.Name = "edIPForcedFramerateID";
             this.edIPForcedFramerateID.Size = new System.Drawing.Size(32, 20);
             this.edIPForcedFramerateID.TabIndex = 71;
@@ -9245,7 +9246,7 @@ namespace VideoCapture_CSharp_Demo
             // edIPForcedFramerate
             // 
             this.edIPForcedFramerate.Location = new System.Drawing.Point(112, 140);
-            this.edIPForcedFramerate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edIPForcedFramerate.Margin = new System.Windows.Forms.Padding(2);
             this.edIPForcedFramerate.Name = "edIPForcedFramerate";
             this.edIPForcedFramerate.Size = new System.Drawing.Size(32, 20);
             this.edIPForcedFramerate.TabIndex = 69;
@@ -9340,7 +9341,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage146.Controls.Add(this.label312);
             this.tabPage146.Location = new System.Drawing.Point(4, 22);
             this.tabPage146.Name = "tabPage146";
-            this.tabPage146.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage146.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage146.Size = new System.Drawing.Size(439, 247);
             this.tabPage146.TabIndex = 2;
             this.tabPage146.Text = "VLC";
@@ -9389,7 +9390,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage145.Controls.Add(this.btONVIFConnect);
             this.tabPage145.Location = new System.Drawing.Point(4, 22);
             this.tabPage145.Name = "tabPage145";
-            this.tabPage145.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage145.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage145.Size = new System.Drawing.Size(439, 247);
             this.tabPage145.TabIndex = 1;
             this.tabPage145.Text = "ONVIF";
@@ -9591,7 +9592,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage4.Controls.Add(this.label338);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(459, 285);
             this.tabPage4.TabIndex = 11;
             this.tabPage4.Text = "Decklink";
@@ -9729,7 +9730,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage81.Controls.Add(this.tabControl22);
             this.tabPage81.Location = new System.Drawing.Point(4, 22);
             this.tabPage81.Name = "tabPage81";
-            this.tabPage81.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage81.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage81.Size = new System.Drawing.Size(459, 285);
             this.tabPage81.TabIndex = 7;
             this.tabPage81.Text = "DVB-x / ATSC";
@@ -9756,7 +9757,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage82.Controls.Add(this.label272);
             this.tabPage82.Location = new System.Drawing.Point(4, 22);
             this.tabPage82.Name = "tabPage82";
-            this.tabPage82.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage82.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage82.Size = new System.Drawing.Size(439, 247);
             this.tabPage82.TabIndex = 0;
             this.tabPage82.Text = "Input device";
@@ -9828,7 +9829,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage83.Controls.Add(this.tabControl23);
             this.tabPage83.Location = new System.Drawing.Point(4, 22);
             this.tabPage83.Name = "tabPage83";
-            this.tabPage83.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage83.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage83.Size = new System.Drawing.Size(439, 247);
             this.tabPage83.TabIndex = 1;
             this.tabPage83.Text = "Tuning";
@@ -9860,7 +9861,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage84.Controls.Add(this.label277);
             this.tabPage84.Location = new System.Drawing.Point(4, 22);
             this.tabPage84.Name = "tabPage84";
-            this.tabPage84.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage84.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage84.Size = new System.Drawing.Size(419, 214);
             this.tabPage84.TabIndex = 0;
             this.tabPage84.Text = "DVB-T";
@@ -9972,7 +9973,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage85.Controls.Add(this.label284);
             this.tabPage85.Location = new System.Drawing.Point(4, 22);
             this.tabPage85.Name = "tabPage85";
-            this.tabPage85.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage85.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage85.Size = new System.Drawing.Size(419, 214);
             this.tabPage85.TabIndex = 1;
             this.tabPage85.Text = "DVB-S";
@@ -10114,7 +10115,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage86.Controls.Add(this.btBDADVBCTune);
             this.tabPage86.Location = new System.Drawing.Point(4, 22);
             this.tabPage86.Name = "tabPage86";
-            this.tabPage86.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage86.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage86.Size = new System.Drawing.Size(419, 214);
             this.tabPage86.TabIndex = 2;
             this.tabPage86.Text = "DVB-C";
@@ -10333,7 +10334,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage87.Controls.Add(this.label293);
             this.tabPage87.Location = new System.Drawing.Point(4, 22);
             this.tabPage87.Name = "tabPage87";
-            this.tabPage87.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage87.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage87.Size = new System.Drawing.Size(419, 214);
             this.tabPage87.TabIndex = 3;
             this.tabPage87.Text = "ATSC";
@@ -10355,7 +10356,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage105.Controls.Add(this.label342);
             this.tabPage105.Location = new System.Drawing.Point(4, 22);
             this.tabPage105.Name = "tabPage105";
-            this.tabPage105.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage105.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage105.Size = new System.Drawing.Size(439, 247);
             this.tabPage105.TabIndex = 2;
             this.tabPage105.Text = "Channel scanning";
@@ -10425,7 +10426,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage49.Controls.Add(this.tabControl20);
             this.tabPage49.Location = new System.Drawing.Point(4, 22);
             this.tabPage49.Name = "tabPage49";
-            this.tabPage49.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage49.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage49.Size = new System.Drawing.Size(459, 285);
             this.tabPage49.TabIndex = 3;
             this.tabPage49.Text = "Picture-In-Picture";
@@ -10447,7 +10448,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage67.Controls.Add(this.tabControl21);
             this.tabPage67.Location = new System.Drawing.Point(4, 22);
             this.tabPage67.Name = "tabPage67";
-            this.tabPage67.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage67.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage67.Size = new System.Drawing.Size(442, 249);
             this.tabPage67.TabIndex = 0;
             this.tabPage67.Text = "Sources";
@@ -10481,7 +10482,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage78.Controls.Add(this.label125);
             this.tabPage78.Location = new System.Drawing.Point(4, 22);
             this.tabPage78.Name = "tabPage78";
-            this.tabPage78.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage78.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage78.Size = new System.Drawing.Size(425, 214);
             this.tabPage78.TabIndex = 0;
             this.tabPage78.Text = "Video capture device";
@@ -10686,7 +10687,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage79.Controls.Add(this.btPIPAddIPCamera);
             this.tabPage79.Location = new System.Drawing.Point(4, 22);
             this.tabPage79.Name = "tabPage79";
-            this.tabPage79.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage79.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage79.Size = new System.Drawing.Size(425, 214);
             this.tabPage79.TabIndex = 1;
             this.tabPage79.Text = "IP camera";
@@ -10797,7 +10798,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage80.Controls.Add(this.btPIPAddScreenCapture);
             this.tabPage80.Location = new System.Drawing.Point(4, 22);
             this.tabPage80.Name = "tabPage80";
-            this.tabPage80.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage80.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage80.Size = new System.Drawing.Size(425, 214);
             this.tabPage80.TabIndex = 2;
             this.tabPage80.Text = "Screen source";
@@ -10910,9 +10911,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage100.Controls.Add(this.edPIPFileSoureFilename);
             this.tabPage100.Controls.Add(this.label320);
             this.tabPage100.Location = new System.Drawing.Point(4, 22);
-            this.tabPage100.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage100.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage100.Name = "tabPage100";
-            this.tabPage100.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage100.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage100.Size = new System.Drawing.Size(425, 214);
             this.tabPage100.TabIndex = 3;
             this.tabPage100.Text = "Video file";
@@ -11010,7 +11011,7 @@ namespace VideoCapture_CSharp_Demo
             // btPIPFileSourceAdd
             // 
             this.btPIPFileSourceAdd.Location = new System.Drawing.Point(307, 32);
-            this.btPIPFileSourceAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btPIPFileSourceAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btPIPFileSourceAdd.Name = "btPIPFileSourceAdd";
             this.btPIPFileSourceAdd.Size = new System.Drawing.Size(56, 22);
             this.btPIPFileSourceAdd.TabIndex = 3;
@@ -11021,7 +11022,7 @@ namespace VideoCapture_CSharp_Demo
             // btSelectPIPFile
             // 
             this.btSelectPIPFile.Location = new System.Drawing.Point(280, 32);
-            this.btSelectPIPFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btSelectPIPFile.Margin = new System.Windows.Forms.Padding(2);
             this.btSelectPIPFile.Name = "btSelectPIPFile";
             this.btSelectPIPFile.Size = new System.Drawing.Size(22, 22);
             this.btSelectPIPFile.TabIndex = 2;
@@ -11032,7 +11033,7 @@ namespace VideoCapture_CSharp_Demo
             // edPIPFileSoureFilename
             // 
             this.edPIPFileSoureFilename.Location = new System.Drawing.Point(15, 34);
-            this.edPIPFileSoureFilename.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edPIPFileSoureFilename.Margin = new System.Windows.Forms.Padding(2);
             this.edPIPFileSoureFilename.Name = "edPIPFileSoureFilename";
             this.edPIPFileSoureFilename.Size = new System.Drawing.Size(261, 20);
             this.edPIPFileSoureFilename.TabIndex = 1;
@@ -11061,7 +11062,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage77.Controls.Add(this.groupBox20);
             this.tabPage77.Location = new System.Drawing.Point(4, 22);
             this.tabPage77.Name = "tabPage77";
-            this.tabPage77.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage77.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage77.Size = new System.Drawing.Size(442, 249);
             this.tabPage77.TabIndex = 1;
             this.tabPage77.Text = "Configuration";
@@ -11345,7 +11346,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage147.Controls.Add(this.label514);
             this.tabPage147.Location = new System.Drawing.Point(4, 22);
             this.tabPage147.Name = "tabPage147";
-            this.tabPage147.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage147.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage147.Size = new System.Drawing.Size(442, 249);
             this.tabPage147.TabIndex = 2;
             this.tabPage147.Text = "Chroma-key";
@@ -11450,7 +11451,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage50.Controls.Add(this.cbMultiscreenDrawOnPanels);
             this.tabPage50.Location = new System.Drawing.Point(4, 22);
             this.tabPage50.Name = "tabPage50";
-            this.tabPage50.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage50.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage50.Size = new System.Drawing.Size(459, 285);
             this.tabPage50.TabIndex = 4;
             this.tabPage50.Text = "Multiscreen";
@@ -11623,7 +11624,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage51.Controls.Add(this.tabControl26);
             this.tabPage51.Location = new System.Drawing.Point(4, 22);
             this.tabPage51.Name = "tabPage51";
-            this.tabPage51.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage51.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage51.Size = new System.Drawing.Size(459, 285);
             this.tabPage51.TabIndex = 5;
             this.tabPage51.Text = "Display";
@@ -11651,7 +11652,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage115.Controls.Add(this.groupBox13);
             this.tabPage115.Location = new System.Drawing.Point(4, 22);
             this.tabPage115.Name = "tabPage115";
-            this.tabPage115.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage115.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage115.Size = new System.Drawing.Size(444, 249);
             this.tabPage115.TabIndex = 0;
             this.tabPage115.Text = "Main";
@@ -11873,7 +11874,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage116.Controls.Add(this.cbDirect2DRotate);
             this.tabPage116.Location = new System.Drawing.Point(4, 22);
             this.tabPage116.Name = "tabPage116";
-            this.tabPage116.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage116.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage116.Size = new System.Drawing.Size(444, 249);
             this.tabPage116.TabIndex = 1;
             this.tabPage116.Text = "Advanced";
@@ -11925,7 +11926,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage12.Controls.Add(this.label82);
             this.tabPage12.Location = new System.Drawing.Point(4, 22);
             this.tabPage12.Name = "tabPage12";
-            this.tabPage12.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage12.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage12.Size = new System.Drawing.Size(459, 285);
             this.tabPage12.TabIndex = 6;
             this.tabPage12.Text = "Separate capture";
@@ -12147,7 +12148,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage88.Controls.Add(this.label120);
             this.tabPage88.Location = new System.Drawing.Point(4, 22);
             this.tabPage88.Name = "tabPage88";
-            this.tabPage88.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage88.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage88.Size = new System.Drawing.Size(459, 285);
             this.tabPage88.TabIndex = 8;
             this.tabPage88.Text = "MPEG decoding";
@@ -12243,7 +12244,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage124.Controls.Add(this.tabControl28);
             this.tabPage124.Location = new System.Drawing.Point(4, 22);
             this.tabPage124.Name = "tabPage124";
-            this.tabPage124.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage124.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage124.Size = new System.Drawing.Size(459, 285);
             this.tabPage124.TabIndex = 10;
             this.tabPage124.Text = "Custom source";
@@ -12273,7 +12274,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage125.Controls.Add(this.label432);
             this.tabPage125.Location = new System.Drawing.Point(4, 22);
             this.tabPage125.Name = "tabPage125";
-            this.tabPage125.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage125.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage125.Size = new System.Drawing.Size(442, 247);
             this.tabPage125.TabIndex = 0;
             this.tabPage125.Text = "Video source";
@@ -12384,7 +12385,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage126.Controls.Add(this.cbCustomAudioSourceCategory);
             this.tabPage126.Location = new System.Drawing.Point(4, 22);
             this.tabPage126.Name = "tabPage126";
-            this.tabPage126.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage126.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage126.Size = new System.Drawing.Size(442, 247);
             this.tabPage126.TabIndex = 1;
             this.tabPage126.Text = "Audio source";
@@ -12476,22 +12477,35 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage53
             // 
+            this.tabPage53.Controls.Add(this.cbTelemetry);
             this.tabPage53.Controls.Add(this.cbIndependentThread);
             this.tabPage53.Controls.Add(this.cbLicensing);
             this.tabPage53.Controls.Add(this.cbDebugMode);
             this.tabPage53.Controls.Add(this.mmLog);
             this.tabPage53.Location = new System.Drawing.Point(4, 22);
             this.tabPage53.Name = "tabPage53";
-            this.tabPage53.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage53.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage53.Size = new System.Drawing.Size(307, 127);
             this.tabPage53.TabIndex = 2;
-            this.tabPage53.Text = "Errors";
+            this.tabPage53.Text = "Debug";
             this.tabPage53.UseVisualStyleBackColor = true;
+            // 
+            // cbTelemetry
+            // 
+            this.cbTelemetry.AutoSize = true;
+            this.cbTelemetry.Checked = true;
+            this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbTelemetry.Location = new System.Drawing.Point(150, 6);
+            this.cbTelemetry.Name = "cbTelemetry";
+            this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
+            this.cbTelemetry.TabIndex = 77;
+            this.cbTelemetry.Text = "Telemetry";
+            this.cbTelemetry.UseVisualStyleBackColor = true;
             // 
             // cbIndependentThread
             // 
             this.cbIndependentThread.AutoSize = true;
-            this.cbIndependentThread.Location = new System.Drawing.Point(150, 6);
+            this.cbIndependentThread.Location = new System.Drawing.Point(9, 31);
             this.cbIndependentThread.Name = "cbIndependentThread";
             this.cbIndependentThread.Size = new System.Drawing.Size(156, 17);
             this.cbIndependentThread.TabIndex = 76;
@@ -12520,10 +12534,10 @@ namespace VideoCapture_CSharp_Demo
             // 
             // mmLog
             // 
-            this.mmLog.Location = new System.Drawing.Point(9, 29);
+            this.mmLog.Location = new System.Drawing.Point(9, 54);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(289, 92);
+            this.mmLog.Size = new System.Drawing.Size(289, 67);
             this.mmLog.TabIndex = 72;
             // 
             // openFileDialog3
@@ -12544,7 +12558,7 @@ namespace VideoCapture_CSharp_Demo
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(5, 690);
+            this.linkLabel1.Location = new System.Drawing.Point(9, 685);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(78, 13);
             this.linkLabel1.TabIndex = 76;
@@ -12613,6 +12627,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Custom_Source = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
+            this.VideoCapture1.Debug_Telemetry = true;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
@@ -12731,8 +12746,8 @@ namespace VideoCapture_CSharp_Demo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 712);
-            this.Controls.Add(this.VideoCapture1);
             this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.VideoCapture1);
             this.Controls.Add(this.tabControl12);
             this.Controls.Add(this.tabControl10);
             this.Controls.Add(this.btResume);
@@ -14124,6 +14139,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btImageLogoAdd;
         private System.Windows.Forms.CheckBox cbFlipY;
         private System.Windows.Forms.CheckBox cbFlipX;
+        private System.Windows.Forms.CheckBox cbTelemetry;
     }
 }
 

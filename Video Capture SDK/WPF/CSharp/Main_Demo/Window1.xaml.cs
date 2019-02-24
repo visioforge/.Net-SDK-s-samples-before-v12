@@ -221,6 +221,7 @@ namespace Main_Demo
             cbScreenCaptureDisplayIndex.SelectedIndex = 0;
 
             edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.mp4";
+            edNewFilename.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output_new.mp4";
 
             VideoCapture1.TVTuner_Read();
 
@@ -1014,6 +1015,9 @@ namespace Main_Demo
 
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
+            VideoCapture1.Debug_Mode = cbDebugMode.IsChecked == true;
+            VideoCapture1.Debug_Telemetry = cbTelemetry.IsChecked == true;
+
             if (onvifControl != null)
             {
                 onvifControl.Disconnect();
@@ -1036,8 +1040,7 @@ namespace Main_Demo
                     cbPIPDevices.Items.Insert(0, "Main source");
                 }
             }
-
-            VideoCapture1.Debug_Mode = cbDebugMode.IsChecked == true;
+           
             VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH");
 
