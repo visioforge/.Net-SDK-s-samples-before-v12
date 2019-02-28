@@ -13,7 +13,7 @@ namespace VisioForge_MMT
     using System.Runtime.InteropServices;
     using System.Windows;
 
-    using VisioForge.MediaFramework.MFP;
+    using VisioForge.Shared.MFP;
     using VisioForge.Types;
     using VisioForge.VideoFingerPrinting;
 
@@ -610,6 +610,12 @@ namespace VisioForge_MMT
                 {
                     _searchLiveData.Dispose();
                     _searchLiveData = null;
+                }
+
+                if (_searchLiveOverlapData != null)
+                {
+                    _searchLiveOverlapData.Dispose();
+                    _searchLiveOverlapData = null;
                 }
 
                 disposed = true;

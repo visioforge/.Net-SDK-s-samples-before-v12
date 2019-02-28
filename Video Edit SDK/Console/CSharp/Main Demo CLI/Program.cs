@@ -1,4 +1,6 @@
-﻿namespace VE_Main_Demo_CLI
+﻿using VisioForge.MediaFramework;
+
+namespace VE_Main_Demo_CLI
 {
     using System;
 
@@ -131,7 +133,7 @@
             switch (options.Format)
             {
                 case "mp4":
-                    core.Output_Format = new VFMP4v8v10Output();
+                    core.Output_Format = new VFMP4v11Output();
                     break;
                 case "avi":
                     core.Output_Format = new VFAVIOutput();
@@ -144,7 +146,7 @@
                     break;
                 default:
                     Console.WriteLine("Wrong output format. MP4 will be used.");
-                    core.Output_Format = new VFMP4v8v10Output();
+                    core.Output_Format = new VFMP4v11Output();
                     break;
             }
             

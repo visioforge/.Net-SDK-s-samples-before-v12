@@ -1096,7 +1096,7 @@
             videoRendererSettingsWinForms4.Zoom_ShiftX = 0;
             videoRendererSettingsWinForms4.Zoom_ShiftY = 0;
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms4;
-            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
+            this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnVideoFrameBuffer += new System.EventHandler<VisioForge.Types.VideoFrameBufferEventArgs>(this.MediaPlayer1_OnVideoFrameBuffer);
             // 

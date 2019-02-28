@@ -168,27 +168,11 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="VisioForge.Controls, Version=14.0.9.0, Culture=neutral, PublicKeyToken=5873e863f1bcda5d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls.UI, Version=14.0.9.0, Culture=neutral, PublicKeyToken=eafa6bd21aa991fd, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Controls.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls.UI.Dialogs, Version=14.0.9.0, Culture=neutral, PublicKeyToken=3d84672df68c33ac, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Controls.UI.Dialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.DirectX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=2f064561f42d5b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.DirectX.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.MediaFramework, Version=14.0.9.0, Culture=neutral, PublicKeyToken=14e66dd726c53f11, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.MediaFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Shared, Version=14.0.9.0, Culture=neutral, PublicKeyToken=4cb7f6778cad43a2, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Tools, Version=14.0.9.0, Culture=neutral, PublicKeyToken=33c6ded9724deec2, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.0.17\lib\net40-client\VisioForge.Tools.dll</HintPath>
-    </Reference>
+    <Reference Include="VisioForge.Types" />
+    <Reference Include="VisioForge.Controls.UI" />
+    <Reference Include="VisioForge.Controls.UI.Dialogs" />
+    <Reference Include="VisioForge.Controls" />
+    <Reference Include="VisioForge.Tools" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="visioforge_main_icon.ico" />
