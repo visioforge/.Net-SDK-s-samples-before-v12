@@ -36,8 +36,16 @@ Public Class Form1
         End If
 
         ' video and audio present in file. tune this settings to play audio files or video files without audio
-        MediaPlayer1.Source_Stream_VideoPresent = True
-        MediaPlayer1.Source_Stream_AudioPresent = True
+        If (rbVideoWithAudio.Checked) Then
+            MediaPlayer1.Source_Stream_VideoPresent = True
+            MediaPlayer1.Source_Stream_AudioPresent = True
+        ElseIf (rbVideoWithoutAudio.Checked) Then
+            MediaPlayer1.Source_Stream_VideoPresent = True
+            MediaPlayer1.Source_Stream_AudioPresent = False
+        Else
+            MediaPlayer1.Source_Stream_VideoPresent = False
+            MediaPlayer1.Source_Stream_AudioPresent = True
+        End If
 
         MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS
 

@@ -66,8 +66,21 @@ namespace Memory_Stream_Demo
             }
 
             // video and audio present in file. tune this settings to play audio files or video files without audio
-            MediaPlayer1.Source_Stream_VideoPresent = true;
-            MediaPlayer1.Source_Stream_AudioPresent = true;
+            if (rbVideoWithAudio.Checked)
+            {
+                MediaPlayer1.Source_Stream_VideoPresent = true;
+                MediaPlayer1.Source_Stream_AudioPresent = true;
+            }
+            else if (rbVideoWithoutAudio.Checked)
+            {
+                MediaPlayer1.Source_Stream_VideoPresent = true;
+                MediaPlayer1.Source_Stream_AudioPresent = false;
+            }
+            else
+            {
+                MediaPlayer1.Source_Stream_VideoPresent = false;
+                MediaPlayer1.Source_Stream_AudioPresent = true;
+            }
 
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
             

@@ -31,6 +31,7 @@ namespace Memory_Stream_Demo
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -62,7 +63,7 @@ namespace Memory_Stream_Demo
             this.rbVideoWithoutAudio = new System.Windows.Forms.RadioButton();
             this.rbAudioFile = new System.Windows.Forms.RadioButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.timer1 = new System.Windows.Forms.Timer();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.rbStreamTypeMemory = new System.Windows.Forms.RadioButton();
@@ -336,7 +337,7 @@ namespace Memory_Stream_Demo
             this.edFilename.Name = "edFilename";
             this.edFilename.Size = new System.Drawing.Size(388, 20);
             this.edFilename.TabIndex = 35;
-            this.edFilename.Text = "C:\\video.avi";
+            this.edFilename.Text = "C:\\Samples\\!video.avi";
             // 
             // label14
             // 
@@ -408,6 +409,7 @@ namespace Memory_Stream_Demo
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
+            this.MediaPlayer1.Debug_Telemetry = true;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
@@ -421,6 +423,7 @@ namespace Memory_Stream_Demo
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -433,7 +436,6 @@ namespace Memory_Stream_Demo
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 46;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
