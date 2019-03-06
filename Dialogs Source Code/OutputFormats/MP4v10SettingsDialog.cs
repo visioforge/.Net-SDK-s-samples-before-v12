@@ -46,7 +46,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbAACBitrate.SelectedIndex = 16;
         }
 
-        public void FillSettings(ref VFMP4v8v10Output mp4Output)
+        public void SaveSettings(ref VFMP4v8v10Output mp4Output)
         {
             int tmp;
 
@@ -329,6 +329,302 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
         }
 
+        public void LoadSettings(VFMP4v8v10Output mp4Output)
+        {
+            switch (mp4Output.MP4Mode)
+            {
+                case VFMP4Mode.v10:
+                    cbMP4Mode.SelectedIndex = 1;
+                    break;
+                case VFMP4Mode.v8:
+                    cbMP4Mode.SelectedIndex = 0;
+                    break;
+                case VFMP4Mode.v10_NVENC:
+                    cbMP4Mode.SelectedIndex = 2;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (mp4Output.MP4Mode == VFMP4Mode.v8 || mp4Output.MP4Mode == VFMP4Mode.v10)
+            {
+                // Legacy / Modern settings
+                // Video H264 settings
+                switch (mp4Output.Video.Profile)
+                {
+                    case VFH264Profile.ProfileAuto:
+                        cbH264Profile.SelectedIndex = 0;
+                        break;
+                    case VFH264Profile.ProfileBaseline:
+                        cbH264Profile.SelectedIndex = 1;
+                        break;
+                    case VFH264Profile.ProfileMain:
+                        cbH264Profile.SelectedIndex = 2;
+                        break;
+                    case VFH264Profile.ProfileHigh:
+                        cbH264Profile.SelectedIndex = 3;
+                        break;
+                    case VFH264Profile.ProfileHigh10:
+                        cbH264Profile.SelectedIndex = 4;
+                        break;
+                    case VFH264Profile.ProfileHigh422:
+                        cbH264Profile.SelectedIndex = 5;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                switch (mp4Output.Video.Level)
+                {
+                    case VFH264Level.LevelAuto:
+                        cbH264Level.SelectedIndex = 0;
+                        break;
+                    case VFH264Level.Level1:
+                        cbH264Level.SelectedIndex = 1;
+                        break;
+                    case VFH264Level.Level11:
+                        cbH264Level.SelectedIndex = 2;
+                        break;
+                    case VFH264Level.Level12:
+                        cbH264Level.SelectedIndex = 3;
+                        break;
+                    case VFH264Level.Level13:
+                        cbH264Level.SelectedIndex = 4;
+                        break;
+                    case VFH264Level.Level2:
+                        cbH264Level.SelectedIndex = 5;
+                        break;
+                    case VFH264Level.Level21:
+                        cbH264Level.SelectedIndex = 6;
+                        break;
+                    case VFH264Level.Level22:
+                        cbH264Level.SelectedIndex = 7;
+                        break;
+                    case VFH264Level.Level3:
+                        cbH264Level.SelectedIndex = 8;
+                        break;
+                    case VFH264Level.Level31:
+                        cbH264Level.SelectedIndex = 9;
+                        break;
+                    case VFH264Level.Level32:
+                        cbH264Level.SelectedIndex = 10;
+                        break;
+                    case VFH264Level.Level4:
+                        cbH264Level.SelectedIndex = 11;
+                        break;
+                    case VFH264Level.Level41:
+                        cbH264Level.SelectedIndex = 12;
+                        break;
+                    case VFH264Level.Level42:
+                        cbH264Level.SelectedIndex = 13;
+                        break;
+                    case VFH264Level.Level5:
+                        cbH264Level.SelectedIndex = 14;
+                        break;
+                    case VFH264Level.Level51:
+                        cbH264Level.SelectedIndex = 15;
+                        break;
+                    case VFH264Level.Level51_NVENC:
+                        cbH264Level.SelectedIndex = 15;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                switch (mp4Output.Video.TargetUsage)
+                {
+                    case VFH264TargetUsage.Auto:
+                        cbH264TargetUsage.SelectedIndex = 0;
+                        break;
+                    case VFH264TargetUsage.BestQuality:
+                        cbH264TargetUsage.SelectedIndex = 1;
+                        break;
+                    case VFH264TargetUsage.Balanced:
+                        cbH264TargetUsage.SelectedIndex = 2;
+                        break;
+                    case VFH264TargetUsage.BestSpeed:
+                        cbH264TargetUsage.SelectedIndex = 3;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                switch (mp4Output.Video.PictureType)
+                {
+                    case VFH264PictureType.Auto:
+                        cbH264PictureType.SelectedIndex = 0;
+                        break;
+                    case VFH264PictureType.Frame:
+                        cbH264PictureType.SelectedIndex = 1;
+                        break;
+                    case VFH264PictureType.TFF:
+                        cbH264PictureType.SelectedIndex = 2;
+                        break;
+                    case VFH264PictureType.BFF:
+                        cbH264PictureType.SelectedIndex = 3;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                cbH264RateControl.SelectedIndex = (int)mp4Output.Video.RateControl;
+                cbH264MBEncoding.SelectedIndex = (int)mp4Output.Video.MBEncoding;
+                cbH264GOP.Checked = mp4Output.Video.GOP;
+                cbH264AutoBitrate.Checked = mp4Output.Video.BitrateAuto;
+                edH264IDR.Text = mp4Output.Video.IDR_Period.ToString();
+                edH264P.Text = mp4Output.Video.P_Period.ToString();
+                edH264Bitrate.Text = mp4Output.Video.Bitrate.ToString();
+            }
+            else if (mp4Output.MP4Mode == VFMP4Mode.v10_NVENC)
+            {
+                // NVENC settings
+                switch (mp4Output.Video_NVENC.Profile)
+                {
+                    case VFNVENCVideoEncoderProfile.Auto:
+                        cbNVENCProfile.SelectedIndex = 0;
+                        break;
+                    case VFNVENCVideoEncoderProfile.H264_Baseline:
+                        cbNVENCProfile.SelectedIndex = 1;
+                        break;
+                    case VFNVENCVideoEncoderProfile.H264_Main:
+                        cbNVENCProfile.SelectedIndex = 2;
+                        break;
+                    case VFNVENCVideoEncoderProfile.H264_High:
+                        cbNVENCProfile.SelectedIndex = 3;
+                        break;
+                    case VFNVENCVideoEncoderProfile.H264_High444:
+                        cbNVENCProfile.SelectedIndex = 4;
+                        break;
+                    case VFNVENCVideoEncoderProfile.H264_ProgressiveHigh:
+                        cbNVENCProfile.SelectedIndex = 5;
+                        break;
+                    case VFNVENCVideoEncoderProfile.H264_ConstrainedHigh:
+                        cbNVENCProfile.SelectedIndex = 6;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                switch (mp4Output.Video_NVENC.Level)
+                {
+                    case VFNVENCEncoderLevel.Auto:
+                        cbNVENCLevel.SelectedIndex = 0;
+                        break;
+                    case VFNVENCEncoderLevel.H264_1:
+                        cbNVENCLevel.SelectedIndex = 1;
+                        break;
+                    case VFNVENCEncoderLevel.H264_11:
+                        cbNVENCLevel.SelectedIndex = 2;
+                        break;
+                    case VFNVENCEncoderLevel.H264_12:
+                        cbNVENCLevel.SelectedIndex = 3;
+                        break;
+                    case VFNVENCEncoderLevel.H264_13:
+                        cbNVENCLevel.SelectedIndex = 4;
+                        break;
+                    case VFNVENCEncoderLevel.H264_2:
+                        cbNVENCLevel.SelectedIndex = 5;
+                        break;
+                    case VFNVENCEncoderLevel.H264_21:
+                        cbNVENCLevel.SelectedIndex = 6;
+                        break;
+                    case VFNVENCEncoderLevel.H264_22:
+                        cbNVENCLevel.SelectedIndex = 7;
+                        break;
+                    case VFNVENCEncoderLevel.H264_3:
+                        cbNVENCLevel.SelectedIndex = 8;
+                        break;
+                    case VFNVENCEncoderLevel.H264_31:
+                        cbNVENCLevel.SelectedIndex = 9;
+                        break;
+                    case VFNVENCEncoderLevel.H264_32:
+                        cbNVENCLevel.SelectedIndex = 10;
+                        break;
+                    case VFNVENCEncoderLevel.H264_4:
+                        cbNVENCLevel.SelectedIndex = 11;
+                        break;
+                    case VFNVENCEncoderLevel.H264_41:
+                        cbNVENCLevel.SelectedIndex = 12;
+                        break;
+                    case VFNVENCEncoderLevel.H264_42:
+                        cbNVENCLevel.SelectedIndex = 13;
+                        break;
+                    case VFNVENCEncoderLevel.H264_5:
+                        cbNVENCLevel.SelectedIndex = 14;
+                        break;
+                    case VFNVENCEncoderLevel.H264_51:
+                        cbNVENCLevel.SelectedIndex = 15;
+                        break;
+                    case VFNVENCEncoderLevel.H264_52:
+                        cbNVENCLevel.SelectedIndex = 16;
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+
+                edNVENCBitrate.Text = mp4Output.Video_NVENC.Bitrate.ToString();
+                edNVENCQP.Text = mp4Output.Video_NVENC.QP.ToString();
+                cbNVENCRateControl.SelectedIndex = (int)mp4Output.Video_NVENC.RateControl;
+                edNVENCGOP.Text = mp4Output.Video_NVENC.GOP.ToString();
+                edNVENCBFrames.Text = mp4Output.Video_NVENC.BFrames.ToString();
+            }
+
+            // Audio AAC settings
+            cbAACBitrate.Text = mp4Output.Audio_AAC.Bitrate.ToString();
+            cbAACVersion.SelectedIndex = (int)mp4Output.Audio_AAC.Version;
+            cbAACOutput.SelectedIndex = (int)mp4Output.Audio_AAC.Output;
+            cbAACObjectType.SelectedIndex = (int)mp4Output.Audio_AAC.Object - 1;
+            cbMP4UseSpecialSyncMode.Checked = mp4Output.UseSpecialSyncMode;
+
+            if ((mp4Output.MP4V10Flags & (int)MP4V10Flags.TimeAdjust) != 0)
+            {
+                cbMP4TimeAdjust.Checked = true;
+            }
+            else
+            {
+                cbMP4TimeAdjust.Checked = false;
+            }
+
+            if ((mp4Output.MP4V10Flags & (int)MP4V10Flags.TimeOverride) != 0)
+            {
+                cbMP4TimeOverride.Checked = true;
+            }
+            else
+            {
+                cbMP4TimeOverride.Checked = false;
+            }
+
+            switch (mp4Output.Encryption_KeyType)
+            {
+                case VFEncryptionKeyType.String:
+                    rbEncryptionKeyString.Checked = true;
+                    edEncryptionKeyString.Text = mp4Output.Encryption_Key.ToString();
+                    break;
+                case VFEncryptionKeyType.File:
+                    rbEncryptionKeyFile.Checked = true;
+                    edEncryptionKeyString.Text = mp4Output.Encryption_Key.ToString();
+                    break;
+                case VFEncryptionKeyType.Binary:
+                    rbEncryptionKeyFile.Checked = true;
+                    edEncryptionKeyHEX.Text = ConvertByteArrayToHexString((byte[])mp4Output.Encryption_Key);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            switch (mp4Output.Encryption_Mode)
+            {
+                case VFEncryptionMode.v8_AES128:
+                    rbEncryptionModeAES128.Checked = true;
+                    break;
+                case VFEncryptionMode.v9_AES256:
+                    rbEncryptionModeAES128.Checked = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         /// <summary>
         /// Converts HEX string to byte array.
         /// </summary>
@@ -353,6 +649,11 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
 
             return HexAsBytes;
+        }
+
+        public static string ConvertByteArrayToHexString(byte[] ba)
+        {
+            return BitConverter.ToString(ba).Replace("-", "");
         }
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

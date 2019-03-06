@@ -71,7 +71,22 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
         }
 
-        public void FillSettings(ref VFDirectCaptureMP4Output directCaptureOutput)
+        public void LoadSettings(VFDirectCaptureMP4Output directCaptureOutput)
+        {
+            // Custom audio codec can be used if device to not have audio pin with compressed stream
+            if (directCaptureOutput.Audio_Codec_UseFiltersCategory)
+            {
+                rbCustomUseAudioCodecsCat.Checked = false;
+                cbCustomAudioCodecs.Text = directCaptureOutput.Audio_Codec;
+            }
+            else
+            {
+                rbCustomUseAudioCodecsCat.Checked = true;
+                cbCustomDSFilterA.Text = directCaptureOutput.Audio_Codec;
+            }
+        }
+
+        public void SaveSettings(ref VFDirectCaptureMP4Output directCaptureOutput)
         {
             // Custom audio codec can be used if device to not have audio pin with compressed stream
             if (rbCustomUseAudioCodecsCat.Checked)
@@ -86,7 +101,37 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
         }
 
-        public void FillSettings(ref VFDirectCaptureCustomOutput directCaptureOutput)
+        public void LoadSettings(VFDirectCaptureCustomOutput directCaptureOutput)
+        {
+            if (directCaptureOutput.Video_Codec_UseFiltersCategory)
+            {
+                rbCustomUseVideoCodecsCat.Checked = false;
+                cbCustomVideoCodecs.Text = directCaptureOutput.Video_Codec;
+            }
+            else
+            {
+                rbCustomUseVideoCodecsCat.Checked = true;
+                cbCustomDSFilterV.Text = directCaptureOutput.Video_Codec;
+            }
+
+            if (directCaptureOutput.Audio_Codec_UseFiltersCategory)
+            {
+                rbCustomUseAudioCodecsCat.Checked = false;
+                cbCustomAudioCodecs.Text = directCaptureOutput.Audio_Codec;
+            }
+            else
+            {
+                rbCustomUseAudioCodecsCat.Checked = true;
+                cbCustomDSFilterA.Text = directCaptureOutput.Audio_Codec;
+            }
+
+            cbCustomMuxer.Text = directCaptureOutput.MuxFilter_Name;
+            cbCustomMuxFilterIsEncoder.Checked = directCaptureOutput.MuxFilter_IsEncoder;
+            cbUseSpecialFilewriter.Checked = directCaptureOutput.SpecialFileWriter_Needed;
+            cbCustomFilewriter.Text = directCaptureOutput.SpecialFileWriter_FilterName;
+        }
+
+        public void SaveSettings(ref VFDirectCaptureCustomOutput directCaptureOutput)
         {
             if (rbCustomUseVideoCodecsCat.Checked)
             {
@@ -116,7 +161,37 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             directCaptureOutput.SpecialFileWriter_FilterName = cbCustomFilewriter.Text;
         }
 
-        public void FillSettings(ref VFCustomOutput customOutput)
+        public void LoadSettings(VFCustomOutput customOutput)
+        {
+            if (customOutput.Video_Codec_UseFiltersCategory)
+            {
+                rbCustomUseVideoCodecsCat.Checked = false;
+                cbCustomVideoCodecs.Text = customOutput.Video_Codec;
+            }
+            else
+            {
+                rbCustomUseVideoCodecsCat.Checked = true;
+                cbCustomDSFilterV.Text = customOutput.Video_Codec;
+            }
+
+            if (customOutput.Audio_Codec_UseFiltersCategory)
+            {
+                rbCustomUseAudioCodecsCat.Checked = false;
+                cbCustomAudioCodecs.Text = customOutput.Audio_Codec;
+            }
+            else
+            {
+                rbCustomUseAudioCodecsCat.Checked = true;
+                cbCustomDSFilterA.Text = customOutput.Audio_Codec;
+            }
+
+            cbCustomMuxer.Text = customOutput.MuxFilter_Name;
+            cbCustomMuxFilterIsEncoder.Checked = customOutput.MuxFilter_IsEncoder;
+            cbUseSpecialFilewriter.Checked = customOutput.SpecialFileWriter_Needed;
+            cbCustomFilewriter.Text = customOutput.SpecialFileWriter_FilterName;
+        }
+
+        public void SaveSettings(ref VFCustomOutput customOutput)
         {
             if (rbCustomUseVideoCodecsCat.Checked)
             {

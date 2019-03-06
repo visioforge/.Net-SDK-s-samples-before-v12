@@ -19,12 +19,24 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbFLACBlockSize.SelectedIndex = 4;
         }
 
-        private void btClose_Click(object sender, System.EventArgs e)
+        private void btClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        public void FillSettings(ref VFFLACOutput flacOutput)
+        public void LoadSettings(VFFLACOutput flacOutput)
+        {
+            tbFLACLevel.Value = flacOutput.Level;
+            cbFLACBlockSize.Text = flacOutput.BlockSize.ToString();
+            cbFLACAdaptiveMidSideCoding.Checked = flacOutput.AdaptiveMidSideCoding;
+            cbFLACExhaustiveModelSearch.Checked = flacOutput.ExhaustiveModelSearch;
+            tbFLACLPCOrder.Value = flacOutput.LPCOrder;
+            cbFLACMidSideCoding.Checked = flacOutput.MidSideCoding;
+            edFLACRiceMin.Text = flacOutput.RiceMin.ToString();
+            edFLACRiceMax.Text = flacOutput.RiceMax.ToString();
+        }
+
+        public void SaveSettings(ref VFFLACOutput flacOutput)
         {
             flacOutput.Level = tbFLACLevel.Value;
             flacOutput.BlockSize = Convert.ToInt32(cbFLACBlockSize.Text);

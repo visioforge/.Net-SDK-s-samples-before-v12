@@ -10,7 +10,7 @@ using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace VisioForge.Controls.UI.Dialogs.OutputFormats
 {
-    public class OutputFormatManager
+    public class OutputFormatManager : IDisposable
     {
         private MFSettingsDialog mfSettingsDialog;
 
@@ -324,7 +324,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 mp3SettingsDialog = new MP3SettingsDialog();
             }
 
-            mp3SettingsDialog.FillSettings(ref mp3Output);
+            mp3SettingsDialog.SaveSettings(ref mp3Output);
         }
 
         public void SetMP4Output(ref VFMP4v8v10Output mp4Output)
@@ -334,7 +334,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 mp4V10SettingsDialog = new MP4v10SettingsDialog();
             }
 
-            mp4V10SettingsDialog.FillSettings(ref mp4Output);
+            mp4V10SettingsDialog.SaveSettings(ref mp4Output);
         }
 
         public void SetFFMPEGEXEOutput(ref VFFFMPEGEXEOutput ffmpegOutput)
@@ -344,7 +344,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 ffmpegEXESettingsDialog = new FFMPEGEXESettingsDialog();
             }
 
-            ffmpegEXESettingsDialog.FillSettings(ref ffmpegOutput);
+            ffmpegEXESettingsDialog.SaveSettings(ref ffmpegOutput);
         }
 
         public void SetWMVOutput(ref VFWMVOutput wmvOutput, VideoCaptureCore core)
@@ -355,7 +355,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
 
             wmvSettingsDialog.WMA = false;
-            wmvSettingsDialog.FillSettings(ref wmvOutput);
+            wmvSettingsDialog.SaveSettings(ref wmvOutput);
         }
 
         public void SetWMAOutput(ref VFWMAOutput wmaOutput, VideoCaptureCore core)
@@ -366,7 +366,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
 
             wmvSettingsDialog.WMA = true;
-            wmvSettingsDialog.FillSettings(ref wmaOutput);
+            wmvSettingsDialog.SaveSettings(ref wmaOutput);
         }
 
         public void SetACMOutput(ref VFACMOutput acmOutput, VideoCaptureCore core)
@@ -376,7 +376,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 pcmSettingsDialog = new PCMSettingsDialog(core.Audio_Codecs().ToArray());
             }
 
-            pcmSettingsDialog.FillSettings(ref acmOutput);
+            pcmSettingsDialog.SaveSettings(ref acmOutput);
         }
 
         public void SetWebMOutput(ref VFWebMOutput webmOutput)
@@ -386,7 +386,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 webmSettingsDialog = new WebMSettingsDialog();
             }
 
-            webmSettingsDialog.FillSettings(ref webmOutput);
+            webmSettingsDialog.SaveSettings(ref webmOutput);
         }
 
         public void SetFFMPEGDLLOutput(ref VFFFMPEGDLLOutput ffmpegDLLOutput)
@@ -396,7 +396,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 ffmpegDLLSettingsDialog = new FFMPEGDLLSettingsDialog();
             }
 
-            ffmpegDLLSettingsDialog.FillSettings(ref ffmpegDLLOutput);
+            ffmpegDLLSettingsDialog.SaveSettings(ref ffmpegDLLOutput);
         }
 
         public void SetFLACOutput(ref VFFLACOutput flacOutput)
@@ -406,7 +406,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 flacSettingsDialog = new FLACSettingsDialog();
             }
 
-            flacSettingsDialog.FillSettings(ref flacOutput);
+            flacSettingsDialog.SaveSettings(ref flacOutput);
         }
 
         public void SetMP4Output(ref VFMP4v11Output mp4Output)
@@ -416,7 +416,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 mfSettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MP4v11);
             }
 
-            mfSettingsDialog.FillSettings(ref mp4Output);
+            mfSettingsDialog.SaveSettings(ref mp4Output);
         }
 
         public void SetSpeexOutput(ref VFSpeexOutput speexOutput)
@@ -426,7 +426,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 speexSettingsDialog = new SpeexSettingsDialog();
             }
 
-            speexSettingsDialog.FillSettings(ref speexOutput);
+            speexSettingsDialog.SaveSettings(ref speexOutput);
         }
 
         public void SetM4AOutput(ref VFM4AOutput m4aOutput)
@@ -436,7 +436,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 m4aSettingsDialog = new M4ASettingsDialog();
             }
 
-            m4aSettingsDialog.FillSettings(ref m4aOutput);
+            m4aSettingsDialog.SaveSettings(ref m4aOutput);
         }
 
         public void SetGIFOutput(ref VFAnimatedGIFOutput gifOutput)
@@ -446,7 +446,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 gifSettingsDialog = new GIFSettingsDialog();
             }
 
-            gifSettingsDialog.FillSettings(ref gifOutput);
+            gifSettingsDialog.SaveSettings(ref gifOutput);
         }
 
         public void SetDirectCaptureCustomOutput(ref VFDirectCaptureCustomOutput directCaptureOutput, VideoCaptureCore core)
@@ -456,7 +456,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 customFormatSettingsDialog = new CustomFormatSettingsDialog(core.Video_Codecs().ToArray(), core.Audio_Codecs().ToArray(), core.DirectShow_Filters().ToArray());
             }
 
-            customFormatSettingsDialog.FillSettings(ref directCaptureOutput);
+            customFormatSettingsDialog.SaveSettings(ref directCaptureOutput);
         }
 
         public void SetDirectCaptureCustomOutput(ref VFDirectCaptureMP4Output directCaptureOutput, VideoCaptureCore core)
@@ -466,7 +466,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 customFormatSettingsDialog = new CustomFormatSettingsDialog(core.Video_Codecs().ToArray(), core.Audio_Codecs().ToArray(), core.DirectShow_Filters().ToArray());
             }
 
-            customFormatSettingsDialog.FillSettings(ref directCaptureOutput);
+            customFormatSettingsDialog.SaveSettings(ref directCaptureOutput);
         }
 
         public void SetCustomOutput(ref VFCustomOutput customOutput, VideoCaptureCore core)
@@ -476,7 +476,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 customFormatSettingsDialog = new CustomFormatSettingsDialog(core.Video_Codecs().ToArray(), core.Audio_Codecs().ToArray(), core.DirectShow_Filters().ToArray());
             }
 
-            customFormatSettingsDialog.FillSettings(ref customOutput);
+            customFormatSettingsDialog.SaveSettings(ref customOutput);
         }
 
         public void SetDVOutput(ref VFDVOutput dvOutput)
@@ -486,7 +486,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 dvSettingsDialog = new DVSettingsDialog();
             }
 
-            dvSettingsDialog.FillSettings(ref dvOutput);
+            dvSettingsDialog.SaveSettings(ref dvOutput);
         }
 
         public void SetAVIOutput(ref VFAVIOutput aviOutput, VideoCaptureCore core)
@@ -496,7 +496,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 aviSettingsDialog = new AVISettingsDialog(core.Video_Codecs().ToArray(), core.Audio_Codecs().ToArray());
             }
 
-            aviSettingsDialog.FillSettings(ref aviOutput);
+            aviSettingsDialog.SaveSettings(ref aviOutput);
 
             if (aviOutput.Audio_UseMP3Encoder)
             {
@@ -513,7 +513,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 aviSettingsDialog = new AVISettingsDialog(core.Video_Codecs().ToArray(), core.Audio_Codecs().ToArray());
             }
 
-            aviSettingsDialog.FillSettings(ref mkvOutput);
+            aviSettingsDialog.SaveSettings(ref mkvOutput);
 
             if (mkvOutput.Audio_UseMP3Encoder)
             {
@@ -530,7 +530,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 oggVorbisSettingsDialog = new OggVorbisSettingsDialog();
             }
 
-            oggVorbisSettingsDialog.FillSettings(ref oggVorbisOutput);
+            oggVorbisSettingsDialog.SaveSettings(ref oggVorbisOutput);
         }
 
         public void FillSettings(VFVideoCaptureOutputFormat format, VideoCaptureCore core)
@@ -770,6 +770,138 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 default:
                     throw new ArgumentOutOfRangeException(nameof(format), format, null);
             }
+        }
+
+        private void ReleaseUnmanagedResources()
+        {
+            // TODO release unmanaged resources here
+        }
+
+        private void Dispose(bool disposing)
+        {
+            ReleaseUnmanagedResources();
+
+            if (disposing)
+            {
+                if (mfSettingsDialog != null)
+                {
+                    mfSettingsDialog.Dispose();
+                    mfSettingsDialog = null;
+                }
+
+                if (ffmpegDLLSettingsDialog != null)
+                {
+                    ffmpegDLLSettingsDialog.Dispose();
+                    ffmpegDLLSettingsDialog = null;
+                }
+
+                if (webmSettingsDialog != null)
+                {
+                    webmSettingsDialog.Dispose();
+                    webmSettingsDialog = null;
+                }
+
+                if (pcmSettingsDialog != null)
+                {
+                    pcmSettingsDialog.Dispose();
+                    pcmSettingsDialog = null;
+                }
+
+                if (mp3SettingsDialog != null)
+                {
+                    mp3SettingsDialog.Dispose();
+                    mp3SettingsDialog = null;
+                }
+
+                if (dvSettingsDialog != null)
+                {
+                    dvSettingsDialog.Dispose();
+                    dvSettingsDialog = null;
+                }
+
+                if (wmaSettingsDialog != null)
+                {
+                    wmaSettingsDialog.Dispose();
+                    wmaSettingsDialog = null;
+                }
+
+                if (wmvSettingsDialog != null)
+                {
+                    wmvSettingsDialog.Dispose();
+                    wmvSettingsDialog = null;
+                }
+
+                if (mkvSettingsDialog != null)
+                {
+                    mkvSettingsDialog.Dispose();
+                    mkvSettingsDialog = null;
+                }
+
+                if (aviSettingsDialog != null)
+                {
+                    aviSettingsDialog.Dispose();
+                    aviSettingsDialog = null;
+                }
+
+                if (mp4V10SettingsDialog != null)
+                {
+                    mp4V10SettingsDialog.Dispose();
+                    mp4V10SettingsDialog = null;
+                }
+                
+                if (gifSettingsDialog != null)
+                {
+                    gifSettingsDialog.Dispose();
+                    gifSettingsDialog = null;
+                }
+
+                if (m4aSettingsDialog != null)
+                {
+                    m4aSettingsDialog.Dispose();
+                    m4aSettingsDialog = null;
+                }
+
+                if (speexSettingsDialog != null)
+                {
+                    speexSettingsDialog.Dispose();
+                    speexSettingsDialog = null;
+                }
+
+                if (oggVorbisSettingsDialog != null)
+                {
+                    oggVorbisSettingsDialog.Dispose();
+                    oggVorbisSettingsDialog = null;
+                }
+
+                if (customFormatSettingsDialog != null)
+                {
+                    customFormatSettingsDialog.Dispose();
+                    customFormatSettingsDialog = null;
+                }
+
+                if (flacSettingsDialog != null)
+                {
+                    flacSettingsDialog.Dispose();
+                    flacSettingsDialog = null;
+                }
+
+                if (ffmpegEXESettingsDialog != null)
+                {
+                    ffmpegEXESettingsDialog.Dispose();
+                    ffmpegEXESettingsDialog = null;
+                }
+            }
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~OutputFormatManager()
+        {
+            Dispose(false);
         }
     }
 }

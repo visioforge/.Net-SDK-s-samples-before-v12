@@ -24,8 +24,84 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbFFConstaint.SelectedIndex = 0;
             cbFFOutputFormat.SelectedIndex = 0;
         }
-        
-        public void FillSettings(ref VFFFMPEGDLLOutput ffmpegDLLOutput)
+
+        public void LoadSettings(VFFFMPEGDLLOutput ffmpegDLLOutput)
+        {
+            switch (ffmpegDLLOutput.OutputFormat)
+            {
+                case VFFFMPEGDLLOutputFormat.FLV:
+                    cbFFOutputFormat.SelectedIndex = 6;
+                    break;
+                case VFFFMPEGDLLOutputFormat.MPEG1:
+                    cbFFOutputFormat.SelectedIndex = 0;
+                    break;
+                case VFFFMPEGDLLOutputFormat.MPEG1VCD:
+                    cbFFOutputFormat.SelectedIndex = 1;
+                    break;
+                case VFFFMPEGDLLOutputFormat.MPEG2:
+                    cbFFOutputFormat.SelectedIndex = 2;
+                    break;
+                case VFFFMPEGDLLOutputFormat.MPEG2TS:
+                    cbFFOutputFormat.SelectedIndex = 5;
+                    break;
+                case VFFFMPEGDLLOutputFormat.MPEG2SVCD:
+                    cbFFOutputFormat.SelectedIndex = 3;
+                    break;
+                case VFFFMPEGDLLOutputFormat.MPEG2DVD:
+                    cbFFOutputFormat.SelectedIndex = 4;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            if (ffmpegDLLOutput.Video_AspectRatio_W == 0 && ffmpegDLLOutput.Video_AspectRatio_H == 1)
+            {
+                cbFFAspectRatio.SelectedIndex = 0;
+            }
+            else if (ffmpegDLLOutput.Video_AspectRatio_W == 1 && ffmpegDLLOutput.Video_AspectRatio_H == 1)
+            {
+                cbFFAspectRatio.SelectedIndex = 1;
+            }
+            else if(ffmpegDLLOutput.Video_AspectRatio_W == 4 && ffmpegDLLOutput.Video_AspectRatio_H == 3)
+            {
+                cbFFAspectRatio.SelectedIndex = 2;
+            }
+            else
+            {
+                cbFFAspectRatio.SelectedIndex = 3;
+            }
+
+            switch (ffmpegDLLOutput.Video_TVSystem)
+            {
+                case VFFFMPEGDLLTVSystem.None:
+                    cbFFConstaint.SelectedIndex = 0;
+                    break;
+                case VFFFMPEGDLLTVSystem.PAL:
+                    cbFFConstaint.SelectedIndex = 1;
+                    break;
+                case VFFFMPEGDLLTVSystem.NTSC:
+                    cbFFConstaint.SelectedIndex = 2;
+                    break;
+                case VFFFMPEGDLLTVSystem.Film:
+                    cbFFConstaint.SelectedIndex = 3;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            edFFVideoWidth.Text = ffmpegDLLOutput.Video_Width.ToString();
+            edFFVideoHeight.Text = ffmpegDLLOutput.Video_Height.ToString();
+            edFFTargetBitrate.Text = ((int)(ffmpegDLLOutput.Video_Bitrate / 1000.0)).ToString();
+            edFFVideoBitrateMax.Text = ((int)(ffmpegDLLOutput.Video_MaxBitrate / 1000.0)).ToString();
+            edFFVideoBitrateMin.Text = ((int)(ffmpegDLLOutput.Video_MinBitrate / 1000.0)).ToString();
+            edFFVBVBufferSize.Text = ffmpegDLLOutput.Video_BufferSize.ToString();
+            cbFFAudioChannels.Text = ffmpegDLLOutput.Audio_Channels.ToString();
+            cbFFAudioSampleRate.Text = ffmpegDLLOutput.Audio_SampleRate.ToString();
+            cbFFAudioBitrate.Text = ((int)(ffmpegDLLOutput.Audio_Bitrate / 1000.0)).ToString();
+            cbFFVideoInterlace.Checked = ffmpegDLLOutput.Video_Interlace;
+        }
+
+        public void SaveSettings(ref VFFFMPEGDLLOutput ffmpegDLLOutput)
         {
             switch (cbFFOutputFormat.SelectedIndex)
             {

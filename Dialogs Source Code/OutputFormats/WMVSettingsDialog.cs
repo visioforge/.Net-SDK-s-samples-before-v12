@@ -294,7 +294,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
         /// <param name="wmaOutput">
         /// WMA settings.
         /// </param>
-        public void FillSettings(ref VFWMAOutput wmaOutput)
+        public void SaveSettings(ref VFWMAOutput wmaOutput)
         {
             //if (WMA && !_loaded)
             //{
@@ -351,8 +351,79 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
                 }
 
                 wmaOutput.Custom_Audio_StreamPresent = cbWMVAudioEnabled.Checked;
-                
+
                 wmaOutput.Custom_Profile_Name = "My_Profile_1";
+            }
+        }
+
+        /// <summary>
+        /// Loads WMA settings.
+        /// </summary>
+        /// <param name="wmaOutput">
+        /// WMA settings.
+        /// </param>
+        public void LoadSettings(VFWMAOutput wmaOutput)
+        {
+            //if (WMA && !_loaded)
+            //{
+            //    cbWMVInternalProfile9.Text = "Windows Media Audio 9 High (192K)";
+            //}
+
+            switch (wmaOutput.Mode)
+            {
+                case VFWMVMode.ExternalProfile:
+                    rbWMVExternal.Checked = true;
+                    edWMVProfile.Text = wmaOutput.External_Profile_FileName;
+                    break;
+                case VFWMVMode.InternalProfile:
+                    rbWMVInternal9.Checked = true;
+                    if (!string.IsNullOrEmpty(wmaOutput.Internal_Profile_Name))
+                    {
+                        cbWMVInternalProfile9.Text = wmaOutput.Internal_Profile_Name;
+                    }
+
+                    break;
+                case VFWMVMode.CustomSettings:
+                    {
+                        rbWMVCustom.Checked = true;
+
+                        cbWMVAudioCodec.Text = wmaOutput.Custom_Audio_Codec;
+                        cbWMVAudioFormat.Text = wmaOutput.Custom_Audio_Format;
+                        edWMVAudioPeakBitrate.Text = wmaOutput.Custom_Audio_PeakBitrate.ToString();
+
+                        switch (wmaOutput.Custom_Audio_Mode)
+                        {
+                            case VFWMVStreamMode.CBR:
+                                cbWMVAudioMode.Text = "CBR";
+                                break;
+                            case VFWMVStreamMode.VBRQuality:
+                                cbWMVAudioMode.Text = "Quality";
+                                break;
+                            case VFWMVStreamMode.VBRBitrate:
+                                cbWMVAudioMode.Text = "VBR";
+                                break;
+                            case VFWMVStreamMode.VBRPeakBitrate:
+                                cbWMVAudioMode.Text = "VBR (Peak)";
+                                break;
+                            default:
+                                throw new ArgumentOutOfRangeException();
+                        }
+
+                        cbWMVAudioEnabled.Checked = wmaOutput.Custom_Audio_StreamPresent;
+                    }
+                    break;
+                case VFWMVMode.V8SystemProfile:
+
+                    rbWMVInternal8.Checked = true;
+
+                    if (!string.IsNullOrEmpty(wmaOutput.V8ProfileName))
+                    {
+                        cbWMVInternalProfile8.Text = wmaOutput.V8ProfileName;
+                    }
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
@@ -362,7 +433,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
         /// <param name="wmvOutput">
         /// WMV settings.
         /// </param>
-        public void FillSettings(ref VFWMVOutput wmvOutput)
+        public void SaveSettings(ref VFWMVOutput wmvOutput)
         {
             if (rbWMVInternal9.Checked)
             {

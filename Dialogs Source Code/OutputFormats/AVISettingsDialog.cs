@@ -81,7 +81,21 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
         }
 
-        public void FillSettings(ref VFAVIOutput aviOutput)
+        public void LoadSettings(VFAVIOutput aviOutput)
+        {
+            cbAudioCodecs.Text = aviOutput.ACM.Name;
+            cbChannels.Text = aviOutput.ACM.Channels.ToString();
+            cbBPS.Text = aviOutput.ACM.BPS.ToString();
+            cbSampleRate.Text = aviOutput.ACM.SampleRate.ToString();
+            cbVideoCodecs.Text = aviOutput.Video_Codec;
+            cbUncVideo.Checked = !aviOutput.Video_UseCompression;
+            cbDecodeToRGB.Checked = !aviOutput.Video_UseCompression_DecodeUncompressedToRGB;
+            cbUncAudio.Checked = !aviOutput.ACM.UseCompression;
+
+            cbUseMP3InAVI.Checked = aviOutput.Audio_UseMP3Encoder;
+        }
+
+        public void SaveSettings(ref VFAVIOutput aviOutput)
         {
             aviOutput.ACM.Name = cbAudioCodecs.Text;
             aviOutput.ACM.Channels = Convert.ToInt32(cbChannels.Text);
@@ -98,7 +112,21 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             }
         }
 
-        public void FillSettings(ref VFMKVv1Output mkvOutput)
+        public void LoadSettings(VFMKVv1Output mkvOutput)
+        {
+            cbAudioCodecs.Text = mkvOutput.ACM.Name;
+            cbChannels.Text = mkvOutput.ACM.Channels.ToString();
+            cbBPS.Text = mkvOutput.ACM.BPS.ToString();
+            cbSampleRate.Text = mkvOutput.ACM.SampleRate.ToString();
+            cbVideoCodecs.Text = mkvOutput.Video_Codec;
+            cbUncVideo.Checked = !mkvOutput.Video_UseCompression;
+            cbDecodeToRGB.Checked = mkvOutput.Video_UseCompression_DecodeUncompressedToRGB;
+            cbUncAudio.Checked = !mkvOutput.ACM.UseCompression;
+
+            cbUseMP3InAVI.Checked = mkvOutput.Audio_UseMP3Encoder;
+        }
+
+        public void SaveSettings(ref VFMKVv1Output mkvOutput)
         {
             mkvOutput.ACM.Name = cbAudioCodecs.Text;
             mkvOutput.ACM.Channels = Convert.ToInt32(cbChannels.Text);

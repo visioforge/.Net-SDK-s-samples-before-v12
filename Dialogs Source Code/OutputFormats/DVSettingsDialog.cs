@@ -21,7 +21,27 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbDVSampleRate.SelectedIndex = 0;
         }
 
-        public void FillSettings(ref VFDVOutput dvOutput)
+        public void LoadSettings(VFDVOutput dvOutput)
+        {
+            cbDVChannels.Text = dvOutput.Audio_Channels.ToString();
+            cbDVSampleRate.Text = dvOutput.Audio_SampleRate.ToString();
+
+            switch (dvOutput.Video_Format)
+            {
+                case VFDVVideoFormat.PAL:
+                    rbDVPAL.Checked = true;
+                    break;
+                case VFDVVideoFormat.NTSC:
+                    rbDVPAL.Checked = false;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            rbDVType2.Checked = dvOutput.Type2;
+        }
+
+        public void SaveSettings(ref VFDVOutput dvOutput)
         {
             dvOutput.Audio_Channels = Convert.ToInt32(cbDVChannels.Text);
             dvOutput.Audio_SampleRate = Convert.ToInt32(cbDVSampleRate.Text);

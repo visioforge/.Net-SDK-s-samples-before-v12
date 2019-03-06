@@ -40,7 +40,16 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbAudioCodecs2.Text = @"PCM";
         }
 
-        public void FillSettings(ref VFACMOutput acmOutput)
+        public void LoadSettings(VFACMOutput acmOutput)
+        {
+            cbChannels2.Text = acmOutput.Channels.ToString();
+            cbBPS2.Text = acmOutput.BPS.ToString();
+            cbSampleRate2.Text = acmOutput.SampleRate.ToString();
+
+            acmOutput.Name = cbAudioCodecs2.Text;
+        }
+
+        public void SaveSettings(ref VFACMOutput acmOutput)
         {
             acmOutput.Channels = Convert.ToInt32(cbChannels2.Text);
             acmOutput.BPS = Convert.ToInt32(cbBPS2.Text);

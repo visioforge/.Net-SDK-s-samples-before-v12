@@ -24,7 +24,15 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbM4ABitrate.SelectedIndex = 12;
         }
 
-        public void FillSettings(ref VFM4AOutput m4aOutput)
+        public void LoadSettings(VFM4AOutput m4aOutput)
+        {
+            cbM4ABitrate.Text = m4aOutput.Bitrate.ToString();
+            cbM4AVersion.SelectedIndex = (int)m4aOutput.Version;
+            cbM4AOutput.SelectedIndex = (int)m4aOutput.Output;
+            cbM4AObjectType.SelectedIndex = (int)m4aOutput.Object - 1;
+        }
+
+        public void SaveSettings(ref VFM4AOutput m4aOutput)
         {
             int.TryParse(cbM4ABitrate.Text, out var tmp);
             m4aOutput.Bitrate = tmp;

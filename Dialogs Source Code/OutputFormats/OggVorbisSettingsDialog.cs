@@ -22,7 +22,27 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbOGGMinimum.SelectedIndex = 5;
         }
 
-        public void FillSettings(ref VFOGGVorbisOutput oggVorbisOutput)
+        public void LoadSettings(VFOGGVorbisOutput oggVorbisOutput)
+        {
+            edOGGQuality.Text = oggVorbisOutput.Quality.ToString();
+            cbOGGMinimum.Text = oggVorbisOutput.MinBitRate.ToString();
+            cbOGGMaximum.Text = oggVorbisOutput.MaxBitRate.ToString();
+            cbOGGAverage.Text = oggVorbisOutput.AvgBitRate.ToString();
+
+            switch (oggVorbisOutput.Mode)
+            {
+                case VFVorbisMode.Quality:
+                    rbOGGQuality.Checked = true;
+                    break;
+                case VFVorbisMode.Bitrate:
+                    rbOGGBitrate.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SaveSettings(ref VFOGGVorbisOutput oggVorbisOutput)
         {
             oggVorbisOutput.Quality = Convert.ToInt32(edOGGQuality.Text);
             oggVorbisOutput.MinBitRate = Convert.ToInt32(cbOGGMinimum.Text);

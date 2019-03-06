@@ -21,7 +21,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbSpeexMode.SelectedIndex = 0;
         }
 
-        public void FillSettings(ref VFSpeexOutput speexOutput)
+        public void SaveSettings(ref VFSpeexOutput speexOutput)
         {
             speexOutput.BitRate = tbSpeexBitrate.Value;
             speexOutput.BitrateControl = (SpeexBitrateControl)cbSpeexBitrateControl.SelectedIndex;
@@ -33,6 +33,20 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             speexOutput.UseDTX = cbSpeexDTX.Checked;
             speexOutput.UseDenoise = cbSpeexDenoise.Checked;
             speexOutput.UseVAD = cbSpeexVAD.Checked;
+        }
+
+        public void LoadSettings(VFSpeexOutput speexOutput)
+        {
+            tbSpeexBitrate.Value = speexOutput.BitRate;
+            cbSpeexBitrateControl.SelectedIndex = (int)speexOutput.BitrateControl;
+            cbSpeexMode.SelectedIndex = (int)speexOutput.Mode;
+            tbSpeexMaxBitrate.Value = speexOutput.MaxBitRate;
+            tbSpeexComplexity.Value = speexOutput.Complexity;
+            tbSpeexQuality.Value = speexOutput.Quality;
+            cbSpeexAGC.Checked = speexOutput.UseAGC;
+            cbSpeexDTX.Checked = speexOutput.UseDTX;
+            cbSpeexDenoise.Checked = speexOutput.UseDenoise;
+            cbSpeexVAD.Checked = speexOutput.UseVAD;
         }
 
         private void btClose_Click(object sender, EventArgs e)

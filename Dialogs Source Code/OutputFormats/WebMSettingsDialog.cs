@@ -25,7 +25,84 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbWebMVideoQualityMode.SelectedIndex = 0;
         }
 
-        public void FillSettings(ref VFWebMOutput webmOutput)
+        public void LoadSettings(VFWebMOutput webmOutput)
+        {
+            tbWebMAudioQuality.Value = webmOutput.Audio_Quality;
+
+            edWebMVideoBitrate.Text = webmOutput.Video_Bitrate.ToString();
+            edWebMVideoARNRMaxFrames.Text = webmOutput.Video_ARNR_MaxFrames.ToString();
+            edWebMVideoARNRStrenght.Text = webmOutput.Video_ARNR_Strength.ToString();
+            edWebMVideoARNRType.Text = webmOutput.Video_ARNR_Type.ToString();
+            edWebMVideoCPUUsed.Text = webmOutput.Video_CPUUsed.ToString();
+            edWebMVideoDecimate.Text = webmOutput.Video_Decimate.ToString();
+            edWebMVideoDecoderBufferSize.Text = webmOutput.Video_Decoder_Buffer_Size.ToString();
+            edWebMVideoDecoderInitialBuffer.Text = webmOutput.Video_Decoder_Buffer_InitialSize.ToString();
+            edWebMVideoDecoderOptimalBuffer.Text = webmOutput.Video_Decoder_Buffer_OptimalSize.ToString();
+            edWebMVideoFixedKeyframeInterval.Text = webmOutput.Video_FixedKeyframeInterval.ToString();
+            edWebMVideoKeyframeMaxInterval.Text = webmOutput.Video_Keyframe_MaxInterval.ToString();
+            edWebMVideoKeyframeMinInterval.Text = webmOutput.Video_Keyframe_MinInterval.ToString();
+            edWebMVideoLagInFrames.Text = webmOutput.Video_LagInFrames.ToString();
+            edWebMVideoMaxQuantizer.Text = webmOutput.Video_MaxQuantizer.ToString();
+            edWebMVideoMinQuantizer.Text = webmOutput.Video_MinQuantizer.ToString();
+            edWebMVideoOvershootPct.Text = webmOutput.Video_OvershootPct.ToString();
+            edWebMVideoSpatialDownThreshold.Text = webmOutput.Video_SpatialResampling_DownThreshold.ToString();
+            edWebMVideoSpatialUpThreshold.Text = webmOutput.Video_SpatialResampling_UpThreshold.ToString();
+            edWebMVideoStaticThreshold.Text = webmOutput.Video_StaticThreshold.ToString();
+            edWebMVideoThreadCount.Text = webmOutput.Video_ThreadCount.ToString();
+            edWebMVideoTokenPartition.Text = webmOutput.Video_TokenPartition.ToString();
+            edWebMVideoUndershootPct.Text = webmOutput.Video_UndershootPct.ToString();
+            cbWebMVideoAutoAltRef.Checked = webmOutput.Video_AutoAltRef;
+            cbWebMVideoErrorResilent.Checked = webmOutput.Video_ErrorResilient;
+            cbWebMVideoSpatialResamplingAllowed.Checked = webmOutput.Video_SpatialResampling_Allowed;
+            cbWebMVideoEncoder.SelectedIndex = (int)webmOutput.Video_Encoder;
+
+            switch (webmOutput.Video_EndUsage)
+            {
+                case VP8EndUsageMode.CBR:
+                    cbWebMVideoEndUsageMode.SelectedIndex = 1;
+                    break;
+                case VP8EndUsageMode.Default:
+                    cbWebMVideoEndUsageMode.SelectedIndex = 0;
+                    break;
+                case VP8EndUsageMode.VBR:
+                    cbWebMVideoEndUsageMode.SelectedIndex = 2;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            switch (webmOutput.Video_Mode)
+            {
+                case VP8QualityMode.BestQualityBetaDoNotUse:
+                    cbWebMVideoQualityMode.SelectedIndex = 2;
+                    break;
+                case VP8QualityMode.GoodQuality:
+                    cbWebMVideoQualityMode.SelectedIndex = 1;
+                    break;
+                case VP8QualityMode.Realtime:
+                    cbWebMVideoQualityMode.SelectedIndex = 0;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            switch (webmOutput.Video_Keyframe_Mode)
+            {
+                case VP8KeyframeMode.Auto:
+                    cbWebMVideoKeyframeMode.SelectedIndex = 0;
+                    break;
+                case VP8KeyframeMode.Default:
+                    cbWebMVideoKeyframeMode.SelectedIndex = 1;
+                    break;
+                case VP8KeyframeMode.Disabled:
+                    cbWebMVideoKeyframeMode.SelectedIndex = 2;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SaveSettings(ref VFWebMOutput webmOutput)
         {
             webmOutput.Audio_Quality = tbWebMAudioQuality.Value;
 

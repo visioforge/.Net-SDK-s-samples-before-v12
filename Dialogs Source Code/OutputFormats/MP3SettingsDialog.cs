@@ -23,7 +23,51 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbLameSampleRate.SelectedIndex = 0;
         }
 
-        public void FillSettings(ref VFMP3Output mp3Output)
+        public void LoadSettings(VFMP3Output mp3Output)
+        {
+            // main
+            cbLameCBRBitrate.Text = mp3Output.CBR_Bitrate.ToString();
+            cbLameVBRMin.Text = mp3Output.VBR_MinBitrate.ToString();
+            cbLameVBRMax.Text = mp3Output.VBR_MaxBitrate.ToString();
+            cbLameSampleRate.Text = mp3Output.SampleRate.ToString();
+            tbLameVBRQuality.Value = mp3Output.VBR_Quality;
+            tbLameEncodingQuality.Value = mp3Output.EncodingQuality;
+
+            switch (mp3Output.ChannelsMode)
+            {
+                case VFLameChannelsMode.StandardStereo:
+                    rbLameStandardStereo.Checked = true;
+                    break;
+                case VFLameChannelsMode.JointStereo:
+                    rbLameJointStereo.Checked = true;
+                    break;
+                case VFLameChannelsMode.DualStereo:
+                    rbLameDualChannels.Checked = true;
+                    break;
+                case VFLameChannelsMode.Mono:
+                    rbLameMono.Checked = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            rbLameVBR.Checked = mp3Output.VBR_Mode;
+
+            // other
+            cbLameCopyright.Checked = mp3Output.Copyright;
+            cbLameOriginal.Checked = mp3Output.Original;
+            cbLameCRCProtected.Checked = mp3Output.CRCProtected;
+            cbLameForceMono.Checked = mp3Output.ForceMono;
+            cbLameStrictlyEnforceVBRMinBitrate.Checked = mp3Output.StrictlyEnforceVBRMinBitrate;
+            cbLameVoiceEncodingMode.Checked = mp3Output.VoiceEncodingMode;
+            cbLameKeepAllFrequences.Checked = mp3Output.KeepAllFrequencies;
+            cbLameStrictISOCompilance.Checked = mp3Output.StrictISOCompliance;
+            cbLameDisableShortBlocks.Checked = mp3Output.DisableShortBlocks;
+            cbLameEnableXingVBRTag.Checked = mp3Output.EnableXingVBRTag;
+            cbLameModeFixed.Checked = mp3Output.ModeFixed;
+        }
+
+        public void SaveSettings(ref VFMP3Output mp3Output)
         {
             // main
             mp3Output.CBR_Bitrate = Convert.ToInt32(cbLameCBRBitrate.Text);

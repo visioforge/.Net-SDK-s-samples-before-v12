@@ -17,7 +17,14 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             Close();
         }
 
-        public void FillSettings(ref VFAnimatedGIFOutput gifOutput)
+        public void LoadSettings(VFAnimatedGIFOutput gifOutput)
+        {
+            edGIFFrameRate.Text = gifOutput.FrameRate.ToString("F2");
+            edGIFWidth.Text = gifOutput.ForcedVideoWidth.ToString();
+            edGIFHeight.Text = gifOutput.ForcedVideoHeight.ToString();
+        }
+
+        public void SaveSettings(ref VFAnimatedGIFOutput gifOutput)
         {
             gifOutput.FrameRate = Convert.ToDouble(edGIFFrameRate.Text);
             gifOutput.ForcedVideoWidth = Convert.ToInt32(edGIFWidth.Text);
