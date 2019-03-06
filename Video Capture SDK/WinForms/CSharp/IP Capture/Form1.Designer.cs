@@ -18,6 +18,12 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             if (disposing && (components != null))
             {
                 components.Dispose();
+
+                if (onvifControl != null)
+                {
+                    onvifControl.Dispose();
+                    onvifControl = null;
+                }
             }
 
             base.Dispose(disposing);

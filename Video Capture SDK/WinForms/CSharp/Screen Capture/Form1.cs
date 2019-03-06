@@ -145,7 +145,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 mp4V10SettingsDialog = new MP4v10SettingsDialog();
             }
 
-            mp4V10SettingsDialog.FillSettings(ref mp4Output);
+            mp4V10SettingsDialog.SaveSettings(ref mp4Output);
         }
 
         private void SetFFMPEGEXEOutput(ref VFFFMPEGEXEOutput ffmpegOutput)
@@ -155,7 +155,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 ffmpegEXESettingsDialog = new FFMPEGEXESettingsDialog();
             }
 
-            ffmpegEXESettingsDialog.FillSettings(ref ffmpegOutput);
+            ffmpegEXESettingsDialog.SaveSettings(ref ffmpegOutput);
         }
 
         private void SetWMVOutput(ref VFWMVOutput wmvOutput)
@@ -166,7 +166,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             }
 
             wmvSettingsDialog.WMA = false;
-            wmvSettingsDialog.FillSettings(ref wmvOutput);
+            wmvSettingsDialog.SaveSettings(ref wmvOutput);
         }
 
         private void SetWebMOutput(ref VFWebMOutput webmOutput)
@@ -176,7 +176,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 webmSettingsDialog = new WebMSettingsDialog();
             }
 
-            webmSettingsDialog.FillSettings(ref webmOutput);
+            webmSettingsDialog.SaveSettings(ref webmOutput);
         }
 
         private void SetFFMPEGDLLOutput(ref VFFFMPEGDLLOutput ffmpegDLLOutput)
@@ -186,7 +186,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 ffmpegDLLSettingsDialog = new FFMPEGDLLSettingsDialog();
             }
 
-            ffmpegDLLSettingsDialog.FillSettings(ref ffmpegDLLOutput);
+            ffmpegDLLSettingsDialog.SaveSettings(ref ffmpegDLLOutput);
         }
                
         private void SetMP4v11Output(ref VFMP4v11Output mp4Output)
@@ -196,7 +196,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 mp4v11SettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MP4v11);
             }
 
-            mp4v11SettingsDialog.FillSettings(ref mp4Output);
+            mp4v11SettingsDialog.SaveSettings(ref mp4Output);
         }
 
         private void SetMPEGTSOutput(ref VFMPEGTSOutput mpegTSOutput)
@@ -206,7 +206,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 mpegTSSettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MPEGTS);
             }
 
-            mpegTSSettingsDialog.FillSettings(ref mpegTSOutput);
+            mpegTSSettingsDialog.SaveSettings(ref mpegTSOutput);
         }
 
         private void SetMOVOutput(ref VFMOVOutput mkvOutput)
@@ -216,7 +216,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 movSettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MOV);
             }
 
-            movSettingsDialog.FillSettings(ref mkvOutput);
+            movSettingsDialog.SaveSettings(ref mkvOutput);
         }
 
         private void SetGIFOutput(ref VFAnimatedGIFOutput gifOutput)
@@ -226,7 +226,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 gifSettingsDialog = new GIFSettingsDialog();
             }
 
-            gifSettingsDialog.FillSettings(ref gifOutput);
+            gifSettingsDialog.SaveSettings(ref gifOutput);
         }
 
         private void SetDVOutput(ref VFDVOutput dvOutput)
@@ -236,7 +236,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 dvSettingsDialog = new DVSettingsDialog();
             }
 
-            dvSettingsDialog.FillSettings(ref dvOutput);
+            dvSettingsDialog.SaveSettings(ref dvOutput);
         }
 
         private void SetAVIOutput(ref VFAVIOutput aviOutput)
@@ -247,7 +247,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
-            aviSettingsDialog.FillSettings(ref aviOutput);
+            aviSettingsDialog.SaveSettings(ref aviOutput);
 
             if (aviOutput.Audio_UseMP3Encoder)
             {
@@ -264,7 +264,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                 mp3SettingsDialog = new MP3SettingsDialog();
             }
 
-            mp3SettingsDialog.FillSettings(ref mp3Output);
+            mp3SettingsDialog.SaveSettings(ref mp3Output);
         }
 
         private void SetMKVOutput(ref VFMKVv1Output mkvOutput)
@@ -275,7 +275,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
-            aviSettingsDialog.FillSettings(ref mkvOutput);
+            aviSettingsDialog.SaveSettings(ref mkvOutput);
 
             if (mkvOutput.Audio_UseMP3Encoder)
             {

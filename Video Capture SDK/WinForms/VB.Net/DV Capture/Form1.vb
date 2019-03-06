@@ -203,7 +203,7 @@ Public Class Form1
             webmSettingsDialog = New WebMSettingsDialog()
         End If
 
-        webmSettingsDialog.FillSettings(webmOutput)
+        webmSettingsDialog.SaveSettings(webmOutput)
     End Sub
 
     Private Sub SetWMVOutput(ByRef wmvOutput As VFWMVOutput)
@@ -212,7 +212,7 @@ Public Class Form1
         End If
 
         wmvSettingsDialog.WMA = False
-        wmvSettingsDialog.FillSettings(wmvOutput)
+        wmvSettingsDialog.SaveSettings(wmvOutput)
     End Sub
 
     Private Sub SetMP3Output(ByRef mp3Output As VFMP3Output)
@@ -220,7 +220,7 @@ Public Class Form1
             mp3SettingsDialog = New MP3SettingsDialog()
         End If
 
-        mp3SettingsDialog.FillSettings(mp3Output)
+        mp3SettingsDialog.SaveSettings(mp3Output)
     End Sub
 
     Private Sub SetDVOutput(ByRef dvOutput As VFDVOutput)
@@ -228,7 +228,7 @@ Public Class Form1
             dvSettingsDialog = New DVSettingsDialog()
         End If
 
-        dvSettingsDialog.FillSettings(dvOutput)
+        dvSettingsDialog.SaveSettings(dvOutput)
     End Sub
 
     Private Sub SetAVIOutput(ByRef aviOutput As VFAVIOutput)
@@ -238,7 +238,7 @@ Public Class Form1
                 VideoCapture1.Audio_Codecs.ToArray())
         End If
 
-        aviSettingsDialog.FillSettings(aviOutput)
+        aviSettingsDialog.SaveSettings(aviOutput)
 
         If (aviOutput.Audio_UseMP3Encoder) Then
 
@@ -255,7 +255,7 @@ Public Class Form1
                     VideoCapture1.Audio_Codecs.ToArray())
         End If
 
-        aviSettingsDialog.FillSettings(mkvOutput)
+        aviSettingsDialog.SaveSettings(mkvOutput)
 
         If (mkvOutput.Audio_UseMP3Encoder) Then
             Dim mp3Output = New VFMP3Output()
@@ -269,7 +269,7 @@ Public Class Form1
             mp4v11SettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MP4v11)
         End If
 
-        mp4v11SettingsDialog.FillSettings(mp4Output)
+        mp4v11SettingsDialog.SaveSettings(mp4Output)
     End Sub
 
     Private Sub SetMPEGTSOutput(ByRef mpegTSOutput As VFMPEGTSOutput)
@@ -278,7 +278,7 @@ Public Class Form1
             mpegTSSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MPEGTS)
         End If
 
-        mpegTSSettingsDialog.FillSettings(mpegTSOutput)
+        mpegTSSettingsDialog.SaveSettings(mpegTSOutput)
     End Sub
 
     Private Sub SetMOVOutput(ByRef mkvOutput As VFMOVOutput)
@@ -287,7 +287,7 @@ Public Class Form1
             movSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MOV)
         End If
 
-        movSettingsDialog.FillSettings(mkvOutput)
+        movSettingsDialog.SaveSettings(mkvOutput)
     End Sub
 
     Private Sub SetMP4v10Output(ByRef mp4Output As VFMP4v8v10Output)
@@ -295,7 +295,7 @@ Public Class Form1
             mp4V10SettingsDialog = New MP4v10SettingsDialog()
         End If
 
-        mp4V10SettingsDialog.FillSettings(mp4Output)
+        mp4V10SettingsDialog.SaveSettings(mp4Output)
     End Sub
 
     Private Sub SetFFMPEGDLLOutput(ByRef ffmpegDLLOutput As VFFFMPEGDLLOutput)
@@ -303,7 +303,7 @@ Public Class Form1
             ffmpegDLLSettingsDialog = New FFMPEGDLLSettingsDialog()
         End If
 
-        ffmpegDLLSettingsDialog.FillSettings(ffmpegDLLOutput)
+        ffmpegDLLSettingsDialog.SaveSettings(ffmpegDLLOutput)
     End Sub
 
     Private Sub SetFFMPEGEXEOutput(ByRef ffmpegOutput As VFFFMPEGEXEOutput)
@@ -311,7 +311,7 @@ Public Class Form1
             ffmpegEXESettingsDialog = New FFMPEGEXESettingsDialog()
         End If
 
-        ffmpegEXESettingsDialog.FillSettings(ffmpegOutput)
+        ffmpegEXESettingsDialog.SaveSettings(ffmpegOutput)
     End Sub
 
     Private Sub SetGIFOutput(ByRef gifOutput As VFAnimatedGIFOutput)
@@ -319,7 +319,7 @@ Public Class Form1
             gifSettingsDialog = New GIFSettingsDialog()
         End If
 
-        gifSettingsDialog.FillSettings(gifOutput)
+        gifSettingsDialog.SaveSettings(gifOutput)
     End Sub
 
     Private Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click

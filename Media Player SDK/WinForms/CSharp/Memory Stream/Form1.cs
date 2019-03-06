@@ -13,6 +13,14 @@ namespace Memory_Stream_Demo
 
     public partial class Form1 : Form
     {
+        private ManagedIStream _stream;
+
+        private FileStream _fileStream;
+
+        private MemoryStream _memoryStream;
+
+        private byte[] _memorySource;
+
         public Form1()
         {
             InitializeComponent();
@@ -42,27 +50,28 @@ namespace Memory_Stream_Demo
 
         private void btStart_Click(object sender, EventArgs e)
         {
+            mmError.Text = String.Empty;
+
             if (rbSTreamTypeFile.Checked)
             {
-                FileStream fs = new FileStream(edFilename.Text, FileMode.Open);
-                ManagedIStream stream = new ManagedIStream(fs);
+                _fileStream = new FileStream(edFilename.Text, FileMode.Open);
+                _stream = new ManagedIStream(_fileStream);
 
                 // specifying settings
                 // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-                MediaPlayer1.Source_Stream = stream;
-                MediaPlayer1.Source_Stream_Size = fs.Length;
+                MediaPlayer1.Source_Stream = _stream;
+                MediaPlayer1.Source_Stream_Size = _fileStream.Length;
             }
             else
             {
-                byte[] source = File.ReadAllBytes(edFilename.Text);
-                MemoryStream ms = new MemoryStream(source);
-
-                ManagedIStream stream = new ManagedIStream(ms);
+                _memorySource = File.ReadAllBytes(edFilename.Text);
+                _memoryStream = new MemoryStream(_memorySource);
+                _stream = new ManagedIStream(_memoryStream);
 
                 // specifying settings
                 // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-                MediaPlayer1.Source_Stream = stream;
-                MediaPlayer1.Source_Stream_Size = ms.Length;
+                MediaPlayer1.Source_Stream = _stream;
+                MediaPlayer1.Source_Stream_Size = _memoryStream.Length;
             }
 
             // video and audio present in file. tune this settings to play audio files or video files without audio
@@ -127,6 +136,15 @@ namespace Memory_Stream_Demo
             MediaPlayer1.Stop();
             timer1.Enabled = false;
             tbTimeline.Value = 0;
+
+            _fileStream?.Dispose();
+            _fileStream = null;
+
+            _memoryStream?.Dispose();
+            _memoryStream = null;
+
+            _memorySource = null;
+            _stream = null;
         }
 
         private void btNextFrame_Click(object sender, EventArgs e)

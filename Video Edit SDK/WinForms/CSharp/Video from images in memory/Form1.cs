@@ -76,7 +76,7 @@ namespace Video_From_Images
                 mp4V10SettingsDialog = new MP4v10SettingsDialog();
             }
 
-            mp4V10SettingsDialog.FillSettings(ref mp4Output);
+            mp4V10SettingsDialog.SaveSettings(ref mp4Output);
         }
 
         private void SetFFMPEGEXEOutput(ref VFFFMPEGEXEOutput ffmpegOutput)
@@ -86,7 +86,7 @@ namespace Video_From_Images
                 ffmpegEXESettingsDialog = new FFMPEGEXESettingsDialog();
             }
 
-            ffmpegEXESettingsDialog.FillSettings(ref ffmpegOutput);
+            ffmpegEXESettingsDialog.SaveSettings(ref ffmpegOutput);
         }
 
         private void SetWMVOutput(ref VFWMVOutput wmvOutput)
@@ -97,7 +97,7 @@ namespace Video_From_Images
             }
 
             wmvSettingsDialog.WMA = false;
-            wmvSettingsDialog.FillSettings(ref wmvOutput);
+            wmvSettingsDialog.SaveSettings(ref wmvOutput);
         }
 
         private void SetWebMOutput(ref VFWebMOutput webmOutput)
@@ -107,7 +107,7 @@ namespace Video_From_Images
                 webmSettingsDialog = new WebMSettingsDialog();
             }
 
-            webmSettingsDialog.FillSettings(ref webmOutput);
+            webmSettingsDialog.SaveSettings(ref webmOutput);
         }
 
         private void SetFFMPEGDLLOutput(ref VFFFMPEGDLLOutput ffmpegDLLOutput)
@@ -117,7 +117,7 @@ namespace Video_From_Images
                 ffmpegDLLSettingsDialog = new FFMPEGDLLSettingsDialog();
             }
 
-            ffmpegDLLSettingsDialog.FillSettings(ref ffmpegDLLOutput);
+            ffmpegDLLSettingsDialog.SaveSettings(ref ffmpegDLLOutput);
         }
 
         private void SetMP4v11Output(ref VFMP4v11Output mp4Output)
@@ -127,7 +127,7 @@ namespace Video_From_Images
                 mp4v11SettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MP4v11);
             }
 
-            mp4v11SettingsDialog.FillSettings(ref mp4Output);
+            mp4v11SettingsDialog.SaveSettings(ref mp4Output);
         }
 
         private void SetGIFOutput(ref VFAnimatedGIFOutput gifOutput)
@@ -137,7 +137,7 @@ namespace Video_From_Images
                 gifSettingsDialog = new GIFSettingsDialog();
             }
 
-            gifSettingsDialog.FillSettings(ref gifOutput);
+            gifSettingsDialog.SaveSettings(ref gifOutput);
         }
 
         private void SetDVOutput(ref VFDVOutput dvOutput)
@@ -147,7 +147,7 @@ namespace Video_From_Images
                 dvSettingsDialog = new DVSettingsDialog();
             }
 
-            dvSettingsDialog.FillSettings(ref dvOutput);
+            dvSettingsDialog.SaveSettings(ref dvOutput);
         }
 
         private void SetAVIOutput(ref VFAVIOutput aviOutput)
@@ -158,7 +158,7 @@ namespace Video_From_Images
                     VideoEdit1.Audio_Codecs.ToArray());
             }
 
-            aviSettingsDialog.FillSettings(ref aviOutput);
+            aviSettingsDialog.SaveSettings(ref aviOutput);
 
             if (aviOutput.Audio_UseMP3Encoder)
             {
@@ -175,7 +175,7 @@ namespace Video_From_Images
                 mp3SettingsDialog = new MP3SettingsDialog();
             }
 
-            mp3SettingsDialog.FillSettings(ref mp3Output);
+            mp3SettingsDialog.SaveSettings(ref mp3Output);
         }
 
         private void SetMKVOutput(ref VFMKVv1Output mkvOutput)
@@ -186,7 +186,7 @@ namespace Video_From_Images
                     VideoEdit1.Audio_Codecs.ToArray());
             }
 
-            aviSettingsDialog.FillSettings(ref mkvOutput);
+            aviSettingsDialog.SaveSettings(ref mkvOutput);
 
             if (mkvOutput.Audio_UseMP3Encoder)
             {

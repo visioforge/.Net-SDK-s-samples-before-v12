@@ -9,6 +9,12 @@ Partial Class Form1
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         If disposing AndAlso components IsNot Nothing Then
             components.Dispose()
+
+            If (onvifControl IsNot Nothing) Then
+
+                onvifControl.Dispose()
+                onvifControl = Nothing
+            End If
         End If
         MyBase.Dispose(disposing)
     End Sub

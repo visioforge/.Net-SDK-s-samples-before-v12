@@ -7,6 +7,14 @@ Imports VisioForge.Controls.UI.WinForms
 
 Public Class Form1
 
+    Private _stream As ManagedIStream
+
+    Private _fileStream As FileStream
+
+    Private _memoryStream As MemoryStream
+
+    Private _memorySource() As Byte
+
     Private Sub tbTimeline_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbTimeline.Scroll
 
         If (Convert.ToInt32(timer1.Tag) = 0) Then
@@ -17,22 +25,23 @@ Public Class Form1
 
     Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
+        mmError.Text = String.Empty
+
         If (rbSTreamTypeFile.Checked) Then
-            Dim fs As FileStream = New FileStream(edFilename.Text, FileMode.Open)
-            Dim stream As ManagedIStream = New ManagedIStream(fs)
+            _fileStream = New FileStream(edFilename.Text, FileMode.Open)
+            _stream = New ManagedIStream(_fileStream)
 
             ' specifying settings
             ' MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-            MediaPlayer1.Source_Stream = stream
-            MediaPlayer1.Source_Stream_Size = fs.Length
+            MediaPlayer1.Source_Stream = _stream
+            MediaPlayer1.Source_Stream_Size = _fileStream.Length
         Else
-            Dim source As Byte() = File.ReadAllBytes(edFilename.Text)
-            Dim MS = New MemoryStream(source)
+            _memorySource = File.ReadAllBytes(edFilename.Text)
+            _memoryStream = New MemoryStream(_memorySource)
+            _stream = New ManagedIStream(_memoryStream)
 
-            Dim stream As ManagedIStream = New ManagedIStream(MS)
-
-            MediaPlayer1.Source_Stream = stream
-            MediaPlayer1.Source_Stream_Size = MS.Length
+            MediaPlayer1.Source_Stream = _stream
+            MediaPlayer1.Source_Stream_Size = _memoryStream.Length
         End If
 
         ' video and audio present in file. tune this settings to play audio files or video files without audio
@@ -91,6 +100,15 @@ Public Class Form1
         MediaPlayer1.Stop()
         timer1.Enabled = False
         tbTimeline.Value = 0
+
+        _fileStream?.Dispose()
+        _fileStream = Nothing
+
+        _memoryStream?.Dispose()
+        _memoryStream = Nothing
+
+        _memorySource = Nothing
+        _stream = Nothing
 
     End Sub
 

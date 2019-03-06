@@ -357,7 +357,7 @@ namespace Audio_Capture
             }
 
             wmvSettingsDialog.WMA = true;
-            wmvSettingsDialog.FillSettings(ref wmaOutput);
+            wmvSettingsDialog.SaveSettings(ref wmaOutput);
         }
 
         private void SetACMOutput(ref VFACMOutput acmOutput)
@@ -367,7 +367,7 @@ namespace Audio_Capture
                 pcmSettingsDialog = new PCMSettingsDialog(VideoCapture1.Audio_Codecs().ToArray());
             }
 
-            pcmSettingsDialog.FillSettings(ref acmOutput);
+            pcmSettingsDialog.SaveSettings(ref acmOutput);
         }
 
         private void SetMP3Output(ref VFMP3Output mp3Output)
@@ -377,7 +377,7 @@ namespace Audio_Capture
                 mp3SettingsDialog = new MP3SettingsDialog();
             }
 
-            mp3SettingsDialog.FillSettings(ref mp3Output);
+            mp3SettingsDialog.SaveSettings(ref mp3Output);
         }
 
         private void SetFLACOutput(ref VFFLACOutput flacOutput)
@@ -387,7 +387,7 @@ namespace Audio_Capture
                 flacSettingsDialog = new FLACSettingsDialog();
             }
 
-            flacSettingsDialog.FillSettings(ref flacOutput);
+            flacSettingsDialog.SaveSettings(ref flacOutput);
         }
 
         private void SetSpeexOutput(ref VFSpeexOutput speexOutput)
@@ -397,7 +397,7 @@ namespace Audio_Capture
                 speexSettingsDialog = new SpeexSettingsDialog();
             }
 
-            speexSettingsDialog.FillSettings(ref speexOutput);
+            speexSettingsDialog.SaveSettings(ref speexOutput);
         }
 
         public void SetM4AOutput(ref VFM4AOutput m4aOutput)
@@ -407,7 +407,7 @@ namespace Audio_Capture
                 m4aSettingsDialog = new M4ASettingsDialog();
             }
 
-            m4aSettingsDialog.FillSettings(ref m4aOutput);
+            m4aSettingsDialog.SaveSettings(ref m4aOutput);
         }
 
         private void SetOGGOutput(ref VFOGGVorbisOutput oggVorbisOutput)
@@ -417,7 +417,7 @@ namespace Audio_Capture
                 oggVorbisSettingsDialog = new OggVorbisSettingsDialog();
             }
 
-            oggVorbisSettingsDialog.FillSettings(ref oggVorbisOutput);
+            oggVorbisSettingsDialog.SaveSettings(ref oggVorbisOutput);
         }
         
         private void btStart_Click(object sender, RoutedEventArgs e)

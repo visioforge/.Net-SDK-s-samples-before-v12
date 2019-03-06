@@ -267,7 +267,7 @@ Public Class Form1
             m4aSettingsDialog = New M4ASettingsDialog()
         End If
 
-        m4aSettingsDialog.FillSettings(m4aOutput)
+        m4aSettingsDialog.SaveSettings(m4aOutput)
     End Sub
 
     Private Sub SetWMAOutput(ByRef wmaOutput As VFWMAOutput)
@@ -276,7 +276,7 @@ Public Class Form1
         End If
 
         wmvSettingsDialog.WMA = True
-        wmvSettingsDialog.FillSettings(wmaOutput)
+        wmvSettingsDialog.SaveSettings(wmaOutput)
     End Sub
 
     Private Sub SetOGGOutput(ByRef oggVorbisOutput As VFOGGVorbisOutput)
@@ -284,7 +284,7 @@ Public Class Form1
             oggVorbisSettingsDialog = New OggVorbisSettingsDialog()
         End If
 
-        oggVorbisSettingsDialog.FillSettings(oggVorbisOutput)
+        oggVorbisSettingsDialog.SaveSettings(oggVorbisOutput)
     End Sub
 
     Private Sub SetSpeexOutput(ByRef speexOutput As VFSpeexOutput)
@@ -292,7 +292,7 @@ Public Class Form1
             speexSettingsDialog = New SpeexSettingsDialog()
         End If
 
-        speexSettingsDialog.FillSettings(speexOutput)
+        speexSettingsDialog.SaveSettings(speexOutput)
     End Sub
 
     Private Sub SetFLACOutput(ByRef flacOutput As VFFLACOutput)
@@ -300,7 +300,7 @@ Public Class Form1
             flacSettingsDialog = New FLACSettingsDialog()
         End If
 
-        flacSettingsDialog.FillSettings(flacOutput)
+        flacSettingsDialog.SaveSettings(flacOutput)
     End Sub
 
     Private Sub SetMP3Output(ByRef mp3Output As VFMP3Output)
@@ -308,7 +308,7 @@ Public Class Form1
             mp3SettingsDialog = New MP3SettingsDialog()
         End If
 
-        mp3SettingsDialog.FillSettings(mp3Output)
+        mp3SettingsDialog.SaveSettings(mp3Output)
     End Sub
 
     Private Sub SetACMOutput(ByRef acmOutput As VFACMOutput)
@@ -316,7 +316,7 @@ Public Class Form1
             pcmSettingsDialog = New PCMSettingsDialog(VideoCapture1.Audio_Codecs.ToArray())
         End If
 
-        pcmSettingsDialog.FillSettings(acmOutput)
+        pcmSettingsDialog.SaveSettings(acmOutput)
     End Sub
 
 
