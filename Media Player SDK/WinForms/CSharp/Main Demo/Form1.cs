@@ -34,6 +34,8 @@ namespace Media_Player_Demo
 
         private readonly MediaInfoReader MediaInfo = new MediaInfoReader();
 
+        private readonly DVDInfoReader DVDInfo = new DVDInfoReader();
+
         private List<Form> multiscreenWindows = new List<Form>();
 
         public Form1()
@@ -298,22 +300,22 @@ namespace Media_Player_Demo
                 cbDVDAudio.Items.Clear();
                 cbDVDSubtitles.Items.Clear();
 
-                MediaInfo.DVD_Fill_Title_Info(lbDVDTitles.SelectedIndex);
+                DVDInfo.DVD_Fill_Title_Info(lbDVDTitles.SelectedIndex);
 
-                string s = MediaInfo.DVD_Title_MainAttributes_VideoAttributes_Compression + " ";
-                s = s + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionX + "x" + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionY + " ";
-                s = s + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_AspectX + ":" + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_AspectY + " ";
+                string s = DVDInfo.DVD_Title_MainAttributes_VideoAttributes_Compression + " ";
+                s = s + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionX + "x" + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionY + " ";
+                s = s + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_AspectX + ":" + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_AspectY + " ";
 
                 edDVDVideo.Text = s;
 
-                for (int i = 0; i < MediaInfo.DVD_Title_MainAttributes_NumberOfAudioStreams; i++)
+                for (int i = 0; i < DVDInfo.DVD_Title_MainAttributes_NumberOfAudioStreams; i++)
                 {
-                    MediaInfo.DVD_Fill_Title_Audio_Info(lbDVDTitles.SelectedIndex, i);
-                    s = MediaInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat;
+                    DVDInfo.DVD_Fill_Title_Audio_Info(lbDVDTitles.SelectedIndex, i);
+                    s = DVDInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat;
 
                     s = s + " - ";
-                    s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels + "ch" + " - ";
-                    s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS;
+                    s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels + "ch" + " - ";
+                    s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS;
 
                     cbDVDAudio.Items.Add(s);
                 }
@@ -323,10 +325,10 @@ namespace Media_Player_Demo
                     cbDVDAudio.SelectedIndex = 0;
                 }
 
-                for (int i = 0; i < MediaInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams; i++)
+                for (int i = 0; i < DVDInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams; i++)
                 {
-                    MediaInfo.DVD_Fill_Title_Subpicture_Info(lbDVDTitles.SelectedIndex, i);
-                    cbDVDSubtitles.Items.Add(MediaInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS);
+                    DVDInfo.DVD_Fill_Title_Subpicture_Info(lbDVDTitles.SelectedIndex, i);
+                    cbDVDSubtitles.Items.Add(DVDInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS);
                 }
 
                 if (cbDVDSubtitles.Items.Count > 0)
@@ -678,9 +680,9 @@ namespace Media_Player_Demo
                 cbDVDControlAudio.Items.Clear();
                 cbDVDControlSubtitles.Items.Clear();
 
-                MediaInfo.ReadDVDInfo();
+                DVDInfo.ReadDVDInfo();
 
-                for (int i = 0; i < MediaInfo.DVD_Disc_NumOfTitles; i++)
+                for (int i = 0; i < DVDInfo.DVD_Disc_NumOfTitles; i++)
                 {
                     lbDVDTitles.Items.Add("Title " + Convert.ToString(i + 1));
                     cbDVDControlTitle.Items.Add("Title " + Convert.ToString(i + 1));
@@ -1569,9 +1571,9 @@ namespace Media_Player_Demo
                 cbDVDControlSubtitles.Items.Clear();
                 cbDVDControlChapter.Items.Clear();
 
-                MediaInfo.DVD_Fill_Title_Info(cbDVDControlTitle.SelectedIndex);
+                DVDInfo.DVD_Fill_Title_Info(cbDVDControlTitle.SelectedIndex);
 
-                for (int i = 0; i < MediaInfo.DVD_Title_NumberOfChapters; i++)
+                for (int i = 0; i < DVDInfo.DVD_Title_NumberOfChapters; i++)
                 {
                     cbDVDControlChapter.Items.Add("Chapter " + Convert.ToString(i + 1));
                 }
@@ -1581,14 +1583,14 @@ namespace Media_Player_Demo
                     cbDVDControlChapter.SelectedIndex = 0;
                 }
 
-                for (int i = 0; i < MediaInfo.DVD_Title_MainAttributes_NumberOfAudioStreams; i++)
+                for (int i = 0; i < DVDInfo.DVD_Title_MainAttributes_NumberOfAudioStreams; i++)
                 {
-                    MediaInfo.DVD_Fill_Title_Audio_Info(cbDVDControlTitle.SelectedIndex, i);
-                    string s = MediaInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat;
+                    DVDInfo.DVD_Fill_Title_Audio_Info(cbDVDControlTitle.SelectedIndex, i);
+                    string s = DVDInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat;
 
                     s = s + " - ";
-                    s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels + "ch" + " - ";
-                    s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS;
+                    s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels + "ch" + " - ";
+                    s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS;
 
                     cbDVDControlAudio.Items.Add(s);
                 }
@@ -1599,10 +1601,10 @@ namespace Media_Player_Demo
                 }
 
                 cbDVDControlSubtitles.Items.Add("Disabled");
-                for (int i = 0; i < MediaInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams; i++)
+                for (int i = 0; i < DVDInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams; i++)
                 {
-                    MediaInfo.DVD_Fill_Title_Subpicture_Info(cbDVDControlTitle.SelectedIndex, i);
-                    cbDVDControlSubtitles.Items.Add(MediaInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS);
+                    DVDInfo.DVD_Fill_Title_Subpicture_Info(cbDVDControlTitle.SelectedIndex, i);
+                    cbDVDControlSubtitles.Items.Add(DVDInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS);
                 }
 
                 cbDVDControlSubtitles.SelectedIndex = 0;

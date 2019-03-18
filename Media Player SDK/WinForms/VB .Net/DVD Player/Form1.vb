@@ -6,7 +6,7 @@ Imports VisioForge.Controls.UI.WinForms
 
 Public Class Form1
 
-    Private ReadOnly MediaInfo As MediaInfoReader = New MediaInfoReader
+    Private ReadOnly MediaInfo As DVDInfoReader = New DVDInfoReader
 
     Private Sub btSelectFile_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectFile.Click
 

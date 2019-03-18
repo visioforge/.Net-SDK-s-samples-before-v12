@@ -23,6 +23,8 @@ Public Class Form1
 
     Private ReadOnly MediaInfo As MediaInfoReader = New MediaInfoReader
 
+    Private ReadOnly DVDInfo As DVDInfoReader = New DVDInfoReader
+
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
         Text += " (SDK v" + MediaPlayer1.SDK_Version.ToString() + ", " + MediaPlayer1.SDK_State + "), VB.Net"
@@ -363,9 +365,9 @@ Public Class Form1
             cbDVDControlSubtitles.Items.Clear()
             cbDVDControlChapter.Items.Clear()
 
-            MediaInfo.DVD_Fill_Title_Info(cbDVDControlTitle.SelectedIndex)
+            DVDInfo.DVD_Fill_Title_Info(cbDVDControlTitle.SelectedIndex)
 
-            For i As Integer = 0 To MediaInfo.DVD_Title_NumberOfChapters - 1
+            For i As Integer = 0 To DVDInfo.DVD_Title_NumberOfChapters - 1
 
                 cbDVDControlChapter.Items.Add("Chapter " + Convert.ToString(i + 1))
 
@@ -377,14 +379,14 @@ Public Class Form1
 
             End If
 
-            For i As Integer = 0 To MediaInfo.DVD_Title_MainAttributes_NumberOfAudioStreams - 1
+            For i As Integer = 0 To DVDInfo.DVD_Title_MainAttributes_NumberOfAudioStreams - 1
 
-                MediaInfo.DVD_Fill_Title_Audio_Info(cbDVDControlTitle.SelectedIndex, i)
-                Dim s As String = MediaInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat
+                DVDInfo.DVD_Fill_Title_Audio_Info(cbDVDControlTitle.SelectedIndex, i)
+                Dim s As String = DVDInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat
 
                 s = s + " - "
-                s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels.ToString + "ch" + " - "
-                s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS
+                s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels.ToString + "ch" + " - "
+                s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS
 
                 cbDVDControlAudio.Items.Add(s)
 
@@ -397,10 +399,10 @@ Public Class Form1
             End If
 
             cbDVDControlSubtitles.Items.Add("Disabled")
-            For i As Integer = 0 To MediaInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams - 1
+            For i As Integer = 0 To DVDInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams - 1
 
-                MediaInfo.DVD_Fill_Title_Subpicture_Info(cbDVDControlTitle.SelectedIndex, i)
-                cbDVDControlSubtitles.Items.Add(MediaInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS)
+                DVDInfo.DVD_Fill_Title_Subpicture_Info(cbDVDControlTitle.SelectedIndex, i)
+                cbDVDControlSubtitles.Items.Add(DVDInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS)
 
             Next
 
@@ -425,22 +427,22 @@ Public Class Form1
             cbDVDAudio.Items.Clear()
             cbDVDSubtitles.Items.Clear()
 
-            MediaInfo.DVD_Fill_Title_Info(lbDVDTitles.SelectedIndex)
+            DVDInfo.DVD_Fill_Title_Info(lbDVDTitles.SelectedIndex)
 
-            Dim s As String = MediaInfo.DVD_Title_MainAttributes_VideoAttributes_Compression + " "
-            s = s + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionX + "x" + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionY + " "
-            s = s + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_AspectX + ":" + MediaInfo.DVD_Title_MainAttributes_VideoAttributes_AspectY + " "
+            Dim s As String = DVDInfo.DVD_Title_MainAttributes_VideoAttributes_Compression + " "
+            s = s + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionX + "x" + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_SourceResolutionY + " "
+            s = s + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_AspectX + ":" + DVDInfo.DVD_Title_MainAttributes_VideoAttributes_AspectY + " "
 
             edDVDVideo.Text = s
 
-            For i As Integer = 0 To MediaInfo.DVD_Title_MainAttributes_NumberOfAudioStreams - 1
+            For i As Integer = 0 To DVDInfo.DVD_Title_MainAttributes_NumberOfAudioStreams - 1
 
-                MediaInfo.DVD_Fill_Title_Audio_Info(lbDVDTitles.SelectedIndex, i)
-                s = MediaInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat
+                DVDInfo.DVD_Fill_Title_Audio_Info(lbDVDTitles.SelectedIndex, i)
+                s = DVDInfo.DVD_Title_MainAttributes_AudioAttributes_AudioFormat
 
                 s = s + " - "
-                s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels + "ch" + " - "
-                s = s + MediaInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS
+                s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_NumberOfChannels + "ch" + " - "
+                s = s + DVDInfo.DVD_Title_MainAttributes_AudioAttributes_LanguageS
 
                 cbDVDAudio.Items.Add(s)
 
@@ -452,10 +454,10 @@ Public Class Form1
 
             End If
 
-            For i As Integer = 0 To MediaInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams - 1
+            For i As Integer = 0 To DVDInfo.DVD_Title_MainAttributes_NumberOfSubpictureStreams - 1
 
-                MediaInfo.DVD_Fill_Title_Subpicture_Info(lbDVDTitles.SelectedIndex, i)
-                cbDVDSubtitles.Items.Add(MediaInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS)
+                DVDInfo.DVD_Fill_Title_Subpicture_Info(lbDVDTitles.SelectedIndex, i)
+                cbDVDSubtitles.Items.Add(DVDInfo.DVD_Title_MainAttributes_SubpictureAttributes_LanguageS)
 
             Next
 
@@ -848,9 +850,9 @@ Public Class Form1
             cbDVDControlAudio.Items.Clear()
             cbDVDControlSubtitles.Items.Clear()
 
-            MediaInfo.ReadDVDInfo()
+            DVDInfo.ReadDVDInfo()
 
-            For i As Integer = 0 To MediaInfo.DVD_Disc_NumOfTitles - 1
+            For i As Integer = 0 To DVDInfo.DVD_Disc_NumOfTitles - 1
 
                 lbDVDTitles.Items.Add("Title " + Convert.ToString(i + 1))
                 cbDVDControlTitle.Items.Add("Title " + Convert.ToString(i + 1))

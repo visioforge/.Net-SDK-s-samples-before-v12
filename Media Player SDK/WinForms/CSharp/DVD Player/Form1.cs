@@ -12,7 +12,7 @@ namespace DVD_Player_Demo
 
     public partial class Form1 : Form
     {
-        private readonly MediaInfoReader MediaInfo = new MediaInfoReader();
+        private readonly DVDInfoReader MediaInfo = new DVDInfoReader();
 
         public Form1()
         {
