@@ -73,6 +73,8 @@ Public Class Form1
             cbScreenCaptureDisplayIndex.Items.Add(screen.DeviceName.Replace("\\.\DISPLAY", String.Empty))
         Next
 
+        cbScreenCaptureDisplayIndex.Items.Add("All (fullscreen)")
+
         cbScreenCaptureDisplayIndex.SelectedIndex = 0
         edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\" + "output.mp4"
 
@@ -289,6 +291,40 @@ Public Class Form1
         End If
     End Sub
 
+    Private Function CreateScreenCaptureSource(screenID As Integer, forcedFullScreen As Boolean) As ScreenCaptureSourceSettings
+        Dim source = New ScreenCaptureSourceSettings()
+
+        If (rbScreenCaptureWindow.Checked) Then
+            source.Mode = VFScreenCaptureMode.Window
+            source.WindowHandle = IntPtr.Zero
+
+            Try
+                source.WindowHandle = FindWindowByClass(edScreenCaptureWindowName.Text, IntPtr.Zero)
+            Catch
+            End Try
+
+            If (source.WindowHandle = IntPtr.Zero) Then
+                MessageBox.Show("Incorrect window title for screen capture.")
+                Return Nothing
+            End If
+        Else
+            source.Mode = VFScreenCaptureMode.Screen
+        End If
+
+        source.FrameRate = Convert.ToDouble(edScreenFrameRate.Text)
+        source.FullScreen = rbScreenFullScreen.Checked Or forcedFullScreen
+        source.Top = Convert.ToInt32(edScreenTop.Text)
+        source.Bottom = Convert.ToInt32(edScreenBottom.Text)
+        source.Left = Convert.ToInt32(edScreenLeft.Text)
+        source.Right = Convert.ToInt32(edScreenRight.Text)
+        source.GrabMouseCursor = cbScreenCapture_GrabMouseCursor.Checked
+        source.DisplayIndex = screenID
+        source.AllowDesktopDuplicationEngine = cbScreenCapture_DesktopDuplication.Checked
+
+        Return source
+    End Function
+
+
     Private Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
 
         VideoCapture1.Video_Sample_Grabber_Enabled = True
@@ -299,45 +335,31 @@ Public Class Form1
         VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
 
         'from screen
-        VideoCapture1.Screen_Capture_Source = New ScreenCaptureSourceSettings()
+        Dim allScreens = cbScreenCaptureDisplayIndex.SelectedIndex = cbScreenCaptureDisplayIndex.Items.Count - 1
 
-        If (rbScreenCaptureWindow.Checked) Then
+        If (allScreens) Then
 
-            VideoCapture1.Screen_Capture_Source.Mode = VFScreenCaptureMode.Window
+            Dim n = cbScreenCaptureDisplayIndex.Items.Count - 1
+            VideoCapture1.Screen_Capture_Source = CreateScreenCaptureSource(
+                Convert.ToInt32(cbScreenCaptureDisplayIndex.Items(0)),
+                True)
 
-            VideoCapture1.Screen_Capture_Source.WindowHandle = IntPtr.Zero
-
-            Try
-
-                VideoCapture1.Screen_Capture_Source.WindowHandle = FindWindowByClass(edScreenCaptureWindowName.Text, IntPtr.Zero)
-
-            Catch
-
-            End Try
-
-            If (VideoCapture1.Screen_Capture_Source.WindowHandle = IntPtr.Zero) Then
-
-                MessageBox.Show("Incorrect window title for screen capture.")
-                Return
-
+            If (n > 1) Then
+                For i As Integer = 1 To n - 1
+                    Dim source = CreateScreenCaptureSource(
+                        Convert.ToInt32(cbScreenCaptureDisplayIndex.Items(i)),
+                        True)
+                    VideoCapture1.PIP_Mode = VFPIPMode.Horizontal
+                    VideoCapture1.PIP_Sources_Add_ScreenSource(source, 0, 0, 0, 0)
+                Next
             End If
-
-
         Else
-
-            VideoCapture1.Screen_Capture_Source.Mode = VFScreenCaptureMode.Screen
-
+            VideoCapture1.Screen_Capture_Source = CreateScreenCaptureSource(
+                Convert.ToInt32(cbScreenCaptureDisplayIndex.Text),
+                False)
         End If
-        VideoCapture1.Screen_Capture_Source.FrameRate = CSng(Convert.ToDouble(edScreenFrameRate.Text))
-        VideoCapture1.Screen_Capture_Source.FullScreen = rbScreenFullScreen.Checked
-        VideoCapture1.Screen_Capture_Source.Top = Convert.ToInt32(edScreenTop.Text)
-        VideoCapture1.Screen_Capture_Source.Bottom = Convert.ToInt32(edScreenBottom.Text)
-        VideoCapture1.Screen_Capture_Source.Left = Convert.ToInt32(edScreenLeft.Text)
-        VideoCapture1.Screen_Capture_Source.Right = Convert.ToInt32(edScreenRight.Text)
-        VideoCapture1.Screen_Capture_Source.GrabMouseCursor = cbScreenCapture_GrabMouseCursor.Checked
-        VideoCapture1.Screen_Capture_Source.DisplayIndex = Convert.ToInt32(cbScreenCaptureDisplayIndex.Text)
-        VideoCapture1.Screen_Capture_Source.AllowDesktopDuplicationEngine = cbScreenCapture_DesktopDuplication.Checked
 
+        ' audio source
         If cbRecordAudio.Checked Then
             VideoCapture1.Audio_RecordAudio = True
             VideoCapture1.Audio_PlayAudio = False

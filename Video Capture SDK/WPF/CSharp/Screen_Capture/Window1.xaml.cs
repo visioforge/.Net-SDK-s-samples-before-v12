@@ -1,16 +1,6 @@
 // ReSharper disable InconsistentNaming
-
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable StyleCop.SA1601
-
-using System.IO;
-using System.Windows.Forms;
-using VisioForge.Controls.UI.Dialogs;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Tools;
-using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
-
 // ReSharper disable RedundantNameQualifier
 
 namespace Screen_Capture
@@ -18,15 +8,23 @@ namespace Screen_Capture
     using System;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+
+    using VisioForge.Controls.UI.Dialogs;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
+    using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
     using VisioForge.Types.Sources;
     using VisioForge.Types.VideoEffects;
+
+    using SaveFileDialog = Microsoft.Win32.SaveFileDialog;
 
     [SuppressMessage("Microsoft.Design", "CA1001:TypesThatOwnDisposableFieldsShouldBeDisposable")]
     public partial class Window1
@@ -79,8 +77,10 @@ namespace Screen_Capture
 
         private void btScreenCaptureUpdate_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Screen_Capture_UpdateParameters(Convert.ToInt32(edScreenLeft.Text),
-                Convert.ToInt32(edScreenTop.Text), cbScreenCapture_GrabMouseCursor.IsChecked == true);
+            VideoCapture1.Screen_Capture_UpdateParameters(
+                Convert.ToInt32(edScreenLeft.Text),
+                Convert.ToInt32(edScreenTop.Text),
+                cbScreenCapture_GrabMouseCursor.IsChecked == true);
         }
         
         private void cbAudioInputDevice_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
@@ -282,7 +282,8 @@ namespace Screen_Capture
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
@@ -310,7 +311,8 @@ namespace Screen_Capture
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
@@ -324,6 +326,49 @@ namespace Screen_Capture
             }
         }
 
+        private ScreenCaptureSourceSettings CreateScreenCaptureSource(int screenID, bool forcedFullScreen)
+        {
+            var source = new ScreenCaptureSourceSettings();
+
+            if (rbScreenCaptureWindow.IsChecked == true)
+            {
+                source.Mode = VFScreenCaptureMode.Window;
+
+                source.WindowHandle = IntPtr.Zero;
+
+                try
+                {
+                    source.WindowHandle = FindWindow(edScreenCaptureWindowName.Text, null);
+                }
+                // ReSharper disable once EmptyGeneralCatchClause
+                catch
+                {
+                }
+
+                if (source.WindowHandle == IntPtr.Zero)
+                {
+                    MessageBox.Show("Incorrect window title for screen capture.");
+                    return null;
+                }
+            }
+            else
+            {
+                source.Mode = VFScreenCaptureMode.Screen;
+            }
+
+            source.FrameRate = (float)Convert.ToDouble(edScreenFrameRate.Text);
+            source.FullScreen = rbScreenFullScreen.IsChecked == true || forcedFullScreen;
+            source.Top = Convert.ToInt32(edScreenTop.Text);
+            source.Bottom = Convert.ToInt32(edScreenBottom.Text);
+            source.Left = Convert.ToInt32(edScreenLeft.Text);
+            source.Right = Convert.ToInt32(edScreenRight.Text);
+            source.GrabMouseCursor = cbScreenCapture_GrabMouseCursor.IsChecked == true;
+            source.DisplayIndex = screenID;
+            source.AllowDesktopDuplicationEngine = cbScreenCapture_DesktopDuplication.IsChecked == true;
+
+            return source;
+        }
+
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
             mmLog.Clear();
@@ -335,44 +380,33 @@ namespace Screen_Capture
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
 
             // from screen
-            VideoCapture1.Screen_Capture_Source = new ScreenCaptureSourceSettings();
+            bool allScreens = cbScreenCaptureDisplayIndex.SelectedIndex == cbScreenCaptureDisplayIndex.Items.Count - 1;
 
-            if (rbScreenCaptureWindow.IsChecked == true)
+            if (allScreens)
             {
-                VideoCapture1.Screen_Capture_Source.Mode = VFScreenCaptureMode.Window;
+                int n = cbScreenCaptureDisplayIndex.Items.Count - 1;
+                VideoCapture1.Screen_Capture_Source = CreateScreenCaptureSource(
+                    Convert.ToInt32(cbScreenCaptureDisplayIndex.Items[0]),
+                    true);
 
-                VideoCapture1.Screen_Capture_Source.WindowHandle = IntPtr.Zero;
-
-                try
+                if (n > 1)
                 {
-                    VideoCapture1.Screen_Capture_Source.WindowHandle = FindWindow(edScreenCaptureWindowName.Text, null);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Unable to get window handle for screen capture. " + ex.Message);
-                }
-
-                if (VideoCapture1.Screen_Capture_Source.WindowHandle == IntPtr.Zero)
-                {
-                    MessageBox.Show("Incorrect window title for screen capture.");
-                    return;
+                    for (int i = 1; i < n; i++)
+                    {
+                        var source = CreateScreenCaptureSource(
+                            Convert.ToInt32(cbScreenCaptureDisplayIndex.Items[i]),
+                            true);
+                        VideoCapture1.PIP_Mode = VFPIPMode.Horizontal;
+                        VideoCapture1.PIP_Sources_Add_ScreenSource(source, 0, 0, 0, 0);
+                    }
                 }
             }
             else
             {
-                VideoCapture1.Screen_Capture_Source.Mode = VFScreenCaptureMode.Screen;
+                VideoCapture1.Screen_Capture_Source = CreateScreenCaptureSource(
+                    Convert.ToInt32(cbScreenCaptureDisplayIndex.Text),
+                    false);
             }
-
-            VideoCapture1.Screen_Capture_Source.FrameRate = (float)Convert.ToDouble(edScreenFrameRate.Text);
-            VideoCapture1.Screen_Capture_Source.FullScreen = rbScreenFullScreen.IsChecked == true;
-            VideoCapture1.Screen_Capture_Source.Top = Convert.ToInt32(edScreenTop.Text);
-            VideoCapture1.Screen_Capture_Source.Bottom = Convert.ToInt32(edScreenBottom.Text);
-            VideoCapture1.Screen_Capture_Source.Left = Convert.ToInt32(edScreenLeft.Text);
-            VideoCapture1.Screen_Capture_Source.Right = Convert.ToInt32(edScreenRight.Text);
-            VideoCapture1.Screen_Capture_Source.GrabMouseCursor = cbScreenCapture_GrabMouseCursor.IsChecked == true;
-            VideoCapture1.Screen_Capture_Source.DisplayIndex = Convert.ToInt32(cbScreenCaptureDisplayIndex.Text);
-            VideoCapture1.Screen_Capture_Source.AllowDesktopDuplicationEngine =
-                cbScreenCapture_DesktopDuplication.IsChecked == true;
 
             if (cbRecordAudio.IsChecked == true)
             {
@@ -623,10 +657,12 @@ namespace Screen_Capture
                 cbAudioInputDevice_SelectedIndexChanged(null, null);
             }
 
-            foreach (var screen in Screen.AllScreens)
+            foreach (var screen in System.Windows.Forms.Screen.AllScreens)
             {
                 cbScreenCaptureDisplayIndex.Items.Add(screen.DeviceName.Replace(@"\\.\DISPLAY", string.Empty));
             }
+
+            cbScreenCaptureDisplayIndex.Items.Add("All (fullscreen)");
 
             cbScreenCaptureDisplayIndex.SelectedIndex = 0;
             edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" +
