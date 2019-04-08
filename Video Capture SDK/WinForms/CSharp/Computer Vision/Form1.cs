@@ -14,8 +14,6 @@ namespace Computer_Vision_Demo
     using System.IO;
 
     using VisioForge.Controls.CV;
-    using VisioForge.Shared.CV;
-    using VisioForge.Shared.MFP;
     using VisioForge.Types;
     using VisioForge.Types.Sources;
 

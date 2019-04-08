@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+// ReSharper disable StyleCop.SA1600
+// ReSharper disable InconsistentNaming
 
 namespace screen_capture
 {
@@ -70,7 +72,7 @@ namespace screen_capture
                 VideoCapture1.Mode = VFVideoCaptureMode.ScreenPreview;
             }
 
-            this.VideoCapture1.Start();
+            VideoCapture1.Start();
         }
 
         private void btStop_Click(object sender, EventArgs e)

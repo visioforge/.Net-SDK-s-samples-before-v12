@@ -1,12 +1,8 @@
 // ReSharper disable InconsistentNaming
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable UnusedParameter.Local
-
-using System.Diagnostics.CodeAnalysis;
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-
+// ReSharper disable StyleCop.SA1650
+// ReSharper disable NotAccessedVariable
 // ReSharper disable InlineOutVariableDeclaration
 // ReSharper disable CommentTypo
 
@@ -16,15 +12,18 @@ namespace VideoCapture_CSharp_Demo
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
-    using System.Drawing.Drawing2D;
-    using System.Drawing.Text;
     using System.Globalization;
     using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
 
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WinForms;
+    using VisioForge.Shared.IPCameraDB;
+    using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.GPUVideoEffects;
     using VisioForge.Types.OutputFormat;
@@ -32,9 +31,6 @@ namespace VideoCapture_CSharp_Demo
     using VisioForge.Types.VideoEffects;
 
     using VFM4AOutput = VisioForge.Types.OutputFormat.VFM4AOutput;
-
-    using VisioForge.Shared.IPCameraDB;
-    using VisioForge.Tools;
 
     /// <summary>
     /// Main form.
@@ -77,7 +73,6 @@ namespace VideoCapture_CSharp_Demo
 
         private GIFSettingsDialog gifSettingsDialog;
 
-
         private ONVIFControl onvifControl;
 
         private ONVIFPTZRanges onvifPtzRanges;
@@ -107,8 +102,6 @@ namespace VideoCapture_CSharp_Demo
         };
 
         private readonly System.Timers.Timer tmRecording = new System.Timers.Timer(1000);
-
-        // ReSharper disable InconsistentNaming
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -730,7 +723,6 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.Video_Renderer.Zoom_Ratio = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftX = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftY = 0;
-
             
             VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH");
 
@@ -838,14 +830,14 @@ namespace VideoCapture_CSharp_Demo
                 };
             }
 
-            bool captureMode = (VideoCapture1.Mode == VFVideoCaptureMode.AudioCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.BDACapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.CustomCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.IPCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.KinectCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.ScreenCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourceCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.VideoCapture);
+            bool captureMode = VideoCapture1.Mode == VFVideoCaptureMode.AudioCapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.BDACapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.CustomCapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.IPCapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.KinectCapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.ScreenCapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourceCapture
+                               || VideoCapture1.Mode == VFVideoCaptureMode.VideoCapture;
 
             // Set file name
             if (captureMode)
@@ -1471,7 +1463,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        static void ShowOnScreen(Form window, int screenNumber)
+        private static void ShowOnScreen(Form window, int screenNumber)
         {
             if (screenNumber >= 0 && screenNumber < Screen.AllScreens.Length)
             {
@@ -2132,14 +2124,6 @@ namespace VideoCapture_CSharp_Demo
                         SetMP4Output(ref mp4Output);
                         VideoCapture1.Network_Streaming_Output = mp4Output;
 
-                        // else
-                        // {
-                        //    VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.RTSP_FFMPEG_EXE;
-                        //    VideoCapture1.Network_Streaming_FFMPEG_EXE_UseMainFFMPEGEXEOutputSettings = true;
-                        //    VideoCapture1.FFMPEG_EXE_FillDefaults(VFFFMPEGEXEDefaultsProfile.MP4_H264_AAC, true);
-                        //    VideoCapture1.Network_Streaming_FFMPEG_EXE_OutputMuxer = VFFFMPEGEXEOutputMuxer.RTSP;
-                        // }
-
                         VideoCapture1.Network_Streaming_URL = edNetworkRTSPURL.Text;
 
                         break;
@@ -2468,7 +2452,6 @@ namespace VideoCapture_CSharp_Demo
             foreach (var form in multiscreenWindows)
             {
                 form.Close();
-                //form.Dispose();
             }
 
             multiscreenWindows.Clear();
@@ -2541,7 +2524,6 @@ namespace VideoCapture_CSharp_Demo
         /// <param name="e">
         /// Event args.
         /// </param>
-        [SuppressMessage("ReSharper", "NotAccessedVariable")]
         private void cbCrossbarInput_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbCrossbarInput.SelectedIndex != -1)
@@ -2909,8 +2891,6 @@ namespace VideoCapture_CSharp_Demo
                 }
             }
         }
-
-
 
         private void cbStretch_CheckedChanged(object sender, EventArgs e)
         {
@@ -3389,8 +3369,6 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        
-
         private void cbScreenFlipVertical_CheckedChanged(object sender, EventArgs e)
         {
             if (VideoCapture1.Video_Renderer == null)
@@ -3459,8 +3437,6 @@ namespace VideoCapture_CSharp_Demo
 
         private void VideoCapture1_OnBarcodeDetected(object sender, BarcodeEventArgs e)
         {
-            // e.DetectorEnabled = false;
-
             BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
@@ -3997,7 +3973,7 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.SeparateCapture_ChangeFilenameOnTheFly(edNewFilename.Text);
         }
 
-        private void ReadCameraControlInfo()
+        private void btCCReadValues_Click(object sender, EventArgs e)
         {
             int max;
             int defaultValue;
@@ -4034,11 +4010,36 @@ namespace VideoCapture_CSharp_Demo
                 cbCCTiltAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
                 cbCCTiltRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
-        }
 
-        private void btCCReadValues_Click(object sender, EventArgs e)
-        {
-            ReadCameraControlInfo();
+            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Focus, out min, out max, out step, out defaultValue, out flags))
+            {
+                tbCCFocus.Minimum = min;
+                tbCCFocus.Maximum = max;
+                tbCCFocus.SmallChange = step;
+                tbCCFocus.Value = defaultValue;
+                lbCCFocusMin.Text = "Min: " + Convert.ToString(min);
+                lbCCFocusMax.Text = "Max: " + Convert.ToString(max);
+                lbCCFocusCurrent.Text = "Current: " + Convert.ToString(defaultValue);
+
+                cbCCFocusManual.Checked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCFocusAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCFocusRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+            }
+
+            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Zoom, out min, out max, out step, out defaultValue, out flags))
+            {
+                tbCCZoom.Minimum = min;
+                tbCCZoom.Maximum = max;
+                tbCCZoom.SmallChange = step;
+                tbCCZoom.Value = defaultValue;
+                lbCCZoomMin.Text = "Min: " + Convert.ToString(min);
+                lbCCZoomMax.Text = "Max: " + Convert.ToString(max);
+                lbCCZoomCurrent.Text = "Current: " + Convert.ToString(defaultValue);
+
+                cbCCZoomManual.Checked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCZoomAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCZoomRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+            }
         }
 
         private void btCCPanApply_Click(object sender, EventArgs e)
@@ -4488,15 +4489,11 @@ namespace VideoCapture_CSharp_Demo
                 // going normal screen
                 fullScreen = false;
 
-                //Debug.WriteLine($"OFF fullscreen: {controlLeft}x{controlTop} | {controlWidth}x{controlHeight}");
-
                 // restoring control
                 VideoCapture1.Left = controlLeft;
                 VideoCapture1.Top = controlTop;
                 VideoCapture1.Width = controlWidth;
                 VideoCapture1.Height = controlHeight;
-
-                //Debug.WriteLine($"OFF fullscreen 2: {VideoCapture1.Left}x{ VideoCapture1.Top} | {VideoCapture1.Width}x{VideoCapture1.Height}");
 
                 // restoring window
                 Left = windowLeft;
@@ -4910,18 +4907,12 @@ namespace VideoCapture_CSharp_Demo
                 mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
         }
-
-
+        
         private delegate void FFMPEGInfoDelegate(string message);
 
         private void FFMPEGInfoDelegateMethod(string message)
         {
-            // if (VideoCapture1.Debug_Mode)
-            // {
-
             mmLog.Text += "(NOT ERROR) FFMPEG " + message + Environment.NewLine;
-
-            // }
         }
 
         private void VideoCapture1_OnFFMPEGInfo(object sender, FFMPEGInfoEventArgs e)
@@ -4956,7 +4947,6 @@ namespace VideoCapture_CSharp_Demo
                 }
 
                 cbDecklinkCaptureVideoFormat.SelectedIndex = 0;
-                // cbVideoInputFormat_SelectedIndexChanged(null, null);
             }
         }
 
@@ -5000,109 +4990,6 @@ namespace VideoCapture_CSharp_Demo
             var startInfo = new ProcessStartInfo("explorer.exe", @"https://support.visioforge.com/577349-Network-streaming-to-YouTube");
             Process.Start(startInfo);
         }
-
-        //// motion detector
-        //MotionDetector detector = new MotionDetector(
-        //    //new SimpleBackgroundModelingDetector(true, true),
-        //    new TwoFramesDifferenceDetector(true),
-        //    new BlobCountingObjectsProcessing());
-
-        //// counter used for flashing
-        //private int flash = 0;
-        //private float motionAlarmLevel = 0.015f;
-
-        //private List<float> motionHistory = new List<float>();
-        //private int detectedObjectsCount = -1;
-
-        //private void VideoCapture1_OnVideoFrameBufferOriginal(object sender, VideoFrameBufferEventArgs2 e)
-        //{
-        //    return;
-
-        //    lock (this)
-        //    {
-        //        if (detector != null)
-        //        {
-        //            var imageu = new UnmanagedImage(e.Buffer, e.Width, e.Height, e.Stride, e.PixelFormat);
-
-        //            float motionLevel = detector.ProcessFrame(imageu);
-
-        //            //if (motionLevel > motionAlarmLevel)
-        //            //{
-        //            //    // flash for 2 seconds
-        //            //    flash = (int)(2 * (1000 / alarmTimer.Interval));
-        //            //}
-
-        //            // check objects' count
-        //            if (detector.MotionProcessingAlgorithm is BlobCountingObjectsProcessing)
-        //            {
-        //                BlobCountingObjectsProcessing countingDetector = (BlobCountingObjectsProcessing)detector.MotionProcessingAlgorithm;
-        //                detectedObjectsCount = countingDetector.ObjectsCount;
-        //            }
-        //            else
-        //            {
-        //                detectedObjectsCount = -1;
-        //            }
-
-        //            // accumulate history
-        //            //motionHistory.Add(motionLevel);
-        //            //if (motionHistory.Count > 300)
-        //            //{
-        //            //    motionHistory.RemoveAt(0);
-        //            //}
-
-        //            //if (showMotionHistoryToolStripMenuItem.Checked)
-        //            DrawMotionHistory(imageu);
-        //        }
-        //    }
-        //}
-
-        //// Draw motion history
-        //private void DrawMotionHistory(UnmanagedImage image)
-        //{
-        //    Color greenColor = Color.FromArgb(128, 0, 255, 0);
-        //    Color yellowColor = Color.FromArgb(128, 255, 255, 0);
-        //    Color redColor = Color.FromArgb(128, 255, 0, 0);
-
-        //    //BitmapData bitmapData = image.LockBits(new Rectangle(0, 0, image.Width, image.Height),
-        //    //    ImageLockMode.ReadWrite, image.PixelFormat);
-
-        //    int t1 = (int)(motionAlarmLevel * 500);
-        //    int t2 = (int)(0.075 * 500);
-
-        //    for (int i = 1, n = motionHistory.Count; i <= n; i++)
-        //    {
-        //        int motionBarLength = (int)(motionHistory[n - i] * 500);
-
-        //        if (motionBarLength == 0)
-        //            continue;
-
-        //        if (motionBarLength > 50)
-        //            motionBarLength = 50;
-
-        //        Drawing.Line(image,
-        //            new IntPoint(image.Width - i, image.Height - 1),
-        //            new IntPoint(image.Width - i, image.Height - 1 - motionBarLength),
-        //            greenColor);
-
-        //        if (motionBarLength > t1)
-        //        {
-        //            Drawing.Line(image,
-        //                new IntPoint(image.Width - i, image.Height - 1 - t1),
-        //                new IntPoint(image.Width - i, image.Height - 1 - motionBarLength),
-        //                yellowColor);
-        //        }
-
-        //        if (motionBarLength > t2)
-        //        {
-        //            Drawing.Line(image,
-        //                new IntPoint(image.Width - i, image.Height - 1 - t2),
-        //                new IntPoint(image.Width - i, image.Height - 1 - motionBarLength),
-        //                redColor);
-        //        }
-        //    }
-
-        //    //image.UnlockBits(bitmapData);
-        //}
 
         private void tbGPULightness_Scroll(object sender, EventArgs e)
         {
@@ -5988,7 +5875,7 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke((Action)(() =>
             {
                 TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
             }));
         }
 
@@ -6036,7 +5923,7 @@ namespace VideoCapture_CSharp_Demo
             if (lbTextLogos.SelectedItem != null)
             {
                 var dlg = new TextLogoSettingsDialog();
-                var effect = VideoCapture1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                var effect = VideoCapture1.Video_Effects_Get((string)lbTextLogos.SelectedItem);
                 dlg.Attach(effect);
 
                 dlg.ShowDialog(this);
@@ -6117,6 +6004,50 @@ namespace VideoCapture_CSharp_Demo
                     flip.Enabled = cbFlipY.Checked;
                 }
             }
+        }
+
+        private void btCCZoomApply_Click(object sender, EventArgs e)
+        {
+            VFCameraControlFlags flags = VFCameraControlFlags.None;
+
+            if (cbCCZoomManual.Checked)
+            {
+                flags = flags | VFCameraControlFlags.Manual;
+            }
+
+            if (cbCCZoomAuto.Checked)
+            {
+                flags = flags | VFCameraControlFlags.Auto;
+            }
+
+            if (cbCCZoomRelative.Checked)
+            {
+                flags = flags | VFCameraControlFlags.Relative;
+            }
+
+            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Zoom, tbCCZoom.Value, flags);
+        }
+
+        private void btCCFocusApply_Click(object sender, EventArgs e)
+        {
+            VFCameraControlFlags flags = VFCameraControlFlags.None;
+
+            if (cbCCFocusManual.Checked)
+            {
+                flags = flags | VFCameraControlFlags.Manual;
+            }
+
+            if (cbCCFocusAuto.Checked)
+            {
+                flags = flags | VFCameraControlFlags.Auto;
+            }
+
+            if (cbCCFocusRelative.Checked)
+            {
+                flags = flags | VFCameraControlFlags.Relative;
+            }
+
+            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Focus, tbCCFocus.Value, flags);
         }
     }
 }

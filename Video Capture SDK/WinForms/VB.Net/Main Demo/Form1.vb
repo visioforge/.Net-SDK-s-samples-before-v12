@@ -5028,6 +5028,142 @@ Public Class Form1
         dlg.ShowDialog(Me)
         dlg.Dispose()
     End Sub
+
+    Private Sub btCCPanApply_Click(sender As Object, e As EventArgs) Handles btCCPanApply.Click
+        Dim flags = VFCameraControlFlags.None
+
+        If (cbCCPanManual.Checked) Then
+            flags = flags Or VFCameraControlFlags.Manual
+        End If
+
+        If (cbCCPanAuto.Checked) Then
+            flags = flags Or VFCameraControlFlags.Auto
+        End If
+
+        If (cbCCPanRelative.Checked) Then
+            flags = flags Or VFCameraControlFlags.Relative
+        End If
+
+        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Pan, tbCCPan.Value, flags)
+    End Sub
+
+    Private Sub btCCZoomApply_Click(sender As Object, e As EventArgs) Handles btCCZoomApply.Click
+        Dim flags = VFCameraControlFlags.None
+
+        If (cbCCZoomManual.Checked) Then
+            flags = flags Or VFCameraControlFlags.Manual
+        End If
+
+        If (cbCCZoomAuto.Checked) Then
+            flags = flags Or VFCameraControlFlags.Auto
+        End If
+
+        If (cbCCZoomRelative.Checked) Then
+            flags = flags Or VFCameraControlFlags.Relative
+        End If
+
+        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Zoom, tbCCZoom.Value, flags)
+    End Sub
+
+    Private Sub btCCTiltApply_Click(sender As Object, e As EventArgs) Handles btCCTiltApply.Click
+        Dim flags = VFCameraControlFlags.None
+
+        If (cbCCTiltManual.Checked) Then
+            flags = flags Or VFCameraControlFlags.Manual
+        End If
+
+        If (cbCCTiltAuto.Checked) Then
+            flags = flags Or VFCameraControlFlags.Auto
+        End If
+
+        If (cbCCTiltRelative.Checked) Then
+            flags = flags Or VFCameraControlFlags.Relative
+        End If
+
+        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Tilt, tbCCTilt.Value, flags)
+    End Sub
+
+    Private Sub btCCFocusApply_Click(sender As Object, e As EventArgs) Handles btCCFocusApply.Click
+        Dim flags = VFCameraControlFlags.None
+
+        If (cbCCFocusManual.Checked) Then
+            flags = flags Or VFCameraControlFlags.Manual
+        End If
+
+        If (cbCCFocusAuto.Checked) Then
+            flags = flags Or VFCameraControlFlags.Auto
+        End If
+
+        If (cbCCFocusRelative.Checked) Then
+            flags = flags Or VFCameraControlFlags.Relative
+        End If
+
+        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Focus, tbCCFocus.Value, flags)
+    End Sub
+
+    Private Sub btCCReadValues_Click(sender As Object, e As EventArgs) Handles btCCReadValues.Click
+        Dim max = 0
+        Dim defaultValue = 0
+        Dim min = 0
+        Dim step_ = 0
+        Dim flags As VFCameraControlFlags
+
+        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Pan, min, max, step_, defaultValue, flags)) Then
+            tbCCPan.Minimum = min
+            tbCCPan.Maximum = max
+            tbCCPan.SmallChange = step_
+            tbCCPan.Value = defaultValue
+            lbCCPanMin.Text = "Min: " + Convert.ToString(min)
+            lbCCPanMax.Text = "Max: " + Convert.ToString(max)
+            lbCCPanCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+
+            cbCCPanManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCPanAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCPanRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+        End If
+
+        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Tilt, min, max, step_, defaultValue, flags)) Then
+            tbCCTilt.Minimum = min
+            tbCCTilt.Maximum = max
+            tbCCTilt.SmallChange = step_
+            tbCCTilt.Value = defaultValue
+            lbCCTiltMin.Text = "Min: " + Convert.ToString(min)
+            lbCCTiltMax.Text = "Max: " + Convert.ToString(max)
+            lbCCTiltCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+
+            cbCCTiltManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCTiltAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCTiltRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+        End If
+
+        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Focus, min, max, step_, defaultValue, flags)) Then
+            tbCCFocus.Minimum = min
+            tbCCFocus.Maximum = max
+            tbCCFocus.SmallChange = step_
+            tbCCFocus.Value = defaultValue
+            lbCCFocusMin.Text = "Min: " + Convert.ToString(min)
+            lbCCFocusMax.Text = "Max: " + Convert.ToString(max)
+            lbCCFocusCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+
+            cbCCFocusManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCFocusAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCFocusRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+        End If
+
+        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Zoom, min, max, step_, defaultValue, flags)) Then
+            tbCCZoom.Minimum = min
+            tbCCZoom.Maximum = max
+            tbCCZoom.SmallChange = step_
+            tbCCZoom.Value = defaultValue
+            lbCCZoomMin.Text = "Min: " + Convert.ToString(min)
+            lbCCZoomMax.Text = "Max: " + Convert.ToString(max)
+            lbCCZoomCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+
+            cbCCZoomManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCZoomAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCZoomRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+        End If
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

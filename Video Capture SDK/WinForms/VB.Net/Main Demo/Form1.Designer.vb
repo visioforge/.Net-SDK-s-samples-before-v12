@@ -39,6 +39,7 @@ Partial Class Form1
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.tabControl12 = New System.Windows.Forms.TabControl()
         Me.tabPage53 = New System.Windows.Forms.TabPage()
+        Me.cbTelemetry = New System.Windows.Forms.CheckBox()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
         Me.mmLog = New System.Windows.Forms.TextBox()
@@ -333,12 +334,12 @@ Partial Class Form1
         Me.TabPage104 = New System.Windows.Forms.TabPage()
         Me.btBDAChannelScanningStart = New System.Windows.Forms.Button()
         Me.lvBDAChannels = New System.Windows.Forms.ListView()
-        Me.columnHeader1 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
-        Me.columnHeader2 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
-        Me.columnHeader3 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
-        Me.columnHeader4 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
-        Me.columnHeader5 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
-        Me.columnHeader6 = CType(New System.Windows.Forms.ColumnHeader(),System.Windows.Forms.ColumnHeader)
+        Me.columnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.columnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.label342 = New System.Windows.Forms.Label()
         Me.tabPage49 = New System.Windows.Forms.TabPage()
         Me.tabControl20 = New System.Windows.Forms.TabControl()
@@ -1075,7 +1076,45 @@ Partial Class Form1
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
-        Me.cbTelemetry = New System.Windows.Forms.CheckBox()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.btCCFocusApply = New System.Windows.Forms.Button()
+        Me.btCCZoomApply = New System.Windows.Forms.Button()
+        Me.cbCCFocusRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCFocusManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCFocusAuto = New System.Windows.Forms.CheckBox()
+        Me.lbCCFocusCurrent = New System.Windows.Forms.Label()
+        Me.lbCCFocusMax = New System.Windows.Forms.Label()
+        Me.lbCCFocusMin = New System.Windows.Forms.Label()
+        Me.tbCCFocus = New System.Windows.Forms.TrackBar()
+        Me.label4 = New System.Windows.Forms.Label()
+        Me.cbCCZoomRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCZoomManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCZoomAuto = New System.Windows.Forms.CheckBox()
+        Me.lbCCZoomCurrent = New System.Windows.Forms.Label()
+        Me.lbCCZoomMax = New System.Windows.Forms.Label()
+        Me.lbCCZoomMin = New System.Windows.Forms.Label()
+        Me.tbCCZoom = New System.Windows.Forms.TrackBar()
+        Me.label20 = New System.Windows.Forms.Label()
+        Me.btCCTiltApply = New System.Windows.Forms.Button()
+        Me.btCCPanApply = New System.Windows.Forms.Button()
+        Me.cbCCTiltRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCTiltManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCTiltAuto = New System.Windows.Forms.CheckBox()
+        Me.lbCCTiltCurrent = New System.Windows.Forms.Label()
+        Me.lbCCTiltMax = New System.Windows.Forms.Label()
+        Me.lbCCTiltMin = New System.Windows.Forms.Label()
+        Me.tbCCTilt = New System.Windows.Forms.TrackBar()
+        Me.label97 = New System.Windows.Forms.Label()
+        Me.cbCCPanRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCPanManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCPanAuto = New System.Windows.Forms.CheckBox()
+        Me.btCCReadValues = New System.Windows.Forms.Button()
+        Me.lbCCPanCurrent = New System.Windows.Forms.Label()
+        Me.lbCCPanMax = New System.Windows.Forms.Label()
+        Me.lbCCPanMin = New System.Windows.Forms.Label()
+        Me.tbCCPan = New System.Windows.Forms.TrackBar()
+        Me.label96 = New System.Windows.Forms.Label()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -1282,6 +1321,11 @@ Partial Class Form1
         Me.TabPage142.SuspendLayout
         Me.TabPage143.SuspendLayout
         CType(Me.imgTagCover, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage3.SuspendLayout
+        CType(Me.tbCCFocus, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbCCZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbCCTilt, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbCCPan, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'fontDialog1
@@ -1327,6 +1371,18 @@ Partial Class Form1
         Me.tabPage53.TabIndex = 2
         Me.tabPage53.Text = "Errors"
         Me.tabPage53.UseVisualStyleBackColor = True
+        '
+        'cbTelemetry
+        '
+        Me.cbTelemetry.AutoSize = True
+        Me.cbTelemetry.Checked = True
+        Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbTelemetry.Location = New System.Drawing.Point(200, 6)
+        Me.cbTelemetry.Name = "cbTelemetry"
+        Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
+        Me.cbTelemetry.TabIndex = 78
+        Me.cbTelemetry.Text = "Telemetry"
+        Me.cbTelemetry.UseVisualStyleBackColor = True
         '
         'cbLicensing
         '
@@ -1393,6 +1449,7 @@ Partial Class Form1
         Me.tabControl2.Controls.Add(Me.tabPage10)
         Me.tabControl2.Controls.Add(Me.tabPage11)
         Me.tabControl2.Controls.Add(Me.tabPage57)
+        Me.tabControl2.Controls.Add(Me.TabPage3)
         Me.tabControl2.Location = New System.Drawing.Point(3, 6)
         Me.tabControl2.Name = "tabControl2"
         Me.tabControl2.SelectedIndex = 0
@@ -12110,21 +12167,420 @@ Partial Class Form1
         Me.lbTimestamp.TabIndex = 96
         Me.lbTimestamp.Text = "Recording time: 00:00:00"
         '
-        'cbTelemetry
+        'TabPage3
         '
-        Me.cbTelemetry.AutoSize = True
-        Me.cbTelemetry.Checked = True
-        Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbTelemetry.Location = New System.Drawing.Point(200, 6)
-        Me.cbTelemetry.Name = "cbTelemetry"
-        Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
-        Me.cbTelemetry.TabIndex = 78
-        Me.cbTelemetry.Text = "Telemetry"
-        Me.cbTelemetry.UseVisualStyleBackColor = True
+        Me.TabPage3.Controls.Add(Me.label1)
+        Me.TabPage3.Controls.Add(Me.btCCFocusApply)
+        Me.TabPage3.Controls.Add(Me.btCCZoomApply)
+        Me.TabPage3.Controls.Add(Me.cbCCFocusRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCFocusManual)
+        Me.TabPage3.Controls.Add(Me.cbCCFocusAuto)
+        Me.TabPage3.Controls.Add(Me.lbCCFocusCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCFocusMax)
+        Me.TabPage3.Controls.Add(Me.lbCCFocusMin)
+        Me.TabPage3.Controls.Add(Me.tbCCFocus)
+        Me.TabPage3.Controls.Add(Me.label4)
+        Me.TabPage3.Controls.Add(Me.cbCCZoomRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCZoomManual)
+        Me.TabPage3.Controls.Add(Me.cbCCZoomAuto)
+        Me.TabPage3.Controls.Add(Me.lbCCZoomCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCZoomMax)
+        Me.TabPage3.Controls.Add(Me.lbCCZoomMin)
+        Me.TabPage3.Controls.Add(Me.tbCCZoom)
+        Me.TabPage3.Controls.Add(Me.label20)
+        Me.TabPage3.Controls.Add(Me.btCCTiltApply)
+        Me.TabPage3.Controls.Add(Me.btCCPanApply)
+        Me.TabPage3.Controls.Add(Me.cbCCTiltRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCTiltManual)
+        Me.TabPage3.Controls.Add(Me.cbCCTiltAuto)
+        Me.TabPage3.Controls.Add(Me.lbCCTiltCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCTiltMax)
+        Me.TabPage3.Controls.Add(Me.lbCCTiltMin)
+        Me.TabPage3.Controls.Add(Me.tbCCTilt)
+        Me.TabPage3.Controls.Add(Me.label97)
+        Me.TabPage3.Controls.Add(Me.cbCCPanRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCPanManual)
+        Me.TabPage3.Controls.Add(Me.cbCCPanAuto)
+        Me.TabPage3.Controls.Add(Me.btCCReadValues)
+        Me.TabPage3.Controls.Add(Me.lbCCPanCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCPanMax)
+        Me.TabPage3.Controls.Add(Me.lbCCPanMin)
+        Me.TabPage3.Controls.Add(Me.tbCCPan)
+        Me.TabPage3.Controls.Add(Me.label96)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(448, 246)
+        Me.TabPage3.TabIndex = 9
+        Me.TabPage3.Text = "Camera control"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'label1
+        '
+        Me.label1.AutoSize = True
+        Me.label1.Location = New System.Drawing.Point(11, 10)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(208, 13)
+        Me.label1.TabIndex = 96
+        Me.label1.Text = "Many other parameters available using API"
+        '
+        'btCCFocusApply
+        '
+        Me.btCCFocusApply.Location = New System.Drawing.Point(235, 219)
+        Me.btCCFocusApply.Name = "btCCFocusApply"
+        Me.btCCFocusApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCFocusApply.TabIndex = 95
+        Me.btCCFocusApply.Text = "Apply"
+        Me.btCCFocusApply.UseVisualStyleBackColor = True
+        '
+        'btCCZoomApply
+        '
+        Me.btCCZoomApply.Location = New System.Drawing.Point(23, 219)
+        Me.btCCZoomApply.Name = "btCCZoomApply"
+        Me.btCCZoomApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCZoomApply.TabIndex = 94
+        Me.btCCZoomApply.Text = "Apply"
+        Me.btCCZoomApply.UseVisualStyleBackColor = True
+        '
+        'cbCCFocusRelative
+        '
+        Me.cbCCFocusRelative.AutoSize = True
+        Me.cbCCFocusRelative.Location = New System.Drawing.Point(346, 196)
+        Me.cbCCFocusRelative.Name = "cbCCFocusRelative"
+        Me.cbCCFocusRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCFocusRelative.TabIndex = 93
+        Me.cbCCFocusRelative.Text = "Relative"
+        Me.cbCCFocusRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCFocusManual
+        '
+        Me.cbCCFocusManual.AutoSize = True
+        Me.cbCCFocusManual.Location = New System.Drawing.Point(283, 196)
+        Me.cbCCFocusManual.Name = "cbCCFocusManual"
+        Me.cbCCFocusManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCFocusManual.TabIndex = 92
+        Me.cbCCFocusManual.Text = "Manual"
+        Me.cbCCFocusManual.UseVisualStyleBackColor = True
+        '
+        'cbCCFocusAuto
+        '
+        Me.cbCCFocusAuto.AutoSize = True
+        Me.cbCCFocusAuto.Location = New System.Drawing.Point(235, 196)
+        Me.cbCCFocusAuto.Name = "cbCCFocusAuto"
+        Me.cbCCFocusAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCFocusAuto.TabIndex = 91
+        Me.cbCCFocusAuto.Text = "Auto"
+        Me.cbCCFocusAuto.UseVisualStyleBackColor = True
+        '
+        'lbCCFocusCurrent
+        '
+        Me.lbCCFocusCurrent.AutoSize = True
+        Me.lbCCFocusCurrent.Location = New System.Drawing.Point(343, 172)
+        Me.lbCCFocusCurrent.Name = "lbCCFocusCurrent"
+        Me.lbCCFocusCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCFocusCurrent.TabIndex = 90
+        Me.lbCCFocusCurrent.Text = "Current = 40"
+        '
+        'lbCCFocusMax
+        '
+        Me.lbCCFocusMax.AutoSize = True
+        Me.lbCCFocusMax.Location = New System.Drawing.Point(280, 172)
+        Me.lbCCFocusMax.Name = "lbCCFocusMax"
+        Me.lbCCFocusMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCFocusMax.TabIndex = 89
+        Me.lbCCFocusMax.Text = "Max = 100"
+        '
+        'lbCCFocusMin
+        '
+        Me.lbCCFocusMin.AutoSize = True
+        Me.lbCCFocusMin.Location = New System.Drawing.Point(232, 172)
+        Me.lbCCFocusMin.Name = "lbCCFocusMin"
+        Me.lbCCFocusMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCFocusMin.TabIndex = 88
+        Me.lbCCFocusMin.Text = "Min = 1"
+        '
+        'tbCCFocus
+        '
+        Me.tbCCFocus.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCFocus.Location = New System.Drawing.Point(258, 145)
+        Me.tbCCFocus.Maximum = 100
+        Me.tbCCFocus.Name = "tbCCFocus"
+        Me.tbCCFocus.Size = New System.Drawing.Size(159, 45)
+        Me.tbCCFocus.TabIndex = 87
+        Me.tbCCFocus.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCFocus.Value = 50
+        '
+        'label4
+        '
+        Me.label4.AutoSize = True
+        Me.label4.Location = New System.Drawing.Point(223, 149)
+        Me.label4.Name = "label4"
+        Me.label4.Size = New System.Drawing.Size(36, 13)
+        Me.label4.TabIndex = 86
+        Me.label4.Text = "Focus"
+        '
+        'cbCCZoomRelative
+        '
+        Me.cbCCZoomRelative.AutoSize = True
+        Me.cbCCZoomRelative.Location = New System.Drawing.Point(134, 196)
+        Me.cbCCZoomRelative.Name = "cbCCZoomRelative"
+        Me.cbCCZoomRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCZoomRelative.TabIndex = 85
+        Me.cbCCZoomRelative.Text = "Relative"
+        Me.cbCCZoomRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCZoomManual
+        '
+        Me.cbCCZoomManual.AutoSize = True
+        Me.cbCCZoomManual.Location = New System.Drawing.Point(71, 196)
+        Me.cbCCZoomManual.Name = "cbCCZoomManual"
+        Me.cbCCZoomManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCZoomManual.TabIndex = 84
+        Me.cbCCZoomManual.Text = "Manual"
+        Me.cbCCZoomManual.UseVisualStyleBackColor = True
+        '
+        'cbCCZoomAuto
+        '
+        Me.cbCCZoomAuto.AutoSize = True
+        Me.cbCCZoomAuto.Location = New System.Drawing.Point(23, 196)
+        Me.cbCCZoomAuto.Name = "cbCCZoomAuto"
+        Me.cbCCZoomAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCZoomAuto.TabIndex = 83
+        Me.cbCCZoomAuto.Text = "Auto"
+        Me.cbCCZoomAuto.UseVisualStyleBackColor = True
+        '
+        'lbCCZoomCurrent
+        '
+        Me.lbCCZoomCurrent.AutoSize = True
+        Me.lbCCZoomCurrent.Location = New System.Drawing.Point(131, 172)
+        Me.lbCCZoomCurrent.Name = "lbCCZoomCurrent"
+        Me.lbCCZoomCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCZoomCurrent.TabIndex = 82
+        Me.lbCCZoomCurrent.Text = "Current = 40"
+        '
+        'lbCCZoomMax
+        '
+        Me.lbCCZoomMax.AutoSize = True
+        Me.lbCCZoomMax.Location = New System.Drawing.Point(68, 172)
+        Me.lbCCZoomMax.Name = "lbCCZoomMax"
+        Me.lbCCZoomMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCZoomMax.TabIndex = 81
+        Me.lbCCZoomMax.Text = "Max = 100"
+        '
+        'lbCCZoomMin
+        '
+        Me.lbCCZoomMin.AutoSize = True
+        Me.lbCCZoomMin.Location = New System.Drawing.Point(20, 172)
+        Me.lbCCZoomMin.Name = "lbCCZoomMin"
+        Me.lbCCZoomMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCZoomMin.TabIndex = 80
+        Me.lbCCZoomMin.Text = "Min = 1"
+        '
+        'tbCCZoom
+        '
+        Me.tbCCZoom.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCZoom.Location = New System.Drawing.Point(46, 145)
+        Me.tbCCZoom.Maximum = 100
+        Me.tbCCZoom.Name = "tbCCZoom"
+        Me.tbCCZoom.Size = New System.Drawing.Size(159, 45)
+        Me.tbCCZoom.TabIndex = 79
+        Me.tbCCZoom.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCZoom.Value = 50
+        '
+        'label20
+        '
+        Me.label20.AutoSize = True
+        Me.label20.Location = New System.Drawing.Point(11, 149)
+        Me.label20.Name = "label20"
+        Me.label20.Size = New System.Drawing.Size(34, 13)
+        Me.label20.TabIndex = 78
+        Me.label20.Text = "Zoom"
+        '
+        'btCCTiltApply
+        '
+        Me.btCCTiltApply.Location = New System.Drawing.Point(235, 103)
+        Me.btCCTiltApply.Name = "btCCTiltApply"
+        Me.btCCTiltApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCTiltApply.TabIndex = 77
+        Me.btCCTiltApply.Text = "Apply"
+        Me.btCCTiltApply.UseVisualStyleBackColor = True
+        '
+        'btCCPanApply
+        '
+        Me.btCCPanApply.Location = New System.Drawing.Point(23, 103)
+        Me.btCCPanApply.Name = "btCCPanApply"
+        Me.btCCPanApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCPanApply.TabIndex = 76
+        Me.btCCPanApply.Text = "Apply"
+        Me.btCCPanApply.UseVisualStyleBackColor = True
+        '
+        'cbCCTiltRelative
+        '
+        Me.cbCCTiltRelative.AutoSize = True
+        Me.cbCCTiltRelative.Location = New System.Drawing.Point(346, 80)
+        Me.cbCCTiltRelative.Name = "cbCCTiltRelative"
+        Me.cbCCTiltRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCTiltRelative.TabIndex = 75
+        Me.cbCCTiltRelative.Text = "Relative"
+        Me.cbCCTiltRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCTiltManual
+        '
+        Me.cbCCTiltManual.AutoSize = True
+        Me.cbCCTiltManual.Location = New System.Drawing.Point(283, 80)
+        Me.cbCCTiltManual.Name = "cbCCTiltManual"
+        Me.cbCCTiltManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCTiltManual.TabIndex = 74
+        Me.cbCCTiltManual.Text = "Manual"
+        Me.cbCCTiltManual.UseVisualStyleBackColor = True
+        '
+        'cbCCTiltAuto
+        '
+        Me.cbCCTiltAuto.AutoSize = True
+        Me.cbCCTiltAuto.Location = New System.Drawing.Point(235, 80)
+        Me.cbCCTiltAuto.Name = "cbCCTiltAuto"
+        Me.cbCCTiltAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCTiltAuto.TabIndex = 73
+        Me.cbCCTiltAuto.Text = "Auto"
+        Me.cbCCTiltAuto.UseVisualStyleBackColor = True
+        '
+        'lbCCTiltCurrent
+        '
+        Me.lbCCTiltCurrent.AutoSize = True
+        Me.lbCCTiltCurrent.Location = New System.Drawing.Point(343, 56)
+        Me.lbCCTiltCurrent.Name = "lbCCTiltCurrent"
+        Me.lbCCTiltCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCTiltCurrent.TabIndex = 72
+        Me.lbCCTiltCurrent.Text = "Current = 40"
+        '
+        'lbCCTiltMax
+        '
+        Me.lbCCTiltMax.AutoSize = True
+        Me.lbCCTiltMax.Location = New System.Drawing.Point(280, 56)
+        Me.lbCCTiltMax.Name = "lbCCTiltMax"
+        Me.lbCCTiltMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCTiltMax.TabIndex = 71
+        Me.lbCCTiltMax.Text = "Max = 100"
+        '
+        'lbCCTiltMin
+        '
+        Me.lbCCTiltMin.AutoSize = True
+        Me.lbCCTiltMin.Location = New System.Drawing.Point(232, 56)
+        Me.lbCCTiltMin.Name = "lbCCTiltMin"
+        Me.lbCCTiltMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCTiltMin.TabIndex = 70
+        Me.lbCCTiltMin.Text = "Min = 1"
+        '
+        'tbCCTilt
+        '
+        Me.tbCCTilt.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCTilt.Location = New System.Drawing.Point(254, 29)
+        Me.tbCCTilt.Maximum = 100
+        Me.tbCCTilt.Name = "tbCCTilt"
+        Me.tbCCTilt.Size = New System.Drawing.Size(163, 45)
+        Me.tbCCTilt.TabIndex = 69
+        Me.tbCCTilt.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCTilt.Value = 50
+        '
+        'label97
+        '
+        Me.label97.AutoSize = True
+        Me.label97.Location = New System.Drawing.Point(223, 32)
+        Me.label97.Name = "label97"
+        Me.label97.Size = New System.Drawing.Size(21, 13)
+        Me.label97.TabIndex = 68
+        Me.label97.Text = "Tilt"
+        '
+        'cbCCPanRelative
+        '
+        Me.cbCCPanRelative.AutoSize = True
+        Me.cbCCPanRelative.Location = New System.Drawing.Point(134, 80)
+        Me.cbCCPanRelative.Name = "cbCCPanRelative"
+        Me.cbCCPanRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCPanRelative.TabIndex = 67
+        Me.cbCCPanRelative.Text = "Relative"
+        Me.cbCCPanRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCPanManual
+        '
+        Me.cbCCPanManual.AutoSize = True
+        Me.cbCCPanManual.Location = New System.Drawing.Point(71, 80)
+        Me.cbCCPanManual.Name = "cbCCPanManual"
+        Me.cbCCPanManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCPanManual.TabIndex = 66
+        Me.cbCCPanManual.Text = "Manual"
+        Me.cbCCPanManual.UseVisualStyleBackColor = True
+        '
+        'cbCCPanAuto
+        '
+        Me.cbCCPanAuto.AutoSize = True
+        Me.cbCCPanAuto.Location = New System.Drawing.Point(23, 80)
+        Me.cbCCPanAuto.Name = "cbCCPanAuto"
+        Me.cbCCPanAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCPanAuto.TabIndex = 65
+        Me.cbCCPanAuto.Text = "Auto"
+        Me.cbCCPanAuto.UseVisualStyleBackColor = True
+        '
+        'btCCReadValues
+        '
+        Me.btCCReadValues.AccessibleDescription = ""
+        Me.btCCReadValues.Location = New System.Drawing.Point(346, 5)
+        Me.btCCReadValues.Name = "btCCReadValues"
+        Me.btCCReadValues.Size = New System.Drawing.Size(91, 23)
+        Me.btCCReadValues.TabIndex = 64
+        Me.btCCReadValues.Text = "Read values"
+        Me.btCCReadValues.UseVisualStyleBackColor = True
+        '
+        'lbCCPanCurrent
+        '
+        Me.lbCCPanCurrent.AutoSize = True
+        Me.lbCCPanCurrent.Location = New System.Drawing.Point(131, 56)
+        Me.lbCCPanCurrent.Name = "lbCCPanCurrent"
+        Me.lbCCPanCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCPanCurrent.TabIndex = 63
+        Me.lbCCPanCurrent.Text = "Current = 40"
+        '
+        'lbCCPanMax
+        '
+        Me.lbCCPanMax.AutoSize = True
+        Me.lbCCPanMax.Location = New System.Drawing.Point(68, 56)
+        Me.lbCCPanMax.Name = "lbCCPanMax"
+        Me.lbCCPanMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCPanMax.TabIndex = 62
+        Me.lbCCPanMax.Text = "Max = 100"
+        '
+        'lbCCPanMin
+        '
+        Me.lbCCPanMin.AutoSize = True
+        Me.lbCCPanMin.Location = New System.Drawing.Point(20, 56)
+        Me.lbCCPanMin.Name = "lbCCPanMin"
+        Me.lbCCPanMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCPanMin.TabIndex = 61
+        Me.lbCCPanMin.Text = "Min = 1"
+        '
+        'tbCCPan
+        '
+        Me.tbCCPan.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCPan.Location = New System.Drawing.Point(46, 29)
+        Me.tbCCPan.Maximum = 100
+        Me.tbCCPan.Name = "tbCCPan"
+        Me.tbCCPan.Size = New System.Drawing.Size(159, 45)
+        Me.tbCCPan.TabIndex = 60
+        Me.tbCCPan.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCPan.Value = 50
+        '
+        'label96
+        '
+        Me.label96.AutoSize = True
+        Me.label96.Location = New System.Drawing.Point(11, 32)
+        Me.label96.Name = "label96"
+        Me.label96.Size = New System.Drawing.Size(26, 13)
+        Me.label96.TabIndex = 59
+        Me.label96.Text = "Pan"
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(808, 713)
         Me.Controls.Add(Me.VideoCapture1)
@@ -12140,321 +12596,327 @@ Partial Class Form1
         Me.Controls.Add(Me.tabControl1)
         Me.Controls.Add(Me.lbTimestamp)
         Me.Controls.Add(Me.btSaveScreenshot)
-        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Tag = "0"
         Me.Text = "VisioForge Video Capture SDK .Net - Main Demo"
-        Me.tabControl12.ResumeLayout(false)
-        Me.tabPage53.ResumeLayout(false)
+        Me.tabControl12.ResumeLayout(False)
+        Me.tabPage53.ResumeLayout(False)
         Me.tabPage53.PerformLayout
-        Me.tabControl10.ResumeLayout(false)
-        Me.tabPage46.ResumeLayout(false)
-        Me.tabControl2.ResumeLayout(false)
-        Me.tabPage8.ResumeLayout(false)
+        Me.tabControl10.ResumeLayout(False)
+        Me.tabPage46.ResumeLayout(False)
+        Me.tabControl2.ResumeLayout(False)
+        Me.tabPage8.ResumeLayout(False)
         Me.tabPage8.PerformLayout
-        Me.tabPage52.ResumeLayout(false)
+        Me.tabPage52.ResumeLayout(False)
         Me.tabPage52.PerformLayout
-        Me.tabPage10.ResumeLayout(false)
-        Me.tabControl3.ResumeLayout(false)
-        Me.tabPage14.ResumeLayout(false)
+        Me.tabPage10.ResumeLayout(False)
+        Me.tabControl3.ResumeLayout(False)
+        Me.tabPage14.ResumeLayout(False)
         Me.tabPage14.PerformLayout
-        Me.tabPage15.ResumeLayout(false)
+        Me.tabPage15.ResumeLayout(False)
         Me.tabPage15.PerformLayout
-        Me.groupBox1.ResumeLayout(false)
+        Me.groupBox1.ResumeLayout(False)
         Me.groupBox1.PerformLayout
-        Me.tabPage21.ResumeLayout(false)
+        Me.tabPage21.ResumeLayout(False)
         Me.tabPage21.PerformLayout
-        Me.tabPage33.ResumeLayout(false)
+        Me.tabPage33.ResumeLayout(False)
         Me.tabPage33.PerformLayout
-        Me.tabPage11.ResumeLayout(false)
-        Me.groupBox21.ResumeLayout(false)
+        Me.tabPage11.ResumeLayout(False)
+        Me.groupBox21.ResumeLayout(False)
         Me.groupBox21.PerformLayout
-        Me.groupBox2.ResumeLayout(false)
-        Me.tabPage57.ResumeLayout(false)
+        Me.groupBox2.ResumeLayout(False)
+        Me.tabPage57.ResumeLayout(False)
         Me.tabPage57.PerformLayout
-        CType(Me.tbAdjSaturation,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAdjHue,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAdjContrast,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAdjBrightness,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage9.ResumeLayout(false)
-        Me.tabControl19.ResumeLayout(false)
-        Me.tabPage96.ResumeLayout(false)
+        CType(Me.tbAdjSaturation, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAdjHue, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAdjContrast, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAdjBrightness, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage9.ResumeLayout(False)
+        Me.tabControl19.ResumeLayout(False)
+        Me.tabPage96.ResumeLayout(False)
         Me.tabPage96.PerformLayout
-        Me.tabPage97.ResumeLayout(false)
+        Me.tabPage97.ResumeLayout(False)
         Me.tabPage97.PerformLayout
-        CType(Me.tbAudioBalance,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioVolume,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage98.ResumeLayout(false)
+        CType(Me.tbAudioBalance, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioVolume, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage98.ResumeLayout(False)
         Me.tabPage98.PerformLayout
-        Me.TabPage111.ResumeLayout(false)
+        Me.TabPage111.ResumeLayout(False)
         Me.TabPage111.PerformLayout
-        CType(Me.tbVUMeterBoost,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbVUMeterAmplification,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage99.ResumeLayout(false)
+        CType(Me.tbVUMeterBoost, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbVUMeterAmplification, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage99.ResumeLayout(False)
         Me.tabPage99.PerformLayout
-        Me.tabPage47.ResumeLayout(false)
+        Me.tabPage47.ResumeLayout(False)
         Me.tabPage47.PerformLayout
-        Me.tabPage48.ResumeLayout(false)
-        Me.tabControl15.ResumeLayout(false)
-        Me.tabPage144.ResumeLayout(false)
+        Me.tabPage48.ResumeLayout(False)
+        Me.tabControl15.ResumeLayout(False)
+        Me.tabPage144.ResumeLayout(False)
         Me.tabPage144.PerformLayout
-        Me.tabPage146.ResumeLayout(false)
+        Me.tabPage146.ResumeLayout(False)
         Me.tabPage146.PerformLayout
-        Me.tabPage145.ResumeLayout(false)
+        Me.tabPage145.ResumeLayout(False)
         Me.tabPage145.PerformLayout
-        Me.groupBox42.ResumeLayout(false)
-        Me.TabPage61.ResumeLayout(false)
+        Me.groupBox42.ResumeLayout(False)
+        Me.TabPage61.ResumeLayout(False)
         Me.TabPage61.PerformLayout
-        Me.TabPage66.ResumeLayout(false)
-        Me.tabControl22.ResumeLayout(false)
-        Me.tabPage82.ResumeLayout(false)
+        Me.TabPage66.ResumeLayout(False)
+        Me.tabControl22.ResumeLayout(False)
+        Me.tabPage82.ResumeLayout(False)
         Me.tabPage82.PerformLayout
-        Me.tabPage83.ResumeLayout(false)
-        Me.tabControl23.ResumeLayout(false)
-        Me.tabPage84.ResumeLayout(false)
+        Me.tabPage83.ResumeLayout(False)
+        Me.tabControl23.ResumeLayout(False)
+        Me.tabPage84.ResumeLayout(False)
         Me.tabPage84.PerformLayout
-        Me.tabPage85.ResumeLayout(false)
+        Me.tabPage85.ResumeLayout(False)
         Me.tabPage85.PerformLayout
-        Me.tabPage86.ResumeLayout(false)
-        Me.groupBox35.ResumeLayout(false)
+        Me.tabPage86.ResumeLayout(False)
+        Me.groupBox35.ResumeLayout(False)
         Me.groupBox35.PerformLayout
-        Me.groupBox36.ResumeLayout(false)
+        Me.groupBox36.ResumeLayout(False)
         Me.groupBox36.PerformLayout
-        Me.tabPage87.ResumeLayout(false)
+        Me.tabPage87.ResumeLayout(False)
         Me.tabPage87.PerformLayout
-        Me.TabPage104.ResumeLayout(false)
+        Me.TabPage104.ResumeLayout(False)
         Me.TabPage104.PerformLayout
-        Me.tabPage49.ResumeLayout(false)
-        Me.tabControl20.ResumeLayout(false)
-        Me.tabPage67.ResumeLayout(false)
-        Me.tabControl21.ResumeLayout(false)
-        Me.tabPage78.ResumeLayout(false)
+        Me.tabPage49.ResumeLayout(False)
+        Me.tabControl20.ResumeLayout(False)
+        Me.tabPage67.ResumeLayout(False)
+        Me.tabControl21.ResumeLayout(False)
+        Me.tabPage78.ResumeLayout(False)
         Me.tabPage78.PerformLayout
-        Me.groupBox30.ResumeLayout(false)
+        Me.groupBox30.ResumeLayout(False)
         Me.groupBox30.PerformLayout
-        Me.tabPage79.ResumeLayout(false)
-        Me.groupBox31.ResumeLayout(false)
+        Me.tabPage79.ResumeLayout(False)
+        Me.groupBox31.ResumeLayout(False)
         Me.groupBox31.PerformLayout
-        Me.tabPage80.ResumeLayout(false)
-        Me.groupBox32.ResumeLayout(false)
+        Me.tabPage80.ResumeLayout(False)
+        Me.groupBox32.ResumeLayout(False)
         Me.groupBox32.PerformLayout
-        Me.TabPage93.ResumeLayout(false)
+        Me.TabPage93.ResumeLayout(False)
         Me.TabPage93.PerformLayout
-        Me.groupBox44.ResumeLayout(false)
+        Me.groupBox44.ResumeLayout(False)
         Me.groupBox44.PerformLayout
-        Me.tabPage77.ResumeLayout(false)
+        Me.tabPage77.ResumeLayout(False)
         Me.tabPage77.PerformLayout
-        Me.groupBox34.ResumeLayout(false)
+        Me.groupBox34.ResumeLayout(False)
         Me.groupBox34.PerformLayout
-        CType(Me.tbPIPTransparency,System.ComponentModel.ISupportInitialize).EndInit
-        Me.groupBox33.ResumeLayout(false)
+        CType(Me.tbPIPTransparency, System.ComponentModel.ISupportInitialize).EndInit
+        Me.groupBox33.ResumeLayout(False)
         Me.groupBox33.PerformLayout
-        Me.groupBox20.ResumeLayout(false)
+        Me.groupBox20.ResumeLayout(False)
         Me.groupBox20.PerformLayout
-        Me.TabPage113.ResumeLayout(false)
+        Me.TabPage113.ResumeLayout(False)
         Me.TabPage113.PerformLayout
-        CType(Me.tbPIPChromaKeyTolerance2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbPIPChromaKeyTolerance1,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage50.ResumeLayout(false)
+        CType(Me.tbPIPChromaKeyTolerance2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbPIPChromaKeyTolerance1, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage50.ResumeLayout(False)
         Me.tabPage50.PerformLayout
-        Me.tabPage51.ResumeLayout(false)
-        Me.tabControl26.ResumeLayout(false)
-        Me.tabPage115.ResumeLayout(false)
+        Me.tabPage51.ResumeLayout(False)
+        Me.tabControl26.ResumeLayout(False)
+        Me.tabPage115.ResumeLayout(False)
         Me.tabPage115.PerformLayout
-        Me.groupBox28.ResumeLayout(false)
-        Me.groupBox13.ResumeLayout(false)
+        Me.groupBox28.ResumeLayout(False)
+        Me.groupBox13.ResumeLayout(False)
         Me.groupBox13.PerformLayout
-        Me.tabPage116.ResumeLayout(false)
+        Me.tabPage116.ResumeLayout(False)
         Me.tabPage116.PerformLayout
-        Me.TabPage23.ResumeLayout(false)
+        Me.TabPage23.ResumeLayout(False)
         Me.TabPage23.PerformLayout
-        Me.groupBox8.ResumeLayout(false)
+        Me.groupBox8.ResumeLayout(False)
         Me.groupBox8.PerformLayout
-        Me.TabPage123.ResumeLayout(false)
-        Me.tabControl28.ResumeLayout(false)
-        Me.tabPage125.ResumeLayout(false)
+        Me.TabPage123.ResumeLayout(False)
+        Me.tabControl28.ResumeLayout(False)
+        Me.tabPage125.ResumeLayout(False)
         Me.tabPage125.PerformLayout
-        Me.tabPage126.ResumeLayout(false)
+        Me.tabPage126.ResumeLayout(False)
         Me.tabPage126.PerformLayout
-        Me.tabControl1.ResumeLayout(false)
-        Me.tabPage1.ResumeLayout(false)
+        Me.tabControl1.ResumeLayout(False)
+        Me.tabPage1.ResumeLayout(False)
         Me.tabPage1.PerformLayout
-        Me.tabPage2.ResumeLayout(false)
-        Me.tabControl17.ResumeLayout(false)
-        Me.tabPage68.ResumeLayout(false)
+        Me.tabPage2.ResumeLayout(False)
+        Me.tabControl17.ResumeLayout(False)
+        Me.tabPage68.ResumeLayout(False)
         Me.tabPage68.PerformLayout
-        Me.tabControl7.ResumeLayout(false)
-        Me.tabPage29.ResumeLayout(false)
-        Me.tabPage42.ResumeLayout(false)
-        Me.TabPage88.ResumeLayout(false)
+        Me.tabControl7.ResumeLayout(False)
+        Me.tabPage29.ResumeLayout(False)
+        Me.tabPage42.ResumeLayout(False)
+        Me.TabPage88.ResumeLayout(False)
         Me.TabPage88.PerformLayout
-        Me.groupBox37.ResumeLayout(false)
-        Me.TabPage91.ResumeLayout(false)
+        Me.groupBox37.ResumeLayout(False)
+        Me.TabPage91.ResumeLayout(False)
         Me.TabPage91.PerformLayout
-        Me.groupBox40.ResumeLayout(false)
+        Me.groupBox40.ResumeLayout(False)
         Me.groupBox40.PerformLayout
-        Me.groupBox39.ResumeLayout(false)
+        Me.groupBox39.ResumeLayout(False)
         Me.groupBox39.PerformLayout
-        Me.groupBox38.ResumeLayout(false)
+        Me.groupBox38.ResumeLayout(False)
         Me.groupBox38.PerformLayout
-        Me.TabPage101.ResumeLayout(false)
+        Me.TabPage101.ResumeLayout(False)
         Me.TabPage101.PerformLayout
-        Me.groupBox45.ResumeLayout(false)
+        Me.groupBox45.ResumeLayout(False)
         Me.groupBox45.PerformLayout
-        Me.TabPage112.ResumeLayout(false)
+        Me.TabPage112.ResumeLayout(False)
         Me.TabPage112.PerformLayout
-        CType(Me.tbLiveRotationAngle,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbContrast,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbDarkness,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbLightness,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbSaturation,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage69.ResumeLayout(false)
+        CType(Me.tbLiveRotationAngle, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbContrast, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbDarkness, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbLightness, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbSaturation, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage69.ResumeLayout(False)
         Me.tabPage69.PerformLayout
-        Me.TabPage59.ResumeLayout(false)
+        Me.TabPage59.ResumeLayout(False)
         Me.TabPage59.PerformLayout
-        Me.TabPage63.ResumeLayout(false)
+        Me.TabPage63.ResumeLayout(False)
         Me.TabPage63.PerformLayout
-        CType(Me.tbGPUContrast,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbGPUDarkness,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbGPULightness,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbGPUSaturation,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage92.ResumeLayout(false)
+        CType(Me.tbGPUContrast, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbGPUDarkness, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbGPULightness, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbGPUSaturation, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage92.ResumeLayout(False)
         Me.TabPage92.PerformLayout
-        Me.TabPage12.ResumeLayout(false)
+        Me.TabPage12.ResumeLayout(False)
         Me.TabPage12.PerformLayout
-        CType(Me.tbOCLBrightness,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage60.ResumeLayout(false)
+        CType(Me.tbOCLBrightness, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage60.ResumeLayout(False)
         Me.TabPage60.PerformLayout
-        CType(Me.tbChromaKeyContrastHigh,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbChromaKeyContrastLow,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage70.ResumeLayout(false)
+        CType(Me.tbChromaKeyContrastHigh, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbChromaKeyContrastLow, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage70.ResumeLayout(False)
         Me.tabPage70.PerformLayout
-        Me.tabControl14.ResumeLayout(false)
-        Me.tabPage27.ResumeLayout(false)
+        Me.tabControl14.ResumeLayout(False)
+        Me.tabPage27.ResumeLayout(False)
         Me.tabPage27.PerformLayout
-        Me.tabControl18.ResumeLayout(false)
-        Me.tabPage71.ResumeLayout(false)
+        Me.tabControl18.ResumeLayout(False)
+        Me.tabPage71.ResumeLayout(False)
         Me.tabPage71.PerformLayout
-        CType(Me.tbAudAmplifyAmp,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage72.ResumeLayout(false)
+        CType(Me.tbAudAmplifyAmp, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage72.ResumeLayout(False)
         Me.tabPage72.PerformLayout
-        CType(Me.tbAudEq9,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq8,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq7,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq6,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq5,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq4,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq3,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq2,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq1,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudEq0,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage73.ResumeLayout(false)
+        CType(Me.tbAudEq9, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq8, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq7, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq6, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq5, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq4, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq3, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq2, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq1, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudEq0, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage73.ResumeLayout(False)
         Me.tabPage73.PerformLayout
-        CType(Me.tbAudRelease,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudAttack,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudDynAmp,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage75.ResumeLayout(false)
+        CType(Me.tbAudRelease, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudAttack, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudDynAmp, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage75.ResumeLayout(False)
         Me.tabPage75.PerformLayout
-        CType(Me.tbAud3DSound,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage76.ResumeLayout(false)
+        CType(Me.tbAud3DSound, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage76.ResumeLayout(False)
         Me.tabPage76.PerformLayout
-        CType(Me.tbAudTrueBass,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage124.ResumeLayout(false)
+        CType(Me.tbAudTrueBass, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage124.ResumeLayout(False)
         Me.TabPage124.PerformLayout
-        CType(Me.tbAudioTimeshift,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox3.ResumeLayout(false)
+        CType(Me.tbAudioTimeshift, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout
-        CType(Me.tbAudioOutputGainLFE,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioOutputGainSR,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioOutputGainSL,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioOutputGainR,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioOutputGainC,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioOutputGainL,System.ComponentModel.ISupportInitialize).EndInit
-        Me.GroupBox7.ResumeLayout(false)
+        CType(Me.tbAudioOutputGainLFE, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioOutputGainSR, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioOutputGainSL, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioOutputGainR, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioOutputGainC, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioOutputGainL, System.ComponentModel.ISupportInitialize).EndInit
+        Me.GroupBox7.ResumeLayout(False)
         Me.GroupBox7.PerformLayout
-        CType(Me.tbAudioInputGainLFE,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioInputGainSR,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioInputGainSL,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioInputGainR,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioInputGainC,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbAudioInputGainL,System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage22.ResumeLayout(false)
+        CType(Me.tbAudioInputGainLFE, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioInputGainSR, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioInputGainSL, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioInputGainR, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioInputGainC, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbAudioInputGainL, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage22.ResumeLayout(False)
         Me.TabPage22.PerformLayout
-        Me.groupBox41.ResumeLayout(false)
+        Me.groupBox41.ResumeLayout(False)
         Me.groupBox41.PerformLayout
-        CType(Me.tbAudioChannelMapperVolume,System.ComponentModel.ISupportInitialize).EndInit
-        Me.tabPage7.ResumeLayout(false)
+        CType(Me.tbAudioChannelMapperVolume, System.ComponentModel.ISupportInitialize).EndInit
+        Me.tabPage7.ResumeLayout(False)
         Me.tabPage7.PerformLayout
-        Me.tabControl5.ResumeLayout(false)
-        Me.TabPage24.ResumeLayout(false)
+        Me.tabControl5.ResumeLayout(False)
+        Me.TabPage24.ResumeLayout(False)
         Me.TabPage24.PerformLayout
-        Me.TabPage107.ResumeLayout(false)
+        Me.TabPage107.ResumeLayout(False)
         Me.TabPage107.PerformLayout
-        Me.TabPage108.ResumeLayout(false)
+        Me.TabPage108.ResumeLayout(False)
         Me.TabPage108.PerformLayout
-        Me.TabPage128.ResumeLayout(false)
+        Me.TabPage128.ResumeLayout(False)
         Me.TabPage128.PerformLayout
-        Me.TabPage109.ResumeLayout(false)
+        Me.TabPage109.ResumeLayout(False)
         Me.TabPage109.PerformLayout
-        Me.TabPage147.ResumeLayout(false)
+        Me.TabPage147.ResumeLayout(False)
         Me.TabPage147.PerformLayout
-        Me.TabPage56.ResumeLayout(false)
+        Me.TabPage56.ResumeLayout(False)
         Me.TabPage56.PerformLayout
-        Me.tabPage28.ResumeLayout(false)
+        Me.tabPage28.ResumeLayout(False)
         Me.tabPage28.PerformLayout
-        Me.groupBox19.ResumeLayout(false)
-        Me.tabControl6.ResumeLayout(false)
-        Me.tabPage30.ResumeLayout(false)
+        Me.groupBox19.ResumeLayout(False)
+        Me.tabControl6.ResumeLayout(False)
+        Me.tabPage30.ResumeLayout(False)
         Me.tabPage30.PerformLayout
-        Me.tabPage31.ResumeLayout(false)
+        Me.tabPage31.ResumeLayout(False)
         Me.tabPage31.PerformLayout
-        Me.tabPage32.ResumeLayout(false)
+        Me.tabPage32.ResumeLayout(False)
         Me.tabPage32.PerformLayout
-        CType(Me.tbOSDTranspLevel,System.ComponentModel.ISupportInitialize).EndInit
-        Me.groupBox15.ResumeLayout(false)
+        CType(Me.tbOSDTranspLevel, System.ComponentModel.ISupportInitialize).EndInit
+        Me.groupBox15.ResumeLayout(False)
         Me.groupBox15.PerformLayout
-        Me.tabPage43.ResumeLayout(false)
+        Me.tabPage43.ResumeLayout(False)
         Me.tabPage43.PerformLayout
-        Me.tabControl9.ResumeLayout(false)
-        Me.tabPage44.ResumeLayout(false)
+        Me.tabControl9.ResumeLayout(False)
+        Me.tabPage44.ResumeLayout(False)
         Me.tabPage44.PerformLayout
-        Me.tabPage45.ResumeLayout(false)
-        Me.groupBox25.ResumeLayout(false)
+        Me.tabPage45.ResumeLayout(False)
+        Me.groupBox25.ResumeLayout(False)
         Me.groupBox25.PerformLayout
-        CType(Me.tbMotDetHLThreshold,System.ComponentModel.ISupportInitialize).EndInit
-        Me.groupBox27.ResumeLayout(false)
+        CType(Me.tbMotDetHLThreshold, System.ComponentModel.ISupportInitialize).EndInit
+        Me.groupBox27.ResumeLayout(False)
         Me.groupBox27.PerformLayout
-        Me.groupBox26.ResumeLayout(false)
+        Me.groupBox26.ResumeLayout(False)
         Me.groupBox26.PerformLayout
-        CType(Me.tbMotDetDropFramesThreshold,System.ComponentModel.ISupportInitialize).EndInit
-        Me.groupBox24.ResumeLayout(false)
+        CType(Me.tbMotDetDropFramesThreshold, System.ComponentModel.ISupportInitialize).EndInit
+        Me.groupBox24.ResumeLayout(False)
         Me.groupBox24.PerformLayout
-        Me.TabPage26.ResumeLayout(false)
+        Me.TabPage26.ResumeLayout(False)
         Me.TabPage26.PerformLayout
-        Me.TabPage25.ResumeLayout(false)
+        Me.TabPage25.ResumeLayout(False)
         Me.TabPage25.PerformLayout
-        Me.TabPage100.ResumeLayout(false)
+        Me.TabPage100.ResumeLayout(False)
         Me.TabPage100.PerformLayout
-        Me.TabPage102.ResumeLayout(false)
+        Me.TabPage102.ResumeLayout(False)
         Me.TabPage102.PerformLayout
-        Me.TabPage105.ResumeLayout(false)
-        Me.groupBox48.ResumeLayout(false)
+        Me.TabPage105.ResumeLayout(False)
+        Me.groupBox48.ResumeLayout(False)
         Me.groupBox48.PerformLayout
-        Me.groupBox47.ResumeLayout(false)
+        Me.groupBox47.ResumeLayout(False)
         Me.groupBox47.PerformLayout
-        Me.groupBox43.ResumeLayout(false)
+        Me.groupBox43.ResumeLayout(False)
         Me.groupBox43.PerformLayout
-        Me.TabPage106.ResumeLayout(false)
+        Me.TabPage106.ResumeLayout(False)
         Me.TabPage106.PerformLayout
-        Me.TabPage141.ResumeLayout(false)
+        Me.TabPage141.ResumeLayout(False)
         Me.TabPage141.PerformLayout
-        Me.TabControl32.ResumeLayout(false)
-        Me.TabPage142.ResumeLayout(false)
+        Me.TabControl32.ResumeLayout(False)
+        Me.TabPage142.ResumeLayout(False)
         Me.TabPage142.PerformLayout
-        Me.TabPage143.ResumeLayout(false)
+        Me.TabPage143.ResumeLayout(False)
         Me.TabPage143.PerformLayout
-        CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
-        Me.ResumeLayout(false)
+        CType(Me.imgTagCover, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout
+        CType(Me.tbCCFocus, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbCCZoom, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbCCTilt, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbCCPan, System.ComponentModel.ISupportInitialize).EndInit
+        Me.ResumeLayout(False)
         Me.PerformLayout
 
 End Sub
@@ -13504,4 +13966,43 @@ End Sub
     Private WithEvents cbFlipY As CheckBox
     Private WithEvents cbFlipX As CheckBox
     Private WithEvents cbTelemetry As CheckBox
+    Friend WithEvents TabPage3 As TabPage
+    Private WithEvents label1 As Label
+    Private WithEvents btCCFocusApply As Button
+    Private WithEvents btCCZoomApply As Button
+    Private WithEvents cbCCFocusRelative As CheckBox
+    Private WithEvents cbCCFocusManual As CheckBox
+    Private WithEvents cbCCFocusAuto As CheckBox
+    Private WithEvents lbCCFocusCurrent As Label
+    Private WithEvents lbCCFocusMax As Label
+    Private WithEvents lbCCFocusMin As Label
+    Private WithEvents tbCCFocus As TrackBar
+    Private WithEvents label4 As Label
+    Private WithEvents cbCCZoomRelative As CheckBox
+    Private WithEvents cbCCZoomManual As CheckBox
+    Private WithEvents cbCCZoomAuto As CheckBox
+    Private WithEvents lbCCZoomCurrent As Label
+    Private WithEvents lbCCZoomMax As Label
+    Private WithEvents lbCCZoomMin As Label
+    Private WithEvents tbCCZoom As TrackBar
+    Private WithEvents label20 As Label
+    Private WithEvents btCCTiltApply As Button
+    Private WithEvents btCCPanApply As Button
+    Private WithEvents cbCCTiltRelative As CheckBox
+    Private WithEvents cbCCTiltManual As CheckBox
+    Private WithEvents cbCCTiltAuto As CheckBox
+    Private WithEvents lbCCTiltCurrent As Label
+    Private WithEvents lbCCTiltMax As Label
+    Private WithEvents lbCCTiltMin As Label
+    Private WithEvents tbCCTilt As TrackBar
+    Private WithEvents label97 As Label
+    Private WithEvents cbCCPanRelative As CheckBox
+    Private WithEvents cbCCPanManual As CheckBox
+    Private WithEvents cbCCPanAuto As CheckBox
+    Private WithEvents btCCReadValues As Button
+    Private WithEvents lbCCPanCurrent As Label
+    Private WithEvents lbCCPanMax As Label
+    Private WithEvents lbCCPanMin As Label
+    Private WithEvents tbCCPan As TrackBar
+    Private WithEvents label96 As Label
 End Class

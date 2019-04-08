@@ -82,7 +82,6 @@ namespace Main_Demo
 
         private GIFSettingsDialog gifSettingsDialog;
 
-
         private ONVIFControl onvifControl;
 
         private ONVIFPTZRanges onvifPtzRanges;
@@ -155,7 +154,6 @@ namespace Main_Demo
             Process.Start(startInfo);
         }
 
-        [SuppressMessage("ReSharper", "NotAccessedVariable")]
         private void Form1_Load(object sender, RoutedEventArgs e)
         {
             Title += " (SDK v" + VideoCapture1.SDK_Version + ", " + VideoCapture1.SDK_State + ")";
@@ -391,7 +389,6 @@ namespace Main_Demo
             }
         }
 
-        [SuppressMessage("ReSharper", "InlineOutVariableDeclaration")]
         private void cbVideoInputDevice_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbVideoInputDevice.SelectedIndex != -1 && e != null && e.AddedItems.Count > 0)
@@ -775,7 +772,6 @@ namespace Main_Demo
                 settings.DisconnectEventInterval = 5000;
             }
         }
-
 
         private void SetMP3Output(ref VFMP3Output mp3Output)
         {
@@ -1366,14 +1362,14 @@ namespace Main_Demo
                 VideoCapture1.Video_CaptureDevice_UseClosedCaptions = cbUseClosedCaptions.IsChecked == true;
             }
 
-            bool captureMode = (VideoCapture1.Mode == VFVideoCaptureMode.AudioCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.BDACapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.CustomCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.IPCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.KinectCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.ScreenCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourceCapture
-                                || VideoCapture1.Mode == VFVideoCaptureMode.VideoCapture);
+            bool captureMode = this.VideoCapture1.Mode == VFVideoCaptureMode.AudioCapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.BDACapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.CustomCapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.IPCapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.KinectCapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.ScreenCapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.DecklinkSourceCapture
+                               || this.VideoCapture1.Mode == VFVideoCaptureMode.VideoCapture;
 
             if (captureMode)
             {
@@ -2353,7 +2349,6 @@ namespace Main_Demo
             VideoCapture1.Audio_OutputDevice = e.AddedItems[0].ToString();
         }
 
-        [SuppressMessage("ReSharper", "NotAccessedVariable")]
         private void cbCrossbarInput_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cbCrossbarInput.SelectedIndex != -1 && e != null && e.AddedItems.Count > 0)
@@ -2647,7 +2642,6 @@ namespace Main_Demo
                 VideoCapture1.TVTuner_Channel = -1;
 
                 // must be -1 to use frequency
-
                 VideoCapture1.TVTuner_Frequency = Convert.ToInt32(edChannel.Text);
             }
 
@@ -3146,15 +3140,6 @@ namespace Main_Demo
                 MessageBox.Show("Signal not present");
             }
         }
-
-        // private void pnColorBG_Click(object sender, RoutedEventArgs e)
-        // {
-        //    if (colorDialog1.ShowDialog() == DialogResult.OK)
-        //    {
-        //        pnColorBG.BackColor = colorDialog1.Color;
-        //        //VideoCapture1.BackgroundColor = colorDialog1.Color;
-        //    }
-        // }
 
         private void cbAudAmplifyEnabled_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -4058,11 +4043,6 @@ namespace Main_Demo
             cbLiveRotation_Checked(sender, e);
         }
 
-        private void btTest_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void cbScreenFlipVertical_Checked(object sender, RoutedEventArgs e)
         {
             VideoCapture1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.IsChecked == true;
@@ -4450,12 +4430,7 @@ namespace Main_Demo
 
         private void FFMPEGInfoDelegateMethod(string message)
         {
-            // if (VideoCapture1.Debug_Mode)
-            // {
-
             mmLog.Text += "(NOT ERROR) FFMPEG " + message + Environment.NewLine;
-
-            // }
         }
 
         private void VideoCapture1_OnFFMPEGInfo(object sender, FFMPEGInfoEventArgs e)
@@ -4826,7 +4801,6 @@ namespace Main_Demo
         {
             IPCameraDB.ShowWindow();
         }
-
 
         private void btONVIFConnect_Click(object sender, RoutedEventArgs e)
         {
@@ -5492,7 +5466,7 @@ namespace Main_Demo
             if (lbTextLogos.SelectedItem != null)
             {
                 var dlg = new TextLogoSettingsDialog();
-                var effect = VideoCapture1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                var effect = VideoCapture1.Video_Effects_Get((string)lbTextLogos.SelectedItem);
                 dlg.Attach(effect);
 
                 dlg.ShowDialog(this);
@@ -5582,6 +5556,163 @@ namespace Main_Demo
                     flip.Enabled = cbFlipY.IsChecked == true;
                 }
             }
+        }
+
+        private void BtCCReadValues_Click(object sender, RoutedEventArgs e)
+        {
+            int max;
+            int defaultValue;
+            int min;
+            int step;
+            VFCameraControlFlags flags;
+
+            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Pan, out min, out max, out step, out defaultValue, out flags))
+            {
+                tbCCPan.Minimum = min;
+                tbCCPan.Maximum = max;
+                tbCCPan.SmallChange = step;
+                tbCCPan.Value = defaultValue;
+                lbCCPanMin.Content = "Min: " + Convert.ToString(min);
+                lbCCPanMax.Content = "Max: " + Convert.ToString(max);
+                lbCCPanCurrent.Content = "Current: " + Convert.ToString(defaultValue);
+
+                cbCCPanManual.IsChecked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCPanAuto.IsChecked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCPanRelative.IsChecked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+            }
+
+            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Tilt, out min, out max, out step, out defaultValue, out flags))
+            {
+                tbCCTilt.Minimum = min;
+                tbCCTilt.Maximum = max;
+                tbCCTilt.SmallChange = step;
+                tbCCTilt.Value = defaultValue;
+                lbCCTiltMin.Content = "Min: " + Convert.ToString(min);
+                lbCCTiltMax.Content = "Max: " + Convert.ToString(max);
+                lbCCTiltCurrent.Content = "Current: " + Convert.ToString(defaultValue);
+
+                cbCCTiltManual.IsChecked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCTiltAuto.IsChecked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCTiltRelative.IsChecked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+            }
+
+            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Focus, out min, out max, out step, out defaultValue, out flags))
+            {
+                tbCCFocus.Minimum = min;
+                tbCCFocus.Maximum = max;
+                tbCCFocus.SmallChange = step;
+                tbCCFocus.Value = defaultValue;
+                lbCCFocusMin.Content = "Min: " + Convert.ToString(min);
+                lbCCFocusMax.Content = "Max: " + Convert.ToString(max);
+                lbCCFocusCurrent.Content = "Current: " + Convert.ToString(defaultValue);
+
+                cbCCFocusManual.IsChecked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCFocusAuto.IsChecked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCFocusRelative.IsChecked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+            }
+
+            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Zoom, out min, out max, out step, out defaultValue, out flags))
+            {
+                tbCCZoom.Minimum = min;
+                tbCCZoom.Maximum = max;
+                tbCCZoom.SmallChange = step;
+                tbCCZoom.Value = defaultValue;
+                lbCCZoomMin.Content = "Min: " + Convert.ToString(min);
+                lbCCZoomMax.Content = "Max: " + Convert.ToString(max);
+                lbCCZoomCurrent.Content = "Current: " + Convert.ToString(defaultValue);
+
+                cbCCZoomManual.IsChecked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCZoomAuto.IsChecked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCZoomRelative.IsChecked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+            }
+        }
+
+        private void BtCCPanApply_Click(object sender, RoutedEventArgs e)
+        {
+            VFCameraControlFlags flags = VFCameraControlFlags.None;
+
+            if (cbCCPanManual.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Manual;
+            }
+
+            if (cbCCPanAuto.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Auto;
+            }
+
+            if (cbCCPanRelative.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Relative;
+            }
+
+            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Pan, (int)tbCCPan.Value, flags);
+        }
+
+        private void BtCCTiltApply_Click(object sender, RoutedEventArgs e)
+        {
+            VFCameraControlFlags flags = VFCameraControlFlags.None;
+
+            if (cbCCTiltManual.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Manual;
+            }
+
+            if (cbCCTiltAuto.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Auto;
+            }
+
+            if (cbCCTiltRelative.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Relative;
+            }
+
+            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Tilt, (int)tbCCTilt.Value, flags);
+        }
+
+        private void BtCCFocusApply_Click(object sender, RoutedEventArgs e)
+        {
+            VFCameraControlFlags flags = VFCameraControlFlags.None;
+
+            if (cbCCFocusManual.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Manual;
+            }
+
+            if (cbCCFocusAuto.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Auto;
+            }
+
+            if (cbCCFocusRelative.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Relative;
+            }
+
+            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Focus, (int)tbCCFocus.Value, flags);
+        }
+
+        private void BtCCZoomApply_Click(object sender, RoutedEventArgs e)
+        {
+            VFCameraControlFlags flags = VFCameraControlFlags.None;
+
+            if (cbCCZoomManual.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Manual;
+            }
+
+            if (cbCCZoomAuto.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Auto;
+            }
+
+            if (cbCCZoomRelative.IsChecked == true)
+            {
+                flags = flags | VFCameraControlFlags.Relative;
+            }
+
+            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Zoom, (int)tbCCZoom.Value, flags);
         }
     }
 }

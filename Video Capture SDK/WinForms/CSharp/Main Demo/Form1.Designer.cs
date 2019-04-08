@@ -345,7 +345,6 @@ namespace VideoCapture_CSharp_Demo
             this.lbAudioChannelMapperRoutes = new System.Windows.Forms.ListBox();
             this.cbAudioChannelMapperEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage107 = new System.Windows.Forms.TabPage();
-            this.label365 = new System.Windows.Forms.Label();
             this.edFaceTrackingFaces = new System.Windows.Forms.TextBox();
             this.label364 = new System.Windows.Forms.Label();
             this.label363 = new System.Windows.Forms.Label();
@@ -680,6 +679,24 @@ namespace VideoCapture_CSharp_Demo
             this.tbAdjBrightness = new System.Windows.Forms.TrackBar();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage66 = new System.Windows.Forms.TabPage();
+            this.btCCFocusApply = new System.Windows.Forms.Button();
+            this.btCCZoomApply = new System.Windows.Forms.Button();
+            this.cbCCFocusRelative = new System.Windows.Forms.CheckBox();
+            this.cbCCFocusManual = new System.Windows.Forms.CheckBox();
+            this.cbCCFocusAuto = new System.Windows.Forms.CheckBox();
+            this.lbCCFocusCurrent = new System.Windows.Forms.Label();
+            this.lbCCFocusMax = new System.Windows.Forms.Label();
+            this.lbCCFocusMin = new System.Windows.Forms.Label();
+            this.tbCCFocus = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbCCZoomRelative = new System.Windows.Forms.CheckBox();
+            this.cbCCZoomManual = new System.Windows.Forms.CheckBox();
+            this.cbCCZoomAuto = new System.Windows.Forms.CheckBox();
+            this.lbCCZoomCurrent = new System.Windows.Forms.Label();
+            this.lbCCZoomMax = new System.Windows.Forms.Label();
+            this.lbCCZoomMin = new System.Windows.Forms.Label();
+            this.tbCCZoom = new System.Windows.Forms.TrackBar();
+            this.label20 = new System.Windows.Forms.Label();
             this.btCCTiltApply = new System.Windows.Forms.Button();
             this.btCCPanApply = new System.Windows.Forms.Button();
             this.cbCCTiltRelative = new System.Windows.Forms.CheckBox();
@@ -1100,6 +1117,7 @@ namespace VideoCapture_CSharp_Demo
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1236,6 +1254,8 @@ namespace VideoCapture_CSharp_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbAdjContrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbAdjBrightness)).BeginInit();
             this.tabPage66.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCCFocus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCCZoom)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCCTilt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCCPan)).BeginInit();
             this.tabPage63.SuspendLayout();
@@ -4621,7 +4641,6 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage107
             // 
-            this.tabPage107.Controls.Add(this.label365);
             this.tabPage107.Controls.Add(this.edFaceTrackingFaces);
             this.tabPage107.Controls.Add(this.label364);
             this.tabPage107.Controls.Add(this.label363);
@@ -4643,15 +4662,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage107.TabIndex = 17;
             this.tabPage107.Text = "Face tracking";
             this.tabPage107.UseVisualStyleBackColor = true;
-            // 
-            // label365
-            // 
-            this.label365.AutoSize = true;
-            this.label365.Location = new System.Drawing.Point(163, 20);
-            this.label365.Name = "label365";
-            this.label365.Size = new System.Drawing.Size(117, 13);
-            this.label365.TabIndex = 14;
-            this.label365.Text = "(available for .Net 4.0+)";
             // 
             // edFaceTrackingFaces
             // 
@@ -8175,6 +8185,25 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage66
             // 
+            this.tabPage66.Controls.Add(this.label1);
+            this.tabPage66.Controls.Add(this.btCCFocusApply);
+            this.tabPage66.Controls.Add(this.btCCZoomApply);
+            this.tabPage66.Controls.Add(this.cbCCFocusRelative);
+            this.tabPage66.Controls.Add(this.cbCCFocusManual);
+            this.tabPage66.Controls.Add(this.cbCCFocusAuto);
+            this.tabPage66.Controls.Add(this.lbCCFocusCurrent);
+            this.tabPage66.Controls.Add(this.lbCCFocusMax);
+            this.tabPage66.Controls.Add(this.lbCCFocusMin);
+            this.tabPage66.Controls.Add(this.tbCCFocus);
+            this.tabPage66.Controls.Add(this.label4);
+            this.tabPage66.Controls.Add(this.cbCCZoomRelative);
+            this.tabPage66.Controls.Add(this.cbCCZoomManual);
+            this.tabPage66.Controls.Add(this.cbCCZoomAuto);
+            this.tabPage66.Controls.Add(this.lbCCZoomCurrent);
+            this.tabPage66.Controls.Add(this.lbCCZoomMax);
+            this.tabPage66.Controls.Add(this.lbCCZoomMin);
+            this.tabPage66.Controls.Add(this.tbCCZoom);
+            this.tabPage66.Controls.Add(this.label20);
             this.tabPage66.Controls.Add(this.btCCTiltApply);
             this.tabPage66.Controls.Add(this.btCCPanApply);
             this.tabPage66.Controls.Add(this.cbCCTiltRelative);
@@ -8202,9 +8231,183 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage66.Text = "Camera control";
             this.tabPage66.UseVisualStyleBackColor = true;
             // 
+            // btCCFocusApply
+            // 
+            this.btCCFocusApply.Location = new System.Drawing.Point(240, 220);
+            this.btCCFocusApply.Name = "btCCFocusApply";
+            this.btCCFocusApply.Size = new System.Drawing.Size(75, 23);
+            this.btCCFocusApply.TabIndex = 57;
+            this.btCCFocusApply.Text = "Apply";
+            this.btCCFocusApply.UseVisualStyleBackColor = true;
+            this.btCCFocusApply.Click += new System.EventHandler(this.btCCFocusApply_Click);
+            // 
+            // btCCZoomApply
+            // 
+            this.btCCZoomApply.Location = new System.Drawing.Point(28, 220);
+            this.btCCZoomApply.Name = "btCCZoomApply";
+            this.btCCZoomApply.Size = new System.Drawing.Size(75, 23);
+            this.btCCZoomApply.TabIndex = 56;
+            this.btCCZoomApply.Text = "Apply";
+            this.btCCZoomApply.UseVisualStyleBackColor = true;
+            this.btCCZoomApply.Click += new System.EventHandler(this.btCCZoomApply_Click);
+            // 
+            // cbCCFocusRelative
+            // 
+            this.cbCCFocusRelative.AutoSize = true;
+            this.cbCCFocusRelative.Location = new System.Drawing.Point(351, 197);
+            this.cbCCFocusRelative.Name = "cbCCFocusRelative";
+            this.cbCCFocusRelative.Size = new System.Drawing.Size(65, 17);
+            this.cbCCFocusRelative.TabIndex = 55;
+            this.cbCCFocusRelative.Text = "Relative";
+            this.cbCCFocusRelative.UseVisualStyleBackColor = true;
+            // 
+            // cbCCFocusManual
+            // 
+            this.cbCCFocusManual.AutoSize = true;
+            this.cbCCFocusManual.Location = new System.Drawing.Point(288, 197);
+            this.cbCCFocusManual.Name = "cbCCFocusManual";
+            this.cbCCFocusManual.Size = new System.Drawing.Size(61, 17);
+            this.cbCCFocusManual.TabIndex = 54;
+            this.cbCCFocusManual.Text = "Manual";
+            this.cbCCFocusManual.UseVisualStyleBackColor = true;
+            // 
+            // cbCCFocusAuto
+            // 
+            this.cbCCFocusAuto.AutoSize = true;
+            this.cbCCFocusAuto.Location = new System.Drawing.Point(240, 197);
+            this.cbCCFocusAuto.Name = "cbCCFocusAuto";
+            this.cbCCFocusAuto.Size = new System.Drawing.Size(48, 17);
+            this.cbCCFocusAuto.TabIndex = 53;
+            this.cbCCFocusAuto.Text = "Auto";
+            this.cbCCFocusAuto.UseVisualStyleBackColor = true;
+            // 
+            // lbCCFocusCurrent
+            // 
+            this.lbCCFocusCurrent.AutoSize = true;
+            this.lbCCFocusCurrent.Location = new System.Drawing.Point(348, 173);
+            this.lbCCFocusCurrent.Name = "lbCCFocusCurrent";
+            this.lbCCFocusCurrent.Size = new System.Drawing.Size(65, 13);
+            this.lbCCFocusCurrent.TabIndex = 52;
+            this.lbCCFocusCurrent.Text = "Current = 40";
+            // 
+            // lbCCFocusMax
+            // 
+            this.lbCCFocusMax.AutoSize = true;
+            this.lbCCFocusMax.Location = new System.Drawing.Point(285, 173);
+            this.lbCCFocusMax.Name = "lbCCFocusMax";
+            this.lbCCFocusMax.Size = new System.Drawing.Size(57, 13);
+            this.lbCCFocusMax.TabIndex = 51;
+            this.lbCCFocusMax.Text = "Max = 100";
+            // 
+            // lbCCFocusMin
+            // 
+            this.lbCCFocusMin.AutoSize = true;
+            this.lbCCFocusMin.Location = new System.Drawing.Point(237, 173);
+            this.lbCCFocusMin.Name = "lbCCFocusMin";
+            this.lbCCFocusMin.Size = new System.Drawing.Size(42, 13);
+            this.lbCCFocusMin.TabIndex = 50;
+            this.lbCCFocusMin.Text = "Min = 1";
+            // 
+            // tbCCFocus
+            // 
+            this.tbCCFocus.BackColor = System.Drawing.SystemColors.Window;
+            this.tbCCFocus.Location = new System.Drawing.Point(263, 146);
+            this.tbCCFocus.Maximum = 100;
+            this.tbCCFocus.Name = "tbCCFocus";
+            this.tbCCFocus.Size = new System.Drawing.Size(159, 45);
+            this.tbCCFocus.TabIndex = 49;
+            this.tbCCFocus.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbCCFocus.Value = 50;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(228, 150);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(36, 13);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Focus";
+            // 
+            // cbCCZoomRelative
+            // 
+            this.cbCCZoomRelative.AutoSize = true;
+            this.cbCCZoomRelative.Location = new System.Drawing.Point(139, 197);
+            this.cbCCZoomRelative.Name = "cbCCZoomRelative";
+            this.cbCCZoomRelative.Size = new System.Drawing.Size(65, 17);
+            this.cbCCZoomRelative.TabIndex = 47;
+            this.cbCCZoomRelative.Text = "Relative";
+            this.cbCCZoomRelative.UseVisualStyleBackColor = true;
+            // 
+            // cbCCZoomManual
+            // 
+            this.cbCCZoomManual.AutoSize = true;
+            this.cbCCZoomManual.Location = new System.Drawing.Point(76, 197);
+            this.cbCCZoomManual.Name = "cbCCZoomManual";
+            this.cbCCZoomManual.Size = new System.Drawing.Size(61, 17);
+            this.cbCCZoomManual.TabIndex = 46;
+            this.cbCCZoomManual.Text = "Manual";
+            this.cbCCZoomManual.UseVisualStyleBackColor = true;
+            // 
+            // cbCCZoomAuto
+            // 
+            this.cbCCZoomAuto.AutoSize = true;
+            this.cbCCZoomAuto.Location = new System.Drawing.Point(28, 197);
+            this.cbCCZoomAuto.Name = "cbCCZoomAuto";
+            this.cbCCZoomAuto.Size = new System.Drawing.Size(48, 17);
+            this.cbCCZoomAuto.TabIndex = 45;
+            this.cbCCZoomAuto.Text = "Auto";
+            this.cbCCZoomAuto.UseVisualStyleBackColor = true;
+            // 
+            // lbCCZoomCurrent
+            // 
+            this.lbCCZoomCurrent.AutoSize = true;
+            this.lbCCZoomCurrent.Location = new System.Drawing.Point(136, 173);
+            this.lbCCZoomCurrent.Name = "lbCCZoomCurrent";
+            this.lbCCZoomCurrent.Size = new System.Drawing.Size(65, 13);
+            this.lbCCZoomCurrent.TabIndex = 44;
+            this.lbCCZoomCurrent.Text = "Current = 40";
+            // 
+            // lbCCZoomMax
+            // 
+            this.lbCCZoomMax.AutoSize = true;
+            this.lbCCZoomMax.Location = new System.Drawing.Point(73, 173);
+            this.lbCCZoomMax.Name = "lbCCZoomMax";
+            this.lbCCZoomMax.Size = new System.Drawing.Size(57, 13);
+            this.lbCCZoomMax.TabIndex = 43;
+            this.lbCCZoomMax.Text = "Max = 100";
+            // 
+            // lbCCZoomMin
+            // 
+            this.lbCCZoomMin.AutoSize = true;
+            this.lbCCZoomMin.Location = new System.Drawing.Point(25, 173);
+            this.lbCCZoomMin.Name = "lbCCZoomMin";
+            this.lbCCZoomMin.Size = new System.Drawing.Size(42, 13);
+            this.lbCCZoomMin.TabIndex = 42;
+            this.lbCCZoomMin.Text = "Min = 1";
+            // 
+            // tbCCZoom
+            // 
+            this.tbCCZoom.BackColor = System.Drawing.SystemColors.Window;
+            this.tbCCZoom.Location = new System.Drawing.Point(51, 146);
+            this.tbCCZoom.Maximum = 100;
+            this.tbCCZoom.Name = "tbCCZoom";
+            this.tbCCZoom.Size = new System.Drawing.Size(159, 45);
+            this.tbCCZoom.TabIndex = 41;
+            this.tbCCZoom.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.tbCCZoom.Value = 50;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(16, 150);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(34, 13);
+            this.label20.TabIndex = 40;
+            this.label20.Text = "Zoom";
+            // 
             // btCCTiltApply
             // 
-            this.btCCTiltApply.Location = new System.Drawing.Point(240, 109);
+            this.btCCTiltApply.Location = new System.Drawing.Point(240, 104);
             this.btCCTiltApply.Name = "btCCTiltApply";
             this.btCCTiltApply.Size = new System.Drawing.Size(75, 23);
             this.btCCTiltApply.TabIndex = 39;
@@ -8214,7 +8417,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // btCCPanApply
             // 
-            this.btCCPanApply.Location = new System.Drawing.Point(28, 109);
+            this.btCCPanApply.Location = new System.Drawing.Point(28, 104);
             this.btCCPanApply.Name = "btCCPanApply";
             this.btCCPanApply.Size = new System.Drawing.Size(75, 23);
             this.btCCPanApply.TabIndex = 38;
@@ -8225,7 +8428,7 @@ namespace VideoCapture_CSharp_Demo
             // cbCCTiltRelative
             // 
             this.cbCCTiltRelative.AutoSize = true;
-            this.cbCCTiltRelative.Location = new System.Drawing.Point(351, 86);
+            this.cbCCTiltRelative.Location = new System.Drawing.Point(351, 81);
             this.cbCCTiltRelative.Name = "cbCCTiltRelative";
             this.cbCCTiltRelative.Size = new System.Drawing.Size(65, 17);
             this.cbCCTiltRelative.TabIndex = 37;
@@ -8235,7 +8438,7 @@ namespace VideoCapture_CSharp_Demo
             // cbCCTiltManual
             // 
             this.cbCCTiltManual.AutoSize = true;
-            this.cbCCTiltManual.Location = new System.Drawing.Point(288, 86);
+            this.cbCCTiltManual.Location = new System.Drawing.Point(288, 81);
             this.cbCCTiltManual.Name = "cbCCTiltManual";
             this.cbCCTiltManual.Size = new System.Drawing.Size(61, 17);
             this.cbCCTiltManual.TabIndex = 36;
@@ -8245,7 +8448,7 @@ namespace VideoCapture_CSharp_Demo
             // cbCCTiltAuto
             // 
             this.cbCCTiltAuto.AutoSize = true;
-            this.cbCCTiltAuto.Location = new System.Drawing.Point(240, 86);
+            this.cbCCTiltAuto.Location = new System.Drawing.Point(240, 81);
             this.cbCCTiltAuto.Name = "cbCCTiltAuto";
             this.cbCCTiltAuto.Size = new System.Drawing.Size(48, 17);
             this.cbCCTiltAuto.TabIndex = 35;
@@ -8255,7 +8458,7 @@ namespace VideoCapture_CSharp_Demo
             // lbCCTiltCurrent
             // 
             this.lbCCTiltCurrent.AutoSize = true;
-            this.lbCCTiltCurrent.Location = new System.Drawing.Point(348, 62);
+            this.lbCCTiltCurrent.Location = new System.Drawing.Point(348, 57);
             this.lbCCTiltCurrent.Name = "lbCCTiltCurrent";
             this.lbCCTiltCurrent.Size = new System.Drawing.Size(65, 13);
             this.lbCCTiltCurrent.TabIndex = 34;
@@ -8264,7 +8467,7 @@ namespace VideoCapture_CSharp_Demo
             // lbCCTiltMax
             // 
             this.lbCCTiltMax.AutoSize = true;
-            this.lbCCTiltMax.Location = new System.Drawing.Point(285, 62);
+            this.lbCCTiltMax.Location = new System.Drawing.Point(285, 57);
             this.lbCCTiltMax.Name = "lbCCTiltMax";
             this.lbCCTiltMax.Size = new System.Drawing.Size(57, 13);
             this.lbCCTiltMax.TabIndex = 33;
@@ -8273,7 +8476,7 @@ namespace VideoCapture_CSharp_Demo
             // lbCCTiltMin
             // 
             this.lbCCTiltMin.AutoSize = true;
-            this.lbCCTiltMin.Location = new System.Drawing.Point(237, 62);
+            this.lbCCTiltMin.Location = new System.Drawing.Point(237, 57);
             this.lbCCTiltMin.Name = "lbCCTiltMin";
             this.lbCCTiltMin.Size = new System.Drawing.Size(42, 13);
             this.lbCCTiltMin.TabIndex = 32;
@@ -8282,10 +8485,10 @@ namespace VideoCapture_CSharp_Demo
             // tbCCTilt
             // 
             this.tbCCTilt.BackColor = System.Drawing.SystemColors.Window;
-            this.tbCCTilt.Location = new System.Drawing.Point(231, 35);
+            this.tbCCTilt.Location = new System.Drawing.Point(259, 30);
             this.tbCCTilt.Maximum = 100;
             this.tbCCTilt.Name = "tbCCTilt";
-            this.tbCCTilt.Size = new System.Drawing.Size(191, 45);
+            this.tbCCTilt.Size = new System.Drawing.Size(163, 45);
             this.tbCCTilt.TabIndex = 31;
             this.tbCCTilt.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbCCTilt.Value = 50;
@@ -8293,7 +8496,7 @@ namespace VideoCapture_CSharp_Demo
             // label97
             // 
             this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(228, 19);
+            this.label97.Location = new System.Drawing.Point(228, 33);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(21, 13);
             this.label97.TabIndex = 30;
@@ -8302,7 +8505,7 @@ namespace VideoCapture_CSharp_Demo
             // cbCCPanRelative
             // 
             this.cbCCPanRelative.AutoSize = true;
-            this.cbCCPanRelative.Location = new System.Drawing.Point(139, 86);
+            this.cbCCPanRelative.Location = new System.Drawing.Point(139, 81);
             this.cbCCPanRelative.Name = "cbCCPanRelative";
             this.cbCCPanRelative.Size = new System.Drawing.Size(65, 17);
             this.cbCCPanRelative.TabIndex = 29;
@@ -8312,7 +8515,7 @@ namespace VideoCapture_CSharp_Demo
             // cbCCPanManual
             // 
             this.cbCCPanManual.AutoSize = true;
-            this.cbCCPanManual.Location = new System.Drawing.Point(76, 86);
+            this.cbCCPanManual.Location = new System.Drawing.Point(76, 81);
             this.cbCCPanManual.Name = "cbCCPanManual";
             this.cbCCPanManual.Size = new System.Drawing.Size(61, 17);
             this.cbCCPanManual.TabIndex = 28;
@@ -8322,7 +8525,7 @@ namespace VideoCapture_CSharp_Demo
             // cbCCPanAuto
             // 
             this.cbCCPanAuto.AutoSize = true;
-            this.cbCCPanAuto.Location = new System.Drawing.Point(28, 86);
+            this.cbCCPanAuto.Location = new System.Drawing.Point(28, 81);
             this.cbCCPanAuto.Name = "cbCCPanAuto";
             this.cbCCPanAuto.Size = new System.Drawing.Size(48, 17);
             this.cbCCPanAuto.TabIndex = 27;
@@ -8332,9 +8535,9 @@ namespace VideoCapture_CSharp_Demo
             // btCCReadValues
             // 
             this.btCCReadValues.AccessibleDescription = "";
-            this.btCCReadValues.Location = new System.Drawing.Point(367, 213);
+            this.btCCReadValues.Location = new System.Drawing.Point(351, 6);
             this.btCCReadValues.Name = "btCCReadValues";
-            this.btCCReadValues.Size = new System.Drawing.Size(75, 23);
+            this.btCCReadValues.Size = new System.Drawing.Size(91, 23);
             this.btCCReadValues.TabIndex = 26;
             this.btCCReadValues.Text = "Read values";
             this.btCCReadValues.UseVisualStyleBackColor = true;
@@ -8343,7 +8546,7 @@ namespace VideoCapture_CSharp_Demo
             // lbCCPanCurrent
             // 
             this.lbCCPanCurrent.AutoSize = true;
-            this.lbCCPanCurrent.Location = new System.Drawing.Point(136, 62);
+            this.lbCCPanCurrent.Location = new System.Drawing.Point(136, 57);
             this.lbCCPanCurrent.Name = "lbCCPanCurrent";
             this.lbCCPanCurrent.Size = new System.Drawing.Size(65, 13);
             this.lbCCPanCurrent.TabIndex = 23;
@@ -8352,7 +8555,7 @@ namespace VideoCapture_CSharp_Demo
             // lbCCPanMax
             // 
             this.lbCCPanMax.AutoSize = true;
-            this.lbCCPanMax.Location = new System.Drawing.Point(73, 62);
+            this.lbCCPanMax.Location = new System.Drawing.Point(73, 57);
             this.lbCCPanMax.Name = "lbCCPanMax";
             this.lbCCPanMax.Size = new System.Drawing.Size(57, 13);
             this.lbCCPanMax.TabIndex = 22;
@@ -8361,7 +8564,7 @@ namespace VideoCapture_CSharp_Demo
             // lbCCPanMin
             // 
             this.lbCCPanMin.AutoSize = true;
-            this.lbCCPanMin.Location = new System.Drawing.Point(25, 62);
+            this.lbCCPanMin.Location = new System.Drawing.Point(25, 57);
             this.lbCCPanMin.Name = "lbCCPanMin";
             this.lbCCPanMin.Size = new System.Drawing.Size(42, 13);
             this.lbCCPanMin.TabIndex = 21;
@@ -8370,10 +8573,10 @@ namespace VideoCapture_CSharp_Demo
             // tbCCPan
             // 
             this.tbCCPan.BackColor = System.Drawing.SystemColors.Window;
-            this.tbCCPan.Location = new System.Drawing.Point(19, 35);
+            this.tbCCPan.Location = new System.Drawing.Point(51, 30);
             this.tbCCPan.Maximum = 100;
             this.tbCCPan.Name = "tbCCPan";
-            this.tbCCPan.Size = new System.Drawing.Size(191, 45);
+            this.tbCCPan.Size = new System.Drawing.Size(159, 45);
             this.tbCCPan.TabIndex = 20;
             this.tbCCPan.TickStyle = System.Windows.Forms.TickStyle.None;
             this.tbCCPan.Value = 50;
@@ -8381,7 +8584,7 @@ namespace VideoCapture_CSharp_Demo
             // label96
             // 
             this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(16, 19);
+            this.label96.Location = new System.Drawing.Point(16, 33);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(26, 13);
             this.label96.TabIndex = 19;
@@ -8473,6 +8676,7 @@ namespace VideoCapture_CSharp_Demo
             this.cbAudioInputLine.Name = "cbAudioInputLine";
             this.cbAudioInputLine.Size = new System.Drawing.Size(190, 21);
             this.cbAudioInputLine.TabIndex = 88;
+            this.cbAudioInputLine.SelectedIndexChanged += new System.EventHandler(this.cbAudioInputLine_SelectedIndexChanged);
             // 
             // cbAudioInputFormat
             // 
@@ -8482,6 +8686,7 @@ namespace VideoCapture_CSharp_Demo
             this.cbAudioInputFormat.Name = "cbAudioInputFormat";
             this.cbAudioInputFormat.Size = new System.Drawing.Size(190, 21);
             this.cbAudioInputFormat.TabIndex = 87;
+            this.cbAudioInputFormat.SelectedIndexChanged += new System.EventHandler(this.cbAudioInputFormat_SelectedIndexChanged);
             // 
             // cbAudioInputDevice
             // 
@@ -12741,6 +12946,15 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.openFileDialog2.Filter = "Pictures|*.bmp; *.jpg; *.jpeg; *.jpe; *.png; *.gif; *.tiff;|All files|*.*";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 13);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Many other parameters available using API";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -12966,6 +13180,8 @@ namespace VideoCapture_CSharp_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbAdjBrightness)).EndInit();
             this.tabPage66.ResumeLayout(false);
             this.tabPage66.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCCFocus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbCCZoom)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCCTilt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbCCPan)).EndInit();
             this.tabPage63.ResumeLayout(false);
@@ -13481,10 +13697,8 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TrackBar tbCCPan;
         private System.Windows.Forms.Label label96;
         private System.Windows.Forms.Button btCCReadValues;
-        private System.Windows.Forms.CheckBox cbCCPanRelative;
         private System.Windows.Forms.CheckBox cbCCPanManual;
         private System.Windows.Forms.CheckBox cbCCPanAuto;
-        private System.Windows.Forms.CheckBox cbCCTiltRelative;
         private System.Windows.Forms.CheckBox cbCCTiltManual;
         private System.Windows.Forms.CheckBox cbCCTiltAuto;
         private System.Windows.Forms.Label lbCCTiltCurrent;
@@ -13793,7 +14007,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label label363;
         private System.Windows.Forms.TextBox edFaceTrackingFaces;
         private System.Windows.Forms.Label label364;
-        private System.Windows.Forms.Label label365;
         private System.Windows.Forms.TabPage tabPage108;
         private System.Windows.Forms.Label label366;
         private System.Windows.Forms.Label label48;
@@ -14140,6 +14353,27 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.CheckBox cbFlipY;
         private System.Windows.Forms.CheckBox cbFlipX;
         private System.Windows.Forms.CheckBox cbTelemetry;
+        private System.Windows.Forms.CheckBox cbCCTiltRelative;
+        private System.Windows.Forms.CheckBox cbCCPanRelative;
+        private System.Windows.Forms.Button btCCFocusApply;
+        private System.Windows.Forms.Button btCCZoomApply;
+        private System.Windows.Forms.CheckBox cbCCFocusRelative;
+        private System.Windows.Forms.CheckBox cbCCFocusManual;
+        private System.Windows.Forms.CheckBox cbCCFocusAuto;
+        private System.Windows.Forms.Label lbCCFocusCurrent;
+        private System.Windows.Forms.Label lbCCFocusMax;
+        private System.Windows.Forms.Label lbCCFocusMin;
+        private System.Windows.Forms.TrackBar tbCCFocus;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox cbCCZoomRelative;
+        private System.Windows.Forms.CheckBox cbCCZoomManual;
+        private System.Windows.Forms.CheckBox cbCCZoomAuto;
+        private System.Windows.Forms.Label lbCCZoomCurrent;
+        private System.Windows.Forms.Label lbCCZoomMax;
+        private System.Windows.Forms.Label lbCCZoomMin;
+        private System.Windows.Forms.TrackBar tbCCZoom;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label1;
     }
 }
 
