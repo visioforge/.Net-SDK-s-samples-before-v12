@@ -2353,6 +2353,12 @@ namespace VideoCapture_CSharp_Demo
                 case 8:
                     settings.Type = VFIPSource.RTSP_HTTP_FFMPEG;
                     break;
+                case 9:
+                    {
+                        settings.Type = VFIPSource.HTTP_MJPEG_LowLatency;
+                        cbIPAudioCapture.Checked = false;
+                    }
+                    break;
             }
 
             settings.AudioCapture = cbIPAudioCapture.Checked;

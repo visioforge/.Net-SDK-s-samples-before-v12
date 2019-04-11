@@ -679,6 +679,7 @@ namespace VideoCapture_CSharp_Demo
             this.tbAdjBrightness = new System.Windows.Forms.TrackBar();
             this.label17 = new System.Windows.Forms.Label();
             this.tabPage66 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.btCCFocusApply = new System.Windows.Forms.Button();
             this.btCCZoomApply = new System.Windows.Forms.Button();
             this.cbCCFocusRelative = new System.Windows.Forms.CheckBox();
@@ -1117,7 +1118,6 @@ namespace VideoCapture_CSharp_Demo
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -8231,6 +8231,15 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage66.Text = "Camera control";
             this.tabPage66.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 11);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(208, 13);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "Many other parameters available using API";
+            // 
             // btCCFocusApply
             // 
             this.btCCFocusApply.Location = new System.Drawing.Point(240, 220);
@@ -9480,7 +9489,8 @@ namespace VideoCapture_CSharp_Demo
             "MMS - WMV",
             "RTSP - UDP (FFMPEG engine)",
             "RTSP - TCP (FFMPEG engine)",
-            "RTSP over HTTP (FFMPEG engine)"});
+            "RTSP over HTTP (FFMPEG engine)",
+            "HTTP MJPEG Low Latency"});
             this.cbIPCameraType.Location = new System.Drawing.Point(55, 50);
             this.cbIPCameraType.Name = "cbIPCameraType";
             this.cbIPCameraType.Size = new System.Drawing.Size(227, 21);
@@ -12945,15 +12955,6 @@ namespace VideoCapture_CSharp_Demo
             // openFileDialog2
             // 
             this.openFileDialog2.Filter = "Pictures|*.bmp; *.jpg; *.jpeg; *.jpe; *.png; *.gif; *.tiff;|All files|*.*";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 13);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "Many other parameters available using API";
             // 
             // Form1
             // 

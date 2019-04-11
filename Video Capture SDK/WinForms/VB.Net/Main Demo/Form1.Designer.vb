@@ -150,6 +150,45 @@ Partial Class Form1
         Me.lbAdjBrightnessMin = New System.Windows.Forms.Label()
         Me.tbAdjBrightness = New System.Windows.Forms.TrackBar()
         Me.label17 = New System.Windows.Forms.Label()
+        Me.TabPage3 = New System.Windows.Forms.TabPage()
+        Me.label1 = New System.Windows.Forms.Label()
+        Me.btCCFocusApply = New System.Windows.Forms.Button()
+        Me.btCCZoomApply = New System.Windows.Forms.Button()
+        Me.cbCCFocusRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCFocusManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCFocusAuto = New System.Windows.Forms.CheckBox()
+        Me.lbCCFocusCurrent = New System.Windows.Forms.Label()
+        Me.lbCCFocusMax = New System.Windows.Forms.Label()
+        Me.lbCCFocusMin = New System.Windows.Forms.Label()
+        Me.tbCCFocus = New System.Windows.Forms.TrackBar()
+        Me.label4 = New System.Windows.Forms.Label()
+        Me.cbCCZoomRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCZoomManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCZoomAuto = New System.Windows.Forms.CheckBox()
+        Me.lbCCZoomCurrent = New System.Windows.Forms.Label()
+        Me.lbCCZoomMax = New System.Windows.Forms.Label()
+        Me.lbCCZoomMin = New System.Windows.Forms.Label()
+        Me.tbCCZoom = New System.Windows.Forms.TrackBar()
+        Me.label20 = New System.Windows.Forms.Label()
+        Me.btCCTiltApply = New System.Windows.Forms.Button()
+        Me.btCCPanApply = New System.Windows.Forms.Button()
+        Me.cbCCTiltRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCTiltManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCTiltAuto = New System.Windows.Forms.CheckBox()
+        Me.lbCCTiltCurrent = New System.Windows.Forms.Label()
+        Me.lbCCTiltMax = New System.Windows.Forms.Label()
+        Me.lbCCTiltMin = New System.Windows.Forms.Label()
+        Me.tbCCTilt = New System.Windows.Forms.TrackBar()
+        Me.label97 = New System.Windows.Forms.Label()
+        Me.cbCCPanRelative = New System.Windows.Forms.CheckBox()
+        Me.cbCCPanManual = New System.Windows.Forms.CheckBox()
+        Me.cbCCPanAuto = New System.Windows.Forms.CheckBox()
+        Me.btCCReadValues = New System.Windows.Forms.Button()
+        Me.lbCCPanCurrent = New System.Windows.Forms.Label()
+        Me.lbCCPanMax = New System.Windows.Forms.Label()
+        Me.lbCCPanMin = New System.Windows.Forms.Label()
+        Me.tbCCPan = New System.Windows.Forms.TrackBar()
+        Me.label96 = New System.Windows.Forms.Label()
         Me.TabPage9 = New System.Windows.Forms.TabPage()
         Me.tabControl19 = New System.Windows.Forms.TabControl()
         Me.tabPage96 = New System.Windows.Forms.TabPage()
@@ -1076,45 +1115,6 @@ Partial Class Form1
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
-        Me.TabPage3 = New System.Windows.Forms.TabPage()
-        Me.label1 = New System.Windows.Forms.Label()
-        Me.btCCFocusApply = New System.Windows.Forms.Button()
-        Me.btCCZoomApply = New System.Windows.Forms.Button()
-        Me.cbCCFocusRelative = New System.Windows.Forms.CheckBox()
-        Me.cbCCFocusManual = New System.Windows.Forms.CheckBox()
-        Me.cbCCFocusAuto = New System.Windows.Forms.CheckBox()
-        Me.lbCCFocusCurrent = New System.Windows.Forms.Label()
-        Me.lbCCFocusMax = New System.Windows.Forms.Label()
-        Me.lbCCFocusMin = New System.Windows.Forms.Label()
-        Me.tbCCFocus = New System.Windows.Forms.TrackBar()
-        Me.label4 = New System.Windows.Forms.Label()
-        Me.cbCCZoomRelative = New System.Windows.Forms.CheckBox()
-        Me.cbCCZoomManual = New System.Windows.Forms.CheckBox()
-        Me.cbCCZoomAuto = New System.Windows.Forms.CheckBox()
-        Me.lbCCZoomCurrent = New System.Windows.Forms.Label()
-        Me.lbCCZoomMax = New System.Windows.Forms.Label()
-        Me.lbCCZoomMin = New System.Windows.Forms.Label()
-        Me.tbCCZoom = New System.Windows.Forms.TrackBar()
-        Me.label20 = New System.Windows.Forms.Label()
-        Me.btCCTiltApply = New System.Windows.Forms.Button()
-        Me.btCCPanApply = New System.Windows.Forms.Button()
-        Me.cbCCTiltRelative = New System.Windows.Forms.CheckBox()
-        Me.cbCCTiltManual = New System.Windows.Forms.CheckBox()
-        Me.cbCCTiltAuto = New System.Windows.Forms.CheckBox()
-        Me.lbCCTiltCurrent = New System.Windows.Forms.Label()
-        Me.lbCCTiltMax = New System.Windows.Forms.Label()
-        Me.lbCCTiltMin = New System.Windows.Forms.Label()
-        Me.tbCCTilt = New System.Windows.Forms.TrackBar()
-        Me.label97 = New System.Windows.Forms.Label()
-        Me.cbCCPanRelative = New System.Windows.Forms.CheckBox()
-        Me.cbCCPanManual = New System.Windows.Forms.CheckBox()
-        Me.cbCCPanAuto = New System.Windows.Forms.CheckBox()
-        Me.btCCReadValues = New System.Windows.Forms.Button()
-        Me.lbCCPanCurrent = New System.Windows.Forms.Label()
-        Me.lbCCPanMax = New System.Windows.Forms.Label()
-        Me.lbCCPanMin = New System.Windows.Forms.Label()
-        Me.tbCCPan = New System.Windows.Forms.TrackBar()
-        Me.label96 = New System.Windows.Forms.Label()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -1137,6 +1137,11 @@ Partial Class Form1
         CType(Me.tbAdjHue, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbAdjContrast, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbAdjBrightness, System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage3.SuspendLayout
+        CType(Me.tbCCFocus, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbCCZoom, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbCCTilt, System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbCCPan, System.ComponentModel.ISupportInitialize).BeginInit
         Me.TabPage9.SuspendLayout
         Me.tabControl19.SuspendLayout
         Me.tabPage96.SuspendLayout
@@ -1321,11 +1326,6 @@ Partial Class Form1
         Me.TabPage142.SuspendLayout
         Me.TabPage143.SuspendLayout
         CType(Me.imgTagCover, System.ComponentModel.ISupportInitialize).BeginInit
-        Me.TabPage3.SuspendLayout
-        CType(Me.tbCCFocus, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbCCZoom, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbCCTilt, System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbCCPan, System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'fontDialog1
@@ -2521,6 +2521,417 @@ Partial Class Form1
         Me.label17.TabIndex = 13
         Me.label17.Text = "Brightness"
         '
+        'TabPage3
+        '
+        Me.TabPage3.Controls.Add(Me.label1)
+        Me.TabPage3.Controls.Add(Me.btCCFocusApply)
+        Me.TabPage3.Controls.Add(Me.btCCZoomApply)
+        Me.TabPage3.Controls.Add(Me.cbCCFocusRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCFocusManual)
+        Me.TabPage3.Controls.Add(Me.cbCCFocusAuto)
+        Me.TabPage3.Controls.Add(Me.lbCCFocusCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCFocusMax)
+        Me.TabPage3.Controls.Add(Me.lbCCFocusMin)
+        Me.TabPage3.Controls.Add(Me.tbCCFocus)
+        Me.TabPage3.Controls.Add(Me.label4)
+        Me.TabPage3.Controls.Add(Me.cbCCZoomRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCZoomManual)
+        Me.TabPage3.Controls.Add(Me.cbCCZoomAuto)
+        Me.TabPage3.Controls.Add(Me.lbCCZoomCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCZoomMax)
+        Me.TabPage3.Controls.Add(Me.lbCCZoomMin)
+        Me.TabPage3.Controls.Add(Me.tbCCZoom)
+        Me.TabPage3.Controls.Add(Me.label20)
+        Me.TabPage3.Controls.Add(Me.btCCTiltApply)
+        Me.TabPage3.Controls.Add(Me.btCCPanApply)
+        Me.TabPage3.Controls.Add(Me.cbCCTiltRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCTiltManual)
+        Me.TabPage3.Controls.Add(Me.cbCCTiltAuto)
+        Me.TabPage3.Controls.Add(Me.lbCCTiltCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCTiltMax)
+        Me.TabPage3.Controls.Add(Me.lbCCTiltMin)
+        Me.TabPage3.Controls.Add(Me.tbCCTilt)
+        Me.TabPage3.Controls.Add(Me.label97)
+        Me.TabPage3.Controls.Add(Me.cbCCPanRelative)
+        Me.TabPage3.Controls.Add(Me.cbCCPanManual)
+        Me.TabPage3.Controls.Add(Me.cbCCPanAuto)
+        Me.TabPage3.Controls.Add(Me.btCCReadValues)
+        Me.TabPage3.Controls.Add(Me.lbCCPanCurrent)
+        Me.TabPage3.Controls.Add(Me.lbCCPanMax)
+        Me.TabPage3.Controls.Add(Me.lbCCPanMin)
+        Me.TabPage3.Controls.Add(Me.tbCCPan)
+        Me.TabPage3.Controls.Add(Me.label96)
+        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage3.Name = "TabPage3"
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage3.Size = New System.Drawing.Size(448, 246)
+        Me.TabPage3.TabIndex = 9
+        Me.TabPage3.Text = "Camera control"
+        Me.TabPage3.UseVisualStyleBackColor = True
+        '
+        'label1
+        '
+        Me.label1.AutoSize = True
+        Me.label1.Location = New System.Drawing.Point(11, 10)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(208, 13)
+        Me.label1.TabIndex = 96
+        Me.label1.Text = "Many other parameters available using API"
+        '
+        'btCCFocusApply
+        '
+        Me.btCCFocusApply.Location = New System.Drawing.Point(235, 219)
+        Me.btCCFocusApply.Name = "btCCFocusApply"
+        Me.btCCFocusApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCFocusApply.TabIndex = 95
+        Me.btCCFocusApply.Text = "Apply"
+        Me.btCCFocusApply.UseVisualStyleBackColor = True
+        '
+        'btCCZoomApply
+        '
+        Me.btCCZoomApply.Location = New System.Drawing.Point(23, 219)
+        Me.btCCZoomApply.Name = "btCCZoomApply"
+        Me.btCCZoomApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCZoomApply.TabIndex = 94
+        Me.btCCZoomApply.Text = "Apply"
+        Me.btCCZoomApply.UseVisualStyleBackColor = True
+        '
+        'cbCCFocusRelative
+        '
+        Me.cbCCFocusRelative.AutoSize = True
+        Me.cbCCFocusRelative.Location = New System.Drawing.Point(346, 196)
+        Me.cbCCFocusRelative.Name = "cbCCFocusRelative"
+        Me.cbCCFocusRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCFocusRelative.TabIndex = 93
+        Me.cbCCFocusRelative.Text = "Relative"
+        Me.cbCCFocusRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCFocusManual
+        '
+        Me.cbCCFocusManual.AutoSize = True
+        Me.cbCCFocusManual.Location = New System.Drawing.Point(283, 196)
+        Me.cbCCFocusManual.Name = "cbCCFocusManual"
+        Me.cbCCFocusManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCFocusManual.TabIndex = 92
+        Me.cbCCFocusManual.Text = "Manual"
+        Me.cbCCFocusManual.UseVisualStyleBackColor = True
+        '
+        'cbCCFocusAuto
+        '
+        Me.cbCCFocusAuto.AutoSize = True
+        Me.cbCCFocusAuto.Location = New System.Drawing.Point(235, 196)
+        Me.cbCCFocusAuto.Name = "cbCCFocusAuto"
+        Me.cbCCFocusAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCFocusAuto.TabIndex = 91
+        Me.cbCCFocusAuto.Text = "Auto"
+        Me.cbCCFocusAuto.UseVisualStyleBackColor = True
+        '
+        'lbCCFocusCurrent
+        '
+        Me.lbCCFocusCurrent.AutoSize = True
+        Me.lbCCFocusCurrent.Location = New System.Drawing.Point(343, 172)
+        Me.lbCCFocusCurrent.Name = "lbCCFocusCurrent"
+        Me.lbCCFocusCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCFocusCurrent.TabIndex = 90
+        Me.lbCCFocusCurrent.Text = "Current = 40"
+        '
+        'lbCCFocusMax
+        '
+        Me.lbCCFocusMax.AutoSize = True
+        Me.lbCCFocusMax.Location = New System.Drawing.Point(280, 172)
+        Me.lbCCFocusMax.Name = "lbCCFocusMax"
+        Me.lbCCFocusMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCFocusMax.TabIndex = 89
+        Me.lbCCFocusMax.Text = "Max = 100"
+        '
+        'lbCCFocusMin
+        '
+        Me.lbCCFocusMin.AutoSize = True
+        Me.lbCCFocusMin.Location = New System.Drawing.Point(232, 172)
+        Me.lbCCFocusMin.Name = "lbCCFocusMin"
+        Me.lbCCFocusMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCFocusMin.TabIndex = 88
+        Me.lbCCFocusMin.Text = "Min = 1"
+        '
+        'tbCCFocus
+        '
+        Me.tbCCFocus.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCFocus.Location = New System.Drawing.Point(258, 145)
+        Me.tbCCFocus.Maximum = 100
+        Me.tbCCFocus.Name = "tbCCFocus"
+        Me.tbCCFocus.Size = New System.Drawing.Size(159, 45)
+        Me.tbCCFocus.TabIndex = 87
+        Me.tbCCFocus.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCFocus.Value = 50
+        '
+        'label4
+        '
+        Me.label4.AutoSize = True
+        Me.label4.Location = New System.Drawing.Point(223, 149)
+        Me.label4.Name = "label4"
+        Me.label4.Size = New System.Drawing.Size(36, 13)
+        Me.label4.TabIndex = 86
+        Me.label4.Text = "Focus"
+        '
+        'cbCCZoomRelative
+        '
+        Me.cbCCZoomRelative.AutoSize = True
+        Me.cbCCZoomRelative.Location = New System.Drawing.Point(134, 196)
+        Me.cbCCZoomRelative.Name = "cbCCZoomRelative"
+        Me.cbCCZoomRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCZoomRelative.TabIndex = 85
+        Me.cbCCZoomRelative.Text = "Relative"
+        Me.cbCCZoomRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCZoomManual
+        '
+        Me.cbCCZoomManual.AutoSize = True
+        Me.cbCCZoomManual.Location = New System.Drawing.Point(71, 196)
+        Me.cbCCZoomManual.Name = "cbCCZoomManual"
+        Me.cbCCZoomManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCZoomManual.TabIndex = 84
+        Me.cbCCZoomManual.Text = "Manual"
+        Me.cbCCZoomManual.UseVisualStyleBackColor = True
+        '
+        'cbCCZoomAuto
+        '
+        Me.cbCCZoomAuto.AutoSize = True
+        Me.cbCCZoomAuto.Location = New System.Drawing.Point(23, 196)
+        Me.cbCCZoomAuto.Name = "cbCCZoomAuto"
+        Me.cbCCZoomAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCZoomAuto.TabIndex = 83
+        Me.cbCCZoomAuto.Text = "Auto"
+        Me.cbCCZoomAuto.UseVisualStyleBackColor = True
+        '
+        'lbCCZoomCurrent
+        '
+        Me.lbCCZoomCurrent.AutoSize = True
+        Me.lbCCZoomCurrent.Location = New System.Drawing.Point(131, 172)
+        Me.lbCCZoomCurrent.Name = "lbCCZoomCurrent"
+        Me.lbCCZoomCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCZoomCurrent.TabIndex = 82
+        Me.lbCCZoomCurrent.Text = "Current = 40"
+        '
+        'lbCCZoomMax
+        '
+        Me.lbCCZoomMax.AutoSize = True
+        Me.lbCCZoomMax.Location = New System.Drawing.Point(68, 172)
+        Me.lbCCZoomMax.Name = "lbCCZoomMax"
+        Me.lbCCZoomMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCZoomMax.TabIndex = 81
+        Me.lbCCZoomMax.Text = "Max = 100"
+        '
+        'lbCCZoomMin
+        '
+        Me.lbCCZoomMin.AutoSize = True
+        Me.lbCCZoomMin.Location = New System.Drawing.Point(20, 172)
+        Me.lbCCZoomMin.Name = "lbCCZoomMin"
+        Me.lbCCZoomMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCZoomMin.TabIndex = 80
+        Me.lbCCZoomMin.Text = "Min = 1"
+        '
+        'tbCCZoom
+        '
+        Me.tbCCZoom.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCZoom.Location = New System.Drawing.Point(46, 145)
+        Me.tbCCZoom.Maximum = 100
+        Me.tbCCZoom.Name = "tbCCZoom"
+        Me.tbCCZoom.Size = New System.Drawing.Size(159, 45)
+        Me.tbCCZoom.TabIndex = 79
+        Me.tbCCZoom.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCZoom.Value = 50
+        '
+        'label20
+        '
+        Me.label20.AutoSize = True
+        Me.label20.Location = New System.Drawing.Point(11, 149)
+        Me.label20.Name = "label20"
+        Me.label20.Size = New System.Drawing.Size(34, 13)
+        Me.label20.TabIndex = 78
+        Me.label20.Text = "Zoom"
+        '
+        'btCCTiltApply
+        '
+        Me.btCCTiltApply.Location = New System.Drawing.Point(235, 103)
+        Me.btCCTiltApply.Name = "btCCTiltApply"
+        Me.btCCTiltApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCTiltApply.TabIndex = 77
+        Me.btCCTiltApply.Text = "Apply"
+        Me.btCCTiltApply.UseVisualStyleBackColor = True
+        '
+        'btCCPanApply
+        '
+        Me.btCCPanApply.Location = New System.Drawing.Point(23, 103)
+        Me.btCCPanApply.Name = "btCCPanApply"
+        Me.btCCPanApply.Size = New System.Drawing.Size(75, 23)
+        Me.btCCPanApply.TabIndex = 76
+        Me.btCCPanApply.Text = "Apply"
+        Me.btCCPanApply.UseVisualStyleBackColor = True
+        '
+        'cbCCTiltRelative
+        '
+        Me.cbCCTiltRelative.AutoSize = True
+        Me.cbCCTiltRelative.Location = New System.Drawing.Point(346, 80)
+        Me.cbCCTiltRelative.Name = "cbCCTiltRelative"
+        Me.cbCCTiltRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCTiltRelative.TabIndex = 75
+        Me.cbCCTiltRelative.Text = "Relative"
+        Me.cbCCTiltRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCTiltManual
+        '
+        Me.cbCCTiltManual.AutoSize = True
+        Me.cbCCTiltManual.Location = New System.Drawing.Point(283, 80)
+        Me.cbCCTiltManual.Name = "cbCCTiltManual"
+        Me.cbCCTiltManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCTiltManual.TabIndex = 74
+        Me.cbCCTiltManual.Text = "Manual"
+        Me.cbCCTiltManual.UseVisualStyleBackColor = True
+        '
+        'cbCCTiltAuto
+        '
+        Me.cbCCTiltAuto.AutoSize = True
+        Me.cbCCTiltAuto.Location = New System.Drawing.Point(235, 80)
+        Me.cbCCTiltAuto.Name = "cbCCTiltAuto"
+        Me.cbCCTiltAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCTiltAuto.TabIndex = 73
+        Me.cbCCTiltAuto.Text = "Auto"
+        Me.cbCCTiltAuto.UseVisualStyleBackColor = True
+        '
+        'lbCCTiltCurrent
+        '
+        Me.lbCCTiltCurrent.AutoSize = True
+        Me.lbCCTiltCurrent.Location = New System.Drawing.Point(343, 56)
+        Me.lbCCTiltCurrent.Name = "lbCCTiltCurrent"
+        Me.lbCCTiltCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCTiltCurrent.TabIndex = 72
+        Me.lbCCTiltCurrent.Text = "Current = 40"
+        '
+        'lbCCTiltMax
+        '
+        Me.lbCCTiltMax.AutoSize = True
+        Me.lbCCTiltMax.Location = New System.Drawing.Point(280, 56)
+        Me.lbCCTiltMax.Name = "lbCCTiltMax"
+        Me.lbCCTiltMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCTiltMax.TabIndex = 71
+        Me.lbCCTiltMax.Text = "Max = 100"
+        '
+        'lbCCTiltMin
+        '
+        Me.lbCCTiltMin.AutoSize = True
+        Me.lbCCTiltMin.Location = New System.Drawing.Point(232, 56)
+        Me.lbCCTiltMin.Name = "lbCCTiltMin"
+        Me.lbCCTiltMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCTiltMin.TabIndex = 70
+        Me.lbCCTiltMin.Text = "Min = 1"
+        '
+        'tbCCTilt
+        '
+        Me.tbCCTilt.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCTilt.Location = New System.Drawing.Point(254, 29)
+        Me.tbCCTilt.Maximum = 100
+        Me.tbCCTilt.Name = "tbCCTilt"
+        Me.tbCCTilt.Size = New System.Drawing.Size(163, 45)
+        Me.tbCCTilt.TabIndex = 69
+        Me.tbCCTilt.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCTilt.Value = 50
+        '
+        'label97
+        '
+        Me.label97.AutoSize = True
+        Me.label97.Location = New System.Drawing.Point(223, 32)
+        Me.label97.Name = "label97"
+        Me.label97.Size = New System.Drawing.Size(21, 13)
+        Me.label97.TabIndex = 68
+        Me.label97.Text = "Tilt"
+        '
+        'cbCCPanRelative
+        '
+        Me.cbCCPanRelative.AutoSize = True
+        Me.cbCCPanRelative.Location = New System.Drawing.Point(134, 80)
+        Me.cbCCPanRelative.Name = "cbCCPanRelative"
+        Me.cbCCPanRelative.Size = New System.Drawing.Size(65, 17)
+        Me.cbCCPanRelative.TabIndex = 67
+        Me.cbCCPanRelative.Text = "Relative"
+        Me.cbCCPanRelative.UseVisualStyleBackColor = True
+        '
+        'cbCCPanManual
+        '
+        Me.cbCCPanManual.AutoSize = True
+        Me.cbCCPanManual.Location = New System.Drawing.Point(71, 80)
+        Me.cbCCPanManual.Name = "cbCCPanManual"
+        Me.cbCCPanManual.Size = New System.Drawing.Size(61, 17)
+        Me.cbCCPanManual.TabIndex = 66
+        Me.cbCCPanManual.Text = "Manual"
+        Me.cbCCPanManual.UseVisualStyleBackColor = True
+        '
+        'cbCCPanAuto
+        '
+        Me.cbCCPanAuto.AutoSize = True
+        Me.cbCCPanAuto.Location = New System.Drawing.Point(23, 80)
+        Me.cbCCPanAuto.Name = "cbCCPanAuto"
+        Me.cbCCPanAuto.Size = New System.Drawing.Size(48, 17)
+        Me.cbCCPanAuto.TabIndex = 65
+        Me.cbCCPanAuto.Text = "Auto"
+        Me.cbCCPanAuto.UseVisualStyleBackColor = True
+        '
+        'btCCReadValues
+        '
+        Me.btCCReadValues.AccessibleDescription = ""
+        Me.btCCReadValues.Location = New System.Drawing.Point(346, 5)
+        Me.btCCReadValues.Name = "btCCReadValues"
+        Me.btCCReadValues.Size = New System.Drawing.Size(91, 23)
+        Me.btCCReadValues.TabIndex = 64
+        Me.btCCReadValues.Text = "Read values"
+        Me.btCCReadValues.UseVisualStyleBackColor = True
+        '
+        'lbCCPanCurrent
+        '
+        Me.lbCCPanCurrent.AutoSize = True
+        Me.lbCCPanCurrent.Location = New System.Drawing.Point(131, 56)
+        Me.lbCCPanCurrent.Name = "lbCCPanCurrent"
+        Me.lbCCPanCurrent.Size = New System.Drawing.Size(65, 13)
+        Me.lbCCPanCurrent.TabIndex = 63
+        Me.lbCCPanCurrent.Text = "Current = 40"
+        '
+        'lbCCPanMax
+        '
+        Me.lbCCPanMax.AutoSize = True
+        Me.lbCCPanMax.Location = New System.Drawing.Point(68, 56)
+        Me.lbCCPanMax.Name = "lbCCPanMax"
+        Me.lbCCPanMax.Size = New System.Drawing.Size(57, 13)
+        Me.lbCCPanMax.TabIndex = 62
+        Me.lbCCPanMax.Text = "Max = 100"
+        '
+        'lbCCPanMin
+        '
+        Me.lbCCPanMin.AutoSize = True
+        Me.lbCCPanMin.Location = New System.Drawing.Point(20, 56)
+        Me.lbCCPanMin.Name = "lbCCPanMin"
+        Me.lbCCPanMin.Size = New System.Drawing.Size(42, 13)
+        Me.lbCCPanMin.TabIndex = 61
+        Me.lbCCPanMin.Text = "Min = 1"
+        '
+        'tbCCPan
+        '
+        Me.tbCCPan.BackColor = System.Drawing.SystemColors.Window
+        Me.tbCCPan.Location = New System.Drawing.Point(46, 29)
+        Me.tbCCPan.Maximum = 100
+        Me.tbCCPan.Name = "tbCCPan"
+        Me.tbCCPan.Size = New System.Drawing.Size(159, 45)
+        Me.tbCCPan.TabIndex = 60
+        Me.tbCCPan.TickStyle = System.Windows.Forms.TickStyle.None
+        Me.tbCCPan.Value = 50
+        '
+        'label96
+        '
+        Me.label96.AutoSize = True
+        Me.label96.Location = New System.Drawing.Point(11, 32)
+        Me.label96.Name = "label96"
+        Me.label96.Size = New System.Drawing.Size(26, 13)
+        Me.label96.TabIndex = 59
+        Me.label96.Text = "Pan"
+        '
         'TabPage9
         '
         Me.TabPage9.Controls.Add(Me.tabControl19)
@@ -3375,7 +3786,7 @@ Partial Class Form1
         '
         Me.cbIPCameraType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbIPCameraType.FormattingEnabled = True
-        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)"})
+        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency"})
         Me.cbIPCameraType.Location = New System.Drawing.Point(58, 40)
         Me.cbIPCameraType.Name = "cbIPCameraType"
         Me.cbIPCameraType.Size = New System.Drawing.Size(227, 21)
@@ -12167,417 +12578,6 @@ Partial Class Form1
         Me.lbTimestamp.TabIndex = 96
         Me.lbTimestamp.Text = "Recording time: 00:00:00"
         '
-        'TabPage3
-        '
-        Me.TabPage3.Controls.Add(Me.label1)
-        Me.TabPage3.Controls.Add(Me.btCCFocusApply)
-        Me.TabPage3.Controls.Add(Me.btCCZoomApply)
-        Me.TabPage3.Controls.Add(Me.cbCCFocusRelative)
-        Me.TabPage3.Controls.Add(Me.cbCCFocusManual)
-        Me.TabPage3.Controls.Add(Me.cbCCFocusAuto)
-        Me.TabPage3.Controls.Add(Me.lbCCFocusCurrent)
-        Me.TabPage3.Controls.Add(Me.lbCCFocusMax)
-        Me.TabPage3.Controls.Add(Me.lbCCFocusMin)
-        Me.TabPage3.Controls.Add(Me.tbCCFocus)
-        Me.TabPage3.Controls.Add(Me.label4)
-        Me.TabPage3.Controls.Add(Me.cbCCZoomRelative)
-        Me.TabPage3.Controls.Add(Me.cbCCZoomManual)
-        Me.TabPage3.Controls.Add(Me.cbCCZoomAuto)
-        Me.TabPage3.Controls.Add(Me.lbCCZoomCurrent)
-        Me.TabPage3.Controls.Add(Me.lbCCZoomMax)
-        Me.TabPage3.Controls.Add(Me.lbCCZoomMin)
-        Me.TabPage3.Controls.Add(Me.tbCCZoom)
-        Me.TabPage3.Controls.Add(Me.label20)
-        Me.TabPage3.Controls.Add(Me.btCCTiltApply)
-        Me.TabPage3.Controls.Add(Me.btCCPanApply)
-        Me.TabPage3.Controls.Add(Me.cbCCTiltRelative)
-        Me.TabPage3.Controls.Add(Me.cbCCTiltManual)
-        Me.TabPage3.Controls.Add(Me.cbCCTiltAuto)
-        Me.TabPage3.Controls.Add(Me.lbCCTiltCurrent)
-        Me.TabPage3.Controls.Add(Me.lbCCTiltMax)
-        Me.TabPage3.Controls.Add(Me.lbCCTiltMin)
-        Me.TabPage3.Controls.Add(Me.tbCCTilt)
-        Me.TabPage3.Controls.Add(Me.label97)
-        Me.TabPage3.Controls.Add(Me.cbCCPanRelative)
-        Me.TabPage3.Controls.Add(Me.cbCCPanManual)
-        Me.TabPage3.Controls.Add(Me.cbCCPanAuto)
-        Me.TabPage3.Controls.Add(Me.btCCReadValues)
-        Me.TabPage3.Controls.Add(Me.lbCCPanCurrent)
-        Me.TabPage3.Controls.Add(Me.lbCCPanMax)
-        Me.TabPage3.Controls.Add(Me.lbCCPanMin)
-        Me.TabPage3.Controls.Add(Me.tbCCPan)
-        Me.TabPage3.Controls.Add(Me.label96)
-        Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(448, 246)
-        Me.TabPage3.TabIndex = 9
-        Me.TabPage3.Text = "Camera control"
-        Me.TabPage3.UseVisualStyleBackColor = True
-        '
-        'label1
-        '
-        Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(11, 10)
-        Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(208, 13)
-        Me.label1.TabIndex = 96
-        Me.label1.Text = "Many other parameters available using API"
-        '
-        'btCCFocusApply
-        '
-        Me.btCCFocusApply.Location = New System.Drawing.Point(235, 219)
-        Me.btCCFocusApply.Name = "btCCFocusApply"
-        Me.btCCFocusApply.Size = New System.Drawing.Size(75, 23)
-        Me.btCCFocusApply.TabIndex = 95
-        Me.btCCFocusApply.Text = "Apply"
-        Me.btCCFocusApply.UseVisualStyleBackColor = True
-        '
-        'btCCZoomApply
-        '
-        Me.btCCZoomApply.Location = New System.Drawing.Point(23, 219)
-        Me.btCCZoomApply.Name = "btCCZoomApply"
-        Me.btCCZoomApply.Size = New System.Drawing.Size(75, 23)
-        Me.btCCZoomApply.TabIndex = 94
-        Me.btCCZoomApply.Text = "Apply"
-        Me.btCCZoomApply.UseVisualStyleBackColor = True
-        '
-        'cbCCFocusRelative
-        '
-        Me.cbCCFocusRelative.AutoSize = True
-        Me.cbCCFocusRelative.Location = New System.Drawing.Point(346, 196)
-        Me.cbCCFocusRelative.Name = "cbCCFocusRelative"
-        Me.cbCCFocusRelative.Size = New System.Drawing.Size(65, 17)
-        Me.cbCCFocusRelative.TabIndex = 93
-        Me.cbCCFocusRelative.Text = "Relative"
-        Me.cbCCFocusRelative.UseVisualStyleBackColor = True
-        '
-        'cbCCFocusManual
-        '
-        Me.cbCCFocusManual.AutoSize = True
-        Me.cbCCFocusManual.Location = New System.Drawing.Point(283, 196)
-        Me.cbCCFocusManual.Name = "cbCCFocusManual"
-        Me.cbCCFocusManual.Size = New System.Drawing.Size(61, 17)
-        Me.cbCCFocusManual.TabIndex = 92
-        Me.cbCCFocusManual.Text = "Manual"
-        Me.cbCCFocusManual.UseVisualStyleBackColor = True
-        '
-        'cbCCFocusAuto
-        '
-        Me.cbCCFocusAuto.AutoSize = True
-        Me.cbCCFocusAuto.Location = New System.Drawing.Point(235, 196)
-        Me.cbCCFocusAuto.Name = "cbCCFocusAuto"
-        Me.cbCCFocusAuto.Size = New System.Drawing.Size(48, 17)
-        Me.cbCCFocusAuto.TabIndex = 91
-        Me.cbCCFocusAuto.Text = "Auto"
-        Me.cbCCFocusAuto.UseVisualStyleBackColor = True
-        '
-        'lbCCFocusCurrent
-        '
-        Me.lbCCFocusCurrent.AutoSize = True
-        Me.lbCCFocusCurrent.Location = New System.Drawing.Point(343, 172)
-        Me.lbCCFocusCurrent.Name = "lbCCFocusCurrent"
-        Me.lbCCFocusCurrent.Size = New System.Drawing.Size(65, 13)
-        Me.lbCCFocusCurrent.TabIndex = 90
-        Me.lbCCFocusCurrent.Text = "Current = 40"
-        '
-        'lbCCFocusMax
-        '
-        Me.lbCCFocusMax.AutoSize = True
-        Me.lbCCFocusMax.Location = New System.Drawing.Point(280, 172)
-        Me.lbCCFocusMax.Name = "lbCCFocusMax"
-        Me.lbCCFocusMax.Size = New System.Drawing.Size(57, 13)
-        Me.lbCCFocusMax.TabIndex = 89
-        Me.lbCCFocusMax.Text = "Max = 100"
-        '
-        'lbCCFocusMin
-        '
-        Me.lbCCFocusMin.AutoSize = True
-        Me.lbCCFocusMin.Location = New System.Drawing.Point(232, 172)
-        Me.lbCCFocusMin.Name = "lbCCFocusMin"
-        Me.lbCCFocusMin.Size = New System.Drawing.Size(42, 13)
-        Me.lbCCFocusMin.TabIndex = 88
-        Me.lbCCFocusMin.Text = "Min = 1"
-        '
-        'tbCCFocus
-        '
-        Me.tbCCFocus.BackColor = System.Drawing.SystemColors.Window
-        Me.tbCCFocus.Location = New System.Drawing.Point(258, 145)
-        Me.tbCCFocus.Maximum = 100
-        Me.tbCCFocus.Name = "tbCCFocus"
-        Me.tbCCFocus.Size = New System.Drawing.Size(159, 45)
-        Me.tbCCFocus.TabIndex = 87
-        Me.tbCCFocus.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbCCFocus.Value = 50
-        '
-        'label4
-        '
-        Me.label4.AutoSize = True
-        Me.label4.Location = New System.Drawing.Point(223, 149)
-        Me.label4.Name = "label4"
-        Me.label4.Size = New System.Drawing.Size(36, 13)
-        Me.label4.TabIndex = 86
-        Me.label4.Text = "Focus"
-        '
-        'cbCCZoomRelative
-        '
-        Me.cbCCZoomRelative.AutoSize = True
-        Me.cbCCZoomRelative.Location = New System.Drawing.Point(134, 196)
-        Me.cbCCZoomRelative.Name = "cbCCZoomRelative"
-        Me.cbCCZoomRelative.Size = New System.Drawing.Size(65, 17)
-        Me.cbCCZoomRelative.TabIndex = 85
-        Me.cbCCZoomRelative.Text = "Relative"
-        Me.cbCCZoomRelative.UseVisualStyleBackColor = True
-        '
-        'cbCCZoomManual
-        '
-        Me.cbCCZoomManual.AutoSize = True
-        Me.cbCCZoomManual.Location = New System.Drawing.Point(71, 196)
-        Me.cbCCZoomManual.Name = "cbCCZoomManual"
-        Me.cbCCZoomManual.Size = New System.Drawing.Size(61, 17)
-        Me.cbCCZoomManual.TabIndex = 84
-        Me.cbCCZoomManual.Text = "Manual"
-        Me.cbCCZoomManual.UseVisualStyleBackColor = True
-        '
-        'cbCCZoomAuto
-        '
-        Me.cbCCZoomAuto.AutoSize = True
-        Me.cbCCZoomAuto.Location = New System.Drawing.Point(23, 196)
-        Me.cbCCZoomAuto.Name = "cbCCZoomAuto"
-        Me.cbCCZoomAuto.Size = New System.Drawing.Size(48, 17)
-        Me.cbCCZoomAuto.TabIndex = 83
-        Me.cbCCZoomAuto.Text = "Auto"
-        Me.cbCCZoomAuto.UseVisualStyleBackColor = True
-        '
-        'lbCCZoomCurrent
-        '
-        Me.lbCCZoomCurrent.AutoSize = True
-        Me.lbCCZoomCurrent.Location = New System.Drawing.Point(131, 172)
-        Me.lbCCZoomCurrent.Name = "lbCCZoomCurrent"
-        Me.lbCCZoomCurrent.Size = New System.Drawing.Size(65, 13)
-        Me.lbCCZoomCurrent.TabIndex = 82
-        Me.lbCCZoomCurrent.Text = "Current = 40"
-        '
-        'lbCCZoomMax
-        '
-        Me.lbCCZoomMax.AutoSize = True
-        Me.lbCCZoomMax.Location = New System.Drawing.Point(68, 172)
-        Me.lbCCZoomMax.Name = "lbCCZoomMax"
-        Me.lbCCZoomMax.Size = New System.Drawing.Size(57, 13)
-        Me.lbCCZoomMax.TabIndex = 81
-        Me.lbCCZoomMax.Text = "Max = 100"
-        '
-        'lbCCZoomMin
-        '
-        Me.lbCCZoomMin.AutoSize = True
-        Me.lbCCZoomMin.Location = New System.Drawing.Point(20, 172)
-        Me.lbCCZoomMin.Name = "lbCCZoomMin"
-        Me.lbCCZoomMin.Size = New System.Drawing.Size(42, 13)
-        Me.lbCCZoomMin.TabIndex = 80
-        Me.lbCCZoomMin.Text = "Min = 1"
-        '
-        'tbCCZoom
-        '
-        Me.tbCCZoom.BackColor = System.Drawing.SystemColors.Window
-        Me.tbCCZoom.Location = New System.Drawing.Point(46, 145)
-        Me.tbCCZoom.Maximum = 100
-        Me.tbCCZoom.Name = "tbCCZoom"
-        Me.tbCCZoom.Size = New System.Drawing.Size(159, 45)
-        Me.tbCCZoom.TabIndex = 79
-        Me.tbCCZoom.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbCCZoom.Value = 50
-        '
-        'label20
-        '
-        Me.label20.AutoSize = True
-        Me.label20.Location = New System.Drawing.Point(11, 149)
-        Me.label20.Name = "label20"
-        Me.label20.Size = New System.Drawing.Size(34, 13)
-        Me.label20.TabIndex = 78
-        Me.label20.Text = "Zoom"
-        '
-        'btCCTiltApply
-        '
-        Me.btCCTiltApply.Location = New System.Drawing.Point(235, 103)
-        Me.btCCTiltApply.Name = "btCCTiltApply"
-        Me.btCCTiltApply.Size = New System.Drawing.Size(75, 23)
-        Me.btCCTiltApply.TabIndex = 77
-        Me.btCCTiltApply.Text = "Apply"
-        Me.btCCTiltApply.UseVisualStyleBackColor = True
-        '
-        'btCCPanApply
-        '
-        Me.btCCPanApply.Location = New System.Drawing.Point(23, 103)
-        Me.btCCPanApply.Name = "btCCPanApply"
-        Me.btCCPanApply.Size = New System.Drawing.Size(75, 23)
-        Me.btCCPanApply.TabIndex = 76
-        Me.btCCPanApply.Text = "Apply"
-        Me.btCCPanApply.UseVisualStyleBackColor = True
-        '
-        'cbCCTiltRelative
-        '
-        Me.cbCCTiltRelative.AutoSize = True
-        Me.cbCCTiltRelative.Location = New System.Drawing.Point(346, 80)
-        Me.cbCCTiltRelative.Name = "cbCCTiltRelative"
-        Me.cbCCTiltRelative.Size = New System.Drawing.Size(65, 17)
-        Me.cbCCTiltRelative.TabIndex = 75
-        Me.cbCCTiltRelative.Text = "Relative"
-        Me.cbCCTiltRelative.UseVisualStyleBackColor = True
-        '
-        'cbCCTiltManual
-        '
-        Me.cbCCTiltManual.AutoSize = True
-        Me.cbCCTiltManual.Location = New System.Drawing.Point(283, 80)
-        Me.cbCCTiltManual.Name = "cbCCTiltManual"
-        Me.cbCCTiltManual.Size = New System.Drawing.Size(61, 17)
-        Me.cbCCTiltManual.TabIndex = 74
-        Me.cbCCTiltManual.Text = "Manual"
-        Me.cbCCTiltManual.UseVisualStyleBackColor = True
-        '
-        'cbCCTiltAuto
-        '
-        Me.cbCCTiltAuto.AutoSize = True
-        Me.cbCCTiltAuto.Location = New System.Drawing.Point(235, 80)
-        Me.cbCCTiltAuto.Name = "cbCCTiltAuto"
-        Me.cbCCTiltAuto.Size = New System.Drawing.Size(48, 17)
-        Me.cbCCTiltAuto.TabIndex = 73
-        Me.cbCCTiltAuto.Text = "Auto"
-        Me.cbCCTiltAuto.UseVisualStyleBackColor = True
-        '
-        'lbCCTiltCurrent
-        '
-        Me.lbCCTiltCurrent.AutoSize = True
-        Me.lbCCTiltCurrent.Location = New System.Drawing.Point(343, 56)
-        Me.lbCCTiltCurrent.Name = "lbCCTiltCurrent"
-        Me.lbCCTiltCurrent.Size = New System.Drawing.Size(65, 13)
-        Me.lbCCTiltCurrent.TabIndex = 72
-        Me.lbCCTiltCurrent.Text = "Current = 40"
-        '
-        'lbCCTiltMax
-        '
-        Me.lbCCTiltMax.AutoSize = True
-        Me.lbCCTiltMax.Location = New System.Drawing.Point(280, 56)
-        Me.lbCCTiltMax.Name = "lbCCTiltMax"
-        Me.lbCCTiltMax.Size = New System.Drawing.Size(57, 13)
-        Me.lbCCTiltMax.TabIndex = 71
-        Me.lbCCTiltMax.Text = "Max = 100"
-        '
-        'lbCCTiltMin
-        '
-        Me.lbCCTiltMin.AutoSize = True
-        Me.lbCCTiltMin.Location = New System.Drawing.Point(232, 56)
-        Me.lbCCTiltMin.Name = "lbCCTiltMin"
-        Me.lbCCTiltMin.Size = New System.Drawing.Size(42, 13)
-        Me.lbCCTiltMin.TabIndex = 70
-        Me.lbCCTiltMin.Text = "Min = 1"
-        '
-        'tbCCTilt
-        '
-        Me.tbCCTilt.BackColor = System.Drawing.SystemColors.Window
-        Me.tbCCTilt.Location = New System.Drawing.Point(254, 29)
-        Me.tbCCTilt.Maximum = 100
-        Me.tbCCTilt.Name = "tbCCTilt"
-        Me.tbCCTilt.Size = New System.Drawing.Size(163, 45)
-        Me.tbCCTilt.TabIndex = 69
-        Me.tbCCTilt.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbCCTilt.Value = 50
-        '
-        'label97
-        '
-        Me.label97.AutoSize = True
-        Me.label97.Location = New System.Drawing.Point(223, 32)
-        Me.label97.Name = "label97"
-        Me.label97.Size = New System.Drawing.Size(21, 13)
-        Me.label97.TabIndex = 68
-        Me.label97.Text = "Tilt"
-        '
-        'cbCCPanRelative
-        '
-        Me.cbCCPanRelative.AutoSize = True
-        Me.cbCCPanRelative.Location = New System.Drawing.Point(134, 80)
-        Me.cbCCPanRelative.Name = "cbCCPanRelative"
-        Me.cbCCPanRelative.Size = New System.Drawing.Size(65, 17)
-        Me.cbCCPanRelative.TabIndex = 67
-        Me.cbCCPanRelative.Text = "Relative"
-        Me.cbCCPanRelative.UseVisualStyleBackColor = True
-        '
-        'cbCCPanManual
-        '
-        Me.cbCCPanManual.AutoSize = True
-        Me.cbCCPanManual.Location = New System.Drawing.Point(71, 80)
-        Me.cbCCPanManual.Name = "cbCCPanManual"
-        Me.cbCCPanManual.Size = New System.Drawing.Size(61, 17)
-        Me.cbCCPanManual.TabIndex = 66
-        Me.cbCCPanManual.Text = "Manual"
-        Me.cbCCPanManual.UseVisualStyleBackColor = True
-        '
-        'cbCCPanAuto
-        '
-        Me.cbCCPanAuto.AutoSize = True
-        Me.cbCCPanAuto.Location = New System.Drawing.Point(23, 80)
-        Me.cbCCPanAuto.Name = "cbCCPanAuto"
-        Me.cbCCPanAuto.Size = New System.Drawing.Size(48, 17)
-        Me.cbCCPanAuto.TabIndex = 65
-        Me.cbCCPanAuto.Text = "Auto"
-        Me.cbCCPanAuto.UseVisualStyleBackColor = True
-        '
-        'btCCReadValues
-        '
-        Me.btCCReadValues.AccessibleDescription = ""
-        Me.btCCReadValues.Location = New System.Drawing.Point(346, 5)
-        Me.btCCReadValues.Name = "btCCReadValues"
-        Me.btCCReadValues.Size = New System.Drawing.Size(91, 23)
-        Me.btCCReadValues.TabIndex = 64
-        Me.btCCReadValues.Text = "Read values"
-        Me.btCCReadValues.UseVisualStyleBackColor = True
-        '
-        'lbCCPanCurrent
-        '
-        Me.lbCCPanCurrent.AutoSize = True
-        Me.lbCCPanCurrent.Location = New System.Drawing.Point(131, 56)
-        Me.lbCCPanCurrent.Name = "lbCCPanCurrent"
-        Me.lbCCPanCurrent.Size = New System.Drawing.Size(65, 13)
-        Me.lbCCPanCurrent.TabIndex = 63
-        Me.lbCCPanCurrent.Text = "Current = 40"
-        '
-        'lbCCPanMax
-        '
-        Me.lbCCPanMax.AutoSize = True
-        Me.lbCCPanMax.Location = New System.Drawing.Point(68, 56)
-        Me.lbCCPanMax.Name = "lbCCPanMax"
-        Me.lbCCPanMax.Size = New System.Drawing.Size(57, 13)
-        Me.lbCCPanMax.TabIndex = 62
-        Me.lbCCPanMax.Text = "Max = 100"
-        '
-        'lbCCPanMin
-        '
-        Me.lbCCPanMin.AutoSize = True
-        Me.lbCCPanMin.Location = New System.Drawing.Point(20, 56)
-        Me.lbCCPanMin.Name = "lbCCPanMin"
-        Me.lbCCPanMin.Size = New System.Drawing.Size(42, 13)
-        Me.lbCCPanMin.TabIndex = 61
-        Me.lbCCPanMin.Text = "Min = 1"
-        '
-        'tbCCPan
-        '
-        Me.tbCCPan.BackColor = System.Drawing.SystemColors.Window
-        Me.tbCCPan.Location = New System.Drawing.Point(46, 29)
-        Me.tbCCPan.Maximum = 100
-        Me.tbCCPan.Name = "tbCCPan"
-        Me.tbCCPan.Size = New System.Drawing.Size(159, 45)
-        Me.tbCCPan.TabIndex = 60
-        Me.tbCCPan.TickStyle = System.Windows.Forms.TickStyle.None
-        Me.tbCCPan.Value = 50
-        '
-        'label96
-        '
-        Me.label96.AutoSize = True
-        Me.label96.Location = New System.Drawing.Point(11, 32)
-        Me.label96.Name = "label96"
-        Me.label96.Size = New System.Drawing.Size(26, 13)
-        Me.label96.TabIndex = 59
-        Me.label96.Text = "Pan"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -12632,6 +12632,12 @@ Partial Class Form1
         CType(Me.tbAdjHue, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbAdjContrast, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbAdjBrightness, System.ComponentModel.ISupportInitialize).EndInit
+        Me.TabPage3.ResumeLayout(False)
+        Me.TabPage3.PerformLayout
+        CType(Me.tbCCFocus, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbCCZoom, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbCCTilt, System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbCCPan, System.ComponentModel.ISupportInitialize).EndInit
         Me.TabPage9.ResumeLayout(False)
         Me.tabControl19.ResumeLayout(False)
         Me.tabPage96.ResumeLayout(False)
@@ -12910,12 +12916,6 @@ Partial Class Form1
         Me.TabPage143.ResumeLayout(False)
         Me.TabPage143.PerformLayout
         CType(Me.imgTagCover, System.ComponentModel.ISupportInitialize).EndInit
-        Me.TabPage3.ResumeLayout(False)
-        Me.TabPage3.PerformLayout
-        CType(Me.tbCCFocus, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbCCZoom, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbCCTilt, System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbCCPan, System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(False)
         Me.PerformLayout
 

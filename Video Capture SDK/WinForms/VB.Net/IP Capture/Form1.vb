@@ -219,8 +219,8 @@ Public Class Form1
         VideoCapture1.Debug_Mode = cbDebugMode.Checked
         VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
 
-        VideoCapture1.Audio_RecordAudio = False
-        VideoCapture1.Audio_PlayAudio = False
+        VideoCapture1.Audio_RecordAudio = True
+        VideoCapture1.Audio_PlayAudio = True
 
         If VideoCapture.Filter_Supported_EVR() Then
             VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
@@ -253,6 +253,11 @@ Public Class Form1
 
             Case 8 : VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_HTTP_FFMPEG
 
+            Case 9
+                VideoCapture1.IP_Camera_Source.Type = VFIPSource.HTTP_MJPEG_LowLatency
+                cbIPAudioCapture.Checked = False
+                VideoCapture1.Audio_RecordAudio = False
+                VideoCapture1.Audio_PlayAudio = False
         End Select
 
         VideoCapture1.IP_Camera_Source.URL = edIPUrl.Text

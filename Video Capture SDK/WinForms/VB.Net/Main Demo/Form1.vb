@@ -1893,6 +1893,9 @@ Public Class Form1
 
             Case 8 : settings.Type = VFIPSource.RTSP_HTTP_FFMPEG
 
+            Case 9
+                settings.Type = VFIPSource.HTTP_MJPEG_LowLatency
+                cbIPAudioCapture.Checked = False
         End Select
 
         settings.AudioCapture = cbIPAudioCapture.Checked

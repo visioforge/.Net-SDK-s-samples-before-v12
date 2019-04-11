@@ -158,6 +158,15 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
                     break;
                 case 8: VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_HTTP_FFMPEG;
                     break;
+                case 9:
+                    {
+                        // audio not supported
+                        VideoCapture1.IP_Camera_Source.Type = VFIPSource.HTTP_MJPEG_LowLatency;
+                        VideoCapture1.Audio_RecordAudio = false;
+                        VideoCapture1.Audio_PlayAudio = false;
+                        cbIPAudioCapture.Checked = false;
+                    }
+                    break;
             }
 
             VideoCapture1.IP_Camera_Source.AudioCapture = cbIPAudioCapture.Checked;
@@ -305,7 +314,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
 
             VideoCapture1.Start();
 
-            tcMain.SelectedIndex = 2;
+            tcMain.SelectedIndex = 3;
             tmRecording.Start();
         }
 
