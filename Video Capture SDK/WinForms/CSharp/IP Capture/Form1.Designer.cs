@@ -161,7 +161,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage1.Controls.Add(this.tabControl15);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(463, 350);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Input";
@@ -199,7 +199,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage144.Controls.Add(this.label168);
             this.tabPage144.Location = new System.Drawing.Point(4, 22);
             this.tabPage144.Name = "tabPage144";
-            this.tabPage144.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage144.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage144.Size = new System.Drawing.Size(439, 288);
             this.tabPage144.TabIndex = 0;
             this.tabPage144.Text = "Main";
@@ -266,7 +266,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // edIPForcedFramerateID
             // 
             this.edIPForcedFramerateID.Location = new System.Drawing.Point(267, 131);
-            this.edIPForcedFramerateID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edIPForcedFramerateID.Margin = new System.Windows.Forms.Padding(2);
             this.edIPForcedFramerateID.Name = "edIPForcedFramerateID";
             this.edIPForcedFramerateID.Size = new System.Drawing.Size(32, 20);
             this.edIPForcedFramerateID.TabIndex = 71;
@@ -285,7 +285,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // edIPForcedFramerate
             // 
             this.edIPForcedFramerate.Location = new System.Drawing.Point(114, 131);
-            this.edIPForcedFramerate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.edIPForcedFramerate.Margin = new System.Windows.Forms.Padding(2);
             this.edIPForcedFramerate.Name = "edIPForcedFramerate";
             this.edIPForcedFramerate.Size = new System.Drawing.Size(32, 20);
             this.edIPForcedFramerate.TabIndex = 69;
@@ -315,7 +315,8 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             "RTSP - UDP (FFMPEG engine)",
             "RTSP - TCP (FFMPEG engine)",
             "RTSP over HTTP (FFMPEG engine)",
-            "HTTP MJPEG Low Latency"});
+            "HTTP MJPEG Low Latency",
+            "RTSP Low Latency"});
             this.cbIPCameraType.Location = new System.Drawing.Point(57, 41);
             this.cbIPCameraType.Name = "cbIPCameraType";
             this.cbIPCameraType.Size = new System.Drawing.Size(227, 21);
@@ -381,7 +382,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage146.Controls.Add(this.label312);
             this.tabPage146.Location = new System.Drawing.Point(4, 22);
             this.tabPage146.Name = "tabPage146";
-            this.tabPage146.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage146.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage146.Size = new System.Drawing.Size(439, 288);
             this.tabPage146.TabIndex = 2;
             this.tabPage146.Text = "VLC";
@@ -430,7 +431,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage145.Controls.Add(this.btONVIFConnect);
             this.tabPage145.Location = new System.Drawing.Point(4, 22);
             this.tabPage145.Name = "tabPage145";
-            this.tabPage145.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage145.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage145.Size = new System.Drawing.Size(439, 288);
             this.tabPage145.TabIndex = 1;
             this.tabPage145.Text = "ONVIF";
@@ -627,7 +628,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(463, 350);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output";
@@ -734,9 +735,9 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage3.Controls.Add(this.lbLogos);
             this.tabPage3.Controls.Add(this.btImageLogoAdd);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage3.Size = new System.Drawing.Size(463, 350);
             this.tabPage3.TabIndex = 4;
             this.tabPage3.Text = "Video effects";
@@ -937,7 +938,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage7.Controls.Add(this.mmLog);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(463, 350);
             this.tabPage7.TabIndex = 3;
             this.tabPage7.Text = "Log";

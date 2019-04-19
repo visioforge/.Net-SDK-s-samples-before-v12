@@ -303,8 +303,8 @@ namespace IP_Capture
             VideoCapture1.Debug_Dir =
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
 
-            VideoCapture1.Audio_RecordAudio = true;
-            VideoCapture1.Audio_PlayAudio = true;
+            VideoCapture1.Audio_RecordAudio = cbIPAudioCapture.IsChecked == true;
+            VideoCapture1.Audio_PlayAudio = cbIPAudioCapture.IsChecked == true;
 
             VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.WPF;
 
@@ -349,6 +349,10 @@ namespace IP_Capture
                     VideoCapture1.Audio_RecordAudio = false;
                     VideoCapture1.Audio_PlayAudio = false;
 
+                    break;
+
+                case 10:
+                    VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
                     break;
             }
 

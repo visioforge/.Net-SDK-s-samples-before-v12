@@ -2359,6 +2359,9 @@ namespace VideoCapture_CSharp_Demo
                         cbIPAudioCapture.Checked = false;
                     }
                     break;
+                case 10:
+                    settings.Type = VFIPSource.RTSP_LowLatency;
+                    break;
             }
 
             settings.AudioCapture = cbIPAudioCapture.Checked;

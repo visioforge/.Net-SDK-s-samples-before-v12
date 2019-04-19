@@ -114,8 +114,8 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             VideoCapture1.Debug_Mode = cbDebugMode.Checked;
             VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
        
-            VideoCapture1.Audio_RecordAudio = true;
-            VideoCapture1.Audio_PlayAudio = true;
+            VideoCapture1.Audio_RecordAudio = cbIPAudioCapture.Checked;
+            VideoCapture1.Audio_PlayAudio = cbIPAudioCapture.Checked;
 
             if (VideoCapture.Filter_Supported_EVR())
             {
@@ -166,6 +166,9 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
                         VideoCapture1.Audio_PlayAudio = false;
                         cbIPAudioCapture.Checked = false;
                     }
+                    break;
+                case 10:
+                    VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
                     break;
             }
 

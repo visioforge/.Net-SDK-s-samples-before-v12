@@ -151,7 +151,7 @@ Partial Class Form1
         Me.tabPage1.Controls.Add(Me.tabControl15)
         Me.tabPage1.Location = New System.Drawing.Point(4, 22)
         Me.tabPage1.Name = "tabPage1"
-        Me.tabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage1.Size = New System.Drawing.Size(464, 339)
         Me.tabPage1.TabIndex = 0
         Me.tabPage1.Text = "Input"
@@ -189,7 +189,7 @@ Partial Class Form1
         Me.tabPage144.Controls.Add(Me.label168)
         Me.tabPage144.Location = New System.Drawing.Point(4, 22)
         Me.tabPage144.Name = "tabPage144"
-        Me.tabPage144.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage144.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage144.Size = New System.Drawing.Size(439, 285)
         Me.tabPage144.TabIndex = 0
         Me.tabPage144.Text = "Main"
@@ -254,7 +254,7 @@ Partial Class Form1
         'edIPForcedFramerateID
         '
         Me.edIPForcedFramerateID.Location = New System.Drawing.Point(266, 135)
-        Me.edIPForcedFramerateID.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.edIPForcedFramerateID.Margin = New System.Windows.Forms.Padding(2)
         Me.edIPForcedFramerateID.Name = "edIPForcedFramerateID"
         Me.edIPForcedFramerateID.Size = New System.Drawing.Size(32, 20)
         Me.edIPForcedFramerateID.TabIndex = 71
@@ -273,7 +273,7 @@ Partial Class Form1
         'edIPForcedFramerate
         '
         Me.edIPForcedFramerate.Location = New System.Drawing.Point(113, 135)
-        Me.edIPForcedFramerate.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.edIPForcedFramerate.Margin = New System.Windows.Forms.Padding(2)
         Me.edIPForcedFramerate.Name = "edIPForcedFramerate"
         Me.edIPForcedFramerate.Size = New System.Drawing.Size(32, 20)
         Me.edIPForcedFramerate.TabIndex = 69
@@ -293,7 +293,7 @@ Partial Class Form1
         '
         Me.cbIPCameraType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbIPCameraType.FormattingEnabled = True
-        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency"})
+        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency", "RTSP Low Latency"})
         Me.cbIPCameraType.Location = New System.Drawing.Point(56, 45)
         Me.cbIPCameraType.Name = "cbIPCameraType"
         Me.cbIPCameraType.Size = New System.Drawing.Size(227, 21)
@@ -359,7 +359,7 @@ Partial Class Form1
         Me.tabPage146.Controls.Add(Me.label312)
         Me.tabPage146.Location = New System.Drawing.Point(4, 22)
         Me.tabPage146.Name = "tabPage146"
-        Me.tabPage146.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage146.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage146.Size = New System.Drawing.Size(439, 285)
         Me.tabPage146.TabIndex = 2
         Me.tabPage146.Text = "VLC"
@@ -408,7 +408,7 @@ Partial Class Form1
         Me.tabPage145.Controls.Add(Me.btONVIFConnect)
         Me.tabPage145.Location = New System.Drawing.Point(4, 22)
         Me.tabPage145.Name = "tabPage145"
-        Me.tabPage145.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage145.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage145.Size = New System.Drawing.Size(439, 285)
         Me.tabPage145.TabIndex = 1
         Me.tabPage145.Text = "ONVIF"
@@ -597,7 +597,7 @@ Partial Class Form1
         Me.tabPage2.Controls.Add(Me.label7)
         Me.tabPage2.Location = New System.Drawing.Point(4, 22)
         Me.tabPage2.Name = "tabPage2"
-        Me.tabPage2.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tabPage2.Padding = New System.Windows.Forms.Padding(3)
         Me.tabPage2.Size = New System.Drawing.Size(464, 339)
         Me.tabPage2.TabIndex = 1
         Me.tabPage2.Text = "Output"
@@ -688,9 +688,9 @@ Partial Class Form1
         Me.TabPage3.Controls.Add(Me.lbLogos)
         Me.TabPage3.Controls.Add(Me.btImageLogoAdd)
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage3.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage3.Name = "TabPage3"
-        Me.TabPage3.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage3.Padding = New System.Windows.Forms.Padding(2)
         Me.TabPage3.Size = New System.Drawing.Size(464, 339)
         Me.TabPage3.TabIndex = 4
         Me.TabPage3.Text = "Video effects"
@@ -879,7 +879,7 @@ Partial Class Form1
         Me.TabPage7.Controls.Add(Me.mmLog)
         Me.TabPage7.Location = New System.Drawing.Point(4, 22)
         Me.TabPage7.Name = "TabPage7"
-        Me.TabPage7.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage7.Size = New System.Drawing.Size(464, 339)
         Me.TabPage7.TabIndex = 3
         Me.TabPage7.Text = "Log"

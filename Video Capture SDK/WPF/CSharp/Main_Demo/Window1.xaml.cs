@@ -749,6 +749,9 @@ namespace Main_Demo
                     settings.Type = VFIPSource.HTTP_MJPEG_LowLatency;
                     cbIPAudioCapture.IsChecked = false;
                     break;
+                case 10:
+                    VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
+                    break;
             }
 
             settings.AudioCapture = cbIPAudioCapture.IsChecked == true;

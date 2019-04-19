@@ -1875,27 +1875,39 @@ Public Class Form1
 
         Select Case (cbIPCameraType.SelectedIndex)
 
-            Case 0 : settings.Type = VFIPSource.Auto_VLC
+            Case 0
+                settings.Type = VFIPSource.Auto_VLC
 
-            Case 1 : settings.Type = VFIPSource.Auto_FFMPEG
+            Case 1
+                settings.Type = VFIPSource.Auto_FFMPEG
 
-            Case 2 : settings.Type = VFIPSource.Auto_LAV
+            Case 2
+                settings.Type = VFIPSource.Auto_LAV
 
-            Case 3 : settings.Type = VFIPSource.RTSP_Live555
+            Case 3
+                settings.Type = VFIPSource.RTSP_Live555
 
-            Case 4 : settings.Type = VFIPSource.HTTP_FFMPEG
+            Case 4
+                settings.Type = VFIPSource.HTTP_FFMPEG
 
-            Case 5 : settings.Type = VFIPSource.MMS_WMV
+            Case 5
+                settings.Type = VFIPSource.MMS_WMV
 
-            Case 6 : settings.Type = VFIPSource.RTSP_UDP_FFMPEG
+            Case 6
+                settings.Type = VFIPSource.RTSP_UDP_FFMPEG
 
-            Case 7 : settings.Type = VFIPSource.RTSP_TCP_FFMPEG
+            Case 7
+                settings.Type = VFIPSource.RTSP_TCP_FFMPEG
 
-            Case 8 : settings.Type = VFIPSource.RTSP_HTTP_FFMPEG
+            Case 8
+                settings.Type = VFIPSource.RTSP_HTTP_FFMPEG
 
             Case 9
                 settings.Type = VFIPSource.HTTP_MJPEG_LowLatency
                 cbIPAudioCapture.Checked = False
+
+            Case 10
+                VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency
         End Select
 
         settings.AudioCapture = cbIPAudioCapture.Checked
