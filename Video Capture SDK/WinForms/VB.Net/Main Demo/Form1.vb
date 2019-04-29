@@ -3266,6 +3266,10 @@ Public Class Form1
 
     Private Sub VUDelegateMethod(ByVal e As VUMeterEventArgs)
 
+        If (VideoCapture1.Status = VFVideoCaptureStatus.Free) Then
+            Return
+        End If
+
         peakMeterCtrl1.SetData(e.MeterData, 0, 19)
 
     End Sub

@@ -2468,6 +2468,7 @@ namespace VideoCapture_CSharp_Demo
             // clear VU Meters
             peakMeterCtrl1.SetData(new int[19], 0, 19);
             peakMeterCtrl1.Stop();
+
             waveformPainter1.Clear();
             waveformPainter2.Clear();
 
@@ -3940,6 +3941,11 @@ namespace VideoCapture_CSharp_Demo
 
         public void VUDelegateMethod(VUMeterEventArgs e)
         {
+            if (VideoCapture1.Status == VFVideoCaptureStatus.Free)
+            {
+                return;
+            }
+
             peakMeterCtrl1.SetData(e.MeterData, 0, 19);
         }
 

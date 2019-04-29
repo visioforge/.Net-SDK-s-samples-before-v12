@@ -2875,6 +2875,11 @@ namespace VideoEdit_CS_Demo
 
         private void VideoEdit1_OnAudioVUMeter(object sender, VUMeterEventArgs e)
         {
+            if (VideoEdit1.Status == VFVideoEditStatus.Free)
+            {
+                return;
+            }
+
             BeginInvoke(new VUDelegate(VUDelegateMethod), e);
         }
 

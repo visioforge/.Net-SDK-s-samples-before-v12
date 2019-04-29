@@ -2541,6 +2541,10 @@ Public Class Form1
     Private Delegate Sub VUDelegate(ByVal e As VUMeterEventArgs)
 
     Private Sub VUDelegateMethod(ByVal e As VUMeterEventArgs)
+        If (VideoEdit1.Status = VFVideoEditStatus.Free) Then
+            Return
+        End If
+
         peakMeterCtrl1.SetData(e.MeterData, 0, 19)
     End Sub
 
