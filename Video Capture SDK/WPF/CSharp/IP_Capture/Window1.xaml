@@ -29,7 +29,8 @@
                                     <ComboBoxItem Content="RTSP - TCP (FFMPEG engine)" />
                                     <ComboBoxItem Content="RTSP over HTTP (FFMPEG engine)" />
                                     <ComboBoxItem Content="HTTP MJPEG Low Latency"/>
-                                    <ComboBoxItem Content="RTSP Low Latency"/>
+                                    <ComboBoxItem Content="RTSP Low Latency TCP"/>
+                                    <ComboBoxItem Content="RTSP Low Latency UDP"/>
                                 </ComboBox>
                                 <Label x:Name="lbVLCRedist" Content="Please install VisioForge VLC redist to use VLC engine " HorizontalAlignment="Left" Margin="10,267,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist_MouseLeftButtonDown"/>
                                 <Button x:Name="btShowIPCamDatabase" Content="Show IP cam database" HorizontalAlignment="Left" Margin="350,273,0,0" VerticalAlignment="Top" Width="148" Click="btShowIPCamDatabase_Click"/>

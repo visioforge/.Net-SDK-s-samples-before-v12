@@ -1907,7 +1907,11 @@ Public Class Form1
                 cbIPAudioCapture.Checked = False
 
             Case 10
-                VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency
+                settings.Type = VFIPSource.RTSP_LowLatency
+                settings.RTSP_LowLatency_UseUDP = False
+            Case 11
+                settings.Type = VFIPSource.RTSP_LowLatency
+                settings.RTSP_LowLatency_UseUDP = True
         End Select
 
         settings.AudioCapture = cbIPAudioCapture.Checked

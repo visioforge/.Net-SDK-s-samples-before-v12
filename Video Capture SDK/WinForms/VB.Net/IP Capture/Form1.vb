@@ -261,6 +261,10 @@ Public Class Form1
 
             Case 10
                 VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency
+                VideoCapture1.IP_Camera_Source.RTSP_LowLatency_UseUDP = False
+            Case 11
+                VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency
+                VideoCapture1.IP_Camera_Source.RTSP_LowLatency_UseUDP = True
         End Select
 
         VideoCapture1.IP_Camera_Source.URL = edIPUrl.Text

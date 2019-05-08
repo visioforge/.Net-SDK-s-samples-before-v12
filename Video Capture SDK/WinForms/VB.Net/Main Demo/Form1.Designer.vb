@@ -3786,7 +3786,7 @@ Partial Class Form1
         '
         Me.cbIPCameraType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbIPCameraType.FormattingEnabled = True
-        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency", "RTSP Low Latency"})
+        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency", "RTSP Low Latency TCP", "RTSP Low Latency UDP"})
         Me.cbIPCameraType.Location = New System.Drawing.Point(58, 40)
         Me.cbIPCameraType.Name = "cbIPCameraType"
         Me.cbIPCameraType.Size = New System.Drawing.Size(227, 21)

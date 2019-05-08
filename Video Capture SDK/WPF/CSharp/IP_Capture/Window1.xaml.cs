@@ -353,6 +353,11 @@ namespace IP_Capture
 
                 case 10:
                     VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
+                    VideoCapture1.IP_Camera_Source.RTSP_LowLatency_UseUDP = false;
+                    break;
+                case 11:
+                    VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
+                    VideoCapture1.IP_Camera_Source.RTSP_LowLatency_UseUDP = true;
                     break;
             }
 

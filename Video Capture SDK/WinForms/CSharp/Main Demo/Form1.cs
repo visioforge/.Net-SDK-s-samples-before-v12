@@ -2361,6 +2361,11 @@ namespace VideoCapture_CSharp_Demo
                     break;
                 case 10:
                     settings.Type = VFIPSource.RTSP_LowLatency;
+                    settings.RTSP_LowLatency_UseUDP = false;
+                    break;
+                case 11:
+                    settings.Type = VFIPSource.RTSP_LowLatency;
+                    settings.RTSP_LowLatency_UseUDP = true;
                     break;
             }
 

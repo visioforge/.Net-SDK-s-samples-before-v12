@@ -9491,7 +9491,8 @@ namespace VideoCapture_CSharp_Demo
             "RTSP - TCP (FFMPEG engine)",
             "RTSP over HTTP (FFMPEG engine)",
             "HTTP MJPEG Low Latency",
-            "RTSP Low Latency"});
+            "RTSP Low Latency TCP",
+            "RTSP Low Latency UDP"});
             this.cbIPCameraType.Location = new System.Drawing.Point(55, 50);
             this.cbIPCameraType.Name = "cbIPCameraType";
             this.cbIPCameraType.Size = new System.Drawing.Size(227, 21);

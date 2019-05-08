@@ -750,7 +750,12 @@ namespace Main_Demo
                     cbIPAudioCapture.IsChecked = false;
                     break;
                 case 10:
-                    VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
+                    settings.Type = VFIPSource.RTSP_LowLatency;
+                    settings.RTSP_LowLatency_UseUDP = false;
+                    break;
+                case 11:
+                    settings.Type = VFIPSource.RTSP_LowLatency;
+                    settings.RTSP_LowLatency_UseUDP = true;
                     break;
             }
 
