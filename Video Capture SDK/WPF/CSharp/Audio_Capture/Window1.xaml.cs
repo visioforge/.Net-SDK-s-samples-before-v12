@@ -1,5 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs;
 using VisioForge.Controls.UI.Dialogs.OutputFormats;
 using VisioForge.Controls.VideoCapture;
@@ -526,7 +527,7 @@ namespace Audio_Capture
 
         private void llVideoTutorials_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

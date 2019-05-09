@@ -30,6 +30,7 @@ Partial Class Form1
         Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.tabControl3 = New System.Windows.Forms.TabControl()
         Me.tabPage10 = New System.Windows.Forms.TabPage()
+        Me.cbTelemetry = New System.Windows.Forms.CheckBox()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.mmLog = New System.Windows.Forms.TextBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
@@ -597,7 +598,6 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
-        Me.cbTelemetry = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout()
         Me.tabPage10.SuspendLayout()
         Me.tabPage9.SuspendLayout()
@@ -768,6 +768,18 @@ Partial Class Form1
         Me.tabPage10.TabIndex = 2
         Me.tabPage10.Text = "Debug"
         Me.tabPage10.UseVisualStyleBackColor = True
+        '
+        'cbTelemetry
+        '
+        Me.cbTelemetry.AutoSize = True
+        Me.cbTelemetry.Checked = True
+        Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbTelemetry.Location = New System.Drawing.Point(206, 13)
+        Me.cbTelemetry.Name = "cbTelemetry"
+        Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
+        Me.cbTelemetry.TabIndex = 5
+        Me.cbTelemetry.Text = "Telemetry"
+        Me.cbTelemetry.UseVisualStyleBackColor = True
         '
         'cbLicensing
         '
@@ -4445,8 +4457,7 @@ Partial Class Form1
         'tbAudioTimeshift
         '
         Me.tbAudioTimeshift.Location = New System.Drawing.Point(65, 435)
-        Me.tbAudioTimeshift.Maximum = 1000
-        Me.tbAudioTimeshift.Minimum = -1000
+        Me.tbAudioTimeshift.Maximum = 3000
         Me.tbAudioTimeshift.Name = "tbAudioTimeshift"
         Me.tbAudioTimeshift.Size = New System.Drawing.Size(104, 45)
         Me.tbAudioTimeshift.SmallChange = 10
@@ -6659,6 +6670,7 @@ Partial Class Form1
         Me.MediaPlayer1.MultiScreen_Enabled = False
         Me.MediaPlayer1.Name = "MediaPlayer1"
         Me.MediaPlayer1.Play_DelayEnabled = False
+        Me.MediaPlayer1.Play_PauseAtFirstFrame = False
         Me.MediaPlayer1.ReversePlayback_CacheSize = 0
         Me.MediaPlayer1.ReversePlayback_Enabled = False
         Me.MediaPlayer1.Selection_Active = False
@@ -6692,18 +6704,6 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
-        '
-        'cbTelemetry
-        '
-        Me.cbTelemetry.AutoSize = True
-        Me.cbTelemetry.Checked = True
-        Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbTelemetry.Location = New System.Drawing.Point(206, 13)
-        Me.cbTelemetry.Name = "cbTelemetry"
-        Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
-        Me.cbTelemetry.TabIndex = 5
-        Me.cbTelemetry.Text = "Telemetry"
-        Me.cbTelemetry.UseVisualStyleBackColor = True
         '
         'Form1
         '

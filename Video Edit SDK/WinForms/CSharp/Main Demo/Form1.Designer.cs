@@ -31,7 +31,7 @@ namespace VideoEdit_CS_Demo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms4 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -2900,8 +2900,7 @@ namespace VideoEdit_CS_Demo
             // tbAudioTimeshift
             // 
             this.tbAudioTimeshift.Location = new System.Drawing.Point(64, 440);
-            this.tbAudioTimeshift.Maximum = 1000;
-            this.tbAudioTimeshift.Minimum = -1000;
+            this.tbAudioTimeshift.Maximum = 3000;
             this.tbAudioTimeshift.Name = "tbAudioTimeshift";
             this.tbAudioTimeshift.Size = new System.Drawing.Size(104, 45);
             this.tbAudioTimeshift.SmallChange = 10;
@@ -7133,6 +7132,7 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Decklink_Output = null;
             this.VideoEdit1.Dynamic_Reconnection = false;
             this.VideoEdit1.Location = new System.Drawing.Point(331, 322);
+            this.VideoEdit1.Loop = false;
             this.VideoEdit1.Mode = VisioForge.Types.VFVideoEditMode.Convert;
             this.VideoEdit1.Motion_Detection = null;
             this.VideoEdit1.Motion_DetectionEx = null;
@@ -7157,23 +7157,23 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Video_Effects_Enabled = false;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
-            videoRendererSettingsWinForms4.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms4.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms4.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms4.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms4.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms4.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms4.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms4.Flip_Horizontal = false;
-            videoRendererSettingsWinForms4.Flip_Vertical = false;
-            videoRendererSettingsWinForms4.RotationAngle = 0;
-            videoRendererSettingsWinForms4.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms4.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms4.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms4.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms4.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms4.Zoom_ShiftY = 0;
-            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms4;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms1;
             this.VideoEdit1.Video_Resize = false;
             this.VideoEdit1.Video_Resize_Height = 480;
             this.VideoEdit1.Video_Resize_Width = 640;

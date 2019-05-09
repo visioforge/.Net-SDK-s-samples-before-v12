@@ -9313,8 +9313,7 @@ Partial Class Form1
         'tbAudioTimeshift
         '
         Me.tbAudioTimeshift.Location = New System.Drawing.Point(68, 432)
-        Me.tbAudioTimeshift.Maximum = 1000
-        Me.tbAudioTimeshift.Minimum = -1000
+        Me.tbAudioTimeshift.Maximum = 3000
         Me.tbAudioTimeshift.Name = "tbAudioTimeshift"
         Me.tbAudioTimeshift.Size = New System.Drawing.Size(104, 45)
         Me.tbAudioTimeshift.SmallChange = 10

@@ -1,5 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.OutputFormats;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
 using VisioForge.Tools;
@@ -53,7 +54,7 @@ namespace Video_From_Images
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

@@ -2,6 +2,7 @@
 
 Imports System.Globalization
 Imports System.IO
+Imports VisioForge.Controls.UI
 Imports VisioForge.Controls.UI.Dialogs.OutputFormats
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types
@@ -1120,7 +1121,7 @@ Public Class Form1
         lbTransitions.Items.Add(cbTransitionName.Text + "(Start: " + edTransStartTime.Text + ", stop: " + edTransStopTime.Text + ")")
 
     End Sub
-    
+
     Private Sub cbGreyscale_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
 
         Dim intf As IVFVideoEffectGrayscale
@@ -1152,7 +1153,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub Form1_FormClosing(ByVal sender As Object, ByVal e As FormClosingEventArgs) Handles MyBase.FormClosing
 
         VideoEdit1.Stop()
@@ -1207,7 +1208,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub tbContrast_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbContrast.Scroll
 
         Dim contrast As IVFVideoEffectContrast
@@ -1492,7 +1493,7 @@ Public Class Form1
 
     Private Sub linkLabel1_LinkClicked(ByVal sender As Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub
@@ -1814,7 +1815,7 @@ Public Class Form1
 
     Private Sub LinkLabel4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel4.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/878966-Streaming-to-Adobe-Flash-Media-Server")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.StreamingToAdobeFlashServer)
         Process.Start(startInfo)
 
     End Sub
@@ -1915,7 +1916,7 @@ Public Class Form1
 
     Private Sub linkLabel5_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel5.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/240078-How-to-configure-IIS-Smooth-Streaming-in-SDK-demo-application")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.IISSmoothStreaming)
         Process.Start(startInfo)
 
     End Sub
@@ -2293,7 +2294,7 @@ Public Class Form1
 
     Private Sub FFMPEGDownloadLinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel3.LinkClicked, LinkLabel2.LinkClicked, linkLabel10.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_ffmpeg_exe_x86_x64.exe")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistFFMPEGx86x64)
         Process.Start(startInfo)
 
     End Sub
@@ -2321,7 +2322,7 @@ Public Class Form1
 
     Private Sub linkLabel11_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel11.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://support.visioforge.com/577349-Network-streaming-to-YouTube")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.NetworkStreamingToYouTube)
         Process.Start(startInfo)
 
     End Sub

@@ -1,4 +1,5 @@
 using System.Threading;
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
 // ReSharper disable NotAccessedVariable
 // ReSharper disable InconsistentNaming
@@ -2345,7 +2346,7 @@ namespace Media_Player_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
@@ -2797,7 +2798,7 @@ namespace Media_Player_Demo
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_vlc_x86.exe");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
             Process.Start(startInfo);
         }
 

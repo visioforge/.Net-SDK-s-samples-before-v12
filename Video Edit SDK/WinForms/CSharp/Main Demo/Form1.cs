@@ -4,6 +4,7 @@
 // ReSharper disable RedundantArgumentDefaultValue
 // ReSharper disable UnusedParameter.Local
 
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.OutputFormats;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
 using VisioForge.Tools;
@@ -1350,7 +1351,7 @@ namespace VideoEdit_CS_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
@@ -2211,19 +2212,19 @@ namespace VideoEdit_CS_Demo
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://support.visioforge.com/878966-Streaming-to-Adobe-Flash-Media-Server");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.StreamingToAdobeFlashServer);
             Process.Start(startInfo);
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://support.visioforge.com/300487-Streaming-using-Microsoft-Expression-Encoder");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.StreamingMSExpressionEncoder);
             Process.Start(startInfo);
         }
 
         private void linkLabel6_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://support.visioforge.com/240078-How-to-configure-IIS-Smooth-Streaming-in-SDK-demo-application");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.IISSmoothStreaming);
             Process.Start(startInfo);
         }
 
@@ -2585,7 +2586,7 @@ namespace VideoEdit_CS_Demo
 
         private void FFMPEGDownloadLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_ffmpeg_exe_x86_x64.exe");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistFFMPEGx86x64);
             Process.Start(startInfo);
         }
 
@@ -2614,7 +2615,7 @@ namespace VideoEdit_CS_Demo
 
         private void linkLabel11_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://support.visioforge.com/577349-Network-streaming-to-YouTube");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.NetworkStreamingToYouTube);
             Process.Start(startInfo);
         }
 

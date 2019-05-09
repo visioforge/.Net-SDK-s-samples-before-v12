@@ -1,6 +1,7 @@
 // ReSharper disable InconsistentNaming
 
 using VisioForge.Controls.MediaPlayer;
+using VisioForge.Controls.UI;
 
 namespace Audio_Player_Demo
 {
@@ -115,7 +116,7 @@ namespace Audio_Player_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe",HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

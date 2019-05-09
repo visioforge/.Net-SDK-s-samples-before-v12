@@ -3911,7 +3911,7 @@ namespace VideoCapture_CSharp_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
@@ -4392,7 +4392,7 @@ namespace VideoCapture_CSharp_Demo
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://support.visioforge.com/878966-Streaming-to-Adobe-Flash-Media-Server");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.StreamingToAdobeFlashServer);
             Process.Start(startInfo);
         }
 
@@ -4424,7 +4424,7 @@ namespace VideoCapture_CSharp_Demo
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://support.visioforge.com/300487-Streaming-using-Microsoft-Expression-Encoder");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.StreamingMSExpressionEncoder);
             Process.Start(startInfo);
         }
 
@@ -4541,7 +4541,7 @@ namespace VideoCapture_CSharp_Demo
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://support.visioforge.com/240078-How-to-configure-IIS-Smooth-Streaming-in-SDK-demo-application");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.IISSmoothStreaming);
             Process.Start(startInfo);
         }
 
@@ -4972,13 +4972,13 @@ namespace VideoCapture_CSharp_Demo
 
         private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_vlc_x86.exe");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
             Process.Start(startInfo);
         }
 
         private void FFMPEGDownloadLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_ffmpeg_exe_x86_x64.exe");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistFFMPEGx86x64);
             Process.Start(startInfo);
         }
 
@@ -5007,7 +5007,7 @@ namespace VideoCapture_CSharp_Demo
 
         private void linkLabel11_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://support.visioforge.com/577349-Network-streaming-to-YouTube");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.NetworkStreamingToYouTube);
             Process.Start(startInfo);
         }
 
@@ -5467,7 +5467,7 @@ namespace VideoCapture_CSharp_Demo
 
         private void lbHLSConfigure_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://support.visioforge.com/608296-HLS-streaming");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.HLSStreaming);
             Process.Start(startInfo);
         }
 

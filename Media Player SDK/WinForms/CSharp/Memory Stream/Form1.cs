@@ -1,5 +1,7 @@
 // ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.UI;
+
 namespace Memory_Stream_Demo
 {
     using System;
@@ -36,7 +38,7 @@ namespace Memory_Stream_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
@@ -50,7 +52,7 @@ namespace Memory_Stream_Demo
 
         private void btStart_Click(object sender, EventArgs e)
         {
-            mmError.Text = String.Empty;
+            mmError.Text = string.Empty;
 
             if (rbSTreamTypeFile.Checked)
             {
@@ -58,7 +60,6 @@ namespace Memory_Stream_Demo
                 _stream = new ManagedIStream(_fileStream);
 
                 // specifying settings
-                // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
                 MediaPlayer1.Source_Stream = _stream;
                 MediaPlayer1.Source_Stream_Size = _fileStream.Length;
             }
@@ -69,7 +70,6 @@ namespace Memory_Stream_Demo
                 _stream = new ManagedIStream(_memoryStream);
 
                 // specifying settings
-                // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
                 MediaPlayer1.Source_Stream = _stream;
                 MediaPlayer1.Source_Stream_Size = _memoryStream.Length;
             }

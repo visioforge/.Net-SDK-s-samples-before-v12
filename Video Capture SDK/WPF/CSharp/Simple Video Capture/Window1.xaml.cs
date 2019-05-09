@@ -4,6 +4,7 @@
 // ReSharper disable InlineOutVariableDeclaration
 
 using System.IO;
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs;
 using VisioForge.Controls.UI.Dialogs.OutputFormats;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
@@ -230,7 +231,7 @@ namespace Simple_Video_Capture
 
         private void lbViewVideoTutorials_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

@@ -3,6 +3,7 @@
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable NotAccessedVariable
 
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
 
@@ -1975,7 +1976,7 @@ namespace Main_Demo
 
         private void label129_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
@@ -2547,7 +2548,7 @@ namespace Main_Demo
 
         private void lbVLCRedist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_vlc_x86.exe");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
             Process.Start(startInfo);
         }
 

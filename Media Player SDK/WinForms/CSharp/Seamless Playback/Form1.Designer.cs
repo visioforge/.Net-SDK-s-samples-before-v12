@@ -71,6 +71,7 @@
             this.linkLabel1.TabIndex = 29;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Watch video tutorials!";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
             // 
             // btAddFileToPlaylist
             // 
@@ -301,6 +302,7 @@
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
+            this.MediaPlayer1.Debug_Telemetry = true;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
@@ -314,6 +316,8 @@
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.Play_DelayEnabled = false;
+            this.MediaPlayer1.Play_PauseAtFirstFrame = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -326,7 +330,6 @@
             this.MediaPlayer1.Source_Stream_AudioPresent = false;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = false;
-            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 30;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
@@ -379,6 +382,7 @@
             this.MediaPlayer2.Debug_DeepCleanUp = false;
             this.MediaPlayer2.Debug_Dir = null;
             this.MediaPlayer2.Debug_Mode = false;
+            this.MediaPlayer2.Debug_Telemetry = true;
             this.MediaPlayer2.Encryption_Key = "";
             this.MediaPlayer2.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer2.Face_Tracking = null;
@@ -392,6 +396,8 @@
             this.MediaPlayer2.Motion_DetectionEx = null;
             this.MediaPlayer2.MultiScreen_Enabled = false;
             this.MediaPlayer2.Name = "MediaPlayer2";
+            this.MediaPlayer2.Play_DelayEnabled = false;
+            this.MediaPlayer2.Play_PauseAtFirstFrame = false;
             this.MediaPlayer2.ReversePlayback_CacheSize = 0;
             this.MediaPlayer2.ReversePlayback_Enabled = false;
             this.MediaPlayer2.Selection_Active = false;
@@ -404,7 +410,6 @@
             this.MediaPlayer2.Source_Stream_AudioPresent = false;
             this.MediaPlayer2.Source_Stream_Size = ((long)(0));
             this.MediaPlayer2.Source_Stream_VideoPresent = false;
-            this.MediaPlayer2.Play_DelayEnabled = false;
             this.MediaPlayer2.TabIndex = 33;
             this.MediaPlayer2.Video_Effects_Enabled = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;

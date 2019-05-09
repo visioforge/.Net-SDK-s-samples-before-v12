@@ -1,5 +1,7 @@
 // ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.UI;
+
 namespace Two_Windows_Demo
 {
     using System;
@@ -20,7 +22,7 @@ namespace Two_Windows_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

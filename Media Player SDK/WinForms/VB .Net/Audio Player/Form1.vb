@@ -1,6 +1,7 @@
 ' ReSharper disable InconsistentNaming
 
 Imports VisioForge.Controls.MediaPlayer
+Imports VisioForge.Controls.UI
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
 
@@ -113,7 +114,7 @@ Public Class Form1
 
     Private Sub linkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub

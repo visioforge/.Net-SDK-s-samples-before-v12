@@ -5,6 +5,7 @@
 
 using System.IO;
 using Microsoft.Win32;
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs;
 using VisioForge.Controls.UI.Dialogs.OutputFormats;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
@@ -81,8 +82,7 @@ namespace IP_Capture
 
         private void lbVLCRedist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe",
-                @"https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_vlc_x86.exe");
+            var startInfo = new ProcessStartInfo("explorer.exe",HelpLinks.RedistVLCx86);
             Process.Start(startInfo);
         }
 
@@ -570,7 +570,7 @@ namespace IP_Capture
 
         private void llVideoTutorials_LinkClicked(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

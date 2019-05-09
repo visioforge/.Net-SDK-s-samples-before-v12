@@ -25,7 +25,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms3 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.OpenDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveDialog1 = New System.Windows.Forms.SaveFileDialog()
@@ -3470,8 +3470,7 @@ Partial Class Form1
         'tbAudioTimeshift
         '
         Me.tbAudioTimeshift.Location = New System.Drawing.Point(66, 420)
-        Me.tbAudioTimeshift.Maximum = 1000
-        Me.tbAudioTimeshift.Minimum = -1000
+        Me.tbAudioTimeshift.Maximum = 3000
         Me.tbAudioTimeshift.Name = "tbAudioTimeshift"
         Me.tbAudioTimeshift.Size = New System.Drawing.Size(104, 45)
         Me.tbAudioTimeshift.SmallChange = 10
@@ -5878,6 +5877,7 @@ Partial Class Form1
         Me.VideoEdit1.Decklink_Output = Nothing
         Me.VideoEdit1.Dynamic_Reconnection = False
         Me.VideoEdit1.Location = New System.Drawing.Point(331, 310)
+        Me.VideoEdit1.Loop = False
         Me.VideoEdit1.Mode = VisioForge.Types.VFVideoEditMode.Convert
         Me.VideoEdit1.Motion_Detection = Nothing
         Me.VideoEdit1.Motion_DetectionEx = Nothing
@@ -5902,23 +5902,23 @@ Partial Class Form1
         Me.VideoEdit1.Video_Effects_Enabled = False
         Me.VideoEdit1.Video_FrameRate = 25.0R
         Me.VideoEdit1.Video_Preview_Enabled = True
-        VideoRendererSettingsWinForms3.Aspect_Ratio_Override = False
-        VideoRendererSettingsWinForms3.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms3.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms3.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms3.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms3.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms3.Deinterlace_VMR9_UseDefault = False
-        VideoRendererSettingsWinForms3.Flip_Horizontal = False
-        VideoRendererSettingsWinForms3.Flip_Vertical = False
-        VideoRendererSettingsWinForms3.RotationAngle = 0
-        VideoRendererSettingsWinForms3.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms3.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms3.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms3.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms3.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms3.Zoom_ShiftY = 0
-        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms3
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
+        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = False
+        VideoRendererSettingsWinForms1.Flip_Horizontal = False
+        VideoRendererSettingsWinForms1.Flip_Vertical = False
+        VideoRendererSettingsWinForms1.RotationAngle = 0
+        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
+        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.VideoEdit1.Video_Resize = False
         Me.VideoEdit1.Video_Resize_Height = 480
         Me.VideoEdit1.Video_Resize_Width = 640

@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using VisioForge.Controls.UI;
 
 namespace SeamlessPlaybackDemo
 {
@@ -217,6 +219,12 @@ namespace SeamlessPlaybackDemo
             {
                 CurrentPlayer.Position_Set_Time(tbTimeline.Value * 1000);
             }
+        }
+
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
+            Process.Start(startInfo);
         }
     }
 }

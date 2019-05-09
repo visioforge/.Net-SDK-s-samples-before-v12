@@ -3,6 +3,7 @@
 // ReSharper disable UseObjectOrCollectionInitializer
 // ReSharper disable StyleCop.SA1601
 
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.OutputFormats;
 using VisioForge.Controls.VideoCapture;
 using VisioForge.Tools;
@@ -516,7 +517,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
 
         private void llVideoTutorials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

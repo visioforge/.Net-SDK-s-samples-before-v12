@@ -1,4 +1,5 @@
 ﻿Imports System.Globalization
+Imports VisioForge.Controls.UI
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Controls.UI.WinForms
 Imports VisioForge.Types.GPUVideoEffects
@@ -10,7 +11,7 @@ Imports VisioForge.Types
 Imports VisioForge.Tools
 
 Public Class Form1
-    Private audioChannelMapperItems As List(Of AudioChannelMapperItem) = new List(Of AudioChannelMapperItem)
+    Private audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
 
     ' Zoom
     Dim zoom As Double = 1.0
@@ -19,7 +20,7 @@ Public Class Form1
 
     Dim zoomShiftY As Integer = 0
 
-    Dim multiscreenWindows as List(of Form) = new List(Of Form)
+    Dim multiscreenWindows As List(Of Form) = New List(Of Form)
 
     Private ReadOnly MediaInfo As MediaInfoReader = New MediaInfoReader
 
@@ -142,7 +143,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub cbGreyscale_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
 
         Dim grayscale As IVFVideoEffectGrayscale
@@ -161,7 +162,7 @@ Public Class Form1
 
     Private Sub cbInvert_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbInvert.CheckedChanged
 
-         Dim invert As IVFVideoEffectInvert
+        Dim invert As IVFVideoEffectInvert
         Dim effect = MediaPlayer1.Video_Effects_Get("Invert")
         If (IsNothing(effect)) Then
             invert = New VFVideoEffectInvert(cbInvert.Checked)
@@ -174,7 +175,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub btOSDInit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDInit.Click
 
         MediaPlayer1.OSD_Init()
@@ -527,7 +528,7 @@ Public Class Form1
 
     Private Sub tbVolume1_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbVolume1.Scroll
 
-        If (cbAudioStream1.Checked or MediaPlayer1.Audio_Streams_AllInOne()) Then
+        If (cbAudioStream1.Checked Or MediaPlayer1.Audio_Streams_AllInOne()) Then
 
             MediaPlayer1.Audio_OutputDevice_Volume_Set(0, tbVolume1.Value)
 
@@ -1074,7 +1075,7 @@ Public Class Form1
             MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text
 
         End If
-        
+
         If (rbSplitterCustom.Checked) Then
 
             MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text
@@ -1193,7 +1194,7 @@ Public Class Form1
             MediaPlayer1.Audio_Channel_Mapper.OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
         Else
             MediaPlayer1.Audio_Channel_Mapper = Nothing
-        End if
+        End If
 
         ' Audio processing
         MediaPlayer1.Audio_Effects_Clear(-1)
@@ -1317,7 +1318,7 @@ Public Class Form1
             If (rbDenoiseCAST.Checked) Then
                 Dim cast As IVFVideoEffectDenoiseCAST
                 Dim effect = MediaPlayer1.Video_Effects_Get("DenoiseCAST")
-                If (effect is Nothing) Then
+                If (effect Is Nothing) Then
                     cast = New VFVideoEffectDenoiseCAST(True)
                     MediaPlayer1.Video_Effects_Add(cast)
                 Else
@@ -1331,7 +1332,7 @@ Public Class Form1
             Else
                 Dim mosquito As IVFVideoEffectDenoiseMosquito
                 Dim effect = MediaPlayer1.Video_Effects_Get("DenoiseMosquito")
-                If (effect is Nothing) Then
+                If (effect Is Nothing) Then
                     mosquito = New VFVideoEffectDenoiseMosquito(True)
                     MediaPlayer1.Video_Effects_Add(mosquito)
                 Else
@@ -1383,7 +1384,7 @@ Public Class Form1
             cbFlipX_CheckedChanged(Nothing, Nothing)
         End If
 
-        If  cbFlipY.Checked Then
+        If cbFlipY.Checked Then
             cbFlipY_CheckedChanged(Nothing, Nothing)
         End If
 
@@ -1744,10 +1745,10 @@ Public Class Form1
     End Sub
 
     Private Sub tbContrast_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbContrast.Scroll
-        
+
         Dim contrast As IVFVideoEffectContrast
         Dim effect = MediaPlayer1.Video_Effects_Get("Contrast")
-        If (effect is Nothing) Then
+        If (effect Is Nothing) Then
             contrast = New VFVideoEffectContrast(True, tbContrast.Value)
             MediaPlayer1.Video_Effects_Add(contrast)
         Else
@@ -1819,7 +1820,7 @@ Public Class Form1
         MediaPlayer1.Audio_Effects_Enable(-1, 4, cbAudTrueBassEnabled.Checked)
 
     End Sub
-    
+
     Private Sub tbAud3DSound_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAud3DSound.Scroll
 
         MediaPlayer1.Audio_Effects_Sound3D(-1, 3, tbAud3DSound.Value)
@@ -2012,7 +2013,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbAFMotionDetection_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbMotionDetectionEx.CheckedChanged 
+    Private Sub cbAFMotionDetection_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbMotionDetectionEx.CheckedChanged
 
         ConfigureObjectTracking()
 
@@ -2135,7 +2136,7 @@ Public Class Form1
 
         Dim zoomEffect As IVFVideoEffectZoom
         Dim effect = MediaPlayer1.Video_Effects_Get("Zoom")
-        If (effect is Nothing) Then
+        If (effect Is Nothing) Then
             zoomEffect = New VFVideoEffectZoom(zoom, zoom, zoomShiftX, zoomShiftY, cbZoom.Checked)
             MediaPlayer1.Video_Effects_Add(zoomEffect)
         Else
@@ -2169,7 +2170,7 @@ Public Class Form1
         zoom -= 0.1
         zoom = Math.Max(zoom, 1)
 
-       cbZoom_CheckedChanged(Nothing, Nothing)
+        cbZoom_CheckedChanged(Nothing, Nothing)
 
     End Sub
 
@@ -2201,15 +2202,15 @@ Public Class Form1
 
         zoomShiftX -= 20
 
-       cbZoom_CheckedChanged(Nothing, Nothing)
+        cbZoom_CheckedChanged(Nothing, Nothing)
 
     End Sub
 
     Private Sub cbPan_CheckedChanged(sender As Object, e As EventArgs) Handles cbPan.CheckedChanged
-        
+
         Dim pan As IVFVideoEffectPan
         Dim effect = MediaPlayer1.Video_Effects_Get("Pan")
-        If (effect is Nothing) Then
+        If (effect Is Nothing) Then
             pan = New VFVideoEffectPan(True)
             MediaPlayer1.Video_Effects_Add(pan)
         Else
@@ -2273,11 +2274,11 @@ Public Class Form1
     End Sub
 
     Private Sub cbFadeInOut_CheckedChanged(sender As Object, e As EventArgs) Handles cbFadeInOut.CheckedChanged
-        
+
         If (rbFadeIn.Checked) Then
             Dim fadeIn As IVFVideoEffectFadeIn
             Dim effect = MediaPlayer1.Video_Effects_Get("FadeIn")
-            If (effect is Nothing) Then
+            If (effect Is Nothing) Then
                 fadeIn = New VFVideoEffectFadeIn(cbFadeInOut.Checked)
                 MediaPlayer1.Video_Effects_Add(fadeIn)
             Else
@@ -2295,7 +2296,7 @@ Public Class Form1
         Else
             Dim fadeOut As IVFVideoEffectFadeOut
             Dim effect = MediaPlayer1.Video_Effects_Get("FadeOut")
-            If (effect is Nothing) Then
+            If (effect Is Nothing) Then
                 fadeOut = New VFVideoEffectFadeOut(cbFadeInOut.Checked)
                 MediaPlayer1.Video_Effects_Add(fadeOut)
             Else
@@ -2316,7 +2317,7 @@ Public Class Form1
 
     Private Sub linkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub
@@ -2827,7 +2828,7 @@ Public Class Form1
 
     Private Sub linkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel2.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_vlc_x86.exe")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86)
         Process.Start(startInfo)
 
     End Sub

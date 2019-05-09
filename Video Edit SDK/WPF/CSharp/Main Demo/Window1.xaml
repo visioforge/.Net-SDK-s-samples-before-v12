@@ -431,7 +431,7 @@
                                 </GroupBox>
                                 <Label Content="Time shift" HorizontalAlignment="Left" Margin="10,423.12,0,0" VerticalAlignment="Top"/>
                                 <Label x:Name="lbAudioTimeshift" Content="0 ms" HorizontalAlignment="Left" Margin="190,423.12,0,0" VerticalAlignment="Top"/>
-                                <Slider x:Name="tbAudioTimeshift" HorizontalAlignment="Left" Margin="86,429,0,0" VerticalAlignment="Top" Width="99" Minimum="-1000" Maximum="1000" ValueChanged="tbAudioTimeshift_ValueChanged"/>
+                                <Slider x:Name="tbAudioTimeshift" HorizontalAlignment="Left" Margin="86,429,0,0" VerticalAlignment="Top" Width="99" Maximum="3000" ValueChanged="tbAudioTimeshift_ValueChanged"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="Channel mapper">

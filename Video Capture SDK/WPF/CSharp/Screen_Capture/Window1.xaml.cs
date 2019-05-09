@@ -3,6 +3,8 @@
 // ReSharper disable StyleCop.SA1601
 // ReSharper disable RedundantNameQualifier
 
+using VisioForge.Controls.UI;
+
 namespace Screen_Capture
 {
     using System;
@@ -671,7 +673,7 @@ namespace Screen_Capture
 
         private void llVideoTutorials_LinkClicked(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

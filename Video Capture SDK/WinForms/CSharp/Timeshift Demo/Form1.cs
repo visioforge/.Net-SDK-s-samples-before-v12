@@ -26,7 +26,7 @@ namespace VC_Timeshift_Demo
             foreach (var device in VideoCapture1.Video_CaptureDevicesInfo)
             {
                 cbVideoInputDevice.Items.Add(device.Name);
-         }
+            }
 
             if (cbVideoInputDevice.Items.Count > 0)
             {
@@ -95,7 +95,7 @@ namespace VC_Timeshift_Demo
                 {
                     cbFramerate.SelectedIndex = 0;
                 }
-                
+
                 cbUseAudioInputFromVideoCaptureDevice.Enabled = deviceItem.AudioOutput;
             }
         }
@@ -195,16 +195,16 @@ namespace VC_Timeshift_Demo
             {
                 VideoCapture1.Video_CaptureDevice_FrameRate = Convert.ToDouble(cbFramerate.Text, CultureInfo.CurrentCulture);
             }
-            
+
             VideoCapture1.Audio_RecordAudio = true;
             VideoCapture1.Audio_PlayAudio = false;
 
             VideoCapture1.Timeshift_Settings = new TimeshiftSettings
-                                                   {
-                                                       Player_Screen = MediaPlayer1,
-                                                       TempFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\SBE\\",
-                                                       Player_AudioOutput_Enabled = cbPlayerPlayAudio.Checked
-                                                   };
+            {
+                Player_Screen = MediaPlayer1,
+                TempFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\SBE\\",
+                Player_AudioOutput_Enabled = cbPlayerPlayAudio.Checked
+            };
             var mp4Settings = new VFMP4v8v10Output();
             mp4Settings.Video.IDR_Period = 5;
 
@@ -242,7 +242,7 @@ namespace VC_Timeshift_Demo
 
                     break;
             }
-            
+
             VideoCapture1.Start();
 
             timer1.Interval = 1000;
@@ -280,7 +280,7 @@ namespace VC_Timeshift_Demo
             tbTimeline.Maximum = dur / 1000;
 
             TimeSpan spanPos;
-            int pos = (int)MediaPlayer1.Position_Get_Time() ;
+            int pos = (int)MediaPlayer1.Position_Get_Time();
             if (pos < dur)
             {
                 spanPos = new TimeSpan(0, 0, 0, 0, pos);
@@ -321,7 +321,7 @@ namespace VC_Timeshift_Demo
         {
             MediaPlayer1.Debug_Mode = true;
             MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
-            
+
             string filename = e.Filename;
 
             MediaPlayer1.FilenamesOrURL.Clear();

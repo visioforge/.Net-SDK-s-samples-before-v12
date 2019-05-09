@@ -5,6 +5,7 @@
 // ReSharper disable StyleCop.SA1601
 
 using System.IO;
+using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
 using VisioForge.Tools;
 // ReSharper disable LocalizableElement
@@ -574,7 +575,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
 
         private void llVideoTutorials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 

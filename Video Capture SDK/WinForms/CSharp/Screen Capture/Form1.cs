@@ -1,6 +1,8 @@
 // ReSharper disable InconsistentNaming
 // ReSharper disable StyleCop.SA1600
 
+using VisioForge.Controls.UI;
+
 namespace VisioForge_SDK_Screen_Capture_Demo
 {
     using System;
@@ -577,7 +579,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
 
         private void llVideoTutorials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
