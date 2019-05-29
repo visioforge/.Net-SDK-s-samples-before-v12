@@ -31,7 +31,7 @@ namespace VideoEdit_CS_Demo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -535,16 +535,11 @@ namespace VideoEdit_CS_Demo
             this.cbTagEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage24 = new System.Windows.Forms.TabPage();
             this.cbVUMeter = new System.Windows.Forms.CheckBox();
-            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
             this.tbVUMeterBoost = new System.Windows.Forms.TrackBar();
             this.label382 = new System.Windows.Forms.Label();
             this.label381 = new System.Windows.Forms.Label();
             this.tbVUMeterAmplification = new System.Windows.Forms.TrackBar();
             this.cbVUMeterPro = new System.Windows.Forms.CheckBox();
-            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
-            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
-            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
-            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
             this.btStart = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.OpenDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -626,11 +621,17 @@ namespace VideoEdit_CS_Demo
             this.cbMode = new System.Windows.Forms.ComboBox();
             this.label130 = new System.Windows.Forms.Label();
             this.openFileDialogSubtitles = new System.Windows.Forms.OpenFileDialog();
-            this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
             this.cbTelemetry = new System.Windows.Forms.CheckBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
+            this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
+            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
+            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
+            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -6188,12 +6189,12 @@ namespace VideoEdit_CS_Demo
             // tabPage24
             // 
             this.tabPage24.Controls.Add(this.cbVUMeter);
-            this.tabPage24.Controls.Add(this.peakMeterCtrl1);
             this.tabPage24.Controls.Add(this.tbVUMeterBoost);
             this.tabPage24.Controls.Add(this.label382);
             this.tabPage24.Controls.Add(this.label381);
             this.tabPage24.Controls.Add(this.tbVUMeterAmplification);
             this.tabPage24.Controls.Add(this.cbVUMeterPro);
+            this.tabPage24.Controls.Add(this.peakMeterCtrl1);
             this.tabPage24.Controls.Add(this.waveformPainter2);
             this.tabPage24.Controls.Add(this.waveformPainter1);
             this.tabPage24.Controls.Add(this.volumeMeter2);
@@ -6215,22 +6216,6 @@ namespace VideoEdit_CS_Demo
             this.cbVUMeter.TabIndex = 125;
             this.cbVUMeter.Text = "Enable VU Meter";
             this.cbVUMeter.UseVisualStyleBackColor = true;
-            // 
-            // peakMeterCtrl1
-            // 
-            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
-            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
-            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
-            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
-            this.peakMeterCtrl1.Location = new System.Drawing.Point(137, 15);
-            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
-            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
-            this.peakMeterCtrl1.TabIndex = 126;
-            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
             // 
             // tbVUMeterBoost
             // 
@@ -6278,48 +6263,6 @@ namespace VideoEdit_CS_Demo
             this.cbVUMeterPro.TabIndex = 117;
             this.cbVUMeterPro.Text = "Enable VU meter Pro";
             this.cbVUMeterPro.UseVisualStyleBackColor = true;
-            // 
-            // waveformPainter2
-            // 
-            this.waveformPainter2.Boost = 1F;
-            this.waveformPainter2.Location = new System.Drawing.Point(107, 222);
-            this.waveformPainter2.Name = "waveformPainter2";
-            this.waveformPainter2.Size = new System.Drawing.Size(174, 60);
-            this.waveformPainter2.TabIndex = 122;
-            this.waveformPainter2.Text = "waveformPainter2";
-            // 
-            // waveformPainter1
-            // 
-            this.waveformPainter1.Boost = 1F;
-            this.waveformPainter1.Location = new System.Drawing.Point(107, 156);
-            this.waveformPainter1.Name = "waveformPainter1";
-            this.waveformPainter1.Size = new System.Drawing.Size(174, 60);
-            this.waveformPainter1.TabIndex = 121;
-            this.waveformPainter1.Text = "waveformPainter1";
-            // 
-            // volumeMeter2
-            // 
-            this.volumeMeter2.Amplitude = 0F;
-            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
-            this.volumeMeter2.Boost = 1F;
-            this.volumeMeter2.Location = new System.Drawing.Point(57, 156);
-            this.volumeMeter2.MaxDb = 18F;
-            this.volumeMeter2.MinDb = -60F;
-            this.volumeMeter2.Name = "volumeMeter2";
-            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
-            this.volumeMeter2.TabIndex = 120;
-            // 
-            // volumeMeter1
-            // 
-            this.volumeMeter1.Amplitude = 0F;
-            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
-            this.volumeMeter1.Boost = 1F;
-            this.volumeMeter1.Location = new System.Drawing.Point(29, 156);
-            this.volumeMeter1.MaxDb = 18F;
-            this.volumeMeter1.MinDb = -60F;
-            this.volumeMeter1.Name = "volumeMeter1";
-            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
-            this.volumeMeter1.TabIndex = 116;
             // 
             // btStart
             // 
@@ -6806,6 +6749,7 @@ namespace VideoEdit_CS_Demo
             // 
             // tabPage54
             // 
+            this.tabPage54.Controls.Add(this.label1);
             this.tabPage54.Controls.Add(this.btSelectOutputJoin);
             this.tabPage54.Controls.Add(this.edOutputFileJoin);
             this.tabPage54.Controls.Add(this.label132);
@@ -7108,91 +7052,6 @@ namespace VideoEdit_CS_Demo
             this.openFileDialogSubtitles.FileName = "openFileDialog4";
             this.openFileDialogSubtitles.Filter = "Subtitle files|*.srt;*.ssa;*.ass;*.sub|All files|*.*";
             // 
-            // VideoEdit1
-            // 
-            this.VideoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.VideoEdit1.Audio_Channel_Mapper = null;
-            this.VideoEdit1.Audio_Effects_Enabled = false;
-            this.VideoEdit1.Audio_Effects_UseLegacyEffects = false;
-            this.VideoEdit1.Audio_Enhancer_Enabled = false;
-            this.VideoEdit1.Audio_Preview_Enabled = false;
-            this.VideoEdit1.Audio_VUMeter_Enabled = false;
-            this.VideoEdit1.Audio_VUMeter_Pro_Enabled = false;
-            this.VideoEdit1.Audio_VUMeter_Pro_Volume = 0;
-            this.VideoEdit1.BackColor = System.Drawing.Color.Black;
-            this.VideoEdit1.Barcode_Reader_Enabled = false;
-            this.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
-            this.VideoEdit1.ChromaKey = null;
-            this.VideoEdit1.Debug_Dir = "";
-            this.VideoEdit1.Debug_Mode = false;
-            this.VideoEdit1.Debug_Telemetry = false;
-            this.VideoEdit1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
-            this.VideoEdit1.Decklink_Output = null;
-            this.VideoEdit1.Dynamic_Reconnection = false;
-            this.VideoEdit1.Location = new System.Drawing.Point(331, 322);
-            this.VideoEdit1.Loop = false;
-            this.VideoEdit1.Mode = VisioForge.Types.VFVideoEditMode.Convert;
-            this.VideoEdit1.Motion_Detection = null;
-            this.VideoEdit1.Motion_DetectionEx = null;
-            this.VideoEdit1.Name = "VideoEdit1";
-            this.VideoEdit1.Network_Streaming_Audio_Enabled = false;
-            this.VideoEdit1.Network_Streaming_Enabled = false;
-            this.VideoEdit1.Network_Streaming_Format = VisioForge.Types.VFNetworkStreamingFormat.WMV;
-            this.VideoEdit1.Network_Streaming_Network_Port = 0;
-            this.VideoEdit1.Network_Streaming_Output = null;
-            this.VideoEdit1.Network_Streaming_URL = null;
-            this.VideoEdit1.Network_Streaming_WMV_Maximum_Clients = 0;
-            this.VideoEdit1.Output_Filename = "c:\\output.avi";
-            this.VideoEdit1.Output_Format = null;
-            this.VideoEdit1.Size = new System.Drawing.Size(433, 294);
-            this.VideoEdit1.Start_DelayEnabled = false;
-            this.VideoEdit1.TabIndex = 78;
-            this.VideoEdit1.Tags = null;
-            this.VideoEdit1.UseLibMediaInfo = false;
-            this.VideoEdit1.Video_Crop = null;
-            this.VideoEdit1.Video_Custom_Resizer_CLSID = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.VideoEdit1.Video_Effects_AllowMultipleStreams = false;
-            this.VideoEdit1.Video_Effects_Enabled = false;
-            this.VideoEdit1.Video_FrameRate = 25D;
-            this.VideoEdit1.Video_Preview_Enabled = true;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms1;
-            this.VideoEdit1.Video_Resize = false;
-            this.VideoEdit1.Video_Resize_Height = 480;
-            this.VideoEdit1.Video_Resize_Width = 640;
-            this.VideoEdit1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
-            this.VideoEdit1.Video_Subtitles = null;
-            this.VideoEdit1.Virtual_Camera_Output_Enabled = false;
-            this.VideoEdit1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.VideoEdit1_OnError);
-            this.VideoEdit1.OnFFMPEGInfo += new System.EventHandler<VisioForge.Types.FFMPEGInfoEventArgs>(this.VideoEdit1_OnFFMPEGInfo);
-            this.VideoEdit1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoEdit1_OnLicenseRequired);
-            this.VideoEdit1.OnAudioVUMeter += new System.EventHandler<VisioForge.Types.VUMeterEventArgs>(this.VideoEdit1_OnAudioVUMeter);
-            this.VideoEdit1.OnAudioVUMeterProVolume += new System.EventHandler<VisioForge.Types.AudioLevelEventArgs>(this.VideoEdit1_OnAudioVUMeterProVolume);
-            this.VideoEdit1.OnMotionDetection += new System.EventHandler<VisioForge.Types.MotionDetectionEventArgs>(this.VideoEdit1_OnMotion);
-            this.VideoEdit1.OnProgress += new System.EventHandler<VisioForge.Types.ProgressEventArgs>(this.VideoEdit1_OnProgress);
-            this.VideoEdit1.OnStart += new System.EventHandler<System.EventArgs>(this.VideoEdit1_OnStart);
-            this.VideoEdit1.OnStop += new System.EventHandler<VisioForge.Types.VideoEditStopEventArgs>(this.VideoEdit1_OnStop);
-            this.VideoEdit1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.VideoEdit1_OnObjectDetection);
-            this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
-            this.VideoEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoEdit1_MouseDown);
-            // 
             // cbTelemetry
             // 
             this.cbTelemetry.AutoSize = true;
@@ -7233,6 +7092,160 @@ namespace VideoEdit_CS_Demo
             this.mmLog.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.mmLog.Size = new System.Drawing.Size(306, 45);
             this.mmLog.TabIndex = 83;
+            // 
+            // VideoEdit1
+            // 
+            this.VideoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.VideoEdit1.Audio_Channel_Mapper = null;
+            this.VideoEdit1.Audio_Effects_Enabled = false;
+            this.VideoEdit1.Audio_Effects_UseLegacyEffects = false;
+            this.VideoEdit1.Audio_Enhancer_Enabled = false;
+            this.VideoEdit1.Audio_Preview_Enabled = false;
+            this.VideoEdit1.Audio_VUMeter_Enabled = false;
+            this.VideoEdit1.Audio_VUMeter_Pro_Enabled = false;
+            this.VideoEdit1.Audio_VUMeter_Pro_Volume = 0;
+            this.VideoEdit1.BackColor = System.Drawing.Color.Black;
+            this.VideoEdit1.Barcode_Reader_Enabled = false;
+            this.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
+            this.VideoEdit1.ChromaKey = null;
+            this.VideoEdit1.CustomRedist_Enabled = false;
+            this.VideoEdit1.CustomRedist_Path = null;
+            this.VideoEdit1.Debug_Dir = "";
+            this.VideoEdit1.Debug_Mode = false;
+            this.VideoEdit1.Debug_Telemetry = false;
+            this.VideoEdit1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
+            this.VideoEdit1.Decklink_Output = null;
+            this.VideoEdit1.Dynamic_Reconnection = false;
+            this.VideoEdit1.Location = new System.Drawing.Point(331, 322);
+            this.VideoEdit1.Loop = false;
+            this.VideoEdit1.Mode = VisioForge.Types.VFVideoEditMode.Convert;
+            this.VideoEdit1.Motion_Detection = null;
+            this.VideoEdit1.Motion_DetectionEx = null;
+            this.VideoEdit1.Name = "VideoEdit1";
+            this.VideoEdit1.Network_Streaming_Audio_Enabled = false;
+            this.VideoEdit1.Network_Streaming_Enabled = false;
+            this.VideoEdit1.Network_Streaming_Format = VisioForge.Types.VFNetworkStreamingFormat.WMV;
+            this.VideoEdit1.Network_Streaming_Network_Port = 0;
+            this.VideoEdit1.Network_Streaming_Output = null;
+            this.VideoEdit1.Network_Streaming_URL = null;
+            this.VideoEdit1.Network_Streaming_WMV_Maximum_Clients = 0;
+            this.VideoEdit1.Output_Filename = "c:\\output.avi";
+            this.VideoEdit1.Output_Format = null;
+            this.VideoEdit1.Size = new System.Drawing.Size(433, 294);
+            this.VideoEdit1.Start_DelayEnabled = false;
+            this.VideoEdit1.TabIndex = 78;
+            this.VideoEdit1.Tags = null;
+            this.VideoEdit1.UseLibMediaInfo = false;
+            this.VideoEdit1.Video_Crop = null;
+            this.VideoEdit1.Video_Custom_Resizer_CLSID = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.VideoEdit1.Video_Effects_AllowMultipleStreams = false;
+            this.VideoEdit1.Video_Effects_Enabled = false;
+            this.VideoEdit1.Video_FrameRate = 25D;
+            this.VideoEdit1.Video_Preview_Enabled = true;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms2.Flip_Horizontal = false;
+            videoRendererSettingsWinForms2.Flip_Vertical = false;
+            videoRendererSettingsWinForms2.RotationAngle = 0;
+            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
+            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms2;
+            this.VideoEdit1.Video_Resize = false;
+            this.VideoEdit1.Video_Resize_Height = 480;
+            this.VideoEdit1.Video_Resize_Width = 640;
+            this.VideoEdit1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
+            this.VideoEdit1.Video_Subtitles = null;
+            this.VideoEdit1.Virtual_Camera_Output_Enabled = false;
+            this.VideoEdit1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.VideoEdit1_OnError);
+            this.VideoEdit1.OnFFMPEGInfo += new System.EventHandler<VisioForge.Types.FFMPEGInfoEventArgs>(this.VideoEdit1_OnFFMPEGInfo);
+            this.VideoEdit1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoEdit1_OnLicenseRequired);
+            this.VideoEdit1.OnAudioVUMeter += new System.EventHandler<VisioForge.Types.VUMeterEventArgs>(this.VideoEdit1_OnAudioVUMeter);
+            this.VideoEdit1.OnAudioVUMeterProVolume += new System.EventHandler<VisioForge.Types.AudioLevelEventArgs>(this.VideoEdit1_OnAudioVUMeterProVolume);
+            this.VideoEdit1.OnMotionDetection += new System.EventHandler<VisioForge.Types.MotionDetectionEventArgs>(this.VideoEdit1_OnMotion);
+            this.VideoEdit1.OnProgress += new System.EventHandler<VisioForge.Types.ProgressEventArgs>(this.VideoEdit1_OnProgress);
+            this.VideoEdit1.OnStart += new System.EventHandler<System.EventArgs>(this.VideoEdit1_OnStart);
+            this.VideoEdit1.OnStop += new System.EventHandler<VisioForge.Types.VideoEditStopEventArgs>(this.VideoEdit1_OnStop);
+            this.VideoEdit1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.VideoEdit1_OnObjectDetection);
+            this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
+            this.VideoEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoEdit1_MouseDown);
+            // 
+            // peakMeterCtrl1
+            // 
+            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
+            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
+            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
+            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
+            this.peakMeterCtrl1.Location = new System.Drawing.Point(137, 15);
+            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
+            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
+            this.peakMeterCtrl1.TabIndex = 126;
+            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
+            // 
+            // waveformPainter2
+            // 
+            this.waveformPainter2.Boost = 1F;
+            this.waveformPainter2.Location = new System.Drawing.Point(107, 222);
+            this.waveformPainter2.Name = "waveformPainter2";
+            this.waveformPainter2.Size = new System.Drawing.Size(174, 60);
+            this.waveformPainter2.TabIndex = 122;
+            this.waveformPainter2.Text = "waveformPainter2";
+            // 
+            // waveformPainter1
+            // 
+            this.waveformPainter1.Boost = 1F;
+            this.waveformPainter1.Location = new System.Drawing.Point(107, 156);
+            this.waveformPainter1.Name = "waveformPainter1";
+            this.waveformPainter1.Size = new System.Drawing.Size(174, 60);
+            this.waveformPainter1.TabIndex = 121;
+            this.waveformPainter1.Text = "waveformPainter1";
+            // 
+            // volumeMeter2
+            // 
+            this.volumeMeter2.Amplitude = 0F;
+            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter2.Boost = 1F;
+            this.volumeMeter2.Location = new System.Drawing.Point(57, 156);
+            this.volumeMeter2.MaxDb = 18F;
+            this.volumeMeter2.MinDb = -60F;
+            this.volumeMeter2.Name = "volumeMeter2";
+            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter2.TabIndex = 120;
+            // 
+            // volumeMeter1
+            // 
+            this.volumeMeter1.Amplitude = 0F;
+            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter1.Boost = 1F;
+            this.volumeMeter1.Location = new System.Drawing.Point(29, 156);
+            this.volumeMeter1.MaxDb = 18F;
+            this.volumeMeter1.MinDb = -60F;
+            this.volumeMeter1.Name = "volumeMeter1";
+            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter1.TabIndex = 116;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 201);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(333, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Source files should have identical video and audio stream parameters";
             // 
             // Form1
             // 
@@ -8055,6 +8068,7 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
+        private System.Windows.Forms.Label label1;
     }
 }
 

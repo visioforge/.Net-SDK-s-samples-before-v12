@@ -900,6 +900,7 @@
                     <Button x:Name="btSelectOutputJoin" Content="..." HorizontalAlignment="Left" Margin="490,108,0,0" VerticalAlignment="Top" Width="24" Height="23" Click="btSelectOutputJoin_Click"/>
                     <Button x:Name="btStartJoin" Content="Start" HorizontalAlignment="Left" Margin="15,155,0,0" VerticalAlignment="Top" Width="75" Click="btStartJoin_Click"/>
                     <Button x:Name="btStopJoin" Content="Stop" HorizontalAlignment="Left" Margin="95,155,0,0" VerticalAlignment="Top" Width="75" Click="btStopJoin_Click"/>
+                    <Label x:Name="label2" Content="Source files should have identical video and audio stream parameters" HorizontalAlignment="Left" Margin="15,207,0,0" VerticalAlignment="Top"/>
 
                 </Grid>
             </TabItem>

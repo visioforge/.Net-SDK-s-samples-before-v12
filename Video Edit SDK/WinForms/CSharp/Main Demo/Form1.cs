@@ -520,6 +520,9 @@ namespace VideoEdit_CS_Demo
         
         private void btStart_Click(object sender, EventArgs e)
         {
+            //VideoEdit1.CustomRedist_Enabled = true;
+            //VideoEdit1.CustomRedist_Path = @"c:\Projects\_Projects\MediaFrameworkDotNet\_OUTPUT\FILTERS\";
+
             VideoEdit1.Debug_Mode = cbDebugMode.Checked;
             VideoEdit1.Debug_Telemetry = cbTelemetry.Checked;
 

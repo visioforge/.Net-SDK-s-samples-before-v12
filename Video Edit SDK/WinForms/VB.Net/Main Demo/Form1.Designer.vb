@@ -614,6 +614,7 @@ Partial Class Form1
         Me.Label496 = New System.Windows.Forms.Label()
         Me.edTagTrackID = New System.Windows.Forms.TextBox()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
+        Me.label1 = New System.Windows.Forms.Label()
         Me.tabControl1.SuspendLayout()
         Me.tabPage1.SuspendLayout()
         Me.tabControl2.SuspendLayout()
@@ -5870,6 +5871,8 @@ Partial Class Form1
         Me.VideoEdit1.Barcode_Reader_Enabled = False
         Me.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.[Auto]
         Me.VideoEdit1.ChromaKey = Nothing
+        Me.VideoEdit1.CustomRedist_Enabled = False
+        Me.VideoEdit1.CustomRedist_Path = Nothing
         Me.VideoEdit1.Debug_Dir = ""
         Me.VideoEdit1.Debug_Mode = False
         Me.VideoEdit1.Debug_Telemetry = False
@@ -6328,6 +6331,7 @@ Partial Class Form1
         '
         'tabPage54
         '
+        Me.tabPage54.Controls.Add(Me.label1)
         Me.tabPage54.Controls.Add(Me.btSelectOutputJoin)
         Me.tabPage54.Controls.Add(Me.edOutputFileJoin)
         Me.tabPage54.Controls.Add(Me.label132)
@@ -6806,6 +6810,15 @@ Partial Class Form1
         Me.cbTelemetry.TabIndex = 94
         Me.cbTelemetry.Text = "Telemetry"
         Me.cbTelemetry.UseVisualStyleBackColor = True
+        '
+        'label1
+        '
+        Me.label1.AutoSize = True
+        Me.label1.Location = New System.Drawing.Point(15, 209)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(333, 13)
+        Me.label1.TabIndex = 72
+        Me.label1.Text = "Source files should have identical video and audio stream parameters"
         '
         'Form1
         '
@@ -7606,4 +7619,5 @@ End Sub
     Private WithEvents lbImageLogos As ListBox
     Private WithEvents btImageLogoAdd As Button
     Private WithEvents cbTelemetry As CheckBox
+    Private WithEvents label1 As Label
 End Class
