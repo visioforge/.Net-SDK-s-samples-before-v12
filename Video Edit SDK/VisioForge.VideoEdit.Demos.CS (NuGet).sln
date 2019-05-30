@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2016
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28922.388
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demos", "Demos", "{06E594FA-BCB0-4C8C-AEB2-F0FE6E09DA1F}"
 EndProject
@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README_NUGET.txt = README_NUGET.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Video Join Demo (NuGet)", "WinForms\CSharp\Video Join Demo\Video Join Demo (NuGet).csproj", "{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -90,6 +92,14 @@ Global
 		{A78A3FEC-8284-41F7-9156-5EF8043E012B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A78A3FEC-8284-41F7-9156-5EF8043E012B}.Release|x86.ActiveCfg = Release|x86
 		{A78A3FEC-8284-41F7-9156-5EF8043E012B}.Release|x86.Build.0 = Release|x86
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Debug|x86.Build.0 = Debug|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Release|x86.ActiveCfg = Release|Any CPU
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +117,7 @@ Global
 		{3EDD8396-3B02-40C2-8C2E-E7F1B361D984} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
 		{14581C24-A301-46FE-AEF7-8416CE94D255} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
 		{A78A3FEC-8284-41F7-9156-5EF8043E012B} = {3F3567FA-DE52-4B4A-90B2-CE0EE171BA30}
+		{8FAFA52C-9BE5-4D7A-8279-8A0C7B3B59C6} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {23833106-1A40-4105-9674-C90843B23533}
