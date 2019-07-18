@@ -880,7 +880,10 @@ namespace Media_Player_Demo
         }
 
         private void btStart_Click(object sender, EventArgs e)
-        {
+        {            
+            //MediaPlayer1.CustomRedist_Enabled = true;
+            //MediaPlayer1.CustomRedist_Path = @"C:\Projects\TEMP\redist";
+
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
             MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked;
             
@@ -3215,8 +3218,8 @@ namespace Media_Player_Demo
         {
             if (lbTextLogos.SelectedItem != null)
             {
-                var dlg = new TextLogoSettingsDialog();
-                var effect = MediaPlayer1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                var dlg = new ImageLogoSettingsDialog();
+                var effect = MediaPlayer1.Video_Effects_Get((string)lbImageLogos.SelectedItem);
                 dlg.Attach(effect);
 
                 dlg.ShowDialog(this);
