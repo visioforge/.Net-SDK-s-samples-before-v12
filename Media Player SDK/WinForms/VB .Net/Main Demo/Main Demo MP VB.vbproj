@@ -166,6 +166,7 @@
     <Reference Include="VisioForge.Controls" />
     <Reference Include="VisioForge.Tools" />
     <Reference Include="VisioForge.MediaFramework" />
+    <Reference Include="VisioForge.Shared" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">

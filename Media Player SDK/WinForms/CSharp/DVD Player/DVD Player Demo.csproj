@@ -118,6 +118,7 @@
     <Reference Include="VisioForge.Controls" />
     <Reference Include="VisioForge.Tools" />
     <Reference Include="VisioForge.MediaFramework" />
+    <Reference Include="VisioForge.Shared" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="visioforge_main_icon.ico" />
