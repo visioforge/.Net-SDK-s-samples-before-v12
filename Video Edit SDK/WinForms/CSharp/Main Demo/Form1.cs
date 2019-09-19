@@ -4,14 +4,12 @@
 // ReSharper disable RedundantArgumentDefaultValue
 // ReSharper disable UnusedParameter.Local
 
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Tools;
+
 
 // ReSharper disable NotAccessedVariable
 // ReSharper disable InlineOutVariableDeclaration
 
+// ReSharper disable StringLiteralTypo
 namespace VideoEdit_CS_Demo
 {
     using System;
@@ -22,7 +20,11 @@ namespace VideoEdit_CS_Demo
     using System.IO;
     using System.Windows.Forms;
 
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WinForms;
+    using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.GPUVideoEffects;
     using VisioForge.Types.OutputFormat;
@@ -35,6 +37,20 @@ namespace VideoEdit_CS_Demo
     /// </summary>
     public partial class Form1 : Form
     {
+        private const int AUDIO_EFFECT_ID_AMPLIFY = 0;
+        
+        private const int AUDIO_EFFECT_ID_EQ = 1;
+
+        private const int AUDIO_EFFECT_ID_DYN_AMPLIFY = 2;
+
+        private const int AUDIO_EFFECT_ID_SOUND_3D = 3;
+
+        private const int AUDIO_EFFECT_ID_TRUE_BASS = 4;
+
+        private const int AUDIO_EFFECT_ID_FADE_IN = 5;
+
+        private const int AUDIO_EFFECT_ID_FADE_OUT = 6;
+
         private MFSettingsDialog mp4v11SettingsDialog;
 
         private MP4v10SettingsDialog mp4V10SettingsDialog;
@@ -157,6 +173,8 @@ namespace VideoEdit_CS_Demo
                 {
                     if (cbAddFullFile.Checked)
                     {
+                        
+
                         var audioFile = new VFVEAudioSource(s, -1, -1, string.Empty, 0, tbSpeed.Value / 100.0);
                         if (cbInsertAfterPreviousFile.Checked)
                         {
@@ -274,10 +292,6 @@ namespace VideoEdit_CS_Demo
 
             cbTagGenre.SelectedIndex = 0;
             cbDecklinkOutputSingleField.SelectedIndex = 0;
-
-            List<string> names;
-            List<string> descs;
-            VideoEdit1.WMV_V8_Profiles(out names, out descs);
 
             for (int i = 0; i < VideoEdit1.Video_Transition_Names().Count; i++)
             {
@@ -520,9 +534,6 @@ namespace VideoEdit_CS_Demo
         
         private void btStart_Click(object sender, EventArgs e)
         {
-            //VideoEdit1.CustomRedist_Enabled = true;
-            //VideoEdit1.CustomRedist_Path = @"c:\Projects\_Projects\MediaFrameworkDotNet\_OUTPUT\FILTERS\";
-
             VideoEdit1.Debug_Mode = cbDebugMode.Checked;
             VideoEdit1.Debug_Telemetry = cbTelemetry.Checked;
 
@@ -963,6 +974,18 @@ namespace VideoEdit_CS_Demo
                 VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1);
                 VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1);
                 VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
+                VideoEdit1.Audio_Effects_Add(
+                    -1,
+                    VFAudioEffectType.Fade, 
+                    cbFadeInEnabled.Checked,
+                    Convert.ToInt32(edFadeInStartTime.Text),
+                    Convert.ToInt32(edFadeInStopTime.Text));
+                VideoEdit1.Audio_Effects_Add(
+                    -1,
+                    VFAudioEffectType.Fade, 
+                    cbFadeOutEnabled.Checked, 
+                    Convert.ToInt32(edFadeOutStartTime.Text), 
+                    Convert.ToInt32(edFadeOutStopTime.Text));
 
                 tbAudAmplifyAmp_Scroll(sender, e);
                 tbAudDynAmp_Scroll(sender, e);
@@ -981,6 +1004,9 @@ namespace VideoEdit_CS_Demo
                 tbAudEq7_Scroll(sender, e);
                 tbAudEq8_Scroll(sender, e);
                 tbAudEq9_Scroll(sender, e);
+
+                cbFadeInEnabled_CheckedChanged(sender, e);
+                cbFadeOutEnabled_CheckedChanged(sender, e);
             }
 
             VideoEdit1.Video_Effects_Enabled = cbEffects.Checked;
@@ -996,75 +1022,80 @@ namespace VideoEdit_CS_Demo
             ConfigureVUMeters();
 
             // Deinterlace
-            if (rbDeintBlendEnabled.Checked)
+            if (cbDeinterlace.Checked)
             {
-                IVFVideoEffectDeinterlaceBlend blend;
-                var effect = VideoEdit1.Video_Effects_Get("DeinterlaceBlend");
-                if (effect == null)
+                if (rbDeintBlendEnabled.Checked)
                 {
-                    blend = new VFVideoEffectDeinterlaceBlend(true);
-                    VideoEdit1.Video_Effects_Add(blend);
+                    IVFVideoEffectDeinterlaceBlend blend;
+                    var effect = VideoEdit1.Video_Effects_Get("DeinterlaceBlend");
+                    if (effect == null)
+                    {
+                        blend = new VFVideoEffectDeinterlaceBlend(true);
+                        VideoEdit1.Video_Effects_Add(blend);
+                    }
+                    else
+                    {
+                        // ReSharper disable once TryCastAlwaysSucceeds
+                        blend = effect as IVFVideoEffectDeinterlaceBlend;
+                    }
+
+                    if (blend == null)
+                    {
+                        MessageBox.Show("Unable to configure deinterlace blend effect.");
+                        return;
+                    }
+
+                    blend.Threshold1 = Convert.ToInt32(edDeintBlendThreshold1.Text);
+                    blend.Threshold2 = Convert.ToInt32(edDeintBlendThreshold2.Text);
+                    blend.Constants1 = Convert.ToInt32(edDeintBlendConstants1.Text) / 10.0;
+                    blend.Constants2 = Convert.ToInt32(edDeintBlendConstants2.Text) / 10.0;
+                }
+                else if (rbDeintCAVTEnabled.Checked)
+                {
+                    IVFVideoEffectDeinterlaceCAVT cavt;
+                    var effect = VideoEdit1.Video_Effects_Get("DeinterlaceCAVT");
+                    if (effect == null)
+                    {
+                        cavt = new VFVideoEffectDeinterlaceCAVT(rbDeintCAVTEnabled.Checked,
+                            Convert.ToInt32(edDeintCAVTThreshold.Text));
+                        VideoEdit1.Video_Effects_Add(cavt);
+                    }
+                    else
+                    {
+                        cavt = effect as IVFVideoEffectDeinterlaceCAVT;
+                    }
+
+                    if (cavt == null)
+                    {
+                        MessageBox.Show("Unable to configure deinterlace CAVT effect.");
+                        return;
+                    }
+
+                    cavt.Threshold = Convert.ToInt32(edDeintCAVTThreshold.Text);
                 }
                 else
                 {
-                    // ReSharper disable once TryCastAlwaysSucceeds
-                    blend = effect as IVFVideoEffectDeinterlaceBlend;
-                }
+                    IVFVideoEffectDeinterlaceTriangle triangle;
+                    var effect = VideoEdit1.Video_Effects_Get("DeinterlaceTriangle");
+                    if (effect == null)
+                    {
+                        triangle = new VFVideoEffectDeinterlaceTriangle(true,
+                            Convert.ToByte(edDeintTriangleWeight.Text));
+                        VideoEdit1.Video_Effects_Add(triangle);
+                    }
+                    else
+                    {
+                        triangle = effect as IVFVideoEffectDeinterlaceTriangle;
+                    }
 
-                if (blend == null)
-                {
-                    MessageBox.Show("Unable to configure deinterlace blend effect.");
-                    return;
-                }
+                    if (triangle == null)
+                    {
+                        MessageBox.Show("Unable to configure deinterlace triangle effect.");
+                        return;
+                    }
 
-                blend.Threshold1 = Convert.ToInt32(edDeintBlendThreshold1.Text);
-                blend.Threshold2 = Convert.ToInt32(edDeintBlendThreshold2.Text);
-                blend.Constants1 = Convert.ToInt32(edDeintBlendConstants1.Text) / 10.0;
-                blend.Constants2 = Convert.ToInt32(edDeintBlendConstants2.Text) / 10.0;
-            }
-            else if (rbDeintCAVTEnabled.Checked)
-            {
-                IVFVideoEffectDeinterlaceCAVT cavt;
-                var effect = VideoEdit1.Video_Effects_Get("DeinterlaceCAVT");
-                if (effect == null)
-                {
-                    cavt = new VFVideoEffectDeinterlaceCAVT(rbDeintCAVTEnabled.Checked, Convert.ToInt32(edDeintCAVTThreshold.Text));
-                    VideoEdit1.Video_Effects_Add(cavt);
+                    triangle.Weight = Convert.ToByte(edDeintTriangleWeight.Text);
                 }
-                else
-                {
-                    cavt = effect as IVFVideoEffectDeinterlaceCAVT;
-                }
-
-                if (cavt == null)
-                {
-                    MessageBox.Show("Unable to configure deinterlace CAVT effect.");
-                    return;
-                }
-
-                cavt.Threshold = Convert.ToInt32(edDeintCAVTThreshold.Text);
-            }
-            else
-            {
-                IVFVideoEffectDeinterlaceTriangle triangle;
-                var effect = VideoEdit1.Video_Effects_Get("DeinterlaceTriangle");
-                if (effect == null)
-                {
-                    triangle = new VFVideoEffectDeinterlaceTriangle(true, Convert.ToByte(edDeintTriangleWeight.Text));
-                    VideoEdit1.Video_Effects_Add(triangle);
-                }
-                else
-                {
-                    triangle = effect as IVFVideoEffectDeinterlaceTriangle;
-                }
-
-                if (triangle == null)
-                {
-                    MessageBox.Show("Unable to configure deinterlace triangle effect.");
-                    return;
-                }
-
-                triangle.Weight = Convert.ToByte(edDeintTriangleWeight.Text);
             }
 
             // Denoise
@@ -1164,7 +1195,7 @@ namespace VideoEdit_CS_Demo
                 cbFlipY_CheckedChanged(null, null);
             }
 
-            if (cbFadeInOut.Checked)
+            if (cbVideoFadeInOut.Checked)
             {
                 cbFadeInOut_CheckedChanged(null, null);
             }
@@ -1446,127 +1477,127 @@ namespace VideoEdit_CS_Demo
 
         private void cbAudAmplifyEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Enable(-1, 0, cbAudAmplifyEnabled.Checked);
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_AMPLIFY, cbAudAmplifyEnabled.Checked);
         }
 
         private void tbAudAmplifyAmp_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Amplify(-1, 0, tbAudAmplifyAmp.Value * 10, false);
+            VideoEdit1.Audio_Effects_Amplify(-1, AUDIO_EFFECT_ID_AMPLIFY, tbAudAmplifyAmp.Value * 10, false);
         }
 
         private void cbAudEqualizerEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Enable(-1, 1, cbAudEqualizerEnabled.Checked);
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_EQ, cbAudEqualizerEnabled.Checked);
         }
 
         private void tbAudEq0_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 0, tbAudEq0.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 0, tbAudEq0.Value);
         }
 
         private void tbAudEq1_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 1, tbAudEq1.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 1, tbAudEq1.Value);
         }
 
         private void tbAudEq2_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 2, tbAudEq2.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 2, tbAudEq2.Value);
         }
 
         private void tbAudEq3_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 3, tbAudEq3.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 3, tbAudEq3.Value);
         }
 
         private void tbAudEq4_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 4, tbAudEq4.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 4, tbAudEq4.Value);
         }
 
         private void tbAudEq5_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 5, tbAudEq5.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 5, tbAudEq5.Value);
         }
 
         private void tbAudEq6_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 6, tbAudEq6.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 6, tbAudEq6.Value);
         }
 
         private void tbAudEq7_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 7, tbAudEq7.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 7, tbAudEq7.Value);
         }
 
         private void tbAudEq8_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 8, tbAudEq8.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 8, tbAudEq8.Value);
         }
 
         private void tbAudEq9_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, 1, 9, tbAudEq9.Value);
+            VideoEdit1.Audio_Effects_Equalizer_Band_Set(-1, AUDIO_EFFECT_ID_EQ, 9, tbAudEq9.Value);
         }
 
         private void cbAudEqualizerPreset_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Equalizer_Preset_Set(-1, 1, (EqualizerPreset)cbAudEqualizerPreset.SelectedIndex);
+            VideoEdit1.Audio_Effects_Equalizer_Preset_Set(-1, AUDIO_EFFECT_ID_EQ, (EqualizerPreset)cbAudEqualizerPreset.SelectedIndex);
             btAudEqRefresh_Click(sender, e);
         }
 
         private void btAudEqRefresh_Click(object sender, EventArgs e)
         {
-            tbAudEq0.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 0);
-            tbAudEq1.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 1);
-            tbAudEq2.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 2);
-            tbAudEq3.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 3);
-            tbAudEq4.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 4);
-            tbAudEq5.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 5);
-            tbAudEq6.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 6);
-            tbAudEq7.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 7);
-            tbAudEq8.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 8);
-            tbAudEq9.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, 1, 9);
+            tbAudEq0.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 0);
+            tbAudEq1.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 1);
+            tbAudEq2.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 2);
+            tbAudEq3.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 3);
+            tbAudEq4.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 4);
+            tbAudEq5.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 5);
+            tbAudEq6.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 6);
+            tbAudEq7.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 7);
+            tbAudEq8.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 8);
+            tbAudEq9.Value = VideoEdit1.Audio_Effects_Equalizer_Band_Get(-1, AUDIO_EFFECT_ID_EQ, 9);
         }
 
         private void cbAudDynamicAmplifyEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Enable(-1, 2, cbAudDynamicAmplifyEnabled.Checked);
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_DYN_AMPLIFY, cbAudDynamicAmplifyEnabled.Checked);
         }
 
         private void tbAudDynAmp_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_DynamicAmplify(-1, 2, tbAudAttack.Value, tbAudDynAmp.Value, tbAudRelease.Value);
+            VideoEdit1.Audio_Effects_DynamicAmplify(-1, AUDIO_EFFECT_ID_DYN_AMPLIFY, tbAudAttack.Value, tbAudDynAmp.Value, tbAudRelease.Value);
         }
 
         private void tbAudAttack_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_DynamicAmplify(-1, 2, tbAudAttack.Value, tbAudDynAmp.Value, tbAudRelease.Value);
+            VideoEdit1.Audio_Effects_DynamicAmplify(-1, AUDIO_EFFECT_ID_DYN_AMPLIFY, tbAudAttack.Value, tbAudDynAmp.Value, tbAudRelease.Value);
         }
 
         private void tbAudRelease_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_DynamicAmplify(-1, 2, tbAudAttack.Value, tbAudDynAmp.Value, tbAudRelease.Value);
+            VideoEdit1.Audio_Effects_DynamicAmplify(-1, AUDIO_EFFECT_ID_DYN_AMPLIFY, tbAudAttack.Value, tbAudDynAmp.Value, tbAudRelease.Value);
         }
 
         private void cbAudSound3DEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Enable(-1, 3, cbAudSound3DEnabled.Checked);
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_SOUND_3D, cbAudSound3DEnabled.Checked);
         }
 
         private void tbAud3DSound_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Sound3D(-1, 3, tbAud3DSound.Value);
+            VideoEdit1.Audio_Effects_Sound3D(-1, AUDIO_EFFECT_ID_SOUND_3D, tbAud3DSound.Value);
         }
 
         private void cbAudTrueBassEnabled_CheckedChanged(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_Enable(-1, 4, cbAudTrueBassEnabled.Checked);
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_TRUE_BASS, cbAudTrueBassEnabled.Checked);
         }
 
         private void tbAudTrueBass_Scroll(object sender, EventArgs e)
         {
-            VideoEdit1.Audio_Effects_TrueBass(-1, 4, 200, false, tbAudTrueBass.Value);
+            VideoEdit1.Audio_Effects_TrueBass(-1, AUDIO_EFFECT_ID_TRUE_BASS, 200, false, tbAudTrueBass.Value);
         }
 
         private void rbVR_CheckedChanged(object sender, EventArgs e)
@@ -1775,31 +1806,6 @@ namespace VideoEdit_CS_Demo
         private void VideoEdit1_OnObjectDetection(object sender, MotionDetectionExEventArgs e)
         {
             BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
-        }
-
-        private void btTest_Click(object sender, EventArgs e)
-        {
-            VideoEdit1.Test();
-        }
-
-        private void btFadesAdd_Click(object sender, EventArgs e)
-        {
-            if (rbFadeIn.Checked)
-            {
-                VideoEdit1.Audio_Fades_Add(0, Convert.ToInt32(edStartTime.Text), Convert.ToInt32(edStopTime.Text), 0, 100);
-                lbFades.Items.Add("Fade-In: " + edStartTime.Text + " - " + edStopTime.Text);
-            }
-            else
-            {
-                VideoEdit1.Audio_Fades_Add(0, Convert.ToInt32(edStartTime.Text), Convert.ToInt32(edStopTime.Text), 100, 0);
-                lbFades.Items.Add("Fade-Out: " + edStartTime.Text + " - " + edStopTime.Text);
-            }
-        }
-
-        private void btFadesListClear_Click(object sender, EventArgs e)
-        {
-            VideoEdit1.Audio_Fades_Clear();
-            lbFades.Items.Clear();
         }
 
         private void cbZoom_CheckedChanged(object sender, EventArgs e)
@@ -2072,13 +2078,13 @@ namespace VideoEdit_CS_Demo
 
         private void cbFadeInOut_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbFadeIn.Checked)
+            if (rbVideoFadeIn.Checked)
             {
                 IVFVideoEffectFadeIn fadeIn;
                 var effect = VideoEdit1.Video_Effects_Get("FadeIn");
                 if (effect == null)
                 {
-                    fadeIn = new VFVideoEffectFadeIn(cbFadeInOut.Checked);
+                    fadeIn = new VFVideoEffectFadeIn(cbVideoFadeInOut.Checked);
                     VideoEdit1.Video_Effects_Add(fadeIn);
                 }
                 else
@@ -2092,9 +2098,9 @@ namespace VideoEdit_CS_Demo
                     return;
                 }
 
-                fadeIn.Enabled = cbFadeInOut.Checked;
-                fadeIn.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text);
-                fadeIn.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text);
+                fadeIn.Enabled = cbVideoFadeInOut.Checked;
+                fadeIn.StartTime = Convert.ToInt64(edVideoFadeInOutStartTime.Text);
+                fadeIn.StopTime = Convert.ToInt64(edVideoFadeInOutStopTime.Text);
             }
             else
             {
@@ -2102,7 +2108,7 @@ namespace VideoEdit_CS_Demo
                 var effect = VideoEdit1.Video_Effects_Get("FadeOut");
                 if (effect == null)
                 {
-                    fadeOut = new VFVideoEffectFadeOut(cbFadeInOut.Checked);
+                    fadeOut = new VFVideoEffectFadeOut(cbVideoFadeInOut.Checked);
                     VideoEdit1.Video_Effects_Add(fadeOut);
                 }
                 else
@@ -2116,9 +2122,9 @@ namespace VideoEdit_CS_Demo
                     return;
                 }
 
-                fadeOut.Enabled = cbFadeInOut.Checked;
-                fadeOut.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text);
-                fadeOut.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text);
+                fadeOut.Enabled = cbVideoFadeInOut.Checked;
+                fadeOut.StartTime = Convert.ToInt64(edVideoFadeInOutStartTime.Text);
+                fadeOut.StopTime = Convert.ToInt64(edVideoFadeInOutStopTime.Text);
             }
         }
 
@@ -2580,11 +2586,6 @@ namespace VideoEdit_CS_Demo
         private void btStopMux_Click(object sender, EventArgs e)
         {
             VideoEdit1.FastEdit_Stop();
-        }
-
-        private void cbDebugMode_CheckedChanged(object sender, EventArgs e)
-        {
-            VideoEdit1.Debug_Mode = cbDebugMode.Checked;
         }
 
         private void FFMPEGDownloadLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -3221,7 +3222,6 @@ namespace VideoEdit_CS_Demo
                     }
             }
         }
-
         
         private void btTextLogoAdd_Click(object sender, EventArgs e)
         {
@@ -3252,7 +3252,7 @@ namespace VideoEdit_CS_Demo
             if (lbTextLogos.SelectedItem != null)
             {
                 var dlg = new TextLogoSettingsDialog();
-                var effect = VideoEdit1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                var effect = VideoEdit1.Video_Effects_Get((string)lbTextLogos.SelectedItem);
                 dlg.Attach(effect);
 
                 dlg.ShowDialog(this);
@@ -3333,6 +3333,34 @@ namespace VideoEdit_CS_Demo
                     flip.Enabled = cbFlipY.Checked;
                 }
             }
+        }
+
+        private void cbFadeInEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_FADE_IN, cbFadeInEnabled.Checked);
+
+            VideoEdit1.Audio_Effects_Fades(
+                -1, 
+                AUDIO_EFFECT_ID_FADE_IN, 
+                0,
+                100,
+                Convert.ToInt32(edFadeInStartTime.Text),
+                Convert.ToInt32(edFadeInStopTime.Text), 
+                false);
+        }
+
+        private void cbFadeOutEnabled_CheckedChanged(object sender, EventArgs e)
+        {
+            VideoEdit1.Audio_Effects_Enable(-1, AUDIO_EFFECT_ID_FADE_OUT, cbFadeOutEnabled.Checked);
+
+            VideoEdit1.Audio_Effects_Fades(
+                -1,
+                AUDIO_EFFECT_ID_FADE_OUT,
+                100,
+                0,
+                Convert.ToInt32(edFadeOutStartTime.Text),
+                Convert.ToInt32(edFadeOutStopTime.Text),
+                false);
         }
     }
 }

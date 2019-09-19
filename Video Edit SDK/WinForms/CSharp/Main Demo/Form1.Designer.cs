@@ -116,14 +116,14 @@ namespace VideoEdit_CS_Demo
             this.label297 = new System.Windows.Forms.Label();
             this.cbPan = new System.Windows.Forms.CheckBox();
             this.tabPage43 = new System.Windows.Forms.TabPage();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.rbVideoFadeOut = new System.Windows.Forms.RadioButton();
+            this.rbVideoFadeIn = new System.Windows.Forms.RadioButton();
             this.groupBox45 = new System.Windows.Forms.GroupBox();
-            this.edFadeInOutStopTime = new System.Windows.Forms.TextBox();
+            this.edVideoFadeInOutStopTime = new System.Windows.Forms.TextBox();
             this.label329 = new System.Windows.Forms.Label();
-            this.edFadeInOutStartTime = new System.Windows.Forms.TextBox();
+            this.edVideoFadeInOutStartTime = new System.Windows.Forms.TextBox();
             this.label330 = new System.Windows.Forms.Label();
-            this.cbFadeInOut = new System.Windows.Forms.CheckBox();
+            this.cbVideoFadeInOut = new System.Windows.Forms.CheckBox();
             this.tbContrast = new System.Windows.Forms.TrackBar();
             this.tbDarkness = new System.Windows.Forms.TrackBar();
             this.tbLightness = new System.Windows.Forms.TrackBar();
@@ -329,16 +329,19 @@ namespace VideoEdit_CS_Demo
             this.label254 = new System.Windows.Forms.Label();
             this.cbAudTrueBassEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage16 = new System.Windows.Forms.TabPage();
-            this.btFadesListClear = new System.Windows.Forms.Button();
-            this.lbFades = new System.Windows.Forms.ListBox();
-            this.btFadesAdd = new System.Windows.Forms.Button();
-            this.rbFadeOut = new System.Windows.Forms.RadioButton();
-            this.rbFadeIn = new System.Windows.Forms.RadioButton();
+            this.cbFadeOutEnabled = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.edFadeOutStopTime = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.edFadeOutStartTime = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbFadeInEnabled = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.edFadeStopTime = new System.Windows.Forms.TextBox();
+            this.edFadeInStopTime = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.edFadeStartTime = new System.Windows.Forms.TextBox();
+            this.edFadeInStartTime = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.cbAudioEffectsEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage81 = new System.Windows.Forms.TabPage();
@@ -540,6 +543,11 @@ namespace VideoEdit_CS_Demo
             this.label381 = new System.Windows.Forms.Label();
             this.tbVUMeterAmplification = new System.Windows.Forms.TrackBar();
             this.cbVUMeterPro = new System.Windows.Forms.CheckBox();
+            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
+            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
+            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
             this.btStart = new System.Windows.Forms.Button();
             this.btStop = new System.Windows.Forms.Button();
             this.OpenDialog1 = new System.Windows.Forms.OpenFileDialog();
@@ -593,6 +601,7 @@ namespace VideoEdit_CS_Demo
             this.edStartTimeCut = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.tabPage54 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.btSelectOutputJoin = new System.Windows.Forms.Button();
             this.edOutputFileJoin = new System.Windows.Forms.TextBox();
             this.label132 = new System.Windows.Forms.Label();
@@ -626,12 +635,6 @@ namespace VideoEdit_CS_Demo
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
-            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
-            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
-            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
-            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
-            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
-            this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -1676,10 +1679,10 @@ namespace VideoEdit_CS_Demo
             // 
             // tabPage43
             // 
-            this.tabPage43.Controls.Add(this.radioButton1);
-            this.tabPage43.Controls.Add(this.radioButton2);
+            this.tabPage43.Controls.Add(this.rbVideoFadeOut);
+            this.tabPage43.Controls.Add(this.rbVideoFadeIn);
             this.tabPage43.Controls.Add(this.groupBox45);
-            this.tabPage43.Controls.Add(this.cbFadeInOut);
+            this.tabPage43.Controls.Add(this.cbVideoFadeInOut);
             this.tabPage43.Location = new System.Drawing.Point(4, 22);
             this.tabPage43.Name = "tabPage43";
             this.tabPage43.Padding = new System.Windows.Forms.Padding(3);
@@ -1688,34 +1691,34 @@ namespace VideoEdit_CS_Demo
             this.tabPage43.Text = "Fade-in/out";
             this.tabPage43.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbVideoFadeOut
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(107, 104);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(67, 17);
-            this.radioButton1.TabIndex = 60;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Fade-out";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbVideoFadeOut.AutoSize = true;
+            this.rbVideoFadeOut.Location = new System.Drawing.Point(107, 104);
+            this.rbVideoFadeOut.Name = "rbVideoFadeOut";
+            this.rbVideoFadeOut.Size = new System.Drawing.Size(67, 17);
+            this.rbVideoFadeOut.TabIndex = 60;
+            this.rbVideoFadeOut.TabStop = true;
+            this.rbVideoFadeOut.Text = "Fade-out";
+            this.rbVideoFadeOut.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbVideoFadeIn
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = true;
-            this.radioButton2.Location = new System.Drawing.Point(16, 104);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(60, 17);
-            this.radioButton2.TabIndex = 59;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Fade-in";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbVideoFadeIn.AutoSize = true;
+            this.rbVideoFadeIn.Checked = true;
+            this.rbVideoFadeIn.Location = new System.Drawing.Point(16, 104);
+            this.rbVideoFadeIn.Name = "rbVideoFadeIn";
+            this.rbVideoFadeIn.Size = new System.Drawing.Size(60, 17);
+            this.rbVideoFadeIn.TabIndex = 59;
+            this.rbVideoFadeIn.TabStop = true;
+            this.rbVideoFadeIn.Text = "Fade-in";
+            this.rbVideoFadeIn.UseVisualStyleBackColor = true;
             // 
             // groupBox45
             // 
-            this.groupBox45.Controls.Add(this.edFadeInOutStopTime);
+            this.groupBox45.Controls.Add(this.edVideoFadeInOutStopTime);
             this.groupBox45.Controls.Add(this.label329);
-            this.groupBox45.Controls.Add(this.edFadeInOutStartTime);
+            this.groupBox45.Controls.Add(this.edVideoFadeInOutStartTime);
             this.groupBox45.Controls.Add(this.label330);
             this.groupBox45.Location = new System.Drawing.Point(16, 52);
             this.groupBox45.Name = "groupBox45";
@@ -1724,14 +1727,14 @@ namespace VideoEdit_CS_Demo
             this.groupBox45.TabStop = false;
             this.groupBox45.Text = "Duration";
             // 
-            // edFadeInOutStopTime
+            // edVideoFadeInOutStopTime
             // 
-            this.edFadeInOutStopTime.Location = new System.Drawing.Point(117, 19);
-            this.edFadeInOutStopTime.Name = "edFadeInOutStopTime";
-            this.edFadeInOutStopTime.Size = new System.Drawing.Size(39, 20);
-            this.edFadeInOutStopTime.TabIndex = 34;
-            this.edFadeInOutStopTime.Text = "15000";
-            this.edFadeInOutStopTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edVideoFadeInOutStopTime.Location = new System.Drawing.Point(117, 19);
+            this.edVideoFadeInOutStopTime.Name = "edVideoFadeInOutStopTime";
+            this.edVideoFadeInOutStopTime.Size = new System.Drawing.Size(39, 20);
+            this.edVideoFadeInOutStopTime.TabIndex = 34;
+            this.edVideoFadeInOutStopTime.Text = "15000";
+            this.edVideoFadeInOutStopTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label329
             // 
@@ -1742,14 +1745,14 @@ namespace VideoEdit_CS_Demo
             this.label329.TabIndex = 33;
             this.label329.Text = "Stop";
             // 
-            // edFadeInOutStartTime
+            // edVideoFadeInOutStartTime
             // 
-            this.edFadeInOutStartTime.Location = new System.Drawing.Point(43, 19);
-            this.edFadeInOutStartTime.Name = "edFadeInOutStartTime";
-            this.edFadeInOutStartTime.Size = new System.Drawing.Size(39, 20);
-            this.edFadeInOutStartTime.TabIndex = 32;
-            this.edFadeInOutStartTime.Text = "5000";
-            this.edFadeInOutStartTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.edVideoFadeInOutStartTime.Location = new System.Drawing.Point(43, 19);
+            this.edVideoFadeInOutStartTime.Name = "edVideoFadeInOutStartTime";
+            this.edVideoFadeInOutStartTime.Size = new System.Drawing.Size(39, 20);
+            this.edVideoFadeInOutStartTime.TabIndex = 32;
+            this.edVideoFadeInOutStartTime.Text = "5000";
+            this.edVideoFadeInOutStartTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label330
             // 
@@ -1760,16 +1763,16 @@ namespace VideoEdit_CS_Demo
             this.label330.TabIndex = 31;
             this.label330.Text = "Start";
             // 
-            // cbFadeInOut
+            // cbVideoFadeInOut
             // 
-            this.cbFadeInOut.AutoSize = true;
-            this.cbFadeInOut.Location = new System.Drawing.Point(16, 18);
-            this.cbFadeInOut.Name = "cbFadeInOut";
-            this.cbFadeInOut.Size = new System.Drawing.Size(65, 17);
-            this.cbFadeInOut.TabIndex = 57;
-            this.cbFadeInOut.Text = "Enabled";
-            this.cbFadeInOut.UseVisualStyleBackColor = true;
-            this.cbFadeInOut.CheckedChanged += new System.EventHandler(this.cbFadeInOut_CheckedChanged);
+            this.cbVideoFadeInOut.AutoSize = true;
+            this.cbVideoFadeInOut.Location = new System.Drawing.Point(16, 18);
+            this.cbVideoFadeInOut.Name = "cbVideoFadeInOut";
+            this.cbVideoFadeInOut.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoFadeInOut.TabIndex = 57;
+            this.cbVideoFadeInOut.Text = "Enabled";
+            this.cbVideoFadeInOut.UseVisualStyleBackColor = true;
+            this.cbVideoFadeInOut.CheckedChanged += new System.EventHandler(this.cbFadeInOut_CheckedChanged);
             // 
             // tbContrast
             // 
@@ -3984,16 +3987,19 @@ namespace VideoEdit_CS_Demo
             // 
             // tabPage16
             // 
-            this.tabPage16.Controls.Add(this.btFadesListClear);
-            this.tabPage16.Controls.Add(this.lbFades);
-            this.tabPage16.Controls.Add(this.btFadesAdd);
-            this.tabPage16.Controls.Add(this.rbFadeOut);
-            this.tabPage16.Controls.Add(this.rbFadeIn);
+            this.tabPage16.Controls.Add(this.cbFadeOutEnabled);
+            this.tabPage16.Controls.Add(this.label4);
+            this.tabPage16.Controls.Add(this.edFadeOutStopTime);
+            this.tabPage16.Controls.Add(this.label5);
+            this.tabPage16.Controls.Add(this.label6);
+            this.tabPage16.Controls.Add(this.edFadeOutStartTime);
+            this.tabPage16.Controls.Add(this.label7);
+            this.tabPage16.Controls.Add(this.cbFadeInEnabled);
             this.tabPage16.Controls.Add(this.label19);
-            this.tabPage16.Controls.Add(this.edFadeStopTime);
+            this.tabPage16.Controls.Add(this.edFadeInStopTime);
             this.tabPage16.Controls.Add(this.label20);
             this.tabPage16.Controls.Add(this.label18);
-            this.tabPage16.Controls.Add(this.edFadeStartTime);
+            this.tabPage16.Controls.Add(this.edFadeInStartTime);
             this.tabPage16.Controls.Add(this.label17);
             this.tabPage16.Location = new System.Drawing.Point(4, 22);
             this.tabPage16.Name = "tabPage16";
@@ -4003,77 +4009,101 @@ namespace VideoEdit_CS_Demo
             this.tabPage16.Text = "Fade-In/Fade-Out";
             this.tabPage16.UseVisualStyleBackColor = true;
             // 
-            // btFadesListClear
+            // cbFadeOutEnabled
             // 
-            this.btFadesListClear.Location = new System.Drawing.Point(181, 267);
-            this.btFadesListClear.Name = "btFadesListClear";
-            this.btFadesListClear.Size = new System.Drawing.Size(75, 23);
-            this.btFadesListClear.TabIndex = 10;
-            this.btFadesListClear.Text = "Clear";
-            this.btFadesListClear.UseVisualStyleBackColor = true;
-            this.btFadesListClear.Click += new System.EventHandler(this.btFadesListClear_Click);
+            this.cbFadeOutEnabled.AutoSize = true;
+            this.cbFadeOutEnabled.Location = new System.Drawing.Point(16, 112);
+            this.cbFadeOutEnabled.Name = "cbFadeOutEnabled";
+            this.cbFadeOutEnabled.Size = new System.Drawing.Size(68, 17);
+            this.cbFadeOutEnabled.TabIndex = 13;
+            this.cbFadeOutEnabled.Text = "Fade-out";
+            this.cbFadeOutEnabled.UseVisualStyleBackColor = true;
+            this.cbFadeOutEnabled.CheckedChanged += new System.EventHandler(this.cbFadeOutEnabled_CheckedChanged);
             // 
-            // lbFades
+            // label4
             // 
-            this.lbFades.FormattingEnabled = true;
-            this.lbFades.Location = new System.Drawing.Point(23, 166);
-            this.lbFades.Name = "lbFades";
-            this.lbFades.Size = new System.Drawing.Size(233, 95);
-            this.lbFades.TabIndex = 9;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(144, 167);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 13);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "ms";
             // 
-            // btFadesAdd
+            // edFadeOutStopTime
             // 
-            this.btFadesAdd.Location = new System.Drawing.Point(23, 116);
-            this.btFadesAdd.Name = "btFadesAdd";
-            this.btFadesAdd.Size = new System.Drawing.Size(75, 23);
-            this.btFadesAdd.TabIndex = 8;
-            this.btFadesAdd.Text = "Add";
-            this.btFadesAdd.UseVisualStyleBackColor = true;
-            this.btFadesAdd.Click += new System.EventHandler(this.btFadesAdd_Click);
+            this.edFadeOutStopTime.Location = new System.Drawing.Point(90, 164);
+            this.edFadeOutStopTime.Name = "edFadeOutStopTime";
+            this.edFadeOutStopTime.Size = new System.Drawing.Size(48, 20);
+            this.edFadeOutStopTime.TabIndex = 11;
+            this.edFadeOutStopTime.Text = "5000";
             // 
-            // rbFadeOut
+            // label5
             // 
-            this.rbFadeOut.AutoSize = true;
-            this.rbFadeOut.Location = new System.Drawing.Point(90, 85);
-            this.rbFadeOut.Name = "rbFadeOut";
-            this.rbFadeOut.Size = new System.Drawing.Size(69, 17);
-            this.rbFadeOut.TabIndex = 7;
-            this.rbFadeOut.Text = "Fade-Out";
-            this.rbFadeOut.UseVisualStyleBackColor = true;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 167);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Stop time";
             // 
-            // rbFadeIn
+            // label6
             // 
-            this.rbFadeIn.AutoSize = true;
-            this.rbFadeIn.Checked = true;
-            this.rbFadeIn.Location = new System.Drawing.Point(23, 85);
-            this.rbFadeIn.Name = "rbFadeIn";
-            this.rbFadeIn.Size = new System.Drawing.Size(61, 17);
-            this.rbFadeIn.TabIndex = 6;
-            this.rbFadeIn.TabStop = true;
-            this.rbFadeIn.Text = "Fade-In";
-            this.rbFadeIn.UseVisualStyleBackColor = true;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(144, 141);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "ms";
+            // 
+            // edFadeOutStartTime
+            // 
+            this.edFadeOutStartTime.Location = new System.Drawing.Point(90, 138);
+            this.edFadeOutStartTime.Name = "edFadeOutStartTime";
+            this.edFadeOutStartTime.Size = new System.Drawing.Size(48, 20);
+            this.edFadeOutStartTime.TabIndex = 8;
+            this.edFadeOutStartTime.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 141);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Start time";
+            // 
+            // cbFadeInEnabled
+            // 
+            this.cbFadeInEnabled.AutoSize = true;
+            this.cbFadeInEnabled.Location = new System.Drawing.Point(16, 16);
+            this.cbFadeInEnabled.Name = "cbFadeInEnabled";
+            this.cbFadeInEnabled.Size = new System.Drawing.Size(61, 17);
+            this.cbFadeInEnabled.TabIndex = 6;
+            this.cbFadeInEnabled.Text = "Fade-in";
+            this.cbFadeInEnabled.UseVisualStyleBackColor = true;
+            this.cbFadeInEnabled.CheckedChanged += new System.EventHandler(this.cbFadeInEnabled_CheckedChanged);
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(139, 52);
+            this.label19.Location = new System.Drawing.Point(144, 71);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(20, 13);
             this.label19.TabIndex = 5;
             this.label19.Text = "ms";
             // 
-            // edFadeStopTime
+            // edFadeInStopTime
             // 
-            this.edFadeStopTime.Location = new System.Drawing.Point(85, 49);
-            this.edFadeStopTime.Name = "edFadeStopTime";
-            this.edFadeStopTime.Size = new System.Drawing.Size(48, 20);
-            this.edFadeStopTime.TabIndex = 4;
-            this.edFadeStopTime.Text = "1000";
+            this.edFadeInStopTime.Location = new System.Drawing.Point(90, 68);
+            this.edFadeInStopTime.Name = "edFadeInStopTime";
+            this.edFadeInStopTime.Size = new System.Drawing.Size(48, 20);
+            this.edFadeInStopTime.TabIndex = 4;
+            this.edFadeInStopTime.Text = "5000";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(20, 52);
+            this.label20.Location = new System.Drawing.Point(25, 71);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(51, 13);
             this.label20.TabIndex = 3;
@@ -4082,24 +4112,24 @@ namespace VideoEdit_CS_Demo
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(139, 26);
+            this.label18.Location = new System.Drawing.Point(144, 45);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(20, 13);
             this.label18.TabIndex = 2;
             this.label18.Text = "ms";
             // 
-            // edFadeStartTime
+            // edFadeInStartTime
             // 
-            this.edFadeStartTime.Location = new System.Drawing.Point(85, 23);
-            this.edFadeStartTime.Name = "edFadeStartTime";
-            this.edFadeStartTime.Size = new System.Drawing.Size(48, 20);
-            this.edFadeStartTime.TabIndex = 1;
-            this.edFadeStartTime.Text = "0";
+            this.edFadeInStartTime.Location = new System.Drawing.Point(90, 42);
+            this.edFadeInStartTime.Name = "edFadeInStartTime";
+            this.edFadeInStartTime.Size = new System.Drawing.Size(48, 20);
+            this.edFadeInStartTime.TabIndex = 1;
+            this.edFadeInStartTime.Text = "0";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(20, 26);
+            this.label17.Location = new System.Drawing.Point(25, 45);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(51, 13);
             this.label17.TabIndex = 0;
@@ -6264,6 +6294,64 @@ namespace VideoEdit_CS_Demo
             this.cbVUMeterPro.Text = "Enable VU meter Pro";
             this.cbVUMeterPro.UseVisualStyleBackColor = true;
             // 
+            // peakMeterCtrl1
+            // 
+            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
+            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
+            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
+            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
+            this.peakMeterCtrl1.Location = new System.Drawing.Point(137, 15);
+            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
+            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
+            this.peakMeterCtrl1.TabIndex = 126;
+            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
+            // 
+            // waveformPainter2
+            // 
+            this.waveformPainter2.Boost = 1F;
+            this.waveformPainter2.Location = new System.Drawing.Point(107, 222);
+            this.waveformPainter2.Name = "waveformPainter2";
+            this.waveformPainter2.Size = new System.Drawing.Size(174, 60);
+            this.waveformPainter2.TabIndex = 122;
+            this.waveformPainter2.Text = "waveformPainter2";
+            // 
+            // waveformPainter1
+            // 
+            this.waveformPainter1.Boost = 1F;
+            this.waveformPainter1.Location = new System.Drawing.Point(107, 156);
+            this.waveformPainter1.Name = "waveformPainter1";
+            this.waveformPainter1.Size = new System.Drawing.Size(174, 60);
+            this.waveformPainter1.TabIndex = 121;
+            this.waveformPainter1.Text = "waveformPainter1";
+            // 
+            // volumeMeter2
+            // 
+            this.volumeMeter2.Amplitude = 0F;
+            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter2.Boost = 1F;
+            this.volumeMeter2.Location = new System.Drawing.Point(57, 156);
+            this.volumeMeter2.MaxDb = 18F;
+            this.volumeMeter2.MinDb = -60F;
+            this.volumeMeter2.Name = "volumeMeter2";
+            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter2.TabIndex = 120;
+            // 
+            // volumeMeter1
+            // 
+            this.volumeMeter1.Amplitude = 0F;
+            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter1.Boost = 1F;
+            this.volumeMeter1.Location = new System.Drawing.Point(29, 156);
+            this.volumeMeter1.MaxDb = 18F;
+            this.volumeMeter1.MinDb = -60F;
+            this.volumeMeter1.Name = "volumeMeter1";
+            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter1.TabIndex = 116;
+            // 
             // btStart
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -6767,6 +6855,15 @@ namespace VideoEdit_CS_Demo
             this.tabPage54.Text = "Join files (w/o reencoding)";
             this.tabPage54.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 201);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(333, 13);
+            this.label1.TabIndex = 63;
+            this.label1.Text = "Source files should have identical video and audio stream parameters";
+            // 
             // btSelectOutputJoin
             // 
             this.btSelectOutputJoin.Location = new System.Drawing.Point(368, 105);
@@ -7179,73 +7276,6 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.VideoEdit1_OnObjectDetection);
             this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
             this.VideoEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoEdit1_MouseDown);
-            // 
-            // peakMeterCtrl1
-            // 
-            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
-            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
-            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
-            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
-            this.peakMeterCtrl1.Location = new System.Drawing.Point(137, 15);
-            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
-            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
-            this.peakMeterCtrl1.TabIndex = 126;
-            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
-            // 
-            // waveformPainter2
-            // 
-            this.waveformPainter2.Boost = 1F;
-            this.waveformPainter2.Location = new System.Drawing.Point(107, 222);
-            this.waveformPainter2.Name = "waveformPainter2";
-            this.waveformPainter2.Size = new System.Drawing.Size(174, 60);
-            this.waveformPainter2.TabIndex = 122;
-            this.waveformPainter2.Text = "waveformPainter2";
-            // 
-            // waveformPainter1
-            // 
-            this.waveformPainter1.Boost = 1F;
-            this.waveformPainter1.Location = new System.Drawing.Point(107, 156);
-            this.waveformPainter1.Name = "waveformPainter1";
-            this.waveformPainter1.Size = new System.Drawing.Size(174, 60);
-            this.waveformPainter1.TabIndex = 121;
-            this.waveformPainter1.Text = "waveformPainter1";
-            // 
-            // volumeMeter2
-            // 
-            this.volumeMeter2.Amplitude = 0F;
-            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
-            this.volumeMeter2.Boost = 1F;
-            this.volumeMeter2.Location = new System.Drawing.Point(57, 156);
-            this.volumeMeter2.MaxDb = 18F;
-            this.volumeMeter2.MinDb = -60F;
-            this.volumeMeter2.Name = "volumeMeter2";
-            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
-            this.volumeMeter2.TabIndex = 120;
-            // 
-            // volumeMeter1
-            // 
-            this.volumeMeter1.Amplitude = 0F;
-            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
-            this.volumeMeter1.Boost = 1F;
-            this.volumeMeter1.Location = new System.Drawing.Point(29, 156);
-            this.volumeMeter1.MaxDb = 18F;
-            this.volumeMeter1.MinDb = -60F;
-            this.volumeMeter1.Name = "volumeMeter1";
-            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
-            this.volumeMeter1.TabIndex = 116;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 201);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(333, 13);
-            this.label1.TabIndex = 63;
-            this.label1.Text = "Source files should have identical video and audio stream parameters";
             // 
             // Form1
             // 
@@ -7664,16 +7694,11 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.CheckBox cbMotDetEnabled;
         private System.Windows.Forms.TabPage tabPage16;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox edFadeStopTime;
+        private System.Windows.Forms.TextBox edFadeInStopTime;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox edFadeStartTime;
+        private System.Windows.Forms.TextBox edFadeInStartTime;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.RadioButton rbFadeOut;
-        private System.Windows.Forms.RadioButton rbFadeIn;
-        private System.Windows.Forms.Button btFadesListClear;
-        private System.Windows.Forms.ListBox lbFades;
-        private System.Windows.Forms.Button btFadesAdd;
         private System.Windows.Forms.TabPage tabPage22;
         private System.Windows.Forms.GroupBox groupBox37;
         private System.Windows.Forms.Button btEffZoomRight;
@@ -7743,14 +7768,14 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Label label328;
         private System.Windows.Forms.Label label327;
         private System.Windows.Forms.TabPage tabPage43;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbVideoFadeOut;
+        private System.Windows.Forms.RadioButton rbVideoFadeIn;
         private System.Windows.Forms.GroupBox groupBox45;
-        private System.Windows.Forms.TextBox edFadeInOutStopTime;
+        private System.Windows.Forms.TextBox edVideoFadeInOutStopTime;
         private System.Windows.Forms.Label label329;
-        private System.Windows.Forms.TextBox edFadeInOutStartTime;
+        private System.Windows.Forms.TextBox edVideoFadeInOutStartTime;
         private System.Windows.Forms.Label label330;
-        private System.Windows.Forms.CheckBox cbFadeInOut;
+        private System.Windows.Forms.CheckBox cbVideoFadeInOut;
         private System.Windows.Forms.TabPage tabPage46;
         private System.Windows.Forms.CheckBox cbDecklinkDV;
         private System.Windows.Forms.CheckBox cbDecklinkOutput;
@@ -8069,6 +8094,14 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox cbFadeInEnabled;
+        private System.Windows.Forms.CheckBox cbFadeOutEnabled;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox edFadeOutStopTime;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox edFadeOutStartTime;
+        private System.Windows.Forms.Label label7;
     }
 }
 
