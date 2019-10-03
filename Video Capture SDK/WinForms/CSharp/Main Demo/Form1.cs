@@ -139,6 +139,9 @@ namespace VideoCapture_CSharp_Demo
         /// </param>
         private void Form1_Load(object sender, EventArgs e)
         {
+            //VideoCapture1.CustomRedist_Enabled = true;
+            //VideoCapture1.CustomRedist_Path = @"c:\Projects\_Projects\MediaFrameworkDotNet\_OUTPUT\FILTERS\";
+
             Text += " (SDK v" + VideoCapture1.SDK_Version + ", " + VideoCapture1.SDK_State + ")";
 
             tmRecording.Elapsed += (senderx, args) =>
@@ -693,6 +696,8 @@ namespace VideoCapture_CSharp_Demo
         /// </param>
         private void btStart_Click(object sender, EventArgs e)
         {
+            //VideoCapture1.VLC_Path = @"c:\Projects\_Projects\MediaFrameworkDotNet\_SHARED_DLL_VLC\x86\";// Environment.GetEnvironmentVariable("VFVLCPATH");
+
             VideoCapture1.Debug_Mode = cbDebugMode.Checked;
             VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             VideoCapture1.Debug_Telemetry = cbTelemetry.Checked;
@@ -2379,6 +2384,17 @@ namespace VideoCapture_CSharp_Demo
                                       + "\\VisioForge\\ip_cam_log.txt";
             settings.VLC_ZeroClockJitterEnabled = cbVLCZeroClockJitter.Checked;
             settings.VLC_CustomLatency = Convert.ToInt32(edVLCCacheSize.Text);
+
+            if (lbVLCParameters.Items.Count > 0)
+            {
+                var lst = new List<string>();
+                foreach (var item in lbVLCParameters.Items)
+                {
+                    lst.Add(item.ToString());
+                }
+
+                settings.VLC_CustomParameters = lst.ToArray();
+            }
 
             if (cbIPCameraONVIF.Checked)
             {
@@ -6068,6 +6084,17 @@ namespace VideoCapture_CSharp_Demo
             }
 
             VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Focus, tbCCFocus.Value, flags);
+        }
+
+        private void btVLCAddParameter_Click(object sender, EventArgs e)
+        {
+            lbVLCParameters.Items.Add(edVLCParameter.Text);
+            edVLCParameter.Text = string.Empty;
+        }
+
+        private void btVLCClearParameters_Click(object sender, EventArgs e)
+        {
+            lbVLCParameters.Items.Clear();
         }
     }
 }
