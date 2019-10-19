@@ -1,6 +1,9 @@
+using System.Drawing.Imaging;
 using System.Threading;
 using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
+using VisioForge.Shared.MFP;
+
 // ReSharper disable NotAccessedVariable
 // ReSharper disable InconsistentNaming
 // ReSharper disable InlineOutVariableDeclaration
@@ -1347,7 +1350,7 @@ namespace Media_Player_Demo
 
             MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
 
-            MediaPlayer1.Play();
+            MediaPlayer1.Play(cbRunAsync.Checked);
 
             FillAdjustRanges();
 

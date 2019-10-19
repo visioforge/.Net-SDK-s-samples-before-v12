@@ -6,6 +6,7 @@ Imports System.Linq
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
 Imports System.Runtime.InteropServices
+Imports VisioForge.Controls.UI
 Imports VisioForge.Controls.UI.Dialogs.OutputFormats
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types.OutputFormat
@@ -1012,7 +1013,7 @@ Public Class Form1
         End If
 
         ' start
-        VideoCapture1.Start()
+        VideoCapture1.Start(cbRunAsync.Checked)
 
         edNetworkURL.Text = VideoCapture1.Network_Streaming_URL
 
@@ -3204,29 +3205,31 @@ Public Class Form1
 
     Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub
 
     Private Sub VideoCapture1_OnTVTunerTuneChannels(ByVal sender As System.Object, ByVal e As TVTunerTuneChannelsEventArgs) Handles VideoCapture1.OnTVTunerTuneChannels
 
-        Application.DoEvents()
+        BeginInvoke(Sub()
+                        Application.DoEvents()
 
-        pbChannels.Value = e.Progress
+                        pbChannels.Value = e.Progress
 
-        If e.SignalPresent Then
-            cbTVChannel.Items.Add(e.Channel.ToString())
+                        If e.SignalPresent Then
+                            cbTVChannel.Items.Add(e.Channel.ToString())
 
-            If e.Channel = -1 Then
+                            If e.Channel = -1 Then
 
-                pbChannels.Value = 0
-                MessageBox.Show("AutoTune complete")
+                                pbChannels.Value = 0
+                                MessageBox.Show("AutoTune complete")
 
-            End If
-        End If
+                            End If
+                        End If
 
-        Application.DoEvents()
+                        Application.DoEvents()
+                    End Sub)
 
     End Sub
 
@@ -3262,7 +3265,9 @@ Public Class Form1
 
     Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
 
-        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
+        BeginInvoke(Sub()
+                        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
+                    End Sub)
 
     End Sub
 
@@ -3648,7 +3653,7 @@ Public Class Form1
 
     Private Sub linkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel2.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/878966-Streaming-to-Adobe-Flash-Media-Server")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.StreamingToAdobeFlashServer)
         Process.Start(startInfo)
 
     End Sub
@@ -3662,9 +3667,10 @@ Public Class Form1
 
     Private Sub VideoCapture1_OnBDAChannelFound(sender As Object, e As BDAChannelEventArgs) Handles VideoCapture1.OnBDAChannelFound
 
-        Application.DoEvents()
+        BeginInvoke(Sub()
+                        Application.DoEvents()
 
-        Dim list As String() = New String() {
+                        Dim list As String() = New String() {
             e.Channel.Name,
         e.Channel.Frequency.ToString(CultureInfo.InvariantCulture),
         e.Channel.AudioPid.ToString(CultureInfo.InvariantCulture),
@@ -3672,16 +3678,17 @@ Public Class Form1
         e.Channel.ServId.ToString(CultureInfo.InvariantCulture),
         e.Channel.SymbolRate.ToString(CultureInfo.InvariantCulture)}
 
-        Dim lvi As ListViewItem = New ListViewItem(list)
+                        Dim lvi As ListViewItem = New ListViewItem(list)
 
-        lvBDAChannels.Items.Add(lvi)
+                        lvBDAChannels.Items.Add(lvi)
 
-        Application.DoEvents()
+                        Application.DoEvents()
+                    End Sub)
     End Sub
 
     Private Sub linkLabel4_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel4.LinkClicked
 
-        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/300487-Streaming-using-Microsoft-Expression-Encoder")
+        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", HelpLinks.StreamingMSExpressionEncoder)
         Process.Start(startInfo)
 
     End Sub
@@ -3803,7 +3810,7 @@ Public Class Form1
 
     Private Sub linkLabel5_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel5.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://support.visioforge.com/240078-How-to-configure-IIS-Smooth-Streaming-in-SDK-demo-application")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.IISSmoothStreaming)
         Process.Start(startInfo)
 
     End Sub
@@ -3826,15 +3833,17 @@ Public Class Form1
 
     Private Sub VideoCapture1_OnAudioVUMeterProVolume(sender As Object, e As AudioLevelEventArgs) Handles VideoCapture1.OnAudioVUMeterProVolume
 
-        volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
-        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
+        BeginInvoke(Sub()
+                        volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
+                        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
 
-        If (e.ChannelLevelsDb.Length > 1) Then
+                        If (e.ChannelLevelsDb.Length > 1) Then
 
-            volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
-            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
+                            volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
+                            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
 
-        End If
+                        End If
+                    End Sub)
 
     End Sub
 
@@ -4184,9 +4193,11 @@ Public Class Form1
 
     Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles VideoCapture1.OnLicenseRequired
 
-        If (cbLicensing.Checked) Then
-            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-        End If
+        BeginInvoke(Sub()
+                        If (cbLicensing.Checked) Then
+                            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
+                        End If
+                    End Sub)
 
     End Sub
 
@@ -4228,14 +4239,14 @@ Public Class Form1
 
     Private Sub linkLabel7_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel7.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_vlc_x86.exe")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86)
         Process.Start(startInfo)
 
     End Sub
 
     Private Sub FFMPEGDownloadLinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel9.LinkClicked, LinkLabel8.LinkClicked, linkLabel10.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://visioforge-files.s3.amazonaws.com/redists_net/redist_dotnet_ffmpeg_exe_x86_x64.exe")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistFFMPEGx86x64)
         Process.Start(startInfo)
 
     End Sub
@@ -4289,7 +4300,7 @@ Public Class Form1
 
     Private Sub linkLabel11_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel11.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "https://support.visioforge.com/577349-Network-streaming-to-YouTube")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.NetworkStreamingToYouTube)
         Process.Start(startInfo)
 
     End Sub
@@ -4730,7 +4741,7 @@ Public Class Form1
     End Sub
 
     Private Sub lbHLSConfigure_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lbHLSConfigure.LinkClicked
-        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", "https://support.visioforge.com/608296-HLS-streaming")
+        Dim startInfo As ProcessStartInfo = New ProcessStartInfo("explorer.exe", HelpLinks.HLSStreaming)
         Process.Start(startInfo)
     End Sub
 

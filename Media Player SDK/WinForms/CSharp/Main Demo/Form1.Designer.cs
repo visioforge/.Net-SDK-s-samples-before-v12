@@ -32,7 +32,7 @@ namespace Media_Player_Demo
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbUseLibMediaInfo = new System.Windows.Forms.CheckBox();
@@ -609,6 +609,7 @@ namespace Media_Player_Demo
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
+            this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -6298,7 +6299,7 @@ namespace Media_Player_Demo
             this.edFilenameOrURL.Name = "edFilenameOrURL";
             this.edFilenameOrURL.Size = new System.Drawing.Size(348, 20);
             this.edFilenameOrURL.TabIndex = 3;
-            this.edFilenameOrURL.Text = "c:\\Samples\\!video.avi";
+            this.edFilenameOrURL.Text = "c:\\Samples\\!video.mp4";
             // 
             // btSelectFile
             // 
@@ -6587,7 +6588,7 @@ namespace Media_Player_Demo
             this.cbTelemetry.AutoSize = true;
             this.cbTelemetry.Checked = true;
             this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbTelemetry.Location = new System.Drawing.Point(206, 13);
+            this.cbTelemetry.Location = new System.Drawing.Point(177, 13);
             this.cbTelemetry.Name = "cbTelemetry";
             this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
             this.cbTelemetry.TabIndex = 4;
@@ -6597,7 +6598,7 @@ namespace Media_Player_Demo
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(109, 13);
+            this.cbLicensing.Location = new System.Drawing.Point(80, 13);
             this.cbLicensing.Name = "cbLicensing";
             this.cbLicensing.Size = new System.Drawing.Size(91, 17);
             this.cbLicensing.TabIndex = 3;
@@ -6618,9 +6619,9 @@ namespace Media_Player_Demo
             this.cbDebugMode.AutoSize = true;
             this.cbDebugMode.Location = new System.Drawing.Point(16, 13);
             this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
+            this.cbDebugMode.Size = new System.Drawing.Size(58, 17);
             this.cbDebugMode.TabIndex = 0;
-            this.cbDebugMode.Text = "Debug mode";
+            this.cbDebugMode.Text = "Debug";
             this.cbDebugMode.UseVisualStyleBackColor = true;
             // 
             // tabPage9
@@ -6873,7 +6874,7 @@ namespace Media_Player_Demo
             this.cbSourceMode.Location = new System.Drawing.Point(432, 125);
             this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2);
             this.cbSourceMode.Name = "cbSourceMode";
-            this.cbSourceMode.Size = new System.Drawing.Size(312, 21);
+            this.cbSourceMode.Size = new System.Drawing.Size(258, 21);
             this.cbSourceMode.TabIndex = 15;
             // 
             // lbSourceFiles
@@ -6958,10 +6959,13 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
+            this.MediaPlayer1.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer1.CustomParameters")));
+            this.MediaPlayer1.CustomRedist_Enabled = false;
+            this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
-            this.MediaPlayer1.Debug_Telemetry = true;
+            this.MediaPlayer1.Debug_Telemetry = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
@@ -6991,23 +6995,23 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Source_Stream_VideoPresent = false;
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms1.Flip_Horizontal = false;
-            videoRendererSettingsWinForms1.Flip_Vertical = false;
-            videoRendererSettingsWinForms1.RotationAngle = 0;
-            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms2.Flip_Horizontal = false;
+            videoRendererSettingsWinForms2.Flip_Vertical = false;
+            videoRendererSettingsWinForms2.RotationAngle = 0;
+            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -7020,11 +7024,22 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
             // 
+            // cbRunAsync
+            // 
+            this.cbRunAsync.AutoSize = true;
+            this.cbRunAsync.Location = new System.Drawing.Point(695, 127);
+            this.cbRunAsync.Name = "cbRunAsync";
+            this.cbRunAsync.Size = new System.Drawing.Size(55, 17);
+            this.cbRunAsync.TabIndex = 23;
+            this.cbRunAsync.Text = "Async";
+            this.cbRunAsync.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 687);
+            this.Controls.Add(this.cbRunAsync);
             this.Controls.Add(this.MediaPlayer1);
             this.Controls.Add(this.edCustomSourceFilter);
             this.Controls.Add(this.label37);
@@ -7837,5 +7852,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbFlipY;
         private System.Windows.Forms.CheckBox cbFlipX;
         private System.Windows.Forms.CheckBox cbTelemetry;
+        private System.Windows.Forms.CheckBox cbRunAsync;
     }
 }

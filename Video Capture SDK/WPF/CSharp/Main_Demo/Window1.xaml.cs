@@ -3443,27 +3443,36 @@ namespace Main_Demo
 
         private void VideoCapture1_OnTVTunerTuneChannels(object sender, TVTunerTuneChannelsEventArgs e)
         {
-            DoEvents();
-
-            pbChannels.Value = e.Progress;
-
-            if (e.SignalPresent)
+            Dispatcher.BeginInvoke((Action) (() =>
             {
-                cbTVChannel.Items.Add(e.Channel.ToString(CultureInfo.InvariantCulture));
-            }
+                DoEvents();
 
-            if (e.Channel == -1)
-            {
-                pbChannels.Value = 0;
-                MessageBox.Show("AutoTune complete");
-            }
+                pbChannels.Value = e.Progress;
 
-            DoEvents();
+                if (e.SignalPresent)
+                {
+                    cbTVChannel.Items.Add(e.Channel.ToString(CultureInfo.InvariantCulture));
+                }
+
+                if (e.Channel == -1)
+                {
+                    pbChannels.Value = 0;
+                    MessageBox.Show("AutoTune complete");
+                }
+
+                DoEvents();
+            }));
         }
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                if (cbLicensing.IsChecked == true)
+                {
+                    mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+                }
+            }));
         }
 
         private void lbFilters_SelectionChanged(object sender, SelectionChangedEventArgs e)

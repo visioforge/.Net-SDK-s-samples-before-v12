@@ -598,6 +598,7 @@ Partial Class Form1
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
+        Me.cbRunAsync = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout()
         Me.tabPage10.SuspendLayout()
         Me.tabPage9.SuspendLayout()
@@ -6580,13 +6581,13 @@ Partial Class Form1
         Me.cbSourceMode.Location = New System.Drawing.Point(394, 122)
         Me.cbSourceMode.Margin = New System.Windows.Forms.Padding(2)
         Me.cbSourceMode.Name = "cbSourceMode"
-        Me.cbSourceMode.Size = New System.Drawing.Size(350, 21)
+        Me.cbSourceMode.Size = New System.Drawing.Size(296, 21)
         Me.cbSourceMode.TabIndex = 30
         '
         'label29
         '
         Me.label29.AutoSize = True
-        Me.label29.Location = New System.Drawing.Point(326, 124)
+        Me.label29.Location = New System.Drawing.Point(326, 125)
         Me.label29.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label29.Name = "label29"
         Me.label29.Size = New System.Drawing.Size(64, 13)
@@ -6611,7 +6612,7 @@ Partial Class Form1
         Me.edFilenameOrURL.Name = "edFilenameOrURL"
         Me.edFilenameOrURL.Size = New System.Drawing.Size(348, 20)
         Me.edFilenameOrURL.TabIndex = 27
-        Me.edFilenameOrURL.Text = "c:\Samples\!video.avi"
+        Me.edFilenameOrURL.Text = "c:\Samples\!video.mp4"
         '
         'label14
         '
@@ -6652,10 +6653,13 @@ Partial Class Form1
         Me.MediaPlayer1.Custom_Audio_Decoder = Nothing
         Me.MediaPlayer1.Custom_Splitter = Nothing
         Me.MediaPlayer1.Custom_Video_Decoder = Nothing
+        Me.MediaPlayer1.CustomParameters = CType(resources.GetObject("MediaPlayer1.CustomParameters"), System.Collections.Generic.Dictionary(Of String, String))
+        Me.MediaPlayer1.CustomRedist_Enabled = False
+        Me.MediaPlayer1.CustomRedist_Path = Nothing
         Me.MediaPlayer1.Debug_DeepCleanUp = False
         Me.MediaPlayer1.Debug_Dir = Nothing
         Me.MediaPlayer1.Debug_Mode = False
-        Me.MediaPlayer1.Debug_Telemetry = True
+        Me.MediaPlayer1.Debug_Telemetry = False
         Me.MediaPlayer1.Encryption_Key = ""
         Me.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.[String]
         Me.MediaPlayer1.Face_Tracking = Nothing
@@ -6705,11 +6709,22 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
+        'cbRunAsync
+        '
+        Me.cbRunAsync.AutoSize = True
+        Me.cbRunAsync.Location = New System.Drawing.Point(695, 124)
+        Me.cbRunAsync.Name = "cbRunAsync"
+        Me.cbRunAsync.Size = New System.Drawing.Size(55, 17)
+        Me.cbRunAsync.TabIndex = 35
+        Me.cbRunAsync.Text = "Async"
+        Me.cbRunAsync.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(757, 686)
+        Me.Controls.Add(Me.cbRunAsync)
         Me.Controls.Add(Me.MediaPlayer1)
         Me.Controls.Add(Me.linkLabel1)
         Me.Controls.Add(Me.btAddFileToPlaylist)
@@ -7504,4 +7519,5 @@ End Sub
     Private WithEvents cbFlipY As CheckBox
     Private WithEvents cbFlipX As CheckBox
     Private WithEvents cbTelemetry As CheckBox
+    Private WithEvents cbRunAsync As CheckBox
 End Class

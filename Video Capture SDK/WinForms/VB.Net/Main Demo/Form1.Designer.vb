@@ -1115,6 +1115,7 @@ Partial Class Form1
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
+        Me.cbRunAsync = New System.Windows.Forms.CheckBox()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -4813,6 +4814,7 @@ Partial Class Form1
         'lvBDAChannels
         '
         Me.lvBDAChannels.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.columnHeader1, Me.columnHeader2, Me.columnHeader3, Me.columnHeader4, Me.columnHeader5, Me.columnHeader6})
+        Me.lvBDAChannels.HideSelection = False
         Me.lvBDAChannels.Location = New System.Drawing.Point(20, 33)
         Me.lvBDAChannels.Name = "lvBDAChannels"
         Me.lvBDAChannels.Size = New System.Drawing.Size(401, 168)
@@ -12458,9 +12460,11 @@ Partial Class Form1
         Me.VideoCapture1.BDA_Source = Nothing
         Me.VideoCapture1.ChromaKey = Nothing
         Me.VideoCapture1.Custom_Source = Nothing
+        Me.VideoCapture1.CustomRedist_Enabled = False
+        Me.VideoCapture1.CustomRedist_Path = Nothing
         Me.VideoCapture1.Debug_Dir = ""
         Me.VideoCapture1.Debug_Mode = False
-        Me.VideoCapture1.Debug_Telemetry = True
+        Me.VideoCapture1.Debug_Telemetry = False
         Me.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.[Auto]
         Me.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.[Auto]
         Me.VideoCapture1.Decklink_Input_IREUSA = False
@@ -12560,9 +12564,9 @@ Partial Class Form1
         'btSaveScreenshot
         '
         Me.btSaveScreenshot.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btSaveScreenshot.Location = New System.Drawing.Point(669, 653)
+        Me.btSaveScreenshot.Location = New System.Drawing.Point(533, 653)
         Me.btSaveScreenshot.Name = "btSaveScreenshot"
-        Me.btSaveScreenshot.Size = New System.Drawing.Size(127, 23)
+        Me.btSaveScreenshot.Size = New System.Drawing.Size(116, 23)
         Me.btSaveScreenshot.TabIndex = 95
         Me.btSaveScreenshot.Text = "Save screenshot"
         Me.btSaveScreenshot.UseVisualStyleBackColor = True
@@ -12577,11 +12581,22 @@ Partial Class Form1
         Me.lbTimestamp.TabIndex = 96
         Me.lbTimestamp.Text = "Recording time: 00:00:00"
         '
+        'cbRunAsync
+        '
+        Me.cbRunAsync.AutoSize = True
+        Me.cbRunAsync.Location = New System.Drawing.Point(741, 657)
+        Me.cbRunAsync.Name = "cbRunAsync"
+        Me.cbRunAsync.Size = New System.Drawing.Size(55, 17)
+        Me.cbRunAsync.TabIndex = 97
+        Me.cbRunAsync.Text = "Async"
+        Me.cbRunAsync.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(808, 713)
+        Me.Controls.Add(Me.cbRunAsync)
         Me.Controls.Add(Me.VideoCapture1)
         Me.Controls.Add(Me.linkLabel1)
         Me.Controls.Add(Me.tabControl12)
@@ -14004,4 +14019,5 @@ End Sub
     Private WithEvents lbCCPanMin As Label
     Private WithEvents tbCCPan As TrackBar
     Private WithEvents label96 As Label
+    Private WithEvents cbRunAsync As CheckBox
 End Class

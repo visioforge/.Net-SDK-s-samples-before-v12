@@ -73,8 +73,10 @@ namespace VideoCapture_CSharp_Demo
 
         private GIFSettingsDialog gifSettingsDialog;
 
-        private ONVIFControl onvifControl;
-
+#if !NETCOREAPP
+           private ONVIFControl onvifControl;     
+#endif
+        
         private ONVIFPTZRanges onvifPtzRanges;
 
         private float onvifPtzX;
@@ -706,6 +708,7 @@ namespace VideoCapture_CSharp_Demo
             zoomShiftX = 0;
             zoomShiftY = 0;
 
+#if !NETCOREAPP
             if (onvifControl != null)
             {
                 onvifControl.Disconnect();
@@ -714,6 +717,7 @@ namespace VideoCapture_CSharp_Demo
 
                 btONVIFConnect.Text = "Connect";
             }
+#endif
 
             mmLog.Clear();
 
@@ -1212,7 +1216,7 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.Video_Sample_Grabber_Enabled = true;
 
             // start
-            VideoCapture1.Start(cbIndependentThread.Checked);
+            VideoCapture1.Start(cbRunAsync.Checked);
 
             edNetworkURL.Text = VideoCapture1.Network_Streaming_URL;
 
@@ -3446,7 +3450,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        #region Barcode detector
+#region Barcode detector
 
         public delegate void BarcodeDelegate(BarcodeEventArgs value);
 
@@ -3471,7 +3475,7 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
-        #endregion
+#endregion
 
         public delegate void MotionDelegate(MotionDetectionEventArgs e);
 
@@ -3933,30 +3937,36 @@ namespace VideoCapture_CSharp_Demo
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            BeginInvoke((Action)(() =>
+            {
+                mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            }));
         }
 
         private void VideoCapture1_OnTVTunerTuneChannels(object sender, TVTunerTuneChannelsEventArgs e)
         {
-            Application.DoEvents();
-
-            pbChannels.Value = e.Progress;
-
-            if (e.SignalPresent)
+            BeginInvoke((Action)(() =>
             {
-                cbTVChannel.Items.Add(e.Channel.ToString(CultureInfo.InvariantCulture));
-            }
+                Application.DoEvents();
 
-            if (e.Channel == -1)
-            {
-                pbChannels.Value = 0;
-                MessageBox.Show("AutoTune complete");
-            }
+                pbChannels.Value = e.Progress;
 
-            Application.DoEvents();
+                if (e.SignalPresent)
+                {
+                    cbTVChannel.Items.Add(e.Channel.ToString(CultureInfo.InvariantCulture));
+                }
+
+                if (e.Channel == -1)
+                {
+                    pbChannels.Value = 0;
+                    MessageBox.Show("AutoTune complete");
+                }
+
+                Application.DoEvents();
+            }));
         }
 
-        #region VU Meter
+#region VU Meter
 
         public delegate void VUDelegate(VUMeterEventArgs e);
 
@@ -3975,7 +3985,7 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke(new VUDelegate(VUDelegateMethod), e);
         }
 
-        #endregion
+#endregion
 
         private delegate void AFMotionDelegate(float level);
 
@@ -4414,10 +4424,12 @@ namespace VideoCapture_CSharp_Demo
 
         private void VideoCapture1_OnBDAChannelFound(object sender, BDAChannelEventArgs e)
         {
-            Application.DoEvents();
+            BeginInvoke((Action)(() =>
+            {
+                Application.DoEvents();
 
-            ListViewItem lvi = new ListViewItem(
-                new[]
+                ListViewItem lvi = new ListViewItem(
+                    new[]
                     {
                         e.Channel.Name,
                         e.Channel.Frequency.ToString(CultureInfo.InvariantCulture),
@@ -4427,9 +4439,10 @@ namespace VideoCapture_CSharp_Demo
                         e.Channel.SymbolRate.ToString(CultureInfo.InvariantCulture)
                     });
 
-            lvBDAChannels.Items.Add(lvi);
+                lvBDAChannels.Items.Add(lvi);
 
-            Application.DoEvents();
+                Application.DoEvents();
+            }));
         }
 
         private void btBDAChannelScanningStart_Click(object sender, EventArgs e)
@@ -4462,7 +4475,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        #region Full screen
+#region Full screen
 
         private bool fullScreen;
 
@@ -4553,7 +4566,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        #endregion
+#endregion
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -4577,14 +4590,17 @@ namespace VideoCapture_CSharp_Demo
 
         private void VideoCapture1_OnAudioVUMeterProVolume(object sender, AudioLevelEventArgs e)
         {
-            volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
-            waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
-
-            if (e.ChannelLevelsDb.Length > 1)
+            BeginInvoke((Action) (() =>
             {
-                volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
-                waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
-            }
+                volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
+                waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
+
+                if (e.ChannelLevelsDb.Length > 1)
+                {
+                    volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
+                    waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
+                }
+            }));
         }
 
         private void tbVUMeterAmplification_Scroll(object sender, EventArgs e)
@@ -4938,10 +4954,13 @@ namespace VideoCapture_CSharp_Demo
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
+            BeginInvoke((Action)(() =>
             {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+                if (cbLicensing.Checked)
+                {
+                    mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+                }
+            }));
         }
         
         private delegate void FFMPEGInfoDelegate(string message);
@@ -5274,6 +5293,9 @@ namespace VideoCapture_CSharp_Demo
 
         private void btONVIFConnect_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (btONVIFConnect.Text == "Connect")
             {
                 btONVIFConnect.Text = "Disconnect";
@@ -5338,10 +5360,14 @@ namespace VideoCapture_CSharp_Demo
                     onvifControl = null;
                 }
             }
+#endif
         }
 
         private void btONVIFRight_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5356,15 +5382,23 @@ namespace VideoCapture_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFPTZSetDefault_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             onvifControl?.PTZ_SetAbsolute(0, 0, 0);
+#endif
         }
 
         private void btONVIFLeft_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5379,10 +5413,14 @@ namespace VideoCapture_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFUp_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5397,10 +5435,14 @@ namespace VideoCapture_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFDown_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5415,10 +5457,14 @@ namespace VideoCapture_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFZoomIn_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5433,10 +5479,14 @@ namespace VideoCapture_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFZoomOut_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5451,6 +5501,7 @@ namespace VideoCapture_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void tbPIPChromaKeyTolerance1_Scroll(object sender, EventArgs e)

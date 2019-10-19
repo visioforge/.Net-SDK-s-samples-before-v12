@@ -6,6 +6,7 @@
 using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
+using VisioForge.Shared.MFP;
 
 namespace Main_Demo
 {
@@ -1176,7 +1177,7 @@ namespace Main_Demo
                 MediaPlayer1.Encryption_Key = MediaPlayer.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text);
             }
 
-            MediaPlayer1.Play();
+            MediaPlayer1.Play(cbRunAsync.IsChecked == true);
 
             // DVD
             if (MediaPlayer1.Source_Mode == VFMediaPlayerSource.DVD_DS)
@@ -1603,7 +1604,13 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                if (cbLicensing.IsChecked == true)
+                {
+                    mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+                }
+            }));
         }
 
         private void btMotDetUpdateSettings_Click(object sender, RoutedEventArgs e)
@@ -1982,7 +1989,10 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnVideoEncrypted(object sender, EventArgs e)
         {
-            MessageBox.Show("Video is encrypted. Please be sure that you're entered correct pin code.");
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                MessageBox.Show(this, "Video is encrypted. Please be sure that you're entered correct pin code.");
+            }));
         }
 
         #region Full screen
@@ -2517,10 +2527,13 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.IsChecked == true)
+            Dispatcher.BeginInvoke((Action)(() =>
             {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+                if (cbLicensing.IsChecked == true)
+                {
+                    mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+                }
+            }));
         }
 
         private void btEncryptionOpenFile_Click(object sender, RoutedEventArgs e)

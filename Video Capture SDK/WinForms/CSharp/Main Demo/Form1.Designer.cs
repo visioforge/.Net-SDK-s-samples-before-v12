@@ -21,15 +21,18 @@ namespace VideoCapture_CSharp_Demo
                 components.Dispose();
             }
 
+#if !NETCOREAPP
             if (onvifControl != null)
             {
                 onvifControl.Dispose();
+                onvifControl = null;
             }
+#endif
 
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+#region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -1110,7 +1113,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage53 = new System.Windows.Forms.TabPage();
             this.cbTelemetry = new System.Windows.Forms.CheckBox();
-            this.cbIndependentThread = new System.Windows.Forms.CheckBox();
             this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
@@ -1123,6 +1125,7 @@ namespace VideoCapture_CSharp_Demo
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
+            this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -12749,7 +12752,6 @@ namespace VideoCapture_CSharp_Demo
             // tabPage53
             // 
             this.tabPage53.Controls.Add(this.cbTelemetry);
-            this.tabPage53.Controls.Add(this.cbIndependentThread);
             this.tabPage53.Controls.Add(this.cbLicensing);
             this.tabPage53.Controls.Add(this.cbDebugMode);
             this.tabPage53.Controls.Add(this.mmLog);
@@ -12773,16 +12775,6 @@ namespace VideoCapture_CSharp_Demo
             this.cbTelemetry.Text = "Telemetry";
             this.cbTelemetry.UseVisualStyleBackColor = true;
             // 
-            // cbIndependentThread
-            // 
-            this.cbIndependentThread.AutoSize = true;
-            this.cbIndependentThread.Location = new System.Drawing.Point(9, 31);
-            this.cbIndependentThread.Name = "cbIndependentThread";
-            this.cbIndependentThread.Size = new System.Drawing.Size(156, 17);
-            this.cbIndependentThread.TabIndex = 76;
-            this.cbIndependentThread.Text = "Independent thread (BETA)";
-            this.cbIndependentThread.UseVisualStyleBackColor = true;
-            // 
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
@@ -12805,10 +12797,10 @@ namespace VideoCapture_CSharp_Demo
             // 
             // mmLog
             // 
-            this.mmLog.Location = new System.Drawing.Point(9, 54);
+            this.mmLog.Location = new System.Drawing.Point(9, 29);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(289, 67);
+            this.mmLog.Size = new System.Drawing.Size(289, 92);
             this.mmLog.TabIndex = 72;
             // 
             // openFileDialog3
@@ -12840,9 +12832,9 @@ namespace VideoCapture_CSharp_Demo
             // btSaveScreenshot
             // 
             this.btSaveScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSaveScreenshot.Location = new System.Drawing.Point(669, 650);
+            this.btSaveScreenshot.Location = new System.Drawing.Point(538, 650);
             this.btSaveScreenshot.Name = "btSaveScreenshot";
-            this.btSaveScreenshot.Size = new System.Drawing.Size(127, 23);
+            this.btSaveScreenshot.Size = new System.Drawing.Size(116, 23);
             this.btSaveScreenshot.TabIndex = 78;
             this.btSaveScreenshot.Text = "Save screenshot";
             this.btSaveScreenshot.UseVisualStyleBackColor = true;
@@ -13014,11 +13006,22 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.OnBDAChannelFound += new System.EventHandler<VisioForge.Types.BDAChannelEventArgs>(this.VideoCapture1_OnBDAChannelFound);
             this.VideoCapture1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoCapture1_MouseDown);
             // 
+            // cbRunAsync
+            // 
+            this.cbRunAsync.AutoSize = true;
+            this.cbRunAsync.Location = new System.Drawing.Point(741, 654);
+            this.cbRunAsync.Name = "cbRunAsync";
+            this.cbRunAsync.Size = new System.Drawing.Size(55, 17);
+            this.cbRunAsync.TabIndex = 96;
+            this.cbRunAsync.Text = "Async";
+            this.cbRunAsync.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 712);
+            this.Controls.Add(this.cbRunAsync);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.VideoCapture1);
             this.Controls.Add(this.tabControl12);
@@ -13353,7 +13356,7 @@ namespace VideoCapture_CSharp_Demo
 
         }
 
-        #endregion
+#endregion
 
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btStop;
@@ -14370,7 +14373,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label lbPIPChromaKeyTolerance1;
         private System.Windows.Forms.Label label515;
         private System.Windows.Forms.TrackBar tbPIPChromaKeyTolerance1;
-        private System.Windows.Forms.CheckBox cbIndependentThread;
         private System.Windows.Forms.TextBox edCustomVideoSourceURL;
         private System.Windows.Forms.Label label516;
         private System.Windows.Forms.TextBox edCustomAudioSourceURL;
@@ -14438,6 +14440,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btVLCClearParameters;
         private System.Windows.Forms.TextBox edVLCParameter;
         private System.Windows.Forms.ListBox lbVLCParameters;
+        private System.Windows.Forms.CheckBox cbRunAsync;
     }
 }
 

@@ -1422,7 +1422,7 @@ Public Class Form1
 
         End If
 
-        MediaPlayer1.Play()
+        MediaPlayer1.Play(cbRunAsync.Checked)
 
         FillAdjustRanges()
 
@@ -1925,7 +1925,9 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles MediaPlayer1.OnError
 
-        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
+        BeginInvoke(Sub()
+                        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
+                    End Sub)
 
     End Sub
 
@@ -2324,7 +2326,9 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnVideoEncrypted(sender As Object, e As EventArgs) Handles MediaPlayer1.OnVideoEncrypted
 
-        MessageBox.Show("Video is encrypted. Please be sure that you're entered correct pin code.")
+        BeginInvoke(Sub()
+                        MessageBox.Show(Me, "Video is encrypted. Please be sure that you're entered correct pin code.")
+                    End Sub)
 
     End Sub
 
@@ -2492,15 +2496,17 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnAudioVUMeterProVolume(sender As Object, e As AudioLevelEventArgs) Handles MediaPlayer1.OnAudioVUMeterProVolume
 
-        volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
-        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
+        BeginInvoke(Sub()
+                        volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
+                        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
 
-        If (e.ChannelLevelsDb.Length > 1) Then
+                        If (e.ChannelLevelsDb.Length > 1) Then
 
-            volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
-            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
+                            volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
+                            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
 
-        End If
+                        End If
+                    End Sub)
 
     End Sub
 
@@ -2789,9 +2795,11 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired
 
-        If cbLicensing.Checked Then
-            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-        End If
+        BeginInvoke(Sub()
+                        If cbLicensing.Checked Then
+                            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
+                        End If
+                    End Sub)
 
     End Sub
 
@@ -3173,6 +3181,10 @@ Public Class Form1
 
         dlg.ShowDialog(Me)
         dlg.Dispose()
+    End Sub
+
+    Private Sub MediaPlayer1_OnAudioVUMeterProFFTCalculated(sender As Object, e As VUMeterFFTEventArgs) Handles MediaPlayer1.OnAudioVUMeterProFFTCalculated
+
     End Sub
 End Class
 
