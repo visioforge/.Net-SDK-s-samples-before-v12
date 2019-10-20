@@ -6577,7 +6577,7 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbSourceMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbSourceMode.FormattingEnabled = True
-        Me.cbSourceMode.Items.AddRange(New Object() {"File / Network stream (decode using LAV) ", "File (decode using FFMPEG)", "File (decode using DirectShow)", "File (decode using VLC)", "DVD", "Blu-Ray", "File from memory (decode using DirectShow)", "File from memory (decode using FFMPEG)", "MMS / WMV (network stream)", "HTTP / RTSP / RTMP (decoding using FFMPEG)", "HTTP / RTSP / RTMP (decoding using VLC)", "Encrypted file (decode using DirectShow)"})
+        Me.cbSourceMode.Items.AddRange(New Object() {"File / Network stream (decode using LAV) ", "File (decode using FFMPEG)", "File (decode using DirectShow)", "File (decode using VLC)", "DVD", "Blu-Ray", "File from memory (decode using DirectShow)", "File from memory (decode using FFMPEG)", "MMS / WMV (network stream)", "HTTP / RTSP / RTMP (decoding using FFMPEG)", "HTTP / RTSP / RTMP (decoding using VLC)", "Encrypted file (decode using DirectShow)", "MIDI / KAR"})
         Me.cbSourceMode.Location = New System.Drawing.Point(394, 122)
         Me.cbSourceMode.Margin = New System.Windows.Forms.Padding(2)
         Me.cbSourceMode.Name = "cbSourceMode"

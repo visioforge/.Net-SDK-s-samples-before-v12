@@ -1008,6 +1008,10 @@ namespace Media_Player_Demo
                     }
 
                     break;
+
+                case 13:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI;
+                    break;
             }
 
             btReadInfo_Click(null, null);
@@ -3275,6 +3279,15 @@ namespace Media_Player_Demo
                     flip.Enabled = cbFlipY.Checked;
                 }
             }
+        }
+
+        private void MediaPlayer1_OnMIDIFileInfo(object sender, MIDIInfoEventArgs e)
+        {
+            BeginInvoke((Action) (() =>
+            {
+                edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
+                edTags.Text += e.Info.ToString();
+            }));
         }
     }
 }

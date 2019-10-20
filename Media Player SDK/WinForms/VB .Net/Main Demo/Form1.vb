@@ -1142,6 +1142,8 @@ Public Class Form1
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC
             Case 11
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS
+            Case 12
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI
         End Select
 
         btReadInfo_Click(sender, e)
@@ -3183,8 +3185,11 @@ Public Class Form1
         dlg.Dispose()
     End Sub
 
-    Private Sub MediaPlayer1_OnAudioVUMeterProFFTCalculated(sender As Object, e As VUMeterFFTEventArgs) Handles MediaPlayer1.OnAudioVUMeterProFFTCalculated
-
+    Private Sub MediaPlayer1_OnMIDIFileInfo(sender As Object, e As MIDIInfoEventArgs) Handles MediaPlayer1.OnMIDIFileInfo
+        BeginInvoke(Sub()
+                        edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine
+                        edTags.Text += e.Info.ToString()
+                    End Sub)
     End Sub
 End Class
 

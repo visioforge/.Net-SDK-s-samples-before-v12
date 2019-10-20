@@ -867,6 +867,9 @@ namespace Main_Demo
                 case 11:
                     MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
                     break;
+                case 12:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI;
+                    break;
             }
 
             btReadInfo_Click(null, null);
@@ -2979,6 +2982,15 @@ namespace Main_Demo
                     flip.Enabled = cbFlipY.IsChecked == true;
                 }
             }
+        }
+
+        private void MediaPlayer1_OnMIDIFileInfo(object sender, MIDIInfoEventArgs e)
+        {
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
+                edTags.Text += e.Info.ToString();
+            }));
         }
     }
 }

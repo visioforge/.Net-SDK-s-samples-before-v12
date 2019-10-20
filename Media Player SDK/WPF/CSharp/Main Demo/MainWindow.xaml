@@ -13,7 +13,7 @@
                     <TabControl Height="370" HorizontalAlignment="Left" Margin="18,22,0,0" x:Name="tabControl2" VerticalAlignment="Top" Width="337">
                         <TabItem Header="File" x:Name="tabItem5">
                             <Grid>
-                                <TextBox Height="240" HorizontalAlignment="Left" Margin="17,21,0,0" x:Name="mmInfo" VerticalAlignment="Top" Width="294" />
+                                <TextBox Height="302" HorizontalAlignment="Left" Margin="17,21,0,0" x:Name="mmInfo" VerticalAlignment="Top" Width="294" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="DVD" x:Name="tabItem6">
@@ -744,6 +744,7 @@
             <ComboBoxItem Content="HTTP / RTSP / RTMP (decode using FFMPEG)"/>
             <ComboBoxItem Content="HTTP / RTSP / RTMP (decode using VLC)"/>
             <ComboBoxItem Content="Encrypted file (decode using DirectShow)"/>
+            <ComboBoxItem Content="MIDI / KAR"/>
         </ComboBox>
         <Label Content="Playlist" HorizontalAlignment="Left" Margin="407,53,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Left" Margin="731.8,30,0,0" VerticalAlignment="Top" Width="47.2" Height="23" Click="btAddFileToPlaylist_Click"/>
@@ -764,7 +765,7 @@
                              OnAudioVUMeterProFFTCalculated="MediaPlayer1_OnAudioVUMeterProFFTCalculated"
                              OnAudioVUMeterProMaximumCalculated="MediaPlayer1_OnAudioVUMeterProMaximumCalculated"
                              OnAudioVUMeterProVolume="MediaPlayer1_OnAudioVUMeterProVolume" 
-                             OnLicenseRequired="MediaPlayer1_OnLicenseRequired" 
+                             OnLicenseRequired="MediaPlayer1_OnLicenseRequired" OnMIDIFileInfo="MediaPlayer1_OnMIDIFileInfo" 
                              />
         <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Left" Margin="759,136,0,0" VerticalAlignment="Top"/>
     </Grid>
