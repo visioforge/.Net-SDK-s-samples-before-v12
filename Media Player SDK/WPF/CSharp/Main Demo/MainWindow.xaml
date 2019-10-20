@@ -13,7 +13,7 @@
                     <TabControl Height="370" HorizontalAlignment="Left" Margin="18,22,0,0" x:Name="tabControl2" VerticalAlignment="Top" Width="337">
                         <TabItem Header="File" x:Name="tabItem5">
                             <Grid>
-                                <TextBox Height="302" HorizontalAlignment="Left" Margin="17,21,0,0" x:Name="mmInfo" VerticalAlignment="Top" Width="294" />
+                                  <TextBox Height="302" HorizontalAlignment="Left" Margin="17,21,0,0" x:Name="mmInfo" VerticalAlignment="Top" Width="294" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="DVD" x:Name="tabItem6">
