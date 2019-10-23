@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "read-file-info", "WinForms\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "youtube-player", "WinForms\CSharp\_CodeSnippets\youtube-player\youtube-player.csproj", "{73B5F14C-4CC8-436B-B86C-BBF169CF8B7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Karaoke Demo", "WinForms\CSharp\Karaoke Demo\Karaoke Demo.csproj", "{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +139,14 @@ Global
 		{73B5F14C-4CC8-436B-B86C-BBF169CF8B7C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{73B5F14C-4CC8-436B-B86C-BBF169CF8B7C}.Release|x86.ActiveCfg = Release|x86
 		{73B5F14C-4CC8-436B-B86C-BBF169CF8B7C}.Release|x86.Build.0 = Release|x86
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Debug|x86.ActiveCfg = Debug|x86
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Debug|x86.Build.0 = Debug|x86
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Release|x86.ActiveCfg = Release|x86
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -154,6 +164,7 @@ Global
 		{E412F69E-2111-433E-856E-6ADE54655503} = {C65A40AE-D7BC-4311-85F5-30D463D55564}
 		{DDEF7252-9D8C-4324-8B18-A1944494F463} = {6E4DFE4D-F6E3-4D76-9143-0C408F773B65}
 		{73B5F14C-4CC8-436B-B86C-BBF169CF8B7C} = {6E4DFE4D-F6E3-4D76-9143-0C408F773B65}
+		{57DA73CE-CE2B-4660-81D4-3CF28CA0A647} = {743796DD-6F87-4CD9-8419-0B8CE16B4CB9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {421FE47D-FE2B-4EF3-A888-EC10030B8DBE}

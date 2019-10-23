@@ -99,7 +99,7 @@ namespace read_file_info
             // read tags
             if (cbReadTags.Checked)
             {
-                var tags = VFTagLibHelper.ReadTags(filename);
+                var tags = VFTagLibHelper.ReadTags(filename, null);
                 mmInfo.Text += tags?.ToString();
             }
         }
