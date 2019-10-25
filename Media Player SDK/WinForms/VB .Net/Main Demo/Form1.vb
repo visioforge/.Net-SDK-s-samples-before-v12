@@ -621,32 +621,7 @@ Public Class Form1
 
         MediaInfo.Filename = edFilenameOrURL.Text
 
-        Select Case (cbSourceMode.SelectedIndex)
-            Case 0
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV
-            Case 1
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG
-            Case 2
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
-            Case 3
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC
-            Case 4
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS
-            Case 5
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay
-            Case 6
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS
-            Case 7
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG
-            Case 8
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS
-            Case 9
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG
-            Case 10
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC
-            Case 11
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS
-        End Select
+        SetSourceMode()
 
         If ((MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS) Or
             (MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG) Or
@@ -1041,83 +1016,24 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
-
-        MediaPlayer1.Debug_Mode = cbDebugMode.Checked
-        MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked
-
-        zoom = 1.0
-        zoomShiftX = 0
-        zoomShiftY = 0
-
-        mmLog.Clear()
-
-        MediaPlayer1.Info_UseLibMediaInfo = cbUseLibMediaInfo.Checked
-
-        If (rbVideoDecoderDefault.Checked) Then
-
-            MediaPlayer1.Custom_Video_Decoder = String.Empty
-
-        ElseIf (rbVideoDecoderFFDShow.Checked) Then
-
-            MediaPlayer1.Custom_Video_Decoder = "ffdshow Video Decoder"
-
-        ElseIf (rbVideoDecoderMS.Checked) Then
-
-            MediaPlayer1.Custom_Video_Decoder = "Microsoft DTV-DVD Video Decoder"
-
-        ElseIf (rbVideoDecoderVFH264.Checked) Then
-
-            MediaPlayer1.Custom_Video_Decoder = "VisioForge H264 Decoder"
-
-        ElseIf (rbVideoDecoderCustom.Checked) Then
-
-            MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text
-
-        End If
-
-        If (rbSplitterCustom.Checked) Then
-
-            MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text
-
-        Else
-
-            MediaPlayer1.Custom_Splitter = String.Empty
-
-        End If
-
-        If (rbAudioDecoderDefault.Checked) Then
-
-            MediaPlayer1.Custom_Audio_Decoder = String.Empty
-
-        ElseIf (rbAudioDecoderCustom.Checked) Then
-
-            MediaPlayer1.Custom_Audio_Decoder = cbCustomAudioDecoder.Text
-
-        End If
-
-        If (lbSourceFiles.Items.Count = 0) Then
-
-            MessageBox.Show("Playlist is empty!")
-
-        End If
-
-        For Each item As Object In lbSourceFiles.Items
-
-            MediaPlayer1.FilenamesOrURL.Add(item.ToString())
-
-        Next
-
-        MediaPlayer1.Loop = cbLoop.Checked
-        MediaPlayer1.Audio_PlayAudio = cbPlayAudio.Checked
-
-        MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text)
-        MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text)
-        MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked
-
+    Private Sub SetSourceMode()
         Select Case (cbSourceMode.SelectedIndex)
             Case 0
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV
+            Case 1
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.GPU
+
+                If (rbGPUIntel.Checked) Then
+                    MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.IntelQuickSync
+                ElseIf (rbGPUNVidia.Checked) Then
+                    MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.nVidiaCUVID
+                ElseIf (rbGPUDXVANative.Checked) Then
+                    MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.DXVA2Native
+                ElseIf (rbGPUDXVACopyBack.Checked) Then
+                    MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.DXVA2CopyBack
+                ElseIf (rbGPUDirect3D.Checked) Then
+                    MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.Direct3D11
+                End If
             Case 1
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG
             Case 2
@@ -1145,6 +1061,61 @@ Public Class Form1
             Case 12
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI
         End Select
+    End Sub
+
+    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+
+        MediaPlayer1.Debug_Mode = cbDebugMode.Checked
+        MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked
+
+        zoom = 1.0
+        zoomShiftX = 0
+        zoomShiftY = 0
+
+        mmLog.Clear()
+
+        MediaPlayer1.Info_UseLibMediaInfo = cbUseLibMediaInfo.Checked
+
+        If (rbVideoDecoderDefault.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = String.Empty
+        ElseIf (rbVideoDecoderFFDShow.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = "ffdshow Video Decoder"
+        ElseIf (rbVideoDecoderMS.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = "Microsoft DTV-DVD Video Decoder"
+        ElseIf (rbVideoDecoderVFH264.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = "VisioForge H264 Decoder"
+        ElseIf (rbVideoDecoderCustom.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text
+        End If
+
+        If (rbSplitterCustom.Checked) Then
+            MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text
+        Else
+            MediaPlayer1.Custom_Splitter = String.Empty
+        End If
+
+        If (rbAudioDecoderDefault.Checked) Then
+            MediaPlayer1.Custom_Audio_Decoder = String.Empty
+        ElseIf (rbAudioDecoderCustom.Checked) Then
+            MediaPlayer1.Custom_Audio_Decoder = cbCustomAudioDecoder.Text
+        End If
+
+        If (lbSourceFiles.Items.Count = 0) Then
+            MessageBox.Show("Playlist is empty!")
+        End If
+
+        For Each item As Object In lbSourceFiles.Items
+            MediaPlayer1.FilenamesOrURL.Add(item.ToString())
+        Next
+
+        MediaPlayer1.Loop = cbLoop.Checked
+        MediaPlayer1.Audio_PlayAudio = cbPlayAudio.Checked
+
+        MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text)
+        MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text)
+        MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked
+
+        SetSourceMode()
 
         btReadInfo_Click(sender, e)
 
@@ -3190,6 +3161,11 @@ Public Class Form1
                         edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine
                         edTags.Text += e.Info.ToString()
                     End Sub)
+    End Sub
+
+    Private Sub linkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel3.LinkClicked
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64)
+        Process.Start(startInfo)
     End Sub
 End Class
 

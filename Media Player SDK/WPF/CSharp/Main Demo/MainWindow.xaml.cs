@@ -494,45 +494,7 @@ namespace Main_Demo
 
             MediaInfo.Filename = edFilenameOrURL.Text;
 
-            switch (cbSourceMode.SelectedIndex)
-            {
-                case 0:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
-                    break;
-                case 1:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG;
-                    break;
-                case 2:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
-                    break;
-                case 3:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC;
-                    break;
-                case 4:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS;
-                    break;
-                case 5:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay;
-                    break;
-                case 6:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-                    break;
-                case 7:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
-                    break;
-                case 8:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS;
-                    break;
-                case 9:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG;
-                    break;
-                case 10:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC;
-                    break;
-                case 11:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
-                    break;
-            }
+            SetSourceMode();
 
             if ((MediaPlayer1.Source_Mode == VFMediaPlayerSource.File_DS) ||
                 (MediaPlayer1.Source_Mode == VFMediaPlayerSource.File_FFMPEG) ||
@@ -762,6 +724,79 @@ namespace Main_Demo
             MediaPlayer1.Source_Stream_AudioPresent = true;
         }
 
+        private void SetSourceMode()
+        {
+            switch (cbSourceMode.SelectedIndex)
+            {
+                case 0:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
+                    break;
+                case 1:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.GPU;
+
+                    if (rbGPUIntel.IsChecked == true)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.IntelQuickSync;
+                    }
+                    else if (rbGPUNVidia.IsChecked == true)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
+                    }
+                    else if (rbGPUDXVANative.IsChecked == true)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.DXVA2Native;
+                    }
+                    else if (rbGPUDXVACopyBack.IsChecked == true)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.DXVA2CopyBack;
+                    }
+                    else if (rbGPUDirect3D.IsChecked == true)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.Direct3D11;
+                    }
+
+                    break;
+                case 2:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG;
+                    break;
+                case 3:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
+                    break;
+                case 4:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC;
+                    break;
+                case 5:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS;
+                    break;
+                case 6:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay;
+                    break;
+                case 7:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
+                    LoadToMemory();
+                    break;
+                case 8:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
+                    LoadToMemory();
+                    break;
+                case 9:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS;
+                    break;
+                case 10:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG;
+                    break;
+                case 11:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC;
+                    break;
+                case 12:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
+                    break;
+                case 13:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI;
+                    break;
+            }
+        }
+
         private void btStart_Click(object sender, RoutedEventArgs e)
         {
             MediaPlayer1.Debug_Telemetry = cbTelemetry.IsChecked == true;
@@ -827,50 +862,7 @@ namespace Main_Demo
             MediaPlayer1.Loop = cbLoop.IsChecked == true;
             MediaPlayer1.Audio_Play = cbPlayAudio.IsChecked == true;
 
-            switch (cbSourceMode.SelectedIndex)
-            {
-                case 0:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
-                    break;
-                case 1:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG;
-                    break;
-                case 2:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
-                    break;
-                case 3:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC;
-                    break;
-                case 4:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS;
-                    break;
-                case 5:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay;
-                    break;
-                case 6:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-                    LoadToMemory();
-                    break;
-                case 7:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
-                    LoadToMemory();
-                    break;
-                case 8:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS;
-                    break;
-                case 9:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG;
-                    break;
-                case 10:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC;
-                    break;
-                case 11:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
-                    break;
-                case 12:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI;
-                    break;
-            }
+            SetSourceMode();
 
             btReadInfo_Click(null, null);
 
@@ -2562,9 +2554,15 @@ namespace Main_Demo
             }
         }
 
-        private void lbVLCRedist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void lbVLCRedist86_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
+            Process.Start(startInfo);
+        }
+
+        private void lbVLCRedist64_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64);
             Process.Start(startInfo);
         }
 

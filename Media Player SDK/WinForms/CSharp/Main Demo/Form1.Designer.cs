@@ -34,6 +34,17 @@ namespace Media_Player_Demo
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.rbGPUDirect3D = new System.Windows.Forms.RadioButton();
+            this.rbGPUDXVANative = new System.Windows.Forms.RadioButton();
+            this.rbGPUDXVACopyBack = new System.Windows.Forms.RadioButton();
+            this.rbGPUIntel = new System.Windows.Forms.RadioButton();
+            this.rbGPUNVidia = new System.Windows.Forms.RadioButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbUseLibMediaInfo = new System.Windows.Forms.CheckBox();
             this.btReadInfo = new System.Windows.Forms.Button();
@@ -592,8 +603,6 @@ namespace Media_Player_Demo
             this.edScreenshotWidth = new System.Windows.Forms.TextBox();
             this.label177 = new System.Windows.Forms.Label();
             this.cbScreenshotResize = new System.Windows.Forms.CheckBox();
-            this.tabPage25 = new System.Windows.Forms.TabPage();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
@@ -608,9 +617,12 @@ namespace Media_Player_Demo
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
-            this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
+            this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
             this.tabControl1.SuspendLayout();
+            this.tabPage20.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -755,11 +767,11 @@ namespace Media_Player_Demo
             this.tabPage54.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).BeginInit();
             this.tabPage55.SuspendLayout();
-            this.tabPage25.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage20);
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -780,6 +792,127 @@ namespace Media_Player_Demo
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(309, 518);
             this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage20
+            // 
+            this.tabPage20.Controls.Add(this.groupBox6);
+            this.tabPage20.Controls.Add(this.groupBox5);
+            this.tabPage20.Location = new System.Drawing.Point(4, 22);
+            this.tabPage20.Name = "tabPage20";
+            this.tabPage20.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage20.Size = new System.Drawing.Size(301, 492);
+            this.tabPage20.TabIndex = 15;
+            this.tabPage20.Text = "Source mode";
+            this.tabPage20.UseVisualStyleBackColor = true;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.rbGPUDirect3D);
+            this.groupBox6.Controls.Add(this.rbGPUDXVANative);
+            this.groupBox6.Controls.Add(this.rbGPUDXVACopyBack);
+            this.groupBox6.Controls.Add(this.rbGPUIntel);
+            this.groupBox6.Controls.Add(this.rbGPUNVidia);
+            this.groupBox6.Location = new System.Drawing.Point(10, 93);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(280, 108);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "GPU decoder";
+            // 
+            // rbGPUDirect3D
+            // 
+            this.rbGPUDirect3D.AutoSize = true;
+            this.rbGPUDirect3D.Location = new System.Drawing.Point(13, 73);
+            this.rbGPUDirect3D.Name = "rbGPUDirect3D";
+            this.rbGPUDirect3D.Size = new System.Drawing.Size(82, 17);
+            this.rbGPUDirect3D.TabIndex = 4;
+            this.rbGPUDirect3D.Text = "Direct3D 11";
+            this.rbGPUDirect3D.UseVisualStyleBackColor = true;
+            // 
+            // rbGPUDXVANative
+            // 
+            this.rbGPUDXVANative.AutoSize = true;
+            this.rbGPUDXVANative.Location = new System.Drawing.Point(131, 50);
+            this.rbGPUDXVANative.Name = "rbGPUDXVANative";
+            this.rbGPUDXVANative.Size = new System.Drawing.Size(98, 17);
+            this.rbGPUDXVANative.TabIndex = 3;
+            this.rbGPUDXVANative.Text = "DXVA2 (native)";
+            this.rbGPUDXVANative.UseVisualStyleBackColor = true;
+            // 
+            // rbGPUDXVACopyBack
+            // 
+            this.rbGPUDXVACopyBack.AutoSize = true;
+            this.rbGPUDXVACopyBack.Checked = true;
+            this.rbGPUDXVACopyBack.Location = new System.Drawing.Point(13, 50);
+            this.rbGPUDXVACopyBack.Name = "rbGPUDXVACopyBack";
+            this.rbGPUDXVACopyBack.Size = new System.Drawing.Size(119, 17);
+            this.rbGPUDXVACopyBack.TabIndex = 2;
+            this.rbGPUDXVACopyBack.TabStop = true;
+            this.rbGPUDXVACopyBack.Text = "DXVA2 (copy-back)";
+            this.rbGPUDXVACopyBack.UseVisualStyleBackColor = true;
+            // 
+            // rbGPUIntel
+            // 
+            this.rbGPUIntel.AutoSize = true;
+            this.rbGPUIntel.Location = new System.Drawing.Point(131, 27);
+            this.rbGPUIntel.Name = "rbGPUIntel";
+            this.rbGPUIntel.Size = new System.Drawing.Size(100, 17);
+            this.rbGPUIntel.TabIndex = 1;
+            this.rbGPUIntel.Text = "Intel QuickSync";
+            this.rbGPUIntel.UseVisualStyleBackColor = true;
+            // 
+            // rbGPUNVidia
+            // 
+            this.rbGPUNVidia.AutoSize = true;
+            this.rbGPUNVidia.Location = new System.Drawing.Point(13, 27);
+            this.rbGPUNVidia.Name = "rbGPUNVidia";
+            this.rbGPUNVidia.Size = new System.Drawing.Size(90, 17);
+            this.rbGPUNVidia.TabIndex = 0;
+            this.rbGPUNVidia.Text = "nVidia CUVID";
+            this.rbGPUNVidia.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.linkLabel3);
+            this.groupBox5.Controls.Add(this.linkLabel2);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Location = new System.Drawing.Point(10, 10);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(280, 77);
+            this.groupBox5.TabIndex = 0;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "VLC";
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(68, 50);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(52, 13);
+            this.linkLabel3.TabIndex = 3;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "x64 redist";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(10, 50);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(52, 13);
+            this.linkLabel2.TabIndex = 2;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "x86 redist";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(10, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(264, 13);
+            this.label20.TabIndex = 0;
+            this.label20.Text = "Please install VisioForge VLC redist to use VLC engine ";
             // 
             // tabPage1
             // 
@@ -6562,7 +6695,6 @@ namespace Media_Player_Demo
             // 
             this.tabControl3.Controls.Add(this.tabPage10);
             this.tabControl3.Controls.Add(this.tabPage9);
-            this.tabControl3.Controls.Add(this.tabPage25);
             this.tabControl3.Location = new System.Drawing.Point(12, 532);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
@@ -6804,28 +6936,6 @@ namespace Media_Player_Demo
             this.cbScreenshotResize.Text = "Enabled";
             this.cbScreenshotResize.UseVisualStyleBackColor = true;
             // 
-            // tabPage25
-            // 
-            this.tabPage25.Controls.Add(this.linkLabel2);
-            this.tabPage25.Location = new System.Drawing.Point(4, 22);
-            this.tabPage25.Name = "tabPage25";
-            this.tabPage25.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage25.Size = new System.Drawing.Size(301, 120);
-            this.tabPage25.TabIndex = 3;
-            this.tabPage25.Text = "VLC engine";
-            this.tabPage25.UseVisualStyleBackColor = true;
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(20, 17);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(264, 13);
-            this.linkLabel2.TabIndex = 1;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Please install VisioForge VLC redist to use VLC engine ";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
             // fontDialog1
             // 
             this.fontDialog1.Color = System.Drawing.Color.White;
@@ -6859,6 +6969,7 @@ namespace Media_Player_Demo
             this.cbSourceMode.FormattingEnabled = true;
             this.cbSourceMode.Items.AddRange(new object[] {
             "File / Network stream (decode using LAV) ",
+            "File / Network stream (decode using GPU) ",
             "File (decode using FFMPEG)",
             "File (decode using DirectShow)",
             "File (decode using VLC)",
@@ -6941,6 +7052,16 @@ namespace Media_Player_Demo
             this.edCustomSourceFilter.Size = new System.Drawing.Size(312, 20);
             this.edCustomSourceFilter.TabIndex = 22;
             // 
+            // cbRunAsync
+            // 
+            this.cbRunAsync.AutoSize = true;
+            this.cbRunAsync.Location = new System.Drawing.Point(695, 127);
+            this.cbRunAsync.Name = "cbRunAsync";
+            this.cbRunAsync.Size = new System.Drawing.Size(55, 17);
+            this.cbRunAsync.TabIndex = 23;
+            this.cbRunAsync.Text = "Async";
+            this.cbRunAsync.UseVisualStyleBackColor = true;
+            // 
             // MediaPlayer1
             // 
             this.MediaPlayer1.Audio_Channel_Mapper = null;
@@ -6976,6 +7097,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Loop = false;
             this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
+            this.MediaPlayer1.MIDI_Renderer = null;
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
@@ -6989,6 +7111,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Selection_Stop = 0;
             this.MediaPlayer1.Size = new System.Drawing.Size(416, 312);
             this.MediaPlayer1.Source_Custom_CLSID = null;
+            this.MediaPlayer1.Source_GPU_Mode = VisioForge.Types.VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
             this.MediaPlayer1.Source_Stream_AudioPresent = false;
@@ -7026,16 +7149,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
             // 
-            // cbRunAsync
-            // 
-            this.cbRunAsync.AutoSize = true;
-            this.cbRunAsync.Location = new System.Drawing.Point(695, 127);
-            this.cbRunAsync.Name = "cbRunAsync";
-            this.cbRunAsync.Size = new System.Drawing.Size(55, 17);
-            this.cbRunAsync.TabIndex = 23;
-            this.cbRunAsync.Text = "Async";
-            this.cbRunAsync.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7066,6 +7179,11 @@ namespace Media_Player_Demo
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage20.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
@@ -7269,8 +7387,6 @@ namespace Media_Player_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).EndInit();
             this.tabPage55.ResumeLayout(false);
             this.tabPage55.PerformLayout();
-            this.tabPage25.ResumeLayout(false);
-            this.tabPage25.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -7794,8 +7910,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.PictureBox imgTags;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btReversePlaybackPrevFrame;
-        private System.Windows.Forms.TabPage tabPage25;
-        private System.Windows.Forms.LinkLabel linkLabel2;
         private System.Windows.Forms.TabPage tabPage50;
         private System.Windows.Forms.Button btAudioChannelMapperClear;
         private System.Windows.Forms.GroupBox groupBox41;
@@ -7855,5 +7969,16 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbFlipX;
         private System.Windows.Forms.CheckBox cbTelemetry;
         private System.Windows.Forms.CheckBox cbRunAsync;
+        private System.Windows.Forms.TabPage tabPage20;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.RadioButton rbGPUDirect3D;
+        private System.Windows.Forms.RadioButton rbGPUDXVANative;
+        private System.Windows.Forms.RadioButton rbGPUDXVACopyBack;
+        private System.Windows.Forms.RadioButton rbGPUIntel;
+        private System.Windows.Forms.RadioButton rbGPUNVidia;
     }
 }

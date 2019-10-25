@@ -446,54 +446,7 @@ namespace Media_Player_Demo
 
             MediaInfo.Filename = edFilenameOrURL.Text;
 
-            switch (cbSourceMode.SelectedIndex)
-            {
-                case 0:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
-                    break;
-                case 1:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG;
-                    break;
-                case 2:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
-                    break;
-                case 3:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC;
-                    break;
-                case 4:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS;
-                    break;
-                case 5:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay;
-                    break;
-                case 6:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-                    break;
-                case 7:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
-                    break;
-                case 8:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS;
-                    break;
-                case 9:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG;
-                    break;
-                case 10:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC;
-                    break;
-                case 11:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
-                    break;
-                case 12:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.CustomSource;
-
-                    if (!string.IsNullOrEmpty(edCustomSourceFilter.Text))
-                    {
-                        MediaPlayer1.Source_Custom_CLSID = edCustomSourceFilter.Text.Trim();
-                    }
-
-                    break;
-            }
+            SetSourceMode();
 
             if ((MediaPlayer1.Source_Mode == VFMediaPlayerSource.File_DS) ||
                 (MediaPlayer1.Source_Mode == VFMediaPlayerSource.File_FFMPEG) ||
@@ -882,6 +835,89 @@ namespace Media_Player_Demo
             }
         }
 
+        private void SetSourceMode()
+        {
+            switch (cbSourceMode.SelectedIndex)
+            {
+                case 0:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
+                    break;
+                case 1:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.GPU;
+
+                    if (rbGPUIntel.Checked)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.IntelQuickSync;
+                    }
+                    else if (rbGPUNVidia.Checked)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
+                    }
+                    else if (rbGPUDXVANative.Checked)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.DXVA2Native;
+                    }
+                    else if (rbGPUDXVACopyBack.Checked)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.DXVA2CopyBack;
+                    }
+                    else if (rbGPUDirect3D.Checked)
+                    {
+                        MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.Direct3D11;
+                    }
+
+                    break;
+                case 2:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG;
+                    break;
+                case 3:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
+                    break;
+                case 4:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC;
+                    break;
+                case 5:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS;
+                    break;
+                case 6:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay;
+                    break;
+                case 7:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
+                    LoadToMemory();
+                    break;
+                case 8:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
+                    LoadToMemory();
+                    break;
+                case 9:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS;
+                    break;
+                case 10:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG;
+                    break;
+                case 11:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC;
+                    break;
+                case 12:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
+                    break;
+                case 13:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.CustomSource;
+
+                    if (!string.IsNullOrEmpty(edCustomSourceFilter.Text))
+                    {
+                        MediaPlayer1.Source_Custom_CLSID = edCustomSourceFilter.Text.Trim();
+                    }
+
+                    break;
+
+                case 14:
+                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI;
+                    break;
+            }
+        }
+
         private void btStart_Click(object sender, EventArgs e)
         {            
             //MediaPlayer1.CustomRedist_Enabled = true;
@@ -959,60 +995,7 @@ namespace Media_Player_Demo
             MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text);
             MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked;
 
-            switch (cbSourceMode.SelectedIndex)
-            {
-                case 0:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
-                    break;
-                case 1:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG;
-                    break;
-                case 2:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS;
-                    break;
-                case 3:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC;
-                    break;
-                case 4:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS;
-                    break;
-                case 5:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay;
-                    break;
-                case 6:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
-                    LoadToMemory();
-                    break;
-                case 7:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG;
-                    LoadToMemory();
-                    break;
-                case 8:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS;
-                    break;
-                case 9:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG;
-                    break;
-                case 10:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC;
-                    break;
-                case 11:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS;
-                    break;
-                case 12:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.CustomSource;
-
-                    if (!string.IsNullOrEmpty(edCustomSourceFilter.Text))
-                    {
-                        MediaPlayer1.Source_Custom_CLSID = edCustomSourceFilter.Text.Trim();
-                    }
-
-                    break;
-
-                case 13:
-                    MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI;
-                    break;
-            }
+            SetSourceMode();
 
             btReadInfo_Click(null, null);
 
@@ -3288,6 +3271,12 @@ namespace Media_Player_Demo
                 edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
                 edTags.Text += e.Info.ToString();
             }));
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64);
+            Process.Start(startInfo);
         }
     }
 }
