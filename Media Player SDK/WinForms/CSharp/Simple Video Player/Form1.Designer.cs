@@ -80,11 +80,9 @@ namespace Video_Player_Demo
             this.groupBox4.Controls.Add(this.tbBalance1);
             this.groupBox4.Controls.Add(this.label6);
             this.groupBox4.Controls.Add(this.tbVolume1);
-            this.groupBox4.Location = new System.Drawing.Point(868, 281);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox4.Location = new System.Drawing.Point(434, 146);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox4.Size = new System.Drawing.Size(442, 206);
+            this.groupBox4.Size = new System.Drawing.Size(221, 107);
             this.groupBox4.TabIndex = 33;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Audio output";
@@ -92,44 +90,40 @@ namespace Video_Player_Demo
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(218, 54);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(109, 28);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(90, 25);
+            this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 11;
             this.label7.Text = "Balance";
             // 
             // tbBalance1
             // 
             this.tbBalance1.BackColor = System.Drawing.SystemColors.Window;
-            this.tbBalance1.Location = new System.Drawing.Point(224, 85);
-            this.tbBalance1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbBalance1.Location = new System.Drawing.Point(112, 44);
             this.tbBalance1.Maximum = 100;
             this.tbBalance1.Minimum = -100;
             this.tbBalance1.Name = "tbBalance1";
-            this.tbBalance1.Size = new System.Drawing.Size(170, 90);
+            this.tbBalance1.Size = new System.Drawing.Size(85, 45);
             this.tbBalance1.TabIndex = 10;
             this.tbBalance1.Scroll += new System.EventHandler(this.tbBalance1_Scroll);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(32, 54);
-            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Location = new System.Drawing.Point(16, 28);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(84, 25);
+            this.label6.Size = new System.Drawing.Size(42, 13);
             this.label6.TabIndex = 9;
             this.label6.Text = "Volume";
             // 
             // tbVolume1
             // 
             this.tbVolume1.BackColor = System.Drawing.SystemColors.Window;
-            this.tbVolume1.Location = new System.Drawing.Point(38, 85);
-            this.tbVolume1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbVolume1.Location = new System.Drawing.Point(19, 44);
             this.tbVolume1.Maximum = 100;
             this.tbVolume1.Minimum = 20;
             this.tbVolume1.Name = "tbVolume1";
-            this.tbVolume1.Size = new System.Drawing.Size(170, 90);
+            this.tbVolume1.Size = new System.Drawing.Size(85, 45);
             this.tbVolume1.TabIndex = 8;
             this.tbVolume1.Value = 80;
             this.tbVolume1.Scroll += new System.EventHandler(this.tbVolume1_Scroll);
@@ -140,11 +134,9 @@ namespace Video_Player_Demo
             this.groupBox1.Controls.Add(this.cbLicensing);
             this.groupBox1.Controls.Add(this.mmError);
             this.groupBox1.Controls.Add(this.cbDebugMode);
-            this.groupBox1.Location = new System.Drawing.Point(868, 27);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Location = new System.Drawing.Point(434, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox1.Size = new System.Drawing.Size(442, 242);
+            this.groupBox1.Size = new System.Drawing.Size(221, 126);
             this.groupBox1.TabIndex = 32;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Errors and warnings";
@@ -152,31 +144,28 @@ namespace Video_Player_Demo
             // cbLicensing
             // 
             this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(198, 37);
-            this.cbLicensing.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbLicensing.Location = new System.Drawing.Point(99, 19);
             this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(177, 29);
+            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
             this.cbLicensing.TabIndex = 4;
             this.cbLicensing.Text = "Licensing info";
             this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // mmError
             // 
-            this.mmError.Location = new System.Drawing.Point(12, 81);
-            this.mmError.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.mmError.Location = new System.Drawing.Point(6, 42);
             this.mmError.Multiline = true;
             this.mmError.Name = "mmError";
             this.mmError.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.mmError.Size = new System.Drawing.Size(414, 146);
+            this.mmError.Size = new System.Drawing.Size(209, 78);
             this.mmError.TabIndex = 3;
             // 
             // cbDebugMode
             // 
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(12, 37);
-            this.cbDebugMode.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbDebugMode.Location = new System.Drawing.Point(6, 19);
             this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(166, 29);
+            this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
             this.cbDebugMode.TabIndex = 2;
             this.cbDebugMode.Text = "Debug mode";
             this.cbDebugMode.UseVisualStyleBackColor = true;
@@ -186,10 +175,9 @@ namespace Video_Player_Demo
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(166, 913);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(83, 475);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(459, 26);
+            this.label1.Size = new System.Drawing.Size(244, 13);
             this.label1.TabIndex = 31;
             this.label1.Text = "Much more features shown in Main Demo!";
             // 
@@ -207,21 +195,18 @@ namespace Video_Player_Demo
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.lbTime);
             this.groupBox2.Controls.Add(this.tbTimeline);
-            this.groupBox2.Location = new System.Drawing.Point(24, 708);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Location = new System.Drawing.Point(12, 368);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.groupBox2.Size = new System.Drawing.Size(832, 173);
+            this.groupBox2.Size = new System.Drawing.Size(416, 90);
             this.groupBox2.TabIndex = 30;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Controls";
             // 
             // btPreviousFrame
             // 
-            this.btPreviousFrame.Location = new System.Drawing.Point(508, 112);
-            this.btPreviousFrame.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btPreviousFrame.Location = new System.Drawing.Point(254, 58);
             this.btPreviousFrame.Name = "btPreviousFrame";
-            this.btPreviousFrame.Size = new System.Drawing.Size(150, 44);
+            this.btPreviousFrame.Size = new System.Drawing.Size(75, 23);
             this.btPreviousFrame.TabIndex = 11;
             this.btPreviousFrame.Text = "Prev frame";
             this.btPreviousFrame.UseVisualStyleBackColor = true;
@@ -230,20 +215,18 @@ namespace Video_Player_Demo
             // cbLoop
             // 
             this.cbLoop.AutoSize = true;
-            this.cbLoop.Location = new System.Drawing.Point(438, 25);
-            this.cbLoop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbLoop.Location = new System.Drawing.Point(219, 13);
             this.cbLoop.Name = "cbLoop";
-            this.cbLoop.Size = new System.Drawing.Size(92, 29);
+            this.cbLoop.Size = new System.Drawing.Size(50, 17);
             this.cbLoop.TabIndex = 10;
             this.cbLoop.Text = "Loop";
             this.cbLoop.UseVisualStyleBackColor = true;
             // 
             // btNextFrame
             // 
-            this.btNextFrame.Location = new System.Drawing.Point(670, 112);
-            this.btNextFrame.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btNextFrame.Location = new System.Drawing.Point(335, 58);
             this.btNextFrame.Name = "btNextFrame";
-            this.btNextFrame.Size = new System.Drawing.Size(150, 44);
+            this.btNextFrame.Size = new System.Drawing.Size(75, 23);
             this.btNextFrame.TabIndex = 8;
             this.btNextFrame.Text = "Next frame";
             this.btNextFrame.UseVisualStyleBackColor = true;
@@ -252,10 +235,9 @@ namespace Video_Player_Demo
             // btStop
             // 
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStop.Location = new System.Drawing.Point(360, 112);
-            this.btStop.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btStop.Location = new System.Drawing.Point(180, 58);
             this.btStop.Name = "btStop";
-            this.btStop.Size = new System.Drawing.Size(92, 44);
+            this.btStop.Size = new System.Drawing.Size(46, 23);
             this.btStop.TabIndex = 7;
             this.btStop.Text = "Stop";
             this.btStop.UseVisualStyleBackColor = true;
@@ -263,10 +245,9 @@ namespace Video_Player_Demo
             // 
             // btPause
             // 
-            this.btPause.Location = new System.Drawing.Point(244, 112);
-            this.btPause.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btPause.Location = new System.Drawing.Point(122, 58);
             this.btPause.Name = "btPause";
-            this.btPause.Size = new System.Drawing.Size(104, 44);
+            this.btPause.Size = new System.Drawing.Size(52, 23);
             this.btPause.TabIndex = 6;
             this.btPause.Text = "Pause";
             this.btPause.UseVisualStyleBackColor = true;
@@ -274,10 +255,9 @@ namespace Video_Player_Demo
             // 
             // btResume
             // 
-            this.btResume.Location = new System.Drawing.Point(110, 112);
-            this.btResume.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btResume.Location = new System.Drawing.Point(55, 58);
             this.btResume.Name = "btResume";
-            this.btResume.Size = new System.Drawing.Size(122, 44);
+            this.btResume.Size = new System.Drawing.Size(61, 23);
             this.btResume.TabIndex = 5;
             this.btResume.Text = "Resume";
             this.btResume.UseVisualStyleBackColor = true;
@@ -286,10 +266,9 @@ namespace Video_Player_Demo
             // btStart
             // 
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStart.Location = new System.Drawing.Point(12, 112);
-            this.btStart.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btStart.Location = new System.Drawing.Point(6, 58);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(86, 44);
+            this.btStart.Size = new System.Drawing.Size(43, 23);
             this.btStart.TabIndex = 4;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
@@ -297,12 +276,11 @@ namespace Video_Player_Demo
             // 
             // tbSpeed
             // 
-            this.tbSpeed.Location = new System.Drawing.Point(642, 52);
-            this.tbSpeed.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbSpeed.Location = new System.Drawing.Point(321, 27);
             this.tbSpeed.Maximum = 25;
             this.tbSpeed.Minimum = 5;
             this.tbSpeed.Name = "tbSpeed";
-            this.tbSpeed.Size = new System.Drawing.Size(178, 90);
+            this.tbSpeed.Size = new System.Drawing.Size(89, 45);
             this.tbSpeed.TabIndex = 3;
             this.tbSpeed.Value = 10;
             this.tbSpeed.Scroll += new System.EventHandler(this.tbSpeed_Scroll);
@@ -310,30 +288,27 @@ namespace Video_Player_Demo
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(644, 21);
-            this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label16.Location = new System.Drawing.Point(322, 11);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(74, 25);
+            this.label16.Size = new System.Drawing.Size(38, 13);
             this.label16.TabIndex = 2;
             this.label16.Text = "Speed";
             // 
             // lbTime
             // 
             this.lbTime.AutoSize = true;
-            this.lbTime.Location = new System.Drawing.Point(432, 63);
-            this.lbTime.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbTime.Location = new System.Drawing.Point(216, 33);
             this.lbTime.Name = "lbTime";
-            this.lbTime.Size = new System.Drawing.Size(186, 25);
+            this.lbTime.Size = new System.Drawing.Size(96, 13);
             this.lbTime.TabIndex = 1;
             this.lbTime.Text = "00:00:00/00:00:00";
             // 
             // tbTimeline
             // 
-            this.tbTimeline.Location = new System.Drawing.Point(12, 37);
-            this.tbTimeline.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbTimeline.Location = new System.Drawing.Point(6, 19);
             this.tbTimeline.Maximum = 100;
             this.tbTimeline.Name = "tbTimeline";
-            this.tbTimeline.Size = new System.Drawing.Size(414, 90);
+            this.tbTimeline.Size = new System.Drawing.Size(207, 45);
             this.tbTimeline.TabIndex = 0;
             this.tbTimeline.Scroll += new System.EventHandler(this.tbTimeline_Scroll);
             // 
@@ -341,10 +316,9 @@ namespace Video_Player_Demo
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(636, 15);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.linkLabel1.Location = new System.Drawing.Point(318, 8);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(219, 25);
+            this.linkLabel1.Size = new System.Drawing.Size(110, 13);
             this.linkLabel1.TabIndex = 29;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Watch video tutorials!";
@@ -353,10 +327,9 @@ namespace Video_Player_Demo
             // btSelectFile
             // 
             this.btSelectFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSelectFile.Location = new System.Drawing.Point(810, 48);
-            this.btSelectFile.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btSelectFile.Location = new System.Drawing.Point(405, 25);
             this.btSelectFile.Name = "btSelectFile";
-            this.btSelectFile.Size = new System.Drawing.Size(46, 44);
+            this.btSelectFile.Size = new System.Drawing.Size(23, 23);
             this.btSelectFile.TabIndex = 28;
             this.btSelectFile.Text = "...";
             this.btSelectFile.UseVisualStyleBackColor = true;
@@ -366,20 +339,18 @@ namespace Video_Player_Demo
             // 
             this.edFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.edFilename.Location = new System.Drawing.Point(24, 52);
-            this.edFilename.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.edFilename.Location = new System.Drawing.Point(12, 27);
             this.edFilename.Name = "edFilename";
-            this.edFilename.Size = new System.Drawing.Size(770, 31);
+            this.edFilename.Size = new System.Drawing.Size(387, 20);
             this.edFilename.TabIndex = 27;
-            this.edFilename.Text = "C:\\video.avi";
+            this.edFilename.Text = "C:\\samples\\!video.mp4";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(18, 21);
-            this.label14.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label14.Location = new System.Drawing.Point(9, 11);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(106, 25);
+            this.label14.Size = new System.Drawing.Size(52, 13);
             this.label14.TabIndex = 26;
             this.label14.Text = "File name";
             // 
@@ -409,30 +380,32 @@ namespace Video_Player_Demo
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
+            this.MediaPlayer1.CustomRedist_Enabled = false;
+            this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
+            this.MediaPlayer1.Debug_Telemetry = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
-            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
-            this.MediaPlayer1.Location = new System.Drawing.Point(24, 108);
+            this.MediaPlayer1.Location = new System.Drawing.Point(12, 56);
             this.MediaPlayer1.Loop = false;
             this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
-            this.MediaPlayer1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MediaPlayer1.MaximalSpeedPlayback = false;
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
             this.MediaPlayer1.Play_DelayEnabled = false;
+            this.MediaPlayer1.Play_PauseAtFirstFrame = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
             this.MediaPlayer1.Selection_Start = 0;
             this.MediaPlayer1.Selection_Stop = 0;
-            this.MediaPlayer1.Size = new System.Drawing.Size(830, 588);
+            this.MediaPlayer1.Size = new System.Drawing.Size(415, 306);
             this.MediaPlayer1.Source_Custom_CLSID = null;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
@@ -468,10 +441,10 @@ namespace Video_Player_Demo
             // 
             this.Label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Label2.AutoSize = true;
-            this.Label2.Location = new System.Drawing.Point(862, 506);
-            this.Label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label2.Location = new System.Drawing.Point(431, 263);
+            this.Label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(144, 25);
+            this.Label2.Size = new System.Drawing.Size(73, 13);
             this.Label2.TabIndex = 47;
             this.Label2.Text = "Decode using";
             // 
@@ -485,17 +458,17 @@ namespace Video_Player_Demo
             "DirectShow (System codecs)",
             "FFMPEG",
             "VLC"});
-            this.cbSourceMode.Location = new System.Drawing.Point(868, 535);
-            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbSourceMode.Location = new System.Drawing.Point(434, 278);
+            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbSourceMode.Name = "cbSourceMode";
-            this.cbSourceMode.Size = new System.Drawing.Size(438, 33);
+            this.cbSourceMode.Size = new System.Drawing.Size(221, 21);
             this.cbSourceMode.TabIndex = 51;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1332, 960);
+            this.ClientSize = new System.Drawing.Size(666, 499);
             this.Controls.Add(this.cbSourceMode);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.groupBox4);
@@ -508,7 +481,6 @@ namespace Video_Player_Demo
             this.Controls.Add(this.label14);
             this.Controls.Add(this.MediaPlayer1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Video Player Demo";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

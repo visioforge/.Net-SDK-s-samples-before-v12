@@ -35,6 +35,15 @@ Partial Class Form1
         Me.tabPage1 = New System.Windows.Forms.TabPage()
         Me.tabControl16 = New System.Windows.Forms.TabControl()
         Me.tabPage64 = New System.Windows.Forms.TabPage()
+        Me.label22 = New System.Windows.Forms.Label()
+        Me.edBufferSize = New System.Windows.Forms.TextBox()
+        Me.label23 = New System.Windows.Forms.Label()
+        Me.label20 = New System.Windows.Forms.Label()
+        Me.edMaximalBitrate = New System.Windows.Forms.TextBox()
+        Me.label21 = New System.Windows.Forms.Label()
+        Me.label18 = New System.Windows.Forms.Label()
+        Me.edMinimalBitrate = New System.Windows.Forms.TextBox()
+        Me.label19 = New System.Windows.Forms.Label()
         Me.cbContainer = New System.Windows.Forms.ComboBox()
         Me.label13 = New System.Windows.Forms.Label()
         Me.label12 = New System.Windows.Forms.Label()
@@ -246,15 +255,6 @@ Partial Class Form1
         Me.openFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.VideoEdit1 = New VisioForge.Controls.UI.WinForms.VideoEditFFMPEG()
         Me.cbLicensing = New System.Windows.Forms.CheckBox()
-        Me.label22 = New System.Windows.Forms.Label()
-        Me.edBufferSize = New System.Windows.Forms.TextBox()
-        Me.label23 = New System.Windows.Forms.Label()
-        Me.label20 = New System.Windows.Forms.Label()
-        Me.edMaximalBitrate = New System.Windows.Forms.TextBox()
-        Me.label21 = New System.Windows.Forms.Label()
-        Me.label18 = New System.Windows.Forms.Label()
-        Me.edMinimalBitrate = New System.Windows.Forms.TextBox()
-        Me.label19 = New System.Windows.Forms.Label()
         Me.tabControl1.SuspendLayout
         Me.tabPage1.SuspendLayout
         Me.tabControl16.SuspendLayout
@@ -429,6 +429,84 @@ Partial Class Form1
         Me.tabPage64.TabIndex = 2
         Me.tabPage64.Text = "Video"
         Me.tabPage64.UseVisualStyleBackColor = true
+        '
+        'label22
+        '
+        Me.label22.AutoSize = true
+        Me.label22.Location = New System.Drawing.Point(157, 236)
+        Me.label22.Name = "label22"
+        Me.label22.Size = New System.Drawing.Size(20, 13)
+        Me.label22.TabIndex = 115
+        Me.label22.Text = "Kb"
+        '
+        'edBufferSize
+        '
+        Me.edBufferSize.Location = New System.Drawing.Point(99, 233)
+        Me.edBufferSize.Name = "edBufferSize"
+        Me.edBufferSize.Size = New System.Drawing.Size(48, 20)
+        Me.edBufferSize.TabIndex = 114
+        Me.edBufferSize.Text = "3000"
+        '
+        'label23
+        '
+        Me.label23.AutoSize = true
+        Me.label23.Location = New System.Drawing.Point(10, 236)
+        Me.label23.Name = "label23"
+        Me.label23.Size = New System.Drawing.Size(56, 13)
+        Me.label23.TabIndex = 113
+        Me.label23.Text = "Buffer size"
+        '
+        'label20
+        '
+        Me.label20.AutoSize = true
+        Me.label20.Location = New System.Drawing.Point(157, 205)
+        Me.label20.Name = "label20"
+        Me.label20.Size = New System.Drawing.Size(31, 13)
+        Me.label20.TabIndex = 112
+        Me.label20.Text = "Kbps"
+        '
+        'edMaximalBitrate
+        '
+        Me.edMaximalBitrate.Location = New System.Drawing.Point(99, 202)
+        Me.edMaximalBitrate.Name = "edMaximalBitrate"
+        Me.edMaximalBitrate.Size = New System.Drawing.Size(48, 20)
+        Me.edMaximalBitrate.TabIndex = 111
+        Me.edMaximalBitrate.Text = "8000"
+        '
+        'label21
+        '
+        Me.label21.AutoSize = true
+        Me.label21.Location = New System.Drawing.Point(10, 205)
+        Me.label21.Name = "label21"
+        Me.label21.Size = New System.Drawing.Size(77, 13)
+        Me.label21.TabIndex = 110
+        Me.label21.Text = "Maximal bitrate"
+        '
+        'label18
+        '
+        Me.label18.AutoSize = true
+        Me.label18.Location = New System.Drawing.Point(157, 174)
+        Me.label18.Name = "label18"
+        Me.label18.Size = New System.Drawing.Size(31, 13)
+        Me.label18.TabIndex = 109
+        Me.label18.Text = "Kbps"
+        '
+        'edMinimalBitrate
+        '
+        Me.edMinimalBitrate.Location = New System.Drawing.Point(99, 171)
+        Me.edMinimalBitrate.Name = "edMinimalBitrate"
+        Me.edMinimalBitrate.Size = New System.Drawing.Size(48, 20)
+        Me.edMinimalBitrate.TabIndex = 108
+        Me.edMinimalBitrate.Text = "2000"
+        '
+        'label19
+        '
+        Me.label19.AutoSize = true
+        Me.label19.Location = New System.Drawing.Point(10, 174)
+        Me.label19.Name = "label19"
+        Me.label19.Size = New System.Drawing.Size(74, 13)
+        Me.label19.TabIndex = 107
+        Me.label19.Text = "Minimal bitrate"
         '
         'cbContainer
         '
@@ -2564,11 +2642,14 @@ Partial Class Form1
         Me.VideoEdit1.BackColor = System.Drawing.Color.Black
         Me.VideoEdit1.Barcode_Reader_Enabled = false
         Me.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.[Auto]
+        Me.VideoEdit1.ChromaKey = Nothing
         Me.VideoEdit1.Debug_Dir = Nothing
         Me.VideoEdit1.Debug_Mode = false
         Me.VideoEdit1.Location = New System.Drawing.Point(329, 233)
         Me.VideoEdit1.Margin = New System.Windows.Forms.Padding(2)
+        Me.VideoEdit1.Motion_Detection = Nothing
         Me.VideoEdit1.Name = "VideoEdit1"
+        Me.VideoEdit1.Object_Detection = Nothing
         Me.VideoEdit1.Output_Audio_Bitrate = 0R
         Me.VideoEdit1.Output_Audio_Channels = VisioForge.Types.VFFFMPEGSDKAudioChannels.Mono
         Me.VideoEdit1.Output_Audio_Encoder = VisioForge.Types.VFFFMPEGSDKAudioEncoder.AAC
@@ -2605,84 +2686,6 @@ Partial Class Form1
         Me.cbLicensing.Text = "Licensing info"
         Me.cbLicensing.UseVisualStyleBackColor = true
         '
-        'label22
-        '
-        Me.label22.AutoSize = true
-        Me.label22.Location = New System.Drawing.Point(157, 236)
-        Me.label22.Name = "label22"
-        Me.label22.Size = New System.Drawing.Size(20, 13)
-        Me.label22.TabIndex = 115
-        Me.label22.Text = "Kb"
-        '
-        'edBufferSize
-        '
-        Me.edBufferSize.Location = New System.Drawing.Point(99, 233)
-        Me.edBufferSize.Name = "edBufferSize"
-        Me.edBufferSize.Size = New System.Drawing.Size(48, 20)
-        Me.edBufferSize.TabIndex = 114
-        Me.edBufferSize.Text = "3000"
-        '
-        'label23
-        '
-        Me.label23.AutoSize = true
-        Me.label23.Location = New System.Drawing.Point(10, 236)
-        Me.label23.Name = "label23"
-        Me.label23.Size = New System.Drawing.Size(56, 13)
-        Me.label23.TabIndex = 113
-        Me.label23.Text = "Buffer size"
-        '
-        'label20
-        '
-        Me.label20.AutoSize = true
-        Me.label20.Location = New System.Drawing.Point(157, 205)
-        Me.label20.Name = "label20"
-        Me.label20.Size = New System.Drawing.Size(31, 13)
-        Me.label20.TabIndex = 112
-        Me.label20.Text = "Kbps"
-        '
-        'edMaximalBitrate
-        '
-        Me.edMaximalBitrate.Location = New System.Drawing.Point(99, 202)
-        Me.edMaximalBitrate.Name = "edMaximalBitrate"
-        Me.edMaximalBitrate.Size = New System.Drawing.Size(48, 20)
-        Me.edMaximalBitrate.TabIndex = 111
-        Me.edMaximalBitrate.Text = "8000"
-        '
-        'label21
-        '
-        Me.label21.AutoSize = true
-        Me.label21.Location = New System.Drawing.Point(10, 205)
-        Me.label21.Name = "label21"
-        Me.label21.Size = New System.Drawing.Size(77, 13)
-        Me.label21.TabIndex = 110
-        Me.label21.Text = "Maximal bitrate"
-        '
-        'label18
-        '
-        Me.label18.AutoSize = true
-        Me.label18.Location = New System.Drawing.Point(157, 174)
-        Me.label18.Name = "label18"
-        Me.label18.Size = New System.Drawing.Size(31, 13)
-        Me.label18.TabIndex = 109
-        Me.label18.Text = "Kbps"
-        '
-        'edMinimalBitrate
-        '
-        Me.edMinimalBitrate.Location = New System.Drawing.Point(99, 171)
-        Me.edMinimalBitrate.Name = "edMinimalBitrate"
-        Me.edMinimalBitrate.Size = New System.Drawing.Size(48, 20)
-        Me.edMinimalBitrate.TabIndex = 108
-        Me.edMinimalBitrate.Text = "2000"
-        '
-        'label19
-        '
-        Me.label19.AutoSize = true
-        Me.label19.Location = New System.Drawing.Point(10, 174)
-        Me.label19.Name = "label19"
-        Me.label19.Size = New System.Drawing.Size(74, 13)
-        Me.label19.TabIndex = 107
-        Me.label19.Text = "Minimal bitrate"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -2702,6 +2705,7 @@ Partial Class Form1
         Me.Controls.Add(Me.label120)
         Me.Controls.Add(Me.cbDebugMode)
         Me.Controls.Add(Me.tabControl1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "Form1"

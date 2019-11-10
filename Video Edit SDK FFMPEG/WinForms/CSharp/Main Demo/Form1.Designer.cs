@@ -2792,11 +2792,14 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.BackColor = System.Drawing.Color.Black;
             this.VideoEdit1.Barcode_Reader_Enabled = false;
             this.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
+            this.VideoEdit1.ChromaKey = null;
             this.VideoEdit1.Debug_Dir = "";
             this.VideoEdit1.Debug_Mode = false;
             this.VideoEdit1.Location = new System.Drawing.Point(331, 231);
             this.VideoEdit1.Margin = new System.Windows.Forms.Padding(2);
+            this.VideoEdit1.Motion_Detection = null;
             this.VideoEdit1.Name = "VideoEdit1";
+            this.VideoEdit1.Object_Detection = null;
             this.VideoEdit1.Output_Audio_Bitrate = 0D;
             this.VideoEdit1.Output_Audio_Channels = VisioForge.Types.VFFFMPEGSDKAudioChannels.Mono;
             this.VideoEdit1.Output_Audio_Encoder = VisioForge.Types.VFFFMPEGSDKAudioEncoder.AAC;
@@ -2859,6 +2862,7 @@ namespace VideoEdit_CS_Demo
             this.Controls.Add(this.label10);
             this.Controls.Add(this.ProgressBar1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form1";

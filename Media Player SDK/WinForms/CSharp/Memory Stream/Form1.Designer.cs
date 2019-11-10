@@ -413,7 +413,6 @@ namespace Memory_Stream_Demo
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
-            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(12, 80);
             this.MediaPlayer1.Loop = false;

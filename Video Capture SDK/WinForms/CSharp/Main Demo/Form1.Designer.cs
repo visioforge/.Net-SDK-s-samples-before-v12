@@ -13008,6 +13008,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // cbRunAsync
             // 
+            this.cbRunAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbRunAsync.AutoSize = true;
             this.cbRunAsync.Location = new System.Drawing.Point(741, 654);
             this.cbRunAsync.Name = "cbRunAsync";

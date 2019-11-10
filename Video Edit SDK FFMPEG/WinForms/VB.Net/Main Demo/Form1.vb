@@ -1,5 +1,6 @@
 ' ReSharper disable InconsistentNaming
 
+Imports VisioForge.Controls.UI
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
 
@@ -339,7 +340,7 @@ Public Class Form1
         VideoEdit1.Start()
 
     End Sub
-    
+
     Private Sub ConfigureChromaKey()
 
         If cbChromaKeyEnabled.Checked Then
@@ -360,7 +361,7 @@ Public Class Form1
         End If
     End Sub
 
-        Private Sub ConfigureObjectTracking()
+    Private Sub ConfigureObjectTracking()
 
         If (cbAFMotionDetection.Checked) Then
             VideoEdit1.Object_Detection = New MotionDetectionExSettings()
@@ -389,7 +390,7 @@ Public Class Form1
 
     Private Sub linkLabel1_LinkClicked(ByVal sender As System.Object, ByVal e As Windows.Forms.LinkLabelLinkClickedEventArgs) Handles linkLabel1.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub

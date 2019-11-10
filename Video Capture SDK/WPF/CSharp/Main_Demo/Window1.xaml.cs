@@ -2090,7 +2090,7 @@ namespace Main_Demo
             }
 
             // Start
-            VideoCapture1.Start();
+            VideoCapture1.Start(cbRunAsync.IsChecked == true);
 
             edNetworkURL.Text = VideoCapture1.Network_Streaming_URL;
 

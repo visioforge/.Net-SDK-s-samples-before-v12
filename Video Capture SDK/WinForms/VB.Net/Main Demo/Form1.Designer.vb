@@ -12583,6 +12583,7 @@ Partial Class Form1
         '
         'cbRunAsync
         '
+        Me.cbRunAsync.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbRunAsync.AutoSize = True
         Me.cbRunAsync.Location = New System.Drawing.Point(741, 657)
         Me.cbRunAsync.Name = "cbRunAsync"

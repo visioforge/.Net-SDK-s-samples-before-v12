@@ -711,10 +711,10 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Label Content="Watch tutorials" FontWeight="Bold" Foreground="#FF0016CF" Height="29" HorizontalAlignment="Left" Margin="714,1,0,0" x:Name="label129" VerticalAlignment="Top" MouseDown="label129_MouseDown" />
+        <Label Content="Watch tutorials" FontWeight="Bold" Foreground="#FF0016CF" Height="29" HorizontalAlignment="Right" Margin="0,1,25,0" x:Name="label129" VerticalAlignment="Top" MouseDown="label129_MouseDown" />
         <Label Content="File name" Height="28" HorizontalAlignment="Left" Margin="406,6,0,0" x:Name="label17" VerticalAlignment="Top" />
-        <TextBox Height="23" HorizontalAlignment="Left" Margin="407,30,0,0" x:Name="edFilenameOrURL" VerticalAlignment="Top" Width="319.8" Text="c:\Samples\!video.mp4" />
-        <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="784,30,0,0" x:Name="btSelectFile" VerticalAlignment="Top" Width="23" Click="btSelectFile_Click" />
+        <TextBox Height="23" Margin="407,30,108,0" x:Name="edFilenameOrURL" VerticalAlignment="Top" Text="c:\Samples\!video.mp4" />
+        <Button Content="..." Height="23" HorizontalAlignment="Right" Margin="0,30,28,0" x:Name="btSelectFile" VerticalAlignment="Top" Width="23" Click="btSelectFile_Click" />
         <GroupBox Header="Controls" Height="89" HorizontalAlignment="Left" Margin="407,0,0,217" x:Name="groupBox1" VerticalAlignment="Bottom" Width="403">
             <Grid>
                 <Slider Height="23" HorizontalAlignment="Left" Margin="8,6,0,0" x:Name="tbTimeline" VerticalAlignment="Top" Width="146" Maximum="100" ValueChanged="tbTimeline_ValueChanged" />
@@ -745,7 +745,7 @@
             </Grid>
         </GroupBox>
         <Label Content="Source mode" HorizontalAlignment="Left" Margin="406,130.04,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbSourceMode" HorizontalAlignment="Left" Margin="491,134,0,0" VerticalAlignment="Top" Width="263">
+        <ComboBox x:Name="cbSourceMode" Margin="491,134,81,0" VerticalAlignment="Top">
             <ComboBoxItem Content="File / Network stream (decode using LAV)"/>
             <ComboBoxItem Content="File / Network stream (decode using GPU)"/>
             <ComboBoxItem Content="File (decode using FFMPEG)"/>
@@ -762,8 +762,8 @@
             <ComboBoxItem Content="MIDI / KAR"/>
         </ComboBox>
         <Label Content="Playlist" HorizontalAlignment="Left" Margin="407,53,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Left" Margin="731.8,30,0,0" VerticalAlignment="Top" Width="47.2" Height="23" Click="btAddFileToPlaylist_Click"/>
-        <ListBox x:Name="lbSourceFiles" HorizontalAlignment="Left" Height="46.08" Margin="406,78.96,0,0" VerticalAlignment="Top" Width="404"/>
+        <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Right" Margin="0,30,56,0" VerticalAlignment="Top" Width="47" Height="23" Click="btAddFileToPlaylist_Click"/>
+        <ListBox x:Name="lbSourceFiles" Height="46" Margin="406,79,25,0" VerticalAlignment="Top"/>
 
         <wpf:MediaPlayer Margin="406,161,25,310" 
                              Background="Black"
@@ -782,6 +782,6 @@
                              OnAudioVUMeterProVolume="MediaPlayer1_OnAudioVUMeterProVolume" 
                              OnLicenseRequired="MediaPlayer1_OnLicenseRequired" OnMIDIFileInfo="MediaPlayer1_OnMIDIFileInfo" 
                              />
-        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Left" Margin="759,136,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,136,25,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

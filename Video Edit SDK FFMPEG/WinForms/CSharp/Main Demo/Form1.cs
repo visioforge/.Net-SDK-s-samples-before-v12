@@ -1,5 +1,7 @@
 // ReSharper disable InconsistentNaming
 
+using VisioForge.Controls.UI;
+
 namespace VideoEdit_CS_Demo
 {
     using System;
@@ -354,7 +356,7 @@ namespace VideoEdit_CS_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe", @"http://www.visioforge.com/video_tutorials");
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
@@ -517,78 +519,9 @@ namespace VideoEdit_CS_Demo
                     0);
             }
         }
-
-        private void btTest_Click(object sender, EventArgs e)
-        {
-            // string filename = "x:\\axe_matamor.avi";
-            // VideoEdit1.Sources_AddFile(filename);
-
-            // VideoEdit1.Debug_Mode = false;
-            // VideoEdit1.Video_Effects_Clear();
-            // VideoEdit1.Output_Filename = "x:\\axe_matamor.webm";
-            // VideoEdit1.Profile = VFFFMPEGSDKProfile.Custom;
-            // VideoEdit1.Output_Audio_Channels = VFFFMPEGSDKAudioChannels.Stereo;
-            // VideoEdit1.Output_Audio_SampleRate = 44100;
-            // VideoEdit1.Output_Audio_SampleRate = 44100;
-            // VideoEdit1.Output_Audio_Bitrate = 128000;
-            // VideoEdit1.Output_Audio_Encoder = VFFFMPEGSDKAudioEncoder.Vorbis;
-            // VideoEdit1.Output_Video_AspectRatio = VFFFMPEGSDKAspectRatio.AR_None;
-            // VideoEdit1.Output_Video_Bitrate = 2000000;
-            // VideoEdit1.Output_Video_BufferSize = 3000000;
-            // VideoEdit1.Output_Video_Bitrate_Min = 1000000;
-            // VideoEdit1.Output_Video_Bitrate_Max = 3000000;
-            // VideoEdit1.Output_Video_Encoder = VFFFMPEGSDKVideoEncoder.VP8;
-            // VideoEdit1.Output_Video_FrameRate = VFFFMPEGSDKFrameRate.fr25;
-
-            // VideoEdit1.Output_Muxer = VFFFMPEGSDKMuxFormat.WebM;
-
-            // VideoEdit1.Output_Video_Width = 640;
-            // VideoEdit1.Output_Video_Height = 480;
-
-            //// Audio processing 
-            // VideoEdit1.Audio_Effects_Clear();
-
-            //// Video processing 
-            // VideoEdit1.Video_Effects_Clear();
-
-            //// motion detection 
-            // VideoEdit1.MotionDetection_Enabled = false;
-
-            //// AForge.Net 
-            // VideoEdit1.AForge_Motion_Detection_Enabled = false;
-            // VideoEdit1.AForge_Motion_Detection_ProcessorType = AFMotionProcessorType.None;
-
-            //// Chroma key 
-            // VideoEdit1.ChromaKey_Enabled = false;
-            // VideoEdit1.ChromaKey_ContrastHigh = 150;
-            // VideoEdit1.ChromaKey_ContrastLow = 10;
-            // VideoEdit1.ChromaKey_ImageFilename = @"c:\chroma_bg.bmp";
-            // VideoEdit1.ChromaKey_Color = VFChromaColor.Green;
-
-            //// Barcode detection 
-            // VideoEdit1.Barcode_Reader_Enabled = false;
-            // VideoEdit1.Barcode_Reader_Type = VFBarcodeType.Auto;
-
-            // VideoEdit1.Start();
-        }
-
-        //VisioForge.Controls.WinForms.VideoEdit videoEdit = new VisioForge.Controls.WinForms.VideoEdit();
-
-        //public delegate void FastCryptDelegate();
-
-        //private void FastCryptDelegateMethod()
-        //{
-        //    videoEdit.OnError += VideoEditOnOnError;
-        //    videoEdit.OnStop += VideoEditOnOnStop;
-        //    videoEdit.OnProgress += VideoEdit2OnOnProgress;
-
-        //    videoEdit.FastEncrypt_Start(new List<string>() { edOutput.Text }, "C:\\vf\\test.enc", "100", false, "c:\\vf\\"); 
-        //}
-
+        
         private void VideoEdit1_OnStop(object sender, EventArgs e)
         {
-            //BeginInvoke(new FastCryptDelegate(FastCryptDelegateMethod));
-
             BeginInvoke(new AFStopDelegate(this.AFStopDelegateMethod));
         }
 
@@ -599,21 +532,6 @@ namespace VideoEdit_CS_Demo
                 mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
         }
-
-        //private void VideoEdit2OnOnProgress(object sender, ProgressEventArgs progressEventArgs)
-        //{
-            
-        //}
-
-        //private void VideoEditOnOnStop(object sender, EventArgs eventArgs)
-        //{
-        //    MessageBox.Show("FastCrypt done");
-        //}
-
-        //private void VideoEditOnOnError(object sender, ErrorsEventArgs errorsEventArgs)
-        //{
-        //    MessageBox.Show(errorsEventArgs.Message);
-        //}
     }
 }
 

@@ -27,7 +27,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms5 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.tabControl3 = New System.Windows.Forms.TabControl()
         Me.tabPage10 = New System.Windows.Forms.TabPage()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
@@ -75,6 +75,17 @@ Partial Class Form1
         Me.lbTime = New System.Windows.Forms.Label()
         Me.tbTimeline = New System.Windows.Forms.TrackBar()
         Me.tabControl1 = New System.Windows.Forms.TabControl()
+        Me.TabPage20 = New System.Windows.Forms.TabPage()
+        Me.groupBox6 = New System.Windows.Forms.GroupBox()
+        Me.rbGPUDirect3D = New System.Windows.Forms.RadioButton()
+        Me.rbGPUDXVANative = New System.Windows.Forms.RadioButton()
+        Me.rbGPUDXVACopyBack = New System.Windows.Forms.RadioButton()
+        Me.rbGPUIntel = New System.Windows.Forms.RadioButton()
+        Me.rbGPUNVidia = New System.Windows.Forms.RadioButton()
+        Me.groupBox5 = New System.Windows.Forms.GroupBox()
+        Me.linkLabel3 = New System.Windows.Forms.LinkLabel()
+        Me.linkLabel2 = New System.Windows.Forms.LinkLabel()
+        Me.label20 = New System.Windows.Forms.Label()
         Me.tabPage1 = New System.Windows.Forms.TabPage()
         Me.cbUseLibMediaInfo = New System.Windows.Forms.CheckBox()
         Me.btReadInfo = New System.Windows.Forms.Button()
@@ -597,17 +608,6 @@ Partial Class Form1
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.TabPage20 = New System.Windows.Forms.TabPage()
-        Me.groupBox6 = New System.Windows.Forms.GroupBox()
-        Me.rbGPUDirect3D = New System.Windows.Forms.RadioButton()
-        Me.rbGPUDXVANative = New System.Windows.Forms.RadioButton()
-        Me.rbGPUDXVACopyBack = New System.Windows.Forms.RadioButton()
-        Me.rbGPUIntel = New System.Windows.Forms.RadioButton()
-        Me.rbGPUNVidia = New System.Windows.Forms.RadioButton()
-        Me.groupBox5 = New System.Windows.Forms.GroupBox()
-        Me.linkLabel3 = New System.Windows.Forms.LinkLabel()
-        Me.linkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.label20 = New System.Windows.Forms.Label()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -620,6 +620,9 @@ Partial Class Form1
         CType(Me.tbSpeed, System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbTimeline, System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabControl1.SuspendLayout
+        Me.TabPage20.SuspendLayout
+        Me.groupBox6.SuspendLayout
+        Me.groupBox5.SuspendLayout
         Me.tabPage1.SuspendLayout
         Me.tabControl2.SuspendLayout
         Me.tabPage6.SuspendLayout
@@ -751,9 +754,6 @@ Partial Class Form1
         Me.TabPage24.SuspendLayout
         CType(Me.tbReversePlaybackTrackbar, System.ComponentModel.ISupportInitialize).BeginInit
         Me.TabPage14.SuspendLayout
-        Me.TabPage20.SuspendLayout
-        Me.groupBox6.SuspendLayout
-        Me.groupBox5.SuspendLayout
         Me.SuspendLayout
         '
         'tabControl3
@@ -1249,6 +1249,125 @@ Partial Class Form1
         Me.tabControl1.SelectedIndex = 0
         Me.tabControl1.Size = New System.Drawing.Size(309, 518)
         Me.tabControl1.TabIndex = 14
+        '
+        'TabPage20
+        '
+        Me.TabPage20.Controls.Add(Me.groupBox6)
+        Me.TabPage20.Controls.Add(Me.groupBox5)
+        Me.TabPage20.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage20.Name = "TabPage20"
+        Me.TabPage20.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage20.Size = New System.Drawing.Size(301, 492)
+        Me.TabPage20.TabIndex = 15
+        Me.TabPage20.Text = "Source mode"
+        Me.TabPage20.UseVisualStyleBackColor = True
+        '
+        'groupBox6
+        '
+        Me.groupBox6.Controls.Add(Me.rbGPUDirect3D)
+        Me.groupBox6.Controls.Add(Me.rbGPUDXVANative)
+        Me.groupBox6.Controls.Add(Me.rbGPUDXVACopyBack)
+        Me.groupBox6.Controls.Add(Me.rbGPUIntel)
+        Me.groupBox6.Controls.Add(Me.rbGPUNVidia)
+        Me.groupBox6.Location = New System.Drawing.Point(10, 93)
+        Me.groupBox6.Name = "groupBox6"
+        Me.groupBox6.Size = New System.Drawing.Size(280, 108)
+        Me.groupBox6.TabIndex = 3
+        Me.groupBox6.TabStop = False
+        Me.groupBox6.Text = "GPU"
+        '
+        'rbGPUDirect3D
+        '
+        Me.rbGPUDirect3D.AutoSize = True
+        Me.rbGPUDirect3D.Location = New System.Drawing.Point(13, 73)
+        Me.rbGPUDirect3D.Name = "rbGPUDirect3D"
+        Me.rbGPUDirect3D.Size = New System.Drawing.Size(82, 17)
+        Me.rbGPUDirect3D.TabIndex = 4
+        Me.rbGPUDirect3D.Text = "Direct3D 11"
+        Me.rbGPUDirect3D.UseVisualStyleBackColor = True
+        '
+        'rbGPUDXVANative
+        '
+        Me.rbGPUDXVANative.AutoSize = True
+        Me.rbGPUDXVANative.Location = New System.Drawing.Point(131, 50)
+        Me.rbGPUDXVANative.Name = "rbGPUDXVANative"
+        Me.rbGPUDXVANative.Size = New System.Drawing.Size(98, 17)
+        Me.rbGPUDXVANative.TabIndex = 3
+        Me.rbGPUDXVANative.Text = "DXVA2 (native)"
+        Me.rbGPUDXVANative.UseVisualStyleBackColor = True
+        '
+        'rbGPUDXVACopyBack
+        '
+        Me.rbGPUDXVACopyBack.AutoSize = True
+        Me.rbGPUDXVACopyBack.Checked = True
+        Me.rbGPUDXVACopyBack.Location = New System.Drawing.Point(13, 50)
+        Me.rbGPUDXVACopyBack.Name = "rbGPUDXVACopyBack"
+        Me.rbGPUDXVACopyBack.Size = New System.Drawing.Size(119, 17)
+        Me.rbGPUDXVACopyBack.TabIndex = 2
+        Me.rbGPUDXVACopyBack.TabStop = True
+        Me.rbGPUDXVACopyBack.Text = "DXVA2 (copy-back)"
+        Me.rbGPUDXVACopyBack.UseVisualStyleBackColor = True
+        '
+        'rbGPUIntel
+        '
+        Me.rbGPUIntel.AutoSize = True
+        Me.rbGPUIntel.Location = New System.Drawing.Point(131, 27)
+        Me.rbGPUIntel.Name = "rbGPUIntel"
+        Me.rbGPUIntel.Size = New System.Drawing.Size(100, 17)
+        Me.rbGPUIntel.TabIndex = 1
+        Me.rbGPUIntel.Text = "Intel QuickSync"
+        Me.rbGPUIntel.UseVisualStyleBackColor = True
+        '
+        'rbGPUNVidia
+        '
+        Me.rbGPUNVidia.AutoSize = True
+        Me.rbGPUNVidia.Location = New System.Drawing.Point(13, 27)
+        Me.rbGPUNVidia.Name = "rbGPUNVidia"
+        Me.rbGPUNVidia.Size = New System.Drawing.Size(90, 17)
+        Me.rbGPUNVidia.TabIndex = 0
+        Me.rbGPUNVidia.Text = "nVidia CUVID"
+        Me.rbGPUNVidia.UseVisualStyleBackColor = True
+        '
+        'groupBox5
+        '
+        Me.groupBox5.Controls.Add(Me.linkLabel3)
+        Me.groupBox5.Controls.Add(Me.linkLabel2)
+        Me.groupBox5.Controls.Add(Me.label20)
+        Me.groupBox5.Location = New System.Drawing.Point(10, 10)
+        Me.groupBox5.Name = "groupBox5"
+        Me.groupBox5.Size = New System.Drawing.Size(280, 77)
+        Me.groupBox5.TabIndex = 2
+        Me.groupBox5.TabStop = False
+        Me.groupBox5.Text = "VLC"
+        '
+        'linkLabel3
+        '
+        Me.linkLabel3.AutoSize = True
+        Me.linkLabel3.Location = New System.Drawing.Point(68, 50)
+        Me.linkLabel3.Name = "linkLabel3"
+        Me.linkLabel3.Size = New System.Drawing.Size(52, 13)
+        Me.linkLabel3.TabIndex = 3
+        Me.linkLabel3.TabStop = True
+        Me.linkLabel3.Text = "x64 redist"
+        '
+        'linkLabel2
+        '
+        Me.linkLabel2.AutoSize = True
+        Me.linkLabel2.Location = New System.Drawing.Point(10, 50)
+        Me.linkLabel2.Name = "linkLabel2"
+        Me.linkLabel2.Size = New System.Drawing.Size(52, 13)
+        Me.linkLabel2.TabIndex = 2
+        Me.linkLabel2.TabStop = True
+        Me.linkLabel2.Text = "x86 redist"
+        '
+        'label20
+        '
+        Me.label20.AutoSize = True
+        Me.label20.Location = New System.Drawing.Point(10, 21)
+        Me.label20.Name = "label20"
+        Me.label20.Size = New System.Drawing.Size(264, 13)
+        Me.label20.TabIndex = 0
+        Me.label20.Text = "Please install VisioForge VLC redist to use VLC engine "
         '
         'tabPage1
         '
@@ -6681,28 +6800,29 @@ Partial Class Form1
         Me.MediaPlayer1.Source_Stream_VideoPresent = True
         Me.MediaPlayer1.TabIndex = 25
         Me.MediaPlayer1.Video_Effects_Enabled = False
-        VideoRendererSettingsWinForms5.Aspect_Ratio_Override = False
-        VideoRendererSettingsWinForms5.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms5.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms5.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms5.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms5.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms5.Deinterlace_VMR9_UseDefault = False
-        VideoRendererSettingsWinForms5.Flip_Horizontal = False
-        VideoRendererSettingsWinForms5.Flip_Vertical = False
-        VideoRendererSettingsWinForms5.RotationAngle = 0
-        VideoRendererSettingsWinForms5.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms5.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms5.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms5.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms5.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms5.Zoom_ShiftY = 0
-        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms5
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
+        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = False
+        VideoRendererSettingsWinForms1.Flip_Horizontal = False
+        VideoRendererSettingsWinForms1.Flip_Vertical = False
+        VideoRendererSettingsWinForms1.RotationAngle = 0
+        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
+        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
         'cbRunAsync
         '
+        Me.cbRunAsync.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cbRunAsync.AutoSize = True
         Me.cbRunAsync.Location = New System.Drawing.Point(695, 124)
         Me.cbRunAsync.Name = "cbRunAsync"
@@ -6710,125 +6830,6 @@ Partial Class Form1
         Me.cbRunAsync.TabIndex = 35
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = True
-        '
-        'TabPage20
-        '
-        Me.TabPage20.Controls.Add(Me.groupBox6)
-        Me.TabPage20.Controls.Add(Me.groupBox5)
-        Me.TabPage20.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage20.Name = "TabPage20"
-        Me.TabPage20.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage20.Size = New System.Drawing.Size(301, 492)
-        Me.TabPage20.TabIndex = 15
-        Me.TabPage20.Text = "Source mode"
-        Me.TabPage20.UseVisualStyleBackColor = True
-        '
-        'groupBox6
-        '
-        Me.groupBox6.Controls.Add(Me.rbGPUDirect3D)
-        Me.groupBox6.Controls.Add(Me.rbGPUDXVANative)
-        Me.groupBox6.Controls.Add(Me.rbGPUDXVACopyBack)
-        Me.groupBox6.Controls.Add(Me.rbGPUIntel)
-        Me.groupBox6.Controls.Add(Me.rbGPUNVidia)
-        Me.groupBox6.Location = New System.Drawing.Point(10, 93)
-        Me.groupBox6.Name = "groupBox6"
-        Me.groupBox6.Size = New System.Drawing.Size(280, 108)
-        Me.groupBox6.TabIndex = 3
-        Me.groupBox6.TabStop = False
-        Me.groupBox6.Text = "GPU"
-        '
-        'rbGPUDirect3D
-        '
-        Me.rbGPUDirect3D.AutoSize = True
-        Me.rbGPUDirect3D.Location = New System.Drawing.Point(13, 73)
-        Me.rbGPUDirect3D.Name = "rbGPUDirect3D"
-        Me.rbGPUDirect3D.Size = New System.Drawing.Size(82, 17)
-        Me.rbGPUDirect3D.TabIndex = 4
-        Me.rbGPUDirect3D.Text = "Direct3D 11"
-        Me.rbGPUDirect3D.UseVisualStyleBackColor = True
-        '
-        'rbGPUDXVANative
-        '
-        Me.rbGPUDXVANative.AutoSize = True
-        Me.rbGPUDXVANative.Location = New System.Drawing.Point(131, 50)
-        Me.rbGPUDXVANative.Name = "rbGPUDXVANative"
-        Me.rbGPUDXVANative.Size = New System.Drawing.Size(98, 17)
-        Me.rbGPUDXVANative.TabIndex = 3
-        Me.rbGPUDXVANative.Text = "DXVA2 (native)"
-        Me.rbGPUDXVANative.UseVisualStyleBackColor = True
-        '
-        'rbGPUDXVACopyBack
-        '
-        Me.rbGPUDXVACopyBack.AutoSize = True
-        Me.rbGPUDXVACopyBack.Checked = True
-        Me.rbGPUDXVACopyBack.Location = New System.Drawing.Point(13, 50)
-        Me.rbGPUDXVACopyBack.Name = "rbGPUDXVACopyBack"
-        Me.rbGPUDXVACopyBack.Size = New System.Drawing.Size(119, 17)
-        Me.rbGPUDXVACopyBack.TabIndex = 2
-        Me.rbGPUDXVACopyBack.TabStop = True
-        Me.rbGPUDXVACopyBack.Text = "DXVA2 (copy-back)"
-        Me.rbGPUDXVACopyBack.UseVisualStyleBackColor = True
-        '
-        'rbGPUIntel
-        '
-        Me.rbGPUIntel.AutoSize = True
-        Me.rbGPUIntel.Location = New System.Drawing.Point(131, 27)
-        Me.rbGPUIntel.Name = "rbGPUIntel"
-        Me.rbGPUIntel.Size = New System.Drawing.Size(100, 17)
-        Me.rbGPUIntel.TabIndex = 1
-        Me.rbGPUIntel.Text = "Intel QuickSync"
-        Me.rbGPUIntel.UseVisualStyleBackColor = True
-        '
-        'rbGPUNVidia
-        '
-        Me.rbGPUNVidia.AutoSize = True
-        Me.rbGPUNVidia.Location = New System.Drawing.Point(13, 27)
-        Me.rbGPUNVidia.Name = "rbGPUNVidia"
-        Me.rbGPUNVidia.Size = New System.Drawing.Size(90, 17)
-        Me.rbGPUNVidia.TabIndex = 0
-        Me.rbGPUNVidia.Text = "nVidia CUVID"
-        Me.rbGPUNVidia.UseVisualStyleBackColor = True
-        '
-        'groupBox5
-        '
-        Me.groupBox5.Controls.Add(Me.linkLabel3)
-        Me.groupBox5.Controls.Add(Me.linkLabel2)
-        Me.groupBox5.Controls.Add(Me.label20)
-        Me.groupBox5.Location = New System.Drawing.Point(10, 10)
-        Me.groupBox5.Name = "groupBox5"
-        Me.groupBox5.Size = New System.Drawing.Size(280, 77)
-        Me.groupBox5.TabIndex = 2
-        Me.groupBox5.TabStop = False
-        Me.groupBox5.Text = "VLC"
-        '
-        'linkLabel3
-        '
-        Me.linkLabel3.AutoSize = True
-        Me.linkLabel3.Location = New System.Drawing.Point(68, 50)
-        Me.linkLabel3.Name = "linkLabel3"
-        Me.linkLabel3.Size = New System.Drawing.Size(52, 13)
-        Me.linkLabel3.TabIndex = 3
-        Me.linkLabel3.TabStop = True
-        Me.linkLabel3.Text = "x64 redist"
-        '
-        'linkLabel2
-        '
-        Me.linkLabel2.AutoSize = True
-        Me.linkLabel2.Location = New System.Drawing.Point(10, 50)
-        Me.linkLabel2.Name = "linkLabel2"
-        Me.linkLabel2.Size = New System.Drawing.Size(52, 13)
-        Me.linkLabel2.TabIndex = 2
-        Me.linkLabel2.TabStop = True
-        Me.linkLabel2.Text = "x86 redist"
-        '
-        'label20
-        '
-        Me.label20.AutoSize = True
-        Me.label20.Location = New System.Drawing.Point(10, 21)
-        Me.label20.Name = "label20"
-        Me.label20.Size = New System.Drawing.Size(264, 13)
-        Me.label20.TabIndex = 0
-        Me.label20.Text = "Please install VisioForge VLC redist to use VLC engine "
         '
         'Form1
         '
@@ -6870,6 +6871,11 @@ Partial Class Form1
         CType(Me.tbSpeed, System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbTimeline, System.ComponentModel.ISupportInitialize).EndInit
         Me.tabControl1.ResumeLayout(False)
+        Me.TabPage20.ResumeLayout(False)
+        Me.groupBox6.ResumeLayout(False)
+        Me.groupBox6.PerformLayout
+        Me.groupBox5.ResumeLayout(False)
+        Me.groupBox5.PerformLayout
         Me.tabPage1.ResumeLayout(False)
         Me.tabPage1.PerformLayout
         Me.tabControl2.ResumeLayout(False)
@@ -7054,11 +7060,6 @@ Partial Class Form1
         CType(Me.tbReversePlaybackTrackbar, System.ComponentModel.ISupportInitialize).EndInit
         Me.TabPage14.ResumeLayout(False)
         Me.TabPage14.PerformLayout
-        Me.TabPage20.ResumeLayout(False)
-        Me.groupBox6.ResumeLayout(False)
-        Me.groupBox6.PerformLayout
-        Me.groupBox5.ResumeLayout(False)
-        Me.groupBox5.PerformLayout
         Me.ResumeLayout(False)
         Me.PerformLayout
 

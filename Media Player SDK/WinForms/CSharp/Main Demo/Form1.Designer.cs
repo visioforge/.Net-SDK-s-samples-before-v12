@@ -7054,6 +7054,7 @@ namespace Media_Player_Demo
             // 
             // cbRunAsync
             // 
+            this.cbRunAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbRunAsync.AutoSize = true;
             this.cbRunAsync.Location = new System.Drawing.Point(695, 127);
             this.cbRunAsync.Name = "cbRunAsync";
@@ -7081,7 +7082,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
-            this.MediaPlayer1.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer1.CustomParameters")));
             this.MediaPlayer1.CustomRedist_Enabled = false;
             this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
@@ -7091,7 +7091,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
-            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(330, 183);
             this.MediaPlayer1.Loop = false;

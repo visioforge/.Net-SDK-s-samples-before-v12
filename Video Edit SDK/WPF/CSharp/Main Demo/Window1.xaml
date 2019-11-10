@@ -193,7 +193,7 @@
                         </TabItem>
                         <TabItem Header="Deinterlace" Name="tabItem24">
                             <Grid>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="22,16,0,0" Name="cbDeinterlace" VerticalAlignment="Top" IsChecked="True" />
+                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="22,16,0,0" Name="cbDeinterlace" VerticalAlignment="Top" />
                                 <RadioButton Content="Content Adaptive Vertical Temporal (CAVT)" Height="16" HorizontalAlignment="Left" Margin="36,51,0,0" Name="rbDeintCAVTEnabled" VerticalAlignment="Top" IsChecked="True" />
                                 <RadioButton Content="Blend" Height="16" HorizontalAlignment="Left" Margin="36,141,0,0" Name="rbDeintBlendEnabled" VerticalAlignment="Top" />
                                 <RadioButton Content="Triangle" Height="16" HorizontalAlignment="Left" Margin="36,276,0,0" Name="rbDeintTriangleEnabled" VerticalAlignment="Top" />

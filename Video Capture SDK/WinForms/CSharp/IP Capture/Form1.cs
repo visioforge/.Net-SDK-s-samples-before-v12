@@ -55,7 +55,9 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
         };
 
+#if !NETCOREAPP
         private ONVIFControl onvifControl;
+#endif
 
         private ONVIFPTZRanges onvifPtzRanges;
 
@@ -97,6 +99,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
 
         private void btStart_Click(object sender, EventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl != null)
             {
                 onvifControl.Disconnect();
@@ -105,6 +108,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
 
                 btONVIFConnect.Text = "Connect";
             }
+#endif
 
             mmLog.Clear();
 
@@ -366,6 +370,9 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
 
         private void btONVIFConnect_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (btONVIFConnect.Text == "Connect")
             {
                 btONVIFConnect.Text = "Disconnect";
@@ -430,10 +437,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
                     onvifControl = null;
                 }
             }
+#endif
         }
 
         private void btONVIFRight_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -448,15 +459,23 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFPTZSetDefault_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             onvifControl?.PTZ_SetAbsolute(0, 0, 0);
+#endif
         }
 
         private void btONVIFLeft_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -471,10 +490,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFUp_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -489,10 +512,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFDown_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -507,10 +534,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFZoomIn_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -525,10 +556,14 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFZoomOut_Click(object sender, EventArgs e)
         {
+#if NETCOREAPP
+            MessageBox.Show("ONVIF not avauilable for .Net Core SDK build.");
+#else
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -543,6 +578,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btSaveScreenshot_Click(object sender, EventArgs e)

@@ -19,17 +19,19 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             {
                 components.Dispose();
 
+#if !NETCOREAPP
                 if (onvifControl != null)
                 {
                     onvifControl.Dispose();
                     onvifControl = null;
                 }
+#endif
             }
 
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+#region Windows Form Designer generated code
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -358,8 +360,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // cbIPAudioCapture
             // 
             this.cbIPAudioCapture.AutoSize = true;
-            this.cbIPAudioCapture.Checked = true;
-            this.cbIPAudioCapture.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cbIPAudioCapture.Location = new System.Drawing.Point(168, 158);
             this.cbIPAudioCapture.Name = "cbIPAudioCapture";
             this.cbIPAudioCapture.Size = new System.Drawing.Size(92, 17);
@@ -1071,6 +1071,8 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.BDA_Source = null;
             this.VideoCapture1.ChromaKey = null;
             this.VideoCapture1.Custom_Source = null;
+            this.VideoCapture1.CustomRedist_Enabled = false;
+            this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
             this.VideoCapture1.Debug_Telemetry = true;
@@ -1273,7 +1275,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
 
         }
 
-        #endregion
+#endregion
 
         private System.Windows.Forms.TabControl tcMain;
         private System.Windows.Forms.TabPage tabPage1;
