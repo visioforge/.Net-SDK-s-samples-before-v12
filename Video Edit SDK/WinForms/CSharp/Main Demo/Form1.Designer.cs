@@ -31,7 +31,7 @@ namespace VideoEdit_CS_Demo
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -635,6 +635,7 @@ namespace VideoEdit_CS_Demo
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
+            this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
@@ -2553,6 +2554,7 @@ namespace VideoEdit_CS_Demo
             // 
             // tabPage83
             // 
+            this.tabPage83.Controls.Add(this.cbVideoEffectsGPUEnabled);
             this.tabPage83.Controls.Add(this.cbGPUOldMovie);
             this.tabPage83.Controls.Add(this.cbGPUBlur);
             this.tabPage83.Controls.Add(this.cbGPUDeinterlace);
@@ -2581,7 +2583,7 @@ namespace VideoEdit_CS_Demo
             // 
             this.cbGPUOldMovie.AutoSize = true;
             this.cbGPUOldMovie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUOldMovie.Location = new System.Drawing.Point(142, 203);
+            this.cbGPUOldMovie.Location = new System.Drawing.Point(143, 235);
             this.cbGPUOldMovie.Name = "cbGPUOldMovie";
             this.cbGPUOldMovie.Size = new System.Drawing.Size(73, 17);
             this.cbGPUOldMovie.TabIndex = 96;
@@ -2592,7 +2594,7 @@ namespace VideoEdit_CS_Demo
             // cbGPUBlur
             // 
             this.cbGPUBlur.AutoSize = true;
-            this.cbGPUBlur.Location = new System.Drawing.Point(14, 203);
+            this.cbGPUBlur.Location = new System.Drawing.Point(15, 235);
             this.cbGPUBlur.Name = "cbGPUBlur";
             this.cbGPUBlur.Size = new System.Drawing.Size(44, 17);
             this.cbGPUBlur.TabIndex = 95;
@@ -2604,7 +2606,7 @@ namespace VideoEdit_CS_Demo
             // 
             this.cbGPUDeinterlace.AutoSize = true;
             this.cbGPUDeinterlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUDeinterlace.Location = new System.Drawing.Point(142, 179);
+            this.cbGPUDeinterlace.Location = new System.Drawing.Point(143, 211);
             this.cbGPUDeinterlace.Name = "cbGPUDeinterlace";
             this.cbGPUDeinterlace.Size = new System.Drawing.Size(80, 17);
             this.cbGPUDeinterlace.TabIndex = 94;
@@ -2615,7 +2617,7 @@ namespace VideoEdit_CS_Demo
             // cbGPUDenoise
             // 
             this.cbGPUDenoise.AutoSize = true;
-            this.cbGPUDenoise.Location = new System.Drawing.Point(14, 179);
+            this.cbGPUDenoise.Location = new System.Drawing.Point(15, 211);
             this.cbGPUDenoise.Name = "cbGPUDenoise";
             this.cbGPUDenoise.Size = new System.Drawing.Size(65, 17);
             this.cbGPUDenoise.TabIndex = 93;
@@ -2626,7 +2628,7 @@ namespace VideoEdit_CS_Demo
             // cbGPUPixelate
             // 
             this.cbGPUPixelate.AutoSize = true;
-            this.cbGPUPixelate.Location = new System.Drawing.Point(142, 156);
+            this.cbGPUPixelate.Location = new System.Drawing.Point(143, 188);
             this.cbGPUPixelate.Name = "cbGPUPixelate";
             this.cbGPUPixelate.Size = new System.Drawing.Size(63, 17);
             this.cbGPUPixelate.TabIndex = 92;
@@ -2637,7 +2639,7 @@ namespace VideoEdit_CS_Demo
             // cbGPUNightVision
             // 
             this.cbGPUNightVision.AutoSize = true;
-            this.cbGPUNightVision.Location = new System.Drawing.Point(14, 156);
+            this.cbGPUNightVision.Location = new System.Drawing.Point(15, 188);
             this.cbGPUNightVision.Name = "cbGPUNightVision";
             this.cbGPUNightVision.Size = new System.Drawing.Size(81, 17);
             this.cbGPUNightVision.TabIndex = 91;
@@ -2648,7 +2650,7 @@ namespace VideoEdit_CS_Demo
             // label383
             // 
             this.label383.AutoSize = true;
-            this.label383.Location = new System.Drawing.Point(147, 63);
+            this.label383.Location = new System.Drawing.Point(148, 95);
             this.label383.Name = "label383";
             this.label383.Size = new System.Drawing.Size(52, 13);
             this.label383.TabIndex = 90;
@@ -2657,7 +2659,7 @@ namespace VideoEdit_CS_Demo
             // label384
             // 
             this.label384.AutoSize = true;
-            this.label384.Location = new System.Drawing.Point(11, 63);
+            this.label384.Location = new System.Drawing.Point(12, 95);
             this.label384.Name = "label384";
             this.label384.Size = new System.Drawing.Size(46, 13);
             this.label384.TabIndex = 89;
@@ -2666,7 +2668,7 @@ namespace VideoEdit_CS_Demo
             // label385
             // 
             this.label385.AutoSize = true;
-            this.label385.Location = new System.Drawing.Point(147, 11);
+            this.label385.Location = new System.Drawing.Point(148, 43);
             this.label385.Name = "label385";
             this.label385.Size = new System.Drawing.Size(55, 13);
             this.label385.TabIndex = 88;
@@ -2675,7 +2677,7 @@ namespace VideoEdit_CS_Demo
             // label386
             // 
             this.label386.AutoSize = true;
-            this.label386.Location = new System.Drawing.Point(11, 11);
+            this.label386.Location = new System.Drawing.Point(12, 43);
             this.label386.Name = "label386";
             this.label386.Size = new System.Drawing.Size(52, 13);
             this.label386.TabIndex = 87;
@@ -2684,7 +2686,7 @@ namespace VideoEdit_CS_Demo
             // tbGPUContrast
             // 
             this.tbGPUContrast.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUContrast.Location = new System.Drawing.Point(8, 82);
+            this.tbGPUContrast.Location = new System.Drawing.Point(9, 114);
             this.tbGPUContrast.Maximum = 255;
             this.tbGPUContrast.Name = "tbGPUContrast";
             this.tbGPUContrast.Size = new System.Drawing.Size(130, 45);
@@ -2695,7 +2697,7 @@ namespace VideoEdit_CS_Demo
             // tbGPUDarkness
             // 
             this.tbGPUDarkness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUDarkness.Location = new System.Drawing.Point(147, 82);
+            this.tbGPUDarkness.Location = new System.Drawing.Point(148, 114);
             this.tbGPUDarkness.Maximum = 255;
             this.tbGPUDarkness.Name = "tbGPUDarkness";
             this.tbGPUDarkness.Size = new System.Drawing.Size(130, 45);
@@ -2705,7 +2707,7 @@ namespace VideoEdit_CS_Demo
             // tbGPULightness
             // 
             this.tbGPULightness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPULightness.Location = new System.Drawing.Point(8, 26);
+            this.tbGPULightness.Location = new System.Drawing.Point(9, 58);
             this.tbGPULightness.Maximum = 255;
             this.tbGPULightness.Name = "tbGPULightness";
             this.tbGPULightness.Size = new System.Drawing.Size(130, 45);
@@ -2715,7 +2717,7 @@ namespace VideoEdit_CS_Demo
             // tbGPUSaturation
             // 
             this.tbGPUSaturation.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUSaturation.Location = new System.Drawing.Point(147, 26);
+            this.tbGPUSaturation.Location = new System.Drawing.Point(148, 58);
             this.tbGPUSaturation.Maximum = 255;
             this.tbGPUSaturation.Name = "tbGPUSaturation";
             this.tbGPUSaturation.Size = new System.Drawing.Size(130, 45);
@@ -2727,7 +2729,7 @@ namespace VideoEdit_CS_Demo
             // 
             this.cbGPUInvert.AutoSize = true;
             this.cbGPUInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUInvert.Location = new System.Drawing.Point(142, 133);
+            this.cbGPUInvert.Location = new System.Drawing.Point(143, 165);
             this.cbGPUInvert.Name = "cbGPUInvert";
             this.cbGPUInvert.Size = new System.Drawing.Size(53, 17);
             this.cbGPUInvert.TabIndex = 82;
@@ -2738,7 +2740,7 @@ namespace VideoEdit_CS_Demo
             // cbGPUGreyscale
             // 
             this.cbGPUGreyscale.AutoSize = true;
-            this.cbGPUGreyscale.Location = new System.Drawing.Point(14, 133);
+            this.cbGPUGreyscale.Location = new System.Drawing.Point(15, 165);
             this.cbGPUGreyscale.Name = "cbGPUGreyscale";
             this.cbGPUGreyscale.Size = new System.Drawing.Size(73, 17);
             this.cbGPUGreyscale.TabIndex = 81;
@@ -3500,7 +3502,7 @@ namespace VideoEdit_CS_Demo
             this.tabPage72.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage72.Size = new System.Drawing.Size(275, 416);
             this.tabPage72.TabIndex = 1;
-            this.tabPage72.Text = "Equlizer";
+            this.tabPage72.Text = "Equalizer";
             this.tabPage72.UseVisualStyleBackColor = true;
             // 
             // btAudEqRefresh
@@ -7239,25 +7241,26 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.Video_Custom_Resizer_CLSID = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.VideoEdit1.Video_Effects_AllowMultipleStreams = false;
             this.VideoEdit1.Video_Effects_Enabled = false;
+            this.VideoEdit1.Video_Effects_GPU_Enabled = false;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoEdit1.Video_Renderer = videoRendererSettingsWinForms1;
             this.VideoEdit1.Video_Resize = false;
             this.VideoEdit1.Video_Resize_Height = 480;
             this.VideoEdit1.Video_Resize_Width = 640;
@@ -7276,6 +7279,16 @@ namespace VideoEdit_CS_Demo
             this.VideoEdit1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.VideoEdit1_OnObjectDetection);
             this.VideoEdit1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoEdit1_OnBarcodeDetected);
             this.VideoEdit1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoEdit1_MouseDown);
+            // 
+            // cbVideoEffectsGPUEnabled
+            // 
+            this.cbVideoEffectsGPUEnabled.AutoSize = true;
+            this.cbVideoEffectsGPUEnabled.Location = new System.Drawing.Point(16, 16);
+            this.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled";
+            this.cbVideoEffectsGPUEnabled.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoEffectsGPUEnabled.TabIndex = 97;
+            this.cbVideoEffectsGPUEnabled.Text = "Enabled";
+            this.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -8102,6 +8115,7 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox edFadeOutStartTime;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.CheckBox cbVideoEffectsGPUEnabled;
     }
 }
 

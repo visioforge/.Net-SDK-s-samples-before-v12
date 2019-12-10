@@ -1008,10 +1008,7 @@ namespace VideoEdit_CS_Demo
                 cbFadeInEnabled_CheckedChanged(sender, e);
                 cbFadeOutEnabled_CheckedChanged(sender, e);
             }
-
-            VideoEdit1.Video_Effects_Enabled = cbEffects.Checked;
-            VideoEdit1.Video_Effects_Clear();
-
+            
             // Object detection
             ConfigureObjectDetection();
 
@@ -1020,6 +1017,82 @@ namespace VideoEdit_CS_Demo
 
             // Audio VU meters
             ConfigureVUMeters();
+
+            // Video effects CPU
+            AddVideoEffects();
+
+            // Video effects GPU
+            VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
+
+            // Decklink output
+            ConfigureDecklinkOutput();
+
+            // Chroma key
+            ConfigureChromaKey();
+
+            // Barcode detection
+            VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked;
+            VideoEdit1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
+
+            // motion detection
+            if (cbMotDetEnabled.Checked)
+            {
+                btMotDetUpdateSettings_Click(null, null); // apply settings
+            }
+
+            // video rotation
+            switch (cbRotate.SelectedIndex)
+            {
+                case 0:
+                    VideoEdit1.Video_Rotation = VFRotateMode.RotateNone;
+                    break;
+                case 1:
+                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate90;
+                    break;
+                case 2:
+                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate180;
+                    break;
+                case 3:
+                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate270;
+                    break;
+            }
+
+            // Output tags
+            if (cbTagEnabled.Checked)
+            {
+                var tags = new VFFileTags
+                {
+                    Title = edTagTitle.Text,
+                    Performers = new[] { edTagArtists.Text },
+                    Album = edTagAlbum.Text,
+                    Comment = edTagComment.Text,
+                    Track = Convert.ToUInt32(edTagTrackID.Text),
+                    Copyright = edTagCopyright.Text,
+                    Year = Convert.ToUInt32(edTagYear.Text),
+                    Composers = new[] { edTagComposers.Text },
+                    Genres = new[] { cbTagGenre.Text },
+                    Lyrics = edTagLyrics.Text
+                };
+
+                if (imgTagCover.Image != null)
+                {
+                    tags.Pictures = new[] { new Bitmap(imgTagCover.Image) };
+                }
+
+                VideoEdit1.Tags = tags;
+            }
+
+            VideoEdit1.Start();
+
+            edNetworkURL.Text = VideoEdit1.Network_Streaming_URL;
+
+            lbTransitions.Items.Clear();
+        }
+
+        private void AddVideoEffects()
+        {
+            VideoEdit1.Video_Effects_Enabled = cbEffects.Checked;
+            VideoEdit1.Video_Effects_Clear();
 
             // Deinterlace
             if (cbDeinterlace.Checked)
@@ -1199,70 +1272,6 @@ namespace VideoEdit_CS_Demo
             {
                 cbFadeInOut_CheckedChanged(null, null);
             }
-
-            // Decklink output
-            ConfigureDecklinkOutput();
-
-            // Chroma key
-            ConfigureChromaKey();
-
-            // Barcode detection
-            VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked;
-            VideoEdit1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
-
-            // motion detection
-            if (cbMotDetEnabled.Checked)
-            {
-                btMotDetUpdateSettings_Click(null, null); // apply settings
-            }
-
-            // video rotation
-            switch (cbRotate.SelectedIndex)
-            {
-                case 0:
-                    VideoEdit1.Video_Rotation = VFRotateMode.RotateNone;
-                    break;
-                case 1:
-                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate90;
-                    break;
-                case 2:
-                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate180;
-                    break;
-                case 3:
-                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate270;
-                    break;
-            }
-
-            // Output tags
-            if (cbTagEnabled.Checked)
-            {
-                var tags = new VFFileTags
-                {
-                    Title = edTagTitle.Text,
-                    Performers = new[] { edTagArtists.Text },
-                    Album = edTagAlbum.Text,
-                    Comment = edTagComment.Text,
-                    Track = Convert.ToUInt32(edTagTrackID.Text),
-                    Copyright = edTagCopyright.Text,
-                    Year = Convert.ToUInt32(edTagYear.Text),
-                    Composers = new[] { edTagComposers.Text },
-                    Genres = new[] { cbTagGenre.Text },
-                    Lyrics = edTagLyrics.Text
-                };
-
-                if (imgTagCover.Image != null)
-                {
-                    tags.Pictures = new[] { new Bitmap(imgTagCover.Image) };
-                }
-
-                VideoEdit1.Tags = tags;
-            }
-
-            VideoEdit1.Start();
-
-            edNetworkURL.Text = VideoEdit1.Network_Streaming_URL;
-
-            lbTransitions.Items.Clear();
         }
 
         private void btStop_Click(object sender, EventArgs e)
@@ -2290,6 +2299,9 @@ namespace VideoEdit_CS_Demo
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pnVideoRendererBGColor.BackColor = colorDialog1.Color;
+
+                VideoEdit1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor;
+                VideoEdit1.Video_Renderer_Update();
             }
         }
 

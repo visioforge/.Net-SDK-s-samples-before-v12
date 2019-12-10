@@ -1,8 +1,5 @@
-using System.Drawing.Imaging;
-using System.Threading;
 using VisioForge.Controls.UI;
 using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Shared.MFP;
 
 // ReSharper disable NotAccessedVariable
 // ReSharper disable InconsistentNaming
@@ -27,7 +24,7 @@ namespace Media_Player_Demo
 
     public partial class Form1 : Form
     {
-        private List<AudioChannelMapperItem> audioChannelMapperItems = new List<AudioChannelMapperItem>();
+        private readonly List<AudioChannelMapperItem> audioChannelMapperItems = new List<AudioChannelMapperItem>();
 
         // Zoom
         private double zoom = 1.0;
@@ -40,7 +37,7 @@ namespace Media_Player_Demo
 
         private readonly DVDInfoReader DVDInfo = new DVDInfoReader();
 
-        private List<Form> multiscreenWindows = new List<Form>();
+        private readonly List<Form> multiscreenWindows = new List<Form>();
 
         public Form1()
         {
@@ -142,16 +139,6 @@ namespace Media_Player_Demo
             }
         }
 
-        private void btOSDInit_Click(object sender, EventArgs e)
-        {
-            MediaPlayer1.OSD_Init();
-        }
-
-        private void btOSDDeinit_Click(object sender, EventArgs e)
-        {
-            MediaPlayer1.OSD_Destroy();
-        }
-
         private void btOSDClearLayers_Click(object sender, EventArgs e)
         {
             MediaPlayer1.OSD_Layers_Clear();
@@ -173,6 +160,10 @@ namespace Media_Player_Demo
             if (lbOSDLayers.SelectedIndex != -1)
             {
                 MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
             }
         }
 
@@ -217,6 +208,10 @@ namespace Media_Player_Demo
                         Color.Empty);
                 }
             }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
+            }
         }
 
         private void btOSDSelectFont_Click(object sender, EventArgs e)
@@ -243,6 +238,10 @@ namespace Media_Player_Demo
                     fnt,
                     color);
             }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
+            }
         }
 
         private void btOSDSetTransp_Click(object sender, EventArgs e)
@@ -251,6 +250,10 @@ namespace Media_Player_Demo
             {
                 MediaPlayer1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, (byte)tbOSDTranspLevel.Value);
                 MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
             }
         }
 
@@ -918,207 +921,10 @@ namespace Media_Player_Demo
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
-        {            
-            //MediaPlayer1.CustomRedist_Enabled = true;
-            //MediaPlayer1.CustomRedist_Path = @"C:\Projects\TEMP\redist";
-
-            MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
-            MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked;
-            
-            zoom = 1.0;
-            zoomShiftX = 0;
-            zoomShiftY = 0;
-
-            mmLog.Clear();
-
-            MediaPlayer1.Video_Renderer.Zoom_Ratio = 0;
-            MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0;
-            MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0;
-
-            MediaPlayer1.Info_UseLibMediaInfo = cbUseLibMediaInfo.Checked;
-
-            if (rbVideoDecoderDefault.Checked)
-            {
-                MediaPlayer1.Custom_Video_Decoder = string.Empty;
-            }
-            else if (rbVideoDecoderFFDShow.Checked)
-            {
-                MediaPlayer1.Custom_Video_Decoder = "ffdshow Video Decoder";
-            }
-            else if (rbVideoDecoderMS.Checked)
-            {
-                MediaPlayer1.Custom_Video_Decoder = "Microsoft DTV-DVD Video Decoder";
-            }
-            else if (rbVideoDecoderVFH264.Checked)
-            {
-                MediaPlayer1.Custom_Video_Decoder = "VisioForge H264 Decoder";
-            }
-            else if (rbVideoDecoderCustom.Checked)
-            {
-                MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text;
-            }
-
-            if (rbSplitterCustom.Checked)
-            {
-                MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text;
-            }
-            else
-            {
-                MediaPlayer1.Custom_Splitter = string.Empty;
-            }
-
-            if (rbAudioDecoderDefault.Checked)
-            {
-                MediaPlayer1.Custom_Audio_Decoder = string.Empty;
-            }
-            else if (rbAudioDecoderCustom.Checked)
-            {
-                MediaPlayer1.Custom_Audio_Decoder = cbCustomAudioDecoder.Text;
-            }
-
-            if (lbSourceFiles.Items.Count == 0)
-            {
-                MessageBox.Show("Playlist is empty!");
-                return;
-            }
-
-            foreach (var item in lbSourceFiles.Items)
-            {
-                MediaPlayer1.FilenamesOrURL.Add(item.ToString());
-            }
-
-            MediaPlayer1.Loop = cbLoop.Checked;
-            MediaPlayer1.Audio_PlayAudio = cbPlayAudio.Checked;
-
-            MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text);
-            MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text);
-            MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked;
-
-            SetSourceMode();
-
-            btReadInfo_Click(null, null);
-
-            MediaPlayer1.Audio_OutputDevice = cbAudioOutputDevice.Text;
-
-            // VU meters
-            MediaPlayer1.Audio_VUMeter_Pro_Enabled = cbVUMeterPro.Checked;
-
-            if (MediaPlayer1.Audio_VUMeter_Pro_Enabled)
-            {
-                MediaPlayer1.Audio_VUMeter_Pro_Volume = tbVUMeterAmplification.Value;
-
-                volumeMeter1.Boost = tbVUMeterBoost.Value / 10.0F;
-                volumeMeter2.Boost = tbVUMeterBoost.Value / 10.0F;
-
-                waveformPainter1.Boost = tbVUMeterBoost.Value / 10.0F;
-                waveformPainter2.Boost = tbVUMeterBoost.Value / 10.0F;
-            }
-
-            if (rbVR.Checked)
-            {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
-            }
-            else if (rbVMR9.Checked)
-            {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
-            }
-            else if (rbEVR.Checked)
-            {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
-            }
-            else if (rbDirect2D.Checked)
-            {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D;
-            }
-            else if (rbMadVR.Checked)
-            {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.MadVR;
-            }
-            else
-            {
-                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None;
-            }
-
-            MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text);
-            MediaPlayer1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor;
-            MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked;
-            MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked;
-
-            // Chroma-key
-            ConfigureChromaKey();
-
-            // Audio enhancement
-            MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.Checked;
-            if (MediaPlayer1.Audio_Enhancer_Enabled)
-            {
-                MediaPlayer1.Audio_Enhancer_Normalize(-1, cbAudioNormalize.Checked);
-                MediaPlayer1.Audio_Enhancer_AutoGain(-1, cbAudioAutoGain.Checked);
-
-                ApplyAudioInputGains();
-                ApplyAudioOutputGains();
-
-                MediaPlayer1.Audio_Enhancer_Timeshift(-1, tbAudioTimeshift.Value);
-            }
-
-            // Audio channels mapping
-            if (cbAudioChannelMapperEnabled.Checked)
-            {
-                MediaPlayer1.Audio_Channel_Mapper = new AudioChannelMapperSettings
-                {
-                    Routes = audioChannelMapperItems.ToArray(),
-                    OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
-                };
-            }
-            else
-            {
-                MediaPlayer1.Audio_Channel_Mapper = null;
-            }
-
-            // Audio processing
-            MediaPlayer1.Audio_Effects_Clear(-1);
-            MediaPlayer1.Audio_Effects_Enabled = cbAudioEffectsEnabled.Checked;
-            if (MediaPlayer1.Audio_Effects_Enabled)
-            {
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.PitchShift, cbAudPitchShiftEnabled.Checked, -1, -1);
-            }
-
-            if (cbAudPitchShiftEnabled.Checked)
-            {
-                tbAudPitchShift_Scroll(null, null);
-            }
-
-            // Multiscreen
-            MediaPlayer1.MultiScreen_Clear();
-            MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked || cbMultiscreenDrawOnExternalDisplays.Checked;
-
-            if (cbMultiscreenDrawOnPanels.Checked)
-            {
-                MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height);
-                MediaPlayer1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height);
-            }
-
-            if (cbMultiscreenDrawOnExternalDisplays.Checked)
-            {
-                if (Screen.AllScreens.Length > 1)
-                {
-                    for (int i = 1; i < Screen.AllScreens.Length; i++)
-                    {
-                        var additinalWindow1 = new Form();
-                        ShowOnScreen(additinalWindow1, i);
-                        MediaPlayer1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height);
-                        multiscreenWindows.Add(additinalWindow1);
-                    }
-                }
-            }
-        
+        private void AddVideoEffects()
+        {
             // Video effects
-            MediaPlayer1.Video_Effects_Enabled = cbEffects.Checked;
+            MediaPlayer1.Video_Effects_Enabled = cbVideoEffects.Checked;
             MediaPlayer1.Video_Effects_Clear();
             lbTextLogos.Items.Clear();
             lbImageLogos.Items.Clear();
@@ -1304,7 +1110,215 @@ namespace Media_Player_Demo
             {
                 cbFadeInOut_CheckedChanged(null, null);
             }
+        }
 
+        private void btStart_Click(object sender, EventArgs e)
+        {            
+            //  MediaPlayer1.CustomRedist_Enabled = true;
+            //  MediaPlayer1.CustomRedist_Path = @"C:\Projects\TEMP\redist";
+
+            MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
+            MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked;
+            
+            zoom = 1.0;
+            zoomShiftX = 0;
+            zoomShiftY = 0;
+
+            mmLog.Clear();
+
+            MediaPlayer1.Video_Renderer.Zoom_Ratio = 0;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0;
+
+            MediaPlayer1.Info_UseLibMediaInfo = cbUseLibMediaInfo.Checked;
+
+            if (rbVideoDecoderDefault.Checked)
+            {
+                MediaPlayer1.Custom_Video_Decoder = string.Empty;
+            }
+            else if (rbVideoDecoderFFDShow.Checked)
+            {
+                MediaPlayer1.Custom_Video_Decoder = "ffdshow Video Decoder";
+            }
+            else if (rbVideoDecoderMS.Checked)
+            {
+                MediaPlayer1.Custom_Video_Decoder = "Microsoft DTV-DVD Video Decoder";
+            }
+            else if (rbVideoDecoderVFH264.Checked)
+            {
+                MediaPlayer1.Custom_Video_Decoder = "VisioForge H264 Decoder";
+            }
+            else if (rbVideoDecoderCustom.Checked)
+            {
+                MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text;
+            }
+
+            if (rbSplitterCustom.Checked)
+            {
+                MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text;
+            }
+            else
+            {
+                MediaPlayer1.Custom_Splitter = string.Empty;
+            }
+
+            if (rbAudioDecoderDefault.Checked)
+            {
+                MediaPlayer1.Custom_Audio_Decoder = string.Empty;
+            }
+            else if (rbAudioDecoderCustom.Checked)
+            {
+                MediaPlayer1.Custom_Audio_Decoder = cbCustomAudioDecoder.Text;
+            }
+
+            if (lbSourceFiles.Items.Count == 0)
+            {
+                MessageBox.Show("Playlist is empty!");
+                return;
+            }
+
+            foreach (var item in lbSourceFiles.Items)
+            {
+                MediaPlayer1.FilenamesOrURL.Add(item.ToString());
+            }
+
+            MediaPlayer1.Loop = cbLoop.Checked;
+            MediaPlayer1.Audio_PlayAudio = cbPlayAudio.Checked;
+
+            MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text);
+            MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text);
+            MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked;
+
+            MediaPlayer1.OSD_Enabled = cbOSDEnabled.Checked;
+
+            SetSourceMode();
+
+            btReadInfo_Click(null, null);
+
+            MediaPlayer1.Audio_OutputDevice = cbAudioOutputDevice.Text;
+
+            // VU meters
+            MediaPlayer1.Audio_VUMeter_Pro_Enabled = cbVUMeterPro.Checked;
+
+            if (MediaPlayer1.Audio_VUMeter_Pro_Enabled)
+            {
+                MediaPlayer1.Audio_VUMeter_Pro_Volume = tbVUMeterAmplification.Value;
+
+                volumeMeter1.Boost = tbVUMeterBoost.Value / 10.0F;
+                volumeMeter2.Boost = tbVUMeterBoost.Value / 10.0F;
+
+                waveformPainter1.Boost = tbVUMeterBoost.Value / 10.0F;
+                waveformPainter2.Boost = tbVUMeterBoost.Value / 10.0F;
+            }
+
+            if (rbVR.Checked)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
+            }
+            else if (rbVMR9.Checked)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
+            }
+            else if (rbEVR.Checked)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            }
+            else if (rbDirect2D.Checked)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D;
+            }
+            else if (rbMadVR.Checked)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.MadVR;
+            }
+            else
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None;
+            }
+
+            MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text);
+            MediaPlayer1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor;
+            MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked;
+            MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked;
+
+            // Chroma-key
+            ConfigureChromaKey();
+
+            // Audio enhancement
+            MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.Checked;
+            if (MediaPlayer1.Audio_Enhancer_Enabled)
+            {
+                MediaPlayer1.Audio_Enhancer_Normalize(-1, cbAudioNormalize.Checked);
+                MediaPlayer1.Audio_Enhancer_AutoGain(-1, cbAudioAutoGain.Checked);
+
+                ApplyAudioInputGains();
+                ApplyAudioOutputGains();
+
+                MediaPlayer1.Audio_Enhancer_Timeshift(-1, tbAudioTimeshift.Value);
+            }
+
+            // Audio channels mapping
+            if (cbAudioChannelMapperEnabled.Checked)
+            {
+                MediaPlayer1.Audio_Channel_Mapper = new AudioChannelMapperSettings
+                {
+                    Routes = audioChannelMapperItems.ToArray(),
+                    OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
+                };
+            }
+            else
+            {
+                MediaPlayer1.Audio_Channel_Mapper = null;
+            }
+
+            // Audio processing
+            MediaPlayer1.Audio_Effects_Clear(-1);
+            MediaPlayer1.Audio_Effects_Enabled = cbAudioEffectsEnabled.Checked;
+            if (MediaPlayer1.Audio_Effects_Enabled)
+            {
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.PitchShift, cbAudPitchShiftEnabled.Checked, -1, -1);
+            }
+
+            if (cbAudPitchShiftEnabled.Checked)
+            {
+                tbAudPitchShift_Scroll(null, null);
+            }
+
+            // Multiscreen
+            MediaPlayer1.MultiScreen_Clear();
+            MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked || cbMultiscreenDrawOnExternalDisplays.Checked;
+
+            if (cbMultiscreenDrawOnPanels.Checked)
+            {
+                MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height);
+                MediaPlayer1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height);
+            }
+
+            if (cbMultiscreenDrawOnExternalDisplays.Checked)
+            {
+                if (Screen.AllScreens.Length > 1)
+                {
+                    for (int i = 1; i < Screen.AllScreens.Length; i++)
+                    {
+                        var additinalWindow1 = new Form();
+                        ShowOnScreen(additinalWindow1, i);
+                        MediaPlayer1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height);
+                        multiscreenWindows.Add(additinalWindow1);
+                    }
+                }
+            }
+        
+            // Video effects CPU
+            AddVideoEffects();
+
+            // Video effects GPU
+            MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
+            
             // Motion detection
             if (cbMotDetEnabled.Checked)
             {
@@ -1955,9 +1969,11 @@ namespace Media_Player_Demo
         {
             if (cbMotionDetectionEx.Checked)
             {
-                MediaPlayer1.Motion_DetectionEx = new MotionDetectionExSettings();
-                MediaPlayer1.Motion_DetectionEx.ProcessorType = (MotionProcessorType)rbMotionDetectionExProcessor.SelectedIndex;
-                MediaPlayer1.Motion_DetectionEx.DetectorType = (MotionDetectorType)rbMotionDetectionExDetector.SelectedIndex;
+                MediaPlayer1.Motion_DetectionEx = new MotionDetectionExSettings
+                {
+                    ProcessorType = (MotionProcessorType) rbMotionDetectionExProcessor.SelectedIndex,
+                    DetectorType = (MotionDetectorType) rbMotionDetectionExDetector.SelectedIndex
+                };
             }
             else
             {
@@ -1987,9 +2003,9 @@ namespace Media_Player_Demo
             ConfigureChromaKey();
         }
 
-        public delegate void MotionDelegate(MotionDetectionEventArgs e);
+        private delegate void MotionDelegate(MotionDetectionEventArgs e);
 
-        public void MotionDelegateMethod(MotionDetectionEventArgs e)
+        private void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
             int k = 0;
@@ -2142,10 +2158,6 @@ namespace Media_Player_Demo
             }
         }
 
-        private void btTest_Click(object sender, EventArgs e)
-        {
-        }
-
         private void cbZoom_CheckedChanged(object sender, EventArgs e)
         {
             IVFVideoEffectZoom zoomEffect;
@@ -2259,9 +2271,9 @@ namespace Media_Player_Demo
 
         #region Barcode detector
 
-        public delegate void BarcodeDelegate(BarcodeEventArgs value);
+        private delegate void BarcodeDelegate(BarcodeEventArgs value);
 
-        public void BarcodeDelegateMethod(BarcodeEventArgs value)
+        private void BarcodeDelegateMethod(BarcodeEventArgs value)
         {
             edBarcode.Text = value.Value;
             edBarcodeMetadata.Text = string.Empty;
@@ -2541,6 +2553,9 @@ namespace Media_Player_Demo
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 pnVideoRendererBGColor.BackColor = colorDialog1.Color;
+
+                MediaPlayer1.Video_Renderer.BackgroundColor = colorDialog1.Color;
+                MediaPlayer1.Video_Renderer_Update();
             }
         }
 
@@ -3277,6 +3292,18 @@ namespace Media_Player_Demo
         {
             var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64);
             Process.Start(startInfo);
+        }
+
+        private void btOSDClearLayer_Click(object sender, EventArgs e)
+        {
+            if (lbOSDLayers.SelectedIndex != -1)
+            {
+                MediaPlayer1.OSD_Layers_Clear(lbOSDLayers.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
+            }
         }
     }
 }

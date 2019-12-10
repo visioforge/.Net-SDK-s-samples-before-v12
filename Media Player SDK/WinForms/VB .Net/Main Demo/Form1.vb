@@ -11,7 +11,7 @@ Imports VisioForge.Types
 Imports VisioForge.Tools
 
 Public Class Form1
-    Private audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
+    Private ReadOnly audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
 
     ' Zoom
     Dim zoom As Double = 1.0
@@ -20,7 +20,7 @@ Public Class Form1
 
     Dim zoomShiftY As Integer = 0
 
-    Dim multiscreenWindows As List(Of Form) = New List(Of Form)
+    ReadOnly multiscreenWindows As List(Of Form) = New List(Of Form)
 
     Private ReadOnly MediaInfo As MediaInfoReader = New MediaInfoReader
 
@@ -176,18 +176,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btOSDInit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDInit.Click
-
-        MediaPlayer1.OSD_Init()
-
-    End Sub
-
-    Private Sub btOSDDeinit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDDeinit.Click
-
-        MediaPlayer1.OSD_Destroy()
-
-    End Sub
-
     Private Sub btOSDClearLayers_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDClearLayers.Click
 
         MediaPlayer1.OSD_Layers_Clear()
@@ -205,9 +193,9 @@ Public Class Form1
     Private Sub btOSDApplyLayer_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDApplyLayer.Click
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
-
             MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex)
-
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -215,18 +203,14 @@ Public Class Form1
     Private Sub btOSDSelectImage_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDSelectImage.Click
 
         If (openFileDialog2.ShowDialog() = DialogResult.OK) Then
-
             edOSDImageFilename.Text = openFileDialog2.FileName
-
         End If
     End Sub
 
     Private Sub pnOSDColorKey_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles pnOSDColorKey.Click
 
         If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
             pnOSDColorKey.BackColor = colorDialog1.Color
-
         End If
 
     End Sub
@@ -234,16 +218,13 @@ Public Class Form1
     Private Sub btOSDImageDraw_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDImageDraw.Click
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
-
             If (cbOSDImageTranspColor.Checked) Then
-
                 MediaPlayer1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), True, pnOSDColorKey.BackColor)
-
             Else
-
                 MediaPlayer1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), False, Color.Empty)
-
             End If
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -251,10 +232,8 @@ Public Class Form1
     Private Sub btOSDSelectFont_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDSelectFont.Click
 
         If (fontDialog1.ShowDialog() = DialogResult.OK) Then
-
             edOSDText.Font = fontDialog1.Font
             edOSDText.ForeColor = fontDialog1.Color
-
         End If
 
     End Sub
@@ -262,12 +241,12 @@ Public Class Form1
     Private Sub btOSDTextDraw_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDTextDraw.Click
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
-
             Dim fnt As Font = edOSDText.Font
             Dim color As Color = edOSDText.ForeColor
 
             MediaPlayer1.OSD_Layers_Draw_Text(lbOSDLayers.SelectedIndex, Convert.ToInt32(edOSDTextLeft.Text), Convert.ToInt32(edOSDTextTop.Text), edOSDText.Text, fnt, color)
-
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -275,10 +254,10 @@ Public Class Form1
     Private Sub btOSDSetTransp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDSetTransp.Click
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
-
             MediaPlayer1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, tbOSDTranspLevel.Value)
             MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex)
-
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -289,25 +268,15 @@ Public Class Form1
         cbScreenFlipHorizontal.Enabled = rbVMR9.Checked Or rbDirect2D.Checked
 
         If (rbVMR9.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
-
         ElseIf (rbEVR.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
-
         ElseIf (rbVR.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
-
         ElseIf (rbDirect2D.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D
-
         Else
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None
-
         End If
 
     End Sub
@@ -315,9 +284,7 @@ Public Class Form1
     Private Sub btSelectScreenshotsFolder_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectScreenshotsFolder.Click
 
         If (folderBrowserDialog1.ShowDialog() = DialogResult.OK) Then
-
             edScreenshotsFolder.Text = folderBrowserDialog1.SelectedPath
-
         End If
 
     End Sub
@@ -1063,164 +1030,7 @@ Public Class Form1
         End Select
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
-
-        MediaPlayer1.Debug_Mode = cbDebugMode.Checked
-        MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked
-
-        zoom = 1.0
-        zoomShiftX = 0
-        zoomShiftY = 0
-
-        mmLog.Clear()
-
-        MediaPlayer1.Info_UseLibMediaInfo = cbUseLibMediaInfo.Checked
-
-        If (rbVideoDecoderDefault.Checked) Then
-            MediaPlayer1.Custom_Video_Decoder = String.Empty
-        ElseIf (rbVideoDecoderFFDShow.Checked) Then
-            MediaPlayer1.Custom_Video_Decoder = "ffdshow Video Decoder"
-        ElseIf (rbVideoDecoderMS.Checked) Then
-            MediaPlayer1.Custom_Video_Decoder = "Microsoft DTV-DVD Video Decoder"
-        ElseIf (rbVideoDecoderVFH264.Checked) Then
-            MediaPlayer1.Custom_Video_Decoder = "VisioForge H264 Decoder"
-        ElseIf (rbVideoDecoderCustom.Checked) Then
-            MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text
-        End If
-
-        If (rbSplitterCustom.Checked) Then
-            MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text
-        Else
-            MediaPlayer1.Custom_Splitter = String.Empty
-        End If
-
-        If (rbAudioDecoderDefault.Checked) Then
-            MediaPlayer1.Custom_Audio_Decoder = String.Empty
-        ElseIf (rbAudioDecoderCustom.Checked) Then
-            MediaPlayer1.Custom_Audio_Decoder = cbCustomAudioDecoder.Text
-        End If
-
-        If (lbSourceFiles.Items.Count = 0) Then
-            MessageBox.Show("Playlist is empty!")
-        End If
-
-        For Each item As Object In lbSourceFiles.Items
-            MediaPlayer1.FilenamesOrURL.Add(item.ToString())
-        Next
-
-        MediaPlayer1.Loop = cbLoop.Checked
-        MediaPlayer1.Audio_PlayAudio = cbPlayAudio.Checked
-
-        MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text)
-        MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text)
-        MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked
-
-        SetSourceMode()
-
-        btReadInfo_Click(sender, e)
-
-        MediaPlayer1.Audio_OutputDevice = cbAudioOutputDevice.Text
-
-        If (rbVR.Checked) Then
-
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
-
-        ElseIf (rbVMR9.Checked) Then
-
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
-
-        ElseIf (rbEVR.Checked) Then
-
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
-
-        ElseIf (rbDirect2D.Checked) Then
-
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D
-
-        Else
-
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None
-
-        End If
-
-        MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
-        MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
-        MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
-
-        ' Audio enhancement
-        MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.Checked
-        If (MediaPlayer1.Audio_Enhancer_Enabled) Then
-
-            MediaPlayer1.Audio_Enhancer_Normalize(-1, cbAudioNormalize.Checked)
-            MediaPlayer1.Audio_Enhancer_AutoGain(-1, cbAudioAutoGain.Checked)
-
-            ApplyAudioInputGains()
-            ApplyAudioOutputGains()
-
-            MediaPlayer1.Audio_Enhancer_Timeshift(-1, tbAudioTimeshift.Value)
-        End If
-
-        ' Audio channels mapping
-        If (cbAudioChannelMapperEnabled.Checked) Then
-            MediaPlayer1.Audio_Channel_Mapper = New AudioChannelMapperSettings()
-            MediaPlayer1.Audio_Channel_Mapper.Routes = audioChannelMapperItems.ToArray()
-            MediaPlayer1.Audio_Channel_Mapper.OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
-        Else
-            MediaPlayer1.Audio_Channel_Mapper = Nothing
-        End If
-
-        ' Audio processing
-        MediaPlayer1.Audio_Effects_Clear(-1)
-        MediaPlayer1.Audio_Effects_Enabled = cbAudioEffectsEnabled.Checked
-
-        If (MediaPlayer1.Audio_Effects_Enabled) Then
-
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
-
-        End If
-
-        ' Multiscreen
-        MediaPlayer1.MultiScreen_Clear()
-        MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked Or cbMultiscreenDrawOnExternalDisplays.Checked
-
-        If (cbMultiscreenDrawOnPanels.Checked) Then
-            MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height)
-            MediaPlayer1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height)
-        End If
-
-        If (cbMultiscreenDrawOnExternalDisplays.Checked) Then
-
-            If (Screen.AllScreens.Length > 1) Then
-
-                For i As Integer = 1 To Screen.AllScreens.Length
-                    Dim additinalWindow1 As Form = New Form()
-                    ShowOnScreen(additinalWindow1, i)
-                    MediaPlayer1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height)
-                    multiscreenWindows.Add(additinalWindow1)
-                Next
-            End If
-        End If
-
-        ' VU meters
-        MediaPlayer1.Audio_VUMeter_Pro_Enabled = cbVUMeterPro.Checked
-
-        If (MediaPlayer1.Audio_VUMeter_Pro_Enabled) Then
-
-            MediaPlayer1.Audio_VUMeter_Pro_Volume = tbVUMeterAmplification.Value
-
-            volumeMeter1.Boost = tbVUMeterBoost.Value / 10.0F
-            volumeMeter2.Boost = tbVUMeterBoost.Value / 10.0F
-
-            waveformPainter1.Boost = tbVUMeterBoost.Value / 10.0F
-            waveformPainter2.Boost = tbVUMeterBoost.Value / 10.0F
-
-        End If
-
-        ' Video effects
+    Private Sub AddVideoEffects()
         MediaPlayer1.Video_Effects_Enabled = cbEffects.Checked
         MediaPlayer1.Video_Effects_Clear()
         lbImageLogos.Items.Clear()
@@ -1364,6 +1174,172 @@ Public Class Form1
         If cbFadeInOut.Checked Then
             cbFadeInOut_CheckedChanged(Nothing, Nothing)
         End If
+    End Sub
+
+    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+
+        MediaPlayer1.Debug_Mode = cbDebugMode.Checked
+        MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked
+
+        zoom = 1.0
+        zoomShiftX = 0
+        zoomShiftY = 0
+
+        mmLog.Clear()
+
+        MediaPlayer1.Info_UseLibMediaInfo = cbUseLibMediaInfo.Checked
+
+        If (rbVideoDecoderDefault.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = String.Empty
+        ElseIf (rbVideoDecoderFFDShow.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = "ffdshow Video Decoder"
+        ElseIf (rbVideoDecoderMS.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = "Microsoft DTV-DVD Video Decoder"
+        ElseIf (rbVideoDecoderVFH264.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = "VisioForge H264 Decoder"
+        ElseIf (rbVideoDecoderCustom.Checked) Then
+            MediaPlayer1.Custom_Video_Decoder = cbCustomVideoDecoder.Text
+        End If
+
+        If (rbSplitterCustom.Checked) Then
+            MediaPlayer1.Custom_Splitter = cbCustomSplitter.Text
+        Else
+            MediaPlayer1.Custom_Splitter = String.Empty
+        End If
+
+        If (rbAudioDecoderDefault.Checked) Then
+            MediaPlayer1.Custom_Audio_Decoder = String.Empty
+        ElseIf (rbAudioDecoderCustom.Checked) Then
+            MediaPlayer1.Custom_Audio_Decoder = cbCustomAudioDecoder.Text
+        End If
+
+        If (lbSourceFiles.Items.Count = 0) Then
+            MessageBox.Show("Playlist is empty!")
+        End If
+
+        For Each item As Object In lbSourceFiles.Items
+            MediaPlayer1.FilenamesOrURL.Add(item.ToString())
+        Next
+
+        MediaPlayer1.Loop = cbLoop.Checked
+        MediaPlayer1.Audio_PlayAudio = cbPlayAudio.Checked
+
+        MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text)
+        MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text)
+        MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked
+
+        MediaPlayer1.OSD_Enabled = cbOSDEnabled.Checked
+
+        SetSourceMode()
+
+        btReadInfo_Click(sender, e)
+
+        MediaPlayer1.Audio_OutputDevice = cbAudioOutputDevice.Text
+
+        If (rbVR.Checked) Then
+
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
+
+        ElseIf (rbVMR9.Checked) Then
+
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
+
+        ElseIf (rbEVR.Checked) Then
+
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
+
+        ElseIf (rbDirect2D.Checked) Then
+
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D
+
+        Else
+
+            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None
+
+        End If
+
+        MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
+        MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
+        MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
+
+        ' Audio enhancement
+        MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.Checked
+        If (MediaPlayer1.Audio_Enhancer_Enabled) Then
+
+            MediaPlayer1.Audio_Enhancer_Normalize(-1, cbAudioNormalize.Checked)
+            MediaPlayer1.Audio_Enhancer_AutoGain(-1, cbAudioAutoGain.Checked)
+
+            ApplyAudioInputGains()
+            ApplyAudioOutputGains()
+
+            MediaPlayer1.Audio_Enhancer_Timeshift(-1, tbAudioTimeshift.Value)
+        End If
+
+        ' Audio channels mapping
+        If (cbAudioChannelMapperEnabled.Checked) Then
+            MediaPlayer1.Audio_Channel_Mapper = New AudioChannelMapperSettings()
+            MediaPlayer1.Audio_Channel_Mapper.Routes = audioChannelMapperItems.ToArray()
+            MediaPlayer1.Audio_Channel_Mapper.OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
+        Else
+            MediaPlayer1.Audio_Channel_Mapper = Nothing
+        End If
+
+        ' Audio processing
+        MediaPlayer1.Audio_Effects_Clear(-1)
+        MediaPlayer1.Audio_Effects_Enabled = cbAudioEffectsEnabled.Checked
+
+        If (MediaPlayer1.Audio_Effects_Enabled) Then
+
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
+
+        End If
+
+        ' Multiscreen
+        MediaPlayer1.MultiScreen_Clear()
+        MediaPlayer1.MultiScreen_Enabled = cbMultiscreenDrawOnPanels.Checked Or cbMultiscreenDrawOnExternalDisplays.Checked
+
+        If (cbMultiscreenDrawOnPanels.Checked) Then
+            MediaPlayer1.MultiScreen_AddScreen(pnScreen1.Handle, pnScreen1.Width, pnScreen1.Height)
+            MediaPlayer1.MultiScreen_AddScreen(pnScreen2.Handle, pnScreen2.Width, pnScreen2.Height)
+        End If
+
+        If (cbMultiscreenDrawOnExternalDisplays.Checked) Then
+
+            If (Screen.AllScreens.Length > 1) Then
+
+                For i As Integer = 1 To Screen.AllScreens.Length
+                    Dim additinalWindow1 As Form = New Form()
+                    ShowOnScreen(additinalWindow1, i)
+                    MediaPlayer1.MultiScreen_AddScreen(additinalWindow1.Handle, additinalWindow1.Width, additinalWindow1.Height)
+                    multiscreenWindows.Add(additinalWindow1)
+                Next
+            End If
+        End If
+
+        ' VU meters
+        MediaPlayer1.Audio_VUMeter_Pro_Enabled = cbVUMeterPro.Checked
+
+        If (MediaPlayer1.Audio_VUMeter_Pro_Enabled) Then
+
+            MediaPlayer1.Audio_VUMeter_Pro_Volume = tbVUMeterAmplification.Value
+
+            volumeMeter1.Boost = tbVUMeterBoost.Value / 10.0F
+            volumeMeter2.Boost = tbVUMeterBoost.Value / 10.0F
+
+            waveformPainter1.Boost = tbVUMeterBoost.Value / 10.0F
+            waveformPainter2.Boost = tbVUMeterBoost.Value / 10.0F
+
+        End If
+
+        ' Video effects GPU
+        MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
+
+        ' Video effects
+        AddVideoEffects()
 
         ' Barcode detection
         MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
@@ -1904,9 +1880,9 @@ Public Class Form1
 
     End Sub
 
-    Public Delegate Sub AFStopDelegate()
+    Private Delegate Sub AFStopDelegate()
 
-    Public Sub AFStopDelegateMethod()
+    Private Sub AFStopDelegateMethod()
 
         tbTimeline.Value = 0
 
@@ -1994,9 +1970,9 @@ Public Class Form1
 
     End Sub
 
-    Public Delegate Sub AFMotionDelegate(ByVal level As System.Single)
+    Private Delegate Sub AFMotionDelegate(ByVal level As System.Single)
 
-    Public Sub AFMotionDelegateMethod(ByVal level As System.Single)
+    Private Sub AFMotionDelegateMethod(ByVal level As System.Single)
 
         pbAFMotionLevel.Value = level * 100
 
@@ -2041,9 +2017,9 @@ Public Class Form1
 
     End Sub
 
-    Public Delegate Sub MotionDelegate(ByVal e As MotionDetectionEventArgs)
+    Private Delegate Sub MotionDelegate(ByVal e As MotionDetectionEventArgs)
 
-    Public Sub MotionDelegateMethod(ByVal e As MotionDetectionEventArgs)
+    Private Sub MotionDelegateMethod(ByVal e As MotionDetectionEventArgs)
 
         Dim s As String = String.Empty
 
@@ -2528,6 +2504,8 @@ Public Class Form1
 
             pnVideoRendererBGColor.BackColor = colorDialog1.Color
 
+            MediaPlayer1.Video_Renderer.BackgroundColor = colorDialog1.Color
+            MediaPlayer1.Video_Renderer_Update()
         End If
 
     End Sub
@@ -3166,6 +3144,14 @@ Public Class Form1
     Private Sub linkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel3.LinkClicked
         Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64)
         Process.Start(startInfo)
+    End Sub
+
+    Private Sub btOSDClearLayer_Click(sender As Object, e As EventArgs) Handles btOSDClearLayer.Click
+        If (lbOSDLayers.SelectedIndex <> -1) Then
+            MediaPlayer1.OSD_Layers_Clear(lbOSDLayers.SelectedIndex)
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
+        End If
     End Sub
 End Class
 

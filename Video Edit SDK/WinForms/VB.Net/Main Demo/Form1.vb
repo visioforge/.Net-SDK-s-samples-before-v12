@@ -884,6 +884,72 @@ Public Class Form1
         ' Virtual camera output
         VideoEdit1.Virtual_Camera_Output_Enabled = cbVirtualCamera.Checked
 
+        ' Video effects CPU
+        AddVideoEffects()
+
+        ' Video effects GPU
+        VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
+
+        'motion detection
+        If (cbMotDetEnabled.Checked) Then
+            btMotDetUpdateSettings_Click(sender, e) 'apply settings
+        End If
+
+        ' Barcode detection
+        VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
+        VideoEdit1.Barcode_Reader_Type = cbBarcodeType.SelectedIndex
+
+        ' Decklink output
+        ConfigureDecklink()
+
+        ' Object tracking 
+        ConfigureObjectTracking()
+
+        ' video rotation
+        Select Case cbRotate.SelectedIndex
+            Case 0
+                VideoEdit1.Video_Rotation = VFRotateMode.RotateNone
+            Case 1
+                VideoEdit1.Video_Rotation = VFRotateMode.Rotate90
+            Case 2
+                VideoEdit1.Video_Rotation = VFRotateMode.Rotate180
+            Case 3
+                VideoEdit1.Video_Rotation = VFRotateMode.Rotate270
+        End Select
+
+        ' tags
+        If cbTagEnabled.Checked Then
+
+            Dim tags As VFFileTags = New VFFileTags
+
+            tags.Title = edTagTitle.Text
+            tags.Performers = New String() {edTagArtists.Text}
+            tags.Album = edTagAlbum.Text
+            tags.Comment = edTagComment.Text
+            tags.Track = Convert.ToUInt32(edTagTrackID.Text)
+            tags.Copyright = edTagCopyright.Text
+            tags.Year = Convert.ToUInt32(edTagYear.Text)
+            tags.Composers = New String() {edTagComposers.Text}
+            tags.Genres = New String() {cbTagGenre.Text}
+            tags.Lyrics = edTagLyrics.Text
+
+            If Not IsNothing(imgTagCover.Image) Then
+                tags.Pictures = New Bitmap() {imgTagCover.Image}
+            End If
+
+            VideoEdit1.Tags = tags
+
+        End If
+
+        VideoEdit1.Start()
+
+        lbTransitions.Items.Clear()
+
+        edNetworkURL.Text = VideoEdit1.Network_Streaming_URL
+
+    End Sub
+
+    Private Sub AddVideoEffects()
         VideoEdit1.Video_Effects_Enabled = cbEffects.Checked
         VideoEdit1.Video_Effects_Clear()
 
@@ -1022,67 +1088,9 @@ Public Class Form1
             cbFlipY_CheckedChanged(Nothing, Nothing)
         End If
 
-        If cbFadeInOut.Checked Then
+        If cbVideoFadeInOut.Checked Then
             cbFadeInOut_CheckedChanged(Nothing, Nothing)
         End If
-
-        'motion detection
-        If (cbMotDetEnabled.Checked) Then
-            btMotDetUpdateSettings_Click(sender, e) 'apply settings
-        End If
-
-        ' Barcode detection
-        VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
-        VideoEdit1.Barcode_Reader_Type = cbBarcodeType.SelectedIndex
-
-        ' Decklink output
-        ConfigureDecklink()
-
-        ' Object tracking 
-        ConfigureObjectTracking()
-
-        ' video rotation
-        Select Case cbRotate.SelectedIndex
-            Case 0
-                VideoEdit1.Video_Rotation = VFRotateMode.RotateNone
-            Case 1
-                VideoEdit1.Video_Rotation = VFRotateMode.Rotate90
-            Case 2
-                VideoEdit1.Video_Rotation = VFRotateMode.Rotate180
-            Case 3
-                VideoEdit1.Video_Rotation = VFRotateMode.Rotate270
-        End Select
-
-        ' tags
-        If cbTagEnabled.Checked Then
-
-            Dim tags As VFFileTags = New VFFileTags
-
-            tags.Title = edTagTitle.Text
-            tags.Performers = New String() {edTagArtists.Text}
-            tags.Album = edTagAlbum.Text
-            tags.Comment = edTagComment.Text
-            tags.Track = Convert.ToUInt32(edTagTrackID.Text)
-            tags.Copyright = edTagCopyright.Text
-            tags.Year = Convert.ToUInt32(edTagYear.Text)
-            tags.Composers = New String() {edTagComposers.Text}
-            tags.Genres = New String() {cbTagGenre.Text}
-            tags.Lyrics = edTagLyrics.Text
-
-            If Not IsNothing(imgTagCover.Image) Then
-                tags.Pictures = New Bitmap() {imgTagCover.Image}
-            End If
-
-            VideoEdit1.Tags = tags
-
-        End If
-
-        VideoEdit1.Start()
-
-        lbTransitions.Items.Clear()
-
-        edNetworkURL.Text = VideoEdit1.Network_Streaming_URL
-
     End Sub
 
     Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
@@ -1771,13 +1779,13 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbFadeInOut_CheckedChanged(sender As Object, e As EventArgs) Handles cbFadeInOut.CheckedChanged
+    Private Sub cbFadeInOut_CheckedChanged(sender As Object, e As EventArgs) Handles cbVideoFadeInOut.CheckedChanged
 
-        If (rbFadeIn.Checked) Then
+        If (rbVideoFadeIn.Checked) Then
             Dim fadeIn As IVFVideoEffectFadeIn
             Dim effect = VideoEdit1.Video_Effects_Get("FadeIn")
             If (IsNothing(effect)) Then
-                fadeIn = New VFVideoEffectFadeIn(cbFadeInOut.Checked)
+                fadeIn = New VFVideoEffectFadeIn(cbVideoFadeInOut.Checked)
                 VideoEdit1.Video_Effects_Add(fadeIn)
             Else
                 fadeIn = effect
@@ -1788,14 +1796,14 @@ Public Class Form1
                 Return
             End If
 
-            fadeIn.Enabled = cbFadeInOut.Checked
-            fadeIn.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text)
-            fadeIn.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text)
+            fadeIn.Enabled = cbVideoFadeInOut.Checked
+            fadeIn.StartTime = Convert.ToInt64(edVideoFadeInOutStartTime.Text)
+            fadeIn.StopTime = Convert.ToInt64(edVideoFadeInOutStopTime.Text)
         Else
             Dim fadeOut As IVFVideoEffectFadeOut
             Dim effect = VideoEdit1.Video_Effects_Get("FadeOut")
             If (IsNothing(effect)) Then
-                fadeOut = New VFVideoEffectFadeOut(cbFadeInOut.Checked)
+                fadeOut = New VFVideoEffectFadeOut(cbVideoFadeInOut.Checked)
                 VideoEdit1.Video_Effects_Add(fadeOut)
             Else
                 fadeOut = effect
@@ -1806,9 +1814,9 @@ Public Class Form1
                 Return
             End If
 
-            fadeOut.Enabled = cbFadeInOut.Checked
-            fadeOut.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text)
-            fadeOut.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text)
+            fadeOut.Enabled = cbVideoFadeInOut.Checked
+            fadeOut.StartTime = Convert.ToInt64(edVideoFadeInOutStartTime.Text)
+            fadeOut.StopTime = Convert.ToInt64(edVideoFadeInOutStopTime.Text)
         End If
 
     End Sub
@@ -1926,9 +1934,9 @@ Public Class Form1
         colorDialog1.Color = pnVideoRendererBGColor.BackColor
 
         If (colorDialog1.ShowDialog() = DialogResult.OK) Then
-
             pnVideoRendererBGColor.BackColor = colorDialog1.Color
-
+            VideoEdit1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor
+            VideoEdit1.Video_Renderer_Update()
         End If
 
     End Sub
@@ -2083,10 +2091,6 @@ Public Class Form1
         lbAudioTimeshift.Text = tbAudioTimeshift.Value.ToString(CultureInfo.InvariantCulture) + " ms"
 
         VideoEdit1.Audio_Enhancer_Timeshift(-1, tbAudioTimeshift.Value)
-
-    End Sub
-
-    Private Sub btTest_Click(sender As Object, e As EventArgs)
 
     End Sub
 

@@ -120,14 +120,14 @@ Partial Class Form1
         Me.label297 = New System.Windows.Forms.Label()
         Me.cbPan = New System.Windows.Forms.CheckBox()
         Me.TabPage33 = New System.Windows.Forms.TabPage()
-        Me.rbFadeOut = New System.Windows.Forms.RadioButton()
-        Me.rbFadeIn = New System.Windows.Forms.RadioButton()
+        Me.rbVideoFadeOut = New System.Windows.Forms.RadioButton()
+        Me.rbVideoFadeIn = New System.Windows.Forms.RadioButton()
         Me.groupBox45 = New System.Windows.Forms.GroupBox()
-        Me.edFadeInOutStopTime = New System.Windows.Forms.TextBox()
+        Me.edVideoFadeInOutStopTime = New System.Windows.Forms.TextBox()
         Me.label329 = New System.Windows.Forms.Label()
-        Me.edFadeInOutStartTime = New System.Windows.Forms.TextBox()
+        Me.edVideoFadeInOutStartTime = New System.Windows.Forms.TextBox()
         Me.label330 = New System.Windows.Forms.Label()
-        Me.cbFadeInOut = New System.Windows.Forms.CheckBox()
+        Me.cbVideoFadeInOut = New System.Windows.Forms.CheckBox()
         Me.tbContrast = New System.Windows.Forms.TrackBar()
         Me.tbDarkness = New System.Windows.Forms.TrackBar()
         Me.tbLightness = New System.Windows.Forms.TrackBar()
@@ -561,6 +561,7 @@ Partial Class Form1
         Me.edStartTimeCut = New System.Windows.Forms.TextBox()
         Me.label29 = New System.Windows.Forms.Label()
         Me.tabPage54 = New System.Windows.Forms.TabPage()
+        Me.label1 = New System.Windows.Forms.Label()
         Me.btSelectOutputJoin = New System.Windows.Forms.Button()
         Me.edOutputFileJoin = New System.Windows.Forms.TextBox()
         Me.label132 = New System.Windows.Forms.Label()
@@ -614,7 +615,7 @@ Partial Class Form1
         Me.Label496 = New System.Windows.Forms.Label()
         Me.edTagTrackID = New System.Windows.Forms.TextBox()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
-        Me.label1 = New System.Windows.Forms.Label()
+        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.tabControl1.SuspendLayout()
         Me.tabPage1.SuspendLayout()
         Me.tabControl2.SuspendLayout()
@@ -1672,10 +1673,10 @@ Partial Class Form1
         '
         'TabPage33
         '
-        Me.TabPage33.Controls.Add(Me.rbFadeOut)
-        Me.TabPage33.Controls.Add(Me.rbFadeIn)
+        Me.TabPage33.Controls.Add(Me.rbVideoFadeOut)
+        Me.TabPage33.Controls.Add(Me.rbVideoFadeIn)
         Me.TabPage33.Controls.Add(Me.groupBox45)
-        Me.TabPage33.Controls.Add(Me.cbFadeInOut)
+        Me.TabPage33.Controls.Add(Me.cbVideoFadeInOut)
         Me.TabPage33.Location = New System.Drawing.Point(4, 22)
         Me.TabPage33.Name = "TabPage33"
         Me.TabPage33.Padding = New System.Windows.Forms.Padding(3)
@@ -1684,34 +1685,34 @@ Partial Class Form1
         Me.TabPage33.Text = "Fade-in/out"
         Me.TabPage33.UseVisualStyleBackColor = True
         '
-        'rbFadeOut
+        'rbVideoFadeOut
         '
-        Me.rbFadeOut.AutoSize = True
-        Me.rbFadeOut.Location = New System.Drawing.Point(107, 86)
-        Me.rbFadeOut.Name = "rbFadeOut"
-        Me.rbFadeOut.Size = New System.Drawing.Size(67, 17)
-        Me.rbFadeOut.TabIndex = 64
-        Me.rbFadeOut.TabStop = True
-        Me.rbFadeOut.Text = "Fade-out"
-        Me.rbFadeOut.UseVisualStyleBackColor = True
+        Me.rbVideoFadeOut.AutoSize = True
+        Me.rbVideoFadeOut.Location = New System.Drawing.Point(107, 86)
+        Me.rbVideoFadeOut.Name = "rbVideoFadeOut"
+        Me.rbVideoFadeOut.Size = New System.Drawing.Size(67, 17)
+        Me.rbVideoFadeOut.TabIndex = 64
+        Me.rbVideoFadeOut.TabStop = True
+        Me.rbVideoFadeOut.Text = "Fade-out"
+        Me.rbVideoFadeOut.UseVisualStyleBackColor = True
         '
-        'rbFadeIn
+        'rbVideoFadeIn
         '
-        Me.rbFadeIn.AutoSize = True
-        Me.rbFadeIn.Checked = True
-        Me.rbFadeIn.Location = New System.Drawing.Point(16, 86)
-        Me.rbFadeIn.Name = "rbFadeIn"
-        Me.rbFadeIn.Size = New System.Drawing.Size(60, 17)
-        Me.rbFadeIn.TabIndex = 63
-        Me.rbFadeIn.TabStop = True
-        Me.rbFadeIn.Text = "Fade-in"
-        Me.rbFadeIn.UseVisualStyleBackColor = True
+        Me.rbVideoFadeIn.AutoSize = True
+        Me.rbVideoFadeIn.Checked = True
+        Me.rbVideoFadeIn.Location = New System.Drawing.Point(16, 86)
+        Me.rbVideoFadeIn.Name = "rbVideoFadeIn"
+        Me.rbVideoFadeIn.Size = New System.Drawing.Size(60, 17)
+        Me.rbVideoFadeIn.TabIndex = 63
+        Me.rbVideoFadeIn.TabStop = True
+        Me.rbVideoFadeIn.Text = "Fade-in"
+        Me.rbVideoFadeIn.UseVisualStyleBackColor = True
         '
         'groupBox45
         '
-        Me.groupBox45.Controls.Add(Me.edFadeInOutStopTime)
+        Me.groupBox45.Controls.Add(Me.edVideoFadeInOutStopTime)
         Me.groupBox45.Controls.Add(Me.label329)
-        Me.groupBox45.Controls.Add(Me.edFadeInOutStartTime)
+        Me.groupBox45.Controls.Add(Me.edVideoFadeInOutStartTime)
         Me.groupBox45.Controls.Add(Me.label330)
         Me.groupBox45.Location = New System.Drawing.Point(16, 36)
         Me.groupBox45.Name = "groupBox45"
@@ -1720,14 +1721,14 @@ Partial Class Form1
         Me.groupBox45.TabStop = False
         Me.groupBox45.Text = "Duration"
         '
-        'edFadeInOutStopTime
+        'edVideoFadeInOutStopTime
         '
-        Me.edFadeInOutStopTime.Location = New System.Drawing.Point(117, 18)
-        Me.edFadeInOutStopTime.Name = "edFadeInOutStopTime"
-        Me.edFadeInOutStopTime.Size = New System.Drawing.Size(39, 20)
-        Me.edFadeInOutStopTime.TabIndex = 34
-        Me.edFadeInOutStopTime.Text = "15000"
-        Me.edFadeInOutStopTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.edVideoFadeInOutStopTime.Location = New System.Drawing.Point(117, 18)
+        Me.edVideoFadeInOutStopTime.Name = "edVideoFadeInOutStopTime"
+        Me.edVideoFadeInOutStopTime.Size = New System.Drawing.Size(39, 20)
+        Me.edVideoFadeInOutStopTime.TabIndex = 34
+        Me.edVideoFadeInOutStopTime.Text = "15000"
+        Me.edVideoFadeInOutStopTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'label329
         '
@@ -1738,14 +1739,14 @@ Partial Class Form1
         Me.label329.TabIndex = 33
         Me.label329.Text = "Stop"
         '
-        'edFadeInOutStartTime
+        'edVideoFadeInOutStartTime
         '
-        Me.edFadeInOutStartTime.Location = New System.Drawing.Point(43, 18)
-        Me.edFadeInOutStartTime.Name = "edFadeInOutStartTime"
-        Me.edFadeInOutStartTime.Size = New System.Drawing.Size(39, 20)
-        Me.edFadeInOutStartTime.TabIndex = 32
-        Me.edFadeInOutStartTime.Text = "5000"
-        Me.edFadeInOutStartTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.edVideoFadeInOutStartTime.Location = New System.Drawing.Point(43, 18)
+        Me.edVideoFadeInOutStartTime.Name = "edVideoFadeInOutStartTime"
+        Me.edVideoFadeInOutStartTime.Size = New System.Drawing.Size(39, 20)
+        Me.edVideoFadeInOutStartTime.TabIndex = 32
+        Me.edVideoFadeInOutStartTime.Text = "5000"
+        Me.edVideoFadeInOutStartTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'label330
         '
@@ -1756,15 +1757,15 @@ Partial Class Form1
         Me.label330.TabIndex = 31
         Me.label330.Text = "Start"
         '
-        'cbFadeInOut
+        'cbVideoFadeInOut
         '
-        Me.cbFadeInOut.AutoSize = True
-        Me.cbFadeInOut.Location = New System.Drawing.Point(16, 14)
-        Me.cbFadeInOut.Name = "cbFadeInOut"
-        Me.cbFadeInOut.Size = New System.Drawing.Size(65, 17)
-        Me.cbFadeInOut.TabIndex = 61
-        Me.cbFadeInOut.Text = "Enabled"
-        Me.cbFadeInOut.UseVisualStyleBackColor = True
+        Me.cbVideoFadeInOut.AutoSize = True
+        Me.cbVideoFadeInOut.Location = New System.Drawing.Point(16, 14)
+        Me.cbVideoFadeInOut.Name = "cbVideoFadeInOut"
+        Me.cbVideoFadeInOut.Size = New System.Drawing.Size(65, 17)
+        Me.cbVideoFadeInOut.TabIndex = 61
+        Me.cbVideoFadeInOut.Text = "Enabled"
+        Me.cbVideoFadeInOut.UseVisualStyleBackColor = True
         '
         'tbContrast
         '
@@ -2059,8 +2060,6 @@ Partial Class Form1
         'cbDeinterlace
         '
         Me.cbDeinterlace.AutoSize = True
-        Me.cbDeinterlace.Checked = True
-        Me.cbDeinterlace.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbDeinterlace.Location = New System.Drawing.Point(18, 16)
         Me.cbDeinterlace.Name = "cbDeinterlace"
         Me.cbDeinterlace.Size = New System.Drawing.Size(65, 17)
@@ -2115,6 +2114,7 @@ Partial Class Form1
         '
         'TabPage82
         '
+        Me.TabPage82.Controls.Add(Me.cbVideoEffectsGPUEnabled)
         Me.TabPage82.Controls.Add(Me.cbGPUOldMovie)
         Me.TabPage82.Controls.Add(Me.cbGPUBlur)
         Me.TabPage82.Controls.Add(Me.cbGPUDeinterlace)
@@ -2143,7 +2143,7 @@ Partial Class Form1
         '
         Me.cbGPUOldMovie.AutoSize = True
         Me.cbGPUOldMovie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cbGPUOldMovie.Location = New System.Drawing.Point(142, 196)
+        Me.cbGPUOldMovie.Location = New System.Drawing.Point(145, 228)
         Me.cbGPUOldMovie.Name = "cbGPUOldMovie"
         Me.cbGPUOldMovie.Size = New System.Drawing.Size(73, 17)
         Me.cbGPUOldMovie.TabIndex = 96
@@ -2153,7 +2153,7 @@ Partial Class Form1
         'cbGPUBlur
         '
         Me.cbGPUBlur.AutoSize = True
-        Me.cbGPUBlur.Location = New System.Drawing.Point(14, 196)
+        Me.cbGPUBlur.Location = New System.Drawing.Point(17, 228)
         Me.cbGPUBlur.Name = "cbGPUBlur"
         Me.cbGPUBlur.Size = New System.Drawing.Size(44, 17)
         Me.cbGPUBlur.TabIndex = 95
@@ -2164,7 +2164,7 @@ Partial Class Form1
         '
         Me.cbGPUDeinterlace.AutoSize = True
         Me.cbGPUDeinterlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cbGPUDeinterlace.Location = New System.Drawing.Point(142, 173)
+        Me.cbGPUDeinterlace.Location = New System.Drawing.Point(145, 205)
         Me.cbGPUDeinterlace.Name = "cbGPUDeinterlace"
         Me.cbGPUDeinterlace.Size = New System.Drawing.Size(80, 17)
         Me.cbGPUDeinterlace.TabIndex = 94
@@ -2174,7 +2174,7 @@ Partial Class Form1
         'cbGPUDenoise
         '
         Me.cbGPUDenoise.AutoSize = True
-        Me.cbGPUDenoise.Location = New System.Drawing.Point(14, 173)
+        Me.cbGPUDenoise.Location = New System.Drawing.Point(17, 205)
         Me.cbGPUDenoise.Name = "cbGPUDenoise"
         Me.cbGPUDenoise.Size = New System.Drawing.Size(65, 17)
         Me.cbGPUDenoise.TabIndex = 93
@@ -2184,7 +2184,7 @@ Partial Class Form1
         'cbGPUPixelate
         '
         Me.cbGPUPixelate.AutoSize = True
-        Me.cbGPUPixelate.Location = New System.Drawing.Point(142, 151)
+        Me.cbGPUPixelate.Location = New System.Drawing.Point(145, 183)
         Me.cbGPUPixelate.Name = "cbGPUPixelate"
         Me.cbGPUPixelate.Size = New System.Drawing.Size(63, 17)
         Me.cbGPUPixelate.TabIndex = 92
@@ -2194,7 +2194,7 @@ Partial Class Form1
         'cbGPUNightVision
         '
         Me.cbGPUNightVision.AutoSize = True
-        Me.cbGPUNightVision.Location = New System.Drawing.Point(14, 151)
+        Me.cbGPUNightVision.Location = New System.Drawing.Point(17, 183)
         Me.cbGPUNightVision.Name = "cbGPUNightVision"
         Me.cbGPUNightVision.Size = New System.Drawing.Size(81, 17)
         Me.cbGPUNightVision.TabIndex = 91
@@ -2204,7 +2204,7 @@ Partial Class Form1
         'label383
         '
         Me.label383.AutoSize = True
-        Me.label383.Location = New System.Drawing.Point(147, 62)
+        Me.label383.Location = New System.Drawing.Point(150, 94)
         Me.label383.Name = "label383"
         Me.label383.Size = New System.Drawing.Size(52, 13)
         Me.label383.TabIndex = 90
@@ -2213,7 +2213,7 @@ Partial Class Form1
         'label384
         '
         Me.label384.AutoSize = True
-        Me.label384.Location = New System.Drawing.Point(11, 62)
+        Me.label384.Location = New System.Drawing.Point(14, 94)
         Me.label384.Name = "label384"
         Me.label384.Size = New System.Drawing.Size(46, 13)
         Me.label384.TabIndex = 89
@@ -2222,7 +2222,7 @@ Partial Class Form1
         'label385
         '
         Me.label385.AutoSize = True
-        Me.label385.Location = New System.Drawing.Point(147, 12)
+        Me.label385.Location = New System.Drawing.Point(150, 44)
         Me.label385.Name = "label385"
         Me.label385.Size = New System.Drawing.Size(55, 13)
         Me.label385.TabIndex = 88
@@ -2231,7 +2231,7 @@ Partial Class Form1
         'label386
         '
         Me.label386.AutoSize = True
-        Me.label386.Location = New System.Drawing.Point(11, 12)
+        Me.label386.Location = New System.Drawing.Point(14, 44)
         Me.label386.Name = "label386"
         Me.label386.Size = New System.Drawing.Size(52, 13)
         Me.label386.TabIndex = 87
@@ -2240,7 +2240,7 @@ Partial Class Form1
         'tbGPUContrast
         '
         Me.tbGPUContrast.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUContrast.Location = New System.Drawing.Point(8, 80)
+        Me.tbGPUContrast.Location = New System.Drawing.Point(11, 112)
         Me.tbGPUContrast.Maximum = 255
         Me.tbGPUContrast.Name = "tbGPUContrast"
         Me.tbGPUContrast.Size = New System.Drawing.Size(130, 45)
@@ -2250,7 +2250,7 @@ Partial Class Form1
         'tbGPUDarkness
         '
         Me.tbGPUDarkness.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUDarkness.Location = New System.Drawing.Point(147, 80)
+        Me.tbGPUDarkness.Location = New System.Drawing.Point(150, 112)
         Me.tbGPUDarkness.Maximum = 255
         Me.tbGPUDarkness.Name = "tbGPUDarkness"
         Me.tbGPUDarkness.Size = New System.Drawing.Size(130, 45)
@@ -2259,7 +2259,7 @@ Partial Class Form1
         'tbGPULightness
         '
         Me.tbGPULightness.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPULightness.Location = New System.Drawing.Point(8, 26)
+        Me.tbGPULightness.Location = New System.Drawing.Point(11, 58)
         Me.tbGPULightness.Maximum = 255
         Me.tbGPULightness.Name = "tbGPULightness"
         Me.tbGPULightness.Size = New System.Drawing.Size(130, 45)
@@ -2268,7 +2268,7 @@ Partial Class Form1
         'tbGPUSaturation
         '
         Me.tbGPUSaturation.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUSaturation.Location = New System.Drawing.Point(147, 26)
+        Me.tbGPUSaturation.Location = New System.Drawing.Point(150, 58)
         Me.tbGPUSaturation.Maximum = 255
         Me.tbGPUSaturation.Name = "tbGPUSaturation"
         Me.tbGPUSaturation.Size = New System.Drawing.Size(130, 45)
@@ -2279,7 +2279,7 @@ Partial Class Form1
         '
         Me.cbGPUInvert.AutoSize = True
         Me.cbGPUInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cbGPUInvert.Location = New System.Drawing.Point(142, 129)
+        Me.cbGPUInvert.Location = New System.Drawing.Point(145, 161)
         Me.cbGPUInvert.Name = "cbGPUInvert"
         Me.cbGPUInvert.Size = New System.Drawing.Size(53, 17)
         Me.cbGPUInvert.TabIndex = 82
@@ -2289,7 +2289,7 @@ Partial Class Form1
         'cbGPUGreyscale
         '
         Me.cbGPUGreyscale.AutoSize = True
-        Me.cbGPUGreyscale.Location = New System.Drawing.Point(14, 129)
+        Me.cbGPUGreyscale.Location = New System.Drawing.Point(17, 161)
         Me.cbGPUGreyscale.Name = "cbGPUGreyscale"
         Me.cbGPUGreyscale.Size = New System.Drawing.Size(73, 17)
         Me.cbGPUGreyscale.TabIndex = 81
@@ -5903,6 +5903,7 @@ Partial Class Form1
         Me.VideoEdit1.Video_Custom_Resizer_CLSID = New System.Guid("00000000-0000-0000-0000-000000000000")
         Me.VideoEdit1.Video_Effects_AllowMultipleStreams = False
         Me.VideoEdit1.Video_Effects_Enabled = False
+        Me.VideoEdit1.Video_Effects_GPU_Enabled = False
         Me.VideoEdit1.Video_FrameRate = 25.0R
         Me.VideoEdit1.Video_Preview_Enabled = True
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
@@ -6152,7 +6153,7 @@ Partial Class Form1
         Me.lbFiles.FormattingEnabled = True
         Me.lbFiles.Location = New System.Drawing.Point(9, 26)
         Me.lbFiles.Name = "lbFiles"
-        Me.lbFiles.Size = New System.Drawing.Size(321, 30)
+        Me.lbFiles.Size = New System.Drawing.Size(321, 56)
         Me.lbFiles.TabIndex = 51
         '
         'label10
@@ -6348,6 +6349,15 @@ Partial Class Form1
         Me.tabPage54.TabIndex = 2
         Me.tabPage54.Text = "Join files (w/o reencoding)"
         Me.tabPage54.UseVisualStyleBackColor = True
+        '
+        'label1
+        '
+        Me.label1.AutoSize = True
+        Me.label1.Location = New System.Drawing.Point(15, 209)
+        Me.label1.Name = "label1"
+        Me.label1.Size = New System.Drawing.Size(333, 13)
+        Me.label1.TabIndex = 72
+        Me.label1.Text = "Source files should have identical video and audio stream parameters"
         '
         'btSelectOutputJoin
         '
@@ -6811,14 +6821,15 @@ Partial Class Form1
         Me.cbTelemetry.Text = "Telemetry"
         Me.cbTelemetry.UseVisualStyleBackColor = True
         '
-        'label1
+        'cbVideoEffectsGPUEnabled
         '
-        Me.label1.AutoSize = True
-        Me.label1.Location = New System.Drawing.Point(15, 209)
-        Me.label1.Name = "label1"
-        Me.label1.Size = New System.Drawing.Size(333, 13)
-        Me.label1.TabIndex = 72
-        Me.label1.Text = "Source files should have identical video and audio stream parameters"
+        Me.cbVideoEffectsGPUEnabled.AutoSize = True
+        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(16, 16)
+        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
+        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
+        Me.cbVideoEffectsGPUEnabled.TabIndex = 97
+        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
+        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -7306,14 +7317,14 @@ End Sub
     Private WithEvents label328 As System.Windows.Forms.Label
     Private WithEvents label327 As System.Windows.Forms.Label
     Friend WithEvents TabPage33 As System.Windows.Forms.TabPage
-    Private WithEvents rbFadeOut As System.Windows.Forms.RadioButton
-    Private WithEvents rbFadeIn As System.Windows.Forms.RadioButton
+    Private WithEvents rbVideoFadeOut As System.Windows.Forms.RadioButton
+    Private WithEvents rbVideoFadeIn As System.Windows.Forms.RadioButton
     Private WithEvents groupBox45 As System.Windows.Forms.GroupBox
-    Private WithEvents edFadeInOutStopTime As System.Windows.Forms.TextBox
+    Private WithEvents edVideoFadeInOutStopTime As System.Windows.Forms.TextBox
     Private WithEvents label329 As System.Windows.Forms.Label
-    Private WithEvents edFadeInOutStartTime As System.Windows.Forms.TextBox
+    Private WithEvents edVideoFadeInOutStartTime As System.Windows.Forms.TextBox
     Private WithEvents label330 As System.Windows.Forms.Label
-    Private WithEvents cbFadeInOut As System.Windows.Forms.CheckBox
+    Private WithEvents cbVideoFadeInOut As System.Windows.Forms.CheckBox
     Private WithEvents LinkLabel4 As System.Windows.Forms.LinkLabel
     Friend WithEvents TabPage34 As System.Windows.Forms.TabPage
     Private WithEvents cbDecklinkDV As System.Windows.Forms.CheckBox
@@ -7620,4 +7631,5 @@ End Sub
     Private WithEvents btImageLogoAdd As Button
     Private WithEvents cbTelemetry As CheckBox
     Private WithEvents label1 As Label
+    Friend WithEvents cbVideoEffectsGPUEnabled As CheckBox
 End Class

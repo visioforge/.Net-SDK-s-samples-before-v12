@@ -90,7 +90,7 @@
             </TabItem>
             <TabItem Header="Video processing" x:Name="tabItem14">
                 <Grid>
-                    <TabControl Height="525" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="tabControl6" VerticalAlignment="Top" Width="372">
+                    <TabControl Height="473" HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="tabControl6" VerticalAlignment="Top" Width="376">
                         <TabItem Header="Effects (SW)" x:Name="tabItem15">
                             <Grid>
                                 <TabControl Height="302" HorizontalAlignment="Left" Margin="0,131,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="362">
@@ -239,16 +239,16 @@
                                 <RadioButton Content="Content Adaptive Spatio-Temporal (CAST)" Height="16" HorizontalAlignment="Left" Margin="57,84,0,0" x:Name="rbDenoiseCAST" VerticalAlignment="Top" />
                             </Grid>
                         </TabItem>
-                        <TabItem Header="GPU Effects">
+                        <TabItem Header="GPU effects">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="49*"/>
                                     <ColumnDefinition Width="317*"/>
                                 </Grid.ColumnDefinitions>
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,47,0,0" Maximum="255" x:Name="tbGPULightness" VerticalAlignment="Top" Width="100" ValueChanged="tbGPULightness_ValueChanged" Grid.ColumnSpan="2" />
-                                <Label Content="Lightness" HorizontalAlignment="Left" Margin="4,20,0,0" Width="86" Height="28" VerticalAlignment="Top" Grid.Column="1" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="147,47,0,0" Maximum="255" x:Name="tbGPUSaturation" VerticalAlignment="Top" Width="100" Value="255" ValueChanged="tbGPUSaturation_ValueChanged" Grid.Column="1"  />
-                                <Label Content="Saturation" HorizontalAlignment="Left" Margin="170,20,0,0" Width="86" Height="28" VerticalAlignment="Top" Grid.Column="1" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,58,0,0" Maximum="255" x:Name="tbGPULightness" VerticalAlignment="Top" Width="100" ValueChanged="tbGPULightness_ValueChanged" Grid.ColumnSpan="2" />
+                                <Label Content="Lightness" HorizontalAlignment="Left" Margin="0,30,0,0" Width="86" Height="28" VerticalAlignment="Top" Grid.Column="1" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="147,58,0,0" Maximum="255" x:Name="tbGPUSaturation" VerticalAlignment="Top" Width="100" Value="255" ValueChanged="tbGPUSaturation_ValueChanged" Grid.Column="1"  />
+                                <Label Content="Saturation" HorizontalAlignment="Left" Margin="170,30,0,0" Width="86" Height="28" VerticalAlignment="Top" Grid.Column="1" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="28,113,0,0" Maximum="255" x:Name="tbGPUContrast" VerticalAlignment="Top" Width="100" Value="255" ValueChanged="tbGPUContrast_ValueChanged" Grid.ColumnSpan="2" />
                                 <Label Content="Contrast" Height="28" HorizontalAlignment="Left" Margin="0,86,0,0" VerticalAlignment="Top" Width="60" Grid.Column="1" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="147,113,0,0" Maximum="255" x:Name="tbGPUDarkness" VerticalAlignment="Top" Width="100" ValueChanged="tbGPUDarkness_ValueChanged" Grid.Column="1"  />
@@ -261,6 +261,7 @@
                                 <CheckBox Content="Deinterlace" Height="16" HorizontalAlignment="Left" Margin="147,200,0,0" x:Name="cbGPUDeinterlace" VerticalAlignment="Top" Click="cbGPUDeinterlace_Click" Grid.Column="1" />
                                 <CheckBox Content="Blur" Height="16" HorizontalAlignment="Left" Margin="28,221,0,0" x:Name="cbGPUBlur" VerticalAlignment="Top" Click="cbGPUBlur_Click" Grid.ColumnSpan="2"  />
                                 <CheckBox Content="Old movie" Height="16" HorizontalAlignment="Left" Margin="147,221,0,0" x:Name="cbGPUOldMovie" VerticalAlignment="Top" Click="cbGPUOldMovie_Click" Grid.Column="1" />
+                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="cbVideoEffectsGPUEnabled" VerticalAlignment="Top" Grid.ColumnSpan="2"  />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Chroma key" x:Name="tabItem26">

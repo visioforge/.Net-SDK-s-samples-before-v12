@@ -724,6 +724,9 @@ Public Class Form1
         ' multiscreen
         ConfigureMultiscreen()
 
+        ' OSD
+        VideoCapture1.OSD_Enabled = cbOSDEnabled.Checked
+
         If captureMode Then
             Dim outputFormat = VFVideoCaptureOutputFormat.AVI
             Select Case cbOutputFormat.SelectedIndex
@@ -925,8 +928,11 @@ Public Class Form1
         'crossbar
         SelectCrossbar()
 
-        'Video effects
+        ' Video effects CPU
         ConfigureVideoEffects()
+
+        ' Videoeffects GPU
+        VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
 
         ' Barcode detection
         VideoCapture1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
@@ -2563,18 +2569,6 @@ Public Class Form1
         VideoCapture1.Video_Filters_Clear()
 
     End Sub
-    
-    Private Sub btOSDInit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDInit.Click
-
-        VideoCapture1.OSD_Init()
-
-    End Sub
-
-    Private Sub btOSDDeinit_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDDeinit.Click
-
-        VideoCapture1.OSD_Destroy()
-
-    End Sub
 
     Private Sub btOSDClearLayers_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDClearLayers.Click
 
@@ -2594,6 +2588,8 @@ Public Class Form1
 
         If lbOSDLayers.SelectedIndex <> -1 Then
             VideoCapture1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex)
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -2609,13 +2605,13 @@ Public Class Form1
     Private Sub btOSDImageDraw_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDImageDraw.Click
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
-
             If (cbOSDImageTranspColor.Checked) Then
                 VideoCapture1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), True, pnOSDColorKey.BackColor)
             Else
                 VideoCapture1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), False, Color.Black)
             End If
-
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -2639,6 +2635,8 @@ Public Class Form1
             color1 = edOSDText.ForeColor
 
             VideoCapture1.OSD_Layers_Draw_Text(lbOSDLayers.SelectedIndex, Convert.ToInt32(edOSDTextLeft.Text), Convert.ToInt32(edOSDTextTop.Text), edOSDText.Text, fnt, color1)
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -2648,6 +2646,8 @@ Public Class Form1
         If lbOSDLayers.SelectedIndex <> -1 Then
             VideoCapture1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, tbOSDTranspLevel.Value)
             VideoCapture1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex)
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
 
     End Sub
@@ -5196,6 +5196,14 @@ Public Class Form1
             cbCCZoomManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
             cbCCZoomAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
             cbCCZoomRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+        End If
+    End Sub
+
+    Private Sub btOSDClearLayer_Click(sender As Object, e As EventArgs) Handles btOSDClearLayer.Click
+        If (lbOSDLayers.SelectedIndex <> -1) Then
+            VideoCapture1.OSD_Layers_Clear(lbOSDLayers.SelectedIndex)
+        Else
+            MessageBox.Show(Me, "Please select OSD layer.")
         End If
     End Sub
 End Class

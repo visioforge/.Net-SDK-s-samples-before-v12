@@ -204,7 +204,7 @@ namespace Media_Player_Demo
             this.tbSaturation = new System.Windows.Forms.TrackBar();
             this.cbInvert = new System.Windows.Forms.CheckBox();
             this.cbGreyscale = new System.Windows.Forms.CheckBox();
-            this.cbEffects = new System.Windows.Forms.CheckBox();
+            this.cbVideoEffects = new System.Windows.Forms.CheckBox();
             this.tabPage69 = new System.Windows.Forms.TabPage();
             this.label211 = new System.Windows.Forms.Label();
             this.edDeintTriangleWeight = new System.Windows.Forms.TextBox();
@@ -424,7 +424,9 @@ namespace Media_Player_Demo
             this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
             this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.cbOSDEnabled = new System.Windows.Forms.CheckBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btOSDClearLayer = new System.Windows.Forms.Button();
             this.btOSDApplyLayer = new System.Windows.Forms.Button();
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage30 = new System.Windows.Forms.TabPage();
@@ -464,8 +466,6 @@ namespace Media_Player_Demo
             this.label109 = new System.Windows.Forms.Label();
             this.lbOSDLayers = new System.Windows.Forms.ListBox();
             this.label108 = new System.Windows.Forms.Label();
-            this.btOSDDeinit = new System.Windows.Forms.Button();
-            this.btOSDInit = new System.Windows.Forms.Button();
             this.tabPage12 = new System.Windows.Forms.TabPage();
             this.tabControl5 = new System.Windows.Forms.TabControl();
             this.tabPage33 = new System.Windows.Forms.TabPage();
@@ -619,6 +619,7 @@ namespace Media_Player_Demo
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
+            this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage20.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -1648,10 +1649,10 @@ namespace Media_Player_Demo
             this.rbVMR9.Checked = true;
             this.rbVMR9.Location = new System.Drawing.Point(12, 44);
             this.rbVMR9.Name = "rbVMR9";
-            this.rbVMR9.Size = new System.Drawing.Size(182, 17);
+            this.rbVMR9.Size = new System.Drawing.Size(141, 17);
             this.rbVMR9.TabIndex = 1;
             this.rbVMR9.TabStop = true;
-            this.rbVMR9.Text = "Video Mixing Renderer 9 (default)";
+            this.rbVMR9.Text = "Video Mixing Renderer 9";
             this.rbVMR9.UseVisualStyleBackColor = true;
             this.rbVMR9.CheckedChanged += new System.EventHandler(this.rbVR_CheckedChanged);
             // 
@@ -1865,7 +1866,7 @@ namespace Media_Player_Demo
             this.tabPage68.Controls.Add(this.tbSaturation);
             this.tabPage68.Controls.Add(this.cbInvert);
             this.tabPage68.Controls.Add(this.cbGreyscale);
-            this.tabPage68.Controls.Add(this.cbEffects);
+            this.tabPage68.Controls.Add(this.cbVideoEffects);
             this.tabPage68.Location = new System.Drawing.Point(4, 22);
             this.tabPage68.Name = "tabPage68";
             this.tabPage68.Padding = new System.Windows.Forms.Padding(3);
@@ -2635,15 +2636,15 @@ namespace Media_Player_Demo
             this.cbGreyscale.UseVisualStyleBackColor = true;
             this.cbGreyscale.CheckedChanged += new System.EventHandler(this.cbGreyscale_CheckedChanged);
             // 
-            // cbEffects
+            // cbVideoEffects
             // 
-            this.cbEffects.AutoSize = true;
-            this.cbEffects.Location = new System.Drawing.Point(8, 8);
-            this.cbEffects.Name = "cbEffects";
-            this.cbEffects.Size = new System.Drawing.Size(65, 17);
-            this.cbEffects.TabIndex = 37;
-            this.cbEffects.Text = "Enabled";
-            this.cbEffects.UseVisualStyleBackColor = true;
+            this.cbVideoEffects.AutoSize = true;
+            this.cbVideoEffects.Location = new System.Drawing.Point(8, 8);
+            this.cbVideoEffects.Name = "cbVideoEffects";
+            this.cbVideoEffects.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoEffects.TabIndex = 37;
+            this.cbVideoEffects.Text = "Enabled";
+            this.cbVideoEffects.UseVisualStyleBackColor = true;
             // 
             // tabPage69
             // 
@@ -2922,6 +2923,7 @@ namespace Media_Player_Demo
             // 
             // tabPage51
             // 
+            this.tabPage51.Controls.Add(this.cbVideoEffectsGPUEnabled);
             this.tabPage51.Controls.Add(this.cbGPUOldMovie);
             this.tabPage51.Controls.Add(this.cbGPUBlur);
             this.tabPage51.Controls.Add(this.cbGPUDeinterlace);
@@ -2949,7 +2951,7 @@ namespace Media_Player_Demo
             // 
             this.cbGPUOldMovie.AutoSize = true;
             this.cbGPUOldMovie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUOldMovie.Location = new System.Drawing.Point(144, 206);
+            this.cbGPUOldMovie.Location = new System.Drawing.Point(141, 240);
             this.cbGPUOldMovie.Name = "cbGPUOldMovie";
             this.cbGPUOldMovie.Size = new System.Drawing.Size(73, 17);
             this.cbGPUOldMovie.TabIndex = 96;
@@ -2960,7 +2962,7 @@ namespace Media_Player_Demo
             // cbGPUBlur
             // 
             this.cbGPUBlur.AutoSize = true;
-            this.cbGPUBlur.Location = new System.Drawing.Point(16, 206);
+            this.cbGPUBlur.Location = new System.Drawing.Point(13, 240);
             this.cbGPUBlur.Name = "cbGPUBlur";
             this.cbGPUBlur.Size = new System.Drawing.Size(44, 17);
             this.cbGPUBlur.TabIndex = 95;
@@ -2972,7 +2974,7 @@ namespace Media_Player_Demo
             // 
             this.cbGPUDeinterlace.AutoSize = true;
             this.cbGPUDeinterlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUDeinterlace.Location = new System.Drawing.Point(144, 182);
+            this.cbGPUDeinterlace.Location = new System.Drawing.Point(141, 216);
             this.cbGPUDeinterlace.Name = "cbGPUDeinterlace";
             this.cbGPUDeinterlace.Size = new System.Drawing.Size(80, 17);
             this.cbGPUDeinterlace.TabIndex = 94;
@@ -2983,7 +2985,7 @@ namespace Media_Player_Demo
             // cbGPUDenoise
             // 
             this.cbGPUDenoise.AutoSize = true;
-            this.cbGPUDenoise.Location = new System.Drawing.Point(16, 182);
+            this.cbGPUDenoise.Location = new System.Drawing.Point(13, 216);
             this.cbGPUDenoise.Name = "cbGPUDenoise";
             this.cbGPUDenoise.Size = new System.Drawing.Size(65, 17);
             this.cbGPUDenoise.TabIndex = 93;
@@ -2994,7 +2996,7 @@ namespace Media_Player_Demo
             // cbGPUPixelate
             // 
             this.cbGPUPixelate.AutoSize = true;
-            this.cbGPUPixelate.Location = new System.Drawing.Point(144, 159);
+            this.cbGPUPixelate.Location = new System.Drawing.Point(141, 193);
             this.cbGPUPixelate.Name = "cbGPUPixelate";
             this.cbGPUPixelate.Size = new System.Drawing.Size(63, 17);
             this.cbGPUPixelate.TabIndex = 92;
@@ -3005,7 +3007,7 @@ namespace Media_Player_Demo
             // cbGPUNightVision
             // 
             this.cbGPUNightVision.AutoSize = true;
-            this.cbGPUNightVision.Location = new System.Drawing.Point(16, 159);
+            this.cbGPUNightVision.Location = new System.Drawing.Point(13, 193);
             this.cbGPUNightVision.Name = "cbGPUNightVision";
             this.cbGPUNightVision.Size = new System.Drawing.Size(81, 17);
             this.cbGPUNightVision.TabIndex = 91;
@@ -3016,7 +3018,7 @@ namespace Media_Player_Demo
             // label383
             // 
             this.label383.AutoSize = true;
-            this.label383.Location = new System.Drawing.Point(149, 66);
+            this.label383.Location = new System.Drawing.Point(146, 100);
             this.label383.Name = "label383";
             this.label383.Size = new System.Drawing.Size(52, 13);
             this.label383.TabIndex = 90;
@@ -3025,7 +3027,7 @@ namespace Media_Player_Demo
             // label384
             // 
             this.label384.AutoSize = true;
-            this.label384.Location = new System.Drawing.Point(13, 66);
+            this.label384.Location = new System.Drawing.Point(10, 100);
             this.label384.Name = "label384";
             this.label384.Size = new System.Drawing.Size(46, 13);
             this.label384.TabIndex = 89;
@@ -3034,7 +3036,7 @@ namespace Media_Player_Demo
             // label385
             // 
             this.label385.AutoSize = true;
-            this.label385.Location = new System.Drawing.Point(149, 14);
+            this.label385.Location = new System.Drawing.Point(146, 48);
             this.label385.Name = "label385";
             this.label385.Size = new System.Drawing.Size(55, 13);
             this.label385.TabIndex = 88;
@@ -3043,7 +3045,7 @@ namespace Media_Player_Demo
             // label386
             // 
             this.label386.AutoSize = true;
-            this.label386.Location = new System.Drawing.Point(13, 14);
+            this.label386.Location = new System.Drawing.Point(10, 48);
             this.label386.Name = "label386";
             this.label386.Size = new System.Drawing.Size(52, 13);
             this.label386.TabIndex = 87;
@@ -3052,7 +3054,7 @@ namespace Media_Player_Demo
             // tbGPUContrast
             // 
             this.tbGPUContrast.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUContrast.Location = new System.Drawing.Point(10, 85);
+            this.tbGPUContrast.Location = new System.Drawing.Point(7, 119);
             this.tbGPUContrast.Maximum = 255;
             this.tbGPUContrast.Name = "tbGPUContrast";
             this.tbGPUContrast.Size = new System.Drawing.Size(130, 45);
@@ -3063,7 +3065,7 @@ namespace Media_Player_Demo
             // tbGPUDarkness
             // 
             this.tbGPUDarkness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUDarkness.Location = new System.Drawing.Point(149, 85);
+            this.tbGPUDarkness.Location = new System.Drawing.Point(146, 119);
             this.tbGPUDarkness.Maximum = 255;
             this.tbGPUDarkness.Name = "tbGPUDarkness";
             this.tbGPUDarkness.Size = new System.Drawing.Size(130, 45);
@@ -3073,7 +3075,7 @@ namespace Media_Player_Demo
             // tbGPULightness
             // 
             this.tbGPULightness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPULightness.Location = new System.Drawing.Point(10, 29);
+            this.tbGPULightness.Location = new System.Drawing.Point(7, 63);
             this.tbGPULightness.Maximum = 255;
             this.tbGPULightness.Name = "tbGPULightness";
             this.tbGPULightness.Size = new System.Drawing.Size(130, 45);
@@ -3083,7 +3085,7 @@ namespace Media_Player_Demo
             // tbGPUSaturation
             // 
             this.tbGPUSaturation.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUSaturation.Location = new System.Drawing.Point(149, 29);
+            this.tbGPUSaturation.Location = new System.Drawing.Point(146, 63);
             this.tbGPUSaturation.Maximum = 255;
             this.tbGPUSaturation.Name = "tbGPUSaturation";
             this.tbGPUSaturation.Size = new System.Drawing.Size(130, 45);
@@ -3095,7 +3097,7 @@ namespace Media_Player_Demo
             // 
             this.cbGPUInvert.AutoSize = true;
             this.cbGPUInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUInvert.Location = new System.Drawing.Point(144, 136);
+            this.cbGPUInvert.Location = new System.Drawing.Point(141, 170);
             this.cbGPUInvert.Name = "cbGPUInvert";
             this.cbGPUInvert.Size = new System.Drawing.Size(53, 17);
             this.cbGPUInvert.TabIndex = 82;
@@ -3106,7 +3108,7 @@ namespace Media_Player_Demo
             // cbGPUGreyscale
             // 
             this.cbGPUGreyscale.AutoSize = true;
-            this.cbGPUGreyscale.Location = new System.Drawing.Point(16, 136);
+            this.cbGPUGreyscale.Location = new System.Drawing.Point(13, 170);
             this.cbGPUGreyscale.Name = "cbGPUGreyscale";
             this.cbGPUGreyscale.Size = new System.Drawing.Size(73, 17);
             this.cbGPUGreyscale.TabIndex = 81;
@@ -5022,13 +5024,12 @@ namespace Media_Player_Demo
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.cbOSDEnabled);
             this.tabPage5.Controls.Add(this.groupBox19);
             this.tabPage5.Controls.Add(this.btOSDClearLayers);
             this.tabPage5.Controls.Add(this.groupBox15);
             this.tabPage5.Controls.Add(this.lbOSDLayers);
             this.tabPage5.Controls.Add(this.label108);
-            this.tabPage5.Controls.Add(this.btOSDDeinit);
-            this.tabPage5.Controls.Add(this.btOSDInit);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -5037,8 +5038,19 @@ namespace Media_Player_Demo
             this.tabPage5.Text = "OSD";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // cbOSDEnabled
+            // 
+            this.cbOSDEnabled.AutoSize = true;
+            this.cbOSDEnabled.Location = new System.Drawing.Point(16, 15);
+            this.cbOSDEnabled.Name = "cbOSDEnabled";
+            this.cbOSDEnabled.Size = new System.Drawing.Size(256, 17);
+            this.cbOSDEnabled.TabIndex = 14;
+            this.cbOSDEnabled.Text = "Enabled (video renderer should be set to VMR-9)";
+            this.cbOSDEnabled.UseVisualStyleBackColor = true;
+            // 
             // groupBox19
             // 
+            this.groupBox19.Controls.Add(this.btOSDClearLayer);
             this.groupBox19.Controls.Add(this.btOSDApplyLayer);
             this.groupBox19.Controls.Add(this.tabControl6);
             this.groupBox19.Location = new System.Drawing.Point(16, 211);
@@ -5047,6 +5059,16 @@ namespace Media_Player_Demo
             this.groupBox19.TabIndex = 13;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Selected layer";
+            // 
+            // btOSDClearLayer
+            // 
+            this.btOSDClearLayer.Location = new System.Drawing.Point(92, 221);
+            this.btOSDClearLayer.Name = "btOSDClearLayer";
+            this.btOSDClearLayer.Size = new System.Drawing.Size(75, 23);
+            this.btOSDClearLayer.TabIndex = 2;
+            this.btOSDClearLayer.Text = "Clear";
+            this.btOSDClearLayer.UseVisualStyleBackColor = true;
+            this.btOSDClearLayer.Click += new System.EventHandler(this.btOSDClearLayer_Click);
             // 
             // btOSDApplyLayer
             // 
@@ -5433,32 +5455,11 @@ namespace Media_Player_Demo
             // label108
             // 
             this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(13, 51);
+            this.label108.Location = new System.Drawing.Point(12, 51);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(38, 13);
             this.label108.TabIndex = 9;
             this.label108.Text = "Layers";
-            // 
-            // btOSDDeinit
-            // 
-            this.btOSDDeinit.Location = new System.Drawing.Point(75, 16);
-            this.btOSDDeinit.Name = "btOSDDeinit";
-            this.btOSDDeinit.Size = new System.Drawing.Size(53, 23);
-            this.btOSDDeinit.TabIndex = 8;
-            this.btOSDDeinit.Text = "DeInit";
-            this.btOSDDeinit.UseVisualStyleBackColor = true;
-            this.btOSDDeinit.Click += new System.EventHandler(this.btOSDDeinit_Click);
-            // 
-            // btOSDInit
-            // 
-            this.btOSDInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btOSDInit.Location = new System.Drawing.Point(16, 16);
-            this.btOSDInit.Name = "btOSDInit";
-            this.btOSDInit.Size = new System.Drawing.Size(53, 23);
-            this.btOSDInit.TabIndex = 7;
-            this.btOSDInit.Text = "Init";
-            this.btOSDInit.UseVisualStyleBackColor = true;
-            this.btOSDInit.Click += new System.EventHandler(this.btOSDInit_Click);
             // 
             // tabPage12
             // 
@@ -7082,6 +7083,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
+            this.MediaPlayer1.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer1.CustomParameters")));
             this.MediaPlayer1.CustomRedist_Enabled = false;
             this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
@@ -7091,6 +7093,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
+            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(330, 183);
             this.MediaPlayer1.Loop = false;
@@ -7101,6 +7104,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.OSD_Enabled = false;
             this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.Play_PauseAtFirstFrame = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
@@ -7118,6 +7122,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Source_Stream_VideoPresent = false;
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
+            this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -7147,6 +7152,16 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.MediaPlayer1_OnObjectDetection);
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
+            // 
+            // cbVideoEffectsGPUEnabled
+            // 
+            this.cbVideoEffectsGPUEnabled.AutoSize = true;
+            this.cbVideoEffectsGPUEnabled.Location = new System.Drawing.Point(18, 16);
+            this.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled";
+            this.cbVideoEffectsGPUEnabled.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoEffectsGPUEnabled.TabIndex = 97;
+            this.cbVideoEffectsGPUEnabled.Text = "Enabled";
+            this.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -7474,8 +7489,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Label label109;
         private System.Windows.Forms.ListBox lbOSDLayers;
         private System.Windows.Forms.Label label108;
-        private System.Windows.Forms.Button btOSDDeinit;
-        private System.Windows.Forms.Button btOSDInit;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox edFilenameOrURL;
         private System.Windows.Forms.Button btSelectFile;
@@ -7581,7 +7594,7 @@ namespace Media_Player_Demo
         private System.Windows.Forms.TrackBar tbSaturation;
         private System.Windows.Forms.CheckBox cbInvert;
         private System.Windows.Forms.CheckBox cbGreyscale;
-        private System.Windows.Forms.CheckBox cbEffects;
+        private System.Windows.Forms.CheckBox cbVideoEffects;
         private System.Windows.Forms.TabPage tabPage69;
         private System.Windows.Forms.Label label211;
         private System.Windows.Forms.TextBox edDeintTriangleWeight;
@@ -7979,5 +7992,8 @@ namespace Media_Player_Demo
         private System.Windows.Forms.RadioButton rbGPUDXVACopyBack;
         private System.Windows.Forms.RadioButton rbGPUIntel;
         private System.Windows.Forms.RadioButton rbGPUNVidia;
+        private System.Windows.Forms.CheckBox cbOSDEnabled;
+        private System.Windows.Forms.Button btOSDClearLayer;
+        private System.Windows.Forms.CheckBox cbVideoEffectsGPUEnabled;
     }
 }

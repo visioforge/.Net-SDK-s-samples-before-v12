@@ -460,7 +460,9 @@ Partial Class Form1
         Me.volumeMeter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
         Me.volumeMeter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
         Me.tabPage5 = New System.Windows.Forms.TabPage()
+        Me.cbOSDEnabled = New System.Windows.Forms.CheckBox()
         Me.groupBox19 = New System.Windows.Forms.GroupBox()
+        Me.btOSDClearLayer = New System.Windows.Forms.Button()
         Me.btOSDApplyLayer = New System.Windows.Forms.Button()
         Me.tabControl6 = New System.Windows.Forms.TabControl()
         Me.tabPage30 = New System.Windows.Forms.TabPage()
@@ -500,8 +502,6 @@ Partial Class Form1
         Me.label109 = New System.Windows.Forms.Label()
         Me.lbOSDLayers = New System.Windows.Forms.ListBox()
         Me.label108 = New System.Windows.Forms.Label()
-        Me.btOSDDeinit = New System.Windows.Forms.Button()
-        Me.btOSDInit = New System.Windows.Forms.Button()
         Me.tabPage12 = New System.Windows.Forms.TabPage()
         Me.tabControl5 = New System.Windows.Forms.TabControl()
         Me.tabPage33 = New System.Windows.Forms.TabPage()
@@ -608,6 +608,7 @@ Partial Class Form1
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
+        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -3298,6 +3299,7 @@ Partial Class Form1
         '
         'TabPage50
         '
+        Me.TabPage50.Controls.Add(Me.cbVideoEffectsGPUEnabled)
         Me.TabPage50.Controls.Add(Me.cbGPUOldMovie)
         Me.TabPage50.Controls.Add(Me.cbGPUBlur)
         Me.TabPage50.Controls.Add(Me.cbGPUDeinterlace)
@@ -3326,7 +3328,7 @@ Partial Class Form1
         '
         Me.cbGPUOldMovie.AutoSize = True
         Me.cbGPUOldMovie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cbGPUOldMovie.Location = New System.Drawing.Point(142, 204)
+        Me.cbGPUOldMovie.Location = New System.Drawing.Point(141, 237)
         Me.cbGPUOldMovie.Name = "cbGPUOldMovie"
         Me.cbGPUOldMovie.Size = New System.Drawing.Size(73, 17)
         Me.cbGPUOldMovie.TabIndex = 112
@@ -3336,7 +3338,7 @@ Partial Class Form1
         'cbGPUBlur
         '
         Me.cbGPUBlur.AutoSize = True
-        Me.cbGPUBlur.Location = New System.Drawing.Point(14, 204)
+        Me.cbGPUBlur.Location = New System.Drawing.Point(13, 237)
         Me.cbGPUBlur.Name = "cbGPUBlur"
         Me.cbGPUBlur.Size = New System.Drawing.Size(44, 17)
         Me.cbGPUBlur.TabIndex = 111
@@ -3347,7 +3349,7 @@ Partial Class Form1
         '
         Me.cbGPUDeinterlace.AutoSize = True
         Me.cbGPUDeinterlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cbGPUDeinterlace.Location = New System.Drawing.Point(142, 180)
+        Me.cbGPUDeinterlace.Location = New System.Drawing.Point(141, 213)
         Me.cbGPUDeinterlace.Name = "cbGPUDeinterlace"
         Me.cbGPUDeinterlace.Size = New System.Drawing.Size(80, 17)
         Me.cbGPUDeinterlace.TabIndex = 110
@@ -3357,7 +3359,7 @@ Partial Class Form1
         'cbGPUDenoise
         '
         Me.cbGPUDenoise.AutoSize = True
-        Me.cbGPUDenoise.Location = New System.Drawing.Point(14, 180)
+        Me.cbGPUDenoise.Location = New System.Drawing.Point(13, 213)
         Me.cbGPUDenoise.Name = "cbGPUDenoise"
         Me.cbGPUDenoise.Size = New System.Drawing.Size(65, 17)
         Me.cbGPUDenoise.TabIndex = 109
@@ -3367,7 +3369,7 @@ Partial Class Form1
         'cbGPUPixelate
         '
         Me.cbGPUPixelate.AutoSize = True
-        Me.cbGPUPixelate.Location = New System.Drawing.Point(142, 157)
+        Me.cbGPUPixelate.Location = New System.Drawing.Point(141, 190)
         Me.cbGPUPixelate.Name = "cbGPUPixelate"
         Me.cbGPUPixelate.Size = New System.Drawing.Size(63, 17)
         Me.cbGPUPixelate.TabIndex = 108
@@ -3377,7 +3379,7 @@ Partial Class Form1
         'cbGPUNightVision
         '
         Me.cbGPUNightVision.AutoSize = True
-        Me.cbGPUNightVision.Location = New System.Drawing.Point(14, 157)
+        Me.cbGPUNightVision.Location = New System.Drawing.Point(13, 190)
         Me.cbGPUNightVision.Name = "cbGPUNightVision"
         Me.cbGPUNightVision.Size = New System.Drawing.Size(81, 17)
         Me.cbGPUNightVision.TabIndex = 107
@@ -3387,7 +3389,7 @@ Partial Class Form1
         'label383
         '
         Me.label383.AutoSize = True
-        Me.label383.Location = New System.Drawing.Point(147, 64)
+        Me.label383.Location = New System.Drawing.Point(146, 97)
         Me.label383.Name = "label383"
         Me.label383.Size = New System.Drawing.Size(52, 13)
         Me.label383.TabIndex = 106
@@ -3396,7 +3398,7 @@ Partial Class Form1
         'label384
         '
         Me.label384.AutoSize = True
-        Me.label384.Location = New System.Drawing.Point(11, 64)
+        Me.label384.Location = New System.Drawing.Point(10, 97)
         Me.label384.Name = "label384"
         Me.label384.Size = New System.Drawing.Size(46, 13)
         Me.label384.TabIndex = 105
@@ -3405,7 +3407,7 @@ Partial Class Form1
         'label385
         '
         Me.label385.AutoSize = True
-        Me.label385.Location = New System.Drawing.Point(147, 12)
+        Me.label385.Location = New System.Drawing.Point(146, 45)
         Me.label385.Name = "label385"
         Me.label385.Size = New System.Drawing.Size(55, 13)
         Me.label385.TabIndex = 104
@@ -3414,7 +3416,7 @@ Partial Class Form1
         'label386
         '
         Me.label386.AutoSize = True
-        Me.label386.Location = New System.Drawing.Point(11, 12)
+        Me.label386.Location = New System.Drawing.Point(10, 45)
         Me.label386.Name = "label386"
         Me.label386.Size = New System.Drawing.Size(52, 13)
         Me.label386.TabIndex = 103
@@ -3423,7 +3425,7 @@ Partial Class Form1
         'tbGPUContrast
         '
         Me.tbGPUContrast.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUContrast.Location = New System.Drawing.Point(8, 83)
+        Me.tbGPUContrast.Location = New System.Drawing.Point(7, 116)
         Me.tbGPUContrast.Maximum = 255
         Me.tbGPUContrast.Name = "tbGPUContrast"
         Me.tbGPUContrast.Size = New System.Drawing.Size(130, 45)
@@ -3433,7 +3435,7 @@ Partial Class Form1
         'tbGPUDarkness
         '
         Me.tbGPUDarkness.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUDarkness.Location = New System.Drawing.Point(147, 83)
+        Me.tbGPUDarkness.Location = New System.Drawing.Point(146, 116)
         Me.tbGPUDarkness.Maximum = 255
         Me.tbGPUDarkness.Name = "tbGPUDarkness"
         Me.tbGPUDarkness.Size = New System.Drawing.Size(130, 45)
@@ -3442,7 +3444,7 @@ Partial Class Form1
         'tbGPULightness
         '
         Me.tbGPULightness.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPULightness.Location = New System.Drawing.Point(8, 27)
+        Me.tbGPULightness.Location = New System.Drawing.Point(7, 60)
         Me.tbGPULightness.Maximum = 255
         Me.tbGPULightness.Name = "tbGPULightness"
         Me.tbGPULightness.Size = New System.Drawing.Size(130, 45)
@@ -3451,7 +3453,7 @@ Partial Class Form1
         'tbGPUSaturation
         '
         Me.tbGPUSaturation.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUSaturation.Location = New System.Drawing.Point(147, 27)
+        Me.tbGPUSaturation.Location = New System.Drawing.Point(146, 60)
         Me.tbGPUSaturation.Maximum = 255
         Me.tbGPUSaturation.Name = "tbGPUSaturation"
         Me.tbGPUSaturation.Size = New System.Drawing.Size(130, 45)
@@ -3462,7 +3464,7 @@ Partial Class Form1
         '
         Me.cbGPUInvert.AutoSize = True
         Me.cbGPUInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.cbGPUInvert.Location = New System.Drawing.Point(142, 134)
+        Me.cbGPUInvert.Location = New System.Drawing.Point(141, 167)
         Me.cbGPUInvert.Name = "cbGPUInvert"
         Me.cbGPUInvert.Size = New System.Drawing.Size(53, 17)
         Me.cbGPUInvert.TabIndex = 98
@@ -3472,7 +3474,7 @@ Partial Class Form1
         'cbGPUGreyscale
         '
         Me.cbGPUGreyscale.AutoSize = True
-        Me.cbGPUGreyscale.Location = New System.Drawing.Point(14, 134)
+        Me.cbGPUGreyscale.Location = New System.Drawing.Point(13, 167)
         Me.cbGPUGreyscale.Name = "cbGPUGreyscale"
         Me.cbGPUGreyscale.Size = New System.Drawing.Size(73, 17)
         Me.cbGPUGreyscale.TabIndex = 97
@@ -5284,13 +5286,12 @@ Partial Class Form1
         '
         'tabPage5
         '
+        Me.tabPage5.Controls.Add(Me.cbOSDEnabled)
         Me.tabPage5.Controls.Add(Me.groupBox19)
         Me.tabPage5.Controls.Add(Me.btOSDClearLayers)
         Me.tabPage5.Controls.Add(Me.groupBox15)
         Me.tabPage5.Controls.Add(Me.lbOSDLayers)
         Me.tabPage5.Controls.Add(Me.label108)
-        Me.tabPage5.Controls.Add(Me.btOSDDeinit)
-        Me.tabPage5.Controls.Add(Me.btOSDInit)
         Me.tabPage5.Location = New System.Drawing.Point(4, 22)
         Me.tabPage5.Name = "tabPage5"
         Me.tabPage5.Padding = New System.Windows.Forms.Padding(3)
@@ -5299,8 +5300,19 @@ Partial Class Form1
         Me.tabPage5.Text = "OSD"
         Me.tabPage5.UseVisualStyleBackColor = True
         '
+        'cbOSDEnabled
+        '
+        Me.cbOSDEnabled.AutoSize = True
+        Me.cbOSDEnabled.Location = New System.Drawing.Point(15, 12)
+        Me.cbOSDEnabled.Name = "cbOSDEnabled"
+        Me.cbOSDEnabled.Size = New System.Drawing.Size(256, 17)
+        Me.cbOSDEnabled.TabIndex = 15
+        Me.cbOSDEnabled.Text = "Enabled (video renderer should be set to VMR-9)"
+        Me.cbOSDEnabled.UseVisualStyleBackColor = True
+        '
         'groupBox19
         '
+        Me.groupBox19.Controls.Add(Me.btOSDClearLayer)
         Me.groupBox19.Controls.Add(Me.btOSDApplyLayer)
         Me.groupBox19.Controls.Add(Me.tabControl6)
         Me.groupBox19.Location = New System.Drawing.Point(16, 211)
@@ -5309,6 +5321,15 @@ Partial Class Form1
         Me.groupBox19.TabIndex = 13
         Me.groupBox19.TabStop = False
         Me.groupBox19.Text = "Selected layer"
+        '
+        'btOSDClearLayer
+        '
+        Me.btOSDClearLayer.Location = New System.Drawing.Point(93, 221)
+        Me.btOSDClearLayer.Name = "btOSDClearLayer"
+        Me.btOSDClearLayer.Size = New System.Drawing.Size(75, 23)
+        Me.btOSDClearLayer.TabIndex = 3
+        Me.btOSDClearLayer.Text = "Clear"
+        Me.btOSDClearLayer.UseVisualStyleBackColor = True
         '
         'btOSDApplyLayer
         '
@@ -5691,25 +5712,6 @@ Partial Class Form1
         Me.label108.Size = New System.Drawing.Size(38, 13)
         Me.label108.TabIndex = 9
         Me.label108.Text = "Layers"
-        '
-        'btOSDDeinit
-        '
-        Me.btOSDDeinit.Location = New System.Drawing.Point(75, 16)
-        Me.btOSDDeinit.Name = "btOSDDeinit"
-        Me.btOSDDeinit.Size = New System.Drawing.Size(53, 23)
-        Me.btOSDDeinit.TabIndex = 8
-        Me.btOSDDeinit.Text = "DeInit"
-        Me.btOSDDeinit.UseVisualStyleBackColor = True
-        '
-        'btOSDInit
-        '
-        Me.btOSDInit.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btOSDInit.Location = New System.Drawing.Point(16, 16)
-        Me.btOSDInit.Name = "btOSDInit"
-        Me.btOSDInit.Size = New System.Drawing.Size(53, 23)
-        Me.btOSDInit.TabIndex = 7
-        Me.btOSDInit.Text = "Init"
-        Me.btOSDInit.UseVisualStyleBackColor = True
         '
         'tabPage12
         '
@@ -6783,6 +6785,7 @@ Partial Class Form1
         Me.MediaPlayer1.Motion_DetectionEx = Nothing
         Me.MediaPlayer1.MultiScreen_Enabled = False
         Me.MediaPlayer1.Name = "MediaPlayer1"
+        Me.MediaPlayer1.OSD_Enabled = False
         Me.MediaPlayer1.Play_DelayEnabled = False
         Me.MediaPlayer1.Play_PauseAtFirstFrame = False
         Me.MediaPlayer1.ReversePlayback_CacheSize = 0
@@ -6800,6 +6803,7 @@ Partial Class Form1
         Me.MediaPlayer1.Source_Stream_VideoPresent = True
         Me.MediaPlayer1.TabIndex = 25
         Me.MediaPlayer1.Video_Effects_Enabled = False
+        Me.MediaPlayer1.Video_Effects_GPU_Enabled = False
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
         VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
         VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
@@ -6830,6 +6834,16 @@ Partial Class Form1
         Me.cbRunAsync.TabIndex = 35
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = True
+        '
+        'cbVideoEffectsGPUEnabled
+        '
+        Me.cbVideoEffectsGPUEnabled.AutoSize = True
+        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(14, 16)
+        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
+        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
+        Me.cbVideoEffectsGPUEnabled.TabIndex = 113
+        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
+        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -7320,8 +7334,6 @@ End Sub
     Private WithEvents label109 As System.Windows.Forms.Label
     Private WithEvents lbOSDLayers As System.Windows.Forms.ListBox
     Private WithEvents label108 As System.Windows.Forms.Label
-    Private WithEvents btOSDDeinit As System.Windows.Forms.Button
-    Private WithEvents btOSDInit As System.Windows.Forms.Button
     Private WithEvents tabPage12 As System.Windows.Forms.TabPage
     Private WithEvents tabPage13 As System.Windows.Forms.TabPage
     Private WithEvents tabControl9 As System.Windows.Forms.TabControl
@@ -7644,4 +7656,7 @@ End Sub
     Private WithEvents linkLabel3 As LinkLabel
     Private WithEvents linkLabel2 As LinkLabel
     Private WithEvents label20 As Label
+    Private WithEvents cbOSDEnabled As CheckBox
+    Private WithEvents btOSDClearLayer As Button
+    Private WithEvents cbVideoEffectsGPUEnabled As CheckBox
 End Class

@@ -134,7 +134,7 @@ namespace VideoCapture_CSharp_Demo
             this.tbSaturation = new System.Windows.Forms.TrackBar();
             this.cbInvert = new System.Windows.Forms.CheckBox();
             this.cbGreyscale = new System.Windows.Forms.CheckBox();
-            this.cbEffects = new System.Windows.Forms.CheckBox();
+            this.cbVideoEffects = new System.Windows.Forms.CheckBox();
             this.tabPage69 = new System.Windows.Forms.TabPage();
             this.label211 = new System.Windows.Forms.Label();
             this.edDeintTriangleWeight = new System.Windows.Forms.TextBox();
@@ -429,7 +429,9 @@ namespace VideoCapture_CSharp_Demo
             this.cbNetworkStreamingAudioEnabled = new System.Windows.Forms.CheckBox();
             this.cbNetworkStreaming = new System.Windows.Forms.CheckBox();
             this.tabPage28 = new System.Windows.Forms.TabPage();
+            this.cbOSDEnabled = new System.Windows.Forms.CheckBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btOSDClearLayer = new System.Windows.Forms.Button();
             this.btOSDApplyLayer = new System.Windows.Forms.Button();
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage30 = new System.Windows.Forms.TabPage();
@@ -469,8 +471,6 @@ namespace VideoCapture_CSharp_Demo
             this.label109 = new System.Windows.Forms.Label();
             this.lbOSDLayers = new System.Windows.Forms.ListBox();
             this.label108 = new System.Windows.Forms.Label();
-            this.btOSDDeinit = new System.Windows.Forms.Button();
-            this.btOSDInit = new System.Windows.Forms.Button();
             this.tabPage43 = new System.Windows.Forms.TabPage();
             this.tabControl9 = new System.Windows.Forms.TabControl();
             this.tabPage44 = new System.Windows.Forms.TabPage();
@@ -1126,6 +1126,7 @@ namespace VideoCapture_CSharp_Demo
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
+            this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1568,7 +1569,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage68.Controls.Add(this.tbSaturation);
             this.tabPage68.Controls.Add(this.cbInvert);
             this.tabPage68.Controls.Add(this.cbGreyscale);
-            this.tabPage68.Controls.Add(this.cbEffects);
+            this.tabPage68.Controls.Add(this.cbVideoEffects);
             this.tabPage68.Location = new System.Drawing.Point(4, 22);
             this.tabPage68.Name = "tabPage68";
             this.tabPage68.Padding = new System.Windows.Forms.Padding(3);
@@ -2348,17 +2349,17 @@ namespace VideoCapture_CSharp_Demo
             this.cbGreyscale.UseVisualStyleBackColor = true;
             this.cbGreyscale.CheckedChanged += new System.EventHandler(this.cbGreyscale_CheckedChanged);
             // 
-            // cbEffects
+            // cbVideoEffects
             // 
-            this.cbEffects.AutoSize = true;
-            this.cbEffects.Checked = true;
-            this.cbEffects.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbEffects.Location = new System.Drawing.Point(8, 8);
-            this.cbEffects.Name = "cbEffects";
-            this.cbEffects.Size = new System.Drawing.Size(65, 17);
-            this.cbEffects.TabIndex = 37;
-            this.cbEffects.Text = "Enabled";
-            this.cbEffects.UseVisualStyleBackColor = true;
+            this.cbVideoEffects.AutoSize = true;
+            this.cbVideoEffects.Checked = true;
+            this.cbVideoEffects.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbVideoEffects.Location = new System.Drawing.Point(8, 8);
+            this.cbVideoEffects.Name = "cbVideoEffects";
+            this.cbVideoEffects.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoEffects.TabIndex = 37;
+            this.cbVideoEffects.Text = "Enabled";
+            this.cbVideoEffects.UseVisualStyleBackColor = true;
             // 
             // tabPage69
             // 
@@ -2637,6 +2638,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage20
             // 
+            this.tabPage20.Controls.Add(this.cbVideoEffectsGPUEnabled);
             this.tabPage20.Controls.Add(this.cbGPUOldMovie);
             this.tabPage20.Controls.Add(this.cbGPUBlur);
             this.tabPage20.Controls.Add(this.cbGPUDeinterlace);
@@ -2665,7 +2667,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.cbGPUOldMovie.AutoSize = true;
             this.cbGPUOldMovie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUOldMovie.Location = new System.Drawing.Point(142, 207);
+            this.cbGPUOldMovie.Location = new System.Drawing.Point(142, 237);
             this.cbGPUOldMovie.Name = "cbGPUOldMovie";
             this.cbGPUOldMovie.Size = new System.Drawing.Size(73, 17);
             this.cbGPUOldMovie.TabIndex = 80;
@@ -2676,7 +2678,7 @@ namespace VideoCapture_CSharp_Demo
             // cbGPUBlur
             // 
             this.cbGPUBlur.AutoSize = true;
-            this.cbGPUBlur.Location = new System.Drawing.Point(14, 207);
+            this.cbGPUBlur.Location = new System.Drawing.Point(14, 237);
             this.cbGPUBlur.Name = "cbGPUBlur";
             this.cbGPUBlur.Size = new System.Drawing.Size(44, 17);
             this.cbGPUBlur.TabIndex = 79;
@@ -2688,7 +2690,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.cbGPUDeinterlace.AutoSize = true;
             this.cbGPUDeinterlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUDeinterlace.Location = new System.Drawing.Point(142, 183);
+            this.cbGPUDeinterlace.Location = new System.Drawing.Point(142, 213);
             this.cbGPUDeinterlace.Name = "cbGPUDeinterlace";
             this.cbGPUDeinterlace.Size = new System.Drawing.Size(80, 17);
             this.cbGPUDeinterlace.TabIndex = 78;
@@ -2699,7 +2701,7 @@ namespace VideoCapture_CSharp_Demo
             // cbGPUDenoise
             // 
             this.cbGPUDenoise.AutoSize = true;
-            this.cbGPUDenoise.Location = new System.Drawing.Point(14, 183);
+            this.cbGPUDenoise.Location = new System.Drawing.Point(14, 213);
             this.cbGPUDenoise.Name = "cbGPUDenoise";
             this.cbGPUDenoise.Size = new System.Drawing.Size(65, 17);
             this.cbGPUDenoise.TabIndex = 77;
@@ -2710,7 +2712,7 @@ namespace VideoCapture_CSharp_Demo
             // cbGPUPixelate
             // 
             this.cbGPUPixelate.AutoSize = true;
-            this.cbGPUPixelate.Location = new System.Drawing.Point(142, 160);
+            this.cbGPUPixelate.Location = new System.Drawing.Point(142, 190);
             this.cbGPUPixelate.Name = "cbGPUPixelate";
             this.cbGPUPixelate.Size = new System.Drawing.Size(63, 17);
             this.cbGPUPixelate.TabIndex = 76;
@@ -2721,7 +2723,7 @@ namespace VideoCapture_CSharp_Demo
             // cbGPUNightVision
             // 
             this.cbGPUNightVision.AutoSize = true;
-            this.cbGPUNightVision.Location = new System.Drawing.Point(14, 160);
+            this.cbGPUNightVision.Location = new System.Drawing.Point(14, 190);
             this.cbGPUNightVision.Name = "cbGPUNightVision";
             this.cbGPUNightVision.Size = new System.Drawing.Size(81, 17);
             this.cbGPUNightVision.TabIndex = 75;
@@ -2732,7 +2734,7 @@ namespace VideoCapture_CSharp_Demo
             // label383
             // 
             this.label383.AutoSize = true;
-            this.label383.Location = new System.Drawing.Point(147, 67);
+            this.label383.Location = new System.Drawing.Point(147, 97);
             this.label383.Name = "label383";
             this.label383.Size = new System.Drawing.Size(52, 13);
             this.label383.TabIndex = 74;
@@ -2741,7 +2743,7 @@ namespace VideoCapture_CSharp_Demo
             // label384
             // 
             this.label384.AutoSize = true;
-            this.label384.Location = new System.Drawing.Point(11, 67);
+            this.label384.Location = new System.Drawing.Point(11, 97);
             this.label384.Name = "label384";
             this.label384.Size = new System.Drawing.Size(46, 13);
             this.label384.TabIndex = 73;
@@ -2750,7 +2752,7 @@ namespace VideoCapture_CSharp_Demo
             // label385
             // 
             this.label385.AutoSize = true;
-            this.label385.Location = new System.Drawing.Point(147, 15);
+            this.label385.Location = new System.Drawing.Point(147, 45);
             this.label385.Name = "label385";
             this.label385.Size = new System.Drawing.Size(55, 13);
             this.label385.TabIndex = 72;
@@ -2759,7 +2761,7 @@ namespace VideoCapture_CSharp_Demo
             // label386
             // 
             this.label386.AutoSize = true;
-            this.label386.Location = new System.Drawing.Point(11, 15);
+            this.label386.Location = new System.Drawing.Point(11, 45);
             this.label386.Name = "label386";
             this.label386.Size = new System.Drawing.Size(52, 13);
             this.label386.TabIndex = 71;
@@ -2768,7 +2770,7 @@ namespace VideoCapture_CSharp_Demo
             // tbGPUContrast
             // 
             this.tbGPUContrast.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUContrast.Location = new System.Drawing.Point(8, 86);
+            this.tbGPUContrast.Location = new System.Drawing.Point(8, 116);
             this.tbGPUContrast.Maximum = 255;
             this.tbGPUContrast.Name = "tbGPUContrast";
             this.tbGPUContrast.Size = new System.Drawing.Size(130, 45);
@@ -2779,7 +2781,7 @@ namespace VideoCapture_CSharp_Demo
             // tbGPUDarkness
             // 
             this.tbGPUDarkness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUDarkness.Location = new System.Drawing.Point(147, 86);
+            this.tbGPUDarkness.Location = new System.Drawing.Point(147, 116);
             this.tbGPUDarkness.Maximum = 255;
             this.tbGPUDarkness.Name = "tbGPUDarkness";
             this.tbGPUDarkness.Size = new System.Drawing.Size(130, 45);
@@ -2789,7 +2791,7 @@ namespace VideoCapture_CSharp_Demo
             // tbGPULightness
             // 
             this.tbGPULightness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPULightness.Location = new System.Drawing.Point(8, 30);
+            this.tbGPULightness.Location = new System.Drawing.Point(8, 60);
             this.tbGPULightness.Maximum = 255;
             this.tbGPULightness.Name = "tbGPULightness";
             this.tbGPULightness.Size = new System.Drawing.Size(130, 45);
@@ -2799,7 +2801,7 @@ namespace VideoCapture_CSharp_Demo
             // tbGPUSaturation
             // 
             this.tbGPUSaturation.BackColor = System.Drawing.SystemColors.Window;
-            this.tbGPUSaturation.Location = new System.Drawing.Point(147, 30);
+            this.tbGPUSaturation.Location = new System.Drawing.Point(147, 60);
             this.tbGPUSaturation.Maximum = 255;
             this.tbGPUSaturation.Name = "tbGPUSaturation";
             this.tbGPUSaturation.Size = new System.Drawing.Size(130, 45);
@@ -2811,7 +2813,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.cbGPUInvert.AutoSize = true;
             this.cbGPUInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbGPUInvert.Location = new System.Drawing.Point(142, 137);
+            this.cbGPUInvert.Location = new System.Drawing.Point(142, 167);
             this.cbGPUInvert.Name = "cbGPUInvert";
             this.cbGPUInvert.Size = new System.Drawing.Size(53, 17);
             this.cbGPUInvert.TabIndex = 66;
@@ -2822,7 +2824,7 @@ namespace VideoCapture_CSharp_Demo
             // cbGPUGreyscale
             // 
             this.cbGPUGreyscale.AutoSize = true;
-            this.cbGPUGreyscale.Location = new System.Drawing.Point(14, 137);
+            this.cbGPUGreyscale.Location = new System.Drawing.Point(14, 167);
             this.cbGPUGreyscale.Name = "cbGPUGreyscale";
             this.cbGPUGreyscale.Size = new System.Drawing.Size(73, 17);
             this.cbGPUGreyscale.TabIndex = 65;
@@ -5511,13 +5513,12 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage28
             // 
+            this.tabPage28.Controls.Add(this.cbOSDEnabled);
             this.tabPage28.Controls.Add(this.groupBox19);
             this.tabPage28.Controls.Add(this.btOSDClearLayers);
             this.tabPage28.Controls.Add(this.groupBox15);
             this.tabPage28.Controls.Add(this.lbOSDLayers);
             this.tabPage28.Controls.Add(this.label108);
-            this.tabPage28.Controls.Add(this.btOSDDeinit);
-            this.tabPage28.Controls.Add(this.btOSDInit);
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
             this.tabPage28.Name = "tabPage28";
             this.tabPage28.Padding = new System.Windows.Forms.Padding(3);
@@ -5526,8 +5527,19 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage28.Text = "OSD";
             this.tabPage28.UseVisualStyleBackColor = true;
             // 
+            // cbOSDEnabled
+            // 
+            this.cbOSDEnabled.AutoSize = true;
+            this.cbOSDEnabled.Location = new System.Drawing.Point(16, 16);
+            this.cbOSDEnabled.Name = "cbOSDEnabled";
+            this.cbOSDEnabled.Size = new System.Drawing.Size(256, 17);
+            this.cbOSDEnabled.TabIndex = 15;
+            this.cbOSDEnabled.Text = "Enabled (video renderer should be set to VMR-9)";
+            this.cbOSDEnabled.UseVisualStyleBackColor = true;
+            // 
             // groupBox19
             // 
+            this.groupBox19.Controls.Add(this.btOSDClearLayer);
             this.groupBox19.Controls.Add(this.btOSDApplyLayer);
             this.groupBox19.Controls.Add(this.tabControl6);
             this.groupBox19.Location = new System.Drawing.Point(16, 213);
@@ -5536,6 +5548,16 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox19.TabIndex = 6;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Selected layer";
+            // 
+            // btOSDClearLayer
+            // 
+            this.btOSDClearLayer.Location = new System.Drawing.Point(92, 221);
+            this.btOSDClearLayer.Name = "btOSDClearLayer";
+            this.btOSDClearLayer.Size = new System.Drawing.Size(75, 23);
+            this.btOSDClearLayer.TabIndex = 3;
+            this.btOSDClearLayer.Text = "Clear";
+            this.btOSDClearLayer.UseVisualStyleBackColor = true;
+            this.btOSDClearLayer.Click += new System.EventHandler(this.btOSDClearLayer_Click);
             // 
             // btOSDApplyLayer
             // 
@@ -5927,27 +5949,6 @@ namespace VideoCapture_CSharp_Demo
             this.label108.Size = new System.Drawing.Size(38, 13);
             this.label108.TabIndex = 2;
             this.label108.Text = "Layers";
-            // 
-            // btOSDDeinit
-            // 
-            this.btOSDDeinit.Location = new System.Drawing.Point(75, 18);
-            this.btOSDDeinit.Name = "btOSDDeinit";
-            this.btOSDDeinit.Size = new System.Drawing.Size(53, 23);
-            this.btOSDDeinit.TabIndex = 1;
-            this.btOSDDeinit.Text = "DeInit";
-            this.btOSDDeinit.UseVisualStyleBackColor = true;
-            this.btOSDDeinit.Click += new System.EventHandler(this.btOSDDeinit_Click);
-            // 
-            // btOSDInit
-            // 
-            this.btOSDInit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btOSDInit.Location = new System.Drawing.Point(16, 18);
-            this.btOSDInit.Name = "btOSDInit";
-            this.btOSDInit.Size = new System.Drawing.Size(53, 23);
-            this.btOSDInit.TabIndex = 0;
-            this.btOSDInit.Text = "Init";
-            this.btOSDInit.UseVisualStyleBackColor = true;
-            this.btOSDInit.Click += new System.EventHandler(this.btOSDInit_Click);
             // 
             // tabPage43
             // 
@@ -12923,6 +12924,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.OSD_Enabled = false;
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -12966,6 +12968,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -13016,6 +13019,16 @@ namespace VideoCapture_CSharp_Demo
             this.cbRunAsync.TabIndex = 96;
             this.cbRunAsync.Text = "Async";
             this.cbRunAsync.UseVisualStyleBackColor = true;
+            // 
+            // cbVideoEffectsGPUEnabled
+            // 
+            this.cbVideoEffectsGPUEnabled.AutoSize = true;
+            this.cbVideoEffectsGPUEnabled.Location = new System.Drawing.Point(16, 16);
+            this.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled";
+            this.cbVideoEffectsGPUEnabled.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoEffectsGPUEnabled.TabIndex = 81;
+            this.cbVideoEffectsGPUEnabled.Text = "Enabled";
+            this.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -13383,8 +13396,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.ListBox lbOSDLayers;
         private System.Windows.Forms.Label label108;
-        private System.Windows.Forms.Button btOSDDeinit;
-        private System.Windows.Forms.Button btOSDInit;
         private System.Windows.Forms.TextBox edOSDLayerLeft;
         private System.Windows.Forms.Label label109;
         private System.Windows.Forms.Button btOSDClearLayers;
@@ -13610,7 +13621,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TrackBar tbSaturation;
         private System.Windows.Forms.CheckBox cbInvert;
         private System.Windows.Forms.CheckBox cbGreyscale;
-        private System.Windows.Forms.CheckBox cbEffects;
+        private System.Windows.Forms.CheckBox cbVideoEffects;
         private System.Windows.Forms.CheckBox cbDeinterlace;
         private System.Windows.Forms.TabPage tabPage70;
         private System.Windows.Forms.Button btFilterDeleteAll;
@@ -14442,6 +14453,9 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TextBox edVLCParameter;
         private System.Windows.Forms.ListBox lbVLCParameters;
         private System.Windows.Forms.CheckBox cbRunAsync;
+        private System.Windows.Forms.CheckBox cbOSDEnabled;
+        private System.Windows.Forms.Button btOSDClearLayer;
+        private System.Windows.Forms.CheckBox cbVideoEffectsGPUEnabled;
     }
 }
 

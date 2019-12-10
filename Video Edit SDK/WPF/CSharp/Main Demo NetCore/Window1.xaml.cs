@@ -462,6 +462,7 @@ namespace Main_Demo
             VideoEdit1.Video_Renderer.BackgroundColor = VideoEdit.ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
             VideoEdit1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.IsChecked == true;
             VideoEdit1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.IsChecked == true;
+            VideoEdit1.Background = pnVideoRendererBGColor.Fill;
 
             // Network streaming
             VideoEdit1.Network_Streaming_Enabled = cbNetworkStreaming.IsChecked == true;
@@ -878,6 +879,84 @@ namespace Main_Demo
             // Virtual camera output
             VideoEdit1.Virtual_Camera_Output_Enabled = cbVirtualCamera.IsChecked == true;
 
+            // Video effects CPU
+            AddVideoEffects();
+
+            // Video effects GPU
+            VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
+
+            // Chromakey
+            ConfigureChromaKey();
+
+            // Object detection
+            ConfigureObjectDetection();
+
+            VideoEdit1.Network_Streaming_Audio_Enabled = cbNetworkStreamingAudioEnabled.IsChecked == true;
+
+            // Barcode detection
+            VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
+            VideoEdit1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
+
+            // Decklink output
+            ConfigureDecklinkOutput();
+
+            // motion detection
+            if (cbMotDetEnabled.IsChecked == true)
+            {
+                btMotDetUpdateSettings_Click(null, null); // apply settings
+            }
+
+            // video rotation
+            switch (cbRotate.SelectedIndex)
+            {
+                case 0:
+                    VideoEdit1.Video_Rotation = VFRotateMode.RotateNone;
+                    break;
+                case 1:
+                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate90;
+                    break;
+                case 2:
+                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate180;
+                    break;
+                case 3:
+                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate270;
+                    break;
+            }
+
+            // Output tags
+            if (cbTagEnabled.IsChecked == true)
+            {
+                var tags = new VFFileTags
+                               {
+                                   Title = edTagTitle.Text,
+                                   Performers = new[] { edTagArtists.Text },
+                                   Album = edTagAlbum.Text,
+                                   Comment = edTagComment.Text,
+                                   Track = Convert.ToUInt32(edTagTrackID.Text),
+                                   Copyright = edTagCopyright.Text,
+                                   Year = Convert.ToUInt32(edTagYear.Text),
+                                   Composers = new[] { edTagComposers.Text },
+                                   Genres = new[] { cbTagGenre.Text },
+                                   Lyrics = edTagLyrics.Text
+                               };
+
+                if (imgTagCover.Tag != null)
+                {
+                    tags.Pictures = new[] { new Bitmap(imgTagCover.Tag.ToString()) };
+                }
+
+                VideoEdit1.Tags = tags;
+            }
+
+            VideoEdit1.Start();
+
+            lbTransitions.Items.Clear();
+
+            edNetworkURL.Text = VideoEdit1.Network_Streaming_URL;
+        }
+
+        private void AddVideoEffects()
+        {
             VideoEdit1.Video_Effects_Enabled = cbEffects.IsChecked == true;
             VideoEdit1.Video_Effects_Clear();
 
@@ -1055,75 +1134,6 @@ namespace Main_Demo
             {
                 CbFlipY_Checked(null, null);
             }
-
-            // Chromakey
-            ConfigureChromaKey();
-
-            // Object detection
-            ConfigureObjectDetection();
-
-            VideoEdit1.Network_Streaming_Audio_Enabled = cbNetworkStreamingAudioEnabled.IsChecked == true;
-
-            // Barcode detection
-            VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
-            VideoEdit1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
-
-            // Decklink output
-            ConfigureDecklinkOutput();
-
-            // motion detection
-            if (cbMotDetEnabled.IsChecked == true)
-            {
-                btMotDetUpdateSettings_Click(null, null); // apply settings
-            }
-
-            // video rotation
-            switch (cbRotate.SelectedIndex)
-            {
-                case 0:
-                    VideoEdit1.Video_Rotation = VFRotateMode.RotateNone;
-                    break;
-                case 1:
-                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate90;
-                    break;
-                case 2:
-                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate180;
-                    break;
-                case 3:
-                    VideoEdit1.Video_Rotation = VFRotateMode.Rotate270;
-                    break;
-            }
-
-            // Output tags
-            if (cbTagEnabled.IsChecked == true)
-            {
-                var tags = new VFFileTags
-                               {
-                                   Title = edTagTitle.Text,
-                                   Performers = new[] { edTagArtists.Text },
-                                   Album = edTagAlbum.Text,
-                                   Comment = edTagComment.Text,
-                                   Track = Convert.ToUInt32(edTagTrackID.Text),
-                                   Copyright = edTagCopyright.Text,
-                                   Year = Convert.ToUInt32(edTagYear.Text),
-                                   Composers = new[] { edTagComposers.Text },
-                                   Genres = new[] { cbTagGenre.Text },
-                                   Lyrics = edTagLyrics.Text
-                               };
-
-                if (imgTagCover.Tag != null)
-                {
-                    tags.Pictures = new[] { new Bitmap(imgTagCover.Tag.ToString()) };
-                }
-
-                VideoEdit1.Tags = tags;
-            }
-
-            VideoEdit1.Start();
-
-            lbTransitions.Items.Clear();
-
-            edNetworkURL.Text = VideoEdit1.Network_Streaming_URL;
         }
 
         private void btStop_Click(object sender, RoutedEventArgs e)
@@ -2307,6 +2317,10 @@ namespace Main_Demo
             if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 pnVideoRendererBGColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
+                VideoEdit1.Background = pnVideoRendererBGColor.Fill;
+
+                VideoEdit1.Video_Renderer.BackgroundColor = colorDialog1.Color;
+                VideoEdit1.Video_Renderer_Update();
             }
         }
 

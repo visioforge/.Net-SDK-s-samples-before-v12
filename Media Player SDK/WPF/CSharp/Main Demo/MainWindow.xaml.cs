@@ -24,6 +24,8 @@ namespace Main_Demo
     using System.Windows.Media;
     using System.Windows.Threading;
 
+    using DirectShowLib.BDA;
+
     using VisioForge.Tools;
     using VisioForge.Tools.MediaInfo;
     using VisioForge.Types;
@@ -851,7 +853,7 @@ namespace Main_Demo
 
             if (lbSourceFiles.Items.Count == 0)
             {
-                MessageBox.Show("Playlist is empty!");
+                MessageBox.Show(this, "Playlist is empty!");
             }
 
             foreach (var item in lbSourceFiles.Items)
@@ -895,7 +897,8 @@ namespace Main_Demo
             MediaPlayer1.Video_Renderer.BackgroundColor = MediaPlayer.ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
             MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.IsChecked == true;
             MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.IsChecked == true;
-            
+            MediaPlayer1.Background = pnVideoRendererBGColor.Fill;
+
             // Audio enhancement
             MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.IsChecked == true;
             if (MediaPlayer1.Audio_Enhancer_Enabled)
@@ -956,8 +959,114 @@ namespace Main_Demo
             {
                 MediaPlayer1.Audio_VUMeter_Pro_Enabled = false;
             }
+            
+            // Video effects CPU
+            AddVideoEffects();
 
-            // Video effects
+            // Video effects GPU
+            MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
+
+            // Motion detection
+            if (cbMotDetEnabled.IsChecked == true)
+            {
+                btMotDetUpdateSettings_Click(null, null);
+            }
+
+            // Barcode detection
+            MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
+            MediaPlayer1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
+
+            // Encryption
+            if (rbEncryptionKeyString.IsChecked == true)
+            {
+                MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.String;
+                MediaPlayer1.Encryption_Key = edEncryptionKeyString.Text;
+            }
+            else if (rbEncryptionKeyFile.IsChecked == true)
+            {
+                MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.File;
+                MediaPlayer1.Encryption_Key = edEncryptionKeyFile.Text;
+            }
+            else
+            {
+                MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.Binary;
+                MediaPlayer1.Encryption_Key = MediaPlayer.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text);
+            }
+
+            MediaPlayer1.Play(cbRunAsync.IsChecked == true);
+
+            // DVD
+            if (MediaPlayer1.Source_Mode == VFMediaPlayerSource.DVD_DS)
+            {
+                // select and play first title
+                if (cbDVDControlTitle.Items.Count > 0)
+                {
+                    cbDVDControlTitle.SelectedIndex = 0;
+                    cbDVDControlTitle_SelectionChanged(null, null);
+                }
+
+                // show title menu
+                MediaPlayer1.DVD_Menu_Show(VFDVDMenu.Title);
+            }
+
+            // set audio volume for each stream
+            if (MediaPlayer1.Source_Mode != VFMediaPlayerSource.DVD_DS && MediaPlayer1.Source_Mode != VFMediaPlayerSource.MMS_WMV_DS)
+            {
+                int count = MediaPlayer1.Audio_Streams_Count();
+
+                if (count > 0)
+                {
+                    MediaPlayer1.Audio_OutputDevice_Balance_Set(0, (int)tbBalance1.Value);
+                    MediaPlayer1.Audio_OutputDevice_Volume_Set(0, (int)tbVolume1.Value);
+                }
+
+                // independent audio output for each audio stream
+                if (!MediaPlayer1.Audio_Streams_AllInOne())
+                {
+                    if (count > 1)
+                    {
+                        MediaPlayer1.Audio_OutputDevice_Balance_Set(1, (int)tbBalance2.Value);
+                        MediaPlayer1.Audio_OutputDevice_Volume_Set(1, (int)tbVolume2.Value);
+                        MediaPlayer1.Audio_Streams_Set(1, false); //disable stream
+                    }
+
+                    if (count > 2)
+                    {
+                        MediaPlayer1.Audio_OutputDevice_Balance_Set(2, (int)tbBalance3.Value);
+                        MediaPlayer1.Audio_OutputDevice_Volume_Set(2, (int)tbVolume3.Value);
+                        MediaPlayer1.Audio_Streams_Set(2, false); //disable stream
+                    }
+
+                    if (count > 3)
+                    {
+                        MediaPlayer1.Audio_OutputDevice_Balance_Set(3, (int)tbBalance4.Value);
+                        MediaPlayer1.Audio_OutputDevice_Volume_Set(3, (int)tbVolume4.Value);
+                        MediaPlayer1.Audio_Streams_Set(3, false); //disable stream
+                    }
+                }
+                else
+                {
+                    tbBalance2.IsEnabled = false;
+                    tbVolume2.IsEnabled = false;
+
+                    tbBalance3.IsEnabled = false;
+                    tbVolume3.IsEnabled = false;
+
+                    tbBalance4.IsEnabled = false;
+                    tbVolume4.IsEnabled = false;
+                }
+            }
+            else
+            {
+                MediaPlayer1.Audio_OutputDevice_Balance_Set(0, (int)tbBalance1.Value);
+                MediaPlayer1.Audio_OutputDevice_Volume_Set(0, (int)tbVolume1.Value);
+            }
+
+            timer.Start();
+        }
+
+        private void AddVideoEffects()
+        {
             MediaPlayer1.Video_Effects_Enabled = cbEffects.IsChecked == true;
             MediaPlayer1.Video_Effects_Clear();
             lbTextLogos.Items.Clear();
@@ -1144,104 +1253,6 @@ namespace Main_Demo
             {
                 cbLiveRotation_Checked(null, null);
             }
-
-            // Motion detection
-            if (cbMotDetEnabled.IsChecked == true)
-            {
-                btMotDetUpdateSettings_Click(null, null);
-            }
-
-            // Barcode detection
-            MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
-            MediaPlayer1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
-
-            // Encryption
-            if (rbEncryptionKeyString.IsChecked == true)
-            {
-                MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.String;
-                MediaPlayer1.Encryption_Key = edEncryptionKeyString.Text;
-            }
-            else if (rbEncryptionKeyFile.IsChecked == true)
-            {
-                MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.File;
-                MediaPlayer1.Encryption_Key = edEncryptionKeyFile.Text;
-            }
-            else
-            {
-                MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.Binary;
-                MediaPlayer1.Encryption_Key = MediaPlayer.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text);
-            }
-
-            MediaPlayer1.Play(cbRunAsync.IsChecked == true);
-
-            // DVD
-            if (MediaPlayer1.Source_Mode == VFMediaPlayerSource.DVD_DS)
-            {
-                // select and play first title
-                if (cbDVDControlTitle.Items.Count > 0)
-                {
-                    cbDVDControlTitle.SelectedIndex = 0;
-                    cbDVDControlTitle_SelectionChanged(null, null);
-                }
-
-                // show title menu
-                MediaPlayer1.DVD_Menu_Show(VFDVDMenu.Title);
-            }
-
-            // set audio volume for each stream
-            if (MediaPlayer1.Source_Mode != VFMediaPlayerSource.DVD_DS && MediaPlayer1.Source_Mode != VFMediaPlayerSource.MMS_WMV_DS)
-            {
-                int count = MediaPlayer1.Audio_Streams_Count();
-
-                if (count > 0)
-                {
-                    MediaPlayer1.Audio_OutputDevice_Balance_Set(0, (int)tbBalance1.Value);
-                    MediaPlayer1.Audio_OutputDevice_Volume_Set(0, (int)tbVolume1.Value);
-                }
-
-                // independent audio output for each audio stream
-                if (!MediaPlayer1.Audio_Streams_AllInOne())
-                {
-                    if (count > 1)
-                    {
-                        MediaPlayer1.Audio_OutputDevice_Balance_Set(1, (int)tbBalance2.Value);
-                        MediaPlayer1.Audio_OutputDevice_Volume_Set(1, (int)tbVolume2.Value);
-                        MediaPlayer1.Audio_Streams_Set(1, false); //disable stream
-                    }
-
-                    if (count > 2)
-                    {
-                        MediaPlayer1.Audio_OutputDevice_Balance_Set(2, (int)tbBalance3.Value);
-                        MediaPlayer1.Audio_OutputDevice_Volume_Set(2, (int)tbVolume3.Value);
-                        MediaPlayer1.Audio_Streams_Set(2, false); //disable stream
-                    }
-
-                    if (count > 3)
-                    {
-                        MediaPlayer1.Audio_OutputDevice_Balance_Set(3, (int)tbBalance4.Value);
-                        MediaPlayer1.Audio_OutputDevice_Volume_Set(3, (int)tbVolume4.Value);
-                        MediaPlayer1.Audio_Streams_Set(3, false); //disable stream
-                    }
-                }
-                else
-                {
-                    tbBalance2.IsEnabled = false;
-                    tbVolume2.IsEnabled = false;
-
-                    tbBalance3.IsEnabled = false;
-                    tbVolume3.IsEnabled = false;
-
-                    tbBalance4.IsEnabled = false;
-                    tbVolume4.IsEnabled = false;
-                }
-            }
-            else
-            {
-                MediaPlayer1.Audio_OutputDevice_Balance_Set(0, (int)tbBalance1.Value);
-                MediaPlayer1.Audio_OutputDevice_Volume_Set(0, (int)tbVolume1.Value);
-            }
-
-            timer.Start();
         }
 
         private void btSelectFile_Click(object sender, RoutedEventArgs e)
@@ -2280,6 +2291,10 @@ namespace Main_Demo
             if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 pnVideoRendererBGColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
+                MediaPlayer1.Background = pnVideoRendererBGColor.Fill;
+
+                MediaPlayer1.Video_Renderer.BackgroundColor = colorDialog1.Color;
+                MediaPlayer1.Video_Renderer_Update();
             }
         }
 

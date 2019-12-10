@@ -1793,8 +1793,11 @@ namespace Main_Demo
             VideoCapture1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
             VideoCapture1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
 
-            // Video effects
+            // Video effects CPU
             ConfigureVideoEffects();
+
+            // Video effects GPU
+            VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
 
             // Chromakey
             if (cbChromaKeyEnabled.IsChecked == true)
@@ -1878,6 +1881,7 @@ namespace Main_Demo
             VideoCapture1.Video_Renderer.BackgroundColor = VideoCapture.ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
             VideoCapture1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.IsChecked == true;
             VideoCapture1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.IsChecked == true;
+            VideoCapture1.Background = pnVideoRendererBGColor.Fill;
 
             VideoCapture1.Video_ResizeOrCrop_Enabled = false;
 
@@ -4130,10 +4134,13 @@ namespace Main_Demo
             if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 pnVideoRendererBGColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
-            }
 
-            VideoCapture1.Video_Renderer.BackgroundColor = colorDialog1.Color;
-            VideoCapture1.Video_Renderer_Update();
+                pnVideoRendererBGColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
+                VideoCapture1.Background = pnVideoRendererBGColor.Fill;
+
+                VideoCapture1.Video_Renderer.BackgroundColor = colorDialog1.Color;
+                VideoCapture1.Video_Renderer_Update();
+            }
         }
 
         private void rbVR_Checked(object sender, RoutedEventArgs e)

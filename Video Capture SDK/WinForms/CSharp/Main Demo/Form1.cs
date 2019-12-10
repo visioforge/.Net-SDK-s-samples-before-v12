@@ -871,6 +871,9 @@ namespace VideoCapture_CSharp_Demo
             // multiscreen
             ConfigureMultiscreen();
 
+            // OSD
+            VideoCapture1.OSD_Enabled = cbOSDEnabled.Checked;
+
             if (captureMode)
             {
                 switch (cbOutputFormat.SelectedIndex)
@@ -1108,10 +1111,13 @@ namespace VideoCapture_CSharp_Demo
             // crossbar
             SelectCrossbar();
 
-            // Video effects
-            VideoCapture1.Video_Effects_Enabled = cbEffects.Checked;
+            // Video effects CPU
+            VideoCapture1.Video_Effects_Enabled = cbVideoEffects.Checked;
             VideoCapture1.Video_Effects_Clear();
             ConfigureVideoEffects();
+
+            // Video effects GPU
+            VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
 
             // Virtual camera output
             VideoCapture1.Virtual_Camera_Output_Enabled = cbVirtualCamera.Checked;
@@ -3299,17 +3305,7 @@ namespace VideoCapture_CSharp_Demo
                 cbPIPDevices.Items.Add(cbPIPDevice.Text);
             }
         }
-
-        private void btOSDInit_Click(object sender, EventArgs e)
-        {
-            VideoCapture1.OSD_Init();
-        }
-
-        private void btOSDDeinit_Click(object sender, EventArgs e)
-        {
-            VideoCapture1.OSD_Destroy();
-        }
-
+        
         private void btOSDClearLayers_Click(object sender, EventArgs e)
         {
             VideoCapture1.OSD_Layers_Clear();
@@ -3331,6 +3327,10 @@ namespace VideoCapture_CSharp_Demo
             if (lbOSDLayers.SelectedIndex != -1)
             {
                 VideoCapture1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
             }
         }
 
@@ -3367,6 +3367,10 @@ namespace VideoCapture_CSharp_Demo
                         Color.Black);
                 }
             }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
+            }
         }
 
         private void btOSDSelectFont_Click(object sender, EventArgs e)
@@ -3393,6 +3397,10 @@ namespace VideoCapture_CSharp_Demo
                     fnt,
                     color);
             }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
+            }
         }
 
         private void btOSDSetTransp_Click(object sender, EventArgs e)
@@ -3401,6 +3409,10 @@ namespace VideoCapture_CSharp_Demo
             {
                 VideoCapture1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, (byte)tbOSDTranspLevel.Value);
                 VideoCapture1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
             }
         }
 
@@ -6146,6 +6158,18 @@ namespace VideoCapture_CSharp_Demo
         private void btVLCClearParameters_Click(object sender, EventArgs e)
         {
             lbVLCParameters.Items.Clear();
+        }
+
+        private void btOSDClearLayer_Click(object sender, EventArgs e)
+        {
+            if (lbOSDLayers.SelectedIndex != -1)
+            {
+                VideoCapture1.OSD_Layers_Clear(lbOSDLayers.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show(this, "Please select OSD layer.");
+            }
         }
     }
 }
