@@ -163,6 +163,7 @@ namespace VideoCapture_CSharp_Demo
             this.rbDenoiseMosquito = new System.Windows.Forms.RadioButton();
             this.cbDenoise = new System.Windows.Forms.CheckBox();
             this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.cbGPUOldMovie = new System.Windows.Forms.CheckBox();
             this.cbGPUBlur = new System.Windows.Forms.CheckBox();
             this.cbGPUDeinterlace = new System.Windows.Forms.CheckBox();
@@ -429,10 +430,10 @@ namespace VideoCapture_CSharp_Demo
             this.cbNetworkStreamingAudioEnabled = new System.Windows.Forms.CheckBox();
             this.cbNetworkStreaming = new System.Windows.Forms.CheckBox();
             this.tabPage28 = new System.Windows.Forms.TabPage();
+            this.btOSDRenderLayers = new System.Windows.Forms.Button();
+            this.lbOSDLayers = new System.Windows.Forms.CheckedListBox();
             this.cbOSDEnabled = new System.Windows.Forms.CheckBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.btOSDClearLayer = new System.Windows.Forms.Button();
-            this.btOSDApplyLayer = new System.Windows.Forms.Button();
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage30 = new System.Windows.Forms.TabPage();
             this.btOSDImageDraw = new System.Windows.Forms.Button();
@@ -469,7 +470,6 @@ namespace VideoCapture_CSharp_Demo
             this.label110 = new System.Windows.Forms.Label();
             this.edOSDLayerLeft = new System.Windows.Forms.TextBox();
             this.label109 = new System.Windows.Forms.Label();
-            this.lbOSDLayers = new System.Windows.Forms.ListBox();
             this.label108 = new System.Windows.Forms.Label();
             this.tabPage43 = new System.Windows.Forms.TabPage();
             this.tabControl9 = new System.Windows.Forms.TabControl();
@@ -1126,7 +1126,7 @@ namespace VideoCapture_CSharp_Demo
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
-            this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
+            this.btOSDClearLayer = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -2662,6 +2662,16 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage20.TabIndex = 9;
             this.tabPage20.Text = "GPU effects";
             this.tabPage20.UseVisualStyleBackColor = true;
+            // 
+            // cbVideoEffectsGPUEnabled
+            // 
+            this.cbVideoEffectsGPUEnabled.AutoSize = true;
+            this.cbVideoEffectsGPUEnabled.Location = new System.Drawing.Point(16, 16);
+            this.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled";
+            this.cbVideoEffectsGPUEnabled.Size = new System.Drawing.Size(65, 17);
+            this.cbVideoEffectsGPUEnabled.TabIndex = 81;
+            this.cbVideoEffectsGPUEnabled.Text = "Enabled";
+            this.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = true;
             // 
             // cbGPUOldMovie
             // 
@@ -5513,11 +5523,12 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage28
             // 
+            this.tabPage28.Controls.Add(this.btOSDRenderLayers);
+            this.tabPage28.Controls.Add(this.lbOSDLayers);
             this.tabPage28.Controls.Add(this.cbOSDEnabled);
             this.tabPage28.Controls.Add(this.groupBox19);
             this.tabPage28.Controls.Add(this.btOSDClearLayers);
             this.tabPage28.Controls.Add(this.groupBox15);
-            this.tabPage28.Controls.Add(this.lbOSDLayers);
             this.tabPage28.Controls.Add(this.label108);
             this.tabPage28.Location = new System.Drawing.Point(4, 22);
             this.tabPage28.Name = "tabPage28";
@@ -5527,48 +5538,46 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage28.Text = "OSD";
             this.tabPage28.UseVisualStyleBackColor = true;
             // 
+            // btOSDRenderLayers
+            // 
+            this.btOSDRenderLayers.Location = new System.Drawing.Point(161, 199);
+            this.btOSDRenderLayers.Name = "btOSDRenderLayers";
+            this.btOSDRenderLayers.Size = new System.Drawing.Size(117, 23);
+            this.btOSDRenderLayers.TabIndex = 17;
+            this.btOSDRenderLayers.Text = "Render layers";
+            this.btOSDRenderLayers.UseVisualStyleBackColor = true;
+            this.btOSDRenderLayers.Click += new System.EventHandler(this.btOSDRenderLayers_Click);
+            // 
+            // lbOSDLayers
+            // 
+            this.lbOSDLayers.CheckOnClick = true;
+            this.lbOSDLayers.FormattingEnabled = true;
+            this.lbOSDLayers.Location = new System.Drawing.Point(15, 61);
+            this.lbOSDLayers.Name = "lbOSDLayers";
+            this.lbOSDLayers.Size = new System.Drawing.Size(139, 124);
+            this.lbOSDLayers.TabIndex = 16;
+            this.lbOSDLayers.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lbOSDLayers_ItemCheck);
+            // 
             // cbOSDEnabled
             // 
             this.cbOSDEnabled.AutoSize = true;
             this.cbOSDEnabled.Location = new System.Drawing.Point(16, 16);
             this.cbOSDEnabled.Name = "cbOSDEnabled";
-            this.cbOSDEnabled.Size = new System.Drawing.Size(256, 17);
+            this.cbOSDEnabled.Size = new System.Drawing.Size(251, 17);
             this.cbOSDEnabled.TabIndex = 15;
-            this.cbOSDEnabled.Text = "Enabled (video renderer should be set to VMR-9)";
+            this.cbOSDEnabled.Text = "Enabled (should be set before playback started)";
             this.cbOSDEnabled.UseVisualStyleBackColor = true;
             // 
             // groupBox19
             // 
             this.groupBox19.Controls.Add(this.btOSDClearLayer);
-            this.groupBox19.Controls.Add(this.btOSDApplyLayer);
             this.groupBox19.Controls.Add(this.tabControl6);
-            this.groupBox19.Location = new System.Drawing.Point(16, 213);
+            this.groupBox19.Location = new System.Drawing.Point(15, 228);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(262, 250);
             this.groupBox19.TabIndex = 6;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Selected layer";
-            // 
-            // btOSDClearLayer
-            // 
-            this.btOSDClearLayer.Location = new System.Drawing.Point(92, 221);
-            this.btOSDClearLayer.Name = "btOSDClearLayer";
-            this.btOSDClearLayer.Size = new System.Drawing.Size(75, 23);
-            this.btOSDClearLayer.TabIndex = 3;
-            this.btOSDClearLayer.Text = "Clear";
-            this.btOSDClearLayer.UseVisualStyleBackColor = true;
-            this.btOSDClearLayer.Click += new System.EventHandler(this.btOSDClearLayer_Click);
-            // 
-            // btOSDApplyLayer
-            // 
-            this.btOSDApplyLayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btOSDApplyLayer.Location = new System.Drawing.Point(11, 221);
-            this.btOSDApplyLayer.Name = "btOSDApplyLayer";
-            this.btOSDApplyLayer.Size = new System.Drawing.Size(75, 23);
-            this.btOSDApplyLayer.TabIndex = 1;
-            this.btOSDApplyLayer.Text = "Apply layer";
-            this.btOSDApplyLayer.UseVisualStyleBackColor = true;
-            this.btOSDApplyLayer.Click += new System.EventHandler(this.btOSDApplyLayer_Click);
             // 
             // tabControl6
             // 
@@ -5828,11 +5837,11 @@ namespace VideoCapture_CSharp_Demo
             // 
             // btOSDClearLayers
             // 
-            this.btOSDClearLayers.Location = new System.Drawing.Point(15, 174);
+            this.btOSDClearLayers.Location = new System.Drawing.Point(15, 199);
             this.btOSDClearLayers.Name = "btOSDClearLayers";
             this.btOSDClearLayers.Size = new System.Drawing.Size(140, 23);
             this.btOSDClearLayers.TabIndex = 5;
-            this.btOSDClearLayers.Text = "Clear layers";
+            this.btOSDClearLayers.Text = "Remove all layers";
             this.btOSDClearLayers.UseVisualStyleBackColor = true;
             this.btOSDClearLayers.Click += new System.EventHandler(this.btOSDClearLayers_Click);
             // 
@@ -5847,7 +5856,7 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox15.Controls.Add(this.label110);
             this.groupBox15.Controls.Add(this.edOSDLayerLeft);
             this.groupBox15.Controls.Add(this.label109);
-            this.groupBox15.Location = new System.Drawing.Point(161, 63);
+            this.groupBox15.Location = new System.Drawing.Point(161, 53);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(117, 134);
             this.groupBox15.TabIndex = 4;
@@ -5933,18 +5942,10 @@ namespace VideoCapture_CSharp_Demo
             this.label109.TabIndex = 0;
             this.label109.Text = "Left";
             // 
-            // lbOSDLayers
-            // 
-            this.lbOSDLayers.FormattingEnabled = true;
-            this.lbOSDLayers.Location = new System.Drawing.Point(16, 69);
-            this.lbOSDLayers.Name = "lbOSDLayers";
-            this.lbOSDLayers.Size = new System.Drawing.Size(139, 95);
-            this.lbOSDLayers.TabIndex = 3;
-            // 
             // label108
             // 
             this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(13, 53);
+            this.label108.Location = new System.Drawing.Point(12, 45);
             this.label108.Name = "label108";
             this.label108.Size = new System.Drawing.Size(38, 13);
             this.label108.TabIndex = 2;
@@ -13020,15 +13021,15 @@ namespace VideoCapture_CSharp_Demo
             this.cbRunAsync.Text = "Async";
             this.cbRunAsync.UseVisualStyleBackColor = true;
             // 
-            // cbVideoEffectsGPUEnabled
+            // btOSDClearLayer
             // 
-            this.cbVideoEffectsGPUEnabled.AutoSize = true;
-            this.cbVideoEffectsGPUEnabled.Location = new System.Drawing.Point(16, 16);
-            this.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled";
-            this.cbVideoEffectsGPUEnabled.Size = new System.Drawing.Size(65, 17);
-            this.cbVideoEffectsGPUEnabled.TabIndex = 81;
-            this.cbVideoEffectsGPUEnabled.Text = "Enabled";
-            this.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = true;
+            this.btOSDClearLayer.Location = new System.Drawing.Point(6, 221);
+            this.btOSDClearLayer.Name = "btOSDClearLayer";
+            this.btOSDClearLayer.Size = new System.Drawing.Size(91, 23);
+            this.btOSDClearLayer.TabIndex = 3;
+            this.btOSDClearLayer.Text = "Clear layer";
+            this.btOSDClearLayer.UseVisualStyleBackColor = true;
+            this.btOSDClearLayer.Click += new System.EventHandler(this.btOSDClearLayer_Click);
             // 
             // Form1
             // 
@@ -13394,7 +13395,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btResume;
         private System.Windows.Forms.TabPage tabPage28;
         private System.Windows.Forms.GroupBox groupBox15;
-        private System.Windows.Forms.ListBox lbOSDLayers;
         private System.Windows.Forms.Label label108;
         private System.Windows.Forms.TextBox edOSDLayerLeft;
         private System.Windows.Forms.Label label109;
@@ -13407,7 +13407,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TextBox edOSDLayerTop;
         private System.Windows.Forms.Label label110;
         private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.Button btOSDApplyLayer;
         private System.Windows.Forms.TabControl tabControl6;
         private System.Windows.Forms.TabPage tabPage30;
         private System.Windows.Forms.TabPage tabPage31;
@@ -14454,8 +14453,10 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.ListBox lbVLCParameters;
         private System.Windows.Forms.CheckBox cbRunAsync;
         private System.Windows.Forms.CheckBox cbOSDEnabled;
-        private System.Windows.Forms.Button btOSDClearLayer;
         private System.Windows.Forms.CheckBox cbVideoEffectsGPUEnabled;
+        private System.Windows.Forms.CheckedListBox lbOSDLayers;
+        private System.Windows.Forms.Button btOSDRenderLayers;
+        private System.Windows.Forms.Button btOSDClearLayer;
     }
 }
 

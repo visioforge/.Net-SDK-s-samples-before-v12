@@ -683,6 +683,7 @@ Partial Class Form1
         Me.rbDenoiseMosquito = New System.Windows.Forms.RadioButton()
         Me.cbDenoise = New System.Windows.Forms.CheckBox()
         Me.TabPage63 = New System.Windows.Forms.TabPage()
+        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
         Me.cbGPUBlur = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
@@ -937,7 +938,6 @@ Partial Class Form1
         Me.cbOSDEnabled = New System.Windows.Forms.CheckBox()
         Me.groupBox19 = New System.Windows.Forms.GroupBox()
         Me.btOSDClearLayer = New System.Windows.Forms.Button()
-        Me.btOSDApplyLayer = New System.Windows.Forms.Button()
         Me.tabControl6 = New System.Windows.Forms.TabControl()
         Me.tabPage30 = New System.Windows.Forms.TabPage()
         Me.btOSDImageDraw = New System.Windows.Forms.Button()
@@ -974,7 +974,6 @@ Partial Class Form1
         Me.label110 = New System.Windows.Forms.Label()
         Me.edOSDLayerLeft = New System.Windows.Forms.TextBox()
         Me.label109 = New System.Windows.Forms.Label()
-        Me.lbOSDLayers = New System.Windows.Forms.ListBox()
         Me.label108 = New System.Windows.Forms.Label()
         Me.tabPage43 = New System.Windows.Forms.TabPage()
         Me.tabControl9 = New System.Windows.Forms.TabControl()
@@ -1116,7 +1115,8 @@ Partial Class Form1
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
+        Me.lbOSDLayers = New System.Windows.Forms.CheckedListBox()
+        Me.btOSDRenderLayers = New System.Windows.Forms.Button()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -7996,6 +7996,16 @@ Partial Class Form1
         Me.TabPage63.Text = "GPU effects"
         Me.TabPage63.UseVisualStyleBackColor = True
         '
+        'cbVideoEffectsGPUEnabled
+        '
+        Me.cbVideoEffectsGPUEnabled.AutoSize = True
+        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(16, 16)
+        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
+        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
+        Me.cbVideoEffectsGPUEnabled.TabIndex = 97
+        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
+        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
+        '
         'cbGPUOldMovie
         '
         Me.cbGPUOldMovie.AutoSize = True
@@ -10608,11 +10618,12 @@ Partial Class Form1
         '
         'tabPage28
         '
+        Me.tabPage28.Controls.Add(Me.btOSDRenderLayers)
+        Me.tabPage28.Controls.Add(Me.lbOSDLayers)
         Me.tabPage28.Controls.Add(Me.cbOSDEnabled)
         Me.tabPage28.Controls.Add(Me.groupBox19)
         Me.tabPage28.Controls.Add(Me.btOSDClearLayers)
         Me.tabPage28.Controls.Add(Me.groupBox15)
-        Me.tabPage28.Controls.Add(Me.lbOSDLayers)
         Me.tabPage28.Controls.Add(Me.label108)
         Me.tabPage28.Location = New System.Drawing.Point(4, 22)
         Me.tabPage28.Name = "tabPage28"
@@ -10627,17 +10638,16 @@ Partial Class Form1
         Me.cbOSDEnabled.AutoSize = True
         Me.cbOSDEnabled.Location = New System.Drawing.Point(16, 15)
         Me.cbOSDEnabled.Name = "cbOSDEnabled"
-        Me.cbOSDEnabled.Size = New System.Drawing.Size(256, 17)
+        Me.cbOSDEnabled.Size = New System.Drawing.Size(251, 17)
         Me.cbOSDEnabled.TabIndex = 16
-        Me.cbOSDEnabled.Text = "Enabled (video renderer should be set to VMR-9)"
+        Me.cbOSDEnabled.Text = "Enabled (should be set before playback started)"
         Me.cbOSDEnabled.UseVisualStyleBackColor = True
         '
         'groupBox19
         '
         Me.groupBox19.Controls.Add(Me.btOSDClearLayer)
-        Me.groupBox19.Controls.Add(Me.btOSDApplyLayer)
         Me.groupBox19.Controls.Add(Me.tabControl6)
-        Me.groupBox19.Location = New System.Drawing.Point(16, 213)
+        Me.groupBox19.Location = New System.Drawing.Point(15, 213)
         Me.groupBox19.Name = "groupBox19"
         Me.groupBox19.Size = New System.Drawing.Size(262, 250)
         Me.groupBox19.TabIndex = 6
@@ -10646,22 +10656,12 @@ Partial Class Form1
         '
         'btOSDClearLayer
         '
-        Me.btOSDClearLayer.Location = New System.Drawing.Point(92, 221)
+        Me.btOSDClearLayer.Location = New System.Drawing.Point(6, 221)
         Me.btOSDClearLayer.Name = "btOSDClearLayer"
-        Me.btOSDClearLayer.Size = New System.Drawing.Size(75, 23)
+        Me.btOSDClearLayer.Size = New System.Drawing.Size(91, 23)
         Me.btOSDClearLayer.TabIndex = 4
-        Me.btOSDClearLayer.Text = "Clear"
+        Me.btOSDClearLayer.Text = "Clear layer"
         Me.btOSDClearLayer.UseVisualStyleBackColor = True
-        '
-        'btOSDApplyLayer
-        '
-        Me.btOSDApplyLayer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btOSDApplyLayer.Location = New System.Drawing.Point(11, 221)
-        Me.btOSDApplyLayer.Name = "btOSDApplyLayer"
-        Me.btOSDApplyLayer.Size = New System.Drawing.Size(75, 23)
-        Me.btOSDApplyLayer.TabIndex = 1
-        Me.btOSDApplyLayer.Text = "Apply layer"
-        Me.btOSDApplyLayer.UseVisualStyleBackColor = True
         '
         'tabControl6
         '
@@ -10915,11 +10915,11 @@ Partial Class Form1
         '
         'btOSDClearLayers
         '
-        Me.btOSDClearLayers.Location = New System.Drawing.Point(15, 174)
+        Me.btOSDClearLayers.Location = New System.Drawing.Point(15, 184)
         Me.btOSDClearLayers.Name = "btOSDClearLayers"
         Me.btOSDClearLayers.Size = New System.Drawing.Size(140, 23)
         Me.btOSDClearLayers.TabIndex = 5
-        Me.btOSDClearLayers.Text = "Clear layers"
+        Me.btOSDClearLayers.Text = "Remove all layers"
         Me.btOSDClearLayers.UseVisualStyleBackColor = True
         '
         'groupBox15
@@ -10933,7 +10933,7 @@ Partial Class Form1
         Me.groupBox15.Controls.Add(Me.label110)
         Me.groupBox15.Controls.Add(Me.edOSDLayerLeft)
         Me.groupBox15.Controls.Add(Me.label109)
-        Me.groupBox15.Location = New System.Drawing.Point(161, 63)
+        Me.groupBox15.Location = New System.Drawing.Point(161, 46)
         Me.groupBox15.Name = "groupBox15"
         Me.groupBox15.Size = New System.Drawing.Size(117, 134)
         Me.groupBox15.TabIndex = 4
@@ -11018,18 +11018,10 @@ Partial Class Form1
         Me.label109.TabIndex = 0
         Me.label109.Text = "Left"
         '
-        'lbOSDLayers
-        '
-        Me.lbOSDLayers.FormattingEnabled = True
-        Me.lbOSDLayers.Location = New System.Drawing.Point(16, 69)
-        Me.lbOSDLayers.Name = "lbOSDLayers"
-        Me.lbOSDLayers.Size = New System.Drawing.Size(139, 95)
-        Me.lbOSDLayers.TabIndex = 3
-        '
         'label108
         '
         Me.label108.AutoSize = True
-        Me.label108.Location = New System.Drawing.Point(13, 53)
+        Me.label108.Location = New System.Drawing.Point(13, 40)
         Me.label108.Name = "label108"
         Me.label108.Size = New System.Drawing.Size(38, 13)
         Me.label108.TabIndex = 2
@@ -12596,15 +12588,23 @@ Partial Class Form1
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = True
         '
-        'cbVideoEffectsGPUEnabled
+        'lbOSDLayers
         '
-        Me.cbVideoEffectsGPUEnabled.AutoSize = True
-        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(16, 16)
-        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
-        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
-        Me.cbVideoEffectsGPUEnabled.TabIndex = 97
-        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
-        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
+        Me.lbOSDLayers.CheckOnClick = True
+        Me.lbOSDLayers.FormattingEnabled = True
+        Me.lbOSDLayers.Location = New System.Drawing.Point(16, 56)
+        Me.lbOSDLayers.Name = "lbOSDLayers"
+        Me.lbOSDLayers.Size = New System.Drawing.Size(139, 124)
+        Me.lbOSDLayers.TabIndex = 17
+        '
+        'btOSDRenderLayers
+        '
+        Me.btOSDRenderLayers.Location = New System.Drawing.Point(161, 184)
+        Me.btOSDRenderLayers.Name = "btOSDRenderLayers"
+        Me.btOSDRenderLayers.Size = New System.Drawing.Size(117, 23)
+        Me.btOSDRenderLayers.TabIndex = 18
+        Me.btOSDRenderLayers.Text = "Render layers"
+        Me.btOSDRenderLayers.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -13203,7 +13203,6 @@ End Sub
     Private WithEvents tabPage7 As System.Windows.Forms.TabPage
     Private WithEvents tabPage28 As System.Windows.Forms.TabPage
     Private WithEvents groupBox19 As System.Windows.Forms.GroupBox
-    Private WithEvents btOSDApplyLayer As System.Windows.Forms.Button
     Private WithEvents tabControl6 As System.Windows.Forms.TabControl
     Private WithEvents tabPage30 As System.Windows.Forms.TabPage
     Private WithEvents btOSDImageDraw As System.Windows.Forms.Button
@@ -13240,7 +13239,6 @@ End Sub
     Private WithEvents label110 As System.Windows.Forms.Label
     Private WithEvents edOSDLayerLeft As System.Windows.Forms.TextBox
     Private WithEvents label109 As System.Windows.Forms.Label
-    Private WithEvents lbOSDLayers As System.Windows.Forms.ListBox
     Private WithEvents label108 As System.Windows.Forms.Label
     Private WithEvents tabPage43 As System.Windows.Forms.TabPage
     Private WithEvents tabControl9 As System.Windows.Forms.TabControl
@@ -14036,4 +14034,6 @@ End Sub
     Private WithEvents cbOSDEnabled As CheckBox
     Private WithEvents btOSDClearLayer As Button
     Friend WithEvents cbVideoEffectsGPUEnabled As CheckBox
+    Private WithEvents lbOSDLayers As CheckedListBox
+    Private WithEvents btOSDRenderLayers As Button
 End Class

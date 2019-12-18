@@ -3318,20 +3318,9 @@ namespace VideoCapture_CSharp_Demo
                 Convert.ToInt32(edOSDLayerLeft.Text),
                 Convert.ToInt32(edOSDLayerTop.Text),
                 Convert.ToInt32(edOSDLayerWidth.Text),
-                Convert.ToInt32(edOSDLayerHeight.Text));
-            lbOSDLayers.Items.Add("layer " + Convert.ToString(lbOSDLayers.Items.Count + 1));
-        }
-
-        private void btOSDApplyLayer_Click(object sender, EventArgs e)
-        {
-            if (lbOSDLayers.SelectedIndex != -1)
-            {
-                VideoCapture1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
-            }
-            else
-            {
-                MessageBox.Show(this, "Please select OSD layer.");
-            }
+                Convert.ToInt32(edOSDLayerHeight.Text),
+                true);
+            lbOSDLayers.Items.Add("layer " + Convert.ToString(lbOSDLayers.Items.Count + 1), CheckState.Checked);
         }
 
         private void btOSDSelectImage_Click(object sender, EventArgs e)
@@ -3408,7 +3397,7 @@ namespace VideoCapture_CSharp_Demo
             if (lbOSDLayers.SelectedIndex != -1)
             {
                 VideoCapture1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, (byte)tbOSDTranspLevel.Value);
-                VideoCapture1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
+                VideoCapture1.OSD_Layers_Render();
             }
             else
             {
@@ -6170,6 +6159,16 @@ namespace VideoCapture_CSharp_Demo
             {
                 MessageBox.Show(this, "Please select OSD layer.");
             }
+        }
+        
+        private void btOSDRenderLayers_Click(object sender, EventArgs e)
+        {
+            VideoCapture1.OSD_Layers_Render();
+        }
+
+        private void lbOSDLayers_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            VideoCapture1.OSD_Layers_Enable(e.Index, e.NewValue == CheckState.Checked);
         }
     }
 }

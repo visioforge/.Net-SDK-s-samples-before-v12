@@ -185,18 +185,13 @@ Public Class Form1
 
     Private Sub btOSDLayerAdd_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDLayerAdd.Click
 
-        MediaPlayer1.OSD_Layers_Create(Convert.ToInt32(edOSDLayerLeft.Text), Convert.ToInt32(edOSDLayerTop.Text), Convert.ToInt32(edOSDLayerWidth.Text), Convert.ToInt32(edOSDLayerHeight.Text))
-        lbOSDLayers.Items.Add("layer " + Convert.ToString(lbOSDLayers.Items.Count + 1))
-
-    End Sub
-
-    Private Sub btOSDApplyLayer_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btOSDApplyLayer.Click
-
-        If (lbOSDLayers.SelectedIndex <> -1) Then
-            MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex)
-        Else
-            MessageBox.Show(Me, "Please select OSD layer.")
-        End If
+        MediaPlayer1.OSD_Layers_Create(
+            Convert.ToInt32(edOSDLayerLeft.Text),
+            Convert.ToInt32(edOSDLayerTop.Text),
+            Convert.ToInt32(edOSDLayerWidth.Text),
+            Convert.ToInt32(edOSDLayerHeight.Text),
+            True)
+        lbOSDLayers.Items.Add("layer " + Convert.ToString(lbOSDLayers.Items.Count + 1), CheckState.Checked)
 
     End Sub
 
@@ -255,7 +250,7 @@ Public Class Form1
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
             MediaPlayer1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, tbOSDTranspLevel.Value)
-            MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex)
+            MediaPlayer1.OSD_Layers_Render()
         Else
             MessageBox.Show(Me, "Please select OSD layer.")
         End If
@@ -3152,6 +3147,14 @@ Public Class Form1
         Else
             MessageBox.Show(Me, "Please select OSD layer.")
         End If
+    End Sub
+
+    Private Sub btOSDRenderLayers_Click(sender As Object, e As EventArgs) Handles btOSDRenderLayers.Click
+        MediaPlayer1.OSD_Layers_Render()
+    End Sub
+
+    Private Sub lbOSDLayers_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles lbOSDLayers.ItemCheck
+        MediaPlayer1.OSD_Layers_Enable(e.Index, e.NewValue = CheckState.Checked)
     End Sub
 End Class
 

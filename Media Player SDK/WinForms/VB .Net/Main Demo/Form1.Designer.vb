@@ -273,6 +273,7 @@ Partial Class Form1
         Me.rbDenoiseMosquito = New System.Windows.Forms.RadioButton()
         Me.cbDenoise = New System.Windows.Forms.CheckBox()
         Me.TabPage50 = New System.Windows.Forms.TabPage()
+        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
         Me.cbGPUBlur = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
@@ -455,15 +456,12 @@ Partial Class Form1
         Me.label381 = New System.Windows.Forms.Label()
         Me.tbVUMeterAmplification = New System.Windows.Forms.TrackBar()
         Me.cbVUMeterPro = New System.Windows.Forms.CheckBox()
-        Me.waveformPainter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter()
-        Me.waveformPainter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter()
-        Me.volumeMeter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
-        Me.volumeMeter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
         Me.tabPage5 = New System.Windows.Forms.TabPage()
+        Me.btOSDRenderLayers = New System.Windows.Forms.Button()
+        Me.lbOSDLayers = New System.Windows.Forms.CheckedListBox()
         Me.cbOSDEnabled = New System.Windows.Forms.CheckBox()
         Me.groupBox19 = New System.Windows.Forms.GroupBox()
         Me.btOSDClearLayer = New System.Windows.Forms.Button()
-        Me.btOSDApplyLayer = New System.Windows.Forms.Button()
         Me.tabControl6 = New System.Windows.Forms.TabControl()
         Me.tabPage30 = New System.Windows.Forms.TabPage()
         Me.btOSDImageDraw = New System.Windows.Forms.Button()
@@ -500,7 +498,6 @@ Partial Class Form1
         Me.label110 = New System.Windows.Forms.Label()
         Me.edOSDLayerLeft = New System.Windows.Forms.TextBox()
         Me.label109 = New System.Windows.Forms.Label()
-        Me.lbOSDLayers = New System.Windows.Forms.ListBox()
         Me.label108 = New System.Windows.Forms.Label()
         Me.tabPage12 = New System.Windows.Forms.TabPage()
         Me.tabControl5 = New System.Windows.Forms.TabControl()
@@ -606,9 +603,12 @@ Partial Class Form1
         Me.edFilenameOrURL = New System.Windows.Forms.TextBox()
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
+        Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
+        Me.waveformPainter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter()
+        Me.waveformPainter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter()
+        Me.volumeMeter2 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
+        Me.volumeMeter1 = New VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -3324,6 +3324,16 @@ Partial Class Form1
         Me.TabPage50.Text = "Effects (GPU)"
         Me.TabPage50.UseVisualStyleBackColor = True
         '
+        'cbVideoEffectsGPUEnabled
+        '
+        Me.cbVideoEffectsGPUEnabled.AutoSize = True
+        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(14, 16)
+        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
+        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
+        Me.cbVideoEffectsGPUEnabled.TabIndex = 113
+        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
+        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
+        '
         'cbGPUOldMovie
         '
         Me.cbGPUOldMovie.AutoSize = True
@@ -5242,55 +5252,14 @@ Partial Class Form1
         Me.cbVUMeterPro.Text = "Enable VU meter Pro"
         Me.cbVUMeterPro.UseVisualStyleBackColor = True
         '
-        'waveformPainter2
-        '
-        Me.waveformPainter2.Boost = 1.0!
-        Me.waveformPainter2.Location = New System.Drawing.Point(16, 244)
-        Me.waveformPainter2.Name = "waveformPainter2"
-        Me.waveformPainter2.Size = New System.Drawing.Size(270, 60)
-        Me.waveformPainter2.TabIndex = 127
-        Me.waveformPainter2.Text = "waveformPainter2"
-        '
-        'waveformPainter1
-        '
-        Me.waveformPainter1.Boost = 1.0!
-        Me.waveformPainter1.Location = New System.Drawing.Point(16, 178)
-        Me.waveformPainter1.Name = "waveformPainter1"
-        Me.waveformPainter1.Size = New System.Drawing.Size(270, 60)
-        Me.waveformPainter1.TabIndex = 126
-        Me.waveformPainter1.Text = "waveformPainter1"
-        '
-        'volumeMeter2
-        '
-        Me.volumeMeter2.Amplitude = 0!
-        Me.volumeMeter2.BackColor = System.Drawing.Color.LightGray
-        Me.volumeMeter2.Boost = 1.0!
-        Me.volumeMeter2.Location = New System.Drawing.Point(54, 46)
-        Me.volumeMeter2.MaxDb = 18.0!
-        Me.volumeMeter2.MinDb = -60.0!
-        Me.volumeMeter2.Name = "volumeMeter2"
-        Me.volumeMeter2.Size = New System.Drawing.Size(22, 126)
-        Me.volumeMeter2.TabIndex = 125
-        '
-        'volumeMeter1
-        '
-        Me.volumeMeter1.Amplitude = 0!
-        Me.volumeMeter1.BackColor = System.Drawing.Color.LightGray
-        Me.volumeMeter1.Boost = 1.0!
-        Me.volumeMeter1.Location = New System.Drawing.Point(26, 46)
-        Me.volumeMeter1.MaxDb = 18.0!
-        Me.volumeMeter1.MinDb = -60.0!
-        Me.volumeMeter1.Name = "volumeMeter1"
-        Me.volumeMeter1.Size = New System.Drawing.Size(22, 126)
-        Me.volumeMeter1.TabIndex = 123
-        '
         'tabPage5
         '
+        Me.tabPage5.Controls.Add(Me.btOSDRenderLayers)
+        Me.tabPage5.Controls.Add(Me.lbOSDLayers)
         Me.tabPage5.Controls.Add(Me.cbOSDEnabled)
         Me.tabPage5.Controls.Add(Me.groupBox19)
         Me.tabPage5.Controls.Add(Me.btOSDClearLayers)
         Me.tabPage5.Controls.Add(Me.groupBox15)
-        Me.tabPage5.Controls.Add(Me.lbOSDLayers)
         Me.tabPage5.Controls.Add(Me.label108)
         Me.tabPage5.Location = New System.Drawing.Point(4, 22)
         Me.tabPage5.Name = "tabPage5"
@@ -5300,22 +5269,39 @@ Partial Class Form1
         Me.tabPage5.Text = "OSD"
         Me.tabPage5.UseVisualStyleBackColor = True
         '
+        'btOSDRenderLayers
+        '
+        Me.btOSDRenderLayers.Location = New System.Drawing.Point(161, 207)
+        Me.btOSDRenderLayers.Name = "btOSDRenderLayers"
+        Me.btOSDRenderLayers.Size = New System.Drawing.Size(125, 23)
+        Me.btOSDRenderLayers.TabIndex = 17
+        Me.btOSDRenderLayers.Text = "Render layers"
+        Me.btOSDRenderLayers.UseVisualStyleBackColor = True
+        '
+        'lbOSDLayers
+        '
+        Me.lbOSDLayers.CheckOnClick = True
+        Me.lbOSDLayers.FormattingEnabled = True
+        Me.lbOSDLayers.Location = New System.Drawing.Point(15, 67)
+        Me.lbOSDLayers.Name = "lbOSDLayers"
+        Me.lbOSDLayers.Size = New System.Drawing.Size(139, 124)
+        Me.lbOSDLayers.TabIndex = 16
+        '
         'cbOSDEnabled
         '
         Me.cbOSDEnabled.AutoSize = True
         Me.cbOSDEnabled.Location = New System.Drawing.Point(15, 12)
         Me.cbOSDEnabled.Name = "cbOSDEnabled"
-        Me.cbOSDEnabled.Size = New System.Drawing.Size(256, 17)
+        Me.cbOSDEnabled.Size = New System.Drawing.Size(251, 17)
         Me.cbOSDEnabled.TabIndex = 15
-        Me.cbOSDEnabled.Text = "Enabled (video renderer should be set to VMR-9)"
+        Me.cbOSDEnabled.Text = "Enabled (should be set before playback started)"
         Me.cbOSDEnabled.UseVisualStyleBackColor = True
         '
         'groupBox19
         '
         Me.groupBox19.Controls.Add(Me.btOSDClearLayer)
-        Me.groupBox19.Controls.Add(Me.btOSDApplyLayer)
         Me.groupBox19.Controls.Add(Me.tabControl6)
-        Me.groupBox19.Location = New System.Drawing.Point(16, 211)
+        Me.groupBox19.Location = New System.Drawing.Point(15, 236)
         Me.groupBox19.Name = "groupBox19"
         Me.groupBox19.Size = New System.Drawing.Size(270, 250)
         Me.groupBox19.TabIndex = 13
@@ -5324,22 +5310,12 @@ Partial Class Form1
         '
         'btOSDClearLayer
         '
-        Me.btOSDClearLayer.Location = New System.Drawing.Point(93, 221)
+        Me.btOSDClearLayer.Location = New System.Drawing.Point(11, 221)
         Me.btOSDClearLayer.Name = "btOSDClearLayer"
         Me.btOSDClearLayer.Size = New System.Drawing.Size(75, 23)
         Me.btOSDClearLayer.TabIndex = 3
         Me.btOSDClearLayer.Text = "Clear"
         Me.btOSDClearLayer.UseVisualStyleBackColor = True
-        '
-        'btOSDApplyLayer
-        '
-        Me.btOSDApplyLayer.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.btOSDApplyLayer.Location = New System.Drawing.Point(11, 221)
-        Me.btOSDApplyLayer.Name = "btOSDApplyLayer"
-        Me.btOSDApplyLayer.Size = New System.Drawing.Size(75, 23)
-        Me.btOSDApplyLayer.TabIndex = 1
-        Me.btOSDApplyLayer.Text = "Apply layer"
-        Me.btOSDApplyLayer.UseVisualStyleBackColor = True
         '
         'tabControl6
         '
@@ -5593,11 +5569,11 @@ Partial Class Form1
         '
         'btOSDClearLayers
         '
-        Me.btOSDClearLayers.Location = New System.Drawing.Point(15, 172)
+        Me.btOSDClearLayers.Location = New System.Drawing.Point(15, 207)
         Me.btOSDClearLayers.Name = "btOSDClearLayers"
         Me.btOSDClearLayers.Size = New System.Drawing.Size(140, 23)
         Me.btOSDClearLayers.TabIndex = 12
-        Me.btOSDClearLayers.Text = "Clear layers"
+        Me.btOSDClearLayers.Text = "Remove all layers"
         Me.btOSDClearLayers.UseVisualStyleBackColor = True
         '
         'groupBox15
@@ -5695,14 +5671,6 @@ Partial Class Form1
         Me.label109.Size = New System.Drawing.Size(25, 13)
         Me.label109.TabIndex = 0
         Me.label109.Text = "Left"
-        '
-        'lbOSDLayers
-        '
-        Me.lbOSDLayers.FormattingEnabled = True
-        Me.lbOSDLayers.Location = New System.Drawing.Point(16, 67)
-        Me.lbOSDLayers.Name = "lbOSDLayers"
-        Me.lbOSDLayers.Size = New System.Drawing.Size(139, 95)
-        Me.lbOSDLayers.TabIndex = 10
         '
         'label108
         '
@@ -6745,6 +6713,17 @@ Partial Class Form1
         Me.linkLabel1.TabStop = True
         Me.linkLabel1.Text = "Watch video tutorials!"
         '
+        'cbRunAsync
+        '
+        Me.cbRunAsync.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.cbRunAsync.AutoSize = True
+        Me.cbRunAsync.Location = New System.Drawing.Point(695, 124)
+        Me.cbRunAsync.Name = "cbRunAsync"
+        Me.cbRunAsync.Size = New System.Drawing.Size(55, 17)
+        Me.cbRunAsync.TabIndex = 35
+        Me.cbRunAsync.Text = "Async"
+        Me.cbRunAsync.UseVisualStyleBackColor = True
+        '
         'MediaPlayer1
         '
         Me.MediaPlayer1.Audio_Channel_Mapper = Nothing
@@ -6824,26 +6803,47 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = False
         Me.MediaPlayer1.Video_Stream_Index = 0
         '
-        'cbRunAsync
+        'waveformPainter2
         '
-        Me.cbRunAsync.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.cbRunAsync.AutoSize = True
-        Me.cbRunAsync.Location = New System.Drawing.Point(695, 124)
-        Me.cbRunAsync.Name = "cbRunAsync"
-        Me.cbRunAsync.Size = New System.Drawing.Size(55, 17)
-        Me.cbRunAsync.TabIndex = 35
-        Me.cbRunAsync.Text = "Async"
-        Me.cbRunAsync.UseVisualStyleBackColor = True
+        Me.waveformPainter2.Boost = 1.0!
+        Me.waveformPainter2.Location = New System.Drawing.Point(16, 244)
+        Me.waveformPainter2.Name = "waveformPainter2"
+        Me.waveformPainter2.Size = New System.Drawing.Size(270, 60)
+        Me.waveformPainter2.TabIndex = 127
+        Me.waveformPainter2.Text = "waveformPainter2"
         '
-        'cbVideoEffectsGPUEnabled
+        'waveformPainter1
         '
-        Me.cbVideoEffectsGPUEnabled.AutoSize = True
-        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(14, 16)
-        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
-        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
-        Me.cbVideoEffectsGPUEnabled.TabIndex = 113
-        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
-        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
+        Me.waveformPainter1.Boost = 1.0!
+        Me.waveformPainter1.Location = New System.Drawing.Point(16, 178)
+        Me.waveformPainter1.Name = "waveformPainter1"
+        Me.waveformPainter1.Size = New System.Drawing.Size(270, 60)
+        Me.waveformPainter1.TabIndex = 126
+        Me.waveformPainter1.Text = "waveformPainter1"
+        '
+        'volumeMeter2
+        '
+        Me.volumeMeter2.Amplitude = 0!
+        Me.volumeMeter2.BackColor = System.Drawing.Color.LightGray
+        Me.volumeMeter2.Boost = 1.0!
+        Me.volumeMeter2.Location = New System.Drawing.Point(54, 46)
+        Me.volumeMeter2.MaxDb = 18.0!
+        Me.volumeMeter2.MinDb = -60.0!
+        Me.volumeMeter2.Name = "volumeMeter2"
+        Me.volumeMeter2.Size = New System.Drawing.Size(22, 126)
+        Me.volumeMeter2.TabIndex = 125
+        '
+        'volumeMeter1
+        '
+        Me.volumeMeter1.Amplitude = 0!
+        Me.volumeMeter1.BackColor = System.Drawing.Color.LightGray
+        Me.volumeMeter1.Boost = 1.0!
+        Me.volumeMeter1.Location = New System.Drawing.Point(26, 46)
+        Me.volumeMeter1.MaxDb = 18.0!
+        Me.volumeMeter1.MinDb = -60.0!
+        Me.volumeMeter1.Name = "volumeMeter1"
+        Me.volumeMeter1.Size = New System.Drawing.Size(22, 126)
+        Me.volumeMeter1.TabIndex = 123
         '
         'Form1
         '
@@ -7295,7 +7295,6 @@ End Sub
     Private WithEvents cbAudioEffectsEnabled As System.Windows.Forms.CheckBox
     Private WithEvents tabPage5 As System.Windows.Forms.TabPage
     Private WithEvents groupBox19 As System.Windows.Forms.GroupBox
-    Private WithEvents btOSDApplyLayer As System.Windows.Forms.Button
     Private WithEvents tabControl6 As System.Windows.Forms.TabControl
     Private WithEvents tabPage30 As System.Windows.Forms.TabPage
     Private WithEvents btOSDImageDraw As System.Windows.Forms.Button
@@ -7332,7 +7331,6 @@ End Sub
     Private WithEvents label110 As System.Windows.Forms.Label
     Private WithEvents edOSDLayerLeft As System.Windows.Forms.TextBox
     Private WithEvents label109 As System.Windows.Forms.Label
-    Private WithEvents lbOSDLayers As System.Windows.Forms.ListBox
     Private WithEvents label108 As System.Windows.Forms.Label
     Private WithEvents tabPage12 As System.Windows.Forms.TabPage
     Private WithEvents tabPage13 As System.Windows.Forms.TabPage
@@ -7659,4 +7657,6 @@ End Sub
     Private WithEvents cbOSDEnabled As CheckBox
     Private WithEvents btOSDClearLayer As Button
     Private WithEvents cbVideoEffectsGPUEnabled As CheckBox
+    Private WithEvents lbOSDLayers As CheckedListBox
+    Private WithEvents btOSDRenderLayers As Button
 End Class

@@ -151,20 +151,9 @@ namespace Media_Player_Demo
                 Convert.ToInt32(edOSDLayerLeft.Text),
                 Convert.ToInt32(edOSDLayerTop.Text),
                 Convert.ToInt32(edOSDLayerWidth.Text),
-                Convert.ToInt32(edOSDLayerHeight.Text));
-            lbOSDLayers.Items.Add("layer " + Convert.ToString(lbOSDLayers.Items.Count + 1));
-        }
-
-        private void btOSDApplyLayer_Click(object sender, EventArgs e)
-        {
-            if (lbOSDLayers.SelectedIndex != -1)
-            {
-                MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
-            }
-            else
-            {
-                MessageBox.Show(this, "Please select OSD layer.");
-            }
+                Convert.ToInt32(edOSDLayerHeight.Text),
+                true);
+            lbOSDLayers.Items.Add("layer " + Convert.ToString(lbOSDLayers.Items.Count + 1), CheckState.Checked);
         }
 
         private void btOSDSelectImage_Click(object sender, EventArgs e)
@@ -185,6 +174,12 @@ namespace Media_Player_Demo
 
         private void btOSDImageDraw_Click(object sender, EventArgs e)
         {
+            if (!File.Exists(edOSDImageFilename.Text))
+            {
+                MessageBox.Show(this, $"File {edOSDImageFilename.Text} not found.");
+                return;
+            }
+
             if (lbOSDLayers.SelectedIndex != -1)
             {
                 if (cbOSDImageTranspColor.Checked)
@@ -249,12 +244,17 @@ namespace Media_Player_Demo
             if (lbOSDLayers.SelectedIndex != -1)
             {
                 MediaPlayer1.OSD_Layers_SetTransparency(lbOSDLayers.SelectedIndex, (byte)tbOSDTranspLevel.Value);
-                MediaPlayer1.OSD_Layers_Apply(lbOSDLayers.SelectedIndex);
+                MediaPlayer1.OSD_Layers_Render();
             }
             else
             {
                 MessageBox.Show(this, "Please select OSD layer.");
             }
+        }
+
+        private void btOSDRenderLayers_Click(object sender, EventArgs e)
+        {
+            MediaPlayer1.OSD_Layers_Render();
         }
 
         private void btSelectScreenshotsFolder_Click(object sender, EventArgs e)
@@ -3304,6 +3304,11 @@ namespace Media_Player_Demo
             {
                 MessageBox.Show(this, "Please select OSD layer.");
             }
+        }
+
+        private void lbOSDLayers_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            MediaPlayer1.OSD_Layers_Enable(e.Index, e.NewValue == CheckState.Checked);
         }
     }
 }
