@@ -32,7 +32,7 @@ namespace Media_Player_Demo
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage20 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -97,6 +97,7 @@ namespace Media_Player_Demo
             this.label394 = new System.Windows.Forms.Label();
             this.btFullScreen = new System.Windows.Forms.Button();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.btZoomReset = new System.Windows.Forms.Button();
             this.btZoomShiftRight = new System.Windows.Forms.Button();
             this.btZoomShiftLeft = new System.Windows.Forms.Button();
             this.btZoomOut = new System.Windows.Forms.Button();
@@ -1476,6 +1477,7 @@ namespace Media_Player_Demo
             // 
             // groupBox28
             // 
+            this.groupBox28.Controls.Add(this.btZoomReset);
             this.groupBox28.Controls.Add(this.btZoomShiftRight);
             this.groupBox28.Controls.Add(this.btZoomShiftLeft);
             this.groupBox28.Controls.Add(this.btZoomOut);
@@ -1484,10 +1486,20 @@ namespace Media_Player_Demo
             this.groupBox28.Controls.Add(this.btZoomShiftUp);
             this.groupBox28.Location = new System.Drawing.Point(16, 318);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(119, 104);
+            this.groupBox28.Size = new System.Drawing.Size(119, 130);
             this.groupBox28.TabIndex = 30;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Zoom";
+            // 
+            // btZoomReset
+            // 
+            this.btZoomReset.Location = new System.Drawing.Point(35, 101);
+            this.btZoomReset.Name = "btZoomReset";
+            this.btZoomReset.Size = new System.Drawing.Size(50, 23);
+            this.btZoomReset.TabIndex = 6;
+            this.btZoomReset.Text = "Reset";
+            this.btZoomReset.UseVisualStyleBackColor = true;
+            this.btZoomReset.Click += new System.EventHandler(this.btZoomReset_Click);
             // 
             // btZoomShiftRight
             // 
@@ -1531,7 +1543,7 @@ namespace Media_Player_Demo
             // 
             // btZoomShiftDown
             // 
-            this.btZoomShiftDown.Location = new System.Drawing.Point(34, 69);
+            this.btZoomShiftDown.Location = new System.Drawing.Point(34, 70);
             this.btZoomShiftDown.Name = "btZoomShiftDown";
             this.btZoomShiftDown.Size = new System.Drawing.Size(51, 23);
             this.btZoomShiftDown.TabIndex = 1;
@@ -7134,23 +7146,23 @@ namespace Media_Player_Demo
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -7996,5 +8008,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbVideoEffectsGPUEnabled;
         private System.Windows.Forms.CheckedListBox lbOSDLayers;
         private System.Windows.Forms.Button btOSDRenderLayers;
+        private System.Windows.Forms.Button btZoomReset;
     }
 }

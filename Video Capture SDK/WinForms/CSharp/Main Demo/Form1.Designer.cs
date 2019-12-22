@@ -434,6 +434,7 @@ namespace VideoCapture_CSharp_Demo
             this.lbOSDLayers = new System.Windows.Forms.CheckedListBox();
             this.cbOSDEnabled = new System.Windows.Forms.CheckBox();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.btOSDClearLayer = new System.Windows.Forms.Button();
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage30 = new System.Windows.Forms.TabPage();
             this.btOSDImageDraw = new System.Windows.Forms.Button();
@@ -1126,7 +1127,7 @@ namespace VideoCapture_CSharp_Demo
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
-            this.btOSDClearLayer = new System.Windows.Forms.Button();
+            this.btZoomReset = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -5578,6 +5579,16 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox19.TabIndex = 6;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "Selected layer";
+            // 
+            // btOSDClearLayer
+            // 
+            this.btOSDClearLayer.Location = new System.Drawing.Point(6, 221);
+            this.btOSDClearLayer.Name = "btOSDClearLayer";
+            this.btOSDClearLayer.Size = new System.Drawing.Size(91, 23);
+            this.btOSDClearLayer.TabIndex = 3;
+            this.btOSDClearLayer.Text = "Clear layer";
+            this.btOSDClearLayer.UseVisualStyleBackColor = true;
+            this.btOSDClearLayer.Click += new System.EventHandler(this.btOSDClearLayer_Click);
             // 
             // tabControl6
             // 
@@ -11955,7 +11966,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // btFullScreen
             // 
-            this.btFullScreen.Location = new System.Drawing.Point(299, 212);
+            this.btFullScreen.Location = new System.Drawing.Point(164, 168);
             this.btFullScreen.Name = "btFullScreen";
             this.btFullScreen.Size = new System.Drawing.Size(119, 23);
             this.btFullScreen.TabIndex = 26;
@@ -11965,6 +11976,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // groupBox28
             // 
+            this.groupBox28.Controls.Add(this.btZoomReset);
             this.groupBox28.Controls.Add(this.btZoomShiftRight);
             this.groupBox28.Controls.Add(this.btZoomShiftLeft);
             this.groupBox28.Controls.Add(this.btZoomOut);
@@ -11973,7 +11985,7 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox28.Controls.Add(this.btZoomShiftUp);
             this.groupBox28.Location = new System.Drawing.Point(299, 99);
             this.groupBox28.Name = "groupBox28";
-            this.groupBox28.Size = new System.Drawing.Size(119, 104);
+            this.groupBox28.Size = new System.Drawing.Size(119, 129);
             this.groupBox28.TabIndex = 25;
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Zoom";
@@ -13021,15 +13033,15 @@ namespace VideoCapture_CSharp_Demo
             this.cbRunAsync.Text = "Async";
             this.cbRunAsync.UseVisualStyleBackColor = true;
             // 
-            // btOSDClearLayer
+            // btZoomReset
             // 
-            this.btOSDClearLayer.Location = new System.Drawing.Point(6, 221);
-            this.btOSDClearLayer.Name = "btOSDClearLayer";
-            this.btOSDClearLayer.Size = new System.Drawing.Size(91, 23);
-            this.btOSDClearLayer.TabIndex = 3;
-            this.btOSDClearLayer.Text = "Clear layer";
-            this.btOSDClearLayer.UseVisualStyleBackColor = true;
-            this.btOSDClearLayer.Click += new System.EventHandler(this.btOSDClearLayer_Click);
+            this.btZoomReset.Location = new System.Drawing.Point(34, 98);
+            this.btZoomReset.Name = "btZoomReset";
+            this.btZoomReset.Size = new System.Drawing.Size(51, 23);
+            this.btZoomReset.TabIndex = 7;
+            this.btZoomReset.Text = "Reset";
+            this.btZoomReset.UseVisualStyleBackColor = true;
+            this.btZoomReset.Click += new System.EventHandler(this.btZoomReset_Click);
             // 
             // Form1
             // 
@@ -14457,6 +14469,7 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.CheckedListBox lbOSDLayers;
         private System.Windows.Forms.Button btOSDRenderLayers;
         private System.Windows.Forms.Button btOSDClearLayer;
+        internal System.Windows.Forms.Button btZoomReset;
     }
 }
 

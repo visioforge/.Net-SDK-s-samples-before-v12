@@ -214,9 +214,9 @@ Public Class Form1
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
             If (cbOSDImageTranspColor.Checked) Then
-                MediaPlayer1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), True, pnOSDColorKey.BackColor)
+                MediaPlayer1.OSD_Layers_Draw_Image(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), True, pnOSDColorKey.BackColor)
             Else
-                MediaPlayer1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), False, Color.Empty)
+                MediaPlayer1.OSD_Layers_Draw_Image(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), False, Color.Empty)
             End If
         Else
             MessageBox.Show(Me, "Please select OSD layer.")
@@ -1469,45 +1469,40 @@ Public Class Form1
     End Sub
 
     Private Sub btZoomIn_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomIn.Click
-
-        MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio + 10
+        MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio + 5
         MediaPlayer1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomOut_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomOut.Click
-
-        MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio - 10
+        MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio - 5
         MediaPlayer1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftDown_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftDown.Click
-
-        MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY - 10
+        MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY - 2
         MediaPlayer1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftLeft_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftLeft.Click
-
-        MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX - 10
+        MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX - 2
         MediaPlayer1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftRight_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftRight.Click
-
-        MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX + 10
+        MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX + 2
         MediaPlayer1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftUp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftUp.Click
-
-        MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY + 10
+        MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY + 2
         MediaPlayer1.Video_Renderer_Update()
+    End Sub
 
+    Private Sub btZoomReset_Click(sender As Object, e As EventArgs) Handles btZoomReset.Click
+        MediaPlayer1.Video_Renderer.Zoom_Ratio = 0
+        MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0
+        MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0
+        MediaPlayer1.Video_Renderer_Update()
     End Sub
 
     Private Sub cbAudioStream1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudioStream1.CheckedChanged
@@ -3156,6 +3151,7 @@ Public Class Form1
     Private Sub lbOSDLayers_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles lbOSDLayers.ItemCheck
         MediaPlayer1.OSD_Layers_Enable(e.Index, e.NewValue = CheckState.Checked)
     End Sub
+    
 End Class
 
 ' ReSharper restore InconsistentNaming

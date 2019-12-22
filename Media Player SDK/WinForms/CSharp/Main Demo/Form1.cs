@@ -184,7 +184,7 @@ namespace Media_Player_Demo
             {
                 if (cbOSDImageTranspColor.Checked)
                 {
-                    MediaPlayer1.OSD_Layers_Draw_ImageFromFile(
+                    MediaPlayer1.OSD_Layers_Draw_Image(
                         lbOSDLayers.SelectedIndex,
                         edOSDImageFilename.Text,
                         Convert.ToInt32(edOSDImageLeft.Text),
@@ -194,7 +194,7 @@ namespace Media_Player_Demo
                 }
                 else
                 {
-                    MediaPlayer1.OSD_Layers_Draw_ImageFromFile(
+                    MediaPlayer1.OSD_Layers_Draw_Image(
                         lbOSDLayers.SelectedIndex,
                         edOSDImageFilename.Text,
                         Convert.ToInt32(edOSDImageLeft.Text),
@@ -1445,37 +1445,45 @@ namespace Media_Player_Demo
 
         private void btZoomIn_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio + 10;
+            MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio + 5;
             MediaPlayer1.Video_Renderer_Update();
         }
 
         private void btZoomOut_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio - 10;
+            MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio - 5;
             MediaPlayer1.Video_Renderer_Update();
         }
 
         private void btZoomShiftDown_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY - 10;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY - 2;
             MediaPlayer1.Video_Renderer_Update();
         }
 
         private void btZoomShiftLeft_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX - 10;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX - 2;
             MediaPlayer1.Video_Renderer_Update();
         }
 
         private void btZoomShiftRight_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX + 10;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX + 2;
             MediaPlayer1.Video_Renderer_Update();
         }
 
         private void btZoomShiftUp_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY + 10;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY + 2;
+            MediaPlayer1.Video_Renderer_Update();
+        }
+
+        private void btZoomReset_Click(object sender, EventArgs e)
+        {
+            MediaPlayer1.Video_Renderer.Zoom_Ratio = 0;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0;
+            MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0;
             MediaPlayer1.Video_Renderer_Update();
         }
 

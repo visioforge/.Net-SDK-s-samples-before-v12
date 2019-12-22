@@ -2601,9 +2601,9 @@ Public Class Form1
 
         If (lbOSDLayers.SelectedIndex <> -1) Then
             If (cbOSDImageTranspColor.Checked) Then
-                VideoCapture1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), True, pnOSDColorKey.BackColor)
+                VideoCapture1.OSD_Layers_Draw_Image(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), True, pnOSDColorKey.BackColor)
             Else
-                VideoCapture1.OSD_Layers_Draw_ImageFromFile(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), False, Color.Black)
+                VideoCapture1.OSD_Layers_Draw_Image(lbOSDLayers.SelectedIndex, edOSDImageFilename.Text, Convert.ToInt32(edOSDImageLeft.Text), Convert.ToInt32(edOSDImageTop.Text), False, Color.Black)
             End If
         Else
             MessageBox.Show(Me, "Please select OSD layer.")
@@ -3005,45 +3005,40 @@ Public Class Form1
     End Sub
 
     Private Sub btZoomIn_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomIn.Click
-
         VideoCapture1.Video_Renderer.Zoom_Ratio = VideoCapture1.Video_Renderer.Zoom_Ratio + 10
         VideoCapture1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomOut_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomOut.Click
-
         VideoCapture1.Video_Renderer.Zoom_Ratio = VideoCapture1.Video_Renderer.Zoom_Ratio - 10
         VideoCapture1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftDown_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftDown.Click
-
         VideoCapture1.Video_Renderer.Zoom_ShiftY = VideoCapture1.Video_Renderer.Zoom_ShiftY - 10
         VideoCapture1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftLeft_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftLeft.Click
-
         VideoCapture1.Video_Renderer.Zoom_ShiftX = VideoCapture1.Video_Renderer.Zoom_ShiftX - 10
         VideoCapture1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftRight_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftRight.Click
-
         VideoCapture1.Video_Renderer.Zoom_ShiftX = VideoCapture1.Video_Renderer.Zoom_ShiftX + 10
         VideoCapture1.Video_Renderer_Update()
-
     End Sub
 
     Private Sub btZoomShiftUp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftUp.Click
-
         VideoCapture1.Video_Renderer.Zoom_ShiftY = VideoCapture1.Video_Renderer.Zoom_ShiftY + 10
         VideoCapture1.Video_Renderer_Update()
+    End Sub
 
+    Private Sub btZoomReset_Click(sender As Object, e As EventArgs) Handles btZoomReset.Click
+        VideoCapture1.Video_Renderer.Zoom_Ratio = 0
+        VideoCapture1.Video_Renderer.Zoom_ShiftX = 0
+        VideoCapture1.Video_Renderer.Zoom_ShiftY = 0
+        VideoCapture1.Video_Renderer_Update()
     End Sub
 
     Private Sub cbAudAmplifyEnabled_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudAmplifyEnabled.CheckedChanged
@@ -5209,6 +5204,7 @@ Public Class Form1
     Private Sub lbOSDLayers_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles lbOSDLayers.ItemCheck
         VideoCapture1.OSD_Layers_Enable(e.Index, e.NewValue = CheckState.Checked)
     End Sub
+
 End Class
 
 ' ReSharper restore InconsistentNaming
