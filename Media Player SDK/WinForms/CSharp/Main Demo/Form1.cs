@@ -3318,6 +3318,14 @@ namespace Media_Player_Demo
         {
             MediaPlayer1.OSD_Layers_Enable(e.Index, e.NewValue == CheckState.Checked);
         }
+
+        private void btEncryptionOpenFile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                edEncryptionKeyFile.Text = openFileDialog1.FileName;
+            }
+        }
     }
 }
 

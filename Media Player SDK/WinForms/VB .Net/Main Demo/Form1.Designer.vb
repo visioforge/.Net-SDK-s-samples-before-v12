@@ -138,6 +138,7 @@ Partial Class Form1
         Me.label394 = New System.Windows.Forms.Label()
         Me.btFullScreen = New System.Windows.Forms.Button()
         Me.groupBox28 = New System.Windows.Forms.GroupBox()
+        Me.btZoomReset = New System.Windows.Forms.Button()
         Me.btZoomShiftRight = New System.Windows.Forms.Button()
         Me.btZoomShiftLeft = New System.Windows.Forms.Button()
         Me.btZoomOut = New System.Windows.Forms.Button()
@@ -609,7 +610,6 @@ Partial Class Form1
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
-        Me.btZoomReset = New System.Windows.Forms.Button()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -1923,6 +1923,15 @@ Partial Class Form1
         Me.groupBox28.TabIndex = 45
         Me.groupBox28.TabStop = false
         Me.groupBox28.Text = "Zoom"
+        '
+        'btZoomReset
+        '
+        Me.btZoomReset.Location = New System.Drawing.Point(34, 99)
+        Me.btZoomReset.Name = "btZoomReset"
+        Me.btZoomReset.Size = New System.Drawing.Size(51, 23)
+        Me.btZoomReset.TabIndex = 6
+        Me.btZoomReset.Text = "Reset"
+        Me.btZoomReset.UseVisualStyleBackColor = true
         '
         'btZoomShiftRight
         '
@@ -6846,15 +6855,6 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false
         Me.MediaPlayer1.Video_Stream_Index = 0
-        '
-        'btZoomReset
-        '
-        Me.btZoomReset.Location = New System.Drawing.Point(34, 99)
-        Me.btZoomReset.Name = "btZoomReset"
-        Me.btZoomReset.Size = New System.Drawing.Size(51, 23)
-        Me.btZoomReset.TabIndex = 6
-        Me.btZoomReset.Text = "Reset"
-        Me.btZoomReset.UseVisualStyleBackColor = true
         '
         'Form1
         '

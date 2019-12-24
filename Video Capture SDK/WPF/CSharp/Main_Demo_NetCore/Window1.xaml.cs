@@ -83,7 +83,9 @@ namespace Main_Demo
 
         private GIFSettingsDialog gifSettingsDialog;
 
+#if !NETCOREAPP
         private ONVIFControl onvifControl;
+#endif
 
         private ONVIFPTZRanges onvifPtzRanges;
 
@@ -1027,6 +1029,7 @@ namespace Main_Demo
             VideoCapture1.Debug_Mode = cbDebugMode.IsChecked == true;
             VideoCapture1.Debug_Telemetry = cbTelemetry.IsChecked == true;
 
+#if !NETCOREAPP
             if (onvifControl != null)
             {
                 onvifControl.Disconnect();
@@ -1035,6 +1038,7 @@ namespace Main_Demo
 
                 btONVIFConnect.Content = "Connect";
             }
+#endif
 
             zoom = 1.0;
             zoomShiftX = 0;
@@ -3733,7 +3737,7 @@ namespace Main_Demo
             VideoCapture1.Barcode_Reader_Enabled = true;
         }
 
-        #region Barcode detector
+#region Barcode detector
 
         private delegate void BarcodeDelegate(BarcodeEventArgs value);
 
@@ -3754,7 +3758,7 @@ namespace Main_Demo
             Dispatcher.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
-        #endregion
+#endregion
 
         private void btAddAdditionalAudioSource_Click(object sender, RoutedEventArgs e)
         {
@@ -3869,7 +3873,7 @@ namespace Main_Demo
             Process.Start(startInfo);
         }
 
-        #region Full screen
+#region Full screen
 
         private bool fullScreen;
 
@@ -3965,9 +3969,9 @@ namespace Main_Demo
             }
         }
 
-        #endregion
+#endregion
 
-        #region VU meter Pro
+#region VU meter Pro
 
         private delegate void AudioVUMeterProMaximumCalculatedDelegate(VUMeterMaxSampleEventArgs e);
 
@@ -4026,7 +4030,7 @@ namespace Main_Demo
             volumeMeter2.Boost = (float)tbVUMeterBoost.Value / 10.0F;
         }
 
-        #endregion
+#endregion
 
         private void cbLiveRotation_Checked(object sender, RoutedEventArgs e)
         {
@@ -4833,6 +4837,7 @@ namespace Main_Demo
 
         private void btONVIFConnect_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (btONVIFConnect.Content.ToString() == "Connect")
             {
                 btONVIFConnect.Content = "Disconnect";
@@ -4897,10 +4902,12 @@ namespace Main_Demo
                     onvifControl = null;
                 }
             }
+#endif
         }
 
         private void btONVIFRight_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -4915,15 +4922,19 @@ namespace Main_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFPTZSetDefault_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             onvifControl?.PTZ_SetAbsolute(0, 0, 0);
+#endif
         }
 
         private void btONVIFLeft_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -4938,10 +4949,12 @@ namespace Main_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFUp_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -4956,10 +4969,12 @@ namespace Main_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFDown_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -4974,10 +4989,12 @@ namespace Main_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFZoomIn_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -4992,10 +5009,12 @@ namespace Main_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void btONVIFZoomOut_Click(object sender, RoutedEventArgs e)
         {
+#if !NETCOREAPP
             if (onvifControl == null || onvifPtzRanges == null)
             {
                 return;
@@ -5010,6 +5029,7 @@ namespace Main_Demo
             }
 
             onvifControl?.PTZ_SetAbsolute(onvifPtzX, onvifPtzY, onvifPtzZoom);
+#endif
         }
 
         private void pnPIPChromaKeyColor_MouseDown(object sender, MouseButtonEventArgs e)

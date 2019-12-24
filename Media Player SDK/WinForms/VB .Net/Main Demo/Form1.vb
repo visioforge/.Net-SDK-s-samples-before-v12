@@ -3151,7 +3151,12 @@ Public Class Form1
     Private Sub lbOSDLayers_ItemCheck(sender As Object, e As ItemCheckEventArgs) Handles lbOSDLayers.ItemCheck
         MediaPlayer1.OSD_Layers_Enable(e.Index, e.NewValue = CheckState.Checked)
     End Sub
-    
+
+    Private Sub btEncryptionOpenFile_Click(sender As Object, e As EventArgs) Handles btEncryptionOpenFile.Click
+        If (openFileDialog1.ShowDialog(Me) = DialogResult.OK) Then
+            edEncryptionKeyFile.Text = openFileDialog1.FileName
+        End If
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming
