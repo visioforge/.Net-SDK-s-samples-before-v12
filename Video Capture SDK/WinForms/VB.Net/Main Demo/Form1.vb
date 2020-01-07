@@ -7,6 +7,7 @@ Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
 Imports System.Runtime.InteropServices
 Imports VisioForge.Controls.UI
+Imports VisioForge.Controls.UI.Dialogs
 Imports VisioForge.Controls.UI.Dialogs.OutputFormats
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types.OutputFormat
@@ -84,6 +85,8 @@ Public Class Form1
     ReadOnly audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
     
     private readonly tmRecording as Timers.Timer = new Timers.Timer(1000)
+
+    private WithEvents windowCaptureForm as WindowCaptureForm
     
     Private Sub AddAudioEffects()
 
@@ -1948,34 +1951,30 @@ Public Class Form1
     End Function
 
     Private Function SelectScreenSource() As ScreenCaptureSourceSettings
-
         Dim settings As ScreenCaptureSourceSettings = New ScreenCaptureSourceSettings()
 
         If (rbScreenCaptureWindow.Checked) Then
-
             settings.Mode = VFScreenCaptureMode.Window
 
             settings.WindowHandle = IntPtr.Zero
 
             Try
+                If (windowCaptureForm Is Nothing) Then
+                    MessageBox.Show("Window for screen capture is not specified.")
+                    Return Nothing
+                End If
 
-                settings.WindowHandle = FindWindowByClass(edScreenCaptureWindowName.Text, IntPtr.Zero)
-
+                settings.WindowHandle = windowCaptureForm.CapturedWindowHandle
             Catch
 
             End Try
 
             If (settings.WindowHandle = IntPtr.Zero) Then
-
                 MessageBox.Show("Incorrect window title for screen capture.")
                 Return Nothing
-
             End If
-
         Else
-
             settings.Mode = VFScreenCaptureMode.Screen
-
         End If
 
         settings.FrameRate = Convert.ToDouble(edScreenFrameRate.Text)
@@ -5205,6 +5204,20 @@ Public Class Form1
         VideoCapture1.OSD_Layers_Enable(e.Index, e.NewValue = CheckState.Checked)
     End Sub
 
+    Private Sub btScreenSourceWindowSelect_Click(sender As Object, e As EventArgs) Handles btScreenSourceWindowSelect.Click
+        If (windowCaptureForm Is Nothing) Then
+            windowCaptureForm = New WindowCaptureForm()
+        End If
+
+        windowCaptureForm.StartCapture()
+    End Sub
+
+    Private Sub WindowCaptureForm_OnCaptureHotkey(sender As Object, e As WindowCaptureEventArgs) Handles windowCaptureForm.OnCaptureHotkey
+        windowCaptureForm.StopCapture()
+        windowCaptureForm.Hide()
+
+        lbScreenSourceWindowText.Text = e.Caption
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

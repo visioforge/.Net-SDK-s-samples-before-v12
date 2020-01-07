@@ -3,6 +3,8 @@
 Imports System.IO
 Imports System.Linq
 Imports System.Runtime.InteropServices
+Imports VisioForge.Controls.UI
+Imports VisioForge.Controls.UI.Dialogs
 Imports VisioForge.Controls.UI.Dialogs.OutputFormats
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types
@@ -39,13 +41,9 @@ Public Class Form1
 
     Dim screenshotSaveDialog As SaveFileDialog
 
-    Private ReadOnly tmRecording As Timers.Timer = New Timers.Timer(1000)
+    private WithEvents windowCaptureForm as WindowCaptureForm
 
-    <DllImport("user32.dll", EntryPoint:="FindWindow", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Private Shared Function FindWindowByClass(
-     ByVal lpClassName As String,
-     ByVal zero As IntPtr) As IntPtr
-    End Function
+    Private ReadOnly tmRecording As Timers.Timer = New Timers.Timer(1000)
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
 
@@ -299,7 +297,12 @@ Public Class Form1
             source.WindowHandle = IntPtr.Zero
 
             Try
-                source.WindowHandle = FindWindowByClass(edScreenCaptureWindowName.Text, IntPtr.Zero)
+                If (windowCaptureForm Is Nothing) Then
+                    MessageBox.Show("Window for screen capture is not specified.")
+                    Return Nothing
+                End If
+
+                source.WindowHandle = windowCaptureForm.CapturedWindowHandle
             Catch
             End Try
 
@@ -471,7 +474,7 @@ Public Class Form1
 
     Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles llVideoTutorials.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub
@@ -867,7 +870,20 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub btScreenSourceWindowSelect_Click(sender As Object, e As EventArgs) Handles btScreenSourceWindowSelect.Click
+        If (windowCaptureForm Is Nothing) Then
+            windowCaptureForm = New WindowCaptureForm()
+        End If
 
+        windowCaptureForm.StartCapture()
+    End Sub
+
+    Private Sub WindowCaptureForm_OnCaptureHotkey(sender As Object, e As WindowCaptureEventArgs) Handles windowCaptureForm.OnCaptureHotkey
+        windowCaptureForm.StopCapture()
+        windowCaptureForm.Hide()
+
+        lbScreenSourceWindowText.Text = e.Caption
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming

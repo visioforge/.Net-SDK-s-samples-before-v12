@@ -232,15 +232,9 @@ Partial Class Form1
         Me.label180 = New System.Windows.Forms.Label()
         Me.tabPage47 = New System.Windows.Forms.TabPage()
         Me.cbScreenCapture_DesktopDuplication = New System.Windows.Forms.CheckBox()
-        Me.label294 = New System.Windows.Forms.Label()
-        Me.edScreenCaptureWindowName = New System.Windows.Forms.TextBox()
-        Me.rbScreenCaptureWindow = New System.Windows.Forms.RadioButton()
         Me.cbScreenCaptureDisplayIndex = New System.Windows.Forms.ComboBox()
         Me.label93 = New System.Windows.Forms.Label()
         Me.btScreenCaptureUpdate = New System.Windows.Forms.Button()
-        Me.label124 = New System.Windows.Forms.Label()
-        Me.label123 = New System.Windows.Forms.Label()
-        Me.label122 = New System.Windows.Forms.Label()
         Me.cbScreenCapture_GrabMouseCursor = New System.Windows.Forms.CheckBox()
         Me.label79 = New System.Windows.Forms.Label()
         Me.edScreenFrameRate = New System.Windows.Forms.TextBox()
@@ -501,6 +495,7 @@ Partial Class Form1
         Me.label394 = New System.Windows.Forms.Label()
         Me.btFullScreen = New System.Windows.Forms.Button()
         Me.groupBox28 = New System.Windows.Forms.GroupBox()
+        Me.btZoomReset = New System.Windows.Forms.Button()
         Me.btZoomShiftRight = New System.Windows.Forms.Button()
         Me.btZoomShiftLeft = New System.Windows.Forms.Button()
         Me.btZoomOut = New System.Windows.Forms.Button()
@@ -1117,7 +1112,11 @@ Partial Class Form1
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.btZoomReset = New System.Windows.Forms.Button()
+        Me.textBox1 = New System.Windows.Forms.TextBox()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.lbScreenSourceWindowText = New System.Windows.Forms.Label()
+        Me.btScreenSourceWindowSelect = New System.Windows.Forms.Button()
+        Me.rbScreenCaptureWindow = New System.Windows.Forms.RadioButton()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -3388,16 +3387,15 @@ Partial Class Form1
         '
         'tabPage47
         '
-        Me.tabPage47.Controls.Add(Me.cbScreenCapture_DesktopDuplication)
-        Me.tabPage47.Controls.Add(Me.label294)
-        Me.tabPage47.Controls.Add(Me.edScreenCaptureWindowName)
+        Me.tabPage47.Controls.Add(Me.label3)
+        Me.tabPage47.Controls.Add(Me.lbScreenSourceWindowText)
+        Me.tabPage47.Controls.Add(Me.btScreenSourceWindowSelect)
         Me.tabPage47.Controls.Add(Me.rbScreenCaptureWindow)
+        Me.tabPage47.Controls.Add(Me.textBox1)
+        Me.tabPage47.Controls.Add(Me.cbScreenCapture_DesktopDuplication)
         Me.tabPage47.Controls.Add(Me.cbScreenCaptureDisplayIndex)
         Me.tabPage47.Controls.Add(Me.label93)
         Me.tabPage47.Controls.Add(Me.btScreenCaptureUpdate)
-        Me.tabPage47.Controls.Add(Me.label124)
-        Me.tabPage47.Controls.Add(Me.label123)
-        Me.tabPage47.Controls.Add(Me.label122)
         Me.tabPage47.Controls.Add(Me.cbScreenCapture_GrabMouseCursor)
         Me.tabPage47.Controls.Add(Me.label79)
         Me.tabPage47.Controls.Add(Me.edScreenFrameRate)
@@ -3430,34 +3428,6 @@ Partial Class Form1
         Me.cbScreenCapture_DesktopDuplication.Text = "Allow Win8 Desktop Duplication usage"
         Me.cbScreenCapture_DesktopDuplication.UseVisualStyleBackColor = true
         '
-        'label294
-        '
-        Me.label294.AutoSize = true
-        Me.label294.Location = New System.Drawing.Point(290, 195)
-        Me.label294.Name = "label294"
-        Me.label294.Size = New System.Drawing.Size(135, 13)
-        Me.label294.TabIndex = 55
-        Me.label294.Text = "class, Notepad an example"
-        '
-        'edScreenCaptureWindowName
-        '
-        Me.edScreenCaptureWindowName.Location = New System.Drawing.Point(271, 229)
-        Me.edScreenCaptureWindowName.Name = "edScreenCaptureWindowName"
-        Me.edScreenCaptureWindowName.Size = New System.Drawing.Size(162, 20)
-        Me.edScreenCaptureWindowName.TabIndex = 54
-        Me.edScreenCaptureWindowName.Text = "Notepad"
-        '
-        'rbScreenCaptureWindow
-        '
-        Me.rbScreenCaptureWindow.AutoSize = true
-        Me.rbScreenCaptureWindow.Location = New System.Drawing.Point(271, 175)
-        Me.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow"
-        Me.rbScreenCaptureWindow.Size = New System.Drawing.Size(179, 17)
-        Me.rbScreenCaptureWindow.TabIndex = 53
-        Me.rbScreenCaptureWindow.TabStop = true
-        Me.rbScreenCaptureWindow.Text = "Capture window (specify window"
-        Me.rbScreenCaptureWindow.UseVisualStyleBackColor = true
-        '
         'cbScreenCaptureDisplayIndex
         '
         Me.cbScreenCaptureDisplayIndex.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
@@ -3485,33 +3455,6 @@ Partial Class Form1
         Me.btScreenCaptureUpdate.TabIndex = 47
         Me.btScreenCaptureUpdate.Text = "Update"
         Me.btScreenCaptureUpdate.UseVisualStyleBackColor = true
-        '
-        'label124
-        '
-        Me.label124.AutoSize = true
-        Me.label124.Location = New System.Drawing.Point(268, 65)
-        Me.label124.Name = "label124"
-        Me.label124.Size = New System.Drawing.Size(50, 13)
-        Me.label124.TabIndex = 46
-        Me.label124.Text = "on-the-fly"
-        '
-        'label123
-        '
-        Me.label123.AutoSize = true
-        Me.label123.Location = New System.Drawing.Point(268, 41)
-        Me.label123.Name = "label123"
-        Me.label123.Size = New System.Drawing.Size(141, 13)
-        Me.label123.TabIndex = 45
-        Me.label123.Text = "and mouse cursor  capturing"
-        '
-        'label122
-        '
-        Me.label122.AutoSize = true
-        Me.label122.Location = New System.Drawing.Point(268, 21)
-        Me.label122.Name = "label122"
-        Me.label122.Size = New System.Drawing.Size(159, 13)
-        Me.label122.TabIndex = 44
-        Me.label122.Text = "You can update left/top position"
         '
         'cbScreenCapture_GrabMouseCursor
         '
@@ -6102,6 +6045,15 @@ Partial Class Form1
         Me.groupBox28.TabIndex = 25
         Me.groupBox28.TabStop = false
         Me.groupBox28.Text = "Zoom"
+        '
+        'btZoomReset
+        '
+        Me.btZoomReset.Location = New System.Drawing.Point(34, 98)
+        Me.btZoomReset.Name = "btZoomReset"
+        Me.btZoomReset.Size = New System.Drawing.Size(51, 23)
+        Me.btZoomReset.TabIndex = 7
+        Me.btZoomReset.Text = "Reset"
+        Me.btZoomReset.UseVisualStyleBackColor = true
         '
         'btZoomShiftRight
         '
@@ -12608,14 +12560,55 @@ Partial Class Form1
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = true
         '
-        'btZoomReset
+        'textBox1
         '
-        Me.btZoomReset.Location = New System.Drawing.Point(34, 98)
-        Me.btZoomReset.Name = "btZoomReset"
-        Me.btZoomReset.Size = New System.Drawing.Size(51, 23)
-        Me.btZoomReset.TabIndex = 7
-        Me.btZoomReset.Text = "Reset"
-        Me.btZoomReset.UseVisualStyleBackColor = true
+        Me.textBox1.BackColor = System.Drawing.Color.White
+        Me.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.textBox1.Location = New System.Drawing.Point(274, 19)
+        Me.textBox1.Multiline = true
+        Me.textBox1.Name = "textBox1"
+        Me.textBox1.ReadOnly = true
+        Me.textBox1.Size = New System.Drawing.Size(167, 59)
+        Me.textBox1.TabIndex = 58
+        Me.textBox1.Text = "You can update left/top position and mouse cursor capturing on-the-fly"
+        '
+        'label3
+        '
+        Me.label3.AutoSize = true
+        Me.label3.Location = New System.Drawing.Point(268, 209)
+        Me.label3.Name = "label3"
+        Me.label3.Size = New System.Drawing.Size(191, 13)
+        Me.label3.TabIndex = 62
+        Me.label3.Text = "(You can capture background window)"
+        '
+        'lbScreenSourceWindowText
+        '
+        Me.lbScreenSourceWindowText.AutoSize = true
+        Me.lbScreenSourceWindowText.Location = New System.Drawing.Point(289, 192)
+        Me.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText"
+        Me.lbScreenSourceWindowText.Size = New System.Drawing.Size(107, 13)
+        Me.lbScreenSourceWindowText.TabIndex = 61
+        Me.lbScreenSourceWindowText.Text = "(no window selected)"
+        '
+        'btScreenSourceWindowSelect
+        '
+        Me.btScreenSourceWindowSelect.Location = New System.Drawing.Point(392, 159)
+        Me.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect"
+        Me.btScreenSourceWindowSelect.Size = New System.Drawing.Size(49, 23)
+        Me.btScreenSourceWindowSelect.TabIndex = 60
+        Me.btScreenSourceWindowSelect.Text = "Select"
+        Me.btScreenSourceWindowSelect.UseVisualStyleBackColor = true
+        '
+        'rbScreenCaptureWindow
+        '
+        Me.rbScreenCaptureWindow.AutoSize = true
+        Me.rbScreenCaptureWindow.Location = New System.Drawing.Point(274, 162)
+        Me.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow"
+        Me.rbScreenCaptureWindow.Size = New System.Drawing.Size(101, 17)
+        Me.rbScreenCaptureWindow.TabIndex = 59
+        Me.rbScreenCaptureWindow.TabStop = true
+        Me.rbScreenCaptureWindow.Text = "Capture window"
+        Me.rbScreenCaptureWindow.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -13079,9 +13072,6 @@ End Sub
     Private WithEvents label17 As System.Windows.Forms.Label
     Private WithEvents tabPage47 As System.Windows.Forms.TabPage
     Private WithEvents btScreenCaptureUpdate As System.Windows.Forms.Button
-    Private WithEvents label124 As System.Windows.Forms.Label
-    Private WithEvents label123 As System.Windows.Forms.Label
-    Private WithEvents label122 As System.Windows.Forms.Label
     Private WithEvents cbScreenCapture_GrabMouseCursor As System.Windows.Forms.CheckBox
     Private WithEvents label79 As System.Windows.Forms.Label
     Private WithEvents edScreenFrameRate As System.Windows.Forms.TextBox
@@ -13480,9 +13470,6 @@ End Sub
     Private WithEvents btBDADVBCTune As System.Windows.Forms.Button
     Private WithEvents tabPage87 As System.Windows.Forms.TabPage
     Private WithEvents label293 As System.Windows.Forms.Label
-    Private WithEvents label294 As System.Windows.Forms.Label
-    Private WithEvents edScreenCaptureWindowName As System.Windows.Forms.TextBox
-    Private WithEvents rbScreenCaptureWindow As System.Windows.Forms.RadioButton
     Friend WithEvents TabPage88 As System.Windows.Forms.TabPage
     Private WithEvents cbZoom As System.Windows.Forms.CheckBox
     Private WithEvents groupBox37 As System.Windows.Forms.GroupBox
@@ -14048,4 +14035,9 @@ End Sub
     Private WithEvents lbOSDLayers As CheckedListBox
     Private WithEvents btOSDRenderLayers As Button
     Friend WithEvents btZoomReset As Button
+    Private WithEvents textBox1 As TextBox
+    Private WithEvents label3 As Label
+    Private WithEvents lbScreenSourceWindowText As Label
+    Private WithEvents btScreenSourceWindowSelect As Button
+    Private WithEvents rbScreenCaptureWindow As RadioButton
 End Class

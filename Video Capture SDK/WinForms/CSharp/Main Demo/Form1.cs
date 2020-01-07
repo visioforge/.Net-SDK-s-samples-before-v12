@@ -19,6 +19,7 @@ namespace VideoCapture_CSharp_Demo
     using System.Windows.Forms;
 
     using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs;
     using VisioForge.Controls.UI.Dialogs.OutputFormats;
     using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WinForms;
@@ -96,6 +97,8 @@ namespace VideoCapture_CSharp_Demo
 
         private readonly List<Form> multiscreenWindows = new List<Form>();
 
+        private WindowCaptureForm windowCaptureForm;
+
         private readonly SaveFileDialog screenshotSaveDialog = new SaveFileDialog()
         {
             FileName = "image.jpg",
@@ -104,9 +107,6 @@ namespace VideoCapture_CSharp_Demo
         };
 
         private readonly System.Timers.Timer tmRecording = new System.Timers.Timer(1000);
-
-        [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        private static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Form1"/> class.
@@ -2434,7 +2434,13 @@ namespace VideoCapture_CSharp_Demo
 
                 try
                 {
-                    settings.WindowHandle = FindWindow(edScreenCaptureWindowName.Text, null);
+                    if (windowCaptureForm == null)
+                    {
+                        MessageBox.Show("Window for screen capture is not specified.");
+                        return;
+                    }
+
+                    settings.WindowHandle = windowCaptureForm.CapturedWindowHandle;
                 }
                 catch (Exception ex)
                 {
@@ -5981,8 +5987,8 @@ namespace VideoCapture_CSharp_Demo
             uint dpiY;
             Screen.PrimaryScreen.GetDpi(DpiType.Effective, out dpiX, out dpiY);
 
-            VideoCapture1.Width = Width - VideoCapture1.Left - (int) (30 * dpiX / 96);
-            VideoCapture1.Height = Height - VideoCapture1.Top - (int) (110 * dpiY / 96);
+            VideoCapture1.Width = Width - VideoCapture1.Left - (int)(30 * dpiX / 96);
+            VideoCapture1.Height = Height - VideoCapture1.Top - (int)(110 * dpiY / 96);
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -6177,6 +6183,25 @@ namespace VideoCapture_CSharp_Demo
         private void lbOSDLayers_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             VideoCapture1.OSD_Layers_Enable(e.Index, e.NewValue == CheckState.Checked);
+        }
+
+        private void btScreenSourceWindowSelect_Click(object sender, EventArgs e)
+        {
+            if (windowCaptureForm == null)
+            {
+                windowCaptureForm = new WindowCaptureForm();
+                windowCaptureForm.OnCaptureHotkey += WindowCaptureForm_OnCaptureHotkey;
+            }
+
+            windowCaptureForm.StartCapture();
+        }
+
+        private void WindowCaptureForm_OnCaptureHotkey(object sender, WindowCaptureEventArgs e)
+        {
+            windowCaptureForm.StopCapture();
+            windowCaptureForm.Hide();
+
+            lbScreenSourceWindowText.Text = e.Caption;
         }
     }
 }

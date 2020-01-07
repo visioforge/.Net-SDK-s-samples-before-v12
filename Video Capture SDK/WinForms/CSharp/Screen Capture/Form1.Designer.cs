@@ -37,10 +37,11 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.tcMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.cbScreenCapture_DesktopDuplication = new System.Windows.Forms.CheckBox();
-            this.label294 = new System.Windows.Forms.Label();
-            this.edScreenCaptureWindowName = new System.Windows.Forms.TextBox();
+            this.lbScreenSourceWindowText = new System.Windows.Forms.Label();
+            this.btScreenSourceWindowSelect = new System.Windows.Forms.Button();
             this.rbScreenCaptureWindow = new System.Windows.Forms.RadioButton();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.cbScreenCapture_DesktopDuplication = new System.Windows.Forms.CheckBox();
             this.cbScreenCaptureDisplayIndex = new System.Windows.Forms.ComboBox();
             this.label93 = new System.Windows.Forms.Label();
             this.cbUseBestAudioInputFormat = new System.Windows.Forms.CheckBox();
@@ -53,9 +54,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.label25 = new System.Windows.Forms.Label();
             this.cbRecordAudio = new System.Windows.Forms.CheckBox();
             this.btScreenCaptureUpdate = new System.Windows.Forms.Button();
-            this.label124 = new System.Windows.Forms.Label();
-            this.label123 = new System.Windows.Forms.Label();
-            this.label122 = new System.Windows.Forms.Label();
             this.cbScreenCapture_GrabMouseCursor = new System.Windows.Forms.CheckBox();
             this.label79 = new System.Windows.Forms.Label();
             this.edScreenFrameRate = new System.Windows.Forms.TextBox();
@@ -195,10 +193,11 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.cbScreenCapture_DesktopDuplication);
-            this.tabPage1.Controls.Add(this.label294);
-            this.tabPage1.Controls.Add(this.edScreenCaptureWindowName);
+            this.tabPage1.Controls.Add(this.lbScreenSourceWindowText);
+            this.tabPage1.Controls.Add(this.btScreenSourceWindowSelect);
             this.tabPage1.Controls.Add(this.rbScreenCaptureWindow);
+            this.tabPage1.Controls.Add(this.textBox2);
+            this.tabPage1.Controls.Add(this.cbScreenCapture_DesktopDuplication);
             this.tabPage1.Controls.Add(this.cbScreenCaptureDisplayIndex);
             this.tabPage1.Controls.Add(this.label93);
             this.tabPage1.Controls.Add(this.cbUseBestAudioInputFormat);
@@ -211,9 +210,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.tabPage1.Controls.Add(this.label25);
             this.tabPage1.Controls.Add(this.cbRecordAudio);
             this.tabPage1.Controls.Add(this.btScreenCaptureUpdate);
-            this.tabPage1.Controls.Add(this.label124);
-            this.tabPage1.Controls.Add(this.label123);
-            this.tabPage1.Controls.Add(this.label122);
             this.tabPage1.Controls.Add(this.cbScreenCapture_GrabMouseCursor);
             this.tabPage1.Controls.Add(this.label79);
             this.tabPage1.Controls.Add(this.edScreenFrameRate);
@@ -230,49 +226,63 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.tabPage1.Controls.Add(this.rbScreenFullScreen);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(367, 408);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Input";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lbScreenSourceWindowText
+            // 
+            this.lbScreenSourceWindowText.AutoSize = true;
+            this.lbScreenSourceWindowText.Location = new System.Drawing.Point(220, 183);
+            this.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText";
+            this.lbScreenSourceWindowText.Size = new System.Drawing.Size(107, 13);
+            this.lbScreenSourceWindowText.TabIndex = 94;
+            this.lbScreenSourceWindowText.Text = "(no window selected)";
+            // 
+            // btScreenSourceWindowSelect
+            // 
+            this.btScreenSourceWindowSelect.Location = new System.Drawing.Point(312, 150);
+            this.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect";
+            this.btScreenSourceWindowSelect.Size = new System.Drawing.Size(49, 23);
+            this.btScreenSourceWindowSelect.TabIndex = 93;
+            this.btScreenSourceWindowSelect.Text = "Select";
+            this.btScreenSourceWindowSelect.UseVisualStyleBackColor = true;
+            this.btScreenSourceWindowSelect.Click += new System.EventHandler(this.btScreenSourceWindowSelect_Click);
+            // 
+            // rbScreenCaptureWindow
+            // 
+            this.rbScreenCaptureWindow.AutoSize = true;
+            this.rbScreenCaptureWindow.Location = new System.Drawing.Point(205, 153);
+            this.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow";
+            this.rbScreenCaptureWindow.Size = new System.Drawing.Size(101, 17);
+            this.rbScreenCaptureWindow.TabIndex = 91;
+            this.rbScreenCaptureWindow.TabStop = true;
+            this.rbScreenCaptureWindow.Text = "Capture window";
+            this.rbScreenCaptureWindow.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.Color.White;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Location = new System.Drawing.Point(194, 10);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
+            this.textBox2.Size = new System.Drawing.Size(167, 45);
+            this.textBox2.TabIndex = 90;
+            this.textBox2.Text = "You can update left/top position and mouse cursor capturing on-the-fly";
             // 
             // cbScreenCapture_DesktopDuplication
             // 
             this.cbScreenCapture_DesktopDuplication.AutoSize = true;
             this.cbScreenCapture_DesktopDuplication.Location = new System.Drawing.Point(10, 204);
             this.cbScreenCapture_DesktopDuplication.Name = "cbScreenCapture_DesktopDuplication";
-            this.cbScreenCapture_DesktopDuplication.Size = new System.Drawing.Size(210, 17);
+            this.cbScreenCapture_DesktopDuplication.Size = new System.Drawing.Size(182, 17);
             this.cbScreenCapture_DesktopDuplication.TabIndex = 89;
-            this.cbScreenCapture_DesktopDuplication.Text = "Allow Win8 Desktop Duplication usage";
+            this.cbScreenCapture_DesktopDuplication.Text = "Allow Desktop Duplication usage";
             this.cbScreenCapture_DesktopDuplication.UseVisualStyleBackColor = true;
-            // 
-            // label294
-            // 
-            this.label294.AutoSize = true;
-            this.label294.Location = new System.Drawing.Point(193, 151);
-            this.label294.Name = "label294";
-            this.label294.Size = new System.Drawing.Size(135, 13);
-            this.label294.TabIndex = 88;
-            this.label294.Text = "class, Notepad an example";
-            // 
-            // edScreenCaptureWindowName
-            // 
-            this.edScreenCaptureWindowName.Location = new System.Drawing.Point(174, 178);
-            this.edScreenCaptureWindowName.Name = "edScreenCaptureWindowName";
-            this.edScreenCaptureWindowName.Size = new System.Drawing.Size(162, 20);
-            this.edScreenCaptureWindowName.TabIndex = 87;
-            this.edScreenCaptureWindowName.Text = "Notepad";
-            // 
-            // rbScreenCaptureWindow
-            // 
-            this.rbScreenCaptureWindow.AutoSize = true;
-            this.rbScreenCaptureWindow.Location = new System.Drawing.Point(174, 131);
-            this.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow";
-            this.rbScreenCaptureWindow.Size = new System.Drawing.Size(179, 17);
-            this.rbScreenCaptureWindow.TabIndex = 86;
-            this.rbScreenCaptureWindow.TabStop = true;
-            this.rbScreenCaptureWindow.Text = "Capture window (specify window";
-            this.rbScreenCaptureWindow.UseVisualStyleBackColor = true;
             // 
             // cbScreenCaptureDisplayIndex
             // 
@@ -397,36 +407,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.btScreenCaptureUpdate.Text = "Update";
             this.btScreenCaptureUpdate.UseVisualStyleBackColor = true;
             this.btScreenCaptureUpdate.Click += new System.EventHandler(this.btScreenCaptureUpdate_Click);
-            // 
-            // label124
-            // 
-            this.label124.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(202, 34);
-            this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(50, 13);
-            this.label124.TabIndex = 64;
-            this.label124.Text = "on-the-fly";
-            // 
-            // label123
-            // 
-            this.label123.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(202, 21);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(141, 13);
-            this.label123.TabIndex = 63;
-            this.label123.Text = "and mouse cursor  capturing";
-            // 
-            // label122
-            // 
-            this.label122.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(202, 8);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(159, 13);
-            this.label122.TabIndex = 62;
-            this.label122.Text = "You can update left/top position";
             // 
             // cbScreenCapture_GrabMouseCursor
             // 
@@ -568,7 +548,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.tabPage2.Controls.Add(this.label27);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(367, 408);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output";
@@ -676,7 +656,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.tabPage3.Controls.Add(this.btImageLogoAdd);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(367, 408);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Video effects";
@@ -877,7 +857,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.tabPage4.Controls.Add(this.mmLog);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(367, 408);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
@@ -1335,9 +1315,11 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.VideoCapture1.BDA_Source = null;
             this.VideoCapture1.ChromaKey = null;
             this.VideoCapture1.Custom_Source = null;
+            this.VideoCapture1.CustomRedist_Enabled = false;
+            this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
-            this.VideoCapture1.Debug_Telemetry = true;
+            this.VideoCapture1.Debug_Telemetry = false;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
@@ -1364,6 +1346,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.OSD_Enabled = false;
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -1407,6 +1390,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -1574,9 +1558,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btStart;
         private System.Windows.Forms.Button btScreenCaptureUpdate;
-        private System.Windows.Forms.Label label124;
-        private System.Windows.Forms.Label label123;
-        private System.Windows.Forms.Label label122;
         private System.Windows.Forms.CheckBox cbScreenCapture_GrabMouseCursor;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.TextBox edScreenFrameRate;
@@ -1642,9 +1623,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
         private System.Windows.Forms.ComboBox cbScreenCaptureDisplayIndex;
         private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.Label label294;
-        private System.Windows.Forms.TextBox edScreenCaptureWindowName;
-        private System.Windows.Forms.RadioButton rbScreenCaptureWindow;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox cbScreenCapture_DesktopDuplication;
         private System.Windows.Forms.CheckBox cbLicensing;
@@ -1682,6 +1660,10 @@ namespace VisioForge_SDK_Screen_Capture_Demo
         private System.Windows.Forms.ListBox lbLogos;
         private System.Windows.Forms.Button btImageLogoAdd;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lbScreenSourceWindowText;
+        private System.Windows.Forms.Button btScreenSourceWindowSelect;
+        private System.Windows.Forms.RadioButton rbScreenCaptureWindow;
     }
 }
 

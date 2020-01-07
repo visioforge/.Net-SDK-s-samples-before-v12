@@ -12,6 +12,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
     using System.Runtime.InteropServices;
     using System.Windows.Forms;
 
+    using VisioForge.Controls.UI.Dialogs;
     using VisioForge.Controls.UI.Dialogs.OutputFormats;
     using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WinForms;
@@ -49,6 +50,8 @@ namespace VisioForge_SDK_Screen_Capture_Demo
         private FFMPEGEXESettingsDialog ffmpegEXESettingsDialog;
 
         private GIFSettingsDialog gifSettingsDialog;
+
+        private WindowCaptureForm windowCaptureForm;
 
         private readonly SaveFileDialog screenshotSaveDialog = new SaveFileDialog()
         {
@@ -301,11 +304,17 @@ namespace VisioForge_SDK_Screen_Capture_Demo
 
                 try
                 {
-                    source.WindowHandle = FindWindow(edScreenCaptureWindowName.Text, null);
+                    if (windowCaptureForm == null)
+                    {
+                        MessageBox.Show("Window for screen capture is not specified.");
+                        return null;
+                    }
+
+                    source.WindowHandle = windowCaptureForm.CapturedWindowHandle;
                 }
-                // ReSharper disable once EmptyGeneralCatchClause
-                catch
+                catch (Exception ex)
                 {
+                    MessageBox.Show(ex.Message);
                 }
 
                 if (source.WindowHandle == IntPtr.Zero)
@@ -1143,6 +1152,25 @@ namespace VisioForge_SDK_Screen_Capture_Demo
                     darkness.Value = tbDarkness.Value;
                 }
             }
+        }
+
+        private void btScreenSourceWindowSelect_Click(object sender, EventArgs e)
+        {
+            if (windowCaptureForm == null)
+            {
+                windowCaptureForm = new WindowCaptureForm();
+                windowCaptureForm.OnCaptureHotkey += WindowCaptureForm_OnCaptureHotkey;
+            }
+
+            windowCaptureForm.StartCapture();
+        }
+
+        private void WindowCaptureForm_OnCaptureHotkey(object sender, WindowCaptureEventArgs e)
+        {
+            windowCaptureForm.StopCapture();
+            windowCaptureForm.Hide();
+
+            lbScreenSourceWindowText.Text = e.Caption;
         }
     }
 }

@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <RootNamespace>Decklink_Demo</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\VisioForge.Controls.UI.Dialogs\VisioForge.Controls.UI.Dialogs.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\VisioForge.Controls.UI\VisioForge.Controls.UI.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\VisioForge.Shared\VisioForge.Shared.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\VisioForge.Tools\VisioForge.Tools.NetCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\VisioForge.Types\VisioForge.Types.NetCore.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <ApplicationIcon>visioforge_main_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

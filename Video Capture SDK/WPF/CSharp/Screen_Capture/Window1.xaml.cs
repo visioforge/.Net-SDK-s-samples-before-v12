@@ -55,6 +55,8 @@ namespace Screen_Capture
 
         private GIFSettingsDialog gifSettingsDialog;
 
+        private WindowCaptureForm windowCaptureForm;
+
         private readonly SaveFileDialog screenshotSaveDialog = new SaveFileDialog()
         {
             FileName = "image.jpg",
@@ -340,7 +342,13 @@ namespace Screen_Capture
 
                 try
                 {
-                    source.WindowHandle = FindWindow(edScreenCaptureWindowName.Text, null);
+                    if (windowCaptureForm == null)
+                    {
+                        MessageBox.Show("Window for screen capture is not specified.");
+                        return null;
+                    }
+
+                    source.WindowHandle = windowCaptureForm.CapturedWindowHandle;
                 }
                 // ReSharper disable once EmptyGeneralCatchClause
                 catch
@@ -1163,6 +1171,25 @@ namespace Screen_Capture
                 VideoCapture1.Video_Effects_Remove((string)lbLogos.SelectedItem);
                 lbLogos.Items.Remove(lbLogos.SelectedItem);
             }
+        }
+
+        private void btScreenSourceWindowSelect_Click(object sender, RoutedEventArgs e)
+        {
+            if (windowCaptureForm == null)
+            {
+                windowCaptureForm = new WindowCaptureForm();
+                windowCaptureForm.OnCaptureHotkey += WindowCaptureForm_OnCaptureHotkey;
+            }
+
+            windowCaptureForm.StartCapture();
+        }
+
+        private void WindowCaptureForm_OnCaptureHotkey(object sender, WindowCaptureEventArgs e)
+        {
+            windowCaptureForm.StopCapture();
+            windowCaptureForm.Hide();
+
+            lbScreenSourceWindowText.Content = e.Caption;
         }
     }
 }

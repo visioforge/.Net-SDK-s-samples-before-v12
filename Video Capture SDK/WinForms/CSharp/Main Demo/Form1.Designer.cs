@@ -763,17 +763,14 @@ namespace VideoCapture_CSharp_Demo
             this.cbAdditionalAudioSource = new System.Windows.Forms.ComboBox();
             this.label180 = new System.Windows.Forms.Label();
             this.tabPage47 = new System.Windows.Forms.TabPage();
+            this.lbScreenSourceWindowText = new System.Windows.Forms.Label();
+            this.btScreenSourceWindowSelect = new System.Windows.Forms.Button();
             this.cbScreenCapture_DesktopDuplication = new System.Windows.Forms.CheckBox();
             this.rbScreenCaptureColorSource = new System.Windows.Forms.RadioButton();
-            this.label294 = new System.Windows.Forms.Label();
-            this.edScreenCaptureWindowName = new System.Windows.Forms.TextBox();
             this.rbScreenCaptureWindow = new System.Windows.Forms.RadioButton();
             this.cbScreenCaptureDisplayIndex = new System.Windows.Forms.ComboBox();
             this.label93 = new System.Windows.Forms.Label();
             this.btScreenCaptureUpdate = new System.Windows.Forms.Button();
-            this.label124 = new System.Windows.Forms.Label();
-            this.label123 = new System.Windows.Forms.Label();
-            this.label122 = new System.Windows.Forms.Label();
             this.cbScreenCapture_GrabMouseCursor = new System.Windows.Forms.CheckBox();
             this.label79 = new System.Windows.Forms.Label();
             this.edScreenFrameRate = new System.Windows.Forms.TextBox();
@@ -1039,6 +1036,7 @@ namespace VideoCapture_CSharp_Demo
             this.label394 = new System.Windows.Forms.Label();
             this.btFullScreen = new System.Windows.Forms.Button();
             this.groupBox28 = new System.Windows.Forms.GroupBox();
+            this.btZoomReset = new System.Windows.Forms.Button();
             this.btZoomShiftRight = new System.Windows.Forms.Button();
             this.btZoomShiftLeft = new System.Windows.Forms.Button();
             this.btZoomOut = new System.Windows.Forms.Button();
@@ -1127,7 +1125,8 @@ namespace VideoCapture_CSharp_Demo
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
-            this.btZoomReset = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -9084,17 +9083,16 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage47
             // 
+            this.tabPage47.Controls.Add(this.label3);
+            this.tabPage47.Controls.Add(this.textBox1);
+            this.tabPage47.Controls.Add(this.lbScreenSourceWindowText);
+            this.tabPage47.Controls.Add(this.btScreenSourceWindowSelect);
             this.tabPage47.Controls.Add(this.cbScreenCapture_DesktopDuplication);
             this.tabPage47.Controls.Add(this.rbScreenCaptureColorSource);
-            this.tabPage47.Controls.Add(this.label294);
-            this.tabPage47.Controls.Add(this.edScreenCaptureWindowName);
             this.tabPage47.Controls.Add(this.rbScreenCaptureWindow);
             this.tabPage47.Controls.Add(this.cbScreenCaptureDisplayIndex);
             this.tabPage47.Controls.Add(this.label93);
             this.tabPage47.Controls.Add(this.btScreenCaptureUpdate);
-            this.tabPage47.Controls.Add(this.label124);
-            this.tabPage47.Controls.Add(this.label123);
-            this.tabPage47.Controls.Add(this.label122);
             this.tabPage47.Controls.Add(this.cbScreenCapture_GrabMouseCursor);
             this.tabPage47.Controls.Add(this.label79);
             this.tabPage47.Controls.Add(this.edScreenFrameRate);
@@ -9117,14 +9115,33 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage47.Text = "Screen source";
             this.tabPage47.UseVisualStyleBackColor = true;
             // 
+            // lbScreenSourceWindowText
+            // 
+            this.lbScreenSourceWindowText.AutoSize = true;
+            this.lbScreenSourceWindowText.Location = new System.Drawing.Point(286, 188);
+            this.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText";
+            this.lbScreenSourceWindowText.Size = new System.Drawing.Size(107, 13);
+            this.lbScreenSourceWindowText.TabIndex = 56;
+            this.lbScreenSourceWindowText.Text = "(no window selected)";
+            // 
+            // btScreenSourceWindowSelect
+            // 
+            this.btScreenSourceWindowSelect.Location = new System.Drawing.Point(389, 155);
+            this.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect";
+            this.btScreenSourceWindowSelect.Size = new System.Drawing.Size(49, 23);
+            this.btScreenSourceWindowSelect.TabIndex = 55;
+            this.btScreenSourceWindowSelect.Text = "Select";
+            this.btScreenSourceWindowSelect.UseVisualStyleBackColor = true;
+            this.btScreenSourceWindowSelect.Click += new System.EventHandler(this.btScreenSourceWindowSelect_Click);
+            // 
             // cbScreenCapture_DesktopDuplication
             // 
             this.cbScreenCapture_DesktopDuplication.AutoSize = true;
             this.cbScreenCapture_DesktopDuplication.Location = new System.Drawing.Point(19, 241);
             this.cbScreenCapture_DesktopDuplication.Name = "cbScreenCapture_DesktopDuplication";
-            this.cbScreenCapture_DesktopDuplication.Size = new System.Drawing.Size(210, 17);
+            this.cbScreenCapture_DesktopDuplication.Size = new System.Drawing.Size(182, 17);
             this.cbScreenCapture_DesktopDuplication.TabIndex = 54;
-            this.cbScreenCapture_DesktopDuplication.Text = "Allow Win8 Desktop Duplication usage";
+            this.cbScreenCapture_DesktopDuplication.Text = "Allow Desktop Duplication usage";
             this.cbScreenCapture_DesktopDuplication.UseVisualStyleBackColor = true;
             // 
             // rbScreenCaptureColorSource
@@ -9138,32 +9155,15 @@ namespace VideoCapture_CSharp_Demo
             this.rbScreenCaptureColorSource.Text = "Black color";
             this.rbScreenCaptureColorSource.UseVisualStyleBackColor = true;
             // 
-            // label294
-            // 
-            this.label294.AutoSize = true;
-            this.label294.Location = new System.Drawing.Point(290, 178);
-            this.label294.Name = "label294";
-            this.label294.Size = new System.Drawing.Size(135, 13);
-            this.label294.TabIndex = 52;
-            this.label294.Text = "class, Notepad an example";
-            // 
-            // edScreenCaptureWindowName
-            // 
-            this.edScreenCaptureWindowName.Location = new System.Drawing.Point(271, 212);
-            this.edScreenCaptureWindowName.Name = "edScreenCaptureWindowName";
-            this.edScreenCaptureWindowName.Size = new System.Drawing.Size(162, 20);
-            this.edScreenCaptureWindowName.TabIndex = 51;
-            this.edScreenCaptureWindowName.Text = "Notepad";
-            // 
             // rbScreenCaptureWindow
             // 
             this.rbScreenCaptureWindow.AutoSize = true;
             this.rbScreenCaptureWindow.Location = new System.Drawing.Point(271, 158);
             this.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow";
-            this.rbScreenCaptureWindow.Size = new System.Drawing.Size(179, 17);
+            this.rbScreenCaptureWindow.Size = new System.Drawing.Size(101, 17);
             this.rbScreenCaptureWindow.TabIndex = 50;
             this.rbScreenCaptureWindow.TabStop = true;
-            this.rbScreenCaptureWindow.Text = "Capture window (specify window";
+            this.rbScreenCaptureWindow.Text = "Capture window";
             this.rbScreenCaptureWindow.UseVisualStyleBackColor = true;
             // 
             // cbScreenCaptureDisplayIndex
@@ -9187,40 +9187,13 @@ namespace VideoCapture_CSharp_Demo
             // 
             // btScreenCaptureUpdate
             // 
-            this.btScreenCaptureUpdate.Location = new System.Drawing.Point(314, 96);
+            this.btScreenCaptureUpdate.Location = new System.Drawing.Point(318, 94);
             this.btScreenCaptureUpdate.Name = "btScreenCaptureUpdate";
             this.btScreenCaptureUpdate.Size = new System.Drawing.Size(75, 23);
             this.btScreenCaptureUpdate.TabIndex = 47;
             this.btScreenCaptureUpdate.Text = "Update";
             this.btScreenCaptureUpdate.UseVisualStyleBackColor = true;
             this.btScreenCaptureUpdate.Click += new System.EventHandler(this.btScreenCaptureUpdate_Click);
-            // 
-            // label124
-            // 
-            this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(268, 65);
-            this.label124.Name = "label124";
-            this.label124.Size = new System.Drawing.Size(50, 13);
-            this.label124.TabIndex = 46;
-            this.label124.Text = "on-the-fly";
-            // 
-            // label123
-            // 
-            this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(268, 41);
-            this.label123.Name = "label123";
-            this.label123.Size = new System.Drawing.Size(141, 13);
-            this.label123.TabIndex = 45;
-            this.label123.Text = "and mouse cursor  capturing";
-            // 
-            // label122
-            // 
-            this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(268, 21);
-            this.label122.Name = "label122";
-            this.label122.Size = new System.Drawing.Size(159, 13);
-            this.label122.TabIndex = 44;
-            this.label122.Text = "You can update left/top position";
             // 
             // cbScreenCapture_GrabMouseCursor
             // 
@@ -11990,6 +11963,16 @@ namespace VideoCapture_CSharp_Demo
             this.groupBox28.TabStop = false;
             this.groupBox28.Text = "Zoom";
             // 
+            // btZoomReset
+            // 
+            this.btZoomReset.Location = new System.Drawing.Point(34, 98);
+            this.btZoomReset.Name = "btZoomReset";
+            this.btZoomReset.Size = new System.Drawing.Size(51, 23);
+            this.btZoomReset.TabIndex = 7;
+            this.btZoomReset.Text = "Reset";
+            this.btZoomReset.UseVisualStyleBackColor = true;
+            this.btZoomReset.Click += new System.EventHandler(this.btZoomReset_Click);
+            // 
             // btZoomShiftRight
             // 
             this.btZoomShiftRight.Location = new System.Drawing.Point(85, 33);
@@ -13033,15 +13016,26 @@ namespace VideoCapture_CSharp_Demo
             this.cbRunAsync.Text = "Async";
             this.cbRunAsync.UseVisualStyleBackColor = true;
             // 
-            // btZoomReset
+            // textBox1
             // 
-            this.btZoomReset.Location = new System.Drawing.Point(34, 98);
-            this.btZoomReset.Name = "btZoomReset";
-            this.btZoomReset.Size = new System.Drawing.Size(51, 23);
-            this.btZoomReset.TabIndex = 7;
-            this.btZoomReset.Text = "Reset";
-            this.btZoomReset.UseVisualStyleBackColor = true;
-            this.btZoomReset.Click += new System.EventHandler(this.btZoomReset_Click);
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(271, 15);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(167, 59);
+            this.textBox1.TabIndex = 57;
+            this.textBox1.Text = "You can update left/top position and mouse cursor capturing on-the-fly";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(265, 205);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(191, 13);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "(You can capture background window)";
             // 
             // Form1
             // 
@@ -13556,9 +13550,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.ComboBox cbCrossbarInput;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btScreenCaptureUpdate;
-        private System.Windows.Forms.Label label124;
-        private System.Windows.Forms.Label label123;
-        private System.Windows.Forms.Label label122;
         private System.Windows.Forms.CheckBox cbScreenCapture_GrabMouseCursor;
         private System.Windows.Forms.Label label79;
         private System.Windows.Forms.TextBox edScreenFrameRate;
@@ -13934,8 +13925,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.ComboBox cbMPEGVideoDecoder;
         private System.Windows.Forms.Label label120;
         private System.Windows.Forms.RadioButton rbScreenCaptureWindow;
-        private System.Windows.Forms.TextBox edScreenCaptureWindowName;
-        private System.Windows.Forms.Label label294;
         private System.Windows.Forms.TabPage tabPage91;
         private System.Windows.Forms.CheckBox cbZoom;
         private System.Windows.Forms.GroupBox groupBox37;
@@ -14470,6 +14459,10 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btOSDRenderLayers;
         private System.Windows.Forms.Button btOSDClearLayer;
         internal System.Windows.Forms.Button btZoomReset;
+        private System.Windows.Forms.Label lbScreenSourceWindowText;
+        private System.Windows.Forms.Button btScreenSourceWindowSelect;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

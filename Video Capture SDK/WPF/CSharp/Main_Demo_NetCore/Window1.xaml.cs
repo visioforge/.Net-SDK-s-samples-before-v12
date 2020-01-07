@@ -123,6 +123,8 @@ namespace Main_Demo
         private readonly ColorDialog colorDialog1 = new ColorDialog();
         private readonly FolderBrowserDialog folderDialog = new FolderBrowserDialog();
 
+        private WindowCaptureForm windowCaptureForm;
+
         private static System.Drawing.Color ColorConv(Color color)
         {
             return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
@@ -679,9 +681,13 @@ namespace Main_Demo
 
                 try
                 {
-                    settings.WindowHandle = FindWindow(
-                        edScreenCaptureWindowName.Text,
-                        null);
+                    if (windowCaptureForm == null)
+                    {
+                        MessageBox.Show("Window for screen capture is not specified.");
+                        return;
+                    }
+
+                    settings.WindowHandle = windowCaptureForm.CapturedWindowHandle;
                 }
                 catch
                 {
@@ -5762,6 +5768,25 @@ namespace Main_Demo
             }
 
             VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Zoom, (int)tbCCZoom.Value, flags);
+        }
+
+        private void btScreenSourceWindowSelect_Click(object sender, RoutedEventArgs e)
+        {
+            if (windowCaptureForm == null)
+            {
+                windowCaptureForm = new WindowCaptureForm();
+                windowCaptureForm.OnCaptureHotkey += WindowCaptureForm_OnCaptureHotkey;
+            }
+
+            windowCaptureForm.StartCapture();
+        }
+
+        private void WindowCaptureForm_OnCaptureHotkey(object sender, WindowCaptureEventArgs e)
+        {
+            windowCaptureForm.StopCapture();
+            windowCaptureForm.Hide();
+
+            lbScreenSourceWindowText.Content = e.Caption;
         }
     }
 }
