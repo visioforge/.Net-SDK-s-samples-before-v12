@@ -29,7 +29,7 @@ namespace VisioForge.Controls.UI.Dialogs.OutputFormats
             cbMFLevel.SelectedIndex = 12;
             cbMFRateControl.SelectedIndex = 3;
 
-            _filtersAvailableInfo = VideoCaptureCore.GetFiltersAvailable();
+            _filtersAvailableInfo = VideoCaptureCore.MP4_v11_GetFiltersAvailable();
             if (_filtersAvailableInfo.V11_NVENC_H264)
             {
                 lbMFHWAvailableEncoders.Text += "NVENC ";
