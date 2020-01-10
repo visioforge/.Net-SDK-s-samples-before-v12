@@ -18,11 +18,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\VisioForge.Controls.UI.Dialogs\VisioForge.Controls.UI.Dialogs.NetCore.csproj" />
-    <ProjectReference Include="..\..\..\..\..\VisioForge.Controls.UI\VisioForge.Controls.UI.NetCore.csproj" />
-    <ProjectReference Include="..\..\..\..\..\VisioForge.Shared\VisioForge.Shared.NetCore.csproj" />
-    <ProjectReference Include="..\..\..\..\..\VisioForge.Tools\VisioForge.Tools.NetCore.csproj" />
-    <ProjectReference Include="..\..\..\..\..\VisioForge.Types\VisioForge.Types.NetCore.csproj" />
+    <Reference Include="VisioForge.Controls.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.Controls.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Controls.UI.Dialogs.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.Controls.UI.Dialogs.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Controls.UI.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.Controls.UI.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.DirectX">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.DirectX.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.MediaFramework.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.MediaFramework.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Shared.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.Shared.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Tools.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.Tools.NetCore.dll</HintPath>
+    </Reference>
+    <Reference Include="VisioForge.Types.NetCore">
+      <HintPath>..\..\..\..\..\Redist\DotNetCore\VisioForge.Types.NetCore.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

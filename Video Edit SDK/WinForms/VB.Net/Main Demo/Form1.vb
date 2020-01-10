@@ -258,6 +258,10 @@ Public Class Form1
         volumeMeter1.Clear()
         volumeMeter2.Clear()
 
+        VideoEdit1.Video_Effects_Clear()
+        lbImageLogos.Items.Clear()
+        lbTextLogos.Items.Clear()
+
     End Sub
 
     Private Sub ConfigureDecklink()
@@ -516,10 +520,6 @@ Public Class Form1
         zoomShiftY = 0
 
         mmLog.Clear()
-
-        VideoEdit1.Video_Effects_Clear()
-        lbImageLogos.Items.Clear()
-        lbTextLogos.Items.Clear()
 
         If (rbConvert.Checked) Then
             VideoEdit1.Mode = VFVideoEditMode.Convert
@@ -951,7 +951,6 @@ Public Class Form1
 
     Private Sub AddVideoEffects()
         VideoEdit1.Video_Effects_Enabled = cbEffects.Checked
-        VideoEdit1.Video_Effects_Clear()
 
         'Deinterlace
         If cbDeinterlace.Checked Then
@@ -1112,6 +1111,10 @@ Public Class Form1
 
         volumeMeter1.Clear()
         volumeMeter2.Clear()
+
+        VideoEdit1.Video_Effects_Clear()
+        lbImageLogos.Items.Clear()
+        lbTextLogos.Items.Clear()
 
     End Sub
 

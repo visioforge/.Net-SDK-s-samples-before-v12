@@ -77,6 +77,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "webcam-preview", "WinForms\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decklink Demo", "WinForms\CSharp\Decklink Demo\Decklink Demo.csproj", "{3BC68568-542F-4C7A-80E2-379EFB06B49B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Window Capture", "WinForms\CSharp\Window Capture\Window Capture.csproj", "{77D9D9C9-C76A-4896-8024-C9413F5A76C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -317,6 +319,14 @@ Global
 		{3BC68568-542F-4C7A-80E2-379EFB06B49B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3BC68568-542F-4C7A-80E2-379EFB06B49B}.Release|x86.ActiveCfg = Release|Any CPU
 		{3BC68568-542F-4C7A-80E2-379EFB06B49B}.Release|x86.Build.0 = Release|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Debug|x86.Build.0 = Debug|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Release|x86.ActiveCfg = Release|Any CPU
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -357,6 +367,7 @@ Global
 		{48E67CB0-68B5-47F8-B92F-9E0FEA2083A1} = {7251110F-2127-4FF3-89B5-9A1F3165B3C2}
 		{66F6A17A-ADD7-4142-B479-17C14807FB28} = {7251110F-2127-4FF3-89B5-9A1F3165B3C2}
 		{3BC68568-542F-4C7A-80E2-379EFB06B49B} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
+		{77D9D9C9-C76A-4896-8024-C9413F5A76C0} = {EA0E8887-9E3A-4617-AB41-7FE409391A68}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F46B964-BC4D-4675-AF4A-17347CF13390}

@@ -173,8 +173,6 @@ namespace VideoEdit_CS_Demo
                 {
                     if (cbAddFullFile.Checked)
                     {
-                        
-
                         var audioFile = new VFVEAudioSource(s, -1, -1, string.Empty, 0, tbSpeed.Value / 100.0);
                         if (cbInsertAfterPreviousFile.Checked)
                         {
@@ -531,58 +529,9 @@ namespace VideoEdit_CS_Demo
 
             oggVorbisSettingsDialog.SaveSettings(ref oggVorbisOutput);
         }
-        
-        private void btStart_Click(object sender, EventArgs e)
+
+        private void ConfigureNetworkStreaming()
         {
-            VideoEdit1.Debug_Mode = cbDebugMode.Checked;
-            VideoEdit1.Debug_Telemetry = cbTelemetry.Checked;
-
-            zoom = 1.0;
-            zoomShiftX = 0;
-            zoomShiftY = 0;
-
-            mmLog.Clear();
-
-            VideoEdit1.Mode = (VFVideoEditMode)cbMode.SelectedIndex;
-
-            VideoEdit1.Video_Effects_Clear();
-            VideoEdit1.Video_Resize = cbResize.Checked;
-            lbImageLogos.Items.Clear();
-            lbTextLogos.Items.Clear();
-
-            if (VideoEdit1.Video_Resize)
-            {
-                VideoEdit1.Video_Resize_Width = Convert.ToInt32(edWidth.Text);
-                VideoEdit1.Video_Resize_Height = Convert.ToInt32(edHeight.Text);
-            }
-
-            if (cbCrop.Checked)
-            {
-                VideoEdit1.Video_Crop = new VideoCropSettings(
-                    Convert.ToInt32(edCropLeft.Text),
-                    Convert.ToInt32(edCropTop.Text),
-                    Convert.ToInt32(edCropRight.Text),
-                    Convert.ToInt32(edCropBottom.Text));
-            }
-            else
-            {
-                VideoEdit1.Video_Crop = null;
-            }
-
-            if (cbSubtitlesEnabled.Checked)
-            {
-                VideoEdit1.Video_Subtitles = new SubtitlesSettings(edSubtitlesFilename.Text);
-            }
-            else
-            {
-                VideoEdit1.Video_Subtitles = null;
-            }
-
-            VideoEdit1.Video_FrameRate = Convert.ToDouble(cbFrameRate.Text, CultureInfo.InvariantCulture);
-
-            ConfigureVideoRenderer();
-
-            // network streaming
             VideoEdit1.Network_Streaming_Enabled = cbNetworkStreaming.Checked;
 
             if (VideoEdit1.Network_Streaming_Enabled)
@@ -709,7 +658,57 @@ namespace VideoEdit_CS_Demo
 
                 VideoEdit1.Network_Streaming_Audio_Enabled = cbNetworkStreamingAudioEnabled.Checked;
             }
+        }
 
+        private void btStart_Click(object sender, EventArgs e)
+        {
+            VideoEdit1.Debug_Mode = cbDebugMode.Checked;
+            VideoEdit1.Debug_Telemetry = cbTelemetry.Checked;
+
+            zoom = 1.0;
+            zoomShiftX = 0;
+            zoomShiftY = 0;
+
+            mmLog.Clear();
+
+            VideoEdit1.Mode = (VFVideoEditMode)cbMode.SelectedIndex;
+            
+            VideoEdit1.Video_Resize = cbResize.Checked;
+            
+            if (VideoEdit1.Video_Resize)
+            {
+                VideoEdit1.Video_Resize_Width = Convert.ToInt32(edWidth.Text);
+                VideoEdit1.Video_Resize_Height = Convert.ToInt32(edHeight.Text);
+            }
+
+            if (cbCrop.Checked)
+            {
+                VideoEdit1.Video_Crop = new VideoCropSettings(
+                    Convert.ToInt32(edCropLeft.Text),
+                    Convert.ToInt32(edCropTop.Text),
+                    Convert.ToInt32(edCropRight.Text),
+                    Convert.ToInt32(edCropBottom.Text));
+            }
+            else
+            {
+                VideoEdit1.Video_Crop = null;
+            }
+
+            if (cbSubtitlesEnabled.Checked)
+            {
+                VideoEdit1.Video_Subtitles = new SubtitlesSettings(edSubtitlesFilename.Text);
+            }
+            else
+            {
+                VideoEdit1.Video_Subtitles = null;
+            }
+
+            VideoEdit1.Video_FrameRate = Convert.ToDouble(cbFrameRate.Text, CultureInfo.InvariantCulture);
+
+            ConfigureVideoRenderer();
+
+            ConfigureNetworkStreaming();
+            
             VideoEdit1.Output_Filename = edOutput.Text;
 
             VFVideoEditOutputFormat outputFormat = VFVideoEditOutputFormat.AVI;
@@ -1092,7 +1091,6 @@ namespace VideoEdit_CS_Demo
         private void AddVideoEffects()
         {
             VideoEdit1.Video_Effects_Enabled = cbEffects.Checked;
-            VideoEdit1.Video_Effects_Clear();
 
             // Deinterlace
             if (cbDeinterlace.Checked)
@@ -1129,7 +1127,8 @@ namespace VideoEdit_CS_Demo
                     var effect = VideoEdit1.Video_Effects_Get("DeinterlaceCAVT");
                     if (effect == null)
                     {
-                        cavt = new VFVideoEffectDeinterlaceCAVT(rbDeintCAVTEnabled.Checked,
+                        cavt = new VFVideoEffectDeinterlaceCAVT(
+                            rbDeintCAVTEnabled.Checked,
                             Convert.ToInt32(edDeintCAVTThreshold.Text));
                         VideoEdit1.Video_Effects_Add(cavt);
                     }
@@ -1152,7 +1151,8 @@ namespace VideoEdit_CS_Demo
                     var effect = VideoEdit1.Video_Effects_Get("DeinterlaceTriangle");
                     if (effect == null)
                     {
-                        triangle = new VFVideoEffectDeinterlaceTriangle(true,
+                        triangle = new VFVideoEffectDeinterlaceTriangle(
+                            true,
                             Convert.ToByte(edDeintTriangleWeight.Text));
                         VideoEdit1.Video_Effects_Add(triangle);
                     }
@@ -1290,6 +1290,11 @@ namespace VideoEdit_CS_Demo
 
             volumeMeter1.Clear();
             volumeMeter2.Clear();
+            
+            VideoEdit1.Video_Effects_Clear();
+
+            lbImageLogos.Items.Clear();
+            lbTextLogos.Items.Clear();
         }
         
         private void cbGreyscale_CheckedChanged(object sender, EventArgs e)
@@ -1697,6 +1702,11 @@ namespace VideoEdit_CS_Demo
 
             volumeMeter1.Clear();
             volumeMeter2.Clear();
+
+            VideoEdit1.Video_Effects_Clear();
+
+            lbImageLogos.Items.Clear();
+            lbTextLogos.Items.Clear();
         }
 
         private void ConfigureObjectDetection()

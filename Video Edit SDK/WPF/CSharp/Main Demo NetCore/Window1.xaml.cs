@@ -391,8 +391,6 @@ namespace Main_Demo
             VideoEdit1.Video_Renderer.Zoom_ShiftX = 0;
             VideoEdit1.Video_Renderer.Zoom_ShiftY = 0;
 
-            VideoEdit1.Video_Effects_Clear();
-
             if (rbConvert.IsChecked == true)
             {
                 VideoEdit1.Mode = VFVideoEditMode.Convert;
@@ -957,7 +955,6 @@ namespace Main_Demo
         private void AddVideoEffects()
         {
             VideoEdit1.Video_Effects_Enabled = cbEffects.IsChecked == true;
-            VideoEdit1.Video_Effects_Clear();
 
             // Deinterlace
             if (cbDeinterlace.IsChecked == true)
@@ -1143,6 +1140,11 @@ namespace Main_Demo
 
             lbFiles.Items.Clear();
             VideoEdit1.Input_Clear_List();
+
+            VideoEdit1.Video_Effects_Clear();
+
+            lbImageLogos.Items.Clear();
+            lbTextLogos.Items.Clear();
         }
 
         private void cbGreyscale_CheckedChanged(object sender, RoutedEventArgs e)
@@ -1589,6 +1591,11 @@ namespace Main_Demo
 
             VideoEdit1.Video_Transition_Clear();
             lbTransitions.Items.Clear();
+
+            VideoEdit1.Video_Effects_Clear();
+
+            lbImageLogos.Items.Clear();
+            lbTextLogos.Items.Clear();
         }
 
         private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)

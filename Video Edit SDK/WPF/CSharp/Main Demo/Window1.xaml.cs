@@ -2,12 +2,6 @@
 
 // ReSharper disable StyleCop.SA1600
 
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Tools;
-
 namespace Main_Demo
 {
     using System;
@@ -24,7 +18,12 @@ namespace Main_Demo
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
 
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WPF;
+    using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.GPUVideoEffects;
     using VisioForge.Types.OutputFormat;
@@ -391,8 +390,6 @@ namespace Main_Demo
             VideoEdit1.Video_Renderer.Zoom_Ratio = 0;
             VideoEdit1.Video_Renderer.Zoom_ShiftX = 0;
             VideoEdit1.Video_Renderer.Zoom_ShiftY = 0;
-
-            VideoEdit1.Video_Effects_Clear();
 
             if (rbConvert.IsChecked == true)
             {
@@ -958,7 +955,6 @@ namespace Main_Demo
         private void AddVideoEffects()
         {
             VideoEdit1.Video_Effects_Enabled = cbEffects.IsChecked == true;
-            VideoEdit1.Video_Effects_Clear();
 
             // Deinterlace
             if (cbDeinterlace.IsChecked == true)
@@ -1144,6 +1140,11 @@ namespace Main_Demo
 
             lbFiles.Items.Clear();
             VideoEdit1.Input_Clear_List();
+
+            VideoEdit1.Video_Effects_Clear();
+
+            lbImageLogos.Items.Clear();
+            lbTextLogos.Items.Clear();
         }
 
         private void cbGreyscale_CheckedChanged(object sender, RoutedEventArgs e)
@@ -1590,11 +1591,16 @@ namespace Main_Demo
 
             VideoEdit1.Video_Transition_Clear();
             lbTransitions.Items.Clear();
+
+            VideoEdit1.Video_Effects_Clear();
+
+            lbImageLogos.Items.Clear();
+            lbTextLogos.Items.Clear();
         }
 
         private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)
         {
-            Dispatcher.BeginInvoke(new StopDelegate(StopDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new StopDelegate(StopDelegateMethod), e);
         }
 
         private void VideoEdit1_OnStart(object sender, EventArgs e)
@@ -1783,7 +1789,7 @@ namespace Main_Demo
 
         private void VideoEdit1_OnObjectDetection(object sender, MotionDetectionExEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
+            Dispatcher?.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
         }
 
         public delegate void AFMotionDelegate(float level);
@@ -1848,7 +1854,7 @@ namespace Main_Demo
 
         private void VideoEdit1_OnMotion(object sender, MotionDetectionEventArgs e)
         {
-            Dispatcher.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
         }
 
         private void cbZoomEnabled_Checked(object sender, RoutedEventArgs e)
@@ -1973,7 +1979,7 @@ namespace Main_Demo
         {
             e.DetectorEnabled = false;
 
-            Dispatcher.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
         #endregion
@@ -2073,47 +2079,7 @@ namespace Main_Demo
             var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.StreamingMSExpressionEncoder);
             Process.Start(startInfo);
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            VideoEdit1.Mode = VFVideoEditMode.Preview;
-           
-            VideoEdit1.Input_AddImageFile(@"c:\samples\autumn-06.jpg",25000, -1, VFVideoEditStretchMode.Stretch);
-
-            VideoEdit1.Debug_Mode = true;
-            VideoEdit1.Debug_Dir = @"VisioForge";
-
-            VideoEdit1.Video_Renderer.Zoom_Ratio = 0;
-            VideoEdit1.Video_Renderer.Zoom_ShiftX = 0;
-            VideoEdit1.Video_Renderer.Zoom_ShiftY = 0;
-
-            VideoEdit1.Video_Effects_Clear();
-            VideoEdit1.Video_FrameRate = 0;
-            VideoEdit1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.WPF;
-
-            VideoEdit1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Letterbox;
-
-            VideoEdit1.Video_Renderer.RotationAngle = 0;
-
-            VideoEdit1.Video_Renderer.BackgroundColor = VideoEdit.ColorConv(((SolidColorBrush)pnVideoRendererBGColor.Fill).Color);
-            VideoEdit1.Video_Renderer.Flip_Horizontal = false;
-            VideoEdit1.Video_Renderer.Flip_Vertical = false;            
-
-            VideoEdit1.Network_Streaming_Audio_Enabled = false;
-
-            VideoEdit1.Video_Rotation = VFRotateMode.RotateNone;
-
-            VideoEdit1.Start();
-
-            //gdVideoEdit.Width /= 2;
-            //VideoEdit1.Width = gdVideoEdit.Width;
-            //VideoEdit1.Height = gdVideoEdit.Height;
-
-            //VideoEdit1.RenderSize = new System.Windows.Size(gdVideoEdit.Width, gdVideoEdit.Height);
-
-            //VideoEdit1.Video_Renderer_Update();
-        }
-
+        
         #region Full screen
 
         private bool fullScreen;
@@ -2502,7 +2468,7 @@ namespace Main_Demo
 
         private void VideoEdit1_OnFFMPEGInfo(object sender, FFMPEGInfoEventArgs e)
         {
-            Dispatcher.BeginInvoke(new FFMPEGInfoDelegate(FFMPEGInfoDelegateMethod), e.Message);
+            Dispatcher?.BeginInvoke(new FFMPEGInfoDelegate(FFMPEGInfoDelegateMethod), e.Message);
         }
 
         private void btEncryptionOpenFile_Click(object sender, RoutedEventArgs e)
