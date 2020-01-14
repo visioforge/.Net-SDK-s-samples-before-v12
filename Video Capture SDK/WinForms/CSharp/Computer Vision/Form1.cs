@@ -14,8 +14,10 @@ namespace Computer_Vision_Demo
     using System.IO;
 
     using VisioForge.Controls.CV;
+    using VisioForge.Shared.MFP;
     using VisioForge.Types;
     using VisioForge.Types.Sources;
+    using VisioForge.Types.VideoEffects;
 
     public partial class Form1 : Form
     {
@@ -49,36 +51,54 @@ namespace Computer_Vision_Demo
         }
 
         #region Face detection
+
         private void FaceDetectionAdd()
         {
-            faceDetector = new FaceDetector
-            {
-                DrawEnabled = cbFDDraw.Checked,
-                DrawColor = Color.Green,
-                FramesToSkip = tbFDSkipFrames.Value,
-                MinNeighbors = tbFDMinNeighbors.Value,
-                ScaleFactor = tbFDScaleFactor.Value / 100.0f,
-                VideoScale = tbFDDownscale.Value / 10.0f
-            };
+            faceDetector = new FaceDetector();
+            faceDetector.OnFaceDetected += OnFaceDetected;
 
+            FaceDetectionUpdate();
+        }
+
+        private void FaceDetectionUpdate()
+        {
+            faceDetector.DrawEnabled = cbFDDraw.Checked;
+            faceDetector.DrawColor = Color.Green;
+            faceDetector.FramesToSkip = tbFDSkipFrames.Value;
+            faceDetector.MinNeighbors = tbFDMinNeighbors.Value;
+            faceDetector.ScaleFactor = tbFDScaleFactor.Value / 100.0f;
+            faceDetector.VideoScale = tbFDDownscale.Value / 10.0f;
+            
             if (rbFDCircle.Checked)
             {
-                this.faceDetector.DrawShapeType = CVShapeType.Circle;
+                faceDetector.DrawShapeType = CVShapeType.Circle;
             }
             else
             {
-                this.faceDetector.DrawShapeType = CVShapeType.Rectangle;
+                faceDetector.DrawShapeType = CVShapeType.Rectangle;
             }
 
+            faceDetector.MinFaceSize = new Size(Convert.ToInt32(edFDMinFaceWidth.Text), Convert.ToInt32(edFDMinFaceHeight.Text));
+
             var path = Path.GetDirectoryName(Application.ExecutablePath) + "\\";
+            string facePath = cbFDFace.Checked ? path + "haarcascade_frontalface_default.xml" : null;
+            string eyesPath = cbFDEyes.Checked ? path + "haarcascade_eye.xml" : null;
+            string nosePath = cbFDNose.Checked ? path + "haarcascade_mcs_nose.xml" : null;
+            string mouthPath = cbFDMouth.Checked ? path + "haarcascade_mcs_mouth.xml" : null;
+
             faceDetector.Init(
-                path + "haarcascade_frontalface_default.xml",
-                path + "haarcascade_eye.xml",
-                path + "haarcascade_mcs_nose.xml",
-                path + "haarcascade_mcs_mouth.xml",
+                facePath,
+                eyesPath,
+                nosePath,
+                mouthPath,
                 true);
 
-            faceDetector.OnFaceDetected += OnFaceDetected;
+            faceDetector.UpdateSettings();
+        }
+
+        private void btFDUpdate_Click(object sender, EventArgs e)
+        {
+            FaceDetectionUpdate();
         }
 
         private void FaceDetectionRemove()
@@ -238,9 +258,42 @@ namespace Computer_Vision_Demo
             //int count = CV.PedestrianDetectorProcess(pd, frame, ref items, out time);
             //Trace.WriteLine($"Count: {count}, time: {time}");
 
-            faceDetector?.Process(frame);
+            var faces = faceDetector?.Process(frame);
             carCounter?.Process(frame);
             pedestrianDetector?.Process(frame);
+
+            if (cbFDMosaic.Checked)
+            {
+                foreach (var face in faces)
+                {
+                    var rect = face.Position;
+                    rect.Top -= 10;
+                    if (rect.Top < 0)
+                    {
+                        rect.Top = 0;
+                    }
+
+                    rect.Left -= 10;
+                    if (rect.Left < 0)
+                    {
+                        rect.Left = 0;
+                    }
+
+                    rect.Bottom += 10;
+                    if (rect.Bottom > frame.Height)
+                    {
+                        rect.Bottom = frame.Height;
+                    }
+
+                    rect.Right += 10;
+                    if (rect.Right > frame.Width)
+                    {
+                        rect.Right = frame.Width;
+                    }
+                    
+                    MFP.EffectMosaicROI(frame.Data, frame.Width, frame.Height, 45, rect);
+                }
+            }
         }
 
         #region Video capture source
@@ -439,6 +492,10 @@ namespace Computer_Vision_Demo
                 PedestrianDetectionAdd();
             }
 
+            //this.MediaPlayer1.Video_Effects_Enabled = true;
+            //    this.MediaPlayer1.Video_Effects_Clear();
+            //    this.MediaPlayer1.Video_Effects_Add(new VFVideoEffectMosaic(true, 500));
+
             if (rbVideoFile.Checked)
             {
                 MediaPlayer1.Show();
@@ -469,6 +526,11 @@ namespace Computer_Vision_Demo
             {
                 edFilename.Text = dlgOpenFile.FileName;
             }
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms3 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms4 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -61,6 +61,16 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.cbFDMosaic = new System.Windows.Forms.CheckBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.edFDMinFaceHeight = new System.Windows.Forms.TextBox();
+            this.edFDMinFaceWidth = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cbFDEyes = new System.Windows.Forms.CheckBox();
+            this.cbFDNose = new System.Windows.Forms.CheckBox();
+            this.btFDUpdate = new System.Windows.Forms.Button();
+            this.cbFDMouth = new System.Windows.Forms.CheckBox();
+            this.cbFDFace = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -437,6 +447,16 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.cbFDMosaic);
+            this.tabPage2.Controls.Add(this.label21);
+            this.tabPage2.Controls.Add(this.edFDMinFaceHeight);
+            this.tabPage2.Controls.Add(this.edFDMinFaceWidth);
+            this.tabPage2.Controls.Add(this.label20);
+            this.tabPage2.Controls.Add(this.cbFDEyes);
+            this.tabPage2.Controls.Add(this.cbFDNose);
+            this.tabPage2.Controls.Add(this.btFDUpdate);
+            this.tabPage2.Controls.Add(this.cbFDMouth);
+            this.tabPage2.Controls.Add(this.cbFDFace);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label5);
             this.tabPage2.Controls.Add(this.label2);
@@ -466,6 +486,103 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Face detector";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // cbFDMosaic
+            // 
+            this.cbFDMosaic.AutoSize = true;
+            this.cbFDMosaic.Location = new System.Drawing.Point(226, 309);
+            this.cbFDMosaic.Name = "cbFDMosaic";
+            this.cbFDMosaic.Size = new System.Drawing.Size(131, 17);
+            this.cbFDMosaic.TabIndex = 156;
+            this.cbFDMosaic.Text = "Draw mosaic on faces";
+            this.cbFDMosaic.UseVisualStyleBackColor = true;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(265, 234);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(12, 13);
+            this.label21.TabIndex = 155;
+            this.label21.Text = "x";
+            this.label21.Click += new System.EventHandler(this.label21_Click);
+            // 
+            // edFDMinFaceHeight
+            // 
+            this.edFDMinFaceHeight.Location = new System.Drawing.Point(278, 231);
+            this.edFDMinFaceHeight.Name = "edFDMinFaceHeight";
+            this.edFDMinFaceHeight.Size = new System.Drawing.Size(36, 20);
+            this.edFDMinFaceHeight.TabIndex = 154;
+            this.edFDMinFaceHeight.Text = "100";
+            // 
+            // edFDMinFaceWidth
+            // 
+            this.edFDMinFaceWidth.Location = new System.Drawing.Point(226, 231);
+            this.edFDMinFaceWidth.Name = "edFDMinFaceWidth";
+            this.edFDMinFaceWidth.Size = new System.Drawing.Size(36, 20);
+            this.edFDMinFaceWidth.TabIndex = 153;
+            this.edFDMinFaceWidth.Text = "100";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(223, 215);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(87, 13);
+            this.label20.TabIndex = 152;
+            this.label20.Text = "Minimal face size";
+            // 
+            // cbFDEyes
+            // 
+            this.cbFDEyes.AutoSize = true;
+            this.cbFDEyes.Location = new System.Drawing.Point(278, 57);
+            this.cbFDEyes.Name = "cbFDEyes";
+            this.cbFDEyes.Size = new System.Drawing.Size(49, 17);
+            this.cbFDEyes.TabIndex = 151;
+            this.cbFDEyes.Text = "Eyes";
+            this.cbFDEyes.UseVisualStyleBackColor = true;
+            // 
+            // cbFDNose
+            // 
+            this.cbFDNose.AutoSize = true;
+            this.cbFDNose.Location = new System.Drawing.Point(198, 57);
+            this.cbFDNose.Name = "cbFDNose";
+            this.cbFDNose.Size = new System.Drawing.Size(51, 17);
+            this.cbFDNose.TabIndex = 150;
+            this.cbFDNose.Text = "Nose";
+            this.cbFDNose.UseVisualStyleBackColor = true;
+            // 
+            // btFDUpdate
+            // 
+            this.btFDUpdate.Location = new System.Drawing.Point(18, 406);
+            this.btFDUpdate.Name = "btFDUpdate";
+            this.btFDUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btFDUpdate.TabIndex = 149;
+            this.btFDUpdate.Text = "Update";
+            this.btFDUpdate.UseVisualStyleBackColor = true;
+            this.btFDUpdate.Click += new System.EventHandler(this.btFDUpdate_Click);
+            // 
+            // cbFDMouth
+            // 
+            this.cbFDMouth.AutoSize = true;
+            this.cbFDMouth.Location = new System.Drawing.Point(106, 57);
+            this.cbFDMouth.Name = "cbFDMouth";
+            this.cbFDMouth.Size = new System.Drawing.Size(56, 17);
+            this.cbFDMouth.TabIndex = 148;
+            this.cbFDMouth.Text = "Mouth";
+            this.cbFDMouth.UseVisualStyleBackColor = true;
+            // 
+            // cbFDFace
+            // 
+            this.cbFDFace.AutoSize = true;
+            this.cbFDFace.Checked = true;
+            this.cbFDFace.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbFDFace.Location = new System.Drawing.Point(18, 57);
+            this.cbFDFace.Name = "cbFDFace";
+            this.cbFDFace.Size = new System.Drawing.Size(50, 17);
+            this.cbFDFace.TabIndex = 147;
+            this.cbFDFace.Text = "Face";
+            this.cbFDFace.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -638,7 +755,7 @@
             // 
             this.rbFDRectangle.AutoSize = true;
             this.rbFDRectangle.Checked = true;
-            this.rbFDRectangle.Location = new System.Drawing.Point(140, 89);
+            this.rbFDRectangle.Location = new System.Drawing.Point(140, 103);
             this.rbFDRectangle.Name = "rbFDRectangle";
             this.rbFDRectangle.Size = new System.Drawing.Size(74, 17);
             this.rbFDRectangle.TabIndex = 4;
@@ -649,7 +766,7 @@
             // rbFDCircle
             // 
             this.rbFDCircle.AutoSize = true;
-            this.rbFDCircle.Location = new System.Drawing.Point(53, 89);
+            this.rbFDCircle.Location = new System.Drawing.Point(53, 103);
             this.rbFDCircle.Name = "rbFDCircle";
             this.rbFDCircle.Size = new System.Drawing.Size(51, 17);
             this.rbFDCircle.TabIndex = 3;
@@ -661,7 +778,7 @@
             this.cbFDDraw.AutoSize = true;
             this.cbFDDraw.Checked = true;
             this.cbFDDraw.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbFDDraw.Location = new System.Drawing.Point(18, 66);
+            this.cbFDDraw.Location = new System.Drawing.Point(18, 80);
             this.cbFDDraw.Name = "cbFDDraw";
             this.cbFDDraw.Size = new System.Drawing.Size(51, 17);
             this.cbFDDraw.TabIndex = 2;
@@ -926,8 +1043,11 @@
             this.VideoCapture1.BDA_Source = null;
             this.VideoCapture1.ChromaKey = null;
             this.VideoCapture1.Custom_Source = null;
+            this.VideoCapture1.CustomRedist_Enabled = false;
+            this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
+            this.VideoCapture1.Debug_Telemetry = false;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
@@ -954,6 +1074,7 @@
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.OSD_Enabled = false;
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -997,23 +1118,24 @@
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms3.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms3.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms3.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms3.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms3.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms3.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms3.Deinterlace_VMR9_UseDefault = false;
-            videoRendererSettingsWinForms3.Flip_Horizontal = false;
-            videoRendererSettingsWinForms3.Flip_Vertical = false;
-            videoRendererSettingsWinForms3.RotationAngle = 0;
-            videoRendererSettingsWinForms3.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms3.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms3.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms3.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms3.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms3.Zoom_ShiftY = 0;
-            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms3;
+            this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.VideoCapture1.Video_Renderer = videoRendererSettingsWinForms1;
             this.VideoCapture1.Video_Resize = null;
             this.VideoCapture1.Video_ResizeOrCrop_Enabled = false;
             this.VideoCapture1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone;
@@ -1048,21 +1170,30 @@
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
+            this.MediaPlayer1.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer1.CustomParameters")));
+            this.MediaPlayer1.CustomRedist_Enabled = false;
+            this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
+            this.MediaPlayer1.Debug_Telemetry = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
+            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(481, 12);
             this.MediaPlayer1.Loop = false;
             this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
+            this.MediaPlayer1.MIDI_Renderer = null;
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.OSD_Enabled = false;
+            this.MediaPlayer1.Play_DelayEnabled = false;
+            this.MediaPlayer1.Play_PauseAtFirstFrame = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
             this.MediaPlayer1.ReversePlayback_Enabled = false;
             this.MediaPlayer1.Selection_Active = false;
@@ -1070,31 +1201,32 @@
             this.MediaPlayer1.Selection_Stop = 0;
             this.MediaPlayer1.Size = new System.Drawing.Size(467, 348);
             this.MediaPlayer1.Source_Custom_CLSID = null;
+            this.MediaPlayer1.Source_GPU_Mode = VisioForge.Types.VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
             this.MediaPlayer1.Source_Stream_Size = ((long)(0));
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
-            this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.TabIndex = 84;
             this.MediaPlayer1.Video_Effects_Enabled = false;
-            videoRendererSettingsWinForms4.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms4.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms4.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms4.BackgroundColor = System.Drawing.Color.Black;
-            videoRendererSettingsWinForms4.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms4.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms4.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms4.Flip_Horizontal = false;
-            videoRendererSettingsWinForms4.Flip_Vertical = false;
-            videoRendererSettingsWinForms4.RotationAngle = 0;
-            videoRendererSettingsWinForms4.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms4.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
-            videoRendererSettingsWinForms4.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
-            videoRendererSettingsWinForms4.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms4.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms4.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms4;
+            this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Black;
+            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms2.Flip_Horizontal = false;
+            videoRendererSettingsWinForms2.Flip_Vertical = false;
+            videoRendererSettingsWinForms2.RotationAngle = 0;
+            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.EVR;
+            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.EVR;
+            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnVideoFrameBuffer += new System.EventHandler<VisioForge.Types.VideoFrameBufferEventArgs>(this.MediaPlayer1_OnVideoFrameBuffer);
@@ -1216,6 +1348,16 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TrackBar tbPDSkipFrames;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.CheckBox cbFDMouth;
+        private System.Windows.Forms.CheckBox cbFDFace;
+        private System.Windows.Forms.CheckBox cbFDNose;
+        private System.Windows.Forms.Button btFDUpdate;
+        private System.Windows.Forms.CheckBox cbFDEyes;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox edFDMinFaceHeight;
+        private System.Windows.Forms.TextBox edFDMinFaceWidth;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.CheckBox cbFDMosaic;
     }
 }
 
