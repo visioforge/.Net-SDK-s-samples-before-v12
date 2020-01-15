@@ -61,6 +61,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Decklink Demo NetCore", "Wi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Window Capture NetCore", "WinForms\CSharp\Window Capture\Window Capture NetCore.csproj", "{113C6237-0AF5-4141-8433-9264D81A5B7E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Multiple IP Cameras Demo WPF NetCore", "WPF\CSharp\Multiple IP Cameras Demo NetCore\Multiple IP Cameras Demo WPF NetCore.csproj", "{A9974871-A4DF-43B3-8FFF-B8606311325F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -269,6 +271,14 @@ Global
 		{113C6237-0AF5-4141-8433-9264D81A5B7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{113C6237-0AF5-4141-8433-9264D81A5B7E}.Release|x86.ActiveCfg = Release|Any CPU
 		{113C6237-0AF5-4141-8433-9264D81A5B7E}.Release|x86.Build.0 = Release|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Debug|x86.Build.0 = Debug|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Release|x86.ActiveCfg = Release|Any CPU
+		{A9974871-A4DF-43B3-8FFF-B8606311325F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +311,7 @@ Global
 		{1E682C91-7296-4EAE-84A9-E23DB3A489C2} = {BEB35102-F434-47CE-A231-2FC3F089F75B}
 		{AE0D62F1-47FF-4EB2-8774-5E2D316463BF} = {12FCD389-3B42-46FC-9956-076CF43F2600}
 		{113C6237-0AF5-4141-8433-9264D81A5B7E} = {12FCD389-3B42-46FC-9956-076CF43F2600}
+		{A9974871-A4DF-43B3-8FFF-B8606311325F} = {BEB35102-F434-47CE-A231-2FC3F089F75B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4F46B964-BC4D-4675-AF4A-17347CF13390}

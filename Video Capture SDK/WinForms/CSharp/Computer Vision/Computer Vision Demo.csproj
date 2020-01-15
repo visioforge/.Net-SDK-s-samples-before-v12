@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="VisioForge.Types" />
+    <Reference Include="VisioForge.Shared" />
     <Reference Include="VisioForge.Controls.UI" />
     <Reference Include="VisioForge.Controls.UI.Dialogs" />
     <Reference Include="VisioForge.Controls" />
