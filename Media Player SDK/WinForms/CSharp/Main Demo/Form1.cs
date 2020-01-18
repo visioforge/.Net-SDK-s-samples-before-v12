@@ -13,6 +13,7 @@ namespace Media_Player_Demo
     using System.Drawing;
     using System.Globalization;
     using System.IO;
+    using System.Threading;
     using System.Windows.Forms;
 
     using VisioForge.Controls.UI.WinForms;
@@ -1349,7 +1350,7 @@ namespace Media_Player_Demo
             // Motion detection-ex
             ConfigureMotionDetectionEx();
 
-            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
+            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = MediaPlayer1.Video_Effects_Enabled;
 
             MediaPlayer1.Play(cbRunAsync.Checked);
 
@@ -3324,6 +3325,25 @@ namespace Media_Player_Demo
             if (openFileDialog1.ShowDialog(this) == DialogResult.OK)
             {
                 edEncryptionKeyFile.Text = openFileDialog1.FileName;
+            }
+        }
+
+        private void mnPlaylist_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            if (e.ClickedItem.Name == "mnPlaylistRemove")
+            {
+                if (lbSourceFiles.SelectedItem != null)
+                {
+                    var filename = lbSourceFiles.SelectedItem.ToString();
+                    MediaPlayer1.FilenamesOrURL.Remove(filename);
+
+                    lbSourceFiles.Items.Remove(lbSourceFiles.SelectedItem);
+                }
+            }
+            else if (e.ClickedItem.Name == "mnPlaylistRemoveAll")
+            {
+                MediaPlayer1.FilenamesOrURL.Clear();
+                lbSourceFiles.Items.Clear();
             }
         }
     }

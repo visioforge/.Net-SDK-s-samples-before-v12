@@ -32,7 +32,7 @@ namespace Media_Player_Demo
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
+            VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms1 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage20 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
@@ -538,6 +538,7 @@ namespace Media_Player_Demo
             this.label89 = new System.Windows.Forms.Label();
             this.cbBarcodeDetectionEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage23 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox48 = new System.Windows.Forms.GroupBox();
             this.label343 = new System.Windows.Forms.Label();
             this.edEncryptionKeyHEX = new System.Windows.Forms.TextBox();
@@ -614,6 +615,8 @@ namespace Media_Player_Demo
             this.label29 = new System.Windows.Forms.Label();
             this.cbSourceMode = new System.Windows.Forms.ComboBox();
             this.lbSourceFiles = new System.Windows.Forms.ListBox();
+            this.mnPlaylist = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnPlaylistRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.label30 = new System.Windows.Forms.Label();
             this.btAddFileToPlaylist = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -621,7 +624,7 @@ namespace Media_Player_Demo
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.mnPlaylistRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage20.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -770,6 +773,7 @@ namespace Media_Player_Demo
             this.tabPage54.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).BeginInit();
             this.tabPage55.SuspendLayout();
+            this.mnPlaylist.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -6257,6 +6261,17 @@ namespace Media_Player_Demo
             this.tabPage23.Text = "Encryption";
             this.tabPage23.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 245);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(269, 80);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "Media Player SDK .Net can play encrypted files created by Video Encryption SDK (D" +
+    "irectShow or included in Video Capture SDK .Net / Video Edit SDK .Net).";
+            // 
             // groupBox48
             // 
             this.groupBox48.Controls.Add(this.label343);
@@ -7020,12 +7035,28 @@ namespace Media_Player_Demo
             // 
             this.lbSourceFiles.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSourceFiles.ContextMenuStrip = this.mnPlaylist;
             this.lbSourceFiles.FormattingEnabled = true;
             this.lbSourceFiles.Location = new System.Drawing.Point(330, 65);
             this.lbSourceFiles.Margin = new System.Windows.Forms.Padding(2);
             this.lbSourceFiles.Name = "lbSourceFiles";
             this.lbSourceFiles.Size = new System.Drawing.Size(414, 56);
             this.lbSourceFiles.TabIndex = 16;
+            // 
+            // mnPlaylist
+            // 
+            this.mnPlaylist.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnPlaylistRemove,
+            this.mnPlaylistRemoveAll});
+            this.mnPlaylist.Name = "mnPlaylist";
+            this.mnPlaylist.Size = new System.Drawing.Size(181, 70);
+            this.mnPlaylist.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnPlaylist_ItemClicked);
+            // 
+            // mnPlaylistRemove
+            // 
+            this.mnPlaylistRemove.Name = "mnPlaylistRemove";
+            this.mnPlaylistRemove.Size = new System.Drawing.Size(180, 22);
+            this.mnPlaylistRemove.Text = "Remove";
             // 
             // label30
             // 
@@ -7149,23 +7180,23 @@ namespace Media_Player_Demo
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
-            videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
-            videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
-            videoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty;
-            videoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = null;
-            videoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = true;
-            videoRendererSettingsWinForms2.Flip_Horizontal = false;
-            videoRendererSettingsWinForms2.Flip_Vertical = false;
-            videoRendererSettingsWinForms2.RotationAngle = 0;
-            videoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
-            videoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
-            videoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
-            videoRendererSettingsWinForms2.Zoom_Ratio = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftX = 0;
-            videoRendererSettingsWinForms2.Zoom_ShiftY = 0;
-            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
+            videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
+            videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
+            videoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty;
+            videoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.Auto;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = null;
+            videoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = true;
+            videoRendererSettingsWinForms1.Flip_Horizontal = false;
+            videoRendererSettingsWinForms1.Flip_Vertical = false;
+            videoRendererSettingsWinForms1.RotationAngle = 0;
+            videoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox;
+            videoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer;
+            videoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer;
+            videoRendererSettingsWinForms1.Zoom_Ratio = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftX = 0;
+            videoRendererSettingsWinForms1.Zoom_ShiftY = 0;
+            this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
@@ -7179,16 +7210,11 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
             // 
-            // textBox1
+            // mnPlaylistRemoveAll
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 245);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(269, 80);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "Media Player SDK .Net can play encrypted files created by Video Encryption SDK (D" +
-    "irectShow or included in Video Capture SDK .Net / Video Edit SDK .Net).";
+            this.mnPlaylistRemoveAll.Name = "mnPlaylistRemoveAll";
+            this.mnPlaylistRemoveAll.Size = new System.Drawing.Size(180, 22);
+            this.mnPlaylistRemoveAll.Text = "Remove all";
             // 
             // Form1
             // 
@@ -7429,6 +7455,7 @@ namespace Media_Player_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbJPEGQuality)).EndInit();
             this.tabPage55.ResumeLayout(false);
             this.tabPage55.PerformLayout();
+            this.mnPlaylist.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -8025,5 +8052,8 @@ namespace Media_Player_Demo
         private System.Windows.Forms.Button btOSDRenderLayers;
         private System.Windows.Forms.Button btZoomReset;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ContextMenuStrip mnPlaylist;
+        private System.Windows.Forms.ToolStripMenuItem mnPlaylistRemove;
+        private System.Windows.Forms.ToolStripMenuItem mnPlaylistRemoveAll;
     }
 }

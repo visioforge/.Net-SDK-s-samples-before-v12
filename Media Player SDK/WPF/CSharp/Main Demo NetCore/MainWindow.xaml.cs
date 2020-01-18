@@ -3,11 +3,6 @@
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable NotAccessedVariable
 
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Shared.MFP;
-
 namespace Main_Demo
 {
     using System;
@@ -24,8 +19,9 @@ namespace Main_Demo
     using System.Windows.Media;
     using System.Windows.Threading;
 
-    using DirectShowLib.BDA;
-
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Tools;
     using VisioForge.Tools.MediaInfo;
     using VisioForge.Types;
@@ -878,6 +874,10 @@ namespace Main_Demo
             {
                 MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.Direct2D;
             }
+            else if (rbEVR.IsChecked == true)
+            {
+                MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.EVR;
+            }
             else
             {
                 MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRendererWPF.None;
@@ -898,6 +898,8 @@ namespace Main_Demo
             MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.IsChecked == true;
             MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.IsChecked == true;
             MediaPlayer1.Background = pnVideoRendererBGColor.Fill;
+
+            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = true;
 
             // Audio enhancement
             MediaPlayer1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.IsChecked == true;
@@ -992,6 +994,8 @@ namespace Main_Demo
                 MediaPlayer1.Encryption_KeyType = VFEncryptionKeyType.Binary;
                 MediaPlayer1.Encryption_Key = MediaPlayer.ConvertHexStringToByteArray(edEncryptionKeyHEX.Text);
             }
+
+            MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = MediaPlayer1.Video_Effects_Enabled; 
 
             MediaPlayer1.Play(cbRunAsync.IsChecked == true);
 
@@ -1453,6 +1457,12 @@ namespace Main_Demo
 
         private void btNextFrame_Click(object sender, RoutedEventArgs e)
         {
+            if (MediaPlayer1.Video_Renderer.Video_Renderer != VFVideoRendererWPF.EVR)
+            {
+                MessageBox.Show(this, "Please set video renderer to EVR to support frame step.");
+                return;
+            }
+
             MediaPlayer1.NextFrame();
         }
 
@@ -1610,7 +1620,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 if (cbLicensing.IsChecked == true)
                 {
@@ -1687,7 +1697,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnObjectDetection(object sender, MotionDetectionExEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
+            Dispatcher?.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
         }
 
         private void ConfigureChromaKey()
@@ -1763,12 +1773,12 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnMotion(object sender, MotionDetectionEventArgs e)
         {
-            Dispatcher.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
         }
 
         private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
-            Dispatcher.BeginInvoke(new StopDelegate(StopDelegateMethod), null);
+            Dispatcher?.BeginInvoke(new StopDelegate(StopDelegateMethod), null);
         }
 
         private delegate void StopDelegate();
@@ -1925,7 +1935,7 @@ namespace Main_Demo
         {
             e.DetectorEnabled = false;
 
-            Dispatcher.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
         #endregion
@@ -1995,7 +2005,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnVideoEncrypted(object sender, EventArgs e)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 MessageBox.Show(this, "Video is encrypted. Please be sure that you're entered correct pin code.");
             }));
@@ -2135,7 +2145,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnAudioVUMeterProMaximumCalculated(object sender, VUMeterMaxSampleEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AudioVUMeterProMaximumCalculatedDelegate(AudioVUMeterProMaximumCalculatedelegateMethod), e);
+            Dispatcher?.BeginInvoke(new AudioVUMeterProMaximumCalculatedDelegate(AudioVUMeterProMaximumCalculatedelegateMethod), e);
         }
 
         public delegate void AudioVUMeterProFFTCalculatedDelegate(VUMeterFFTEventArgs e);
@@ -2147,7 +2157,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnAudioVUMeterProFFTCalculated(object sender, VUMeterFFTEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AudioVUMeterProFFTCalculatedDelegate(AudioVUMeterProFFTCalculatedDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new AudioVUMeterProFFTCalculatedDelegate(AudioVUMeterProFFTCalculatedDelegateMethod), e);
         }
 
         public delegate void AudioVUMeterProVolumeDelegate(AudioLevelEventArgs e);
@@ -2166,7 +2176,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnAudioVUMeterProVolume(object sender, AudioLevelEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AudioVUMeterProVolumeDelegate(AudioVUMeterProVolumeDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new AudioVUMeterProVolumeDelegate(AudioVUMeterProVolumeDelegateMethod), e);
         }
 
         private void tbVUMeterAmplification_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -2322,11 +2332,6 @@ namespace Main_Demo
                 cbDirect2DRotate.IsEnabled = direct2d;
                 pnZoom.IsEnabled = direct2d;
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void cbFilters_SelectedIndexChanged(object sender, SelectionChangedEventArgs e)
@@ -2537,7 +2542,7 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 if (cbLicensing.IsChecked == true)
                 {
@@ -2876,6 +2881,12 @@ namespace Main_Demo
 
         private void btPrevFrame_Click(object sender, RoutedEventArgs e)
         {
+            if (MediaPlayer1.Video_Renderer.Video_Renderer != VFVideoRendererWPF.EVR)
+            {
+                MessageBox.Show(this, "Please set video renderer to EVR to support frame step.");
+                return;
+            }
+
             MediaPlayer1.PreviousFrame();
         }
 
@@ -2883,7 +2894,6 @@ namespace Main_Demo
         {
             btStop_Click(null, null);
         }
-
 
         private void BtTextLogoAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -2999,11 +3009,28 @@ namespace Main_Demo
 
         private void MediaPlayer1_OnMIDIFileInfo(object sender, MIDIInfoEventArgs e)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
                 edTags.Text += e.Info.ToString();
             }));
+        }
+
+        private void mnPlaylistRemoveAll_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.FilenamesOrURL.Clear();
+            lbSourceFiles.Items.Clear();
+        }
+
+        private void mnPlaylistRemove_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbSourceFiles.SelectedItem != null)
+            {
+                var filename = lbSourceFiles.SelectedItem.ToString();
+                MediaPlayer1.FilenamesOrURL.Remove(filename);
+
+                lbSourceFiles.Items.Remove(lbSourceFiles.SelectedItem);
+            }
         }
     }
 }

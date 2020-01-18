@@ -191,7 +191,7 @@
                                         </Grid>
                                     </TabItem>
                                 </TabControl>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="10,10,0,0" x:Name="cbEffects" VerticalAlignment="Top" />
+                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="cbEffects" VerticalAlignment="Top" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="78,43,0,0" Maximum="255" x:Name="tbLightness" ValueChanged="tbLightness_Scroll" VerticalAlignment="Top" Width="100" />
                                 <Label Content="Lightness" Height="28" HorizontalAlignment="Left" Margin="10,38,0,0" x:Name="label92" VerticalAlignment="Top" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="256,43,0,0" Maximum="255" x:Name="tbSaturation" Value="255" ValueChanged="tbSaturation_Scroll" VerticalAlignment="Top" Width="100" />
@@ -566,11 +566,12 @@
             <TabItem Header="Display" x:Name="tabItem1">
                 <Grid>
                     <Button x:Name="btFullScreen" Content="Full screen" HorizontalAlignment="Left" Margin="54.163,320.21,0,0" VerticalAlignment="Top" Width="75" Height="28.96" Click="btFullScreen_Click"/>
-                    <GroupBox Header="Video Renderer" Height="100" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="groupBox26" VerticalAlignment="Top" Width="142">
+                    <GroupBox Header="Video Renderer" Height="122" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="groupBox26" VerticalAlignment="Top" Width="142">
                         <Grid>
                             <RadioButton Content="WPF" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="rbWPF" VerticalAlignment="Top" IsChecked="True" Checked="rbVR_Checked" />
-                            <RadioButton Content="None" Height="16" HorizontalAlignment="Left" Margin="10,52,0,0" x:Name="rbNone" VerticalAlignment="Top" Checked="rbVR_Checked" />
+                            <RadioButton Content="None" Height="16" HorizontalAlignment="Left" Margin="10,73,0,0" x:Name="rbNone" VerticalAlignment="Top" Checked="rbVR_Checked" />
                             <RadioButton Content="Direct2D" Height="16" HorizontalAlignment="Left" Margin="10,31,0,0" x:Name="rbDirect2D" VerticalAlignment="Top" Checked="rbVR_Checked" />
+                            <RadioButton Content="EVR" Height="16" HorizontalAlignment="Left" Margin="10,52,0,0" x:Name="rbEVR" VerticalAlignment="Top" Checked="rbVR_Checked" />
                         </Grid>
                     </GroupBox>
                     <CheckBox Content="Stretch video" Height="16" HorizontalAlignment="Left" Margin="167,22,0,0" x:Name="cbStretch" VerticalAlignment="Top" Checked="cbStretch_Checked" Unchecked="cbStretch_Checked" />
@@ -764,7 +765,14 @@
         </ComboBox>
         <Label Content="Playlist" HorizontalAlignment="Left" Margin="407,53,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Right" Margin="0,30,56,0" VerticalAlignment="Top" Width="47" Height="23" Click="btAddFileToPlaylist_Click"/>
-        <ListBox x:Name="lbSourceFiles" Height="46" Margin="406,79,25,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbSourceFiles" Height="46" Margin="406,79,25,0" VerticalAlignment="Top">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="mnPlaylistRemove" Header="Remove" Click="mnPlaylistRemove_Click"/>
+                    <MenuItem x:Name="mnPlaylistRemoveAll" Header="Remove all" Click="mnPlaylistRemoveAll_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
 
         <wpf:MediaPlayer Margin="406,161,25,310" 
                              Background="Black"

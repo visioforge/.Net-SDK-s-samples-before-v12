@@ -3157,6 +3157,19 @@ Public Class Form1
             edEncryptionKeyFile.Text = openFileDialog1.FileName
         End If
     End Sub
+
+    Private Sub mnPlaylist_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles mnPlaylist.ItemClicked
+        If (e.ClickedItem.Name = "mnPlaylistRemove") Then
+            If (lbSourceFiles.SelectedItem IsNot Nothing) Then
+                Dim filename = lbSourceFiles.SelectedItem.ToString()
+                MediaPlayer1.FilenamesOrURL.Remove(filename)
+                lbSourceFiles.Items.Remove(lbSourceFiles.SelectedItem)
+            End If
+        ElseIf (e.ClickedItem.Name = "mnPlaylistRemoveAll") Then
+            MediaPlayer1.FilenamesOrURL.Clear()
+            lbSourceFiles.Items.Clear()
+        End If
+    End Sub
 End Class
 
 ' ReSharper restore InconsistentNaming
