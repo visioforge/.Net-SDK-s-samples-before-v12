@@ -2160,6 +2160,7 @@ namespace VideoCapture_CSharp_Demo
                         }
 
                         ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.FLV;
+                        ffmpegOutput.UsePipe = cbNetworkRTMPFFMPEGUsePipes.Checked;
 
                         VideoCapture1.Network_Streaming_Output = ffmpegOutput;
                         VideoCapture1.Network_Streaming_URL = edNetworkRTMPURL.Text;
@@ -2183,6 +2184,7 @@ namespace VideoCapture_CSharp_Demo
                         }
 
                         ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MPEGTS;
+                        ffmpegOutput.UsePipe = cbNetworkUDPFFMPEGUsePipes.Checked;
                         VideoCapture1.Network_Streaming_Output = ffmpegOutput;
 
                         VideoCapture1.Network_Streaming_URL = edNetworkUDPURL.Text;
@@ -2216,6 +2218,7 @@ namespace VideoCapture_CSharp_Demo
                             }
 
                             ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.ISMV;
+                            ffmpegOutput.UsePipe = cbNetworkSSUsePipes.Checked;
                             VideoCapture1.Network_Streaming_Output = ffmpegOutput;
                         }
 

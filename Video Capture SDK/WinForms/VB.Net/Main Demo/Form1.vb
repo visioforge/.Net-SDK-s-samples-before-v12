@@ -1690,28 +1690,22 @@ Public Class Form1
         VideoCapture1.Network_Streaming_Enabled = True
 
         Select Case (cbNetworkStreamingMode.SelectedIndex)
-
             Case 0
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.WMV
 
                 If (rbNetworkStreamingUseMainWMVSettings.Checked) Then
-
                     Dim wmvOutput As VFWMVOutput = New VFWMVOutput()
                     SetWMVOutput(wmvOutput)
                     VideoCapture1.Network_Streaming_Output = wmvOutput
-
                 Else
-
                     Dim wmvOutput As VFWMVOutput = New VFWMVOutput()
                     wmvOutput.Mode = VFWMVMode.ExternalProfile
                     wmvOutput.External_Profile_FileName = edNetworkStreamingWMVProfile.Text
                     VideoCapture1.Network_Streaming_Output = wmvOutput
-
                 End If
 
                 VideoCapture1.Network_Streaming_WMV_Maximum_Clients = Convert.ToInt32(edMaximumClients.Text)
                 VideoCapture1.Network_Streaming_Network_Port = Convert.ToInt32(edWMVNetworkPort.Text)
-
             Case 1
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.RTSP_H264_AAC_SW
 
@@ -1720,30 +1714,23 @@ Public Class Form1
                 VideoCapture1.Network_Streaming_Output = mp4Output
 
                 VideoCapture1.Network_Streaming_URL = edNetworkRTSPURL.Text
-
             Case 2
-
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.RTMP_FFMPEG_EXE
 
                 Dim ffmpegOutput As VFFFMPEGEXEOutput = New VFFFMPEGEXEOutput()
 
                 If (rbNetworkUDPFFMPEG.Checked) Then
-
                     ffmpegOutput.FillDefaults(VFFFMPEGEXEDefaultsProfile.MP4_H264_AAC, True)
-
                 Else
-
                     SetFFMPEGEXEOutput(ffmpegOutput)
-
                 End If
 
                 ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.FLV
+                ffmpegOutput.UsePipe = cbNetworkRTMPFFMPEGUsePipes.Checked
 
                 VideoCapture1.Network_Streaming_Output = ffmpegOutput
                 VideoCapture1.Network_Streaming_URL = edNetworkRTMPURL.Text
-
             Case 3
-
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.UDP_FFMPEG_EXE
 
                 Dim ffmpegOutput As VFFFMPEGEXEOutput = New VFFFMPEGEXEOutput()
@@ -1755,22 +1742,18 @@ Public Class Form1
                 End If
 
                 ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MPEGTS
+                ffmpegOutput.UsePipe = cbNetworkUDPFFMPEGUsePipes.Checked
                 VideoCapture1.Network_Streaming_Output = ffmpegOutput
 
                 VideoCapture1.Network_Streaming_URL = edNetworkUDPURL.Text
-
             Case 4
-
                 If (rbNetworkSSSoftware.Checked) Then
-
                     VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.SSF_H264_AAC_SW
 
                     Dim mp4Output As VFMP4v8v10Output = New VFMP4v8v10Output()
                     SetMP4v10Output(mp4Output)
                     VideoCapture1.Network_Streaming_Output = mp4Output
-
                 Else
-
                     VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.SSF_FFMPEG_EXE
 
                     Dim ffmpegOutput As VFFFMPEGEXEOutput = New VFFFMPEGEXEOutput()
@@ -1782,14 +1765,12 @@ Public Class Form1
                     End If
 
                     ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.ISMV
+                    ffmpegOutput.UsePipe = cbNetworkSSUsePipes.Checked
                     VideoCapture1.Network_Streaming_Output = ffmpegOutput
-
                 End If
 
                 VideoCapture1.Network_Streaming_URL = edNetworkSSURL.Text
-
             Case 5
-
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.HLS
 
                 Dim hls As VFHLSOutput = New VFHLSOutput()
@@ -1797,11 +1778,8 @@ Public Class Form1
                 hls.HLS.NumSegments = Convert.ToInt32(edHLSSegmentCount.Text)
                 hls.HLS.OutputFolder = edHLSOutputFolder.Text
                 VideoCapture1.Network_Streaming_Output = hls
-
             Case 6
-
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.External
-
         End Select
 
         VideoCapture1.Network_Streaming_Audio_Enabled = cbNetworkStreamingAudioEnabled.Checked

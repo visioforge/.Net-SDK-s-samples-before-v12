@@ -3,15 +3,13 @@
 // ReSharper disable CommentTypo
 // ReSharper disable InlineOutVariableDeclaration
 
-using System.IO;
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
+
+
 
 namespace Main_Demo
 {
     using System;
+    using System.IO;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
@@ -27,6 +25,10 @@ namespace Main_Demo
     using System.Windows.Media.Imaging;
     using System.Windows.Threading;
 
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WPF;
     using VisioForge.Shared.IPCameraDB;
     using VisioForge.Tools;
@@ -1186,6 +1188,7 @@ namespace Main_Demo
                             }
 
                             ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.FLV;
+                            ffmpegOutput.UsePipe = cbNetworkRTMPFFMPEGUsePipes.IsChecked == true;
 
                             VideoCapture1.Network_Streaming_Output = ffmpegOutput;
                             VideoCapture1.Network_Streaming_URL = edNetworkRTMPURL.Text;
@@ -1209,6 +1212,7 @@ namespace Main_Demo
                             }
 
                             ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.MPEGTS;
+                            ffmpegOutput.UsePipe = cbNetworkUDPFFMPEGUsePipes.IsChecked == true;
                             VideoCapture1.Network_Streaming_Output = ffmpegOutput;
 
                             VideoCapture1.Network_Streaming_URL = edNetworkUDPURL.Text;
@@ -1242,6 +1246,7 @@ namespace Main_Demo
                                 }
 
                                 ffmpegOutput.OutputMuxer = VFFFMPEGEXEOutputMuxer.ISMV;
+                                ffmpegOutput.UsePipe = cbNetworkSSUsePipes.IsChecked == true;
                                 VideoCapture1.Network_Streaming_Output = ffmpegOutput;
                             }
 
@@ -3139,7 +3144,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnMotion(object sender, MotionDetectionEventArgs e)
         {
-            Dispatcher.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
         }
 
         private void btAudEqRefresh_Click(object sender, RoutedEventArgs e)
@@ -3452,12 +3457,12 @@ namespace Main_Demo
 
         private static void DoEvents()
         {
-            Application.Current.Dispatcher.Invoke(DispatcherPriority.Background, new Action(delegate { }));
+            Application.Current.Dispatcher?.Invoke(DispatcherPriority.Background, new Action(delegate { }));
         }
 
         private void VideoCapture1_OnTVTunerTuneChannels(object sender, TVTunerTuneChannelsEventArgs e)
         {
-            Dispatcher.BeginInvoke((Action) (() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 DoEvents();
 
@@ -3480,7 +3485,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 if (cbLicensing.IsChecked == true)
                 {
@@ -3530,7 +3535,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnObjectDetection(object sender, MotionDetectionExEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
+            Dispatcher?.BeginInvoke(new AFMotionDelegate(AFMotionDelegateMethod), e.Level);
         }
 
         private void cbAFMotionDetection_Checked(object sender, RoutedEventArgs e)
@@ -3761,7 +3766,7 @@ namespace Main_Demo
         {
             e.DetectorEnabled = false;
 
-            Dispatcher.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
 #endregion
@@ -3857,7 +3862,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnFaceDetected(object sender, AFFaceDetectionEventArgs e)
         {
-            Dispatcher.BeginInvoke(new FaceDelegate(FaceDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new FaceDelegate(FaceDelegateMethod), e);
         }
 
         private delegate void FaceDelegate(AFFaceDetectionEventArgs e);
@@ -3988,7 +3993,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnAudioVUMeterProMaximumCalculated(object sender, VUMeterMaxSampleEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AudioVUMeterProMaximumCalculatedDelegate(AudioVUMeterProMaximumCalculatedelegateMethod), e);
+            Dispatcher?.BeginInvoke(new AudioVUMeterProMaximumCalculatedDelegate(AudioVUMeterProMaximumCalculatedelegateMethod), e);
         }
 
         private delegate void AudioVUMeterProFFTCalculatedDelegate(VUMeterFFTEventArgs e);
@@ -4000,7 +4005,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnAudioVUMeterProFFTCalculated(object sender, VUMeterFFTEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AudioVUMeterProFFTCalculatedDelegate(AudioVUMeterProFFTCalculatedDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new AudioVUMeterProFFTCalculatedDelegate(AudioVUMeterProFFTCalculatedDelegateMethod), e);
         }
 
         private delegate void AudioVUMeterProVolumeDelegate(AudioLevelEventArgs e);
@@ -4019,7 +4024,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnAudioVUMeterProVolume(object sender, AudioLevelEventArgs e)
         {
-            Dispatcher.BeginInvoke(new AudioVUMeterProVolumeDelegate(AudioVUMeterProVolumeDelegateMethod), e);
+            Dispatcher?.BeginInvoke(new AudioVUMeterProVolumeDelegate(AudioVUMeterProVolumeDelegateMethod), e);
         }
 
         private void tbVUMeterAmplification_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -4456,7 +4461,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
                {
                    if (cbLicensing.IsChecked == true)
                    {
@@ -4474,7 +4479,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnFFMPEGInfo(object sender, FFMPEGInfoEventArgs e)
         {
-            Dispatcher.BeginInvoke(new FFMPEGInfoDelegate(FFMPEGInfoDelegateMethod), e.Message);
+            Dispatcher?.BeginInvoke(new FFMPEGInfoDelegate(FFMPEGInfoDelegateMethod), e.Message);
         }
 
         private void btEncryptionOpenFile_Click(object sender, RoutedEventArgs e)
@@ -4564,7 +4569,7 @@ namespace Main_Demo
 
         private void VideoCapture1_OnNetworkSourceDisconnect(object sender, EventArgs e)
         {
-            Dispatcher.BeginInvoke(new NetworkStopDelegate(NetworkStopDelegateMethod));
+            Dispatcher?.BeginInvoke(new NetworkStopDelegate(NetworkStopDelegateMethod));
         }
 
         private delegate void NetworkStopDelegate();
@@ -5494,7 +5499,7 @@ namespace Main_Demo
                 return;
             }
 
-            Dispatcher.BeginInvoke((Action)(() =>
+            Dispatcher?.BeginInvoke((Action)(() =>
             {
                 TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
                 lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");

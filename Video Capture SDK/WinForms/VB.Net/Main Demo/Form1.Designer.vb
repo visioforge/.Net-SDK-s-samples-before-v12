@@ -231,6 +231,11 @@ Partial Class Form1
         Me.cbAdditionalAudioSource = New System.Windows.Forms.ComboBox()
         Me.label180 = New System.Windows.Forms.Label()
         Me.tabPage47 = New System.Windows.Forms.TabPage()
+        Me.label3 = New System.Windows.Forms.Label()
+        Me.lbScreenSourceWindowText = New System.Windows.Forms.Label()
+        Me.btScreenSourceWindowSelect = New System.Windows.Forms.Button()
+        Me.rbScreenCaptureWindow = New System.Windows.Forms.RadioButton()
+        Me.textBox1 = New System.Windows.Forms.TextBox()
         Me.cbScreenCapture_DesktopDuplication = New System.Windows.Forms.CheckBox()
         Me.cbScreenCaptureDisplayIndex = New System.Windows.Forms.ComboBox()
         Me.label93 = New System.Windows.Forms.Label()
@@ -1112,11 +1117,9 @@ Partial Class Form1
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.textBox1 = New System.Windows.Forms.TextBox()
-        Me.label3 = New System.Windows.Forms.Label()
-        Me.lbScreenSourceWindowText = New System.Windows.Forms.Label()
-        Me.btScreenSourceWindowSelect = New System.Windows.Forms.Button()
-        Me.rbScreenCaptureWindow = New System.Windows.Forms.RadioButton()
+        Me.cbNetworkRTMPFFMPEGUsePipes = New System.Windows.Forms.CheckBox()
+        Me.cbNetworkUDPFFMPEGUsePipes = New System.Windows.Forms.CheckBox()
+        Me.cbNetworkSSUsePipes = New System.Windows.Forms.CheckBox()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -3417,6 +3420,56 @@ Partial Class Form1
         Me.tabPage47.TabIndex = 1
         Me.tabPage47.Text = "Screen capture"
         Me.tabPage47.UseVisualStyleBackColor = true
+        '
+        'label3
+        '
+        Me.label3.AutoSize = true
+        Me.label3.Location = New System.Drawing.Point(268, 209)
+        Me.label3.Name = "label3"
+        Me.label3.Size = New System.Drawing.Size(191, 13)
+        Me.label3.TabIndex = 62
+        Me.label3.Text = "(You can capture background window)"
+        '
+        'lbScreenSourceWindowText
+        '
+        Me.lbScreenSourceWindowText.AutoSize = true
+        Me.lbScreenSourceWindowText.Location = New System.Drawing.Point(289, 192)
+        Me.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText"
+        Me.lbScreenSourceWindowText.Size = New System.Drawing.Size(107, 13)
+        Me.lbScreenSourceWindowText.TabIndex = 61
+        Me.lbScreenSourceWindowText.Text = "(no window selected)"
+        '
+        'btScreenSourceWindowSelect
+        '
+        Me.btScreenSourceWindowSelect.Location = New System.Drawing.Point(392, 159)
+        Me.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect"
+        Me.btScreenSourceWindowSelect.Size = New System.Drawing.Size(49, 23)
+        Me.btScreenSourceWindowSelect.TabIndex = 60
+        Me.btScreenSourceWindowSelect.Text = "Select"
+        Me.btScreenSourceWindowSelect.UseVisualStyleBackColor = true
+        '
+        'rbScreenCaptureWindow
+        '
+        Me.rbScreenCaptureWindow.AutoSize = true
+        Me.rbScreenCaptureWindow.Location = New System.Drawing.Point(274, 162)
+        Me.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow"
+        Me.rbScreenCaptureWindow.Size = New System.Drawing.Size(101, 17)
+        Me.rbScreenCaptureWindow.TabIndex = 59
+        Me.rbScreenCaptureWindow.TabStop = true
+        Me.rbScreenCaptureWindow.Text = "Capture window"
+        Me.rbScreenCaptureWindow.UseVisualStyleBackColor = true
+        '
+        'textBox1
+        '
+        Me.textBox1.BackColor = System.Drawing.Color.White
+        Me.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.textBox1.Location = New System.Drawing.Point(274, 19)
+        Me.textBox1.Multiline = true
+        Me.textBox1.Name = "textBox1"
+        Me.textBox1.ReadOnly = true
+        Me.textBox1.Size = New System.Drawing.Size(167, 59)
+        Me.textBox1.TabIndex = 58
+        Me.textBox1.Text = "You can update left/top position and mouse cursor capturing on-the-fly"
         '
         'cbScreenCapture_DesktopDuplication
         '
@@ -10127,6 +10180,7 @@ Partial Class Form1
         '
         'TabPage108
         '
+        Me.TabPage108.Controls.Add(Me.cbNetworkRTMPFFMPEGUsePipes)
         Me.TabPage108.Controls.Add(Me.linkLabel11)
         Me.TabPage108.Controls.Add(Me.LinkLabel8)
         Me.TabPage108.Controls.Add(Me.rbNetworkRTMPFFMPEGCustom)
@@ -10145,7 +10199,7 @@ Partial Class Form1
         'linkLabel11
         '
         Me.linkLabel11.AutoSize = true
-        Me.linkLabel11.Location = New System.Drawing.Point(17, 102)
+        Me.linkLabel11.Location = New System.Drawing.Point(17, 150)
         Me.linkLabel11.Name = "linkLabel11"
         Me.linkLabel11.Size = New System.Drawing.Size(154, 13)
         Me.linkLabel11.TabIndex = 18
@@ -10155,7 +10209,7 @@ Partial Class Form1
         'LinkLabel8
         '
         Me.LinkLabel8.AutoSize = true
-        Me.LinkLabel8.Location = New System.Drawing.Point(17, 79)
+        Me.LinkLabel8.Location = New System.Drawing.Point(17, 127)
         Me.LinkLabel8.Name = "LinkLabel8"
         Me.LinkLabel8.Size = New System.Drawing.Size(207, 13)
         Me.LinkLabel8.TabIndex = 17
@@ -10212,6 +10266,7 @@ Partial Class Form1
         '
         'TabPage128
         '
+        Me.TabPage128.Controls.Add(Me.cbNetworkUDPFFMPEGUsePipes)
         Me.TabPage128.Controls.Add(Me.label314)
         Me.TabPage128.Controls.Add(Me.label313)
         Me.TabPage128.Controls.Add(Me.LinkLabel9)
@@ -10249,7 +10304,7 @@ Partial Class Form1
         'LinkLabel9
         '
         Me.LinkLabel9.AutoSize = true
-        Me.LinkLabel9.Location = New System.Drawing.Point(17, 80)
+        Me.LinkLabel9.Location = New System.Drawing.Point(18, 130)
         Me.LinkLabel9.Name = "LinkLabel9"
         Me.LinkLabel9.Size = New System.Drawing.Size(207, 13)
         Me.LinkLabel9.TabIndex = 17
@@ -10306,6 +10361,7 @@ Partial Class Form1
         '
         'TabPage109
         '
+        Me.TabPage109.Controls.Add(Me.cbNetworkSSUsePipes)
         Me.TabPage109.Controls.Add(Me.linkLabel10)
         Me.TabPage109.Controls.Add(Me.rbNetworkSSFFMPEGCustom)
         Me.TabPage109.Controls.Add(Me.rbNetworkSSFFMPEGDefault)
@@ -12560,55 +12616,35 @@ Partial Class Form1
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = true
         '
-        'textBox1
+        'cbNetworkRTMPFFMPEGUsePipes
         '
-        Me.textBox1.BackColor = System.Drawing.Color.White
-        Me.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.textBox1.Location = New System.Drawing.Point(274, 19)
-        Me.textBox1.Multiline = true
-        Me.textBox1.Name = "textBox1"
-        Me.textBox1.ReadOnly = true
-        Me.textBox1.Size = New System.Drawing.Size(167, 59)
-        Me.textBox1.TabIndex = 58
-        Me.textBox1.Text = "You can update left/top position and mouse cursor capturing on-the-fly"
+        Me.cbNetworkRTMPFFMPEGUsePipes.AutoSize = true
+        Me.cbNetworkRTMPFFMPEGUsePipes.Location = New System.Drawing.Point(20, 77)
+        Me.cbNetworkRTMPFFMPEGUsePipes.Name = "cbNetworkRTMPFFMPEGUsePipes"
+        Me.cbNetworkRTMPFFMPEGUsePipes.Size = New System.Drawing.Size(73, 17)
+        Me.cbNetworkRTMPFFMPEGUsePipes.TabIndex = 19
+        Me.cbNetworkRTMPFFMPEGUsePipes.Text = "Use pipes"
+        Me.cbNetworkRTMPFFMPEGUsePipes.UseVisualStyleBackColor = true
         '
-        'label3
+        'cbNetworkUDPFFMPEGUsePipes
         '
-        Me.label3.AutoSize = true
-        Me.label3.Location = New System.Drawing.Point(268, 209)
-        Me.label3.Name = "label3"
-        Me.label3.Size = New System.Drawing.Size(191, 13)
-        Me.label3.TabIndex = 62
-        Me.label3.Text = "(You can capture background window)"
+        Me.cbNetworkUDPFFMPEGUsePipes.AutoSize = true
+        Me.cbNetworkUDPFFMPEGUsePipes.Location = New System.Drawing.Point(20, 83)
+        Me.cbNetworkUDPFFMPEGUsePipes.Name = "cbNetworkUDPFFMPEGUsePipes"
+        Me.cbNetworkUDPFFMPEGUsePipes.Size = New System.Drawing.Size(73, 17)
+        Me.cbNetworkUDPFFMPEGUsePipes.TabIndex = 20
+        Me.cbNetworkUDPFFMPEGUsePipes.Text = "Use pipes"
+        Me.cbNetworkUDPFFMPEGUsePipes.UseVisualStyleBackColor = true
         '
-        'lbScreenSourceWindowText
+        'cbNetworkSSUsePipes
         '
-        Me.lbScreenSourceWindowText.AutoSize = true
-        Me.lbScreenSourceWindowText.Location = New System.Drawing.Point(289, 192)
-        Me.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText"
-        Me.lbScreenSourceWindowText.Size = New System.Drawing.Size(107, 13)
-        Me.lbScreenSourceWindowText.TabIndex = 61
-        Me.lbScreenSourceWindowText.Text = "(no window selected)"
-        '
-        'btScreenSourceWindowSelect
-        '
-        Me.btScreenSourceWindowSelect.Location = New System.Drawing.Point(392, 159)
-        Me.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect"
-        Me.btScreenSourceWindowSelect.Size = New System.Drawing.Size(49, 23)
-        Me.btScreenSourceWindowSelect.TabIndex = 60
-        Me.btScreenSourceWindowSelect.Text = "Select"
-        Me.btScreenSourceWindowSelect.UseVisualStyleBackColor = true
-        '
-        'rbScreenCaptureWindow
-        '
-        Me.rbScreenCaptureWindow.AutoSize = true
-        Me.rbScreenCaptureWindow.Location = New System.Drawing.Point(274, 162)
-        Me.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow"
-        Me.rbScreenCaptureWindow.Size = New System.Drawing.Size(101, 17)
-        Me.rbScreenCaptureWindow.TabIndex = 59
-        Me.rbScreenCaptureWindow.TabStop = true
-        Me.rbScreenCaptureWindow.Text = "Capture window"
-        Me.rbScreenCaptureWindow.UseVisualStyleBackColor = true
+        Me.cbNetworkSSUsePipes.AutoSize = true
+        Me.cbNetworkSSUsePipes.Location = New System.Drawing.Point(42, 86)
+        Me.cbNetworkSSUsePipes.Name = "cbNetworkSSUsePipes"
+        Me.cbNetworkSSUsePipes.Size = New System.Drawing.Size(182, 17)
+        Me.cbNetworkSSUsePipes.TabIndex = 24
+        Me.cbNetworkSSUsePipes.Text = "Use pipes for FFMPEG streaming"
+        Me.cbNetworkSSUsePipes.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -14040,4 +14076,7 @@ End Sub
     Private WithEvents lbScreenSourceWindowText As Label
     Private WithEvents btScreenSourceWindowSelect As Button
     Private WithEvents rbScreenCaptureWindow As RadioButton
+    Private WithEvents cbNetworkRTMPFFMPEGUsePipes As CheckBox
+    Private WithEvents cbNetworkUDPFFMPEGUsePipes As CheckBox
+    Private WithEvents cbNetworkSSUsePipes As CheckBox
 End Class
