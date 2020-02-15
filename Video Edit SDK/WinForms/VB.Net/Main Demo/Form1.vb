@@ -889,6 +889,11 @@ Public Class Form1
 
         ' Video effects GPU
         VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
+        If cbVideoEffectsGPUDX11.Checked Then
+            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
+        Else
+            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
+        End If
 
         'motion detection
         If (cbMotDetEnabled.Checked) Then
@@ -2512,23 +2517,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbGPUBlur_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUBlur.CheckedChanged
-
-        Dim intf As IVFGPUVideoEffectBlur
-        Dim effect = VideoEdit1.Video_Effects_GPU_Get("Blur")
-        If (IsNothing(effect)) Then
-            intf = New VFGPUVideoEffectBlur(cbGPUBlur.Checked, 50)
-            VideoEdit1.Video_Effects_GPU_Add(intf)
-        Else
-            intf = effect
-            If (Not IsNothing(intf)) Then
-                intf.Enabled = cbGPUBlur.Checked
-                intf.Update()
-            End If
-        End If
-
-    End Sub
-
     Private Sub cbGPUOldMovie_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUOldMovie.CheckedChanged
 
         Dim intf As IVFGPUVideoEffectOldMovie
@@ -2824,6 +2812,30 @@ Public Class Form1
 
         dlg.ShowDialog(Me)
         dlg.Dispose()
+    End Sub
+
+    Private Sub cbVideoEffectsGPUDX11_CheckedChanged(sender As Object, e As EventArgs) Handles cbVideoEffectsGPUDX11.CheckedChanged
+        If cbVideoEffectsGPUDX11.Checked Then
+            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
+        Else
+            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
+        End If
+    End Sub
+
+    Private Sub tbGPUBlur_Scroll(sender As Object, e As EventArgs) Handles tbGPUBlur.Scroll
+        Dim intf As IVFGPUVideoEffectBlur
+        Dim effect = VideoEdit1.Video_Effects_GPU_Get("Blur")
+        If (effect Is Nothing) Then
+            intf = New VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, tbGPUBlur.Value)
+            VideoEdit1.Video_Effects_GPU_Add(intf)
+        Else
+            intf = effect
+            If (intf IsNot Nothing) Then
+                intf.Enabled = tbGPUBlur.Value > 0
+                intf.Value = tbGPUBlur.Value
+                intf.Update()
+            End If
+        End If
     End Sub
 End Class
 

@@ -3,18 +3,15 @@
 // ReSharper disable CommentTypo
 // ReSharper disable InlineOutVariableDeclaration
 
-
-
-
 namespace Main_Demo
 {
     using System;
-    using System.IO;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Drawing;
     using System.Globalization;
+    using System.IO;
     using System.Linq;
     using System.Runtime.InteropServices;
     using System.Windows;
@@ -1813,6 +1810,9 @@ namespace Main_Demo
 
             // Video effects GPU
             VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
+            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
+                                                         ? VFGPUEffectsEngine.DirectX11
+                                                         : VFGPUEffectsEngine.DirectX9;
 
             // Chromakey
             if (cbChromaKeyEnabled.IsChecked == true)
@@ -4801,26 +4801,6 @@ namespace Main_Demo
             }
         }
 
-        private void cbGPUBlur_Click(object sender, RoutedEventArgs e)
-        {
-            IVFGPUVideoEffectBlur intf;
-            var effect = VideoCapture1.Video_Effects_GPU_Get("Blur");
-            if (effect == null)
-            {
-                intf = new VFGPUVideoEffectBlur(cbGPUBlur.IsChecked == true, 50);
-                VideoCapture1.Video_Effects_GPU_Add(intf);
-            }
-            else
-            {
-                intf = effect as IVFGPUVideoEffectBlur;
-                if (intf != null)
-                {
-                    intf.Enabled = cbGPUBlur.IsChecked == true;
-                    intf.Update();
-                }
-            }
-        }
-
         private void cbGPUOldMovie_Click(object sender, RoutedEventArgs e)
         {
             IVFGPUVideoEffectOldMovie intf;
@@ -5792,6 +5772,34 @@ namespace Main_Demo
             windowCaptureForm.Hide();
 
             lbScreenSourceWindowText.Content = e.Caption;
+        }
+
+        private void cbVideoEffectsGPUDX11_Click(object sender, RoutedEventArgs e)
+        {
+            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
+                                                         ? VFGPUEffectsEngine.DirectX11
+                                                         : VFGPUEffectsEngine.DirectX9;
+        }
+
+        private void tbGPUBlur_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            IVFGPUVideoEffectBlur intf;
+            var effect = VideoCapture1.Video_Effects_GPU_Get("Blur");
+            if (effect == null)
+            {
+                intf = new VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, (int)tbGPUBlur.Value);
+                VideoCapture1.Video_Effects_GPU_Add(intf);
+            }
+            else
+            {
+                intf = effect as IVFGPUVideoEffectBlur;
+                if (intf != null)
+                {
+                    intf.Enabled = tbGPUBlur.Value > 0;
+                    intf.Value = (int)tbGPUBlur.Value;
+                    intf.Update();
+                }
+            }
         }
     }
 }

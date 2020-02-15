@@ -25,7 +25,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms3 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.OpenDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveDialog1 = New System.Windows.Forms.SaveFileDialog()
@@ -163,8 +163,8 @@ Partial Class Form1
         Me.rbDenoiseMosquito = New System.Windows.Forms.RadioButton()
         Me.cbDenoise = New System.Windows.Forms.CheckBox()
         Me.TabPage82 = New System.Windows.Forms.TabPage()
+        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
-        Me.cbGPUBlur = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
         Me.cbGPUDenoise = New System.Windows.Forms.CheckBox()
         Me.cbGPUPixelate = New System.Windows.Forms.CheckBox()
@@ -615,138 +615,141 @@ Partial Class Form1
         Me.Label496 = New System.Windows.Forms.Label()
         Me.edTagTrackID = New System.Windows.Forms.TextBox()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
-        Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
-        Me.tabControl1.SuspendLayout()
-        Me.tabPage1.SuspendLayout()
-        Me.tabControl2.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
-        Me.tabPage30.SuspendLayout()
-        Me.tabPage31.SuspendLayout()
-        Me.tabControl17.SuspendLayout()
-        Me.tabPage68.SuspendLayout()
-        Me.tabControl7.SuspendLayout()
-        Me.tabPage29.SuspendLayout()
-        Me.tabPage42.SuspendLayout()
-        Me.TabPage7.SuspendLayout()
-        Me.groupBox37.SuspendLayout()
-        Me.TabPage16.SuspendLayout()
-        Me.groupBox40.SuspendLayout()
-        Me.groupBox39.SuspendLayout()
-        Me.groupBox38.SuspendLayout()
-        Me.TabPage33.SuspendLayout()
-        Me.groupBox45.SuspendLayout()
-        CType(Me.tbContrast, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbDarkness, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbLightness, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbSaturation, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage69.SuspendLayout()
-        Me.tabPage59.SuspendLayout()
-        Me.TabPage82.SuspendLayout()
-        CType(Me.tbGPUContrast, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbGPUDarkness, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbGPULightness, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbGPUSaturation, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage20.SuspendLayout()
-        Me.tabControl15.SuspendLayout()
-        Me.TabPage26.SuspendLayout()
-        Me.TabPage27.SuspendLayout()
-        Me.TabPage21.SuspendLayout()
-        CType(Me.tbChromaKeyContrastHigh, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbChromaKeyContrastLow, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage70.SuspendLayout()
-        Me.TabPage81.SuspendLayout()
-        Me.tabPage9.SuspendLayout()
-        Me.groupBox5.SuspendLayout()
-        Me.tabPage3.SuspendLayout()
-        Me.tabControl18.SuspendLayout()
-        Me.tabPage71.SuspendLayout()
-        CType(Me.tbAudAmplifyAmp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage72.SuspendLayout()
-        CType(Me.tbAudEq9, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq8, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq7, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq6, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq4, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudEq0, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage73.SuspendLayout()
-        CType(Me.tbAudRelease, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudAttack, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudDynAmp, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage75.SuspendLayout()
-        CType(Me.tbAud3DSound, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage76.SuspendLayout()
-        CType(Me.tbAudTrueBass, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage57.SuspendLayout()
-        CType(Me.tbAudioTimeshift, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.groupBox1.SuspendLayout()
-        CType(Me.tbAudioOutputGainLFE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioOutputGainSR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioOutputGainSL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioOutputGainR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioOutputGainC, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioOutputGainL, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.groupBox2.SuspendLayout()
-        CType(Me.tbAudioInputGainLFE, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioInputGainSR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioInputGainSL, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioInputGainR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioInputGainC, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbAudioInputGainL, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage80.SuspendLayout()
-        Me.groupBox41.SuspendLayout()
-        CType(Me.tbAudioChannelMapperVolume, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.TabPage28.SuspendLayout()
-        Me.tabControl9.SuspendLayout()
-        Me.tabPage44.SuspendLayout()
-        Me.tabPage45.SuspendLayout()
-        Me.groupBox25.SuspendLayout()
-        CType(Me.tbMotDetHLThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.groupBox27.SuspendLayout()
-        Me.groupBox26.SuspendLayout()
-        CType(Me.tbMotDetDropFramesThreshold, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.groupBox24.SuspendLayout()
-        Me.tabPage2.SuspendLayout()
-        Me.groupBox13.SuspendLayout()
-        Me.TabPage23.SuspendLayout()
-        Me.TabPage24.SuspendLayout()
-        Me.tabControl5.SuspendLayout()
-        Me.TabPage25.SuspendLayout()
-        Me.TabPage47.SuspendLayout()
-        Me.TabPage48.SuspendLayout()
-        Me.TabPage67.SuspendLayout()
-        Me.TabPage49.SuspendLayout()
-        Me.TabPage56.SuspendLayout()
-        Me.TabPage32.SuspendLayout()
-        Me.TabPage34.SuspendLayout()
-        Me.TabPage43.SuspendLayout()
-        Me.groupBox48.SuspendLayout()
-        Me.groupBox47.SuspendLayout()
-        Me.groupBox43.SuspendLayout()
-        Me.TabPage78.SuspendLayout()
-        Me.TabPage22.SuspendLayout()
-        CType(Me.tbVUMeterBoost, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbVUMeterAmplification, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbSeeking, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabControl3.SuspendLayout()
-        Me.tabPage52.SuspendLayout()
-        Me.groupBox7.SuspendLayout()
-        Me.groupBox6.SuspendLayout()
-        CType(Me.tbSpeed, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.tabPage53.SuspendLayout()
-        Me.tabPage54.SuspendLayout()
-        Me.TabPage74.SuspendLayout()
-        CType(Me.imgTagCover, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SuspendLayout()
+        Me.label5 = New System.Windows.Forms.Label()
+        Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
+        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
+        Me.tabControl1.SuspendLayout
+        Me.tabPage1.SuspendLayout
+        Me.tabControl2.SuspendLayout
+        Me.TabPage4.SuspendLayout
+        Me.tabPage30.SuspendLayout
+        Me.tabPage31.SuspendLayout
+        Me.tabControl17.SuspendLayout
+        Me.tabPage68.SuspendLayout
+        Me.tabControl7.SuspendLayout
+        Me.tabPage29.SuspendLayout
+        Me.tabPage42.SuspendLayout
+        Me.TabPage7.SuspendLayout
+        Me.groupBox37.SuspendLayout
+        Me.TabPage16.SuspendLayout
+        Me.groupBox40.SuspendLayout
+        Me.groupBox39.SuspendLayout
+        Me.groupBox38.SuspendLayout
+        Me.TabPage33.SuspendLayout
+        Me.groupBox45.SuspendLayout
+        CType(Me.tbContrast,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbDarkness,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbLightness,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbSaturation,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage69.SuspendLayout
+        Me.tabPage59.SuspendLayout
+        Me.TabPage82.SuspendLayout
+        CType(Me.tbGPUContrast,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbGPUDarkness,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbGPULightness,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbGPUSaturation,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage20.SuspendLayout
+        Me.tabControl15.SuspendLayout
+        Me.TabPage26.SuspendLayout
+        Me.TabPage27.SuspendLayout
+        Me.TabPage21.SuspendLayout
+        CType(Me.tbChromaKeyContrastHigh,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbChromaKeyContrastLow,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage70.SuspendLayout
+        Me.TabPage81.SuspendLayout
+        Me.tabPage9.SuspendLayout
+        Me.groupBox5.SuspendLayout
+        Me.tabPage3.SuspendLayout
+        Me.tabControl18.SuspendLayout
+        Me.tabPage71.SuspendLayout
+        CType(Me.tbAudAmplifyAmp,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage72.SuspendLayout
+        CType(Me.tbAudEq9,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq8,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq7,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq6,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq5,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq4,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq3,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq2,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq1,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudEq0,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage73.SuspendLayout
+        CType(Me.tbAudRelease,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudAttack,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudDynAmp,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage75.SuspendLayout
+        CType(Me.tbAud3DSound,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage76.SuspendLayout
+        CType(Me.tbAudTrueBass,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage57.SuspendLayout
+        CType(Me.tbAudioTimeshift,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.groupBox1.SuspendLayout
+        CType(Me.tbAudioOutputGainLFE,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioOutputGainSR,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioOutputGainSL,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioOutputGainR,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioOutputGainC,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioOutputGainL,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.groupBox2.SuspendLayout
+        CType(Me.tbAudioInputGainLFE,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioInputGainSR,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioInputGainSL,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioInputGainR,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioInputGainC,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbAudioInputGainL,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage80.SuspendLayout
+        Me.groupBox41.SuspendLayout
+        CType(Me.tbAudioChannelMapperVolume,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.TabPage28.SuspendLayout
+        Me.tabControl9.SuspendLayout
+        Me.tabPage44.SuspendLayout
+        Me.tabPage45.SuspendLayout
+        Me.groupBox25.SuspendLayout
+        CType(Me.tbMotDetHLThreshold,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.groupBox27.SuspendLayout
+        Me.groupBox26.SuspendLayout
+        CType(Me.tbMotDetDropFramesThreshold,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.groupBox24.SuspendLayout
+        Me.tabPage2.SuspendLayout
+        Me.groupBox13.SuspendLayout
+        Me.TabPage23.SuspendLayout
+        Me.TabPage24.SuspendLayout
+        Me.tabControl5.SuspendLayout
+        Me.TabPage25.SuspendLayout
+        Me.TabPage47.SuspendLayout
+        Me.TabPage48.SuspendLayout
+        Me.TabPage67.SuspendLayout
+        Me.TabPage49.SuspendLayout
+        Me.TabPage56.SuspendLayout
+        Me.TabPage32.SuspendLayout
+        Me.TabPage34.SuspendLayout
+        Me.TabPage43.SuspendLayout
+        Me.groupBox48.SuspendLayout
+        Me.groupBox47.SuspendLayout
+        Me.groupBox43.SuspendLayout
+        Me.TabPage78.SuspendLayout
+        Me.TabPage22.SuspendLayout
+        CType(Me.tbVUMeterBoost,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbVUMeterAmplification,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbSeeking,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabControl3.SuspendLayout
+        Me.tabPage52.SuspendLayout
+        Me.groupBox7.SuspendLayout
+        Me.groupBox6.SuspendLayout
+        CType(Me.tbSpeed,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.tabPage53.SuspendLayout
+        Me.tabPage54.SuspendLayout
+        Me.TabPage74.SuspendLayout
+        CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).BeginInit
+        Me.SuspendLayout
         '
         'FontDialog1
         '
         Me.FontDialog1.Color = System.Drawing.Color.White
-        Me.FontDialog1.Font = New System.Drawing.Font("Microsoft Sans Serif", 32.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
-        Me.FontDialog1.ShowColor = True
+        Me.FontDialog1.Font = New System.Drawing.Font("Microsoft Sans Serif", 32!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
+        Me.FontDialog1.ShowColor = true
         '
         'OpenDialog1
         '
@@ -754,7 +757,7 @@ Partial Class Form1
         '
         'SaveDialog1
         '
-        Me.SaveDialog1.Filter = "AVI  (*.avi) | *.avi|Windows Media Video (*.wmv)| *.wmv|Matroska  (*.mkv)| *.mkv|" &
+        Me.SaveDialog1.Filter = "AVI  (*.avi) | *.avi|Windows Media Video (*.wmv)| *.wmv|Matroska  (*.mkv)| *.mkv|"& _ 
     "All files  (*.*)| *.*"
         '
         'openFileDialog2
@@ -764,14 +767,14 @@ Partial Class Form1
         'mmLog
         '
         Me.mmLog.Location = New System.Drawing.Point(11, 568)
-        Me.mmLog.Multiline = True
+        Me.mmLog.Multiline = true
         Me.mmLog.Name = "mmLog"
         Me.mmLog.Size = New System.Drawing.Size(310, 57)
         Me.mmLog.TabIndex = 76
         '
         'label120
         '
-        Me.label120.AutoSize = True
+        Me.label120.AutoSize = true
         Me.label120.Location = New System.Drawing.Point(8, 552)
         Me.label120.Name = "label120"
         Me.label120.Size = New System.Drawing.Size(100, 13)
@@ -780,35 +783,35 @@ Partial Class Form1
         '
         'cbDebugMode
         '
-        Me.cbDebugMode.AutoSize = True
+        Me.cbDebugMode.AutoSize = true
         Me.cbDebugMode.Location = New System.Drawing.Point(149, 524)
         Me.cbDebugMode.Name = "cbDebugMode"
         Me.cbDebugMode.Size = New System.Drawing.Size(87, 17)
         Me.cbDebugMode.TabIndex = 74
         Me.cbDebugMode.Text = "Debug mode"
-        Me.cbDebugMode.UseVisualStyleBackColor = True
+        Me.cbDebugMode.UseVisualStyleBackColor = true
         '
         'rbPreview
         '
-        Me.rbPreview.AutoSize = True
-        Me.rbPreview.Checked = True
+        Me.rbPreview.AutoSize = true
+        Me.rbPreview.Checked = true
         Me.rbPreview.Location = New System.Drawing.Point(80, 523)
         Me.rbPreview.Name = "rbPreview"
         Me.rbPreview.Size = New System.Drawing.Size(63, 17)
         Me.rbPreview.TabIndex = 73
-        Me.rbPreview.TabStop = True
+        Me.rbPreview.TabStop = true
         Me.rbPreview.Text = "Preview"
-        Me.rbPreview.UseVisualStyleBackColor = True
+        Me.rbPreview.UseVisualStyleBackColor = true
         '
         'rbConvert
         '
-        Me.rbConvert.AutoSize = True
+        Me.rbConvert.AutoSize = true
         Me.rbConvert.Location = New System.Drawing.Point(11, 523)
         Me.rbConvert.Name = "rbConvert"
         Me.rbConvert.Size = New System.Drawing.Size(62, 17)
         Me.rbConvert.TabIndex = 72
         Me.rbConvert.Text = "Convert"
-        Me.rbConvert.UseVisualStyleBackColor = True
+        Me.rbConvert.UseVisualStyleBackColor = true
         '
         'tabControl1
         '
@@ -842,7 +845,7 @@ Partial Class Form1
         Me.tabPage1.Size = New System.Drawing.Size(302, 474)
         Me.tabPage1.TabIndex = 0
         Me.tabPage1.Text = "Output"
-        Me.tabPage1.UseVisualStyleBackColor = True
+        Me.tabPage1.UseVisualStyleBackColor = true
         '
         'tabControl2
         '
@@ -870,11 +873,11 @@ Partial Class Form1
         Me.TabPage4.Size = New System.Drawing.Size(284, 438)
         Me.TabPage4.TabIndex = 7
         Me.TabPage4.Text = "Main"
-        Me.TabPage4.UseVisualStyleBackColor = True
+        Me.TabPage4.UseVisualStyleBackColor = true
         '
         'lbInfo
         '
-        Me.lbInfo.AutoSize = True
+        Me.lbInfo.AutoSize = true
         Me.lbInfo.Location = New System.Drawing.Point(10, 61)
         Me.lbInfo.Name = "lbInfo"
         Me.lbInfo.Size = New System.Drawing.Size(267, 13)
@@ -888,7 +891,7 @@ Partial Class Form1
         Me.btConfigure.Size = New System.Drawing.Size(61, 22)
         Me.btConfigure.TabIndex = 58
         Me.btConfigure.Text = "Configure"
-        Me.btConfigure.UseVisualStyleBackColor = True
+        Me.btConfigure.UseVisualStyleBackColor = true
         '
         'btSelectOutput
         '
@@ -897,7 +900,7 @@ Partial Class Form1
         Me.btSelectOutput.Size = New System.Drawing.Size(26, 22)
         Me.btSelectOutput.TabIndex = 57
         Me.btSelectOutput.Text = "..."
-        Me.btSelectOutput.UseVisualStyleBackColor = True
+        Me.btSelectOutput.UseVisualStyleBackColor = true
         '
         'edOutput
         '
@@ -909,7 +912,7 @@ Partial Class Form1
         '
         'label15
         '
-        Me.label15.AutoSize = True
+        Me.label15.AutoSize = true
         Me.label15.Location = New System.Drawing.Point(10, 130)
         Me.label15.Name = "label15"
         Me.label15.Size = New System.Drawing.Size(52, 13)
@@ -919,7 +922,7 @@ Partial Class Form1
         'cbOutputVideoFormat
         '
         Me.cbOutputVideoFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbOutputVideoFormat.FormattingEnabled = True
+        Me.cbOutputVideoFormat.FormattingEnabled = true
         Me.cbOutputVideoFormat.Items.AddRange(New Object() {"AVI", "MKV (Matroska)", "WMV", "DV", "PCM/ACM", "MP3", "M4A (AAC)", "WMA (Windows Media Audio)", "Ogg Vorbis", "FLAC", "Speex", "Custom format", "WebM", "FFMPEG (DLL)", "FFMPEG (external exe) (BETA)", "MP4 v8/v10", "MP4 v11", "Animated GIF", "Encrypted video"})
         Me.cbOutputVideoFormat.Location = New System.Drawing.Point(13, 32)
         Me.cbOutputVideoFormat.Name = "cbOutputVideoFormat"
@@ -928,7 +931,7 @@ Partial Class Form1
         '
         'label9
         '
-        Me.label9.AutoSize = True
+        Me.label9.AutoSize = true
         Me.label9.Location = New System.Drawing.Point(10, 15)
         Me.label9.Name = "label9"
         Me.label9.Size = New System.Drawing.Size(39, 13)
@@ -960,11 +963,11 @@ Partial Class Form1
         Me.tabPage30.Size = New System.Drawing.Size(284, 438)
         Me.tabPage30.TabIndex = 6
         Me.tabPage30.Text = "Resolution / frame rate"
-        Me.tabPage30.UseVisualStyleBackColor = True
+        Me.tabPage30.UseVisualStyleBackColor = true
         '
         'Label114
         '
-        Me.Label114.AutoSize = True
+        Me.Label114.AutoSize = true
         Me.Label114.Location = New System.Drawing.Point(8, 50)
         Me.Label114.Name = "Label114"
         Me.Label114.Size = New System.Drawing.Size(278, 13)
@@ -981,7 +984,7 @@ Partial Class Form1
         '
         'label176
         '
-        Me.label176.AutoSize = True
+        Me.label176.AutoSize = true
         Me.label176.Location = New System.Drawing.Point(138, 223)
         Me.label176.Name = "label176"
         Me.label176.Size = New System.Drawing.Size(32, 13)
@@ -998,7 +1001,7 @@ Partial Class Form1
         '
         'label252
         '
-        Me.label252.AutoSize = True
+        Me.label252.AutoSize = true
         Me.label252.Location = New System.Drawing.Point(38, 223)
         Me.label252.Name = "label252"
         Me.label252.Size = New System.Drawing.Size(40, 13)
@@ -1015,7 +1018,7 @@ Partial Class Form1
         '
         'label270
         '
-        Me.label270.AutoSize = True
+        Me.label270.AutoSize = true
         Me.label270.Location = New System.Drawing.Point(138, 198)
         Me.label270.Name = "label270"
         Me.label270.Size = New System.Drawing.Size(25, 13)
@@ -1032,7 +1035,7 @@ Partial Class Form1
         '
         'label272
         '
-        Me.label272.AutoSize = True
+        Me.label272.AutoSize = true
         Me.label272.Location = New System.Drawing.Point(38, 198)
         Me.label272.Name = "label272"
         Me.label272.Size = New System.Drawing.Size(26, 13)
@@ -1041,17 +1044,17 @@ Partial Class Form1
         '
         'cbCrop
         '
-        Me.cbCrop.AutoSize = True
+        Me.cbCrop.AutoSize = true
         Me.cbCrop.Location = New System.Drawing.Point(11, 173)
         Me.cbCrop.Name = "cbCrop"
         Me.cbCrop.Size = New System.Drawing.Size(48, 17)
         Me.cbCrop.TabIndex = 158
         Me.cbCrop.Text = "Crop"
-        Me.cbCrop.UseVisualStyleBackColor = True
+        Me.cbCrop.UseVisualStyleBackColor = true
         '
         'label92
         '
-        Me.label92.AutoSize = True
+        Me.label92.AutoSize = true
         Me.label92.Location = New System.Drawing.Point(8, 149)
         Me.label92.Name = "label92"
         Me.label92.Size = New System.Drawing.Size(39, 13)
@@ -1061,7 +1064,7 @@ Partial Class Form1
         'cbRotate
         '
         Me.cbRotate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbRotate.FormattingEnabled = True
+        Me.cbRotate.FormattingEnabled = true
         Me.cbRotate.Items.AddRange(New Object() {"0", "90", "180", "270"})
         Me.cbRotate.Location = New System.Drawing.Point(84, 146)
         Me.cbRotate.Name = "cbRotate"
@@ -1071,7 +1074,7 @@ Partial Class Form1
         'cbFrameRate
         '
         Me.cbFrameRate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbFrameRate.FormattingEnabled = True
+        Me.cbFrameRate.FormattingEnabled = true
         Me.cbFrameRate.Items.AddRange(New Object() {"0", "1", "2", "5", "10", "12", "15", "20", "25", "30"})
         Me.cbFrameRate.Location = New System.Drawing.Point(11, 66)
         Me.cbFrameRate.Name = "cbFrameRate"
@@ -1096,7 +1099,7 @@ Partial Class Form1
         '
         'label2
         '
-        Me.label2.AutoSize = True
+        Me.label2.AutoSize = true
         Me.label2.Location = New System.Drawing.Point(138, 20)
         Me.label2.Name = "label2"
         Me.label2.Size = New System.Drawing.Size(12, 13)
@@ -1105,13 +1108,13 @@ Partial Class Form1
         '
         'cbResize
         '
-        Me.cbResize.AutoSize = True
+        Me.cbResize.AutoSize = true
         Me.cbResize.Location = New System.Drawing.Point(11, 20)
         Me.cbResize.Name = "cbResize"
         Me.cbResize.Size = New System.Drawing.Size(58, 17)
         Me.cbResize.TabIndex = 40
         Me.cbResize.Text = "Resize"
-        Me.cbResize.UseVisualStyleBackColor = True
+        Me.cbResize.UseVisualStyleBackColor = true
         '
         'tabPage31
         '
@@ -1122,7 +1125,7 @@ Partial Class Form1
         Me.tabPage31.Size = New System.Drawing.Size(302, 474)
         Me.tabPage31.TabIndex = 4
         Me.tabPage31.Text = "Video processing"
-        Me.tabPage31.UseVisualStyleBackColor = True
+        Me.tabPage31.UseVisualStyleBackColor = true
         '
         'tabControl17
         '
@@ -1162,31 +1165,31 @@ Partial Class Form1
         Me.tabPage68.Size = New System.Drawing.Size(290, 440)
         Me.tabPage68.TabIndex = 0
         Me.tabPage68.Text = "Effects"
-        Me.tabPage68.UseVisualStyleBackColor = True
+        Me.tabPage68.UseVisualStyleBackColor = true
         '
         'cbFlipY
         '
-        Me.cbFlipY.AutoSize = True
+        Me.cbFlipY.AutoSize = true
         Me.cbFlipY.Location = New System.Drawing.Point(210, 150)
         Me.cbFlipY.Name = "cbFlipY"
         Me.cbFlipY.Size = New System.Drawing.Size(52, 17)
         Me.cbFlipY.TabIndex = 71
         Me.cbFlipY.Text = "Flip Y"
-        Me.cbFlipY.UseVisualStyleBackColor = True
+        Me.cbFlipY.UseVisualStyleBackColor = true
         '
         'cbFlipX
         '
-        Me.cbFlipX.AutoSize = True
+        Me.cbFlipX.AutoSize = true
         Me.cbFlipX.Location = New System.Drawing.Point(150, 150)
         Me.cbFlipX.Name = "cbFlipX"
         Me.cbFlipX.Size = New System.Drawing.Size(52, 17)
         Me.cbFlipX.TabIndex = 70
         Me.cbFlipX.Text = "Flip X"
-        Me.cbFlipX.UseVisualStyleBackColor = True
+        Me.cbFlipX.UseVisualStyleBackColor = true
         '
         'label201
         '
-        Me.label201.AutoSize = True
+        Me.label201.AutoSize = true
         Me.label201.Location = New System.Drawing.Point(142, 84)
         Me.label201.Name = "label201"
         Me.label201.Size = New System.Drawing.Size(52, 13)
@@ -1195,7 +1198,7 @@ Partial Class Form1
         '
         'label200
         '
-        Me.label200.AutoSize = True
+        Me.label200.AutoSize = true
         Me.label200.Location = New System.Drawing.Point(6, 84)
         Me.label200.Name = "label200"
         Me.label200.Size = New System.Drawing.Size(46, 13)
@@ -1204,7 +1207,7 @@ Partial Class Form1
         '
         'label199
         '
-        Me.label199.AutoSize = True
+        Me.label199.AutoSize = true
         Me.label199.Location = New System.Drawing.Point(142, 34)
         Me.label199.Name = "label199"
         Me.label199.Size = New System.Drawing.Size(55, 13)
@@ -1213,7 +1216,7 @@ Partial Class Form1
         '
         'label198
         '
-        Me.label198.AutoSize = True
+        Me.label198.AutoSize = true
         Me.label198.Location = New System.Drawing.Point(6, 34)
         Me.label198.Name = "label198"
         Me.label198.Size = New System.Drawing.Size(52, 13)
@@ -1245,7 +1248,7 @@ Partial Class Form1
         Me.tabPage29.Size = New System.Drawing.Size(275, 238)
         Me.tabPage29.TabIndex = 0
         Me.tabPage29.Text = "Text logo"
-        Me.tabPage29.UseVisualStyleBackColor = True
+        Me.tabPage29.UseVisualStyleBackColor = true
         '
         'btTextLogoRemove
         '
@@ -1254,7 +1257,7 @@ Partial Class Form1
         Me.btTextLogoRemove.Size = New System.Drawing.Size(59, 22)
         Me.btTextLogoRemove.TabIndex = 11
         Me.btTextLogoRemove.Text = "Remove"
-        Me.btTextLogoRemove.UseVisualStyleBackColor = True
+        Me.btTextLogoRemove.UseVisualStyleBackColor = true
         '
         'btTextLogoEdit
         '
@@ -1263,11 +1266,11 @@ Partial Class Form1
         Me.btTextLogoEdit.Size = New System.Drawing.Size(59, 22)
         Me.btTextLogoEdit.TabIndex = 10
         Me.btTextLogoEdit.Text = "Edit"
-        Me.btTextLogoEdit.UseVisualStyleBackColor = True
+        Me.btTextLogoEdit.UseVisualStyleBackColor = true
         '
         'lbTextLogos
         '
-        Me.lbTextLogos.FormattingEnabled = True
+        Me.lbTextLogos.FormattingEnabled = true
         Me.lbTextLogos.Location = New System.Drawing.Point(10, 12)
         Me.lbTextLogos.Name = "lbTextLogos"
         Me.lbTextLogos.Size = New System.Drawing.Size(257, 186)
@@ -1280,7 +1283,7 @@ Partial Class Form1
         Me.btTextLogoAdd.Size = New System.Drawing.Size(59, 22)
         Me.btTextLogoAdd.TabIndex = 8
         Me.btTextLogoAdd.Text = "Add"
-        Me.btTextLogoAdd.UseVisualStyleBackColor = True
+        Me.btTextLogoAdd.UseVisualStyleBackColor = true
         '
         'tabPage42
         '
@@ -1294,7 +1297,7 @@ Partial Class Form1
         Me.tabPage42.Size = New System.Drawing.Size(275, 238)
         Me.tabPage42.TabIndex = 1
         Me.tabPage42.Text = "Image logo"
-        Me.tabPage42.UseVisualStyleBackColor = True
+        Me.tabPage42.UseVisualStyleBackColor = true
         '
         'btImageLogoRemove
         '
@@ -1303,7 +1306,7 @@ Partial Class Form1
         Me.btImageLogoRemove.Size = New System.Drawing.Size(59, 22)
         Me.btImageLogoRemove.TabIndex = 15
         Me.btImageLogoRemove.Text = "Remove"
-        Me.btImageLogoRemove.UseVisualStyleBackColor = True
+        Me.btImageLogoRemove.UseVisualStyleBackColor = true
         '
         'btImageLogoEdit
         '
@@ -1312,11 +1315,11 @@ Partial Class Form1
         Me.btImageLogoEdit.Size = New System.Drawing.Size(59, 22)
         Me.btImageLogoEdit.TabIndex = 14
         Me.btImageLogoEdit.Text = "Edit"
-        Me.btImageLogoEdit.UseVisualStyleBackColor = True
+        Me.btImageLogoEdit.UseVisualStyleBackColor = true
         '
         'lbImageLogos
         '
-        Me.lbImageLogos.FormattingEnabled = True
+        Me.lbImageLogos.FormattingEnabled = true
         Me.lbImageLogos.Location = New System.Drawing.Point(10, 12)
         Me.lbImageLogos.Name = "lbImageLogos"
         Me.lbImageLogos.Size = New System.Drawing.Size(257, 186)
@@ -1329,7 +1332,7 @@ Partial Class Form1
         Me.btImageLogoAdd.Size = New System.Drawing.Size(59, 22)
         Me.btImageLogoAdd.TabIndex = 12
         Me.btImageLogoAdd.Text = "Add"
-        Me.btImageLogoAdd.UseVisualStyleBackColor = True
+        Me.btImageLogoAdd.UseVisualStyleBackColor = true
         '
         'TabPage7
         '
@@ -1342,7 +1345,7 @@ Partial Class Form1
         Me.TabPage7.Size = New System.Drawing.Size(275, 238)
         Me.TabPage7.TabIndex = 2
         Me.TabPage7.Text = "Zoom"
-        Me.TabPage7.UseVisualStyleBackColor = True
+        Me.TabPage7.UseVisualStyleBackColor = true
         '
         'groupBox37
         '
@@ -1356,7 +1359,7 @@ Partial Class Form1
         Me.groupBox37.Name = "groupBox37"
         Me.groupBox37.Size = New System.Drawing.Size(119, 100)
         Me.groupBox37.TabIndex = 20
-        Me.groupBox37.TabStop = False
+        Me.groupBox37.TabStop = false
         Me.groupBox37.Text = "Zoom"
         '
         'btEffZoomRight
@@ -1366,7 +1369,7 @@ Partial Class Form1
         Me.btEffZoomRight.Size = New System.Drawing.Size(21, 46)
         Me.btEffZoomRight.TabIndex = 5
         Me.btEffZoomRight.Text = "R"
-        Me.btEffZoomRight.UseVisualStyleBackColor = True
+        Me.btEffZoomRight.UseVisualStyleBackColor = true
         '
         'btEffZoomLeft
         '
@@ -1375,7 +1378,7 @@ Partial Class Form1
         Me.btEffZoomLeft.Size = New System.Drawing.Size(21, 46)
         Me.btEffZoomLeft.TabIndex = 4
         Me.btEffZoomLeft.Text = "L"
-        Me.btEffZoomLeft.UseVisualStyleBackColor = True
+        Me.btEffZoomLeft.UseVisualStyleBackColor = true
         '
         'btEffZoomOut
         '
@@ -1384,7 +1387,7 @@ Partial Class Form1
         Me.btEffZoomOut.Size = New System.Drawing.Size(23, 22)
         Me.btEffZoomOut.TabIndex = 3
         Me.btEffZoomOut.Text = "-"
-        Me.btEffZoomOut.UseVisualStyleBackColor = True
+        Me.btEffZoomOut.UseVisualStyleBackColor = true
         '
         'btEffZoomIn
         '
@@ -1393,7 +1396,7 @@ Partial Class Form1
         Me.btEffZoomIn.Size = New System.Drawing.Size(22, 22)
         Me.btEffZoomIn.TabIndex = 2
         Me.btEffZoomIn.Text = "+"
-        Me.btEffZoomIn.UseVisualStyleBackColor = True
+        Me.btEffZoomIn.UseVisualStyleBackColor = true
         '
         'btEffZoomDown
         '
@@ -1402,7 +1405,7 @@ Partial Class Form1
         Me.btEffZoomDown.Size = New System.Drawing.Size(51, 22)
         Me.btEffZoomDown.TabIndex = 1
         Me.btEffZoomDown.Text = "Down"
-        Me.btEffZoomDown.UseVisualStyleBackColor = True
+        Me.btEffZoomDown.UseVisualStyleBackColor = true
         '
         'btEffZoomUp
         '
@@ -1411,17 +1414,17 @@ Partial Class Form1
         Me.btEffZoomUp.Size = New System.Drawing.Size(51, 22)
         Me.btEffZoomUp.TabIndex = 0
         Me.btEffZoomUp.Text = "Up"
-        Me.btEffZoomUp.UseVisualStyleBackColor = True
+        Me.btEffZoomUp.UseVisualStyleBackColor = true
         '
         'cbZoom
         '
-        Me.cbZoom.AutoSize = True
+        Me.cbZoom.AutoSize = true
         Me.cbZoom.Location = New System.Drawing.Point(12, 14)
         Me.cbZoom.Name = "cbZoom"
         Me.cbZoom.Size = New System.Drawing.Size(65, 17)
         Me.cbZoom.TabIndex = 19
         Me.cbZoom.Text = "Enabled"
-        Me.cbZoom.UseVisualStyleBackColor = True
+        Me.cbZoom.UseVisualStyleBackColor = true
         '
         'TabPage16
         '
@@ -1436,7 +1439,7 @@ Partial Class Form1
         Me.TabPage16.Size = New System.Drawing.Size(275, 238)
         Me.TabPage16.TabIndex = 3
         Me.TabPage16.Text = "Pan"
-        Me.TabPage16.UseVisualStyleBackColor = True
+        Me.TabPage16.UseVisualStyleBackColor = true
         '
         'groupBox40
         '
@@ -1454,7 +1457,7 @@ Partial Class Form1
         Me.groupBox40.Padding = New System.Windows.Forms.Padding(2)
         Me.groupBox40.Size = New System.Drawing.Size(168, 74)
         Me.groupBox40.TabIndex = 58
-        Me.groupBox40.TabStop = False
+        Me.groupBox40.TabStop = false
         Me.groupBox40.Text = "Destination rect"
         '
         'edPanDestHeight
@@ -1467,7 +1470,7 @@ Partial Class Form1
         '
         'label302
         '
-        Me.label302.AutoSize = True
+        Me.label302.AutoSize = true
         Me.label302.Location = New System.Drawing.Point(81, 52)
         Me.label302.Name = "label302"
         Me.label302.Size = New System.Drawing.Size(38, 13)
@@ -1484,7 +1487,7 @@ Partial Class Form1
         '
         'label303
         '
-        Me.label303.AutoSize = True
+        Me.label303.AutoSize = true
         Me.label303.Location = New System.Drawing.Point(81, 27)
         Me.label303.Name = "label303"
         Me.label303.Size = New System.Drawing.Size(35, 13)
@@ -1501,7 +1504,7 @@ Partial Class Form1
         '
         'label304
         '
-        Me.label304.AutoSize = True
+        Me.label304.AutoSize = true
         Me.label304.Location = New System.Drawing.Point(13, 52)
         Me.label304.Name = "label304"
         Me.label304.Size = New System.Drawing.Size(26, 13)
@@ -1518,7 +1521,7 @@ Partial Class Form1
         '
         'label305
         '
-        Me.label305.AutoSize = True
+        Me.label305.AutoSize = true
         Me.label305.Location = New System.Drawing.Point(13, 27)
         Me.label305.Name = "label305"
         Me.label305.Size = New System.Drawing.Size(25, 13)
@@ -1541,7 +1544,7 @@ Partial Class Form1
         Me.groupBox39.Padding = New System.Windows.Forms.Padding(2)
         Me.groupBox39.Size = New System.Drawing.Size(168, 74)
         Me.groupBox39.TabIndex = 57
-        Me.groupBox39.TabStop = False
+        Me.groupBox39.TabStop = false
         Me.groupBox39.Text = "Source rect"
         '
         'edPanSourceHeight
@@ -1554,7 +1557,7 @@ Partial Class Form1
         '
         'label298
         '
-        Me.label298.AutoSize = True
+        Me.label298.AutoSize = true
         Me.label298.Location = New System.Drawing.Point(81, 52)
         Me.label298.Name = "label298"
         Me.label298.Size = New System.Drawing.Size(38, 13)
@@ -1571,7 +1574,7 @@ Partial Class Form1
         '
         'label299
         '
-        Me.label299.AutoSize = True
+        Me.label299.AutoSize = true
         Me.label299.Location = New System.Drawing.Point(81, 27)
         Me.label299.Name = "label299"
         Me.label299.Size = New System.Drawing.Size(35, 13)
@@ -1588,7 +1591,7 @@ Partial Class Form1
         '
         'label300
         '
-        Me.label300.AutoSize = True
+        Me.label300.AutoSize = true
         Me.label300.Location = New System.Drawing.Point(13, 52)
         Me.label300.Name = "label300"
         Me.label300.Size = New System.Drawing.Size(26, 13)
@@ -1605,7 +1608,7 @@ Partial Class Form1
         '
         'label301
         '
-        Me.label301.AutoSize = True
+        Me.label301.AutoSize = true
         Me.label301.Location = New System.Drawing.Point(13, 27)
         Me.label301.Name = "label301"
         Me.label301.Size = New System.Drawing.Size(25, 13)
@@ -1622,7 +1625,7 @@ Partial Class Form1
         Me.groupBox38.Name = "groupBox38"
         Me.groupBox38.Size = New System.Drawing.Size(168, 44)
         Me.groupBox38.TabIndex = 56
-        Me.groupBox38.TabStop = False
+        Me.groupBox38.TabStop = false
         Me.groupBox38.Text = "Duration"
         '
         'edPanStopTime
@@ -1636,7 +1639,7 @@ Partial Class Form1
         '
         'label296
         '
-        Me.label296.AutoSize = True
+        Me.label296.AutoSize = true
         Me.label296.Location = New System.Drawing.Point(88, 21)
         Me.label296.Name = "label296"
         Me.label296.Size = New System.Drawing.Size(29, 13)
@@ -1654,7 +1657,7 @@ Partial Class Form1
         '
         'label297
         '
-        Me.label297.AutoSize = True
+        Me.label297.AutoSize = true
         Me.label297.Location = New System.Drawing.Point(10, 21)
         Me.label297.Name = "label297"
         Me.label297.Size = New System.Drawing.Size(29, 13)
@@ -1663,13 +1666,13 @@ Partial Class Form1
         '
         'cbPan
         '
-        Me.cbPan.AutoSize = True
+        Me.cbPan.AutoSize = true
         Me.cbPan.Location = New System.Drawing.Point(12, 6)
         Me.cbPan.Name = "cbPan"
         Me.cbPan.Size = New System.Drawing.Size(65, 17)
         Me.cbPan.TabIndex = 55
         Me.cbPan.Text = "Enabled"
-        Me.cbPan.UseVisualStyleBackColor = True
+        Me.cbPan.UseVisualStyleBackColor = true
         '
         'TabPage33
         '
@@ -1683,30 +1686,30 @@ Partial Class Form1
         Me.TabPage33.Size = New System.Drawing.Size(275, 238)
         Me.TabPage33.TabIndex = 4
         Me.TabPage33.Text = "Fade-in/out"
-        Me.TabPage33.UseVisualStyleBackColor = True
+        Me.TabPage33.UseVisualStyleBackColor = true
         '
         'rbVideoFadeOut
         '
-        Me.rbVideoFadeOut.AutoSize = True
+        Me.rbVideoFadeOut.AutoSize = true
         Me.rbVideoFadeOut.Location = New System.Drawing.Point(107, 86)
         Me.rbVideoFadeOut.Name = "rbVideoFadeOut"
         Me.rbVideoFadeOut.Size = New System.Drawing.Size(67, 17)
         Me.rbVideoFadeOut.TabIndex = 64
-        Me.rbVideoFadeOut.TabStop = True
+        Me.rbVideoFadeOut.TabStop = true
         Me.rbVideoFadeOut.Text = "Fade-out"
-        Me.rbVideoFadeOut.UseVisualStyleBackColor = True
+        Me.rbVideoFadeOut.UseVisualStyleBackColor = true
         '
         'rbVideoFadeIn
         '
-        Me.rbVideoFadeIn.AutoSize = True
-        Me.rbVideoFadeIn.Checked = True
+        Me.rbVideoFadeIn.AutoSize = true
+        Me.rbVideoFadeIn.Checked = true
         Me.rbVideoFadeIn.Location = New System.Drawing.Point(16, 86)
         Me.rbVideoFadeIn.Name = "rbVideoFadeIn"
         Me.rbVideoFadeIn.Size = New System.Drawing.Size(60, 17)
         Me.rbVideoFadeIn.TabIndex = 63
-        Me.rbVideoFadeIn.TabStop = True
+        Me.rbVideoFadeIn.TabStop = true
         Me.rbVideoFadeIn.Text = "Fade-in"
-        Me.rbVideoFadeIn.UseVisualStyleBackColor = True
+        Me.rbVideoFadeIn.UseVisualStyleBackColor = true
         '
         'groupBox45
         '
@@ -1718,7 +1721,7 @@ Partial Class Form1
         Me.groupBox45.Name = "groupBox45"
         Me.groupBox45.Size = New System.Drawing.Size(168, 44)
         Me.groupBox45.TabIndex = 62
-        Me.groupBox45.TabStop = False
+        Me.groupBox45.TabStop = false
         Me.groupBox45.Text = "Duration"
         '
         'edVideoFadeInOutStopTime
@@ -1732,7 +1735,7 @@ Partial Class Form1
         '
         'label329
         '
-        Me.label329.AutoSize = True
+        Me.label329.AutoSize = true
         Me.label329.Location = New System.Drawing.Point(88, 21)
         Me.label329.Name = "label329"
         Me.label329.Size = New System.Drawing.Size(29, 13)
@@ -1750,7 +1753,7 @@ Partial Class Form1
         '
         'label330
         '
-        Me.label330.AutoSize = True
+        Me.label330.AutoSize = true
         Me.label330.Location = New System.Drawing.Point(10, 21)
         Me.label330.Name = "label330"
         Me.label330.Size = New System.Drawing.Size(29, 13)
@@ -1759,13 +1762,13 @@ Partial Class Form1
         '
         'cbVideoFadeInOut
         '
-        Me.cbVideoFadeInOut.AutoSize = True
+        Me.cbVideoFadeInOut.AutoSize = true
         Me.cbVideoFadeInOut.Location = New System.Drawing.Point(16, 14)
         Me.cbVideoFadeInOut.Name = "cbVideoFadeInOut"
         Me.cbVideoFadeInOut.Size = New System.Drawing.Size(65, 17)
         Me.cbVideoFadeInOut.TabIndex = 61
         Me.cbVideoFadeInOut.Text = "Enabled"
-        Me.cbVideoFadeInOut.UseVisualStyleBackColor = True
+        Me.cbVideoFadeInOut.UseVisualStyleBackColor = true
         '
         'tbContrast
         '
@@ -1806,36 +1809,36 @@ Partial Class Form1
         '
         'cbInvert
         '
-        Me.cbInvert.AutoSize = True
+        Me.cbInvert.AutoSize = true
         Me.cbInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cbInvert.Location = New System.Drawing.Point(86, 152)
         Me.cbInvert.Name = "cbInvert"
         Me.cbInvert.Size = New System.Drawing.Size(53, 17)
         Me.cbInvert.TabIndex = 41
         Me.cbInvert.Text = "Invert"
-        Me.cbInvert.UseVisualStyleBackColor = True
+        Me.cbInvert.UseVisualStyleBackColor = true
         '
         'cbGreyscale
         '
-        Me.cbGreyscale.AutoSize = True
+        Me.cbGreyscale.AutoSize = true
         Me.cbGreyscale.Location = New System.Drawing.Point(9, 152)
         Me.cbGreyscale.Name = "cbGreyscale"
         Me.cbGreyscale.Size = New System.Drawing.Size(73, 17)
         Me.cbGreyscale.TabIndex = 39
         Me.cbGreyscale.Text = "Greyscale"
-        Me.cbGreyscale.UseVisualStyleBackColor = True
+        Me.cbGreyscale.UseVisualStyleBackColor = true
         '
         'cbEffects
         '
-        Me.cbEffects.AutoSize = True
-        Me.cbEffects.Checked = True
+        Me.cbEffects.AutoSize = true
+        Me.cbEffects.Checked = true
         Me.cbEffects.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbEffects.Location = New System.Drawing.Point(8, 8)
         Me.cbEffects.Name = "cbEffects"
         Me.cbEffects.Size = New System.Drawing.Size(65, 17)
         Me.cbEffects.TabIndex = 37
         Me.cbEffects.Text = "Enabled"
-        Me.cbEffects.UseVisualStyleBackColor = True
+        Me.cbEffects.UseVisualStyleBackColor = true
         '
         'tabPage69
         '
@@ -1867,11 +1870,11 @@ Partial Class Form1
         Me.tabPage69.Size = New System.Drawing.Size(290, 440)
         Me.tabPage69.TabIndex = 1
         Me.tabPage69.Text = "Deinterlace"
-        Me.tabPage69.UseVisualStyleBackColor = True
+        Me.tabPage69.UseVisualStyleBackColor = true
         '
         'label211
         '
-        Me.label211.AutoSize = True
+        Me.label211.AutoSize = true
         Me.label211.Location = New System.Drawing.Point(100, 282)
         Me.label211.Name = "label211"
         Me.label211.Size = New System.Drawing.Size(40, 13)
@@ -1888,7 +1891,7 @@ Partial Class Form1
         '
         'label212
         '
-        Me.label212.AutoSize = True
+        Me.label212.AutoSize = true
         Me.label212.Location = New System.Drawing.Point(34, 262)
         Me.label212.Name = "label212"
         Me.label212.Size = New System.Drawing.Size(41, 13)
@@ -1897,7 +1900,7 @@ Partial Class Form1
         '
         'label210
         '
-        Me.label210.AutoSize = True
+        Me.label210.AutoSize = true
         Me.label210.Location = New System.Drawing.Point(257, 184)
         Me.label210.Name = "label210"
         Me.label210.Size = New System.Drawing.Size(27, 13)
@@ -1906,7 +1909,7 @@ Partial Class Form1
         '
         'label209
         '
-        Me.label209.AutoSize = True
+        Me.label209.AutoSize = true
         Me.label209.Location = New System.Drawing.Point(257, 153)
         Me.label209.Name = "label209"
         Me.label209.Size = New System.Drawing.Size(27, 13)
@@ -1915,7 +1918,7 @@ Partial Class Form1
         '
         'label206
         '
-        Me.label206.AutoSize = True
+        Me.label206.AutoSize = true
         Me.label206.Location = New System.Drawing.Point(218, 205)
         Me.label206.Name = "label206"
         Me.label206.Size = New System.Drawing.Size(46, 13)
@@ -1932,7 +1935,7 @@ Partial Class Form1
         '
         'label207
         '
-        Me.label207.AutoSize = True
+        Me.label207.AutoSize = true
         Me.label207.Location = New System.Drawing.Point(152, 184)
         Me.label207.Name = "label207"
         Me.label207.Size = New System.Drawing.Size(63, 13)
@@ -1949,7 +1952,7 @@ Partial Class Form1
         '
         'label208
         '
-        Me.label208.AutoSize = True
+        Me.label208.AutoSize = true
         Me.label208.Location = New System.Drawing.Point(152, 153)
         Me.label208.Name = "label208"
         Me.label208.Size = New System.Drawing.Size(63, 13)
@@ -1958,7 +1961,7 @@ Partial Class Form1
         '
         'label204
         '
-        Me.label204.AutoSize = True
+        Me.label204.AutoSize = true
         Me.label204.Location = New System.Drawing.Point(100, 205)
         Me.label204.Name = "label204"
         Me.label204.Size = New System.Drawing.Size(40, 13)
@@ -1975,7 +1978,7 @@ Partial Class Form1
         '
         'label205
         '
-        Me.label205.AutoSize = True
+        Me.label205.AutoSize = true
         Me.label205.Location = New System.Drawing.Point(34, 184)
         Me.label205.Name = "label205"
         Me.label205.Size = New System.Drawing.Size(63, 13)
@@ -1992,7 +1995,7 @@ Partial Class Form1
         '
         'label203
         '
-        Me.label203.AutoSize = True
+        Me.label203.AutoSize = true
         Me.label203.Location = New System.Drawing.Point(34, 153)
         Me.label203.Name = "label203"
         Me.label203.Size = New System.Drawing.Size(63, 13)
@@ -2001,7 +2004,7 @@ Partial Class Form1
         '
         'label202
         '
-        Me.label202.AutoSize = True
+        Me.label202.AutoSize = true
         Me.label202.Location = New System.Drawing.Point(100, 99)
         Me.label202.Name = "label202"
         Me.label202.Size = New System.Drawing.Size(40, 13)
@@ -2018,7 +2021,7 @@ Partial Class Form1
         '
         'label104
         '
-        Me.label104.AutoSize = True
+        Me.label104.AutoSize = true
         Me.label104.Location = New System.Drawing.Point(34, 79)
         Me.label104.Name = "label104"
         Me.label104.Size = New System.Drawing.Size(54, 13)
@@ -2027,45 +2030,45 @@ Partial Class Form1
         '
         'rbDeintTriangleEnabled
         '
-        Me.rbDeintTriangleEnabled.AutoSize = True
+        Me.rbDeintTriangleEnabled.AutoSize = true
         Me.rbDeintTriangleEnabled.Location = New System.Drawing.Point(18, 234)
         Me.rbDeintTriangleEnabled.Name = "rbDeintTriangleEnabled"
         Me.rbDeintTriangleEnabled.Size = New System.Drawing.Size(63, 17)
         Me.rbDeintTriangleEnabled.TabIndex = 10
         Me.rbDeintTriangleEnabled.Text = "Triangle"
-        Me.rbDeintTriangleEnabled.UseVisualStyleBackColor = True
+        Me.rbDeintTriangleEnabled.UseVisualStyleBackColor = true
         '
         'rbDeintBlendEnabled
         '
-        Me.rbDeintBlendEnabled.AutoSize = True
+        Me.rbDeintBlendEnabled.AutoSize = true
         Me.rbDeintBlendEnabled.Location = New System.Drawing.Point(18, 122)
         Me.rbDeintBlendEnabled.Name = "rbDeintBlendEnabled"
         Me.rbDeintBlendEnabled.Size = New System.Drawing.Size(52, 17)
         Me.rbDeintBlendEnabled.TabIndex = 9
         Me.rbDeintBlendEnabled.Text = "Blend"
-        Me.rbDeintBlendEnabled.UseVisualStyleBackColor = True
+        Me.rbDeintBlendEnabled.UseVisualStyleBackColor = true
         '
         'rbDeintCAVTEnabled
         '
-        Me.rbDeintCAVTEnabled.AutoSize = True
-        Me.rbDeintCAVTEnabled.Checked = True
+        Me.rbDeintCAVTEnabled.AutoSize = true
+        Me.rbDeintCAVTEnabled.Checked = true
         Me.rbDeintCAVTEnabled.Location = New System.Drawing.Point(18, 50)
         Me.rbDeintCAVTEnabled.Name = "rbDeintCAVTEnabled"
         Me.rbDeintCAVTEnabled.Size = New System.Drawing.Size(229, 17)
         Me.rbDeintCAVTEnabled.TabIndex = 8
-        Me.rbDeintCAVTEnabled.TabStop = True
+        Me.rbDeintCAVTEnabled.TabStop = true
         Me.rbDeintCAVTEnabled.Text = "Content Adaptive Vertical Temporal (CAVT)"
-        Me.rbDeintCAVTEnabled.UseVisualStyleBackColor = True
+        Me.rbDeintCAVTEnabled.UseVisualStyleBackColor = true
         '
         'cbDeinterlace
         '
-        Me.cbDeinterlace.AutoSize = True
+        Me.cbDeinterlace.AutoSize = true
         Me.cbDeinterlace.Location = New System.Drawing.Point(18, 16)
         Me.cbDeinterlace.Name = "cbDeinterlace"
         Me.cbDeinterlace.Size = New System.Drawing.Size(65, 17)
         Me.cbDeinterlace.TabIndex = 7
         Me.cbDeinterlace.Text = "Enabled"
-        Me.cbDeinterlace.UseVisualStyleBackColor = True
+        Me.cbDeinterlace.UseVisualStyleBackColor = true
         '
         'tabPage59
         '
@@ -2078,45 +2081,47 @@ Partial Class Form1
         Me.tabPage59.Size = New System.Drawing.Size(290, 440)
         Me.tabPage59.TabIndex = 4
         Me.tabPage59.Text = "Denoise"
-        Me.tabPage59.UseVisualStyleBackColor = True
+        Me.tabPage59.UseVisualStyleBackColor = true
         '
         'rbDenoiseCAST
         '
-        Me.rbDenoiseCAST.AutoSize = True
+        Me.rbDenoiseCAST.AutoSize = true
         Me.rbDenoiseCAST.Location = New System.Drawing.Point(18, 76)
         Me.rbDenoiseCAST.Name = "rbDenoiseCAST"
         Me.rbDenoiseCAST.Size = New System.Drawing.Size(224, 17)
         Me.rbDenoiseCAST.TabIndex = 10
         Me.rbDenoiseCAST.Text = "Content Adaptive Spatio-Temporal (CAST)"
-        Me.rbDenoiseCAST.UseVisualStyleBackColor = True
+        Me.rbDenoiseCAST.UseVisualStyleBackColor = true
         '
         'rbDenoiseMosquito
         '
-        Me.rbDenoiseMosquito.AutoSize = True
-        Me.rbDenoiseMosquito.Checked = True
+        Me.rbDenoiseMosquito.AutoSize = true
+        Me.rbDenoiseMosquito.Checked = true
         Me.rbDenoiseMosquito.Location = New System.Drawing.Point(18, 50)
         Me.rbDenoiseMosquito.Name = "rbDenoiseMosquito"
         Me.rbDenoiseMosquito.Size = New System.Drawing.Size(68, 17)
         Me.rbDenoiseMosquito.TabIndex = 9
-        Me.rbDenoiseMosquito.TabStop = True
+        Me.rbDenoiseMosquito.TabStop = true
         Me.rbDenoiseMosquito.Text = "Mosquito"
-        Me.rbDenoiseMosquito.UseVisualStyleBackColor = True
+        Me.rbDenoiseMosquito.UseVisualStyleBackColor = true
         '
         'cbDenoise
         '
-        Me.cbDenoise.AutoSize = True
+        Me.cbDenoise.AutoSize = true
         Me.cbDenoise.Location = New System.Drawing.Point(18, 16)
         Me.cbDenoise.Name = "cbDenoise"
         Me.cbDenoise.Size = New System.Drawing.Size(65, 17)
         Me.cbDenoise.TabIndex = 8
         Me.cbDenoise.Text = "Enabled"
-        Me.cbDenoise.UseVisualStyleBackColor = True
+        Me.cbDenoise.UseVisualStyleBackColor = true
         '
         'TabPage82
         '
+        Me.TabPage82.Controls.Add(Me.label5)
+        Me.TabPage82.Controls.Add(Me.tbGPUBlur)
+        Me.TabPage82.Controls.Add(Me.cbVideoEffectsGPUDX11)
         Me.TabPage82.Controls.Add(Me.cbVideoEffectsGPUEnabled)
         Me.TabPage82.Controls.Add(Me.cbGPUOldMovie)
-        Me.TabPage82.Controls.Add(Me.cbGPUBlur)
         Me.TabPage82.Controls.Add(Me.cbGPUDeinterlace)
         Me.TabPage82.Controls.Add(Me.cbGPUDenoise)
         Me.TabPage82.Controls.Add(Me.cbGPUPixelate)
@@ -2137,73 +2142,73 @@ Partial Class Form1
         Me.TabPage82.Size = New System.Drawing.Size(290, 440)
         Me.TabPage82.TabIndex = 8
         Me.TabPage82.Text = "GPU effects"
-        Me.TabPage82.UseVisualStyleBackColor = True
+        Me.TabPage82.UseVisualStyleBackColor = true
+        '
+        'cbVideoEffectsGPUEnabled
+        '
+        Me.cbVideoEffectsGPUEnabled.AutoSize = true
+        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(16, 16)
+        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
+        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
+        Me.cbVideoEffectsGPUEnabled.TabIndex = 97
+        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
+        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = true
         '
         'cbGPUOldMovie
         '
-        Me.cbGPUOldMovie.AutoSize = True
+        Me.cbGPUOldMovie.AutoSize = true
         Me.cbGPUOldMovie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cbGPUOldMovie.Location = New System.Drawing.Point(145, 228)
         Me.cbGPUOldMovie.Name = "cbGPUOldMovie"
         Me.cbGPUOldMovie.Size = New System.Drawing.Size(73, 17)
         Me.cbGPUOldMovie.TabIndex = 96
         Me.cbGPUOldMovie.Text = "Old movie"
-        Me.cbGPUOldMovie.UseVisualStyleBackColor = True
-        '
-        'cbGPUBlur
-        '
-        Me.cbGPUBlur.AutoSize = True
-        Me.cbGPUBlur.Location = New System.Drawing.Point(17, 228)
-        Me.cbGPUBlur.Name = "cbGPUBlur"
-        Me.cbGPUBlur.Size = New System.Drawing.Size(44, 17)
-        Me.cbGPUBlur.TabIndex = 95
-        Me.cbGPUBlur.Text = "Blur"
-        Me.cbGPUBlur.UseVisualStyleBackColor = True
+        Me.cbGPUOldMovie.UseVisualStyleBackColor = true
         '
         'cbGPUDeinterlace
         '
-        Me.cbGPUDeinterlace.AutoSize = True
+        Me.cbGPUDeinterlace.AutoSize = true
         Me.cbGPUDeinterlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cbGPUDeinterlace.Location = New System.Drawing.Point(145, 205)
         Me.cbGPUDeinterlace.Name = "cbGPUDeinterlace"
         Me.cbGPUDeinterlace.Size = New System.Drawing.Size(80, 17)
         Me.cbGPUDeinterlace.TabIndex = 94
         Me.cbGPUDeinterlace.Text = "Deinterlace"
-        Me.cbGPUDeinterlace.UseVisualStyleBackColor = True
+        Me.cbGPUDeinterlace.UseVisualStyleBackColor = true
         '
         'cbGPUDenoise
         '
-        Me.cbGPUDenoise.AutoSize = True
+        Me.cbGPUDenoise.AutoSize = true
         Me.cbGPUDenoise.Location = New System.Drawing.Point(17, 205)
         Me.cbGPUDenoise.Name = "cbGPUDenoise"
         Me.cbGPUDenoise.Size = New System.Drawing.Size(65, 17)
         Me.cbGPUDenoise.TabIndex = 93
         Me.cbGPUDenoise.Text = "Denoise"
-        Me.cbGPUDenoise.UseVisualStyleBackColor = True
+        Me.cbGPUDenoise.UseVisualStyleBackColor = true
         '
         'cbGPUPixelate
         '
-        Me.cbGPUPixelate.AutoSize = True
+        Me.cbGPUPixelate.AutoSize = true
         Me.cbGPUPixelate.Location = New System.Drawing.Point(145, 183)
         Me.cbGPUPixelate.Name = "cbGPUPixelate"
         Me.cbGPUPixelate.Size = New System.Drawing.Size(63, 17)
         Me.cbGPUPixelate.TabIndex = 92
         Me.cbGPUPixelate.Text = "Pixelate"
-        Me.cbGPUPixelate.UseVisualStyleBackColor = True
+        Me.cbGPUPixelate.UseVisualStyleBackColor = true
         '
         'cbGPUNightVision
         '
-        Me.cbGPUNightVision.AutoSize = True
+        Me.cbGPUNightVision.AutoSize = true
         Me.cbGPUNightVision.Location = New System.Drawing.Point(17, 183)
         Me.cbGPUNightVision.Name = "cbGPUNightVision"
         Me.cbGPUNightVision.Size = New System.Drawing.Size(81, 17)
         Me.cbGPUNightVision.TabIndex = 91
         Me.cbGPUNightVision.Text = "Night vision"
-        Me.cbGPUNightVision.UseVisualStyleBackColor = True
+        Me.cbGPUNightVision.UseVisualStyleBackColor = true
         '
         'label383
         '
-        Me.label383.AutoSize = True
+        Me.label383.AutoSize = true
         Me.label383.Location = New System.Drawing.Point(150, 94)
         Me.label383.Name = "label383"
         Me.label383.Size = New System.Drawing.Size(52, 13)
@@ -2212,7 +2217,7 @@ Partial Class Form1
         '
         'label384
         '
-        Me.label384.AutoSize = True
+        Me.label384.AutoSize = true
         Me.label384.Location = New System.Drawing.Point(14, 94)
         Me.label384.Name = "label384"
         Me.label384.Size = New System.Drawing.Size(46, 13)
@@ -2221,7 +2226,7 @@ Partial Class Form1
         '
         'label385
         '
-        Me.label385.AutoSize = True
+        Me.label385.AutoSize = true
         Me.label385.Location = New System.Drawing.Point(150, 44)
         Me.label385.Name = "label385"
         Me.label385.Size = New System.Drawing.Size(55, 13)
@@ -2230,7 +2235,7 @@ Partial Class Form1
         '
         'label386
         '
-        Me.label386.AutoSize = True
+        Me.label386.AutoSize = true
         Me.label386.Location = New System.Drawing.Point(14, 44)
         Me.label386.Name = "label386"
         Me.label386.Size = New System.Drawing.Size(52, 13)
@@ -2277,24 +2282,24 @@ Partial Class Form1
         '
         'cbGPUInvert
         '
-        Me.cbGPUInvert.AutoSize = True
+        Me.cbGPUInvert.AutoSize = true
         Me.cbGPUInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.cbGPUInvert.Location = New System.Drawing.Point(145, 161)
         Me.cbGPUInvert.Name = "cbGPUInvert"
         Me.cbGPUInvert.Size = New System.Drawing.Size(53, 17)
         Me.cbGPUInvert.TabIndex = 82
         Me.cbGPUInvert.Text = "Invert"
-        Me.cbGPUInvert.UseVisualStyleBackColor = True
+        Me.cbGPUInvert.UseVisualStyleBackColor = true
         '
         'cbGPUGreyscale
         '
-        Me.cbGPUGreyscale.AutoSize = True
+        Me.cbGPUGreyscale.AutoSize = true
         Me.cbGPUGreyscale.Location = New System.Drawing.Point(17, 161)
         Me.cbGPUGreyscale.Name = "cbGPUGreyscale"
         Me.cbGPUGreyscale.Size = New System.Drawing.Size(73, 17)
         Me.cbGPUGreyscale.TabIndex = 81
         Me.cbGPUGreyscale.Text = "Greyscale"
-        Me.cbGPUGreyscale.UseVisualStyleBackColor = True
+        Me.cbGPUGreyscale.UseVisualStyleBackColor = true
         '
         'TabPage20
         '
@@ -2306,7 +2311,7 @@ Partial Class Form1
         Me.TabPage20.Size = New System.Drawing.Size(290, 440)
         Me.TabPage20.TabIndex = 5
         Me.TabPage20.Text = "Object detection"
-        Me.TabPage20.UseVisualStyleBackColor = True
+        Me.TabPage20.UseVisualStyleBackColor = true
         '
         'tabControl15
         '
@@ -2331,11 +2336,11 @@ Partial Class Form1
         Me.TabPage26.Size = New System.Drawing.Size(270, 345)
         Me.TabPage26.TabIndex = 0
         Me.TabPage26.Text = "Motion detection"
-        Me.TabPage26.UseVisualStyleBackColor = True
+        Me.TabPage26.UseVisualStyleBackColor = true
         '
         'label64
         '
-        Me.label64.AutoSize = True
+        Me.label64.AutoSize = true
         Me.label64.Location = New System.Drawing.Point(6, 88)
         Me.label64.Name = "label64"
         Me.label64.Size = New System.Drawing.Size(254, 13)
@@ -2344,7 +2349,7 @@ Partial Class Form1
         '
         'label65
         '
-        Me.label65.AutoSize = True
+        Me.label65.AutoSize = true
         Me.label65.Location = New System.Drawing.Point(6, 303)
         Me.label65.Name = "label65"
         Me.label65.Size = New System.Drawing.Size(64, 13)
@@ -2360,23 +2365,23 @@ Partial Class Form1
         '
         'cbAFMotionHighlight
         '
-        Me.cbAFMotionHighlight.AutoSize = True
+        Me.cbAFMotionHighlight.AutoSize = true
         Me.cbAFMotionHighlight.Location = New System.Drawing.Point(15, 44)
         Me.cbAFMotionHighlight.Name = "cbAFMotionHighlight"
         Me.cbAFMotionHighlight.Size = New System.Drawing.Size(67, 17)
         Me.cbAFMotionHighlight.TabIndex = 1
         Me.cbAFMotionHighlight.Text = "Highlight"
-        Me.cbAFMotionHighlight.UseVisualStyleBackColor = True
+        Me.cbAFMotionHighlight.UseVisualStyleBackColor = true
         '
         'cbAFMotionDetection
         '
-        Me.cbAFMotionDetection.AutoSize = True
+        Me.cbAFMotionDetection.AutoSize = true
         Me.cbAFMotionDetection.Location = New System.Drawing.Point(15, 18)
         Me.cbAFMotionDetection.Name = "cbAFMotionDetection"
         Me.cbAFMotionDetection.Size = New System.Drawing.Size(138, 17)
         Me.cbAFMotionDetection.TabIndex = 0
         Me.cbAFMotionDetection.Text = "Enabled, detect objects"
-        Me.cbAFMotionDetection.UseVisualStyleBackColor = True
+        Me.cbAFMotionDetection.UseVisualStyleBackColor = true
         '
         'TabPage27
         '
@@ -2388,11 +2393,11 @@ Partial Class Form1
         Me.TabPage27.Size = New System.Drawing.Size(270, 345)
         Me.TabPage27.TabIndex = 1
         Me.TabPage27.Text = "Effects"
-        Me.TabPage27.UseVisualStyleBackColor = True
+        Me.TabPage27.UseVisualStyleBackColor = true
         '
         'label171
         '
-        Me.label171.AutoSize = True
+        Me.label171.AutoSize = true
         Me.label171.Location = New System.Drawing.Point(10, 38)
         Me.label171.Name = "label171"
         Me.label171.Size = New System.Drawing.Size(141, 13)
@@ -2401,7 +2406,7 @@ Partial Class Form1
         '
         'label66
         '
-        Me.label66.AutoSize = True
+        Me.label66.AutoSize = true
         Me.label66.Location = New System.Drawing.Point(10, 18)
         Me.label66.Name = "label66"
         Me.label66.Size = New System.Drawing.Size(171, 13)
@@ -2435,7 +2440,7 @@ Partial Class Form1
         Me.TabPage21.Size = New System.Drawing.Size(290, 440)
         Me.TabPage21.TabIndex = 6
         Me.TabPage21.Text = "Chroma key"
-        Me.TabPage21.UseVisualStyleBackColor = True
+        Me.TabPage21.UseVisualStyleBackColor = true
         '
         'btChromaKeySelectBGImage
         '
@@ -2444,7 +2449,7 @@ Partial Class Form1
         Me.btChromaKeySelectBGImage.Size = New System.Drawing.Size(24, 22)
         Me.btChromaKeySelectBGImage.TabIndex = 44
         Me.btChromaKeySelectBGImage.Text = "..."
-        Me.btChromaKeySelectBGImage.UseVisualStyleBackColor = True
+        Me.btChromaKeySelectBGImage.UseVisualStyleBackColor = true
         '
         'edChromaKeyImage
         '
@@ -2456,7 +2461,7 @@ Partial Class Form1
         '
         'label216
         '
-        Me.label216.AutoSize = True
+        Me.label216.AutoSize = true
         Me.label216.Location = New System.Drawing.Point(11, 247)
         Me.label216.Name = "label216"
         Me.label216.Size = New System.Drawing.Size(96, 13)
@@ -2465,39 +2470,39 @@ Partial Class Form1
         '
         'rbChromaKeyRed
         '
-        Me.rbChromaKeyRed.AutoSize = True
+        Me.rbChromaKeyRed.AutoSize = true
         Me.rbChromaKeyRed.Location = New System.Drawing.Point(148, 214)
         Me.rbChromaKeyRed.Name = "rbChromaKeyRed"
         Me.rbChromaKeyRed.Size = New System.Drawing.Size(45, 17)
         Me.rbChromaKeyRed.TabIndex = 41
         Me.rbChromaKeyRed.Text = "Red"
-        Me.rbChromaKeyRed.UseVisualStyleBackColor = True
+        Me.rbChromaKeyRed.UseVisualStyleBackColor = true
         '
         'rbChromaKeyBlue
         '
-        Me.rbChromaKeyBlue.AutoSize = True
+        Me.rbChromaKeyBlue.AutoSize = true
         Me.rbChromaKeyBlue.Location = New System.Drawing.Point(83, 214)
         Me.rbChromaKeyBlue.Name = "rbChromaKeyBlue"
         Me.rbChromaKeyBlue.Size = New System.Drawing.Size(46, 17)
         Me.rbChromaKeyBlue.TabIndex = 40
         Me.rbChromaKeyBlue.Text = "Blue"
-        Me.rbChromaKeyBlue.UseVisualStyleBackColor = True
+        Me.rbChromaKeyBlue.UseVisualStyleBackColor = true
         '
         'rbChromaKeyGreen
         '
-        Me.rbChromaKeyGreen.AutoSize = True
-        Me.rbChromaKeyGreen.Checked = True
+        Me.rbChromaKeyGreen.AutoSize = true
+        Me.rbChromaKeyGreen.Checked = true
         Me.rbChromaKeyGreen.Location = New System.Drawing.Point(14, 214)
         Me.rbChromaKeyGreen.Name = "rbChromaKeyGreen"
         Me.rbChromaKeyGreen.Size = New System.Drawing.Size(54, 17)
         Me.rbChromaKeyGreen.TabIndex = 39
-        Me.rbChromaKeyGreen.TabStop = True
+        Me.rbChromaKeyGreen.TabStop = true
         Me.rbChromaKeyGreen.Text = "Green"
-        Me.rbChromaKeyGreen.UseVisualStyleBackColor = True
+        Me.rbChromaKeyGreen.UseVisualStyleBackColor = true
         '
         'label215
         '
-        Me.label215.AutoSize = True
+        Me.label215.AutoSize = true
         Me.label215.Location = New System.Drawing.Point(11, 200)
         Me.label215.Name = "label215"
         Me.label215.Size = New System.Drawing.Size(31, 13)
@@ -2516,7 +2521,7 @@ Partial Class Form1
         '
         'label214
         '
-        Me.label214.AutoSize = True
+        Me.label214.AutoSize = true
         Me.label214.Location = New System.Drawing.Point(11, 126)
         Me.label214.Name = "label214"
         Me.label214.Size = New System.Drawing.Size(71, 13)
@@ -2535,7 +2540,7 @@ Partial Class Form1
         '
         'label213
         '
-        Me.label213.AutoSize = True
+        Me.label213.AutoSize = true
         Me.label213.Location = New System.Drawing.Point(11, 56)
         Me.label213.Name = "label213"
         Me.label213.Size = New System.Drawing.Size(69, 13)
@@ -2544,13 +2549,13 @@ Partial Class Form1
         '
         'cbChromaKeyEnabled
         '
-        Me.cbChromaKeyEnabled.AutoSize = True
+        Me.cbChromaKeyEnabled.AutoSize = true
         Me.cbChromaKeyEnabled.Location = New System.Drawing.Point(14, 18)
         Me.cbChromaKeyEnabled.Name = "cbChromaKeyEnabled"
         Me.cbChromaKeyEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbChromaKeyEnabled.TabIndex = 33
         Me.cbChromaKeyEnabled.Text = "Enabled"
-        Me.cbChromaKeyEnabled.UseVisualStyleBackColor = True
+        Me.cbChromaKeyEnabled.UseVisualStyleBackColor = true
         '
         'tabPage70
         '
@@ -2568,7 +2573,7 @@ Partial Class Form1
         Me.tabPage70.Size = New System.Drawing.Size(290, 440)
         Me.tabPage70.TabIndex = 3
         Me.tabPage70.Text = "3rd-party filters"
-        Me.tabPage70.UseVisualStyleBackColor = True
+        Me.tabPage70.UseVisualStyleBackColor = true
         '
         'btFilterDeleteAll
         '
@@ -2577,7 +2582,7 @@ Partial Class Form1
         Me.btFilterDeleteAll.Size = New System.Drawing.Size(68, 22)
         Me.btFilterDeleteAll.TabIndex = 16
         Me.btFilterDeleteAll.Text = "Delete all"
-        Me.btFilterDeleteAll.UseVisualStyleBackColor = True
+        Me.btFilterDeleteAll.UseVisualStyleBackColor = true
         '
         'btFilterSettings2
         '
@@ -2586,11 +2591,11 @@ Partial Class Form1
         Me.btFilterSettings2.Size = New System.Drawing.Size(65, 22)
         Me.btFilterSettings2.TabIndex = 15
         Me.btFilterSettings2.Text = "Settings"
-        Me.btFilterSettings2.UseVisualStyleBackColor = True
+        Me.btFilterSettings2.UseVisualStyleBackColor = true
         '
         'lbFilters
         '
-        Me.lbFilters.FormattingEnabled = True
+        Me.lbFilters.FormattingEnabled = true
         Me.lbFilters.Location = New System.Drawing.Point(18, 116)
         Me.lbFilters.Name = "lbFilters"
         Me.lbFilters.Size = New System.Drawing.Size(260, 134)
@@ -2598,7 +2603,7 @@ Partial Class Form1
         '
         'label106
         '
-        Me.label106.AutoSize = True
+        Me.label106.AutoSize = true
         Me.label106.Location = New System.Drawing.Point(15, 101)
         Me.label106.Name = "label106"
         Me.label106.Size = New System.Drawing.Size(68, 13)
@@ -2612,7 +2617,7 @@ Partial Class Form1
         Me.btFilterSettings.Size = New System.Drawing.Size(68, 22)
         Me.btFilterSettings.TabIndex = 12
         Me.btFilterSettings.Text = "Settings"
-        Me.btFilterSettings.UseVisualStyleBackColor = True
+        Me.btFilterSettings.UseVisualStyleBackColor = true
         '
         'btFilterAdd
         '
@@ -2621,12 +2626,12 @@ Partial Class Form1
         Me.btFilterAdd.Size = New System.Drawing.Size(39, 22)
         Me.btFilterAdd.TabIndex = 11
         Me.btFilterAdd.Text = "Add"
-        Me.btFilterAdd.UseVisualStyleBackColor = True
+        Me.btFilterAdd.UseVisualStyleBackColor = true
         '
         'cbFilters
         '
         Me.cbFilters.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbFilters.FormattingEnabled = True
+        Me.cbFilters.FormattingEnabled = true
         Me.cbFilters.Location = New System.Drawing.Point(18, 29)
         Me.cbFilters.Name = "cbFilters"
         Me.cbFilters.Size = New System.Drawing.Size(260, 21)
@@ -2634,7 +2639,7 @@ Partial Class Form1
         '
         'label105
         '
-        Me.label105.AutoSize = True
+        Me.label105.AutoSize = true
         Me.label105.Location = New System.Drawing.Point(15, 14)
         Me.label105.Name = "label105"
         Me.label105.Size = New System.Drawing.Size(34, 13)
@@ -2655,11 +2660,11 @@ Partial Class Form1
         Me.TabPage81.Size = New System.Drawing.Size(290, 440)
         Me.TabPage81.TabIndex = 7
         Me.TabPage81.Text = "Subtitles"
-        Me.TabPage81.UseVisualStyleBackColor = True
+        Me.TabPage81.UseVisualStyleBackColor = true
         '
         'label177
         '
-        Me.label177.AutoSize = True
+        Me.label177.AutoSize = true
         Me.label177.Location = New System.Drawing.Point(10, 100)
         Me.label177.Name = "label177"
         Me.label177.Size = New System.Drawing.Size(82, 13)
@@ -2668,7 +2673,7 @@ Partial Class Form1
         '
         'Label3
         '
-        Me.Label3.AutoSize = True
+        Me.Label3.AutoSize = true
         Me.Label3.Location = New System.Drawing.Point(10, 82)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(241, 13)
@@ -2682,7 +2687,7 @@ Partial Class Form1
         Me.btSubtitlesSelectFile.Size = New System.Drawing.Size(23, 22)
         Me.btSubtitlesSelectFile.TabIndex = 9
         Me.btSubtitlesSelectFile.Text = "..."
-        Me.btSubtitlesSelectFile.UseVisualStyleBackColor = True
+        Me.btSubtitlesSelectFile.UseVisualStyleBackColor = true
         '
         'edSubtitlesFilename
         '
@@ -2693,7 +2698,7 @@ Partial Class Form1
         '
         'Label130
         '
-        Me.Label130.AutoSize = True
+        Me.Label130.AutoSize = true
         Me.Label130.Location = New System.Drawing.Point(10, 40)
         Me.Label130.Name = "Label130"
         Me.Label130.Size = New System.Drawing.Size(52, 13)
@@ -2702,13 +2707,13 @@ Partial Class Form1
         '
         'cbSubtitlesEnabled
         '
-        Me.cbSubtitlesEnabled.AutoSize = True
+        Me.cbSubtitlesEnabled.AutoSize = true
         Me.cbSubtitlesEnabled.Location = New System.Drawing.Point(13, 16)
         Me.cbSubtitlesEnabled.Name = "cbSubtitlesEnabled"
         Me.cbSubtitlesEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbSubtitlesEnabled.TabIndex = 6
         Me.cbSubtitlesEnabled.Text = "Enabled"
-        Me.cbSubtitlesEnabled.UseVisualStyleBackColor = True
+        Me.cbSubtitlesEnabled.UseVisualStyleBackColor = true
         '
         'tabPage9
         '
@@ -2721,7 +2726,7 @@ Partial Class Form1
         Me.tabPage9.Size = New System.Drawing.Size(302, 474)
         Me.tabPage9.TabIndex = 3
         Me.tabPage9.Text = "Transitions"
-        Me.tabPage9.UseVisualStyleBackColor = True
+        Me.tabPage9.UseVisualStyleBackColor = true
         '
         'groupBox5
         '
@@ -2738,12 +2743,12 @@ Partial Class Form1
         Me.groupBox5.Name = "groupBox5"
         Me.groupBox5.Size = New System.Drawing.Size(251, 138)
         Me.groupBox5.TabIndex = 2
-        Me.groupBox5.TabStop = False
+        Me.groupBox5.TabStop = false
         Me.groupBox5.Text = "Add transition"
         '
         'label47
         '
-        Me.label47.AutoSize = True
+        Me.label47.AutoSize = true
         Me.label47.Location = New System.Drawing.Point(133, 106)
         Me.label47.Name = "label47"
         Me.label47.Size = New System.Drawing.Size(20, 13)
@@ -2760,7 +2765,7 @@ Partial Class Form1
         '
         'label48
         '
-        Me.label48.AutoSize = True
+        Me.label48.AutoSize = true
         Me.label48.Location = New System.Drawing.Point(12, 106)
         Me.label48.Name = "label48"
         Me.label48.Size = New System.Drawing.Size(51, 13)
@@ -2769,7 +2774,7 @@ Partial Class Form1
         '
         'label46
         '
-        Me.label46.AutoSize = True
+        Me.label46.AutoSize = true
         Me.label46.Location = New System.Drawing.Point(133, 81)
         Me.label46.Name = "label46"
         Me.label46.Size = New System.Drawing.Size(20, 13)
@@ -2786,7 +2791,7 @@ Partial Class Form1
         '
         'label45
         '
-        Me.label45.AutoSize = True
+        Me.label45.AutoSize = true
         Me.label45.Location = New System.Drawing.Point(12, 81)
         Me.label45.Name = "label45"
         Me.label45.Size = New System.Drawing.Size(51, 13)
@@ -2800,12 +2805,12 @@ Partial Class Form1
         Me.btAddTransition.Size = New System.Drawing.Size(42, 22)
         Me.btAddTransition.TabIndex = 2
         Me.btAddTransition.Text = "Add"
-        Me.btAddTransition.UseVisualStyleBackColor = True
+        Me.btAddTransition.UseVisualStyleBackColor = true
         '
         'cbTransitionName
         '
         Me.cbTransitionName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbTransitionName.FormattingEnabled = True
+        Me.cbTransitionName.FormattingEnabled = true
         Me.cbTransitionName.Location = New System.Drawing.Point(15, 42)
         Me.cbTransitionName.Name = "cbTransitionName"
         Me.cbTransitionName.Size = New System.Drawing.Size(182, 21)
@@ -2813,7 +2818,7 @@ Partial Class Form1
         '
         'label44
         '
-        Me.label44.AutoSize = True
+        Me.label44.AutoSize = true
         Me.label44.Location = New System.Drawing.Point(12, 27)
         Me.label44.Name = "label44"
         Me.label44.Size = New System.Drawing.Size(35, 13)
@@ -2822,7 +2827,7 @@ Partial Class Form1
         '
         'lbTransitions
         '
-        Me.lbTransitions.FormattingEnabled = True
+        Me.lbTransitions.FormattingEnabled = true
         Me.lbTransitions.Location = New System.Drawing.Point(20, 34)
         Me.lbTransitions.Name = "lbTransitions"
         Me.lbTransitions.Size = New System.Drawing.Size(251, 56)
@@ -2830,7 +2835,7 @@ Partial Class Form1
         '
         'label43
         '
-        Me.label43.AutoSize = True
+        Me.label43.AutoSize = true
         Me.label43.Location = New System.Drawing.Point(17, 18)
         Me.label43.Name = "label43"
         Me.label43.Size = New System.Drawing.Size(49, 13)
@@ -2848,11 +2853,11 @@ Partial Class Form1
         Me.tabPage3.Size = New System.Drawing.Size(302, 474)
         Me.tabPage3.TabIndex = 5
         Me.tabPage3.Text = "Audio effects"
-        Me.tabPage3.UseVisualStyleBackColor = True
+        Me.tabPage3.UseVisualStyleBackColor = true
         '
         'Label24
         '
-        Me.Label24.AutoSize = True
+        Me.Label24.AutoSize = true
         Me.Label24.Location = New System.Drawing.Point(96, 16)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(188, 13)
@@ -2885,11 +2890,11 @@ Partial Class Form1
         Me.tabPage71.Size = New System.Drawing.Size(275, 399)
         Me.tabPage71.TabIndex = 0
         Me.tabPage71.Text = "Amplify"
-        Me.tabPage71.UseVisualStyleBackColor = True
+        Me.tabPage71.UseVisualStyleBackColor = true
         '
         'label231
         '
-        Me.label231.AutoSize = True
+        Me.label231.AutoSize = true
         Me.label231.Location = New System.Drawing.Point(213, 51)
         Me.label231.Name = "label231"
         Me.label231.Size = New System.Drawing.Size(33, 13)
@@ -2898,7 +2903,7 @@ Partial Class Form1
         '
         'label230
         '
-        Me.label230.AutoSize = True
+        Me.label230.AutoSize = true
         Me.label230.Location = New System.Drawing.Point(68, 51)
         Me.label230.Name = "label230"
         Me.label230.Size = New System.Drawing.Size(33, 13)
@@ -2918,7 +2923,7 @@ Partial Class Form1
         '
         'label95
         '
-        Me.label95.AutoSize = True
+        Me.label95.AutoSize = true
         Me.label95.Location = New System.Drawing.Point(13, 51)
         Me.label95.Name = "label95"
         Me.label95.Size = New System.Drawing.Size(42, 13)
@@ -2927,13 +2932,13 @@ Partial Class Form1
         '
         'cbAudAmplifyEnabled
         '
-        Me.cbAudAmplifyEnabled.AutoSize = True
+        Me.cbAudAmplifyEnabled.AutoSize = true
         Me.cbAudAmplifyEnabled.Location = New System.Drawing.Point(16, 16)
         Me.cbAudAmplifyEnabled.Name = "cbAudAmplifyEnabled"
         Me.cbAudAmplifyEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudAmplifyEnabled.TabIndex = 1
         Me.cbAudAmplifyEnabled.Text = "Enabled"
-        Me.cbAudAmplifyEnabled.UseVisualStyleBackColor = True
+        Me.cbAudAmplifyEnabled.UseVisualStyleBackColor = true
         '
         'tabPage72
         '
@@ -2968,7 +2973,7 @@ Partial Class Form1
         Me.tabPage72.Size = New System.Drawing.Size(275, 399)
         Me.tabPage72.TabIndex = 1
         Me.tabPage72.Text = "Equlizer"
-        Me.tabPage72.UseVisualStyleBackColor = True
+        Me.tabPage72.UseVisualStyleBackColor = true
         '
         'btAudEqRefresh
         '
@@ -2977,12 +2982,12 @@ Partial Class Form1
         Me.btAudEqRefresh.Size = New System.Drawing.Size(75, 22)
         Me.btAudEqRefresh.TabIndex = 26
         Me.btAudEqRefresh.Text = "Refresh"
-        Me.btAudEqRefresh.UseVisualStyleBackColor = True
+        Me.btAudEqRefresh.UseVisualStyleBackColor = true
         '
         'cbAudEqualizerPreset
         '
         Me.cbAudEqualizerPreset.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbAudEqualizerPreset.FormattingEnabled = True
+        Me.cbAudEqualizerPreset.FormattingEnabled = true
         Me.cbAudEqualizerPreset.Location = New System.Drawing.Point(61, 173)
         Me.cbAudEqualizerPreset.Name = "cbAudEqualizerPreset"
         Me.cbAudEqualizerPreset.Size = New System.Drawing.Size(189, 21)
@@ -2990,7 +2995,7 @@ Partial Class Form1
         '
         'label243
         '
-        Me.label243.AutoSize = True
+        Me.label243.AutoSize = true
         Me.label243.Location = New System.Drawing.Point(14, 176)
         Me.label243.Name = "label243"
         Me.label243.Size = New System.Drawing.Size(37, 13)
@@ -2999,7 +3004,7 @@ Partial Class Form1
         '
         'label242
         '
-        Me.label242.AutoSize = True
+        Me.label242.AutoSize = true
         Me.label242.Location = New System.Drawing.Point(206, 150)
         Me.label242.Name = "label242"
         Me.label242.Size = New System.Drawing.Size(26, 13)
@@ -3008,7 +3013,7 @@ Partial Class Form1
         '
         'label241
         '
-        Me.label241.AutoSize = True
+        Me.label241.AutoSize = true
         Me.label241.Location = New System.Drawing.Point(184, 150)
         Me.label241.Name = "label241"
         Me.label241.Size = New System.Drawing.Size(26, 13)
@@ -3017,7 +3022,7 @@ Partial Class Form1
         '
         'label240
         '
-        Me.label240.AutoSize = True
+        Me.label240.AutoSize = true
         Me.label240.Location = New System.Drawing.Point(162, 150)
         Me.label240.Name = "label240"
         Me.label240.Size = New System.Drawing.Size(26, 13)
@@ -3026,7 +3031,7 @@ Partial Class Form1
         '
         'label239
         '
-        Me.label239.AutoSize = True
+        Me.label239.AutoSize = true
         Me.label239.Location = New System.Drawing.Point(143, 150)
         Me.label239.Name = "label239"
         Me.label239.Size = New System.Drawing.Size(20, 13)
@@ -3035,7 +3040,7 @@ Partial Class Form1
         '
         'label238
         '
-        Me.label238.AutoSize = True
+        Me.label238.AutoSize = true
         Me.label238.Location = New System.Drawing.Point(121, 150)
         Me.label238.Name = "label238"
         Me.label238.Size = New System.Drawing.Size(20, 13)
@@ -3044,7 +3049,7 @@ Partial Class Form1
         '
         'label237
         '
-        Me.label237.AutoSize = True
+        Me.label237.AutoSize = true
         Me.label237.Location = New System.Drawing.Point(102, 150)
         Me.label237.Name = "label237"
         Me.label237.Size = New System.Drawing.Size(20, 13)
@@ -3053,7 +3058,7 @@ Partial Class Form1
         '
         'label236
         '
-        Me.label236.AutoSize = True
+        Me.label236.AutoSize = true
         Me.label236.Location = New System.Drawing.Point(80, 150)
         Me.label236.Name = "label236"
         Me.label236.Size = New System.Drawing.Size(25, 13)
@@ -3062,7 +3067,7 @@ Partial Class Form1
         '
         'label235
         '
-        Me.label235.AutoSize = True
+        Me.label235.AutoSize = true
         Me.label235.Location = New System.Drawing.Point(58, 150)
         Me.label235.Name = "label235"
         Me.label235.Size = New System.Drawing.Size(25, 13)
@@ -3071,7 +3076,7 @@ Partial Class Form1
         '
         'label234
         '
-        Me.label234.AutoSize = True
+        Me.label234.AutoSize = true
         Me.label234.Location = New System.Drawing.Point(36, 150)
         Me.label234.Name = "label234"
         Me.label234.Size = New System.Drawing.Size(25, 13)
@@ -3080,7 +3085,7 @@ Partial Class Form1
         '
         'label233
         '
-        Me.label233.AutoSize = True
+        Me.label233.AutoSize = true
         Me.label233.Location = New System.Drawing.Point(18, 150)
         Me.label233.Name = "label233"
         Me.label233.Size = New System.Drawing.Size(19, 13)
@@ -3089,7 +3094,7 @@ Partial Class Form1
         '
         'label232
         '
-        Me.label232.AutoSize = True
+        Me.label232.AutoSize = true
         Me.label232.Location = New System.Drawing.Point(118, 32)
         Me.label232.Name = "label232"
         Me.label232.Size = New System.Drawing.Size(13, 13)
@@ -3218,13 +3223,13 @@ Partial Class Form1
         '
         'cbAudEqualizerEnabled
         '
-        Me.cbAudEqualizerEnabled.AutoSize = True
+        Me.cbAudEqualizerEnabled.AutoSize = true
         Me.cbAudEqualizerEnabled.Location = New System.Drawing.Point(16, 16)
         Me.cbAudEqualizerEnabled.Name = "cbAudEqualizerEnabled"
         Me.cbAudEqualizerEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudEqualizerEnabled.TabIndex = 2
         Me.cbAudEqualizerEnabled.Text = "Enabled"
-        Me.cbAudEqualizerEnabled.UseVisualStyleBackColor = True
+        Me.cbAudEqualizerEnabled.UseVisualStyleBackColor = true
         '
         'tabPage73
         '
@@ -3244,7 +3249,7 @@ Partial Class Form1
         Me.tabPage73.Size = New System.Drawing.Size(275, 399)
         Me.tabPage73.TabIndex = 2
         Me.tabPage73.Text = "Dynamic amplify"
-        Me.tabPage73.UseVisualStyleBackColor = True
+        Me.tabPage73.UseVisualStyleBackColor = true
         '
         'tbAudRelease
         '
@@ -3260,7 +3265,7 @@ Partial Class Form1
         '
         'label248
         '
-        Me.label248.AutoSize = True
+        Me.label248.AutoSize = true
         Me.label248.Location = New System.Drawing.Point(233, 186)
         Me.label248.Name = "label248"
         Me.label248.Size = New System.Drawing.Size(13, 13)
@@ -3269,7 +3274,7 @@ Partial Class Form1
         '
         'label249
         '
-        Me.label249.AutoSize = True
+        Me.label249.AutoSize = true
         Me.label249.Location = New System.Drawing.Point(13, 186)
         Me.label249.Name = "label249"
         Me.label249.Size = New System.Drawing.Size(68, 13)
@@ -3278,7 +3283,7 @@ Partial Class Form1
         '
         'label246
         '
-        Me.label246.AutoSize = True
+        Me.label246.AutoSize = true
         Me.label246.Location = New System.Drawing.Point(233, 116)
         Me.label246.Name = "label246"
         Me.label246.Size = New System.Drawing.Size(13, 13)
@@ -3299,7 +3304,7 @@ Partial Class Form1
         '
         'label247
         '
-        Me.label247.AutoSize = True
+        Me.label247.AutoSize = true
         Me.label247.Location = New System.Drawing.Point(13, 116)
         Me.label247.Name = "label247"
         Me.label247.Size = New System.Drawing.Size(38, 13)
@@ -3308,7 +3313,7 @@ Partial Class Form1
         '
         'label244
         '
-        Me.label244.AutoSize = True
+        Me.label244.AutoSize = true
         Me.label244.Location = New System.Drawing.Point(233, 51)
         Me.label244.Name = "label244"
         Me.label244.Size = New System.Drawing.Size(13, 13)
@@ -3329,7 +3334,7 @@ Partial Class Form1
         '
         'label245
         '
-        Me.label245.AutoSize = True
+        Me.label245.AutoSize = true
         Me.label245.Location = New System.Drawing.Point(13, 51)
         Me.label245.Name = "label245"
         Me.label245.Size = New System.Drawing.Size(112, 13)
@@ -3338,13 +3343,13 @@ Partial Class Form1
         '
         'cbAudDynamicAmplifyEnabled
         '
-        Me.cbAudDynamicAmplifyEnabled.AutoSize = True
+        Me.cbAudDynamicAmplifyEnabled.AutoSize = true
         Me.cbAudDynamicAmplifyEnabled.Location = New System.Drawing.Point(16, 16)
         Me.cbAudDynamicAmplifyEnabled.Name = "cbAudDynamicAmplifyEnabled"
         Me.cbAudDynamicAmplifyEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudDynamicAmplifyEnabled.TabIndex = 2
         Me.cbAudDynamicAmplifyEnabled.Text = "Enabled"
-        Me.cbAudDynamicAmplifyEnabled.UseVisualStyleBackColor = True
+        Me.cbAudDynamicAmplifyEnabled.UseVisualStyleBackColor = true
         '
         'tabPage75
         '
@@ -3357,7 +3362,7 @@ Partial Class Form1
         Me.tabPage75.Size = New System.Drawing.Size(275, 399)
         Me.tabPage75.TabIndex = 4
         Me.tabPage75.Text = "Sound 3D"
-        Me.tabPage75.UseVisualStyleBackColor = True
+        Me.tabPage75.UseVisualStyleBackColor = true
         '
         'tbAud3DSound
         '
@@ -3372,7 +3377,7 @@ Partial Class Form1
         '
         'label253
         '
-        Me.label253.AutoSize = True
+        Me.label253.AutoSize = true
         Me.label253.Location = New System.Drawing.Point(13, 51)
         Me.label253.Name = "label253"
         Me.label253.Size = New System.Drawing.Size(82, 13)
@@ -3381,13 +3386,13 @@ Partial Class Form1
         '
         'cbAudSound3DEnabled
         '
-        Me.cbAudSound3DEnabled.AutoSize = True
+        Me.cbAudSound3DEnabled.AutoSize = true
         Me.cbAudSound3DEnabled.Location = New System.Drawing.Point(16, 16)
         Me.cbAudSound3DEnabled.Name = "cbAudSound3DEnabled"
         Me.cbAudSound3DEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudSound3DEnabled.TabIndex = 2
         Me.cbAudSound3DEnabled.Text = "Enabled"
-        Me.cbAudSound3DEnabled.UseVisualStyleBackColor = True
+        Me.cbAudSound3DEnabled.UseVisualStyleBackColor = true
         '
         'tabPage76
         '
@@ -3400,7 +3405,7 @@ Partial Class Form1
         Me.tabPage76.Size = New System.Drawing.Size(275, 399)
         Me.tabPage76.TabIndex = 5
         Me.tabPage76.Text = "True Bass"
-        Me.tabPage76.UseVisualStyleBackColor = True
+        Me.tabPage76.UseVisualStyleBackColor = true
         '
         'tbAudTrueBass
         '
@@ -3414,7 +3419,7 @@ Partial Class Form1
         '
         'label254
         '
-        Me.label254.AutoSize = True
+        Me.label254.AutoSize = true
         Me.label254.Location = New System.Drawing.Point(13, 51)
         Me.label254.Name = "label254"
         Me.label254.Size = New System.Drawing.Size(42, 13)
@@ -3423,23 +3428,23 @@ Partial Class Form1
         '
         'cbAudTrueBassEnabled
         '
-        Me.cbAudTrueBassEnabled.AutoSize = True
+        Me.cbAudTrueBassEnabled.AutoSize = true
         Me.cbAudTrueBassEnabled.Location = New System.Drawing.Point(16, 16)
         Me.cbAudTrueBassEnabled.Name = "cbAudTrueBassEnabled"
         Me.cbAudTrueBassEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudTrueBassEnabled.TabIndex = 2
         Me.cbAudTrueBassEnabled.Text = "Enabled"
-        Me.cbAudTrueBassEnabled.UseVisualStyleBackColor = True
+        Me.cbAudTrueBassEnabled.UseVisualStyleBackColor = true
         '
         'cbAudioEffectsEnabled
         '
-        Me.cbAudioEffectsEnabled.AutoSize = True
+        Me.cbAudioEffectsEnabled.AutoSize = true
         Me.cbAudioEffectsEnabled.Location = New System.Drawing.Point(10, 14)
         Me.cbAudioEffectsEnabled.Name = "cbAudioEffectsEnabled"
         Me.cbAudioEffectsEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudioEffectsEnabled.TabIndex = 2
         Me.cbAudioEffectsEnabled.Text = "Enabled"
-        Me.cbAudioEffectsEnabled.UseVisualStyleBackColor = True
+        Me.cbAudioEffectsEnabled.UseVisualStyleBackColor = true
         '
         'TabPage57
         '
@@ -3457,11 +3462,11 @@ Partial Class Form1
         Me.TabPage57.Size = New System.Drawing.Size(302, 474)
         Me.TabPage57.TabIndex = 13
         Me.TabPage57.Text = "Audio enhancement"
-        Me.TabPage57.UseVisualStyleBackColor = True
+        Me.TabPage57.UseVisualStyleBackColor = true
         '
         'lbAudioTimeshift
         '
-        Me.lbAudioTimeshift.AutoSize = True
+        Me.lbAudioTimeshift.AutoSize = true
         Me.lbAudioTimeshift.Location = New System.Drawing.Point(176, 431)
         Me.lbAudioTimeshift.Name = "lbAudioTimeshift"
         Me.lbAudioTimeshift.Size = New System.Drawing.Size(29, 13)
@@ -3481,7 +3486,7 @@ Partial Class Form1
         '
         'label115
         '
-        Me.label115.AutoSize = True
+        Me.label115.AutoSize = true
         Me.label115.Location = New System.Drawing.Point(5, 431)
         Me.label115.Name = "label115"
         Me.label115.Size = New System.Drawing.Size(52, 13)
@@ -3512,12 +3517,12 @@ Partial Class Form1
         Me.groupBox1.Name = "groupBox1"
         Me.groupBox1.Size = New System.Drawing.Size(289, 166)
         Me.groupBox1.TabIndex = 17
-        Me.groupBox1.TabStop = False
+        Me.groupBox1.TabStop = false
         Me.groupBox1.Text = "Output gains (dB)"
         '
         'lbAudioOutputGainLFE
         '
-        Me.lbAudioOutputGainLFE.AutoSize = True
+        Me.lbAudioOutputGainLFE.AutoSize = true
         Me.lbAudioOutputGainLFE.Location = New System.Drawing.Point(249, 142)
         Me.lbAudioOutputGainLFE.Name = "lbAudioOutputGainLFE"
         Me.lbAudioOutputGainLFE.Size = New System.Drawing.Size(22, 13)
@@ -3537,7 +3542,7 @@ Partial Class Form1
         '
         'label116
         '
-        Me.label116.AutoSize = True
+        Me.label116.AutoSize = true
         Me.label116.Location = New System.Drawing.Point(250, 24)
         Me.label116.Name = "label116"
         Me.label116.Size = New System.Drawing.Size(26, 13)
@@ -3546,7 +3551,7 @@ Partial Class Form1
         '
         'lbAudioOutputGainSR
         '
-        Me.lbAudioOutputGainSR.AutoSize = True
+        Me.lbAudioOutputGainSR.AutoSize = true
         Me.lbAudioOutputGainSR.Location = New System.Drawing.Point(201, 142)
         Me.lbAudioOutputGainSR.Name = "lbAudioOutputGainSR"
         Me.lbAudioOutputGainSR.Size = New System.Drawing.Size(22, 13)
@@ -3566,7 +3571,7 @@ Partial Class Form1
         '
         'label117
         '
-        Me.label117.AutoSize = True
+        Me.label117.AutoSize = true
         Me.label117.Location = New System.Drawing.Point(205, 24)
         Me.label117.Name = "label117"
         Me.label117.Size = New System.Drawing.Size(22, 13)
@@ -3575,7 +3580,7 @@ Partial Class Form1
         '
         'lbAudioOutputGainSL
         '
-        Me.lbAudioOutputGainSL.AutoSize = True
+        Me.lbAudioOutputGainSL.AutoSize = true
         Me.lbAudioOutputGainSL.Location = New System.Drawing.Point(153, 142)
         Me.lbAudioOutputGainSL.Name = "lbAudioOutputGainSL"
         Me.lbAudioOutputGainSL.Size = New System.Drawing.Size(22, 13)
@@ -3595,7 +3600,7 @@ Partial Class Form1
         '
         'label118
         '
-        Me.label118.AutoSize = True
+        Me.label118.AutoSize = true
         Me.label118.Location = New System.Drawing.Point(158, 24)
         Me.label118.Name = "label118"
         Me.label118.Size = New System.Drawing.Size(20, 13)
@@ -3604,7 +3609,7 @@ Partial Class Form1
         '
         'lbAudioOutputGainR
         '
-        Me.lbAudioOutputGainR.AutoSize = True
+        Me.lbAudioOutputGainR.AutoSize = true
         Me.lbAudioOutputGainR.Location = New System.Drawing.Point(105, 142)
         Me.lbAudioOutputGainR.Name = "lbAudioOutputGainR"
         Me.lbAudioOutputGainR.Size = New System.Drawing.Size(22, 13)
@@ -3624,7 +3629,7 @@ Partial Class Form1
         '
         'label119
         '
-        Me.label119.AutoSize = True
+        Me.label119.AutoSize = true
         Me.label119.Location = New System.Drawing.Point(114, 24)
         Me.label119.Name = "label119"
         Me.label119.Size = New System.Drawing.Size(15, 13)
@@ -3633,7 +3638,7 @@ Partial Class Form1
         '
         'lbAudioOutputGainC
         '
-        Me.lbAudioOutputGainC.AutoSize = True
+        Me.lbAudioOutputGainC.AutoSize = true
         Me.lbAudioOutputGainC.Location = New System.Drawing.Point(57, 142)
         Me.lbAudioOutputGainC.Name = "lbAudioOutputGainC"
         Me.lbAudioOutputGainC.Size = New System.Drawing.Size(22, 13)
@@ -3653,7 +3658,7 @@ Partial Class Form1
         '
         'label121
         '
-        Me.label121.AutoSize = True
+        Me.label121.AutoSize = true
         Me.label121.Location = New System.Drawing.Point(66, 24)
         Me.label121.Name = "label121"
         Me.label121.Size = New System.Drawing.Size(14, 13)
@@ -3662,7 +3667,7 @@ Partial Class Form1
         '
         'lbAudioOutputGainL
         '
-        Me.lbAudioOutputGainL.AutoSize = True
+        Me.lbAudioOutputGainL.AutoSize = true
         Me.lbAudioOutputGainL.Location = New System.Drawing.Point(9, 142)
         Me.lbAudioOutputGainL.Name = "lbAudioOutputGainL"
         Me.lbAudioOutputGainL.Size = New System.Drawing.Size(22, 13)
@@ -3682,7 +3687,7 @@ Partial Class Form1
         '
         'label122
         '
-        Me.label122.AutoSize = True
+        Me.label122.AutoSize = true
         Me.label122.Location = New System.Drawing.Point(18, 24)
         Me.label122.Name = "label122"
         Me.label122.Size = New System.Drawing.Size(13, 13)
@@ -3713,12 +3718,12 @@ Partial Class Form1
         Me.groupBox2.Name = "groupBox2"
         Me.groupBox2.Size = New System.Drawing.Size(289, 166)
         Me.groupBox2.TabIndex = 16
-        Me.groupBox2.TabStop = False
+        Me.groupBox2.TabStop = false
         Me.groupBox2.Text = "Input gains (dB)"
         '
         'lbAudioInputGainLFE
         '
-        Me.lbAudioInputGainLFE.AutoSize = True
+        Me.lbAudioInputGainLFE.AutoSize = true
         Me.lbAudioInputGainLFE.Location = New System.Drawing.Point(249, 142)
         Me.lbAudioInputGainLFE.Name = "lbAudioInputGainLFE"
         Me.lbAudioInputGainLFE.Size = New System.Drawing.Size(22, 13)
@@ -3738,7 +3743,7 @@ Partial Class Form1
         '
         'label123
         '
-        Me.label123.AutoSize = True
+        Me.label123.AutoSize = true
         Me.label123.Location = New System.Drawing.Point(250, 24)
         Me.label123.Name = "label123"
         Me.label123.Size = New System.Drawing.Size(26, 13)
@@ -3747,7 +3752,7 @@ Partial Class Form1
         '
         'lbAudioInputGainSR
         '
-        Me.lbAudioInputGainSR.AutoSize = True
+        Me.lbAudioInputGainSR.AutoSize = true
         Me.lbAudioInputGainSR.Location = New System.Drawing.Point(201, 142)
         Me.lbAudioInputGainSR.Name = "lbAudioInputGainSR"
         Me.lbAudioInputGainSR.Size = New System.Drawing.Size(22, 13)
@@ -3767,7 +3772,7 @@ Partial Class Form1
         '
         'label124
         '
-        Me.label124.AutoSize = True
+        Me.label124.AutoSize = true
         Me.label124.Location = New System.Drawing.Point(205, 24)
         Me.label124.Name = "label124"
         Me.label124.Size = New System.Drawing.Size(22, 13)
@@ -3776,7 +3781,7 @@ Partial Class Form1
         '
         'lbAudioInputGainSL
         '
-        Me.lbAudioInputGainSL.AutoSize = True
+        Me.lbAudioInputGainSL.AutoSize = true
         Me.lbAudioInputGainSL.Location = New System.Drawing.Point(153, 142)
         Me.lbAudioInputGainSL.Name = "lbAudioInputGainSL"
         Me.lbAudioInputGainSL.Size = New System.Drawing.Size(22, 13)
@@ -3796,7 +3801,7 @@ Partial Class Form1
         '
         'label125
         '
-        Me.label125.AutoSize = True
+        Me.label125.AutoSize = true
         Me.label125.Location = New System.Drawing.Point(158, 24)
         Me.label125.Name = "label125"
         Me.label125.Size = New System.Drawing.Size(20, 13)
@@ -3805,7 +3810,7 @@ Partial Class Form1
         '
         'lbAudioInputGainR
         '
-        Me.lbAudioInputGainR.AutoSize = True
+        Me.lbAudioInputGainR.AutoSize = true
         Me.lbAudioInputGainR.Location = New System.Drawing.Point(105, 142)
         Me.lbAudioInputGainR.Name = "lbAudioInputGainR"
         Me.lbAudioInputGainR.Size = New System.Drawing.Size(22, 13)
@@ -3825,7 +3830,7 @@ Partial Class Form1
         '
         'label126
         '
-        Me.label126.AutoSize = True
+        Me.label126.AutoSize = true
         Me.label126.Location = New System.Drawing.Point(114, 24)
         Me.label126.Name = "label126"
         Me.label126.Size = New System.Drawing.Size(15, 13)
@@ -3834,7 +3839,7 @@ Partial Class Form1
         '
         'lbAudioInputGainC
         '
-        Me.lbAudioInputGainC.AutoSize = True
+        Me.lbAudioInputGainC.AutoSize = true
         Me.lbAudioInputGainC.Location = New System.Drawing.Point(57, 142)
         Me.lbAudioInputGainC.Name = "lbAudioInputGainC"
         Me.lbAudioInputGainC.Size = New System.Drawing.Size(22, 13)
@@ -3854,7 +3859,7 @@ Partial Class Form1
         '
         'label127
         '
-        Me.label127.AutoSize = True
+        Me.label127.AutoSize = true
         Me.label127.Location = New System.Drawing.Point(66, 24)
         Me.label127.Name = "label127"
         Me.label127.Size = New System.Drawing.Size(14, 13)
@@ -3863,7 +3868,7 @@ Partial Class Form1
         '
         'lbAudioInputGainL
         '
-        Me.lbAudioInputGainL.AutoSize = True
+        Me.lbAudioInputGainL.AutoSize = true
         Me.lbAudioInputGainL.Location = New System.Drawing.Point(9, 142)
         Me.lbAudioInputGainL.Name = "lbAudioInputGainL"
         Me.lbAudioInputGainL.Size = New System.Drawing.Size(22, 13)
@@ -3883,7 +3888,7 @@ Partial Class Form1
         '
         'label128
         '
-        Me.label128.AutoSize = True
+        Me.label128.AutoSize = true
         Me.label128.Location = New System.Drawing.Point(18, 24)
         Me.label128.Name = "label128"
         Me.label128.Size = New System.Drawing.Size(13, 13)
@@ -3892,33 +3897,33 @@ Partial Class Form1
         '
         'cbAudioAutoGain
         '
-        Me.cbAudioAutoGain.AutoSize = True
+        Me.cbAudioAutoGain.AutoSize = true
         Me.cbAudioAutoGain.Location = New System.Drawing.Point(135, 44)
         Me.cbAudioAutoGain.Name = "cbAudioAutoGain"
         Me.cbAudioAutoGain.Size = New System.Drawing.Size(71, 17)
         Me.cbAudioAutoGain.TabIndex = 15
         Me.cbAudioAutoGain.Text = "Auto gain"
-        Me.cbAudioAutoGain.UseVisualStyleBackColor = True
+        Me.cbAudioAutoGain.UseVisualStyleBackColor = true
         '
         'cbAudioNormalize
         '
-        Me.cbAudioNormalize.AutoSize = True
+        Me.cbAudioNormalize.AutoSize = true
         Me.cbAudioNormalize.Location = New System.Drawing.Point(41, 44)
         Me.cbAudioNormalize.Name = "cbAudioNormalize"
         Me.cbAudioNormalize.Size = New System.Drawing.Size(72, 17)
         Me.cbAudioNormalize.TabIndex = 14
         Me.cbAudioNormalize.Text = "Normalize"
-        Me.cbAudioNormalize.UseVisualStyleBackColor = True
+        Me.cbAudioNormalize.UseVisualStyleBackColor = true
         '
         'cbAudioEnhancementEnabled
         '
-        Me.cbAudioEnhancementEnabled.AutoSize = True
+        Me.cbAudioEnhancementEnabled.AutoSize = true
         Me.cbAudioEnhancementEnabled.Location = New System.Drawing.Point(18, 12)
         Me.cbAudioEnhancementEnabled.Name = "cbAudioEnhancementEnabled"
         Me.cbAudioEnhancementEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudioEnhancementEnabled.TabIndex = 13
         Me.cbAudioEnhancementEnabled.Text = "Enabled"
-        Me.cbAudioEnhancementEnabled.UseVisualStyleBackColor = True
+        Me.cbAudioEnhancementEnabled.UseVisualStyleBackColor = true
         '
         'TabPage80
         '
@@ -3935,7 +3940,7 @@ Partial Class Form1
         Me.TabPage80.Size = New System.Drawing.Size(302, 474)
         Me.TabPage80.TabIndex = 15
         Me.TabPage80.Text = "Audio channel mapper"
-        Me.TabPage80.UseVisualStyleBackColor = True
+        Me.TabPage80.UseVisualStyleBackColor = true
         '
         'btAudioChannelMapperClear
         '
@@ -3944,7 +3949,7 @@ Partial Class Form1
         Me.btAudioChannelMapperClear.Size = New System.Drawing.Size(75, 22)
         Me.btAudioChannelMapperClear.TabIndex = 28
         Me.btAudioChannelMapperClear.Text = "Clear"
-        Me.btAudioChannelMapperClear.UseVisualStyleBackColor = True
+        Me.btAudioChannelMapperClear.UseVisualStyleBackColor = true
         '
         'groupBox41
         '
@@ -3960,7 +3965,7 @@ Partial Class Form1
         Me.groupBox41.Name = "groupBox41"
         Me.groupBox41.Size = New System.Drawing.Size(292, 164)
         Me.groupBox41.TabIndex = 27
-        Me.groupBox41.TabStop = False
+        Me.groupBox41.TabStop = false
         Me.groupBox41.Text = "Add new route"
         '
         'btAudioChannelMapperAddNewRoute
@@ -3970,11 +3975,11 @@ Partial Class Form1
         Me.btAudioChannelMapperAddNewRoute.Size = New System.Drawing.Size(75, 22)
         Me.btAudioChannelMapperAddNewRoute.TabIndex = 20
         Me.btAudioChannelMapperAddNewRoute.Text = "Add"
-        Me.btAudioChannelMapperAddNewRoute.UseVisualStyleBackColor = True
+        Me.btAudioChannelMapperAddNewRoute.UseVisualStyleBackColor = true
         '
         'label311
         '
-        Me.label311.AutoSize = True
+        Me.label311.AutoSize = true
         Me.label311.Location = New System.Drawing.Point(205, 86)
         Me.label311.Name = "label311"
         Me.label311.Size = New System.Drawing.Size(62, 13)
@@ -3993,7 +3998,7 @@ Partial Class Form1
         '
         'label310
         '
-        Me.label310.AutoSize = True
+        Me.label310.AutoSize = true
         Me.label310.Location = New System.Drawing.Point(205, 24)
         Me.label310.Name = "label310"
         Me.label310.Size = New System.Drawing.Size(42, 13)
@@ -4010,7 +4015,7 @@ Partial Class Form1
         '
         'label309
         '
-        Me.label309.AutoSize = True
+        Me.label309.AutoSize = true
         Me.label309.Location = New System.Drawing.Point(105, 24)
         Me.label309.Name = "label309"
         Me.label309.Size = New System.Drawing.Size(79, 13)
@@ -4027,7 +4032,7 @@ Partial Class Form1
         '
         'label308
         '
-        Me.label308.AutoSize = True
+        Me.label308.AutoSize = true
         Me.label308.Location = New System.Drawing.Point(12, 24)
         Me.label308.Name = "label308"
         Me.label308.Size = New System.Drawing.Size(82, 13)
@@ -4036,7 +4041,7 @@ Partial Class Form1
         '
         'label307
         '
-        Me.label307.AutoSize = True
+        Me.label307.AutoSize = true
         Me.label307.Location = New System.Drawing.Point(7, 96)
         Me.label307.Name = "label307"
         Me.label307.Size = New System.Drawing.Size(41, 13)
@@ -4053,7 +4058,7 @@ Partial Class Form1
         '
         'label306
         '
-        Me.label306.AutoSize = True
+        Me.label306.AutoSize = true
         Me.label306.Location = New System.Drawing.Point(7, 44)
         Me.label306.Name = "label306"
         Me.label306.Size = New System.Drawing.Size(274, 13)
@@ -4062,7 +4067,7 @@ Partial Class Form1
         '
         'lbAudioChannelMapperRoutes
         '
-        Me.lbAudioChannelMapperRoutes.FormattingEnabled = True
+        Me.lbAudioChannelMapperRoutes.FormattingEnabled = true
         Me.lbAudioChannelMapperRoutes.Location = New System.Drawing.Point(10, 114)
         Me.lbAudioChannelMapperRoutes.Name = "lbAudioChannelMapperRoutes"
         Me.lbAudioChannelMapperRoutes.Size = New System.Drawing.Size(267, 69)
@@ -4070,13 +4075,13 @@ Partial Class Form1
         '
         'cbAudioChannelMapperEnabled
         '
-        Me.cbAudioChannelMapperEnabled.AutoSize = True
+        Me.cbAudioChannelMapperEnabled.AutoSize = true
         Me.cbAudioChannelMapperEnabled.Location = New System.Drawing.Point(10, 10)
         Me.cbAudioChannelMapperEnabled.Name = "cbAudioChannelMapperEnabled"
         Me.cbAudioChannelMapperEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbAudioChannelMapperEnabled.TabIndex = 22
         Me.cbAudioChannelMapperEnabled.Text = "Enabled"
-        Me.cbAudioChannelMapperEnabled.UseVisualStyleBackColor = True
+        Me.cbAudioChannelMapperEnabled.UseVisualStyleBackColor = true
         '
         'TabPage28
         '
@@ -4088,7 +4093,7 @@ Partial Class Form1
         Me.TabPage28.Size = New System.Drawing.Size(302, 474)
         Me.TabPage28.TabIndex = 7
         Me.TabPage28.Text = "Motion detection"
-        Me.TabPage28.UseVisualStyleBackColor = True
+        Me.TabPage28.UseVisualStyleBackColor = true
         '
         'tabControl9
         '
@@ -4111,7 +4116,7 @@ Partial Class Form1
         Me.tabPage44.Size = New System.Drawing.Size(260, 371)
         Me.tabPage44.TabIndex = 0
         Me.tabPage44.Text = "Output matrix"
-        Me.tabPage44.UseVisualStyleBackColor = True
+        Me.tabPage44.UseVisualStyleBackColor = true
         '
         'pbMotionLevel
         '
@@ -4122,7 +4127,7 @@ Partial Class Form1
         '
         'label158
         '
-        Me.label158.AutoSize = True
+        Me.label158.AutoSize = true
         Me.label158.Location = New System.Drawing.Point(14, 305)
         Me.label158.Name = "label158"
         Me.label158.Size = New System.Drawing.Size(64, 13)
@@ -4132,7 +4137,7 @@ Partial Class Form1
         'mmMotDetMatrix
         '
         Me.mmMotDetMatrix.Location = New System.Drawing.Point(6, 6)
-        Me.mmMotDetMatrix.Multiline = True
+        Me.mmMotDetMatrix.Multiline = true
         Me.mmMotDetMatrix.Name = "mmMotDetMatrix"
         Me.mmMotDetMatrix.ScrollBars = System.Windows.Forms.ScrollBars.Both
         Me.mmMotDetMatrix.Size = New System.Drawing.Size(248, 248)
@@ -4151,7 +4156,7 @@ Partial Class Form1
         Me.tabPage45.Size = New System.Drawing.Size(260, 371)
         Me.tabPage45.TabIndex = 1
         Me.tabPage45.Text = "Settings"
-        Me.tabPage45.UseVisualStyleBackColor = True
+        Me.tabPage45.UseVisualStyleBackColor = true
         '
         'groupBox25
         '
@@ -4164,13 +4169,13 @@ Partial Class Form1
         Me.groupBox25.Name = "groupBox25"
         Me.groupBox25.Size = New System.Drawing.Size(233, 82)
         Me.groupBox25.TabIndex = 1
-        Me.groupBox25.TabStop = False
+        Me.groupBox25.TabStop = false
         Me.groupBox25.Text = "Color highlight"
         '
         'cbMotDetHLColor
         '
         Me.cbMotDetHLColor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbMotDetHLColor.FormattingEnabled = True
+        Me.cbMotDetHLColor.FormattingEnabled = true
         Me.cbMotDetHLColor.Items.AddRange(New Object() {"Red", "Green", "Blue"})
         Me.cbMotDetHLColor.Location = New System.Drawing.Point(153, 56)
         Me.cbMotDetHLColor.Name = "cbMotDetHLColor"
@@ -4179,7 +4184,7 @@ Partial Class Form1
         '
         'label161
         '
-        Me.label161.AutoSize = True
+        Me.label161.AutoSize = true
         Me.label161.Location = New System.Drawing.Point(148, 40)
         Me.label161.Name = "label161"
         Me.label161.Size = New System.Drawing.Size(31, 13)
@@ -4188,7 +4193,7 @@ Partial Class Form1
         '
         'label160
         '
-        Me.label160.AutoSize = True
+        Me.label160.AutoSize = true
         Me.label160.Location = New System.Drawing.Point(30, 40)
         Me.label160.Name = "label160"
         Me.label160.Size = New System.Drawing.Size(54, 13)
@@ -4197,15 +4202,15 @@ Partial Class Form1
         '
         'cbMotDetHLEnabled
         '
-        Me.cbMotDetHLEnabled.AutoSize = True
-        Me.cbMotDetHLEnabled.Checked = True
+        Me.cbMotDetHLEnabled.AutoSize = true
+        Me.cbMotDetHLEnabled.Checked = true
         Me.cbMotDetHLEnabled.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbMotDetHLEnabled.Location = New System.Drawing.Point(14, 21)
         Me.cbMotDetHLEnabled.Name = "cbMotDetHLEnabled"
         Me.cbMotDetHLEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbMotDetHLEnabled.TabIndex = 1
         Me.cbMotDetHLEnabled.Text = "Enabled"
-        Me.cbMotDetHLEnabled.UseVisualStyleBackColor = True
+        Me.cbMotDetHLEnabled.UseVisualStyleBackColor = true
         '
         'tbMotDetHLThreshold
         '
@@ -4220,13 +4225,13 @@ Partial Class Form1
         '
         'btMotDetUpdateSettings
         '
-        Me.btMotDetUpdateSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btMotDetUpdateSettings.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
         Me.btMotDetUpdateSettings.Location = New System.Drawing.Point(138, 344)
         Me.btMotDetUpdateSettings.Name = "btMotDetUpdateSettings"
         Me.btMotDetUpdateSettings.Size = New System.Drawing.Size(107, 22)
         Me.btMotDetUpdateSettings.TabIndex = 4
         Me.btMotDetUpdateSettings.Text = "Update settings"
-        Me.btMotDetUpdateSettings.UseVisualStyleBackColor = True
+        Me.btMotDetUpdateSettings.UseVisualStyleBackColor = true
         '
         'groupBox27
         '
@@ -4238,7 +4243,7 @@ Partial Class Form1
         Me.groupBox27.Name = "groupBox27"
         Me.groupBox27.Size = New System.Drawing.Size(233, 56)
         Me.groupBox27.TabIndex = 3
-        Me.groupBox27.TabStop = False
+        Me.groupBox27.TabStop = false
         Me.groupBox27.Text = "Matrix"
         '
         'edMotDetMatrixHeight
@@ -4251,7 +4256,7 @@ Partial Class Form1
         '
         'label163
         '
-        Me.label163.AutoSize = True
+        Me.label163.AutoSize = true
         Me.label163.Location = New System.Drawing.Point(98, 25)
         Me.label163.Name = "label163"
         Me.label163.Size = New System.Drawing.Size(38, 13)
@@ -4268,7 +4273,7 @@ Partial Class Form1
         '
         'label164
         '
-        Me.label164.AutoSize = True
+        Me.label164.AutoSize = true
         Me.label164.Location = New System.Drawing.Point(14, 25)
         Me.label164.Name = "label164"
         Me.label164.Size = New System.Drawing.Size(35, 13)
@@ -4284,12 +4289,12 @@ Partial Class Form1
         Me.groupBox26.Name = "groupBox26"
         Me.groupBox26.Size = New System.Drawing.Size(233, 66)
         Me.groupBox26.TabIndex = 2
-        Me.groupBox26.TabStop = False
+        Me.groupBox26.TabStop = false
         Me.groupBox26.Text = "Drop frames"
         '
         'label162
         '
-        Me.label162.AutoSize = True
+        Me.label162.AutoSize = true
         Me.label162.Location = New System.Drawing.Point(94, 20)
         Me.label162.Name = "label162"
         Me.label162.Size = New System.Drawing.Size(54, 13)
@@ -4309,13 +4314,13 @@ Partial Class Form1
         '
         'cbMotDetDropFramesEnabled
         '
-        Me.cbMotDetDropFramesEnabled.AutoSize = True
+        Me.cbMotDetDropFramesEnabled.AutoSize = true
         Me.cbMotDetDropFramesEnabled.Location = New System.Drawing.Point(14, 18)
         Me.cbMotDetDropFramesEnabled.Name = "cbMotDetDropFramesEnabled"
         Me.cbMotDetDropFramesEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbMotDetDropFramesEnabled.TabIndex = 1
         Me.cbMotDetDropFramesEnabled.Text = "Enabled"
-        Me.cbMotDetDropFramesEnabled.UseVisualStyleBackColor = True
+        Me.cbMotDetDropFramesEnabled.UseVisualStyleBackColor = true
         '
         'groupBox24
         '
@@ -4329,7 +4334,7 @@ Partial Class Form1
         Me.groupBox24.Name = "groupBox24"
         Me.groupBox24.Size = New System.Drawing.Size(233, 79)
         Me.groupBox24.TabIndex = 0
-        Me.groupBox24.TabStop = False
+        Me.groupBox24.TabStop = false
         Me.groupBox24.Text = "Compare settings"
         '
         'edMotDetFrameInterval
@@ -4342,7 +4347,7 @@ Partial Class Form1
         '
         'label159
         '
-        Me.label159.AutoSize = True
+        Me.label159.AutoSize = true
         Me.label159.Location = New System.Drawing.Point(11, 52)
         Me.label159.Name = "label159"
         Me.label159.Size = New System.Drawing.Size(73, 13)
@@ -4351,55 +4356,55 @@ Partial Class Form1
         '
         'cbCompareGreyscale
         '
-        Me.cbCompareGreyscale.AutoSize = True
-        Me.cbCompareGreyscale.Checked = True
+        Me.cbCompareGreyscale.AutoSize = true
+        Me.cbCompareGreyscale.Checked = true
         Me.cbCompareGreyscale.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbCompareGreyscale.Location = New System.Drawing.Point(163, 20)
         Me.cbCompareGreyscale.Name = "cbCompareGreyscale"
         Me.cbCompareGreyscale.Size = New System.Drawing.Size(73, 17)
         Me.cbCompareGreyscale.TabIndex = 3
         Me.cbCompareGreyscale.Text = "Greyscale"
-        Me.cbCompareGreyscale.UseVisualStyleBackColor = True
+        Me.cbCompareGreyscale.UseVisualStyleBackColor = true
         '
         'cbCompareBlue
         '
-        Me.cbCompareBlue.AutoSize = True
+        Me.cbCompareBlue.AutoSize = true
         Me.cbCompareBlue.Location = New System.Drawing.Point(118, 20)
         Me.cbCompareBlue.Name = "cbCompareBlue"
         Me.cbCompareBlue.Size = New System.Drawing.Size(47, 17)
         Me.cbCompareBlue.TabIndex = 2
         Me.cbCompareBlue.Text = "Blue"
-        Me.cbCompareBlue.UseVisualStyleBackColor = True
+        Me.cbCompareBlue.UseVisualStyleBackColor = true
         '
         'cbCompareGreen
         '
-        Me.cbCompareGreen.AutoSize = True
+        Me.cbCompareGreen.AutoSize = true
         Me.cbCompareGreen.Location = New System.Drawing.Point(60, 20)
         Me.cbCompareGreen.Name = "cbCompareGreen"
         Me.cbCompareGreen.Size = New System.Drawing.Size(55, 17)
         Me.cbCompareGreen.TabIndex = 1
         Me.cbCompareGreen.Text = "Green"
-        Me.cbCompareGreen.UseVisualStyleBackColor = True
+        Me.cbCompareGreen.UseVisualStyleBackColor = true
         '
         'cbCompareRed
         '
-        Me.cbCompareRed.AutoSize = True
+        Me.cbCompareRed.AutoSize = true
         Me.cbCompareRed.Location = New System.Drawing.Point(14, 20)
         Me.cbCompareRed.Name = "cbCompareRed"
         Me.cbCompareRed.Size = New System.Drawing.Size(46, 17)
         Me.cbCompareRed.TabIndex = 0
         Me.cbCompareRed.Text = "Red"
-        Me.cbCompareRed.UseVisualStyleBackColor = True
+        Me.cbCompareRed.UseVisualStyleBackColor = true
         '
         'cbMotDetEnabled
         '
-        Me.cbMotDetEnabled.AutoSize = True
+        Me.cbMotDetEnabled.AutoSize = true
         Me.cbMotDetEnabled.Location = New System.Drawing.Point(15, 18)
         Me.cbMotDetEnabled.Name = "cbMotDetEnabled"
         Me.cbMotDetEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbMotDetEnabled.TabIndex = 4
         Me.cbMotDetEnabled.Text = "Enabled"
-        Me.cbMotDetEnabled.UseVisualStyleBackColor = True
+        Me.cbMotDetEnabled.UseVisualStyleBackColor = true
         '
         'tabPage2
         '
@@ -4418,11 +4423,11 @@ Partial Class Form1
         Me.tabPage2.Size = New System.Drawing.Size(302, 474)
         Me.tabPage2.TabIndex = 6
         Me.tabPage2.Text = "Display"
-        Me.tabPage2.UseVisualStyleBackColor = True
+        Me.tabPage2.UseVisualStyleBackColor = true
         '
         'label393
         '
-        Me.label393.AutoSize = True
+        Me.label393.AutoSize = true
         Me.label393.Location = New System.Drawing.Point(21, 255)
         Me.label393.Name = "label393"
         Me.label393.Size = New System.Drawing.Size(79, 13)
@@ -4432,7 +4437,7 @@ Partial Class Form1
         'cbDirect2DRotate
         '
         Me.cbDirect2DRotate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDirect2DRotate.FormattingEnabled = True
+        Me.cbDirect2DRotate.FormattingEnabled = true
         Me.cbDirect2DRotate.Items.AddRange(New Object() {"0", "90", "180", "270"})
         Me.cbDirect2DRotate.Location = New System.Drawing.Point(24, 270)
         Me.cbDirect2DRotate.Name = "cbDirect2DRotate"
@@ -4450,7 +4455,7 @@ Partial Class Form1
         '
         'label394
         '
-        Me.label394.AutoSize = True
+        Me.label394.AutoSize = true
         Me.label394.Location = New System.Drawing.Point(21, 177)
         Me.label394.Name = "label394"
         Me.label394.Size = New System.Drawing.Size(91, 13)
@@ -4464,37 +4469,37 @@ Partial Class Form1
         Me.btFullScreen.Size = New System.Drawing.Size(90, 22)
         Me.btFullScreen.TabIndex = 71
         Me.btFullScreen.Text = "Full screen"
-        Me.btFullScreen.UseVisualStyleBackColor = True
+        Me.btFullScreen.UseVisualStyleBackColor = true
         '
         'cbScreenFlipVertical
         '
-        Me.cbScreenFlipVertical.AutoSize = True
+        Me.cbScreenFlipVertical.AutoSize = true
         Me.cbScreenFlipVertical.Location = New System.Drawing.Point(184, 195)
         Me.cbScreenFlipVertical.Name = "cbScreenFlipVertical"
         Me.cbScreenFlipVertical.Size = New System.Drawing.Size(79, 17)
         Me.cbScreenFlipVertical.TabIndex = 70
         Me.cbScreenFlipVertical.Text = "Flip vertical"
-        Me.cbScreenFlipVertical.UseVisualStyleBackColor = True
+        Me.cbScreenFlipVertical.UseVisualStyleBackColor = true
         '
         'cbScreenFlipHorizontal
         '
-        Me.cbScreenFlipHorizontal.AutoSize = True
+        Me.cbScreenFlipHorizontal.AutoSize = true
         Me.cbScreenFlipHorizontal.Location = New System.Drawing.Point(184, 173)
         Me.cbScreenFlipHorizontal.Name = "cbScreenFlipHorizontal"
         Me.cbScreenFlipHorizontal.Size = New System.Drawing.Size(90, 17)
         Me.cbScreenFlipHorizontal.TabIndex = 69
         Me.cbScreenFlipHorizontal.Text = "Flip horizontal"
-        Me.cbScreenFlipHorizontal.UseVisualStyleBackColor = True
+        Me.cbScreenFlipHorizontal.UseVisualStyleBackColor = true
         '
         'cbStretch
         '
-        Me.cbStretch.AutoSize = True
+        Me.cbStretch.AutoSize = true
         Me.cbStretch.Location = New System.Drawing.Point(184, 219)
         Me.cbStretch.Name = "cbStretch"
         Me.cbStretch.Size = New System.Drawing.Size(89, 17)
         Me.cbStretch.TabIndex = 68
         Me.cbStretch.Text = "Stretch video"
-        Me.cbStretch.UseVisualStyleBackColor = True
+        Me.cbStretch.UseVisualStyleBackColor = true
         '
         'groupBox13
         '
@@ -4507,62 +4512,62 @@ Partial Class Form1
         Me.groupBox13.Name = "groupBox13"
         Me.groupBox13.Size = New System.Drawing.Size(250, 132)
         Me.groupBox13.TabIndex = 67
-        Me.groupBox13.TabStop = False
+        Me.groupBox13.TabStop = false
         Me.groupBox13.Text = "Video Renderer"
         '
         'rbDirect2D
         '
-        Me.rbDirect2D.AutoSize = True
+        Me.rbDirect2D.AutoSize = true
         Me.rbDirect2D.Location = New System.Drawing.Point(12, 86)
         Me.rbDirect2D.Name = "rbDirect2D"
         Me.rbDirect2D.Size = New System.Drawing.Size(67, 17)
         Me.rbDirect2D.TabIndex = 4
-        Me.rbDirect2D.TabStop = True
+        Me.rbDirect2D.TabStop = true
         Me.rbDirect2D.Text = "Direct2D"
-        Me.rbDirect2D.UseVisualStyleBackColor = True
+        Me.rbDirect2D.UseVisualStyleBackColor = true
         '
         'rbNone
         '
-        Me.rbNone.AutoSize = True
+        Me.rbNone.AutoSize = true
         Me.rbNone.Location = New System.Drawing.Point(12, 108)
         Me.rbNone.Name = "rbNone"
         Me.rbNone.Size = New System.Drawing.Size(51, 17)
         Me.rbNone.TabIndex = 3
-        Me.rbNone.TabStop = True
+        Me.rbNone.TabStop = true
         Me.rbNone.Text = "None"
-        Me.rbNone.UseVisualStyleBackColor = True
+        Me.rbNone.UseVisualStyleBackColor = true
         '
         'rbEVR
         '
-        Me.rbEVR.AutoSize = True
+        Me.rbEVR.AutoSize = true
         Me.rbEVR.Location = New System.Drawing.Point(12, 64)
         Me.rbEVR.Name = "rbEVR"
         Me.rbEVR.Size = New System.Drawing.Size(227, 17)
         Me.rbEVR.TabIndex = 2
         Me.rbEVR.Text = "Enhanced Video Renderer (Vista and later)"
-        Me.rbEVR.UseVisualStyleBackColor = True
+        Me.rbEVR.UseVisualStyleBackColor = true
         '
         'rbVMR9
         '
-        Me.rbVMR9.AutoSize = True
-        Me.rbVMR9.Checked = True
+        Me.rbVMR9.AutoSize = true
+        Me.rbVMR9.Checked = true
         Me.rbVMR9.Location = New System.Drawing.Point(12, 42)
         Me.rbVMR9.Name = "rbVMR9"
         Me.rbVMR9.Size = New System.Drawing.Size(182, 17)
         Me.rbVMR9.TabIndex = 1
-        Me.rbVMR9.TabStop = True
+        Me.rbVMR9.TabStop = true
         Me.rbVMR9.Text = "Video Mixing Renderer 9 (default)"
-        Me.rbVMR9.UseVisualStyleBackColor = True
+        Me.rbVMR9.UseVisualStyleBackColor = true
         '
         'rbVR
         '
-        Me.rbVR.AutoSize = True
+        Me.rbVR.AutoSize = true
         Me.rbVR.Location = New System.Drawing.Point(12, 20)
         Me.rbVR.Name = "rbVR"
         Me.rbVR.Size = New System.Drawing.Size(147, 17)
         Me.rbVR.TabIndex = 0
         Me.rbVR.Text = "Video Renderer Filter (old)"
-        Me.rbVR.UseVisualStyleBackColor = True
+        Me.rbVR.UseVisualStyleBackColor = true
         '
         'TabPage23
         '
@@ -4581,20 +4586,20 @@ Partial Class Form1
         Me.TabPage23.Size = New System.Drawing.Size(302, 474)
         Me.TabPage23.TabIndex = 8
         Me.TabPage23.Text = "Barcode reader"
-        Me.TabPage23.UseVisualStyleBackColor = True
+        Me.TabPage23.UseVisualStyleBackColor = true
         '
         'edBarcodeMetadata
         '
         Me.edBarcodeMetadata.Location = New System.Drawing.Point(12, 151)
         Me.edBarcodeMetadata.Margin = New System.Windows.Forms.Padding(2)
-        Me.edBarcodeMetadata.Multiline = True
+        Me.edBarcodeMetadata.Multiline = true
         Me.edBarcodeMetadata.Name = "edBarcodeMetadata"
         Me.edBarcodeMetadata.Size = New System.Drawing.Size(282, 92)
         Me.edBarcodeMetadata.TabIndex = 24
         '
         'label91
         '
-        Me.label91.AutoSize = True
+        Me.label91.AutoSize = true
         Me.label91.Location = New System.Drawing.Point(10, 132)
         Me.label91.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label91.Name = "label91"
@@ -4605,7 +4610,7 @@ Partial Class Form1
         'cbBarcodeType
         '
         Me.cbBarcodeType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbBarcodeType.FormattingEnabled = True
+        Me.cbBarcodeType.FormattingEnabled = true
         Me.cbBarcodeType.Items.AddRange(New Object() {"Autodetect", "UPC-A", "UPC-E", "EAN-8", "EAN-13", "Code 39", "Code 93", "Code 128", "ITF", "CodaBar", "RSS-14", "Data matrix", "Aztec", "QR", "PDF-417"})
         Me.cbBarcodeType.Location = New System.Drawing.Point(12, 58)
         Me.cbBarcodeType.Margin = New System.Windows.Forms.Padding(2)
@@ -4615,7 +4620,7 @@ Partial Class Form1
         '
         'label90
         '
-        Me.label90.AutoSize = True
+        Me.label90.AutoSize = true
         Me.label90.Location = New System.Drawing.Point(10, 44)
         Me.label90.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label90.Name = "label90"
@@ -4631,7 +4636,7 @@ Partial Class Form1
         Me.btBarcodeReset.Size = New System.Drawing.Size(62, 22)
         Me.btBarcodeReset.TabIndex = 20
         Me.btBarcodeReset.Text = "Restart"
-        Me.btBarcodeReset.UseVisualStyleBackColor = True
+        Me.btBarcodeReset.UseVisualStyleBackColor = true
         '
         'edBarcode
         '
@@ -4643,7 +4648,7 @@ Partial Class Form1
         '
         'label89
         '
-        Me.label89.AutoSize = True
+        Me.label89.AutoSize = true
         Me.label89.Location = New System.Drawing.Point(10, 90)
         Me.label89.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.label89.Name = "label89"
@@ -4653,13 +4658,13 @@ Partial Class Form1
         '
         'cbBarcodeDetectionEnabled
         '
-        Me.cbBarcodeDetectionEnabled.AutoSize = True
+        Me.cbBarcodeDetectionEnabled.AutoSize = true
         Me.cbBarcodeDetectionEnabled.Location = New System.Drawing.Point(12, 14)
         Me.cbBarcodeDetectionEnabled.Name = "cbBarcodeDetectionEnabled"
         Me.cbBarcodeDetectionEnabled.Size = New System.Drawing.Size(65, 17)
         Me.cbBarcodeDetectionEnabled.TabIndex = 17
         Me.cbBarcodeDetectionEnabled.Text = "Enabled"
-        Me.cbBarcodeDetectionEnabled.UseVisualStyleBackColor = True
+        Me.cbBarcodeDetectionEnabled.UseVisualStyleBackColor = true
         '
         'TabPage24
         '
@@ -4674,12 +4679,12 @@ Partial Class Form1
         Me.TabPage24.Size = New System.Drawing.Size(302, 474)
         Me.TabPage24.TabIndex = 9
         Me.TabPage24.Text = "Network streaming"
-        Me.TabPage24.UseVisualStyleBackColor = True
+        Me.TabPage24.UseVisualStyleBackColor = true
         '
         'cbNetworkStreamingMode
         '
         Me.cbNetworkStreamingMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbNetworkStreamingMode.FormattingEnabled = True
+        Me.cbNetworkStreamingMode.FormattingEnabled = true
         Me.cbNetworkStreamingMode.Items.AddRange(New Object() {"Windows Media Video", "RTSP", "RTMP to Adobe Media Server / Wowza", "UDP", "Smooth Streaming to Microsoft IIS", "Output to external virtual devices"})
         Me.cbNetworkStreamingMode.Location = New System.Drawing.Point(14, 36)
         Me.cbNetworkStreamingMode.Name = "cbNetworkStreamingMode"
@@ -4723,11 +4728,11 @@ Partial Class Form1
         Me.TabPage25.Size = New System.Drawing.Size(284, 344)
         Me.TabPage25.TabIndex = 0
         Me.TabPage25.Text = "WMV"
-        Me.TabPage25.UseVisualStyleBackColor = True
+        Me.TabPage25.UseVisualStyleBackColor = true
         '
         'Label20
         '
-        Me.Label20.AutoSize = True
+        Me.Label20.AutoSize = true
         Me.Label20.Location = New System.Drawing.Point(12, 295)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(86, 13)
@@ -4738,7 +4743,7 @@ Partial Class Form1
         '
         Me.edNetworkURL.Location = New System.Drawing.Point(15, 310)
         Me.edNetworkURL.Name = "edNetworkURL"
-        Me.edNetworkURL.ReadOnly = True
+        Me.edNetworkURL.ReadOnly = true
         Me.edNetworkURL.Size = New System.Drawing.Size(255, 20)
         Me.edNetworkURL.TabIndex = 31
         '
@@ -4752,7 +4757,7 @@ Partial Class Form1
         '
         'Label17
         '
-        Me.Label17.AutoSize = True
+        Me.Label17.AutoSize = true
         Me.Label17.Location = New System.Drawing.Point(162, 118)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(68, 13)
@@ -4766,11 +4771,11 @@ Partial Class Form1
         Me.btRefreshClients.Size = New System.Drawing.Size(64, 22)
         Me.btRefreshClients.TabIndex = 28
         Me.btRefreshClients.Text = "Refresh"
-        Me.btRefreshClients.UseVisualStyleBackColor = True
+        Me.btRefreshClients.UseVisualStyleBackColor = true
         '
         'lbNetworkClients
         '
-        Me.lbNetworkClients.FormattingEnabled = True
+        Me.lbNetworkClients.FormattingEnabled = true
         Me.lbNetworkClients.Location = New System.Drawing.Point(15, 168)
         Me.lbNetworkClients.Name = "lbNetworkClients"
         Me.lbNetworkClients.Size = New System.Drawing.Size(255, 30)
@@ -4778,29 +4783,29 @@ Partial Class Form1
         '
         'rbNetworkStreamingUseExternalProfile
         '
-        Me.rbNetworkStreamingUseExternalProfile.AutoSize = True
+        Me.rbNetworkStreamingUseExternalProfile.AutoSize = true
         Me.rbNetworkStreamingUseExternalProfile.Location = New System.Drawing.Point(15, 36)
         Me.rbNetworkStreamingUseExternalProfile.Name = "rbNetworkStreamingUseExternalProfile"
         Me.rbNetworkStreamingUseExternalProfile.Size = New System.Drawing.Size(115, 17)
         Me.rbNetworkStreamingUseExternalProfile.TabIndex = 26
         Me.rbNetworkStreamingUseExternalProfile.Text = "Use external profile"
-        Me.rbNetworkStreamingUseExternalProfile.UseVisualStyleBackColor = True
+        Me.rbNetworkStreamingUseExternalProfile.UseVisualStyleBackColor = true
         '
         'rbNetworkStreamingUseMainWMVSettings
         '
-        Me.rbNetworkStreamingUseMainWMVSettings.AutoSize = True
-        Me.rbNetworkStreamingUseMainWMVSettings.Checked = True
+        Me.rbNetworkStreamingUseMainWMVSettings.AutoSize = true
+        Me.rbNetworkStreamingUseMainWMVSettings.Checked = true
         Me.rbNetworkStreamingUseMainWMVSettings.Location = New System.Drawing.Point(15, 14)
         Me.rbNetworkStreamingUseMainWMVSettings.Name = "rbNetworkStreamingUseMainWMVSettings"
         Me.rbNetworkStreamingUseMainWMVSettings.Size = New System.Drawing.Size(193, 17)
         Me.rbNetworkStreamingUseMainWMVSettings.TabIndex = 25
-        Me.rbNetworkStreamingUseMainWMVSettings.TabStop = True
+        Me.rbNetworkStreamingUseMainWMVSettings.TabStop = true
         Me.rbNetworkStreamingUseMainWMVSettings.Text = "Use WMV settings from capture tab"
-        Me.rbNetworkStreamingUseMainWMVSettings.UseVisualStyleBackColor = True
+        Me.rbNetworkStreamingUseMainWMVSettings.UseVisualStyleBackColor = true
         '
         'label81
         '
-        Me.label81.AutoSize = True
+        Me.label81.AutoSize = true
         Me.label81.Location = New System.Drawing.Point(13, 266)
         Me.label81.Name = "label81"
         Me.label81.Size = New System.Drawing.Size(230, 13)
@@ -4809,7 +4814,7 @@ Partial Class Form1
         '
         'label80
         '
-        Me.label80.AutoSize = True
+        Me.label80.AutoSize = true
         Me.label80.Location = New System.Drawing.Point(13, 153)
         Me.label80.Name = "label80"
         Me.label80.Size = New System.Drawing.Size(38, 13)
@@ -4826,7 +4831,7 @@ Partial Class Form1
         '
         'Label18
         '
-        Me.Label18.AutoSize = True
+        Me.Label18.AutoSize = true
         Me.Label18.Location = New System.Drawing.Point(13, 118)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(84, 13)
@@ -4840,7 +4845,7 @@ Partial Class Form1
         Me.btSelectWMVProfileNetwork.Size = New System.Drawing.Size(24, 22)
         Me.btSelectWMVProfileNetwork.TabIndex = 20
         Me.btSelectWMVProfileNetwork.Text = "..."
-        Me.btSelectWMVProfileNetwork.UseVisualStyleBackColor = True
+        Me.btSelectWMVProfileNetwork.UseVisualStyleBackColor = true
         '
         'edNetworkStreamingWMVProfile
         '
@@ -4852,7 +4857,7 @@ Partial Class Form1
         '
         'Label19
         '
-        Me.Label19.AutoSize = True
+        Me.Label19.AutoSize = true
         Me.Label19.Location = New System.Drawing.Point(34, 66)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(52, 13)
@@ -4870,7 +4875,7 @@ Partial Class Form1
         Me.TabPage47.Size = New System.Drawing.Size(284, 344)
         Me.TabPage47.TabIndex = 2
         Me.TabPage47.Text = "RTSP"
-        Me.TabPage47.UseVisualStyleBackColor = True
+        Me.TabPage47.UseVisualStyleBackColor = true
         '
         'edNetworkRTSPURL
         '
@@ -4882,7 +4887,7 @@ Partial Class Form1
         '
         'label367
         '
-        Me.label367.AutoSize = True
+        Me.label367.AutoSize = true
         Me.label367.Location = New System.Drawing.Point(17, 20)
         Me.label367.Name = "label367"
         Me.label367.Size = New System.Drawing.Size(29, 13)
@@ -4891,7 +4896,7 @@ Partial Class Form1
         '
         'label366
         '
-        Me.label366.AutoSize = True
+        Me.label366.AutoSize = true
         Me.label366.Location = New System.Drawing.Point(17, 314)
         Me.label366.Name = "label366"
         Me.label366.Size = New System.Drawing.Size(159, 13)
@@ -4913,49 +4918,49 @@ Partial Class Form1
         Me.TabPage48.Size = New System.Drawing.Size(284, 344)
         Me.TabPage48.TabIndex = 3
         Me.TabPage48.Text = "RTMP"
-        Me.TabPage48.UseVisualStyleBackColor = True
+        Me.TabPage48.UseVisualStyleBackColor = true
         '
         'linkLabel11
         '
-        Me.linkLabel11.AutoSize = True
+        Me.linkLabel11.AutoSize = true
         Me.linkLabel11.Location = New System.Drawing.Point(17, 106)
         Me.linkLabel11.Name = "linkLabel11"
         Me.linkLabel11.Size = New System.Drawing.Size(154, 13)
         Me.linkLabel11.TabIndex = 23
-        Me.linkLabel11.TabStop = True
+        Me.linkLabel11.TabStop = true
         Me.linkLabel11.Text = "Network streaming to YouTube"
         '
         'linkLabel3
         '
-        Me.linkLabel3.AutoSize = True
+        Me.linkLabel3.AutoSize = true
         Me.linkLabel3.Location = New System.Drawing.Point(17, 86)
         Me.linkLabel3.Name = "linkLabel3"
         Me.linkLabel3.Size = New System.Drawing.Size(207, 13)
         Me.linkLabel3.TabIndex = 22
-        Me.linkLabel3.TabStop = True
+        Me.linkLabel3.TabStop = true
         Me.linkLabel3.Text = "FFMPEG.exe redist required to be installed"
         '
         'rbNetworkRTMPFFMPEGCustom
         '
-        Me.rbNetworkRTMPFFMPEGCustom.AutoSize = True
+        Me.rbNetworkRTMPFFMPEGCustom.AutoSize = true
         Me.rbNetworkRTMPFFMPEGCustom.Location = New System.Drawing.Point(20, 40)
         Me.rbNetworkRTMPFFMPEGCustom.Name = "rbNetworkRTMPFFMPEGCustom"
         Me.rbNetworkRTMPFFMPEGCustom.Size = New System.Drawing.Size(197, 17)
         Me.rbNetworkRTMPFFMPEGCustom.TabIndex = 21
         Me.rbNetworkRTMPFFMPEGCustom.Text = "Custom settings using FFMPEG EXE"
-        Me.rbNetworkRTMPFFMPEGCustom.UseVisualStyleBackColor = True
+        Me.rbNetworkRTMPFFMPEGCustom.UseVisualStyleBackColor = true
         '
         'rbNetworkRTMPFFMPEG
         '
-        Me.rbNetworkRTMPFFMPEG.AutoSize = True
-        Me.rbNetworkRTMPFFMPEG.Checked = True
+        Me.rbNetworkRTMPFFMPEG.AutoSize = true
+        Me.rbNetworkRTMPFFMPEG.Checked = true
         Me.rbNetworkRTMPFFMPEG.Location = New System.Drawing.Point(20, 18)
         Me.rbNetworkRTMPFFMPEG.Name = "rbNetworkRTMPFFMPEG"
         Me.rbNetworkRTMPFFMPEG.Size = New System.Drawing.Size(181, 17)
         Me.rbNetworkRTMPFFMPEG.TabIndex = 20
-        Me.rbNetworkRTMPFFMPEG.TabStop = True
+        Me.rbNetworkRTMPFFMPEG.TabStop = true
         Me.rbNetworkRTMPFFMPEG.Text = "H264 / AAC using FFMPEG EXE"
-        Me.rbNetworkRTMPFFMPEG.UseVisualStyleBackColor = True
+        Me.rbNetworkRTMPFFMPEG.UseVisualStyleBackColor = true
         '
         'edNetworkRTMPURL
         '
@@ -4967,7 +4972,7 @@ Partial Class Form1
         '
         'label368
         '
-        Me.label368.AutoSize = True
+        Me.label368.AutoSize = true
         Me.label368.Location = New System.Drawing.Point(17, 266)
         Me.label368.Name = "label368"
         Me.label368.Size = New System.Drawing.Size(29, 13)
@@ -4976,7 +4981,7 @@ Partial Class Form1
         '
         'label369
         '
-        Me.label369.AutoSize = True
+        Me.label369.AutoSize = true
         Me.label369.Location = New System.Drawing.Point(30, 314)
         Me.label369.Name = "label369"
         Me.label369.Size = New System.Drawing.Size(214, 13)
@@ -4997,21 +5002,21 @@ Partial Class Form1
         Me.TabPage67.Size = New System.Drawing.Size(284, 344)
         Me.TabPage67.TabIndex = 5
         Me.TabPage67.Text = "UDP"
-        Me.TabPage67.UseVisualStyleBackColor = True
+        Me.TabPage67.UseVisualStyleBackColor = true
         '
         'LinkLabel2
         '
-        Me.LinkLabel2.AutoSize = True
+        Me.LinkLabel2.AutoSize = true
         Me.LinkLabel2.Location = New System.Drawing.Point(17, 76)
         Me.LinkLabel2.Name = "LinkLabel2"
         Me.LinkLabel2.Size = New System.Drawing.Size(207, 13)
         Me.LinkLabel2.TabIndex = 22
-        Me.LinkLabel2.TabStop = True
+        Me.LinkLabel2.TabStop = true
         Me.LinkLabel2.Text = "FFMPEG.exe redist required to be installed"
         '
         'label484
         '
-        Me.label484.AutoSize = True
+        Me.label484.AutoSize = true
         Me.label484.Location = New System.Drawing.Point(30, 316)
         Me.label484.Name = "label484"
         Me.label484.Size = New System.Drawing.Size(217, 13)
@@ -5028,7 +5033,7 @@ Partial Class Form1
         '
         'label372
         '
-        Me.label372.AutoSize = True
+        Me.label372.AutoSize = true
         Me.label372.Location = New System.Drawing.Point(17, 268)
         Me.label372.Name = "label372"
         Me.label372.Size = New System.Drawing.Size(29, 13)
@@ -5037,25 +5042,25 @@ Partial Class Form1
         '
         'rbNetworkUDPFFMPEGCustom
         '
-        Me.rbNetworkUDPFFMPEGCustom.AutoSize = True
+        Me.rbNetworkUDPFFMPEGCustom.AutoSize = true
         Me.rbNetworkUDPFFMPEGCustom.Location = New System.Drawing.Point(20, 38)
         Me.rbNetworkUDPFFMPEGCustom.Name = "rbNetworkUDPFFMPEGCustom"
         Me.rbNetworkUDPFFMPEGCustom.Size = New System.Drawing.Size(197, 17)
         Me.rbNetworkUDPFFMPEGCustom.TabIndex = 18
         Me.rbNetworkUDPFFMPEGCustom.Text = "Custom settings using FFMPEG EXE"
-        Me.rbNetworkUDPFFMPEGCustom.UseVisualStyleBackColor = True
+        Me.rbNetworkUDPFFMPEGCustom.UseVisualStyleBackColor = true
         '
         'rbNetworkUDPFFMPEG
         '
-        Me.rbNetworkUDPFFMPEG.AutoSize = True
-        Me.rbNetworkUDPFFMPEG.Checked = True
+        Me.rbNetworkUDPFFMPEG.AutoSize = true
+        Me.rbNetworkUDPFFMPEG.Checked = true
         Me.rbNetworkUDPFFMPEG.Location = New System.Drawing.Point(20, 16)
         Me.rbNetworkUDPFFMPEG.Name = "rbNetworkUDPFFMPEG"
         Me.rbNetworkUDPFFMPEG.Size = New System.Drawing.Size(181, 17)
         Me.rbNetworkUDPFFMPEG.TabIndex = 17
-        Me.rbNetworkUDPFFMPEG.TabStop = True
+        Me.rbNetworkUDPFFMPEG.TabStop = true
         Me.rbNetworkUDPFFMPEG.Text = "H264 / AAC using FFMPEG EXE"
-        Me.rbNetworkUDPFFMPEG.UseVisualStyleBackColor = True
+        Me.rbNetworkUDPFFMPEG.UseVisualStyleBackColor = true
         '
         'TabPage49
         '
@@ -5073,46 +5078,46 @@ Partial Class Form1
         Me.TabPage49.Size = New System.Drawing.Size(284, 344)
         Me.TabPage49.TabIndex = 4
         Me.TabPage49.Text = "IIS Smooth Streaming"
-        Me.TabPage49.UseVisualStyleBackColor = True
+        Me.TabPage49.UseVisualStyleBackColor = true
         '
         'linkLabel10
         '
-        Me.linkLabel10.AutoSize = True
+        Me.linkLabel10.AutoSize = true
         Me.linkLabel10.Location = New System.Drawing.Point(17, 212)
         Me.linkLabel10.Name = "linkLabel10"
         Me.linkLabel10.Size = New System.Drawing.Size(207, 13)
         Me.linkLabel10.TabIndex = 28
-        Me.linkLabel10.TabStop = True
+        Me.linkLabel10.TabStop = true
         Me.linkLabel10.Text = "FFMPEG.exe redist required to be installed"
         '
         'rbNetworkSSFFMPEGCustom
         '
-        Me.rbNetworkSSFFMPEGCustom.AutoSize = True
+        Me.rbNetworkSSFFMPEGCustom.AutoSize = true
         Me.rbNetworkSSFFMPEGCustom.Location = New System.Drawing.Point(20, 62)
         Me.rbNetworkSSFFMPEGCustom.Name = "rbNetworkSSFFMPEGCustom"
         Me.rbNetworkSSFFMPEGCustom.Size = New System.Drawing.Size(197, 17)
         Me.rbNetworkSSFFMPEGCustom.TabIndex = 27
         Me.rbNetworkSSFFMPEGCustom.Text = "Custom settings using FFMPEG EXE"
-        Me.rbNetworkSSFFMPEGCustom.UseVisualStyleBackColor = True
+        Me.rbNetworkSSFFMPEGCustom.UseVisualStyleBackColor = true
         '
         'rbNetworkSSFFMPEGDefault
         '
-        Me.rbNetworkSSFFMPEGDefault.AutoSize = True
+        Me.rbNetworkSSFFMPEGDefault.AutoSize = true
         Me.rbNetworkSSFFMPEGDefault.Location = New System.Drawing.Point(20, 40)
         Me.rbNetworkSSFFMPEGDefault.Name = "rbNetworkSSFFMPEGDefault"
         Me.rbNetworkSSFFMPEGDefault.Size = New System.Drawing.Size(181, 17)
         Me.rbNetworkSSFFMPEGDefault.TabIndex = 26
         Me.rbNetworkSSFFMPEGDefault.Text = "H264 / AAC using FFMPEG EXE"
-        Me.rbNetworkSSFFMPEGDefault.UseVisualStyleBackColor = True
+        Me.rbNetworkSSFFMPEGDefault.UseVisualStyleBackColor = true
         '
         'linkLabel5
         '
-        Me.linkLabel5.AutoSize = True
+        Me.linkLabel5.AutoSize = true
         Me.linkLabel5.Location = New System.Drawing.Point(17, 190)
         Me.linkLabel5.Name = "linkLabel5"
         Me.linkLabel5.Size = New System.Drawing.Size(178, 13)
         Me.linkLabel5.TabIndex = 25
-        Me.linkLabel5.TabStop = True
+        Me.linkLabel5.TabStop = true
         Me.linkLabel5.Text = "IIS Smooth Streaming usage manual"
         '
         'edNetworkSSURL
@@ -5125,7 +5130,7 @@ Partial Class Form1
         '
         'label370
         '
-        Me.label370.AutoSize = True
+        Me.label370.AutoSize = true
         Me.label370.Location = New System.Drawing.Point(17, 132)
         Me.label370.Name = "label370"
         Me.label370.Size = New System.Drawing.Size(106, 13)
@@ -5134,7 +5139,7 @@ Partial Class Form1
         '
         'label371
         '
-        Me.label371.AutoSize = True
+        Me.label371.AutoSize = true
         Me.label371.Location = New System.Drawing.Point(17, 314)
         Me.label371.Name = "label371"
         Me.label371.Size = New System.Drawing.Size(214, 13)
@@ -5143,15 +5148,15 @@ Partial Class Form1
         '
         'rbNetworkSSSoftware
         '
-        Me.rbNetworkSSSoftware.AutoSize = True
-        Me.rbNetworkSSSoftware.Checked = True
+        Me.rbNetworkSSSoftware.AutoSize = true
+        Me.rbNetworkSSSoftware.Checked = true
         Me.rbNetworkSSSoftware.Location = New System.Drawing.Point(20, 18)
         Me.rbNetworkSSSoftware.Name = "rbNetworkSSSoftware"
         Me.rbNetworkSSSoftware.Size = New System.Drawing.Size(244, 17)
         Me.rbNetworkSSSoftware.TabIndex = 20
-        Me.rbNetworkSSSoftware.TabStop = True
+        Me.rbNetworkSSSoftware.TabStop = true
         Me.rbNetworkSSSoftware.Text = "H264 / AAC using software encoder / NVENC"
-        Me.rbNetworkSSSoftware.UseVisualStyleBackColor = True
+        Me.rbNetworkSSSoftware.UseVisualStyleBackColor = true
         '
         'TabPage56
         '
@@ -5162,37 +5167,37 @@ Partial Class Form1
         Me.TabPage56.Size = New System.Drawing.Size(284, 344)
         Me.TabPage56.TabIndex = 1
         Me.TabPage56.Text = "External"
-        Me.TabPage56.UseVisualStyleBackColor = True
+        Me.TabPage56.UseVisualStyleBackColor = true
         '
         'LinkLabel4
         '
-        Me.LinkLabel4.AutoSize = True
+        Me.LinkLabel4.AutoSize = true
         Me.LinkLabel4.Location = New System.Drawing.Point(27, 24)
         Me.LinkLabel4.Name = "LinkLabel4"
         Me.LinkLabel4.Size = New System.Drawing.Size(194, 13)
         Me.LinkLabel4.TabIndex = 1
-        Me.LinkLabel4.TabStop = True
+        Me.LinkLabel4.TabStop = true
         Me.LinkLabel4.Text = "Streaming to Adobe Flash Media Server"
         '
         'cbNetworkStreamingAudioEnabled
         '
-        Me.cbNetworkStreamingAudioEnabled.AutoSize = True
+        Me.cbNetworkStreamingAudioEnabled.AutoSize = true
         Me.cbNetworkStreamingAudioEnabled.Location = New System.Drawing.Point(14, 444)
         Me.cbNetworkStreamingAudioEnabled.Name = "cbNetworkStreamingAudioEnabled"
         Me.cbNetworkStreamingAudioEnabled.Size = New System.Drawing.Size(88, 17)
         Me.cbNetworkStreamingAudioEnabled.TabIndex = 31
         Me.cbNetworkStreamingAudioEnabled.Text = "Stream audio"
-        Me.cbNetworkStreamingAudioEnabled.UseVisualStyleBackColor = True
+        Me.cbNetworkStreamingAudioEnabled.UseVisualStyleBackColor = true
         '
         'cbNetworkStreaming
         '
-        Me.cbNetworkStreaming.AutoSize = True
+        Me.cbNetworkStreaming.AutoSize = true
         Me.cbNetworkStreaming.Location = New System.Drawing.Point(14, 14)
         Me.cbNetworkStreaming.Name = "cbNetworkStreaming"
         Me.cbNetworkStreaming.Size = New System.Drawing.Size(155, 17)
         Me.cbNetworkStreaming.TabIndex = 28
         Me.cbNetworkStreaming.Text = "Network streaming enabled"
-        Me.cbNetworkStreaming.UseVisualStyleBackColor = True
+        Me.cbNetworkStreaming.UseVisualStyleBackColor = true
         '
         'TabPage32
         '
@@ -5207,11 +5212,11 @@ Partial Class Form1
         Me.TabPage32.Size = New System.Drawing.Size(302, 474)
         Me.TabPage32.TabIndex = 10
         Me.TabPage32.Text = "Virtual camera"
-        Me.TabPage32.UseVisualStyleBackColor = True
+        Me.TabPage32.UseVisualStyleBackColor = true
         '
         'label328
         '
-        Me.label328.AutoSize = True
+        Me.label328.AutoSize = true
         Me.label328.Location = New System.Drawing.Point(17, 126)
         Me.label328.Name = "label328"
         Me.label328.Size = New System.Drawing.Size(197, 13)
@@ -5220,7 +5225,7 @@ Partial Class Form1
         '
         'label327
         '
-        Me.label327.AutoSize = True
+        Me.label327.AutoSize = true
         Me.label327.Location = New System.Drawing.Point(17, 105)
         Me.label327.Name = "label327"
         Me.label327.Size = New System.Drawing.Size(180, 13)
@@ -5229,7 +5234,7 @@ Partial Class Form1
         '
         'label326
         '
-        Me.label326.AutoSize = True
+        Me.label326.AutoSize = true
         Me.label326.Location = New System.Drawing.Point(17, 70)
         Me.label326.Name = "label326"
         Me.label326.Size = New System.Drawing.Size(111, 13)
@@ -5238,7 +5243,7 @@ Partial Class Form1
         '
         'label325
         '
-        Me.label325.AutoSize = True
+        Me.label325.AutoSize = true
         Me.label325.Location = New System.Drawing.Point(17, 51)
         Me.label325.Name = "label325"
         Me.label325.Size = New System.Drawing.Size(243, 13)
@@ -5247,13 +5252,13 @@ Partial Class Form1
         '
         'cbVirtualCamera
         '
-        Me.cbVirtualCamera.AutoSize = True
+        Me.cbVirtualCamera.AutoSize = true
         Me.cbVirtualCamera.Location = New System.Drawing.Point(20, 18)
         Me.cbVirtualCamera.Name = "cbVirtualCamera"
         Me.cbVirtualCamera.Size = New System.Drawing.Size(107, 17)
         Me.cbVirtualCamera.TabIndex = 3
         Me.cbVirtualCamera.Text = "Enable streaming"
-        Me.cbVirtualCamera.UseVisualStyleBackColor = True
+        Me.cbVirtualCamera.UseVisualStyleBackColor = true
         '
         'TabPage34
         '
@@ -5282,22 +5287,22 @@ Partial Class Form1
         Me.TabPage34.Size = New System.Drawing.Size(302, 474)
         Me.TabPage34.TabIndex = 11
         Me.TabPage34.Text = "Decklink output"
-        Me.TabPage34.UseVisualStyleBackColor = True
+        Me.TabPage34.UseVisualStyleBackColor = true
         '
         'cbDecklinkOutputDownConversionAnalogOutput
         '
-        Me.cbDecklinkOutputDownConversionAnalogOutput.AutoSize = True
+        Me.cbDecklinkOutputDownConversionAnalogOutput.AutoSize = true
         Me.cbDecklinkOutputDownConversionAnalogOutput.Location = New System.Drawing.Point(26, 238)
         Me.cbDecklinkOutputDownConversionAnalogOutput.Name = "cbDecklinkOutputDownConversionAnalogOutput"
         Me.cbDecklinkOutputDownConversionAnalogOutput.Size = New System.Drawing.Size(118, 17)
         Me.cbDecklinkOutputDownConversionAnalogOutput.TabIndex = 52
         Me.cbDecklinkOutputDownConversionAnalogOutput.Text = "Analog output used"
-        Me.cbDecklinkOutputDownConversionAnalogOutput.UseVisualStyleBackColor = True
+        Me.cbDecklinkOutputDownConversionAnalogOutput.UseVisualStyleBackColor = true
         '
         'cbDecklinkOutputDownConversion
         '
         Me.cbDecklinkOutputDownConversion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputDownConversion.FormattingEnabled = True
+        Me.cbDecklinkOutputDownConversion.FormattingEnabled = true
         Me.cbDecklinkOutputDownConversion.Items.AddRange(New Object() {"Default", "Disabled", "Letterbox 16:9", "Anamorphic", "Anamorphic center"})
         Me.cbDecklinkOutputDownConversion.Location = New System.Drawing.Point(26, 214)
         Me.cbDecklinkOutputDownConversion.Name = "cbDecklinkOutputDownConversion"
@@ -5306,7 +5311,7 @@ Partial Class Form1
         '
         'label337
         '
-        Me.label337.AutoSize = True
+        Me.label337.AutoSize = true
         Me.label337.Location = New System.Drawing.Point(23, 199)
         Me.label337.Name = "label337"
         Me.label337.Size = New System.Drawing.Size(119, 13)
@@ -5316,7 +5321,7 @@ Partial Class Form1
         'cbDecklinkOutputHDTVPulldown
         '
         Me.cbDecklinkOutputHDTVPulldown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputHDTVPulldown.FormattingEnabled = True
+        Me.cbDecklinkOutputHDTVPulldown.FormattingEnabled = true
         Me.cbDecklinkOutputHDTVPulldown.Items.AddRange(New Object() {"Default", "Enabled", "Disabled"})
         Me.cbDecklinkOutputHDTVPulldown.Location = New System.Drawing.Point(26, 282)
         Me.cbDecklinkOutputHDTVPulldown.Name = "cbDecklinkOutputHDTVPulldown"
@@ -5325,7 +5330,7 @@ Partial Class Form1
         '
         'label336
         '
-        Me.label336.AutoSize = True
+        Me.label336.AutoSize = true
         Me.label336.Location = New System.Drawing.Point(23, 268)
         Me.label336.Name = "label336"
         Me.label336.Size = New System.Drawing.Size(82, 13)
@@ -5335,7 +5340,7 @@ Partial Class Form1
         'cbDecklinkOutputBlackToDeck
         '
         Me.cbDecklinkOutputBlackToDeck.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputBlackToDeck.FormattingEnabled = True
+        Me.cbDecklinkOutputBlackToDeck.FormattingEnabled = true
         Me.cbDecklinkOutputBlackToDeck.Items.AddRange(New Object() {"Default", "None", "Digital", "Analogue"})
         Me.cbDecklinkOutputBlackToDeck.Location = New System.Drawing.Point(26, 169)
         Me.cbDecklinkOutputBlackToDeck.Name = "cbDecklinkOutputBlackToDeck"
@@ -5344,7 +5349,7 @@ Partial Class Form1
         '
         'label335
         '
-        Me.label335.AutoSize = True
+        Me.label335.AutoSize = true
         Me.label335.Location = New System.Drawing.Point(23, 154)
         Me.label335.Name = "label335"
         Me.label335.Size = New System.Drawing.Size(73, 13)
@@ -5354,7 +5359,7 @@ Partial Class Form1
         'cbDecklinkOutputSingleField
         '
         Me.cbDecklinkOutputSingleField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputSingleField.FormattingEnabled = True
+        Me.cbDecklinkOutputSingleField.FormattingEnabled = true
         Me.cbDecklinkOutputSingleField.Items.AddRange(New Object() {"Default", "Enabled", "Disabled"})
         Me.cbDecklinkOutputSingleField.Location = New System.Drawing.Point(26, 126)
         Me.cbDecklinkOutputSingleField.Name = "cbDecklinkOutputSingleField"
@@ -5363,7 +5368,7 @@ Partial Class Form1
         '
         'label334
         '
-        Me.label334.AutoSize = True
+        Me.label334.AutoSize = true
         Me.label334.Location = New System.Drawing.Point(23, 110)
         Me.label334.Name = "label334"
         Me.label334.Size = New System.Drawing.Size(91, 13)
@@ -5373,7 +5378,7 @@ Partial Class Form1
         'cbDecklinkOutputComponentLevels
         '
         Me.cbDecklinkOutputComponentLevels.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputComponentLevels.FormattingEnabled = True
+        Me.cbDecklinkOutputComponentLevels.FormattingEnabled = true
         Me.cbDecklinkOutputComponentLevels.Items.AddRange(New Object() {"SMPTE", "Betacam"})
         Me.cbDecklinkOutputComponentLevels.Location = New System.Drawing.Point(162, 169)
         Me.cbDecklinkOutputComponentLevels.Name = "cbDecklinkOutputComponentLevels"
@@ -5382,7 +5387,7 @@ Partial Class Form1
         '
         'label333
         '
-        Me.label333.AutoSize = True
+        Me.label333.AutoSize = true
         Me.label333.Location = New System.Drawing.Point(159, 154)
         Me.label333.Name = "label333"
         Me.label333.Size = New System.Drawing.Size(91, 13)
@@ -5392,7 +5397,7 @@ Partial Class Form1
         'cbDecklinkOutputNTSC
         '
         Me.cbDecklinkOutputNTSC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputNTSC.FormattingEnabled = True
+        Me.cbDecklinkOutputNTSC.FormattingEnabled = true
         Me.cbDecklinkOutputNTSC.Items.AddRange(New Object() {"USA", "Japan"})
         Me.cbDecklinkOutputNTSC.Location = New System.Drawing.Point(162, 126)
         Me.cbDecklinkOutputNTSC.Name = "cbDecklinkOutputNTSC"
@@ -5401,7 +5406,7 @@ Partial Class Form1
         '
         'label332
         '
-        Me.label332.AutoSize = True
+        Me.label332.AutoSize = true
         Me.label332.Location = New System.Drawing.Point(159, 110)
         Me.label332.Name = "label332"
         Me.label332.Size = New System.Drawing.Size(80, 13)
@@ -5411,7 +5416,7 @@ Partial Class Form1
         'cbDecklinkOutputDualLink
         '
         Me.cbDecklinkOutputDualLink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputDualLink.FormattingEnabled = True
+        Me.cbDecklinkOutputDualLink.FormattingEnabled = true
         Me.cbDecklinkOutputDualLink.Items.AddRange(New Object() {"Default", "Enabled", "Disabled"})
         Me.cbDecklinkOutputDualLink.Location = New System.Drawing.Point(26, 82)
         Me.cbDecklinkOutputDualLink.Name = "cbDecklinkOutputDualLink"
@@ -5420,7 +5425,7 @@ Partial Class Form1
         '
         'label331
         '
-        Me.label331.AutoSize = True
+        Me.label331.AutoSize = true
         Me.label331.Location = New System.Drawing.Point(23, 68)
         Me.label331.Name = "label331"
         Me.label331.Size = New System.Drawing.Size(77, 13)
@@ -5430,7 +5435,7 @@ Partial Class Form1
         'cbDecklinkOutputAnalog
         '
         Me.cbDecklinkOutputAnalog.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbDecklinkOutputAnalog.FormattingEnabled = True
+        Me.cbDecklinkOutputAnalog.FormattingEnabled = true
         Me.cbDecklinkOutputAnalog.Items.AddRange(New Object() {"Auto", "Component", "Composite", "S-Video"})
         Me.cbDecklinkOutputAnalog.Location = New System.Drawing.Point(162, 82)
         Me.cbDecklinkOutputAnalog.Name = "cbDecklinkOutputAnalog"
@@ -5439,7 +5444,7 @@ Partial Class Form1
         '
         'label87
         '
-        Me.label87.AutoSize = True
+        Me.label87.AutoSize = true
         Me.label87.Location = New System.Drawing.Point(159, 68)
         Me.label87.Name = "label87"
         Me.label87.Size = New System.Drawing.Size(73, 13)
@@ -5448,23 +5453,23 @@ Partial Class Form1
         '
         'cbDecklinkDV
         '
-        Me.cbDecklinkDV.AutoSize = True
+        Me.cbDecklinkDV.AutoSize = true
         Me.cbDecklinkDV.Location = New System.Drawing.Point(35, 38)
         Me.cbDecklinkDV.Name = "cbDecklinkDV"
         Me.cbDecklinkDV.Size = New System.Drawing.Size(74, 17)
         Me.cbDecklinkDV.TabIndex = 3
         Me.cbDecklinkDV.Text = "DV output"
-        Me.cbDecklinkDV.UseVisualStyleBackColor = True
+        Me.cbDecklinkDV.UseVisualStyleBackColor = true
         '
         'cbDecklinkOutput
         '
-        Me.cbDecklinkOutput.AutoSize = True
+        Me.cbDecklinkOutput.AutoSize = true
         Me.cbDecklinkOutput.Location = New System.Drawing.Point(17, 16)
         Me.cbDecklinkOutput.Name = "cbDecklinkOutput"
         Me.cbDecklinkOutput.Size = New System.Drawing.Size(173, 17)
         Me.cbDecklinkOutput.TabIndex = 2
         Me.cbDecklinkOutput.Text = "Enable output to Decklink card"
-        Me.cbDecklinkOutput.UseVisualStyleBackColor = True
+        Me.cbDecklinkOutput.UseVisualStyleBackColor = true
         '
         'TabPage43
         '
@@ -5477,7 +5482,7 @@ Partial Class Form1
         Me.TabPage43.Size = New System.Drawing.Size(302, 474)
         Me.TabPage43.TabIndex = 12
         Me.TabPage43.Text = "Encryption"
-        Me.TabPage43.UseVisualStyleBackColor = True
+        Me.TabPage43.UseVisualStyleBackColor = true
         '
         'groupBox48
         '
@@ -5493,12 +5498,12 @@ Partial Class Form1
         Me.groupBox48.Name = "groupBox48"
         Me.groupBox48.Size = New System.Drawing.Size(269, 216)
         Me.groupBox48.TabIndex = 14
-        Me.groupBox48.TabStop = False
+        Me.groupBox48.TabStop = false
         Me.groupBox48.Text = "Encryption key type"
         '
         'label343
         '
-        Me.label343.AutoSize = True
+        Me.label343.AutoSize = true
         Me.label343.Location = New System.Drawing.Point(33, 192)
         Me.label343.Name = "label343"
         Me.label343.Size = New System.Drawing.Size(157, 13)
@@ -5515,13 +5520,13 @@ Partial Class Form1
         '
         'rbEncryptionKeyBinary
         '
-        Me.rbEncryptionKeyBinary.AutoSize = True
+        Me.rbEncryptionKeyBinary.AutoSize = true
         Me.rbEncryptionKeyBinary.Location = New System.Drawing.Point(14, 147)
         Me.rbEncryptionKeyBinary.Name = "rbEncryptionKeyBinary"
         Me.rbEncryptionKeyBinary.Size = New System.Drawing.Size(124, 17)
         Me.rbEncryptionKeyBinary.TabIndex = 8
         Me.rbEncryptionKeyBinary.Text = "Binary data (v9 SDK)"
-        Me.rbEncryptionKeyBinary.UseVisualStyleBackColor = True
+        Me.rbEncryptionKeyBinary.UseVisualStyleBackColor = true
         '
         'btEncryptionOpenFile
         '
@@ -5530,7 +5535,7 @@ Partial Class Form1
         Me.btEncryptionOpenFile.Size = New System.Drawing.Size(23, 22)
         Me.btEncryptionOpenFile.TabIndex = 7
         Me.btEncryptionOpenFile.Text = "..."
-        Me.btEncryptionOpenFile.UseVisualStyleBackColor = True
+        Me.btEncryptionOpenFile.UseVisualStyleBackColor = true
         '
         'edEncryptionKeyFile
         '
@@ -5542,13 +5547,13 @@ Partial Class Form1
         '
         'rbEncryptionKeyFile
         '
-        Me.rbEncryptionKeyFile.AutoSize = True
+        Me.rbEncryptionKeyFile.AutoSize = true
         Me.rbEncryptionKeyFile.Location = New System.Drawing.Point(14, 90)
         Me.rbEncryptionKeyFile.Name = "rbEncryptionKeyFile"
         Me.rbEncryptionKeyFile.Size = New System.Drawing.Size(87, 17)
         Me.rbEncryptionKeyFile.TabIndex = 5
         Me.rbEncryptionKeyFile.Text = "File (v9 SDK)"
-        Me.rbEncryptionKeyFile.UseVisualStyleBackColor = True
+        Me.rbEncryptionKeyFile.UseVisualStyleBackColor = true
         '
         'edEncryptionKeyString
         '
@@ -5560,15 +5565,15 @@ Partial Class Form1
         '
         'rbEncryptionKeyString
         '
-        Me.rbEncryptionKeyString.AutoSize = True
-        Me.rbEncryptionKeyString.Checked = True
+        Me.rbEncryptionKeyString.AutoSize = true
+        Me.rbEncryptionKeyString.Checked = true
         Me.rbEncryptionKeyString.Location = New System.Drawing.Point(14, 27)
         Me.rbEncryptionKeyString.Name = "rbEncryptionKeyString"
         Me.rbEncryptionKeyString.Size = New System.Drawing.Size(52, 17)
         Me.rbEncryptionKeyString.TabIndex = 0
-        Me.rbEncryptionKeyString.TabStop = True
+        Me.rbEncryptionKeyString.TabStop = true
         Me.rbEncryptionKeyString.Text = "String"
-        Me.rbEncryptionKeyString.UseVisualStyleBackColor = True
+        Me.rbEncryptionKeyString.UseVisualStyleBackColor = true
         '
         'groupBox47
         '
@@ -5578,30 +5583,30 @@ Partial Class Form1
         Me.groupBox47.Name = "groupBox47"
         Me.groupBox47.Size = New System.Drawing.Size(269, 80)
         Me.groupBox47.TabIndex = 13
-        Me.groupBox47.TabStop = False
+        Me.groupBox47.TabStop = false
         Me.groupBox47.Text = "Method"
         '
         'rbEncryptionModeAES256
         '
-        Me.rbEncryptionModeAES256.AutoSize = True
-        Me.rbEncryptionModeAES256.Checked = True
+        Me.rbEncryptionModeAES256.AutoSize = true
+        Me.rbEncryptionModeAES256.Checked = true
         Me.rbEncryptionModeAES256.Location = New System.Drawing.Point(14, 49)
         Me.rbEncryptionModeAES256.Name = "rbEncryptionModeAES256"
         Me.rbEncryptionModeAES256.Size = New System.Drawing.Size(198, 17)
         Me.rbEncryptionModeAES256.TabIndex = 1
-        Me.rbEncryptionModeAES256.TabStop = True
+        Me.rbEncryptionModeAES256.TabStop = true
         Me.rbEncryptionModeAES256.Text = "AES-256 (v9 encryption SDK output)"
-        Me.rbEncryptionModeAES256.UseVisualStyleBackColor = True
+        Me.rbEncryptionModeAES256.UseVisualStyleBackColor = true
         '
         'rbEncryptionModeAES128
         '
-        Me.rbEncryptionModeAES128.AutoSize = True
+        Me.rbEncryptionModeAES128.AutoSize = true
         Me.rbEncryptionModeAES128.Location = New System.Drawing.Point(14, 27)
         Me.rbEncryptionModeAES128.Name = "rbEncryptionModeAES128"
         Me.rbEncryptionModeAES128.Size = New System.Drawing.Size(198, 17)
         Me.rbEncryptionModeAES128.TabIndex = 0
         Me.rbEncryptionModeAES128.Text = "AES-128 (v8 encryption SDK output)"
-        Me.rbEncryptionModeAES128.UseVisualStyleBackColor = True
+        Me.rbEncryptionModeAES128.UseVisualStyleBackColor = true
         '
         'groupBox43
         '
@@ -5611,30 +5616,30 @@ Partial Class Form1
         Me.groupBox43.Name = "groupBox43"
         Me.groupBox43.Size = New System.Drawing.Size(269, 80)
         Me.groupBox43.TabIndex = 12
-        Me.groupBox43.TabStop = False
+        Me.groupBox43.TabStop = false
         Me.groupBox43.Text = "Video / audio format"
         '
         'rbEncryptedH264CUDA
         '
-        Me.rbEncryptedH264CUDA.AutoSize = True
+        Me.rbEncryptedH264CUDA.AutoSize = true
         Me.rbEncryptedH264CUDA.Location = New System.Drawing.Point(14, 49)
         Me.rbEncryptedH264CUDA.Name = "rbEncryptedH264CUDA"
         Me.rbEncryptedH264CUDA.Size = New System.Drawing.Size(228, 17)
         Me.rbEncryptedH264CUDA.TabIndex = 7
         Me.rbEncryptedH264CUDA.Text = "Use MP4 H264 CUDA / AAC output format"
-        Me.rbEncryptedH264CUDA.UseVisualStyleBackColor = True
+        Me.rbEncryptedH264CUDA.UseVisualStyleBackColor = true
         '
         'rbEncryptedH264SW
         '
-        Me.rbEncryptedH264SW.AutoSize = True
-        Me.rbEncryptedH264SW.Checked = True
+        Me.rbEncryptedH264SW.AutoSize = true
+        Me.rbEncryptedH264SW.Checked = true
         Me.rbEncryptedH264SW.Location = New System.Drawing.Point(14, 27)
         Me.rbEncryptedH264SW.Name = "rbEncryptedH264SW"
         Me.rbEncryptedH264SW.Size = New System.Drawing.Size(195, 17)
         Me.rbEncryptedH264SW.TabIndex = 6
-        Me.rbEncryptedH264SW.TabStop = True
+        Me.rbEncryptedH264SW.TabStop = true
         Me.rbEncryptedH264SW.Text = "Use MP4 H264 / ACC output format"
-        Me.rbEncryptedH264SW.UseVisualStyleBackColor = True
+        Me.rbEncryptedH264SW.UseVisualStyleBackColor = true
         '
         'TabPage78
         '
@@ -5646,7 +5651,7 @@ Partial Class Form1
         Me.TabPage78.Size = New System.Drawing.Size(302, 474)
         Me.TabPage78.TabIndex = 14
         Me.TabPage78.Text = "Tags"
-        Me.TabPage78.UseVisualStyleBackColor = True
+        Me.TabPage78.UseVisualStyleBackColor = true
         '
         'TabControl32
         '
@@ -5658,13 +5663,13 @@ Partial Class Form1
         '
         'cbTagEnabled
         '
-        Me.cbTagEnabled.AutoSize = True
+        Me.cbTagEnabled.AutoSize = true
         Me.cbTagEnabled.Location = New System.Drawing.Point(14, 16)
         Me.cbTagEnabled.Name = "cbTagEnabled"
         Me.cbTagEnabled.Size = New System.Drawing.Size(135, 17)
         Me.cbTagEnabled.TabIndex = 2
         Me.cbTagEnabled.Text = "Write tags to output file"
-        Me.cbTagEnabled.UseVisualStyleBackColor = True
+        Me.cbTagEnabled.UseVisualStyleBackColor = true
         '
         'TabPage22
         '
@@ -5685,7 +5690,7 @@ Partial Class Form1
         Me.TabPage22.Size = New System.Drawing.Size(302, 474)
         Me.TabPage22.TabIndex = 16
         Me.TabPage22.Text = "Audio output"
-        Me.TabPage22.UseVisualStyleBackColor = True
+        Me.TabPage22.UseVisualStyleBackColor = true
         '
         'tbVUMeterBoost
         '
@@ -5698,7 +5703,7 @@ Partial Class Form1
         '
         'label382
         '
-        Me.label382.AutoSize = True
+        Me.label382.AutoSize = true
         Me.label382.Location = New System.Drawing.Point(168, 231)
         Me.label382.Name = "label382"
         Me.label382.Size = New System.Drawing.Size(68, 13)
@@ -5707,7 +5712,7 @@ Partial Class Form1
         '
         'label381
         '
-        Me.label381.AutoSize = True
+        Me.label381.AutoSize = true
         Me.label381.Location = New System.Drawing.Point(20, 231)
         Me.label381.Name = "label381"
         Me.label381.Size = New System.Drawing.Size(120, 13)
@@ -5725,17 +5730,17 @@ Partial Class Form1
         '
         'cbVUMeterPro
         '
-        Me.cbVUMeterPro.AutoSize = True
+        Me.cbVUMeterPro.AutoSize = true
         Me.cbVUMeterPro.Location = New System.Drawing.Point(12, 84)
         Me.cbVUMeterPro.Name = "cbVUMeterPro"
         Me.cbVUMeterPro.Size = New System.Drawing.Size(125, 17)
         Me.cbVUMeterPro.TabIndex = 126
         Me.cbVUMeterPro.Text = "Enable VU meter Pro"
-        Me.cbVUMeterPro.UseVisualStyleBackColor = True
+        Me.cbVUMeterPro.UseVisualStyleBackColor = true
         '
         'waveformPainter2
         '
-        Me.waveformPainter2.Boost = 1.0!
+        Me.waveformPainter2.Boost = 1!
         Me.waveformPainter2.Location = New System.Drawing.Point(101, 168)
         Me.waveformPainter2.Name = "waveformPainter2"
         Me.waveformPainter2.Size = New System.Drawing.Size(174, 58)
@@ -5744,7 +5749,7 @@ Partial Class Form1
         '
         'waveformPainter1
         '
-        Me.waveformPainter1.Boost = 1.0!
+        Me.waveformPainter1.Boost = 1!
         Me.waveformPainter1.Location = New System.Drawing.Point(101, 104)
         Me.waveformPainter1.Name = "waveformPainter1"
         Me.waveformPainter1.Size = New System.Drawing.Size(174, 58)
@@ -5755,10 +5760,10 @@ Partial Class Form1
         '
         Me.volumeMeter2.Amplitude = 0!
         Me.volumeMeter2.BackColor = System.Drawing.Color.LightGray
-        Me.volumeMeter2.Boost = 1.0!
+        Me.volumeMeter2.Boost = 1!
         Me.volumeMeter2.Location = New System.Drawing.Point(51, 104)
-        Me.volumeMeter2.MaxDb = 18.0!
-        Me.volumeMeter2.MinDb = -60.0!
+        Me.volumeMeter2.MaxDb = 18!
+        Me.volumeMeter2.MinDb = -60!
         Me.volumeMeter2.Name = "volumeMeter2"
         Me.volumeMeter2.Size = New System.Drawing.Size(22, 121)
         Me.volumeMeter2.TabIndex = 129
@@ -5767,10 +5772,10 @@ Partial Class Form1
         '
         Me.volumeMeter1.Amplitude = 0!
         Me.volumeMeter1.BackColor = System.Drawing.Color.LightGray
-        Me.volumeMeter1.Boost = 1.0!
+        Me.volumeMeter1.Boost = 1!
         Me.volumeMeter1.Location = New System.Drawing.Point(23, 104)
-        Me.volumeMeter1.MaxDb = 18.0!
-        Me.volumeMeter1.MinDb = -60.0!
+        Me.volumeMeter1.MaxDb = 18!
+        Me.volumeMeter1.MinDb = -60!
         Me.volumeMeter1.Name = "volumeMeter1"
         Me.volumeMeter1.Size = New System.Drawing.Size(22, 121)
         Me.volumeMeter1.TabIndex = 125
@@ -5778,12 +5783,12 @@ Partial Class Form1
         'peakMeterCtrl1
         '
         Me.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red
-        Me.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(150, Byte), Integer), CType(CType(150, Byte), Integer))
+        Me.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(150,Byte),Integer), CType(CType(150,Byte),Integer))
         Me.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow
-        Me.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(150, Byte), Integer))
+        Me.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(CType(CType(255,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(150,Byte),Integer))
         Me.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green
-        Me.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(CType(CType(150, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(150, Byte), Integer))
-        Me.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(CType(CType(150,Byte),Integer), CType(CType(255,Byte),Integer), CType(CType(150,Byte),Integer))
+        Me.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(CType(CType(180,Byte),Integer), CType(CType(180,Byte),Integer), CType(CType(180,Byte),Integer))
         Me.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro
         Me.peakMeterCtrl1.Location = New System.Drawing.Point(125, 12)
         Me.peakMeterCtrl1.Name = "peakMeterCtrl1"
@@ -5793,49 +5798,49 @@ Partial Class Form1
         '
         'cbVUMeter
         '
-        Me.cbVUMeter.AutoSize = True
+        Me.cbVUMeter.AutoSize = true
         Me.cbVUMeter.Location = New System.Drawing.Point(12, 12)
         Me.cbVUMeter.Name = "cbVUMeter"
         Me.cbVUMeter.Size = New System.Drawing.Size(107, 17)
         Me.cbVUMeter.TabIndex = 103
         Me.cbVUMeter.Text = "Enable VU Meter"
-        Me.cbVUMeter.UseVisualStyleBackColor = True
+        Me.cbVUMeter.UseVisualStyleBackColor = true
         '
         'linkLabel1
         '
-        Me.linkLabel1.AutoSize = True
+        Me.linkLabel1.AutoSize = true
         Me.linkLabel1.Location = New System.Drawing.Point(243, 551)
         Me.linkLabel1.Name = "linkLabel1"
         Me.linkLabel1.Size = New System.Drawing.Size(78, 13)
         Me.linkLabel1.TabIndex = 85
-        Me.linkLabel1.TabStop = True
+        Me.linkLabel1.TabStop = true
         Me.linkLabel1.Text = "Watch tutorials"
         '
         'btStop
         '
-        Me.btStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btStop.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btStop.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.btStop.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
         Me.btStop.Location = New System.Drawing.Point(698, 600)
         Me.btStop.Name = "btStop"
         Me.btStop.Size = New System.Drawing.Size(58, 22)
         Me.btStop.TabIndex = 88
         Me.btStop.Text = "Stop"
-        Me.btStop.UseVisualStyleBackColor = True
+        Me.btStop.UseVisualStyleBackColor = true
         '
         'btStart
         '
-        Me.btStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204, Byte))
+        Me.btStart.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
+        Me.btStart.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(204,Byte))
         Me.btStart.Location = New System.Drawing.Point(631, 600)
         Me.btStart.Name = "btStart"
         Me.btStart.Size = New System.Drawing.Size(58, 22)
         Me.btStart.TabIndex = 87
         Me.btStart.Text = "Start"
-        Me.btStart.UseVisualStyleBackColor = True
+        Me.btStart.UseVisualStyleBackColor = true
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.ProgressBar1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
         Me.ProgressBar1.Location = New System.Drawing.Point(441, 600)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(184, 22)
@@ -5843,7 +5848,7 @@ Partial Class Form1
         '
         'tbSeeking
         '
-        Me.tbSeeking.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.tbSeeking.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left),System.Windows.Forms.AnchorStyles)
         Me.tbSeeking.Location = New System.Drawing.Point(327, 600)
         Me.tbSeeking.Name = "tbSeeking"
         Me.tbSeeking.Size = New System.Drawing.Size(108, 45)
@@ -5856,37 +5861,37 @@ Partial Class Form1
         '
         'VideoEdit1
         '
-        Me.VideoEdit1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.VideoEdit1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom)  _
+            Or System.Windows.Forms.AnchorStyles.Left)  _
+            Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
         Me.VideoEdit1.Audio_Channel_Mapper = Nothing
-        Me.VideoEdit1.Audio_Effects_Enabled = False
-        Me.VideoEdit1.Audio_Effects_UseLegacyEffects = False
-        Me.VideoEdit1.Audio_Enhancer_Enabled = False
-        Me.VideoEdit1.Audio_Preview_Enabled = False
-        Me.VideoEdit1.Audio_VUMeter_Enabled = False
-        Me.VideoEdit1.Audio_VUMeter_Pro_Enabled = False
+        Me.VideoEdit1.Audio_Effects_Enabled = false
+        Me.VideoEdit1.Audio_Effects_UseLegacyEffects = false
+        Me.VideoEdit1.Audio_Enhancer_Enabled = false
+        Me.VideoEdit1.Audio_Preview_Enabled = false
+        Me.VideoEdit1.Audio_VUMeter_Enabled = false
+        Me.VideoEdit1.Audio_VUMeter_Pro_Enabled = false
         Me.VideoEdit1.Audio_VUMeter_Pro_Volume = 0
         Me.VideoEdit1.BackColor = System.Drawing.Color.Black
-        Me.VideoEdit1.Barcode_Reader_Enabled = False
+        Me.VideoEdit1.Barcode_Reader_Enabled = false
         Me.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.[Auto]
         Me.VideoEdit1.ChromaKey = Nothing
-        Me.VideoEdit1.CustomRedist_Enabled = False
+        Me.VideoEdit1.CustomRedist_Enabled = false
         Me.VideoEdit1.CustomRedist_Path = Nothing
         Me.VideoEdit1.Debug_Dir = ""
-        Me.VideoEdit1.Debug_Mode = False
-        Me.VideoEdit1.Debug_Telemetry = False
+        Me.VideoEdit1.Debug_Mode = false
+        Me.VideoEdit1.Debug_Telemetry = false
         Me.VideoEdit1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.[Auto]
         Me.VideoEdit1.Decklink_Output = Nothing
-        Me.VideoEdit1.Dynamic_Reconnection = False
+        Me.VideoEdit1.Dynamic_Reconnection = false
         Me.VideoEdit1.Location = New System.Drawing.Point(331, 310)
-        Me.VideoEdit1.Loop = False
+        Me.VideoEdit1.Loop = false
         Me.VideoEdit1.Mode = VisioForge.Types.VFVideoEditMode.Convert
         Me.VideoEdit1.Motion_Detection = Nothing
         Me.VideoEdit1.Motion_DetectionEx = Nothing
         Me.VideoEdit1.Name = "VideoEdit1"
-        Me.VideoEdit1.Network_Streaming_Audio_Enabled = False
-        Me.VideoEdit1.Network_Streaming_Enabled = False
+        Me.VideoEdit1.Network_Streaming_Audio_Enabled = false
+        Me.VideoEdit1.Network_Streaming_Enabled = false
         Me.VideoEdit1.Network_Streaming_Format = VisioForge.Types.VFNetworkStreamingFormat.WMV
         Me.VideoEdit1.Network_Streaming_Network_Port = 0
         Me.VideoEdit1.Network_Streaming_Output = Nothing
@@ -5895,40 +5900,41 @@ Partial Class Form1
         Me.VideoEdit1.Output_Filename = "c:\output.avi"
         Me.VideoEdit1.Output_Format = Nothing
         Me.VideoEdit1.Size = New System.Drawing.Size(425, 276)
-        Me.VideoEdit1.Start_DelayEnabled = False
+        Me.VideoEdit1.Start_DelayEnabled = false
         Me.VideoEdit1.TabIndex = 90
         Me.VideoEdit1.Tags = Nothing
-        Me.VideoEdit1.UseLibMediaInfo = False
+        Me.VideoEdit1.UseLibMediaInfo = false
         Me.VideoEdit1.Video_Crop = Nothing
         Me.VideoEdit1.Video_Custom_Resizer_CLSID = New System.Guid("00000000-0000-0000-0000-000000000000")
-        Me.VideoEdit1.Video_Effects_AllowMultipleStreams = False
-        Me.VideoEdit1.Video_Effects_Enabled = False
-        Me.VideoEdit1.Video_Effects_GPU_Enabled = False
-        Me.VideoEdit1.Video_FrameRate = 25.0R
-        Me.VideoEdit1.Video_Preview_Enabled = True
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = False
-        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = False
-        VideoRendererSettingsWinForms1.Flip_Horizontal = False
-        VideoRendererSettingsWinForms1.Flip_Vertical = False
-        VideoRendererSettingsWinForms1.RotationAngle = 0
-        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
-        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms1
-        Me.VideoEdit1.Video_Resize = False
+        Me.VideoEdit1.Video_Effects_AllowMultipleStreams = false
+        Me.VideoEdit1.Video_Effects_Enabled = false
+        Me.VideoEdit1.Video_Effects_GPU_Enabled = false
+        Me.VideoEdit1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9
+        Me.VideoEdit1.Video_FrameRate = 25R
+        Me.VideoEdit1.Video_Preview_Enabled = true
+        VideoRendererSettingsWinForms3.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms3.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms3.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms3.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms3.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms3.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms3.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms3.Flip_Horizontal = false
+        VideoRendererSettingsWinForms3.Flip_Vertical = false
+        VideoRendererSettingsWinForms3.RotationAngle = 0
+        VideoRendererSettingsWinForms3.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms3.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms3.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms3.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms3.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms3.Zoom_ShiftY = 0
+        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms3
+        Me.VideoEdit1.Video_Resize = false
         Me.VideoEdit1.Video_Resize_Height = 480
         Me.VideoEdit1.Video_Resize_Width = 640
         Me.VideoEdit1.Video_Rotation = VisioForge.Types.VFRotateMode.RotateNone
         Me.VideoEdit1.Video_Subtitles = Nothing
-        Me.VideoEdit1.Virtual_Camera_Output_Enabled = False
+        Me.VideoEdit1.Virtual_Camera_Output_Enabled = false
         '
         'tabControl3
         '
@@ -5957,7 +5963,7 @@ Partial Class Form1
         Me.tabPage52.Size = New System.Drawing.Size(417, 266)
         Me.tabPage52.TabIndex = 0
         Me.tabPage52.Text = "Edit"
-        Me.tabPage52.UseVisualStyleBackColor = True
+        Me.tabPage52.UseVisualStyleBackColor = true
         '
         'groupBox7
         '
@@ -5969,12 +5975,12 @@ Partial Class Form1
         Me.groupBox7.Name = "groupBox7"
         Me.groupBox7.Size = New System.Drawing.Size(147, 126)
         Me.groupBox7.TabIndex = 56
-        Me.groupBox7.TabStop = False
+        Me.groupBox7.TabStop = false
         Me.groupBox7.Text = "Timeline"
         '
         'label72
         '
-        Me.label72.AutoSize = True
+        Me.label72.AutoSize = true
         Me.label72.Location = New System.Drawing.Point(116, 44)
         Me.label72.Name = "label72"
         Me.label72.Size = New System.Drawing.Size(20, 13)
@@ -5991,7 +5997,7 @@ Partial Class Form1
         '
         'label73
         '
-        Me.label73.AutoSize = True
+        Me.label73.AutoSize = true
         Me.label73.Location = New System.Drawing.Point(12, 44)
         Me.label73.Name = "label73"
         Me.label73.Size = New System.Drawing.Size(55, 13)
@@ -6000,19 +6006,19 @@ Partial Class Form1
         '
         'cbInsertAfterPreviousFile
         '
-        Me.cbInsertAfterPreviousFile.AutoSize = True
-        Me.cbInsertAfterPreviousFile.Checked = True
+        Me.cbInsertAfterPreviousFile.AutoSize = true
+        Me.cbInsertAfterPreviousFile.Checked = true
         Me.cbInsertAfterPreviousFile.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbInsertAfterPreviousFile.Location = New System.Drawing.Point(12, 18)
         Me.cbInsertAfterPreviousFile.Name = "cbInsertAfterPreviousFile"
         Me.cbInsertAfterPreviousFile.Size = New System.Drawing.Size(135, 17)
         Me.cbInsertAfterPreviousFile.TabIndex = 39
         Me.cbInsertAfterPreviousFile.Text = "Insert after previous file"
-        Me.cbInsertAfterPreviousFile.UseVisualStyleBackColor = True
+        Me.cbInsertAfterPreviousFile.UseVisualStyleBackColor = true
         '
         'label50
         '
-        Me.label50.AutoSize = True
+        Me.label50.AutoSize = true
         Me.label50.Location = New System.Drawing.Point(6, 88)
         Me.label50.Name = "label50"
         Me.label50.Size = New System.Drawing.Size(250, 13)
@@ -6035,12 +6041,12 @@ Partial Class Form1
         Me.groupBox6.Name = "groupBox6"
         Me.groupBox6.Size = New System.Drawing.Size(238, 126)
         Me.groupBox6.TabIndex = 54
-        Me.groupBox6.TabStop = False
+        Me.groupBox6.TabStop = false
         Me.groupBox6.Text = "Input file"
         '
         'lbSpeed
         '
-        Me.lbSpeed.AutoSize = True
+        Me.lbSpeed.AutoSize = true
         Me.lbSpeed.Location = New System.Drawing.Point(200, 71)
         Me.lbSpeed.Name = "lbSpeed"
         Me.lbSpeed.Size = New System.Drawing.Size(33, 13)
@@ -6049,7 +6055,7 @@ Partial Class Form1
         '
         'label42
         '
-        Me.label42.AutoSize = True
+        Me.label42.AutoSize = true
         Me.label42.Location = New System.Drawing.Point(12, 71)
         Me.label42.Name = "label42"
         Me.label42.Size = New System.Drawing.Size(83, 13)
@@ -6058,7 +6064,7 @@ Partial Class Form1
         '
         'label37
         '
-        Me.label37.AutoSize = True
+        Me.label37.AutoSize = true
         Me.label37.Location = New System.Drawing.Point(213, 44)
         Me.label37.Name = "label37"
         Me.label37.Size = New System.Drawing.Size(20, 13)
@@ -6075,7 +6081,7 @@ Partial Class Form1
         '
         'label38
         '
-        Me.label38.AutoSize = True
+        Me.label38.AutoSize = true
         Me.label38.Location = New System.Drawing.Point(127, 44)
         Me.label38.Name = "label38"
         Me.label38.Size = New System.Drawing.Size(51, 13)
@@ -6084,7 +6090,7 @@ Partial Class Form1
         '
         'label36
         '
-        Me.label36.AutoSize = True
+        Me.label36.AutoSize = true
         Me.label36.Location = New System.Drawing.Point(92, 44)
         Me.label36.Name = "label36"
         Me.label36.Size = New System.Drawing.Size(20, 13)
@@ -6101,7 +6107,7 @@ Partial Class Form1
         '
         'label35
         '
-        Me.label35.AutoSize = True
+        Me.label35.AutoSize = true
         Me.label35.Location = New System.Drawing.Point(12, 44)
         Me.label35.Name = "label35"
         Me.label35.Size = New System.Drawing.Size(51, 13)
@@ -6110,15 +6116,15 @@ Partial Class Form1
         '
         'cbAddFullFile
         '
-        Me.cbAddFullFile.AutoSize = True
-        Me.cbAddFullFile.Checked = True
+        Me.cbAddFullFile.AutoSize = true
+        Me.cbAddFullFile.Checked = true
         Me.cbAddFullFile.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbAddFullFile.Location = New System.Drawing.Point(12, 18)
         Me.cbAddFullFile.Name = "cbAddFullFile"
         Me.cbAddFullFile.Size = New System.Drawing.Size(77, 17)
         Me.cbAddFullFile.TabIndex = 35
         Me.cbAddFullFile.Text = "Add full file"
-        Me.cbAddFullFile.UseVisualStyleBackColor = True
+        Me.cbAddFullFile.UseVisualStyleBackColor = true
         '
         'tbSpeed
         '
@@ -6137,7 +6143,7 @@ Partial Class Form1
         Me.btClearList.Size = New System.Drawing.Size(64, 22)
         Me.btClearList.TabIndex = 53
         Me.btClearList.Text = "Clear"
-        Me.btClearList.UseVisualStyleBackColor = True
+        Me.btClearList.UseVisualStyleBackColor = true
         '
         'btAddInputFile
         '
@@ -6146,11 +6152,11 @@ Partial Class Form1
         Me.btAddInputFile.Size = New System.Drawing.Size(64, 22)
         Me.btAddInputFile.TabIndex = 52
         Me.btAddInputFile.Text = "Add"
-        Me.btAddInputFile.UseVisualStyleBackColor = True
+        Me.btAddInputFile.UseVisualStyleBackColor = true
         '
         'lbFiles
         '
-        Me.lbFiles.FormattingEnabled = True
+        Me.lbFiles.FormattingEnabled = true
         Me.lbFiles.Location = New System.Drawing.Point(9, 26)
         Me.lbFiles.Name = "lbFiles"
         Me.lbFiles.Size = New System.Drawing.Size(321, 56)
@@ -6158,7 +6164,7 @@ Partial Class Form1
         '
         'label10
         '
-        Me.label10.AutoSize = True
+        Me.label10.AutoSize = true
         Me.label10.Location = New System.Drawing.Point(6, 6)
         Me.label10.Name = "label10"
         Me.label10.Size = New System.Drawing.Size(52, 13)
@@ -6189,11 +6195,11 @@ Partial Class Form1
         Me.tabPage53.Size = New System.Drawing.Size(417, 266)
         Me.tabPage53.TabIndex = 1
         Me.tabPage53.Text = "Cut file (w/o reencoding)"
-        Me.tabPage53.UseVisualStyleBackColor = True
+        Me.tabPage53.UseVisualStyleBackColor = true
         '
         'label134
         '
-        Me.label134.AutoSize = True
+        Me.label134.AutoSize = true
         Me.label134.Location = New System.Drawing.Point(17, 181)
         Me.label134.Name = "label134"
         Me.label134.Size = New System.Drawing.Size(221, 13)
@@ -6207,7 +6213,7 @@ Partial Class Form1
         Me.btSelectOutputCut.Size = New System.Drawing.Size(24, 22)
         Me.btSelectOutputCut.TabIndex = 71
         Me.btSelectOutputCut.Text = "..."
-        Me.btSelectOutputCut.UseVisualStyleBackColor = True
+        Me.btSelectOutputCut.UseVisualStyleBackColor = true
         '
         'edOutputFileCut
         '
@@ -6219,7 +6225,7 @@ Partial Class Form1
         '
         'label131
         '
-        Me.label131.AutoSize = True
+        Me.label131.AutoSize = true
         Me.label131.Location = New System.Drawing.Point(17, 108)
         Me.label131.Name = "label131"
         Me.label131.Size = New System.Drawing.Size(55, 13)
@@ -6233,7 +6239,7 @@ Partial Class Form1
         Me.btStopCut.Size = New System.Drawing.Size(75, 22)
         Me.btStopCut.TabIndex = 68
         Me.btStopCut.Text = "Stop"
-        Me.btStopCut.UseVisualStyleBackColor = True
+        Me.btStopCut.UseVisualStyleBackColor = true
         '
         'btStartCut
         '
@@ -6242,11 +6248,11 @@ Partial Class Form1
         Me.btStartCut.Size = New System.Drawing.Size(75, 22)
         Me.btStartCut.TabIndex = 67
         Me.btStartCut.Text = "Start"
-        Me.btStartCut.UseVisualStyleBackColor = True
+        Me.btStartCut.UseVisualStyleBackColor = true
         '
         'label31
         '
-        Me.label31.AutoSize = True
+        Me.label31.AutoSize = true
         Me.label31.Location = New System.Drawing.Point(80, 74)
         Me.label31.Name = "label31"
         Me.label31.Size = New System.Drawing.Size(183, 13)
@@ -6260,7 +6266,7 @@ Partial Class Form1
         Me.btAddInputFile2.Size = New System.Drawing.Size(24, 22)
         Me.btAddInputFile2.TabIndex = 65
         Me.btAddInputFile2.Text = "..."
-        Me.btAddInputFile2.UseVisualStyleBackColor = True
+        Me.btAddInputFile2.UseVisualStyleBackColor = true
         '
         'edSourceFileToCut
         '
@@ -6271,7 +6277,7 @@ Partial Class Form1
         '
         'label30
         '
-        Me.label30.AutoSize = True
+        Me.label30.AutoSize = true
         Me.label30.Location = New System.Drawing.Point(15, 16)
         Me.label30.Name = "label30"
         Me.label30.Size = New System.Drawing.Size(57, 13)
@@ -6280,7 +6286,7 @@ Partial Class Form1
         '
         'label26
         '
-        Me.label26.AutoSize = True
+        Me.label26.AutoSize = true
         Me.label26.Location = New System.Drawing.Point(291, 48)
         Me.label26.Name = "label26"
         Me.label26.Size = New System.Drawing.Size(20, 13)
@@ -6297,7 +6303,7 @@ Partial Class Form1
         '
         'label27
         '
-        Me.label27.AutoSize = True
+        Me.label27.AutoSize = true
         Me.label27.Location = New System.Drawing.Point(182, 49)
         Me.label27.Name = "label27"
         Me.label27.Size = New System.Drawing.Size(51, 13)
@@ -6306,7 +6312,7 @@ Partial Class Form1
         '
         'label28
         '
-        Me.label28.AutoSize = True
+        Me.label28.AutoSize = true
         Me.label28.Location = New System.Drawing.Point(135, 49)
         Me.label28.Name = "label28"
         Me.label28.Size = New System.Drawing.Size(20, 13)
@@ -6323,7 +6329,7 @@ Partial Class Form1
         '
         'label29
         '
-        Me.label29.AutoSize = True
+        Me.label29.AutoSize = true
         Me.label29.Location = New System.Drawing.Point(17, 49)
         Me.label29.Name = "label29"
         Me.label29.Size = New System.Drawing.Size(51, 13)
@@ -6348,11 +6354,11 @@ Partial Class Form1
         Me.tabPage54.Size = New System.Drawing.Size(417, 266)
         Me.tabPage54.TabIndex = 2
         Me.tabPage54.Text = "Join files (w/o reencoding)"
-        Me.tabPage54.UseVisualStyleBackColor = True
+        Me.tabPage54.UseVisualStyleBackColor = true
         '
         'label1
         '
-        Me.label1.AutoSize = True
+        Me.label1.AutoSize = true
         Me.label1.Location = New System.Drawing.Point(15, 209)
         Me.label1.Name = "label1"
         Me.label1.Size = New System.Drawing.Size(333, 13)
@@ -6366,7 +6372,7 @@ Partial Class Form1
         Me.btSelectOutputJoin.Size = New System.Drawing.Size(24, 22)
         Me.btSelectOutputJoin.TabIndex = 71
         Me.btSelectOutputJoin.Text = "..."
-        Me.btSelectOutputJoin.UseVisualStyleBackColor = True
+        Me.btSelectOutputJoin.UseVisualStyleBackColor = true
         '
         'edOutputFileJoin
         '
@@ -6378,7 +6384,7 @@ Partial Class Form1
         '
         'label132
         '
-        Me.label132.AutoSize = True
+        Me.label132.AutoSize = true
         Me.label132.Location = New System.Drawing.Point(15, 106)
         Me.label132.Name = "label132"
         Me.label132.Size = New System.Drawing.Size(55, 13)
@@ -6392,7 +6398,7 @@ Partial Class Form1
         Me.btStopJoin.Size = New System.Drawing.Size(75, 22)
         Me.btStopJoin.TabIndex = 68
         Me.btStopJoin.Text = "Stop"
-        Me.btStopJoin.UseVisualStyleBackColor = True
+        Me.btStopJoin.UseVisualStyleBackColor = true
         '
         'btStartJoin
         '
@@ -6401,7 +6407,7 @@ Partial Class Form1
         Me.btStartJoin.Size = New System.Drawing.Size(75, 22)
         Me.btStartJoin.TabIndex = 67
         Me.btStartJoin.Text = "Start"
-        Me.btStartJoin.UseVisualStyleBackColor = True
+        Me.btStartJoin.UseVisualStyleBackColor = true
         '
         'btClearList3
         '
@@ -6410,7 +6416,7 @@ Partial Class Form1
         Me.btClearList3.Size = New System.Drawing.Size(64, 22)
         Me.btClearList3.TabIndex = 66
         Me.btClearList3.Text = "Clear"
-        Me.btClearList3.UseVisualStyleBackColor = True
+        Me.btClearList3.UseVisualStyleBackColor = true
         '
         'btAddInputFile3
         '
@@ -6419,11 +6425,11 @@ Partial Class Form1
         Me.btAddInputFile3.Size = New System.Drawing.Size(64, 22)
         Me.btAddInputFile3.TabIndex = 65
         Me.btAddInputFile3.Text = "Add"
-        Me.btAddInputFile3.UseVisualStyleBackColor = True
+        Me.btAddInputFile3.UseVisualStyleBackColor = true
         '
         'lbFiles2
         '
-        Me.lbFiles2.FormattingEnabled = True
+        Me.lbFiles2.FormattingEnabled = true
         Me.lbFiles2.Location = New System.Drawing.Point(18, 32)
         Me.lbFiles2.Name = "lbFiles2"
         Me.lbFiles2.Size = New System.Drawing.Size(301, 30)
@@ -6431,7 +6437,7 @@ Partial Class Form1
         '
         'label32
         '
-        Me.label32.AutoSize = True
+        Me.label32.AutoSize = true
         Me.label32.Location = New System.Drawing.Point(15, 16)
         Me.label32.Name = "label32"
         Me.label32.Size = New System.Drawing.Size(52, 13)
@@ -6461,11 +6467,11 @@ Partial Class Form1
         Me.TabPage74.Size = New System.Drawing.Size(417, 266)
         Me.TabPage74.TabIndex = 3
         Me.TabPage74.Text = "Mux streams (w/o reencoding)"
-        Me.TabPage74.UseVisualStyleBackColor = True
+        Me.TabPage74.UseVisualStyleBackColor = true
         '
         'label168
         '
-        Me.label168.AutoSize = True
+        Me.label168.AutoSize = true
         Me.label168.Location = New System.Drawing.Point(267, 12)
         Me.label168.Name = "label168"
         Me.label168.Size = New System.Drawing.Size(71, 13)
@@ -6474,18 +6480,18 @@ Partial Class Form1
         '
         'cbMuxStreamsShortest
         '
-        Me.cbMuxStreamsShortest.AutoSize = True
+        Me.cbMuxStreamsShortest.AutoSize = true
         Me.cbMuxStreamsShortest.Location = New System.Drawing.Point(14, 134)
         Me.cbMuxStreamsShortest.Name = "cbMuxStreamsShortest"
         Me.cbMuxStreamsShortest.Size = New System.Drawing.Size(185, 17)
         Me.cbMuxStreamsShortest.TabIndex = 90
         Me.cbMuxStreamsShortest.Text = "Set file duration to shortest stream"
-        Me.cbMuxStreamsShortest.UseVisualStyleBackColor = True
+        Me.cbMuxStreamsShortest.UseVisualStyleBackColor = true
         '
         'cbMuxStreamsType
         '
         Me.cbMuxStreamsType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbMuxStreamsType.FormattingEnabled = True
+        Me.cbMuxStreamsType.FormattingEnabled = true
         Me.cbMuxStreamsType.Items.AddRange(New Object() {"Video", "Audio", "0", "1", "2", "3", "4", "5", "6", "7"})
         Me.cbMuxStreamsType.Location = New System.Drawing.Point(270, 26)
         Me.cbMuxStreamsType.Name = "cbMuxStreamsType"
@@ -6499,7 +6505,7 @@ Partial Class Form1
         Me.btMuxStreamsSelectFile.Size = New System.Drawing.Size(23, 22)
         Me.btMuxStreamsSelectFile.TabIndex = 88
         Me.btMuxStreamsSelectFile.Text = "..."
-        Me.btMuxStreamsSelectFile.UseVisualStyleBackColor = True
+        Me.btMuxStreamsSelectFile.UseVisualStyleBackColor = true
         '
         'edMuxStreamsSourceFile
         '
@@ -6510,7 +6516,7 @@ Partial Class Form1
         '
         'label167
         '
-        Me.label167.AutoSize = True
+        Me.label167.AutoSize = true
         Me.label167.Location = New System.Drawing.Point(11, 12)
         Me.label167.Name = "label167"
         Me.label167.Size = New System.Drawing.Size(57, 13)
@@ -6524,7 +6530,7 @@ Partial Class Form1
         Me.btMuxStreamsSelectOutput.Size = New System.Drawing.Size(24, 22)
         Me.btMuxStreamsSelectOutput.TabIndex = 85
         Me.btMuxStreamsSelectOutput.Text = "..."
-        Me.btMuxStreamsSelectOutput.UseVisualStyleBackColor = True
+        Me.btMuxStreamsSelectOutput.UseVisualStyleBackColor = true
         '
         'edMuxStreamsOutputFile
         '
@@ -6536,7 +6542,7 @@ Partial Class Form1
         '
         'label165
         '
-        Me.label165.AutoSize = True
+        Me.label165.AutoSize = true
         Me.label165.Location = New System.Drawing.Point(11, 178)
         Me.label165.Name = "label165"
         Me.label165.Size = New System.Drawing.Size(55, 13)
@@ -6550,7 +6556,7 @@ Partial Class Form1
         Me.btStopMux.Size = New System.Drawing.Size(75, 22)
         Me.btStopMux.TabIndex = 82
         Me.btStopMux.Text = "Stop"
-        Me.btStopMux.UseVisualStyleBackColor = True
+        Me.btStopMux.UseVisualStyleBackColor = true
         '
         'btStartMux
         '
@@ -6559,7 +6565,7 @@ Partial Class Form1
         Me.btStartMux.Size = New System.Drawing.Size(75, 22)
         Me.btStartMux.TabIndex = 81
         Me.btStartMux.Text = "Start"
-        Me.btStartMux.UseVisualStyleBackColor = True
+        Me.btStartMux.UseVisualStyleBackColor = true
         '
         'btMuxStreamsClear
         '
@@ -6568,7 +6574,7 @@ Partial Class Form1
         Me.btMuxStreamsClear.Size = New System.Drawing.Size(64, 22)
         Me.btMuxStreamsClear.TabIndex = 80
         Me.btMuxStreamsClear.Text = "Clear"
-        Me.btMuxStreamsClear.UseVisualStyleBackColor = True
+        Me.btMuxStreamsClear.UseVisualStyleBackColor = true
         '
         'btMuxStreamsAdd
         '
@@ -6577,11 +6583,11 @@ Partial Class Form1
         Me.btMuxStreamsAdd.Size = New System.Drawing.Size(52, 22)
         Me.btMuxStreamsAdd.TabIndex = 79
         Me.btMuxStreamsAdd.Text = "Add"
-        Me.btMuxStreamsAdd.UseVisualStyleBackColor = True
+        Me.btMuxStreamsAdd.UseVisualStyleBackColor = true
         '
         'lbMuxStreamsList
         '
-        Me.lbMuxStreamsList.FormattingEnabled = True
+        Me.lbMuxStreamsList.FormattingEnabled = true
         Me.lbMuxStreamsList.Location = New System.Drawing.Point(14, 73)
         Me.lbMuxStreamsList.Name = "lbMuxStreamsList"
         Me.lbMuxStreamsList.Size = New System.Drawing.Size(390, 30)
@@ -6589,7 +6595,7 @@ Partial Class Form1
         '
         'label166
         '
-        Me.label166.AutoSize = True
+        Me.label166.AutoSize = true
         Me.label166.Location = New System.Drawing.Point(11, 58)
         Me.label166.Name = "label166"
         Me.label166.Size = New System.Drawing.Size(70, 13)
@@ -6598,13 +6604,13 @@ Partial Class Form1
         '
         'cbLicensing
         '
-        Me.cbLicensing.AutoSize = True
+        Me.cbLicensing.AutoSize = true
         Me.cbLicensing.Location = New System.Drawing.Point(149, 551)
         Me.cbLicensing.Name = "cbLicensing"
         Me.cbLicensing.Size = New System.Drawing.Size(91, 17)
         Me.cbLicensing.TabIndex = 93
         Me.cbLicensing.Text = "Licensing info"
-        Me.cbLicensing.UseVisualStyleBackColor = True
+        Me.cbLicensing.UseVisualStyleBackColor = true
         '
         'openFileDialogSubtitles
         '
@@ -6619,11 +6625,11 @@ Partial Class Form1
         Me.TabPage143.Size = New System.Drawing.Size(284, 406)
         Me.TabPage143.TabIndex = 1
         Me.TabPage143.Text = "Special"
-        Me.TabPage143.UseVisualStyleBackColor = True
+        Me.TabPage143.UseVisualStyleBackColor = true
         '
         'Label492
         '
-        Me.Label492.AutoSize = True
+        Me.Label492.AutoSize = true
         Me.Label492.Location = New System.Drawing.Point(12, 14)
         Me.Label492.Name = "Label492"
         Me.Label492.Size = New System.Drawing.Size(59, 13)
@@ -6638,7 +6644,7 @@ Partial Class Form1
         '
         'Label494
         '
-        Me.Label494.AutoSize = True
+        Me.Label494.AutoSize = true
         Me.Label494.Location = New System.Drawing.Point(12, 60)
         Me.Label494.Name = "Label494"
         Me.Label494.Size = New System.Drawing.Size(36, 13)
@@ -6647,7 +6653,7 @@ Partial Class Form1
         'cbTagGenre
         '
         Me.cbTagGenre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cbTagGenre.FormattingEnabled = True
+        Me.cbTagGenre.FormattingEnabled = true
         Me.cbTagGenre.Location = New System.Drawing.Point(15, 76)
         Me.cbTagGenre.Name = "cbTagGenre"
         Me.cbTagGenre.Size = New System.Drawing.Size(242, 21)
@@ -6655,7 +6661,7 @@ Partial Class Form1
         '
         'Label497
         '
-        Me.Label497.AutoSize = True
+        Me.Label497.AutoSize = true
         Me.Label497.Location = New System.Drawing.Point(12, 112)
         Me.Label497.Name = "Label497"
         Me.Label497.Size = New System.Drawing.Size(34, 13)
@@ -6670,7 +6676,7 @@ Partial Class Form1
         '
         'Label498
         '
-        Me.Label498.AutoSize = True
+        Me.Label498.AutoSize = true
         Me.Label498.Location = New System.Drawing.Point(43, 334)
         Me.Label498.Name = "Label498"
         Me.Label498.Size = New System.Drawing.Size(194, 13)
@@ -6678,7 +6684,7 @@ Partial Class Form1
         '
         'Label499
         '
-        Me.Label499.AutoSize = True
+        Me.Label499.AutoSize = true
         Me.Label499.Location = New System.Drawing.Point(12, 162)
         Me.Label499.Name = "Label499"
         Me.Label499.Size = New System.Drawing.Size(35, 13)
@@ -6692,7 +6698,7 @@ Partial Class Form1
         Me.imgTagCover.Size = New System.Drawing.Size(104, 104)
         Me.imgTagCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.imgTagCover.TabIndex = 16
-        Me.imgTagCover.TabStop = False
+        Me.imgTagCover.TabStop = false
         '
         'TabPage142
         '
@@ -6702,11 +6708,11 @@ Partial Class Form1
         Me.TabPage142.Size = New System.Drawing.Size(284, 406)
         Me.TabPage142.TabIndex = 0
         Me.TabPage142.Text = "Common"
-        Me.TabPage142.UseVisualStyleBackColor = True
+        Me.TabPage142.UseVisualStyleBackColor = true
         '
         'Label23
         '
-        Me.Label23.AutoSize = True
+        Me.Label23.AutoSize = true
         Me.Label23.Location = New System.Drawing.Point(13, 14)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(27, 13)
@@ -6721,7 +6727,7 @@ Partial Class Form1
         '
         'Label22
         '
-        Me.Label22.AutoSize = True
+        Me.Label22.AutoSize = true
         Me.Label22.Location = New System.Drawing.Point(13, 240)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(51, 13)
@@ -6736,7 +6742,7 @@ Partial Class Form1
         '
         'Label490
         '
-        Me.Label490.AutoSize = True
+        Me.Label490.AutoSize = true
         Me.Label490.Location = New System.Drawing.Point(13, 57)
         Me.Label490.Name = "Label490"
         Me.Label490.Size = New System.Drawing.Size(35, 13)
@@ -6751,7 +6757,7 @@ Partial Class Form1
         '
         'Label491
         '
-        Me.Label491.AutoSize = True
+        Me.Label491.AutoSize = true
         Me.Label491.Location = New System.Drawing.Point(13, 101)
         Me.Label491.Name = "Label491"
         Me.Label491.Size = New System.Drawing.Size(36, 13)
@@ -6766,7 +6772,7 @@ Partial Class Form1
         '
         'Label493
         '
-        Me.Label493.AutoSize = True
+        Me.Label493.AutoSize = true
         Me.Label493.Location = New System.Drawing.Point(13, 145)
         Me.Label493.Name = "Label493"
         Me.Label493.Size = New System.Drawing.Size(51, 13)
@@ -6781,7 +6787,7 @@ Partial Class Form1
         '
         'Label495
         '
-        Me.Label495.AutoSize = True
+        Me.Label495.AutoSize = true
         Me.Label495.Location = New System.Drawing.Point(13, 286)
         Me.Label495.Name = "Label495"
         Me.Label495.Size = New System.Drawing.Size(29, 13)
@@ -6796,7 +6802,7 @@ Partial Class Form1
         '
         'Label496
         '
-        Me.Label496.AutoSize = True
+        Me.Label496.AutoSize = true
         Me.Label496.Location = New System.Drawing.Point(13, 192)
         Me.Label496.Name = "Label496"
         Me.Label496.Size = New System.Drawing.Size(49, 13)
@@ -6811,29 +6817,49 @@ Partial Class Form1
         '
         'cbTelemetry
         '
-        Me.cbTelemetry.AutoSize = True
-        Me.cbTelemetry.Checked = True
+        Me.cbTelemetry.AutoSize = true
+        Me.cbTelemetry.Checked = true
         Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
         Me.cbTelemetry.Location = New System.Drawing.Point(249, 524)
         Me.cbTelemetry.Name = "cbTelemetry"
         Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
         Me.cbTelemetry.TabIndex = 94
         Me.cbTelemetry.Text = "Telemetry"
-        Me.cbTelemetry.UseVisualStyleBackColor = True
+        Me.cbTelemetry.UseVisualStyleBackColor = true
         '
-        'cbVideoEffectsGPUEnabled
+        'label5
         '
-        Me.cbVideoEffectsGPUEnabled.AutoSize = True
-        Me.cbVideoEffectsGPUEnabled.Location = New System.Drawing.Point(16, 16)
-        Me.cbVideoEffectsGPUEnabled.Name = "cbVideoEffectsGPUEnabled"
-        Me.cbVideoEffectsGPUEnabled.Size = New System.Drawing.Size(65, 17)
-        Me.cbVideoEffectsGPUEnabled.TabIndex = 97
-        Me.cbVideoEffectsGPUEnabled.Text = "Enabled"
-        Me.cbVideoEffectsGPUEnabled.UseVisualStyleBackColor = True
+        Me.label5.AutoSize = true
+        Me.label5.Location = New System.Drawing.Point(14, 269)
+        Me.label5.Name = "label5"
+        Me.label5.Size = New System.Drawing.Size(25, 13)
+        Me.label5.TabIndex = 103
+        Me.label5.Text = "Blur"
+        '
+        'tbGPUBlur
+        '
+        Me.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window
+        Me.tbGPUBlur.Location = New System.Drawing.Point(11, 285)
+        Me.tbGPUBlur.Maximum = 30
+        Me.tbGPUBlur.Name = "tbGPUBlur"
+        Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
+        Me.tbGPUBlur.TabIndex = 102
+        '
+        'cbVideoEffectsGPUDX11
+        '
+        Me.cbVideoEffectsGPUDX11.AutoSize = true
+        Me.cbVideoEffectsGPUDX11.Checked = true
+        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(182, 16)
+        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
+        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
+        Me.cbVideoEffectsGPUDX11.TabIndex = 101
+        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
+        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(96.0!, 96.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(96!, 96!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi
         Me.ClientSize = New System.Drawing.Size(768, 634)
         Me.Controls.Add(Me.cbTelemetry)
@@ -6851,7 +6877,7 @@ Partial Class Form1
         Me.Controls.Add(Me.rbConvert)
         Me.Controls.Add(Me.tabControl1)
         Me.Controls.Add(Me.tabControl3)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "VisioForge Video Edit SDK .Net - Main Demo"
         Me.tabControl1.ResumeLayout(false)
@@ -7038,6 +7064,7 @@ Partial Class Form1
         Me.TabPage74.ResumeLayout(false)
         Me.TabPage74.PerformLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 
@@ -7556,7 +7583,6 @@ End Sub
     Private WithEvents openFileDialogSubtitles As OpenFileDialog
     Friend WithEvents TabPage82 As TabPage
     Private WithEvents cbGPUOldMovie As CheckBox
-    Private WithEvents cbGPUBlur As CheckBox
     Private WithEvents cbGPUDeinterlace As CheckBox
     Private WithEvents cbGPUDenoise As CheckBox
     Private WithEvents cbGPUPixelate As CheckBox
@@ -7632,4 +7658,7 @@ End Sub
     Private WithEvents cbTelemetry As CheckBox
     Private WithEvents label1 As Label
     Friend WithEvents cbVideoEffectsGPUEnabled As CheckBox
+    Private WithEvents label5 As Label
+    Private WithEvents tbGPUBlur As TrackBar
+    Private WithEvents cbVideoEffectsGPUDX11 As CheckBox
 End Class

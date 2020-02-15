@@ -163,9 +163,11 @@ namespace VideoCapture_CSharp_Demo
             this.rbDenoiseMosquito = new System.Windows.Forms.RadioButton();
             this.cbDenoise = new System.Windows.Forms.CheckBox();
             this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbGPUBlur = new System.Windows.Forms.TrackBar();
+            this.cbVideoEffectsGPUDX11 = new System.Windows.Forms.CheckBox();
             this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.cbGPUOldMovie = new System.Windows.Forms.CheckBox();
-            this.cbGPUBlur = new System.Windows.Forms.CheckBox();
             this.cbGPUDeinterlace = new System.Windows.Forms.CheckBox();
             this.cbGPUDenoise = new System.Windows.Forms.CheckBox();
             this.cbGPUPixelate = new System.Windows.Forms.CheckBox();
@@ -406,6 +408,7 @@ namespace VideoCapture_CSharp_Demo
             this.rbNetworkUDPFFMPEGCustom = new System.Windows.Forms.RadioButton();
             this.rbNetworkUDPFFMPEG = new System.Windows.Forms.RadioButton();
             this.tabPage110 = new System.Windows.Forms.TabPage();
+            this.cbNetworkSSUsePipes = new System.Windows.Forms.CheckBox();
             this.linkLabel10 = new System.Windows.Forms.LinkLabel();
             this.rbNetworkSSFFMPEGCustom = new System.Windows.Forms.RadioButton();
             this.rbNetworkSSFFMPEGDefault = new System.Windows.Forms.RadioButton();
@@ -745,12 +748,17 @@ namespace VideoCapture_CSharp_Demo
             this.label15 = new System.Windows.Forms.Label();
             this.tabPage98 = new System.Windows.Forms.TabPage();
             this.cbVUMeter = new System.Windows.Forms.CheckBox();
+            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
             this.tabPage112 = new System.Windows.Forms.TabPage();
             this.tbVUMeterBoost = new System.Windows.Forms.TrackBar();
             this.label382 = new System.Windows.Forms.Label();
             this.label381 = new System.Windows.Forms.Label();
             this.tbVUMeterAmplification = new System.Windows.Forms.TrackBar();
             this.cbVUMeterPro = new System.Windows.Forms.CheckBox();
+            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
+            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
+            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
             this.tabPage99 = new System.Windows.Forms.TabPage();
             this.rbAddAudioStreamsIndependent = new System.Windows.Forms.RadioButton();
             this.rbAddAudioStreamsMix = new System.Windows.Forms.RadioButton();
@@ -1124,12 +1132,6 @@ namespace VideoCapture_CSharp_Demo
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
-            this.peakMeterCtrl1 = new VisioForge.Controls.UI.WinForms.PeakMeterCtrl();
-            this.waveformPainter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
-            this.waveformPainter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.WaveformPainter();
-            this.volumeMeter2 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
-            this.volumeMeter1 = new VisioForge.Controls.UI.WinForms.VolumeMeterPro.VolumeMeter();
-            this.cbNetworkSSUsePipes = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -1155,6 +1157,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage69.SuspendLayout();
             this.tabPage59.SuspendLayout();
             this.tabPage20.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGPUBlur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUContrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUDarkness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPULightness)).BeginInit();
@@ -2641,9 +2644,11 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage20
             // 
+            this.tabPage20.Controls.Add(this.label5);
+            this.tabPage20.Controls.Add(this.tbGPUBlur);
+            this.tabPage20.Controls.Add(this.cbVideoEffectsGPUDX11);
             this.tabPage20.Controls.Add(this.cbVideoEffectsGPUEnabled);
             this.tabPage20.Controls.Add(this.cbGPUOldMovie);
-            this.tabPage20.Controls.Add(this.cbGPUBlur);
             this.tabPage20.Controls.Add(this.cbGPUDeinterlace);
             this.tabPage20.Controls.Add(this.cbGPUDenoise);
             this.tabPage20.Controls.Add(this.cbGPUPixelate);
@@ -2666,6 +2671,38 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage20.Text = "GPU effects";
             this.tabPage20.UseVisualStyleBackColor = true;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(11, 295);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(25, 13);
+            this.label5.TabIndex = 85;
+            this.label5.Text = "Blur";
+            // 
+            // tbGPUBlur
+            // 
+            this.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window;
+            this.tbGPUBlur.Location = new System.Drawing.Point(8, 311);
+            this.tbGPUBlur.Maximum = 30;
+            this.tbGPUBlur.Name = "tbGPUBlur";
+            this.tbGPUBlur.Size = new System.Drawing.Size(130, 45);
+            this.tbGPUBlur.TabIndex = 84;
+            this.tbGPUBlur.Scroll += new System.EventHandler(this.tbGPUBlur_Scroll);
+            // 
+            // cbVideoEffectsGPUDX11
+            // 
+            this.cbVideoEffectsGPUDX11.AutoSize = true;
+            this.cbVideoEffectsGPUDX11.Checked = true;
+            this.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbVideoEffectsGPUDX11.Location = new System.Drawing.Point(174, 16);
+            this.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11";
+            this.cbVideoEffectsGPUDX11.Size = new System.Drawing.Size(98, 17);
+            this.cbVideoEffectsGPUDX11.TabIndex = 82;
+            this.cbVideoEffectsGPUDX11.Text = "Use DirectX 11";
+            this.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true;
+            this.cbVideoEffectsGPUDX11.CheckedChanged += new System.EventHandler(this.cbVideoEffectsGPUDX11_CheckedChanged);
+            // 
             // cbVideoEffectsGPUEnabled
             // 
             this.cbVideoEffectsGPUEnabled.AutoSize = true;
@@ -2687,17 +2724,6 @@ namespace VideoCapture_CSharp_Demo
             this.cbGPUOldMovie.Text = "Old movie";
             this.cbGPUOldMovie.UseVisualStyleBackColor = true;
             this.cbGPUOldMovie.CheckedChanged += new System.EventHandler(this.cbGPUOldMovie_CheckedChanged);
-            // 
-            // cbGPUBlur
-            // 
-            this.cbGPUBlur.AutoSize = true;
-            this.cbGPUBlur.Location = new System.Drawing.Point(14, 237);
-            this.cbGPUBlur.Name = "cbGPUBlur";
-            this.cbGPUBlur.Size = new System.Drawing.Size(44, 17);
-            this.cbGPUBlur.TabIndex = 79;
-            this.cbGPUBlur.Text = "Blur";
-            this.cbGPUBlur.UseVisualStyleBackColor = true;
-            this.cbGPUBlur.CheckedChanged += new System.EventHandler(this.cbGPUBlur_CheckedChanged);
             // 
             // cbGPUDeinterlace
             // 
@@ -5292,6 +5318,16 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage110.TabIndex = 4;
             this.tabPage110.Text = "IIS Smooth Streaming";
             this.tabPage110.UseVisualStyleBackColor = true;
+            // 
+            // cbNetworkSSUsePipes
+            // 
+            this.cbNetworkSSUsePipes.AutoSize = true;
+            this.cbNetworkSSUsePipes.Location = new System.Drawing.Point(36, 86);
+            this.cbNetworkSSUsePipes.Name = "cbNetworkSSUsePipes";
+            this.cbNetworkSSUsePipes.Size = new System.Drawing.Size(182, 17);
+            this.cbNetworkSSUsePipes.TabIndex = 19;
+            this.cbNetworkSSUsePipes.Text = "Use pipes for FFMPEG streaming";
+            this.cbNetworkSSUsePipes.UseVisualStyleBackColor = true;
             // 
             // linkLabel10
             // 
@@ -8892,6 +8928,22 @@ namespace VideoCapture_CSharp_Demo
             this.cbVUMeter.Text = "Enable VU Meter";
             this.cbVUMeter.UseVisualStyleBackColor = true;
             // 
+            // peakMeterCtrl1
+            // 
+            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
+            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
+            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
+            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
+            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
+            this.peakMeterCtrl1.Location = new System.Drawing.Point(128, 11);
+            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
+            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
+            this.peakMeterCtrl1.TabIndex = 102;
+            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
+            // 
             // tabPage112
             // 
             this.tabPage112.Controls.Add(this.tbVUMeterBoost);
@@ -8959,6 +9011,48 @@ namespace VideoCapture_CSharp_Demo
             this.cbVUMeterPro.TabIndex = 108;
             this.cbVUMeterPro.Text = "Enable VU meter Pro";
             this.cbVUMeterPro.UseVisualStyleBackColor = true;
+            // 
+            // waveformPainter2
+            // 
+            this.waveformPainter2.Boost = 1F;
+            this.waveformPainter2.Location = new System.Drawing.Point(102, 106);
+            this.waveformPainter2.Name = "waveformPainter2";
+            this.waveformPainter2.Size = new System.Drawing.Size(270, 60);
+            this.waveformPainter2.TabIndex = 113;
+            this.waveformPainter2.Text = "waveformPainter2";
+            // 
+            // waveformPainter1
+            // 
+            this.waveformPainter1.Boost = 1F;
+            this.waveformPainter1.Location = new System.Drawing.Point(102, 40);
+            this.waveformPainter1.Name = "waveformPainter1";
+            this.waveformPainter1.Size = new System.Drawing.Size(270, 60);
+            this.waveformPainter1.TabIndex = 112;
+            this.waveformPainter1.Text = "waveformPainter1";
+            // 
+            // volumeMeter2
+            // 
+            this.volumeMeter2.Amplitude = 0F;
+            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter2.Boost = 1F;
+            this.volumeMeter2.Location = new System.Drawing.Point(52, 40);
+            this.volumeMeter2.MaxDb = 18F;
+            this.volumeMeter2.MinDb = -60F;
+            this.volumeMeter2.Name = "volumeMeter2";
+            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter2.TabIndex = 111;
+            // 
+            // volumeMeter1
+            // 
+            this.volumeMeter1.Amplitude = 0F;
+            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
+            this.volumeMeter1.Boost = 1F;
+            this.volumeMeter1.Location = new System.Drawing.Point(24, 40);
+            this.volumeMeter1.MaxDb = 18F;
+            this.volumeMeter1.MinDb = -60F;
+            this.volumeMeter1.Name = "volumeMeter1";
+            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
+            this.volumeMeter1.TabIndex = 107;
             // 
             // tabPage99
             // 
@@ -12965,6 +13059,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -13004,74 +13099,6 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.VideoCapture1_OnBarcodeDetected);
             this.VideoCapture1.OnBDAChannelFound += new System.EventHandler<VisioForge.Types.BDAChannelEventArgs>(this.VideoCapture1_OnBDAChannelFound);
             this.VideoCapture1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VideoCapture1_MouseDown);
-            // 
-            // peakMeterCtrl1
-            // 
-            this.peakMeterCtrl1.ColorHigh = System.Drawing.Color.Red;
-            this.peakMeterCtrl1.ColorHighBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(150)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.ColorMedium = System.Drawing.Color.Yellow;
-            this.peakMeterCtrl1.ColorMediumBack = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.ColorNormal = System.Drawing.Color.Green;
-            this.peakMeterCtrl1.ColorNormalBack = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(255)))), ((int)(((byte)(150)))));
-            this.peakMeterCtrl1.FalloffColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.peakMeterCtrl1.GridColor = System.Drawing.Color.Gainsboro;
-            this.peakMeterCtrl1.Location = new System.Drawing.Point(128, 11);
-            this.peakMeterCtrl1.Name = "peakMeterCtrl1";
-            this.peakMeterCtrl1.Size = new System.Drawing.Size(105, 61);
-            this.peakMeterCtrl1.TabIndex = 102;
-            this.peakMeterCtrl1.Text = "peakMeterCtrl1";
-            // 
-            // waveformPainter2
-            // 
-            this.waveformPainter2.Boost = 1F;
-            this.waveformPainter2.Location = new System.Drawing.Point(102, 106);
-            this.waveformPainter2.Name = "waveformPainter2";
-            this.waveformPainter2.Size = new System.Drawing.Size(270, 60);
-            this.waveformPainter2.TabIndex = 113;
-            this.waveformPainter2.Text = "waveformPainter2";
-            // 
-            // waveformPainter1
-            // 
-            this.waveformPainter1.Boost = 1F;
-            this.waveformPainter1.Location = new System.Drawing.Point(102, 40);
-            this.waveformPainter1.Name = "waveformPainter1";
-            this.waveformPainter1.Size = new System.Drawing.Size(270, 60);
-            this.waveformPainter1.TabIndex = 112;
-            this.waveformPainter1.Text = "waveformPainter1";
-            // 
-            // volumeMeter2
-            // 
-            this.volumeMeter2.Amplitude = 0F;
-            this.volumeMeter2.BackColor = System.Drawing.Color.LightGray;
-            this.volumeMeter2.Boost = 1F;
-            this.volumeMeter2.Location = new System.Drawing.Point(52, 40);
-            this.volumeMeter2.MaxDb = 18F;
-            this.volumeMeter2.MinDb = -60F;
-            this.volumeMeter2.Name = "volumeMeter2";
-            this.volumeMeter2.Size = new System.Drawing.Size(22, 126);
-            this.volumeMeter2.TabIndex = 111;
-            // 
-            // volumeMeter1
-            // 
-            this.volumeMeter1.Amplitude = 0F;
-            this.volumeMeter1.BackColor = System.Drawing.Color.LightGray;
-            this.volumeMeter1.Boost = 1F;
-            this.volumeMeter1.Location = new System.Drawing.Point(24, 40);
-            this.volumeMeter1.MaxDb = 18F;
-            this.volumeMeter1.MinDb = -60F;
-            this.volumeMeter1.Name = "volumeMeter1";
-            this.volumeMeter1.Size = new System.Drawing.Size(22, 126);
-            this.volumeMeter1.TabIndex = 107;
-            // 
-            // cbNetworkSSUsePipes
-            // 
-            this.cbNetworkSSUsePipes.AutoSize = true;
-            this.cbNetworkSSUsePipes.Location = new System.Drawing.Point(36, 86);
-            this.cbNetworkSSUsePipes.Name = "cbNetworkSSUsePipes";
-            this.cbNetworkSSUsePipes.Size = new System.Drawing.Size(182, 17);
-            this.cbNetworkSSUsePipes.TabIndex = 19;
-            this.cbNetworkSSUsePipes.Text = "Use pipes for FFMPEG streaming";
-            this.cbNetworkSSUsePipes.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -13137,6 +13164,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage59.PerformLayout();
             this.tabPage20.ResumeLayout(false);
             this.tabPage20.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGPUBlur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUContrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUDarkness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPULightness)).EndInit();
@@ -14357,7 +14385,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Label label317;
         private System.Windows.Forms.TabPage tabPage20;
         private System.Windows.Forms.CheckBox cbGPUOldMovie;
-        private System.Windows.Forms.CheckBox cbGPUBlur;
         private System.Windows.Forms.CheckBox cbGPUDeinterlace;
         private System.Windows.Forms.CheckBox cbGPUDenoise;
         private System.Windows.Forms.CheckBox cbGPUPixelate;
@@ -14502,6 +14529,9 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.CheckBox cbNetworkRTMPFFMPEGUsePipes;
         private System.Windows.Forms.CheckBox cbNetworkUDPFFMPEGUsePipes;
         private System.Windows.Forms.CheckBox cbNetworkSSUsePipes;
+        private System.Windows.Forms.CheckBox cbVideoEffectsGPUDX11;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TrackBar tbGPUBlur;
     }
 }
 

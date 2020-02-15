@@ -967,6 +967,9 @@ namespace Main_Demo
 
             // Video effects GPU
             MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
+            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
+                                                        ? VFGPUEffectsEngine.DirectX11
+                                                        : VFGPUEffectsEngine.DirectX9;
 
             // Motion detection
             if (cbMotDetEnabled.IsChecked == true)
@@ -2829,26 +2832,6 @@ namespace Main_Demo
             }
         }
 
-        private void cbGPUBlur_Click(object sender, RoutedEventArgs e)
-        {
-            IVFGPUVideoEffectBlur intf;
-            var effect = MediaPlayer1.Video_Effects_GPU_Get("Blur");
-            if (effect == null)
-            {
-                intf = new VFGPUVideoEffectBlur(cbGPUBlur.IsChecked == true, 50);
-                MediaPlayer1.Video_Effects_GPU_Add(intf);
-            }
-            else
-            {
-                intf = effect as IVFGPUVideoEffectBlur;
-                if (intf != null)
-                {
-                    intf.Enabled = cbGPUBlur.IsChecked == true;
-                    intf.Update();
-                }
-            }
-        }
-
         private void cbGPUOldMovie_Click(object sender, RoutedEventArgs e)
         {
             IVFGPUVideoEffectOldMovie intf;
@@ -3030,6 +3013,34 @@ namespace Main_Demo
                 MediaPlayer1.FilenamesOrURL.Remove(filename);
 
                 lbSourceFiles.Items.Remove(lbSourceFiles.SelectedItem);
+            }
+        }
+
+        private void cbVideoEffectsGPUDX11_Click(object sender, RoutedEventArgs e)
+        {
+            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
+                                                        ? VFGPUEffectsEngine.DirectX11
+                                                        : VFGPUEffectsEngine.DirectX9;
+        }
+
+        private void tbGPUBlur_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            IVFGPUVideoEffectBlur intf;
+            var effect = MediaPlayer1.Video_Effects_GPU_Get("Blur");
+            if (effect == null)
+            {
+                intf = new VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, (int)tbGPUBlur.Value);
+                MediaPlayer1.Video_Effects_GPU_Add(intf);
+            }
+            else
+            {
+                intf = effect as IVFGPUVideoEffectBlur;
+                if (intf != null)
+                {
+                    intf.Enabled = tbGPUBlur.Value > 0;
+                    intf.Value = (int)tbGPUBlur.Value;
+                    intf.Update();
+                }
             }
         }
     }

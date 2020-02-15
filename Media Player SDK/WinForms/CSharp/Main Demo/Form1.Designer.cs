@@ -234,9 +234,11 @@ namespace Media_Player_Demo
             this.rbDenoiseMosquito = new System.Windows.Forms.RadioButton();
             this.cbDenoise = new System.Windows.Forms.CheckBox();
             this.tabPage51 = new System.Windows.Forms.TabPage();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbGPUBlur = new System.Windows.Forms.TrackBar();
+            this.cbVideoEffectsGPUDX11 = new System.Windows.Forms.CheckBox();
             this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.cbGPUOldMovie = new System.Windows.Forms.CheckBox();
-            this.cbGPUBlur = new System.Windows.Forms.CheckBox();
             this.cbGPUDeinterlace = new System.Windows.Forms.CheckBox();
             this.cbGPUDenoise = new System.Windows.Forms.CheckBox();
             this.cbGPUPixelate = new System.Windows.Forms.CheckBox();
@@ -617,6 +619,7 @@ namespace Media_Player_Demo
             this.lbSourceFiles = new System.Windows.Forms.ListBox();
             this.mnPlaylist = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnPlaylistRemove = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnPlaylistRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.label30 = new System.Windows.Forms.Label();
             this.btAddFileToPlaylist = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
@@ -624,7 +627,6 @@ namespace Media_Player_Demo
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
             this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
-            this.mnPlaylistRemoveAll = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
             this.tabPage20.SuspendLayout();
             this.groupBox6.SuspendLayout();
@@ -673,6 +675,7 @@ namespace Media_Player_Demo
             this.tabPage69.SuspendLayout();
             this.tabPage59.SuspendLayout();
             this.tabPage51.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGPUBlur)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUContrast)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUDarkness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPULightness)).BeginInit();
@@ -2940,9 +2943,11 @@ namespace Media_Player_Demo
             // 
             // tabPage51
             // 
+            this.tabPage51.Controls.Add(this.label22);
+            this.tabPage51.Controls.Add(this.tbGPUBlur);
+            this.tabPage51.Controls.Add(this.cbVideoEffectsGPUDX11);
             this.tabPage51.Controls.Add(this.cbVideoEffectsGPUEnabled);
             this.tabPage51.Controls.Add(this.cbGPUOldMovie);
-            this.tabPage51.Controls.Add(this.cbGPUBlur);
             this.tabPage51.Controls.Add(this.cbGPUDeinterlace);
             this.tabPage51.Controls.Add(this.cbGPUDenoise);
             this.tabPage51.Controls.Add(this.cbGPUPixelate);
@@ -2963,6 +2968,38 @@ namespace Media_Player_Demo
             this.tabPage51.TabIndex = 9;
             this.tabPage51.Text = "Effects (GPU)";
             this.tabPage51.UseVisualStyleBackColor = true;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(10, 269);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(25, 13);
+            this.label22.TabIndex = 100;
+            this.label22.Text = "Blur";
+            // 
+            // tbGPUBlur
+            // 
+            this.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window;
+            this.tbGPUBlur.Location = new System.Drawing.Point(7, 285);
+            this.tbGPUBlur.Maximum = 30;
+            this.tbGPUBlur.Name = "tbGPUBlur";
+            this.tbGPUBlur.Size = new System.Drawing.Size(130, 45);
+            this.tbGPUBlur.TabIndex = 99;
+            this.tbGPUBlur.Scroll += new System.EventHandler(this.tbGPUBlur_Scroll);
+            // 
+            // cbVideoEffectsGPUDX11
+            // 
+            this.cbVideoEffectsGPUDX11.AutoSize = true;
+            this.cbVideoEffectsGPUDX11.Checked = true;
+            this.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbVideoEffectsGPUDX11.Location = new System.Drawing.Point(178, 16);
+            this.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11";
+            this.cbVideoEffectsGPUDX11.Size = new System.Drawing.Size(98, 17);
+            this.cbVideoEffectsGPUDX11.TabIndex = 98;
+            this.cbVideoEffectsGPUDX11.Text = "Use DirectX 11";
+            this.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true;
+            this.cbVideoEffectsGPUDX11.CheckedChanged += new System.EventHandler(this.cbVideoEffectsGPUDX11_CheckedChanged);
             // 
             // cbVideoEffectsGPUEnabled
             // 
@@ -2985,17 +3022,6 @@ namespace Media_Player_Demo
             this.cbGPUOldMovie.Text = "Old movie";
             this.cbGPUOldMovie.UseVisualStyleBackColor = true;
             this.cbGPUOldMovie.CheckedChanged += new System.EventHandler(this.cbGPUOldMovie_CheckedChanged);
-            // 
-            // cbGPUBlur
-            // 
-            this.cbGPUBlur.AutoSize = true;
-            this.cbGPUBlur.Location = new System.Drawing.Point(13, 240);
-            this.cbGPUBlur.Name = "cbGPUBlur";
-            this.cbGPUBlur.Size = new System.Drawing.Size(44, 17);
-            this.cbGPUBlur.TabIndex = 95;
-            this.cbGPUBlur.Text = "Blur";
-            this.cbGPUBlur.UseVisualStyleBackColor = true;
-            this.cbGPUBlur.CheckedChanged += new System.EventHandler(this.cbGPUBlur_CheckedChanged);
             // 
             // cbGPUDeinterlace
             // 
@@ -7049,14 +7075,20 @@ namespace Media_Player_Demo
             this.mnPlaylistRemove,
             this.mnPlaylistRemoveAll});
             this.mnPlaylist.Name = "mnPlaylist";
-            this.mnPlaylist.Size = new System.Drawing.Size(181, 70);
+            this.mnPlaylist.Size = new System.Drawing.Size(133, 48);
             this.mnPlaylist.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.mnPlaylist_ItemClicked);
             // 
             // mnPlaylistRemove
             // 
             this.mnPlaylistRemove.Name = "mnPlaylistRemove";
-            this.mnPlaylistRemove.Size = new System.Drawing.Size(180, 22);
+            this.mnPlaylistRemove.Size = new System.Drawing.Size(132, 22);
             this.mnPlaylistRemove.Text = "Remove";
+            // 
+            // mnPlaylistRemoveAll
+            // 
+            this.mnPlaylistRemoveAll.Name = "mnPlaylistRemoveAll";
+            this.mnPlaylistRemoveAll.Size = new System.Drawing.Size(132, 22);
+            this.mnPlaylistRemoveAll.Text = "Remove all";
             // 
             // label30
             // 
@@ -7180,6 +7212,7 @@ namespace Media_Player_Demo
             this.MediaPlayer1.TabIndex = 12;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
+            this.MediaPlayer1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -7209,12 +7242,6 @@ namespace Media_Player_Demo
             this.MediaPlayer1.OnMotionDetectionEx += new System.EventHandler<VisioForge.Types.MotionDetectionExEventArgs>(this.MediaPlayer1_OnObjectDetection);
             this.MediaPlayer1.OnBarcodeDetected += new System.EventHandler<VisioForge.Types.BarcodeEventArgs>(this.MediaPlayer1_OnBarcodeDetected);
             this.MediaPlayer1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MediaPlayer1_MouseClick);
-            // 
-            // mnPlaylistRemoveAll
-            // 
-            this.mnPlaylistRemoveAll.Name = "mnPlaylistRemoveAll";
-            this.mnPlaylistRemoveAll.Size = new System.Drawing.Size(180, 22);
-            this.mnPlaylistRemoveAll.Text = "Remove all";
             // 
             // Form1
             // 
@@ -7315,6 +7342,7 @@ namespace Media_Player_Demo
             this.tabPage59.PerformLayout();
             this.tabPage51.ResumeLayout(false);
             this.tabPage51.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbGPUBlur)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUContrast)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUDarkness)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPULightness)).EndInit();
@@ -7993,7 +8021,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbAudioChannelMapperEnabled;
         private System.Windows.Forms.TabPage tabPage51;
         private System.Windows.Forms.CheckBox cbGPUOldMovie;
-        private System.Windows.Forms.CheckBox cbGPUBlur;
         private System.Windows.Forms.CheckBox cbGPUDeinterlace;
         private System.Windows.Forms.CheckBox cbGPUDenoise;
         private System.Windows.Forms.CheckBox cbGPUPixelate;
@@ -8055,5 +8082,8 @@ namespace Media_Player_Demo
         private System.Windows.Forms.ContextMenuStrip mnPlaylist;
         private System.Windows.Forms.ToolStripMenuItem mnPlaylistRemove;
         private System.Windows.Forms.ToolStripMenuItem mnPlaylistRemoveAll;
+        private System.Windows.Forms.CheckBox cbVideoEffectsGPUDX11;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TrackBar tbGPUBlur;
     }
 }

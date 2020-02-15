@@ -685,7 +685,6 @@ Partial Class Form1
         Me.TabPage63 = New System.Windows.Forms.TabPage()
         Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
-        Me.cbGPUBlur = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
         Me.cbGPUDenoise = New System.Windows.Forms.CheckBox()
         Me.cbGPUPixelate = New System.Windows.Forms.CheckBox()
@@ -892,6 +891,7 @@ Partial Class Form1
         Me.label367 = New System.Windows.Forms.Label()
         Me.label366 = New System.Windows.Forms.Label()
         Me.TabPage108 = New System.Windows.Forms.TabPage()
+        Me.cbNetworkRTMPFFMPEGUsePipes = New System.Windows.Forms.CheckBox()
         Me.linkLabel11 = New System.Windows.Forms.LinkLabel()
         Me.LinkLabel8 = New System.Windows.Forms.LinkLabel()
         Me.rbNetworkRTMPFFMPEGCustom = New System.Windows.Forms.RadioButton()
@@ -900,6 +900,7 @@ Partial Class Form1
         Me.label368 = New System.Windows.Forms.Label()
         Me.label369 = New System.Windows.Forms.Label()
         Me.TabPage128 = New System.Windows.Forms.TabPage()
+        Me.cbNetworkUDPFFMPEGUsePipes = New System.Windows.Forms.CheckBox()
         Me.label314 = New System.Windows.Forms.Label()
         Me.label313 = New System.Windows.Forms.Label()
         Me.LinkLabel9 = New System.Windows.Forms.LinkLabel()
@@ -909,6 +910,7 @@ Partial Class Form1
         Me.rbNetworkUDPFFMPEGCustom = New System.Windows.Forms.RadioButton()
         Me.rbNetworkUDPFFMPEG = New System.Windows.Forms.RadioButton()
         Me.TabPage109 = New System.Windows.Forms.TabPage()
+        Me.cbNetworkSSUsePipes = New System.Windows.Forms.CheckBox()
         Me.linkLabel10 = New System.Windows.Forms.LinkLabel()
         Me.rbNetworkSSFFMPEGCustom = New System.Windows.Forms.RadioButton()
         Me.rbNetworkSSFFMPEGDefault = New System.Windows.Forms.RadioButton()
@@ -1117,9 +1119,9 @@ Partial Class Form1
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.cbNetworkRTMPFFMPEGUsePipes = New System.Windows.Forms.CheckBox()
-        Me.cbNetworkUDPFFMPEGUsePipes = New System.Windows.Forms.CheckBox()
-        Me.cbNetworkSSUsePipes = New System.Windows.Forms.CheckBox()
+        Me.label5 = New System.Windows.Forms.Label()
+        Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
+        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -1331,6 +1333,7 @@ Partial Class Form1
         Me.TabPage142.SuspendLayout
         Me.TabPage143.SuspendLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'fontDialog1
@@ -7978,9 +7981,11 @@ Partial Class Form1
         '
         'TabPage63
         '
+        Me.TabPage63.Controls.Add(Me.label5)
+        Me.TabPage63.Controls.Add(Me.tbGPUBlur)
+        Me.TabPage63.Controls.Add(Me.cbVideoEffectsGPUDX11)
         Me.TabPage63.Controls.Add(Me.cbVideoEffectsGPUEnabled)
         Me.TabPage63.Controls.Add(Me.cbGPUOldMovie)
-        Me.TabPage63.Controls.Add(Me.cbGPUBlur)
         Me.TabPage63.Controls.Add(Me.cbGPUDeinterlace)
         Me.TabPage63.Controls.Add(Me.cbGPUDenoise)
         Me.TabPage63.Controls.Add(Me.cbGPUPixelate)
@@ -8023,16 +8028,6 @@ Partial Class Form1
         Me.cbGPUOldMovie.TabIndex = 96
         Me.cbGPUOldMovie.Text = "Old movie"
         Me.cbGPUOldMovie.UseVisualStyleBackColor = true
-        '
-        'cbGPUBlur
-        '
-        Me.cbGPUBlur.AutoSize = true
-        Me.cbGPUBlur.Location = New System.Drawing.Point(14, 236)
-        Me.cbGPUBlur.Name = "cbGPUBlur"
-        Me.cbGPUBlur.Size = New System.Drawing.Size(44, 17)
-        Me.cbGPUBlur.TabIndex = 95
-        Me.cbGPUBlur.Text = "Blur"
-        Me.cbGPUBlur.UseVisualStyleBackColor = true
         '
         'cbGPUDeinterlace
         '
@@ -10196,6 +10191,16 @@ Partial Class Form1
         Me.TabPage108.Text = "RTMP"
         Me.TabPage108.UseVisualStyleBackColor = true
         '
+        'cbNetworkRTMPFFMPEGUsePipes
+        '
+        Me.cbNetworkRTMPFFMPEGUsePipes.AutoSize = true
+        Me.cbNetworkRTMPFFMPEGUsePipes.Location = New System.Drawing.Point(20, 77)
+        Me.cbNetworkRTMPFFMPEGUsePipes.Name = "cbNetworkRTMPFFMPEGUsePipes"
+        Me.cbNetworkRTMPFFMPEGUsePipes.Size = New System.Drawing.Size(73, 17)
+        Me.cbNetworkRTMPFFMPEGUsePipes.TabIndex = 19
+        Me.cbNetworkRTMPFFMPEGUsePipes.Text = "Use pipes"
+        Me.cbNetworkRTMPFFMPEGUsePipes.UseVisualStyleBackColor = true
+        '
         'linkLabel11
         '
         Me.linkLabel11.AutoSize = true
@@ -10282,6 +10287,16 @@ Partial Class Form1
         Me.TabPage128.TabIndex = 5
         Me.TabPage128.Text = "UDP"
         Me.TabPage128.UseVisualStyleBackColor = true
+        '
+        'cbNetworkUDPFFMPEGUsePipes
+        '
+        Me.cbNetworkUDPFFMPEGUsePipes.AutoSize = true
+        Me.cbNetworkUDPFFMPEGUsePipes.Location = New System.Drawing.Point(20, 83)
+        Me.cbNetworkUDPFFMPEGUsePipes.Name = "cbNetworkUDPFFMPEGUsePipes"
+        Me.cbNetworkUDPFFMPEGUsePipes.Size = New System.Drawing.Size(73, 17)
+        Me.cbNetworkUDPFFMPEGUsePipes.TabIndex = 20
+        Me.cbNetworkUDPFFMPEGUsePipes.Text = "Use pipes"
+        Me.cbNetworkUDPFFMPEGUsePipes.UseVisualStyleBackColor = true
         '
         'label314
         '
@@ -10377,6 +10392,16 @@ Partial Class Form1
         Me.TabPage109.TabIndex = 4
         Me.TabPage109.Text = "IIS Smooth Streaming"
         Me.TabPage109.UseVisualStyleBackColor = true
+        '
+        'cbNetworkSSUsePipes
+        '
+        Me.cbNetworkSSUsePipes.AutoSize = true
+        Me.cbNetworkSSUsePipes.Location = New System.Drawing.Point(42, 86)
+        Me.cbNetworkSSUsePipes.Name = "cbNetworkSSUsePipes"
+        Me.cbNetworkSSUsePipes.Size = New System.Drawing.Size(182, 17)
+        Me.cbNetworkSSUsePipes.TabIndex = 24
+        Me.cbNetworkSSUsePipes.Text = "Use pipes for FFMPEG streaming"
+        Me.cbNetworkSSUsePipes.UseVisualStyleBackColor = true
         '
         'linkLabel10
         '
@@ -12558,6 +12583,7 @@ Partial Class Form1
         Me.VideoCapture1.Video_Effects_AllowMultipleStreams = false
         Me.VideoCapture1.Video_Effects_Enabled = false
         Me.VideoCapture1.Video_Effects_GPU_Enabled = false
+        Me.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
         VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
@@ -12616,35 +12642,35 @@ Partial Class Form1
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = true
         '
-        'cbNetworkRTMPFFMPEGUsePipes
+        'label5
         '
-        Me.cbNetworkRTMPFFMPEGUsePipes.AutoSize = true
-        Me.cbNetworkRTMPFFMPEGUsePipes.Location = New System.Drawing.Point(20, 77)
-        Me.cbNetworkRTMPFFMPEGUsePipes.Name = "cbNetworkRTMPFFMPEGUsePipes"
-        Me.cbNetworkRTMPFFMPEGUsePipes.Size = New System.Drawing.Size(73, 17)
-        Me.cbNetworkRTMPFFMPEGUsePipes.TabIndex = 19
-        Me.cbNetworkRTMPFFMPEGUsePipes.Text = "Use pipes"
-        Me.cbNetworkRTMPFFMPEGUsePipes.UseVisualStyleBackColor = true
+        Me.label5.AutoSize = true
+        Me.label5.Location = New System.Drawing.Point(11, 269)
+        Me.label5.Name = "label5"
+        Me.label5.Size = New System.Drawing.Size(25, 13)
+        Me.label5.TabIndex = 100
+        Me.label5.Text = "Blur"
         '
-        'cbNetworkUDPFFMPEGUsePipes
+        'tbGPUBlur
         '
-        Me.cbNetworkUDPFFMPEGUsePipes.AutoSize = true
-        Me.cbNetworkUDPFFMPEGUsePipes.Location = New System.Drawing.Point(20, 83)
-        Me.cbNetworkUDPFFMPEGUsePipes.Name = "cbNetworkUDPFFMPEGUsePipes"
-        Me.cbNetworkUDPFFMPEGUsePipes.Size = New System.Drawing.Size(73, 17)
-        Me.cbNetworkUDPFFMPEGUsePipes.TabIndex = 20
-        Me.cbNetworkUDPFFMPEGUsePipes.Text = "Use pipes"
-        Me.cbNetworkUDPFFMPEGUsePipes.UseVisualStyleBackColor = true
+        Me.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window
+        Me.tbGPUBlur.Location = New System.Drawing.Point(8, 285)
+        Me.tbGPUBlur.Maximum = 30
+        Me.tbGPUBlur.Name = "tbGPUBlur"
+        Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
+        Me.tbGPUBlur.TabIndex = 99
         '
-        'cbNetworkSSUsePipes
+        'cbVideoEffectsGPUDX11
         '
-        Me.cbNetworkSSUsePipes.AutoSize = true
-        Me.cbNetworkSSUsePipes.Location = New System.Drawing.Point(42, 86)
-        Me.cbNetworkSSUsePipes.Name = "cbNetworkSSUsePipes"
-        Me.cbNetworkSSUsePipes.Size = New System.Drawing.Size(182, 17)
-        Me.cbNetworkSSUsePipes.TabIndex = 24
-        Me.cbNetworkSSUsePipes.Text = "Use pipes for FFMPEG streaming"
-        Me.cbNetworkSSUsePipes.UseVisualStyleBackColor = true
+        Me.cbVideoEffectsGPUDX11.AutoSize = true
+        Me.cbVideoEffectsGPUDX11.Checked = true
+        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(179, 16)
+        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
+        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
+        Me.cbVideoEffectsGPUDX11.TabIndex = 98
+        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
+        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -12985,6 +13011,7 @@ Partial Class Form1
         Me.TabPage143.ResumeLayout(false)
         Me.TabPage143.PerformLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 
@@ -13916,7 +13943,6 @@ End Sub
     Private WithEvents label313 As Label
     Friend WithEvents TabPage63 As TabPage
     Private WithEvents cbGPUOldMovie As CheckBox
-    Private WithEvents cbGPUBlur As CheckBox
     Private WithEvents cbGPUDeinterlace As CheckBox
     Private WithEvents cbGPUDenoise As CheckBox
     Private WithEvents cbGPUPixelate As CheckBox
@@ -14079,4 +14105,7 @@ End Sub
     Private WithEvents cbNetworkRTMPFFMPEGUsePipes As CheckBox
     Private WithEvents cbNetworkUDPFFMPEGUsePipes As CheckBox
     Private WithEvents cbNetworkSSUsePipes As CheckBox
+    Private WithEvents label5 As Label
+    Private WithEvents tbGPUBlur As TrackBar
+    Private WithEvents cbVideoEffectsGPUDX11 As CheckBox
 End Class

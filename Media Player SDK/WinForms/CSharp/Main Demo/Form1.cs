@@ -821,7 +821,7 @@ namespace Media_Player_Demo
             }
         }
 
-        static void ShowOnScreen(Form window, int screenNumber)
+        private static void ShowOnScreen(Form window, int screenNumber)
         {
             if (screenNumber >= 0 && screenNumber < Screen.AllScreens.Length)
             {
@@ -1319,7 +1319,10 @@ namespace Media_Player_Demo
 
             // Video effects GPU
             MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
-            
+            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
+                                                        ? VFGPUEffectsEngine.DirectX11
+                                                        : VFGPUEffectsEngine.DirectX9;
+
             // Motion detection
             if (cbMotDetEnabled.Checked)
             {
@@ -1683,7 +1686,7 @@ namespace Media_Player_Demo
             foreach (var form in multiscreenWindows)
             {
                 form.Close();
-                //form.Dispose();
+                // form.Dispose();
             }
 
             multiscreenWindows.Clear();
@@ -1979,10 +1982,10 @@ namespace Media_Player_Demo
             if (cbMotionDetectionEx.Checked)
             {
                 MediaPlayer1.Motion_DetectionEx = new MotionDetectionExSettings
-                {
-                    ProcessorType = (MotionProcessorType) rbMotionDetectionExProcessor.SelectedIndex,
-                    DetectorType = (MotionDetectorType) rbMotionDetectionExDetector.SelectedIndex
-                };
+                                                      {
+                                                          ProcessorType = (MotionProcessorType)rbMotionDetectionExProcessor.SelectedIndex,
+                                                          DetectorType = (MotionDetectorType)rbMotionDetectionExDetector.SelectedIndex
+                                                      };
             }
             else
             {
@@ -2805,7 +2808,6 @@ namespace Media_Player_Demo
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-
         }
 
         private void btReversePlaybackPrevFrame_Click(object sender, EventArgs e)
@@ -3042,26 +3044,6 @@ namespace Media_Player_Demo
             }
         }
 
-        private void cbGPUBlur_CheckedChanged(object sender, EventArgs e)
-        {
-            IVFGPUVideoEffectBlur intf;
-            var effect = MediaPlayer1.Video_Effects_GPU_Get("Blur");
-            if (effect == null)
-            {
-                intf = new VFGPUVideoEffectBlur(cbGPUBlur.Checked, 50);
-                MediaPlayer1.Video_Effects_GPU_Add(intf);
-            }
-            else
-            {
-                intf = effect as IVFGPUVideoEffectBlur;
-                if (intf != null)
-                {
-                    intf.Enabled = cbGPUBlur.Checked;
-                    intf.Update();
-                }
-            }
-        }
-
         private void cbGPUOldMovie_CheckedChanged(object sender, EventArgs e)
         {
             IVFGPUVideoEffectOldMovie intf;
@@ -3153,7 +3135,6 @@ namespace Media_Player_Demo
                 rbEVR.Checked = true;
             }
             else if (!rbVMR9.Enabled)
-
             {
                 rbVR.Checked = true;
             }
@@ -3196,7 +3177,7 @@ namespace Media_Player_Demo
             if (lbTextLogos.SelectedItem != null)
             {
                 var dlg = new TextLogoSettingsDialog();
-                var effect = MediaPlayer1.Video_Effects_Get((string) lbTextLogos.SelectedItem);
+                var effect = MediaPlayer1.Video_Effects_Get((string)lbTextLogos.SelectedItem);
                 dlg.Attach(effect);
 
                 dlg.ShowDialog(this);
@@ -3290,11 +3271,12 @@ namespace Media_Player_Demo
 
         private void MediaPlayer1_OnMIDIFileInfo(object sender, MIDIInfoEventArgs e)
         {
-            BeginInvoke((Action) (() =>
-            {
-                edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
-                edTags.Text += e.Info.ToString();
-            }));
+            BeginInvoke(
+                (Action)(() =>
+                                {
+                                    edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
+                                    edTags.Text += e.Info.ToString();
+                                }));
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -3344,6 +3326,34 @@ namespace Media_Player_Demo
             {
                 MediaPlayer1.FilenamesOrURL.Clear();
                 lbSourceFiles.Items.Clear();
+            }
+        }
+
+        private void cbVideoEffectsGPUDX11_CheckedChanged(object sender, EventArgs e)
+        {
+            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
+                                                        ? VFGPUEffectsEngine.DirectX11
+                                                        : VFGPUEffectsEngine.DirectX9;
+        }
+
+        private void tbGPUBlur_Scroll(object sender, EventArgs e)
+        {
+            IVFGPUVideoEffectBlur intf;
+            var effect = MediaPlayer1.Video_Effects_GPU_Get("Blur");
+            if (effect == null)
+            {
+                intf = new VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, tbGPUBlur.Value);
+                MediaPlayer1.Video_Effects_GPU_Add(intf);
+            }
+            else
+            {
+                intf = effect as IVFGPUVideoEffectBlur;
+                if (intf != null)
+                {
+                    intf.Enabled = tbGPUBlur.Value > 0;
+                    intf.Value = tbGPUBlur.Value;
+                    intf.Update();
+                }
             }
         }
     }

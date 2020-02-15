@@ -240,9 +240,11 @@
                                 <CheckBox Content="Pixelate" Height="16" HorizontalAlignment="Left" Margin="196,179,0,0" x:Name="cbGPUPixelate" VerticalAlignment="Top" Click="cbGPUPixelate_Click" />
                                 <CheckBox Content="Denoise" Height="16" HorizontalAlignment="Left" Margin="28,200,0,0" x:Name="cbGPUDenoise" VerticalAlignment="Top" Click="cbGPUDenoise_Click"  />
                                 <CheckBox Content="Deinterlace" Height="16" HorizontalAlignment="Left" Margin="196,200,0,0" x:Name="cbGPUDeinterlace" VerticalAlignment="Top" Click="cbGPUDeinterlace_Click" />
-                                <CheckBox Content="Blur" Height="16" HorizontalAlignment="Left" Margin="28,221,0,0" x:Name="cbGPUBlur" VerticalAlignment="Top" Click="cbGPUBlur_Click"  />
                                 <CheckBox Content="Old movie" Height="16" HorizontalAlignment="Left" Margin="196,221,0,0" x:Name="cbGPUOldMovie" VerticalAlignment="Top" Click="cbGPUOldMovie_Click" />
                                 <CheckBox x:Name="cbVideoEffectsGPUEnabled" Content="Enabled" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,280,0,0" Maximum="30" x:Name="tbGPUBlur" VerticalAlignment="Top" Width="100" ValueChanged="tbGPUBlur_ValueChanged" />
+                                <Label Content="Blur" Height="28" HorizontalAlignment="Left" Margin="49,253,0,0" VerticalAlignment="Top" Width="60" />
+                                <CheckBox x:Name="cbVideoEffectsGPUDX11" Content="Use DirectX 11" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="96" IsChecked="True" Click="cbVideoEffectsGPUDX11_Click" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Chroma key" Name="tabItem35">

@@ -259,9 +259,11 @@
                                 <CheckBox Content="Pixelate" Height="16" HorizontalAlignment="Left" Margin="147,179,0,0" x:Name="cbGPUPixelate" VerticalAlignment="Top" Click="cbGPUPixelate_Click" Grid.Column="1" />
                                 <CheckBox Content="Denoise" Height="16" HorizontalAlignment="Left" Margin="28,200,0,0" x:Name="cbGPUDenoise" VerticalAlignment="Top" Click="cbGPUDenoise_Click" Grid.ColumnSpan="2"  />
                                 <CheckBox Content="Deinterlace" Height="16" HorizontalAlignment="Left" Margin="147,200,0,0" x:Name="cbGPUDeinterlace" VerticalAlignment="Top" Click="cbGPUDeinterlace_Click" Grid.Column="1" />
-                                <CheckBox Content="Blur" Height="16" HorizontalAlignment="Left" Margin="28,221,0,0" x:Name="cbGPUBlur" VerticalAlignment="Top" Click="cbGPUBlur_Click" Grid.ColumnSpan="2"  />
                                 <CheckBox Content="Old movie" Height="16" HorizontalAlignment="Left" Margin="147,221,0,0" x:Name="cbGPUOldMovie" VerticalAlignment="Top" Click="cbGPUOldMovie_Click" Grid.Column="1" />
                                 <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="cbVideoEffectsGPUEnabled" VerticalAlignment="Top" Grid.ColumnSpan="2"  />
+                                <CheckBox x:Name="cbVideoEffectsGPUDX11" Content="Use DirectX 11" HorizontalAlignment="Left" Margin="214,10,0,0" VerticalAlignment="Top" Width="96" Grid.Column="1" IsChecked="True" Click="cbVideoEffectsGPUDX11_Click"/>
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="28,289,0,0" Maximum="30" x:Name="tbGPUBlur" VerticalAlignment="Top" Width="100" ValueChanged="tbGPUBlur_ValueChanged" Grid.ColumnSpan="2" />
+                                <Label Content="Blur" Height="28" HorizontalAlignment="Left" Margin="49,262,0,0" VerticalAlignment="Top" Width="60" Grid.ColumnSpan="2" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Chroma key" x:Name="tabItem26">

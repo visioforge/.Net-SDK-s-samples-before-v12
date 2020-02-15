@@ -41,7 +41,7 @@ namespace VideoCapture_CSharp_Demo
         private MFSettingsDialog mp4v11SettingsDialog;
 
         private MFSettingsDialog mpegTSSettingsDialog;
-        
+
         private MFSettingsDialog movSettingsDialog;
 
         private MP4v10SettingsDialog mp4V10SettingsDialog;
@@ -75,9 +75,9 @@ namespace VideoCapture_CSharp_Demo
         private GIFSettingsDialog gifSettingsDialog;
 
 #if !NETCOREAPP
-           private ONVIFControl onvifControl;     
+        private ONVIFControl onvifControl;
 #endif
-        
+
         private ONVIFPTZRanges onvifPtzRanges;
 
         private float onvifPtzX;
@@ -732,7 +732,7 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.Video_Renderer.Zoom_Ratio = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftX = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftY = 0;
-            
+
             VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH");
 
             VideoCapture1.Video_Effects_Clear();
@@ -1090,21 +1090,21 @@ namespace VideoCapture_CSharp_Demo
                             break;
                         }
                     case 26:
-                    {
-                        var tsOutput = new VFMPEGTSOutput();
-                        SetMPEGTSOutput(ref tsOutput);
-                        VideoCapture1.Output_Format = tsOutput;
+                        {
+                            var tsOutput = new VFMPEGTSOutput();
+                            SetMPEGTSOutput(ref tsOutput);
+                            VideoCapture1.Output_Format = tsOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 27:
-                    {
-                        var movOutput = new VFMOVOutput();
-                        SetMOVOutput(ref movOutput);
-                        VideoCapture1.Output_Format = movOutput;
+                        {
+                            var movOutput = new VFMOVOutput();
+                            SetMOVOutput(ref movOutput);
+                            VideoCapture1.Output_Format = movOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                 }
             }
 
@@ -1118,6 +1118,9 @@ namespace VideoCapture_CSharp_Demo
 
             // Video effects GPU
             VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
+            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
+                                                         ? VFGPUEffectsEngine.DirectX11
+                                                         : VFGPUEffectsEngine.DirectX9;
 
             // Virtual camera output
             VideoCapture1.Virtual_Camera_Output_Enabled = cbVirtualCamera.Checked;
@@ -1171,9 +1174,7 @@ namespace VideoCapture_CSharp_Demo
                 VideoCapture1.Audio_Channel_Mapper = new AudioChannelMapperSettings
                 {
                     Routes = audioChannelMapperItems.ToArray(),
-                    OutputChannelsCount =
-                                                                 Convert.ToInt32(
-                                                                     edAudioChannelMapperOutputChannels.Text)
+                    OutputChannelsCount = Convert.ToInt32(edAudioChannelMapperOutputChannels.Text)
                 };
             }
             else
@@ -3314,7 +3315,7 @@ namespace VideoCapture_CSharp_Demo
                 cbPIPDevices.Items.Add(cbPIPDevice.Text);
             }
         }
-        
+
         private void btOSDClearLayers_Click(object sender, EventArgs e)
         {
             VideoCapture1.OSD_Layers_Clear();
@@ -3460,7 +3461,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-#region Barcode detector
+        #region Barcode detector
 
         public delegate void BarcodeDelegate(BarcodeEventArgs value);
 
@@ -3485,7 +3486,7 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
-#endregion
+        #endregion
 
         public delegate void MotionDelegate(MotionDetectionEventArgs e);
 
@@ -3984,7 +3985,7 @@ namespace VideoCapture_CSharp_Demo
             }));
         }
 
-#region VU Meter
+        #region VU Meter
 
         public delegate void VUDelegate(VUMeterEventArgs e);
 
@@ -4003,7 +4004,7 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke(new VUDelegate(VUDelegateMethod), e);
         }
 
-#endregion
+        #endregion
 
         private delegate void AFMotionDelegate(float level);
 
@@ -4493,7 +4494,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-#region Full screen
+        #region Full screen
 
         private bool fullScreen;
 
@@ -4531,7 +4532,7 @@ namespace VideoCapture_CSharp_Demo
                 controlWidth = VideoCapture1.Width;
                 controlHeight = VideoCapture1.Height;
 
-               // Debug.WriteLine($"ON fullscreen: {controlLeft}x{controlTop} | {controlWidth}x{controlHeight}");
+                // Debug.WriteLine($"ON fullscreen: {controlLeft}x{controlTop} | {controlWidth}x{controlHeight}");
 
                 // resizing window
                 Left = 0;
@@ -4584,7 +4585,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-#endregion
+        #endregion
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -4608,17 +4609,17 @@ namespace VideoCapture_CSharp_Demo
 
         private void VideoCapture1_OnAudioVUMeterProVolume(object sender, AudioLevelEventArgs e)
         {
-            BeginInvoke((Action) (() =>
-            {
-                volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
-                waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
+            BeginInvoke((Action)(() =>
+           {
+               volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
+               waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
 
-                if (e.ChannelLevelsDb.Length > 1)
-                {
-                    volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
-                    waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
-                }
-            }));
+               if (e.ChannelLevelsDb.Length > 1)
+               {
+                   volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
+                   waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
+               }
+           }));
         }
 
         private void tbVUMeterAmplification_Scroll(object sender, EventArgs e)
@@ -4980,7 +4981,7 @@ namespace VideoCapture_CSharp_Demo
                 }
             }));
         }
-        
+
         private delegate void FFMPEGInfoDelegate(string message);
 
         private void FFMPEGInfoDelegateMethod(string message)
@@ -5259,26 +5260,6 @@ namespace VideoCapture_CSharp_Demo
                 if (intf != null)
                 {
                     intf.Enabled = cbGPUDeinterlace.Checked;
-                    intf.Update();
-                }
-            }
-        }
-
-        private void cbGPUBlur_CheckedChanged(object sender, EventArgs e)
-        {
-            IVFGPUVideoEffectBlur intf;
-            var effect = VideoCapture1.Video_Effects_GPU_Get("Blur");
-            if (effect == null)
-            {
-                intf = new VFGPUVideoEffectBlur(cbGPUBlur.Checked, 50);
-                VideoCapture1.Video_Effects_GPU_Add(intf);
-            }
-            else
-            {
-                intf = effect as IVFGPUVideoEffectBlur;
-                if (intf != null)
-                {
-                    intf.Enabled = cbGPUBlur.Checked;
                     intf.Update();
                 }
             }
@@ -6177,7 +6158,7 @@ namespace VideoCapture_CSharp_Demo
                 MessageBox.Show(this, "Please select OSD layer.");
             }
         }
-        
+
         private void btOSDRenderLayers_Click(object sender, EventArgs e)
         {
             VideoCapture1.OSD_Layers_Render();
@@ -6205,6 +6186,34 @@ namespace VideoCapture_CSharp_Demo
             windowCaptureForm.Hide();
 
             lbScreenSourceWindowText.Text = e.Caption;
+        }
+
+        private void cbVideoEffectsGPUDX11_CheckedChanged(object sender, EventArgs e)
+        {
+            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
+                                                         ? VFGPUEffectsEngine.DirectX11
+                                                         : VFGPUEffectsEngine.DirectX9;
+        }
+
+        private void tbGPUBlur_Scroll(object sender, EventArgs e)
+        {
+            IVFGPUVideoEffectBlur intf;
+            var effect = VideoCapture1.Video_Effects_GPU_Get("Blur");
+            if (effect == null)
+            {
+                intf = new VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, tbGPUBlur.Value);
+                VideoCapture1.Video_Effects_GPU_Add(intf);
+            }
+            else
+            {
+                intf = effect as IVFGPUVideoEffectBlur;
+                if (intf != null)
+                {
+                    intf.Enabled = tbGPUBlur.Value > 0;
+                    intf.Value = tbGPUBlur.Value;
+                    intf.Update();
+                }
+            }
         }
     }
 }

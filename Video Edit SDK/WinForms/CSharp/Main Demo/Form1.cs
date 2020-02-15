@@ -1022,6 +1022,9 @@ namespace VideoEdit_CS_Demo
 
             // Video effects GPU
             VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
+            VideoEdit1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
+                                                      ? VFGPUEffectsEngine.DirectX11
+                                                      : VFGPUEffectsEngine.DirectX9;
 
             // Decklink output
             ConfigureDecklinkOutput();
@@ -2853,26 +2856,6 @@ namespace VideoEdit_CS_Demo
             }
         }
 
-        private void cbGPUBlur_CheckedChanged(object sender, EventArgs e)
-        {
-            IVFGPUVideoEffectBlur intf;
-            var effect = VideoEdit1.Video_Effects_GPU_Get("Blur");
-            if (effect == null)
-            {
-                intf = new VFGPUVideoEffectBlur(cbGPUBlur.Checked, 50);
-                VideoEdit1.Video_Effects_GPU_Add(intf);
-            }
-            else
-            {
-                intf = effect as IVFGPUVideoEffectBlur;
-                if (intf != null)
-                {
-                    intf.Enabled = cbGPUBlur.Checked;
-                    intf.Update();
-                }
-            }
-        }
-
         private void cbGPUOldMovie_CheckedChanged(object sender, EventArgs e)
         {
             IVFGPUVideoEffectOldMovie intf;
@@ -3383,6 +3366,34 @@ namespace VideoEdit_CS_Demo
                 Convert.ToInt32(edFadeOutStartTime.Text),
                 Convert.ToInt32(edFadeOutStopTime.Text),
                 false);
+        }
+
+        private void cbVideoEffectsGPUDX11_CheckedChanged(object sender, EventArgs e)
+        {
+            VideoEdit1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
+                                                      ? VFGPUEffectsEngine.DirectX11
+                                                      : VFGPUEffectsEngine.DirectX9;
+        }
+
+        private void tbGPUBlur_Scroll(object sender, EventArgs e)
+        {
+            IVFGPUVideoEffectBlur intf;
+            var effect = VideoEdit1.Video_Effects_GPU_Get("Blur");
+            if (effect == null)
+            {
+                intf = new VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, tbGPUBlur.Value);
+                VideoEdit1.Video_Effects_GPU_Add(intf);
+            }
+            else
+            {
+                intf = effect as IVFGPUVideoEffectBlur;
+                if (intf != null)
+                {
+                    intf.Enabled = tbGPUBlur.Value > 0;
+                    intf.Value = tbGPUBlur.Value;
+                    intf.Update();
+                }
+            }
         }
     }
 }

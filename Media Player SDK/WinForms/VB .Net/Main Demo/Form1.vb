@@ -1332,6 +1332,11 @@ Public Class Form1
 
         ' Video effects GPU
         MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
+        If cbVideoEffectsGPUDX11.Checked Then
+            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
+        Else
+            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
+        End If
 
         ' Video effects
         AddVideoEffects()
@@ -2958,7 +2963,6 @@ Public Class Form1
     End Sub
 
     Private Sub cbGPUDeinterlace_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUDeinterlace.CheckedChanged
-
         Dim intf As IVFGPUVideoEffectDeinterlaceBlend
         Dim effect = MediaPlayer1.Video_Effects_GPU_Get("DeinterlaceBlend")
         If (IsNothing(effect)) Then
@@ -2971,28 +2975,9 @@ Public Class Form1
                 intf.Update()
             End If
         End If
-
-    End Sub
-
-    Private Sub cbGPUBlur_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUBlur.CheckedChanged
-
-        Dim intf As IVFGPUVideoEffectBlur
-        Dim effect = MediaPlayer1.Video_Effects_GPU_Get("Blur")
-        If (IsNothing(effect)) Then
-            intf = New VFGPUVideoEffectBlur(cbGPUBlur.Checked, 50)
-            MediaPlayer1.Video_Effects_GPU_Add(intf)
-        Else
-            intf = effect
-            If (not IsNothing(intf)) Then
-                intf.Enabled = cbGPUBlur.Checked
-                intf.Update()
-            End If
-        End If
-
     End Sub
 
     Private Sub cbGPUOldMovie_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUOldMovie.CheckedChanged
-
         Dim intf As IVFGPUVideoEffectOldMovie
         Dim effect = MediaPlayer1.Video_Effects_GPU_Get("OldMovie")
         If (IsNothing(effect)) Then
@@ -3005,33 +2990,25 @@ Public Class Form1
                 intf.Update()
             End If
         End If
-
     End Sub
 
     Private Sub btReversePlaybackPrevFrame_Click(sender As Object, e As EventArgs) Handles btReversePlaybackPrevFrame.Click
-
         MediaPlayer1.ReversePlayback_PreviousFrame()
-
     End Sub
 
     Private Sub btReversePlaybackNextFrame_Click(sender As Object, e As EventArgs) Handles btReversePlaybackNextFrame.Click
-
         MediaPlayer1.ReversePlayback_NextFrame()
-
     End Sub
 
     Private Sub btPreviousFrame_Click(sender As Object, e As EventArgs) Handles btPreviousFrame.Click
-
         MediaPlayer1.PreviousFrame()
-
     End Sub
 
     Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
         MediaPlayer1.Width = Width - MediaPlayer1.Left - 30
         MediaPlayer1.Height = Height - MediaPlayer1.Top - 260
     End Sub
-
-
+    
     Private Sub cbFlipX_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipX.CheckedChanged
         Dim flip As IVFVideoEffectFlipDown
         Dim effect = MediaPlayer1.Video_Effects_Get("FlipDown")
@@ -3168,6 +3145,30 @@ Public Class Form1
         ElseIf (e.ClickedItem.Name = "mnPlaylistRemoveAll") Then
             MediaPlayer1.FilenamesOrURL.Clear()
             lbSourceFiles.Items.Clear()
+        End If
+    End Sub
+
+    Private Sub cbVideoEffectsGPUDX11_CheckedChanged(sender As Object, e As EventArgs) Handles cbVideoEffectsGPUDX11.CheckedChanged
+        If cbVideoEffectsGPUDX11.Checked Then
+            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
+        Else
+            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
+        End If
+    End Sub
+
+    Private Sub tbGPUBlur_Scroll(sender As Object, e As EventArgs) Handles tbGPUBlur.Scroll
+        Dim intf As IVFGPUVideoEffectBlur
+        Dim effect = MediaPlayer1.Video_Effects_GPU_Get("Blur")
+        If (effect Is Nothing) Then
+            intf = New VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, tbGPUBlur.Value)
+            MediaPlayer1.Video_Effects_GPU_Add(intf)
+        Else
+            intf = effect
+            If (intf IsNot Nothing) Then
+                intf.Enabled = tbGPUBlur.Value > 0
+                intf.Value = tbGPUBlur.Value
+                intf.Update()
+            End If
         End If
     End Sub
 End Class

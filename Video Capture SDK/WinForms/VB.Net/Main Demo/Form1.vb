@@ -936,6 +936,11 @@ Public Class Form1
 
         ' Videoeffects GPU
         VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
+        If cbVideoEffectsGPUDX11.Checked Then
+            VideoCapture1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
+        Else
+            VideoCapture1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
+        End If
 
         ' Barcode detection
         VideoCapture1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
@@ -4459,23 +4464,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbGPUBlur_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUBlur.CheckedChanged
-
-        Dim intf As IVFGPUVideoEffectBlur
-        Dim effect = VideoCapture1.Video_Effects_GPU_Get("Blur")
-        If (IsNothing(effect)) Then
-            intf = New VFGPUVideoEffectBlur(cbGPUBlur.Checked, 50)
-            VideoCapture1.Video_Effects_GPU_Add(intf)
-        Else
-            intf = effect
-            If (Not IsNothing(intf)) Then
-                intf.Enabled = cbGPUBlur.Checked
-                intf.Update()
-            End If
-        End If
-
-    End Sub
-
     Private Sub cbGPUOldMovie_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUOldMovie.CheckedChanged
 
         Dim intf As IVFGPUVideoEffectOldMovie
@@ -4493,14 +4481,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub TabPage26_Click(sender As Object, e As EventArgs) Handles TabPage26.Click
-
-    End Sub
-
     Private Sub btShowIPCamDatabase_Click(sender As Object, e As EventArgs) Handles btShowIPCamDatabase.Click
-
         IPCameraDB.IPCameraDB.ShowWindow()
-
     End Sub
 
     Private Sub btONVIFConnect_Click(sender As Object, e As EventArgs) Handles btONVIFConnect.Click
@@ -5195,6 +5177,30 @@ Public Class Form1
         windowCaptureForm.Hide()
 
         lbScreenSourceWindowText.Text = e.Caption
+    End Sub
+
+    Private Sub tbGPUBlur_Scroll(sender As Object, e As EventArgs) Handles tbGPUBlur.Scroll
+        Dim intf As IVFGPUVideoEffectBlur
+        Dim effect = VideoCapture1.Video_Effects_GPU_Get("Blur")
+        If (effect Is Nothing) Then
+            intf = New VFGPUVideoEffectBlur(tbGPUBlur.Value > 0, tbGPUBlur.Value)
+            VideoCapture1.Video_Effects_GPU_Add(intf)
+        Else
+            intf = effect
+            If (intf IsNot Nothing) Then
+                intf.Enabled = tbGPUBlur.Value > 0
+                intf.Value = tbGPUBlur.Value
+                intf.Update()
+            End If
+        End If
+    End Sub
+
+    Private Sub cbVideoEffectsGPUDX11_CheckedChanged(sender As Object, e As EventArgs) Handles cbVideoEffectsGPUDX11.CheckedChanged
+        If cbVideoEffectsGPUDX11.Checked Then
+            VideoCapture1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
+        Else
+            VideoCapture1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
+        End If
     End Sub
 End Class
 
