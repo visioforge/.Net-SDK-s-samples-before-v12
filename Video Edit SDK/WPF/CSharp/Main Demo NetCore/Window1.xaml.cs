@@ -2132,13 +2132,8 @@ namespace Main_Demo
 
                 // resizing control
                 VideoEdit1.Margin = new Thickness(0);
-                VideoEdit1.Width = Width + 10;
-                VideoEdit1.Height = Height + 10;
-
-                VideoEdit1.Width = Width + 10;
-                VideoEdit1.Height = Height + 10;
-
-                VideoEdit1.RenderSize = new System.Windows.Size(Width + 10, Height + 10);
+                VideoEdit1.Width = Screen.AllScreens[0].Bounds.Width;
+                VideoEdit1.Height = Screen.AllScreens[0].Bounds.Height;
 
                 VideoEdit1.Video_Renderer_Update();
             }

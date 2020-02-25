@@ -6,6 +6,8 @@
     Title="Video Capture SDK .Net - Main Demo" Height="845" Width="975" Loaded="Form1_Load"        
         Closed="Window_Closed" Icon="visioforge_main_icon.ico">
     <Grid>
+        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,0,25,48" VerticalAlignment="Bottom"/>
+
         <TabControl Height="638" HorizontalAlignment="Left" Margin="12,12,0,0" x:Name="tabControl1" VerticalAlignment="Top" Width="382">
             <TabItem Header="Capture" x:Name="tabItem1">
                 <Grid>
@@ -995,40 +997,40 @@
                         </TabItem>
                         <TabItem Header="Camera control" >
                             <Grid>
-                                <Label Margin="13,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Many other parameters available using API</Label>
-                                <Button Name="btCCFocusApply" Height="23" Width="75" Margin="227,214,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCFocusApply_Click">Apply</Button>
-                                <Button Name="btCCZoomApply" Height="23" Width="75" Margin="15,214,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCZoomApply_Click" >Apply</Button>
-                                <CheckBox Name="cbCCFocusRelative" Height="17" Width="65" Margin="338,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Relative</CheckBox>
-                                <CheckBox Name="cbCCFocusManual" Height="17" Width="61" Margin="275,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Manual</CheckBox>
-                                <CheckBox Name="cbCCFocusAuto" Height="17" Width="48" Margin="227,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Auto</CheckBox>
-                                <Label Name="lbCCFocusCurrent" Margin="345,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Current = 40</Label>
-                                <Label Name="lbCCFocusMax" Margin="282,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Max = 100</Label>
-                                <Label Name="lbCCFocusMin" Margin="234,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Min = 1</Label>
-                                <Label Name="label4" Margin="225,144,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Focus</Label>
-                                <CheckBox Name="cbCCZoomRelative" Height="17" Width="65" Margin="126,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Relative</CheckBox>
-                                <CheckBox Name="cbCCZoomManual" Height="17" Width="61" Margin="63,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Manual</CheckBox>
-                                <CheckBox Name="cbCCZoomAuto" Height="17" Width="48" Margin="15,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Auto</CheckBox>
-                                <Label Name="lbCCZoomCurrent" Margin="133,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Current = 40</Label>
-                                <Label Name="lbCCZoomMax" Margin="70,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Max = 100</Label>
-                                <Label Name="lbCCZoomMin" Margin="22,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Min = 1</Label>
-                                <Label Name="label20" Margin="13,144,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Zoom</Label>
-                                <Button Name="btCCTiltApply" Height="23" Width="75" Margin="227,98,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCTiltApply_Click" >Apply</Button>
-                                <Button Name="btCCPanApply" Height="23" Width="75" Margin="15,98,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCPanApply_Click" >Apply</Button>
-                                <CheckBox Name="cbCCTiltRelative" Height="17" Width="65" Margin="338,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Relative</CheckBox>
-                                <CheckBox Name="cbCCTiltManual" Height="17" Width="61" Margin="275,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Manual</CheckBox>
-                                <CheckBox Name="cbCCTiltAuto" Height="17" Width="48" Margin="227,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Auto</CheckBox>
-                                <Label Name="lbCCTiltCurrent" Margin="345,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Current = 40</Label>
-                                <Label Name="lbCCTiltMax" Margin="282,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Max = 100</Label>
-                                <Label Name="lbCCTiltMin" Margin="234,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Min = 1</Label>
-                                <Label Margin="225,27,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Tilt</Label>
-                                <CheckBox Name="cbCCPanRelative" Height="17" Width="65" Margin="126,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Relative</CheckBox>
-                                <CheckBox Name="cbCCPanManual" Height="17" Width="61" Margin="63,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Manual</CheckBox>
-                                <CheckBox Name="cbCCPanAuto" Height="17" Width="48" Margin="15,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Auto</CheckBox>
-                                <Button Name="btCCReadValues" Height="23" Width="91" Margin="409,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCReadValues_Click" >Read values</Button>
-                                <Label Name="lbCCPanCurrent" Margin="133,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Current = 40</Label>
-                                <Label Name="lbCCPanMax" Margin="70,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Max = 100</Label>
-                                <Label Name="lbCCPanMin" Margin="22,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" >Min = 1</Label>
-                                <Label Margin="13,27,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">Pan</Label>
+                                <Label Margin="13,5,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Many other parameters available using API" />
+                                <Button x:Name="btCCFocusApply" Height="23" Width="75" Margin="227,214,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCFocusApply_Click" Content="Apply"/>
+                                <Button x:Name="btCCZoomApply" Height="23" Width="75" Margin="15,214,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCZoomApply_Click" Content="Apply" />
+                                <CheckBox x:Name="cbCCFocusRelative" Height="17" Width="65" Margin="338,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Relative" />
+                                <CheckBox x:Name="cbCCFocusManual" Height="17" Width="61" Margin="275,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Manual" />
+                                <CheckBox x:Name="cbCCFocusAuto" Height="17" Width="48" Margin="227,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Auto" />
+                                <Label x:Name="lbCCFocusCurrent" Margin="345,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Current = 40" />
+                                <Label x:Name="lbCCFocusMax" Margin="282,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Max = 100" />
+                                <Label x:Name="lbCCFocusMin" Margin="234,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Min = 1" />
+                                <Label x:Name="label4" Margin="225,144,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Focus" />
+                                <CheckBox x:Name="cbCCZoomRelative" Height="17" Width="65" Margin="126,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Relative" />
+                                <CheckBox x:Name="cbCCZoomManual" Height="17" Width="61" Margin="63,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Manual" />
+                                <CheckBox x:Name="cbCCZoomAuto" Height="17" Width="48" Margin="15,191,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Auto" />
+                                <Label x:Name="lbCCZoomCurrent" Margin="133,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Current = 40" />
+                                <Label x:Name="lbCCZoomMax" Margin="70,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Max = 100" />
+                                <Label x:Name="lbCCZoomMin" Margin="22,167,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Min = 1" />
+                                <Label x:Name="label20" Margin="13,144,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Zoom" />
+                                <Button x:Name="btCCTiltApply" Height="23" Width="75" Margin="227,98,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCTiltApply_Click" Content="Apply" />
+                                <Button x:Name="btCCPanApply" Height="23" Width="75" Margin="15,98,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCPanApply_Click" Content="Apply" />
+                                <CheckBox x:Name="cbCCTiltRelative" Height="17" Width="65" Margin="338,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Relative" />
+                                <CheckBox x:Name="cbCCTiltManual" Height="17" Width="61" Margin="275,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Manual" />
+                                <CheckBox x:Name="cbCCTiltAuto" Height="17" Width="48" Margin="227,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Auto" />
+                                <Label x:Name="lbCCTiltCurrent" Margin="345,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Current = 40" />
+                                <Label x:Name="lbCCTiltMax" Margin="282,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Max = 100" />
+                                <Label x:Name="lbCCTiltMin" Margin="234,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Min = 1" />
+                                <Label Margin="225,27,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Tilt" />
+                                <CheckBox x:Name="cbCCPanRelative" Height="17" Width="65" Margin="126,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Relative" />
+                                <CheckBox x:Name="cbCCPanManual" Height="17" Width="61" Margin="63,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Manual" />
+                                <CheckBox x:Name="cbCCPanAuto" Height="17" Width="48" Margin="15,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Auto" />
+                                <Button x:Name="btCCReadValues" Height="23" Width="91" Margin="409,271,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Click="BtCCReadValues_Click" Content="Read values" />
+                                <Label x:Name="lbCCPanCurrent" Margin="133,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Current = 40" />
+                                <Label x:Name="lbCCPanMax" Margin="70,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Max = 100" />
+                                <Label x:Name="lbCCPanMin" Margin="22,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Min = 1" />
+                                <Label Margin="13,27,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Pan"/>
                                 <Slider x:Name="tbCCPan" HorizontalAlignment="Left" Margin="64,32,0,0" VerticalAlignment="Top" Width="143"/>
                                 <Slider x:Name="tbCCTilt" HorizontalAlignment="Left" Margin="275,32,0,0" VerticalAlignment="Top" Width="143"/>
                                 <Slider x:Name="tbCCFocus" HorizontalAlignment="Left" Margin="275,149,0,0" VerticalAlignment="Top" Width="143"/>
@@ -1130,16 +1132,16 @@
                     <TabControl HorizontalAlignment="Left" Height="331" Margin="0,13,0,0" VerticalAlignment="Top" Width="514">
                         <TabItem Header="Main">
                             <Grid>
-                                <TextBox Height="23" Margin="53,10,10,0" Name="edIPUrl" Text="http://212.162.177.75/mjpg/video.mjpg" VerticalAlignment="Top" />
-                                <Label Content="URL" Height="23" HorizontalAlignment="Left" Margin="4,6,0,0" Name="label220" VerticalAlignment="Top" Width="55" />
+                                <TextBox Height="23" Margin="53,10,10,0" x:Name="edIPUrl" Text="http://212.162.177.75/mjpg/video.mjpg" VerticalAlignment="Top" />
+                                <Label Content="URL" Height="23" HorizontalAlignment="Left" Margin="4,6,0,0" x:Name="label220" VerticalAlignment="Top" Width="55" />
 
-                                <Label Content="Type" Height="35" HorizontalAlignment="Left" Margin="4,42,0,0" Name="label223" VerticalAlignment="Top" Width="55" />
-                                <CheckBox Content="Capture audio" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="188,169,0,0" Name="cbIPAudioCapture" VerticalAlignment="Top" Width="107" />
-                                <Label Content="Login" Height="28" HorizontalAlignment="Left" Margin="4,77,0,0" Name="label221" VerticalAlignment="Top" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="8,101,0,0" Name="edIPLogin" VerticalAlignment="Top" Width="150" />
-                                <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="188,75,0,0" Name="label222" VerticalAlignment="Top" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="187,101,0,0" Name="edIPPassword" VerticalAlignment="Top" Width="150" />
-                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="53,45,0,0" Name="cbIPCameraType" VerticalAlignment="Top" Width="206">
+                                <Label Content="Type" Height="35" HorizontalAlignment="Left" Margin="4,42,0,0" x:Name="label223" VerticalAlignment="Top" Width="55" />
+                                <CheckBox Content="Capture audio" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="188,169,0,0" x:Name="cbIPAudioCapture" VerticalAlignment="Top" Width="107" />
+                                <Label Content="Login" Height="28" HorizontalAlignment="Left" Margin="4,77,0,0" x:Name="label221" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="8,101,0,0" x:Name="edIPLogin" VerticalAlignment="Top" Width="150" />
+                                <Label Content="Password" Height="28" HorizontalAlignment="Left" Margin="188,75,0,0" x:Name="label222" VerticalAlignment="Top" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="187,101,0,0" x:Name="edIPPassword" VerticalAlignment="Top" Width="150" />
+                                <ComboBox Height="23" HorizontalAlignment="Left" Margin="53,45,0,0" x:Name="cbIPCameraType" VerticalAlignment="Top" Width="206">
                                     <ComboBoxItem Content="Auto (VLC engine)" />
                                     <ComboBoxItem Content="Auto (FFMPEG engine)" />
                                     <ComboBoxItem Content="Auto (LAV engine)" />
@@ -1635,7 +1637,6 @@
                              OnLicenseRequired="VideoCapture1_OnLicenseRequired"
                              OnFFMPEGInfo="VideoCapture1_OnFFMPEGInfo"
                              OnNetworkSourceDisconnect="VideoCapture1_OnNetworkSourceDisconnect"  />
-        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,0,25,48" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

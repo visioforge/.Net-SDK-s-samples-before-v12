@@ -37,6 +37,7 @@ namespace Main_Demo
 
     using Application = System.Windows.Application;
     using Color = System.Windows.Media.Color;
+    using HorizontalAlignment = System.Windows.HorizontalAlignment;
     using MessageBox = System.Windows.MessageBox;
     using VFM4AOutput = VisioForge.Types.OutputFormat.VFM4AOutput;
 
@@ -3930,17 +3931,12 @@ namespace Main_Demo
                 Width = Screen.AllScreens[0].Bounds.Width;
                 Height = Screen.AllScreens[0].Bounds.Height;
                 Margin = new Thickness(0);
-
+                
                 // resizing control
-                VideoCapture1.Margin = new Thickness(0);
-                VideoCapture1.Width = Width + 10;
-                VideoCapture1.Height = Height + 10;
-
-                VideoCapture1.Width = Width + 10;
-                VideoCapture1.Height = Height + 10;
-
-                VideoCapture1.RenderSize = new System.Windows.Size(Width + 10, Height + 10);
-
+                VideoCapture1.Margin = new Thickness(0,0,0,0);
+                VideoCapture1.Width = Screen.AllScreens[0].Bounds.Width;
+                VideoCapture1.Height = Screen.AllScreens[0].Bounds.Height;
+                
                 VideoCapture1.Video_Renderer_Update();
             }
             else
@@ -3955,7 +3951,7 @@ namespace Main_Demo
 
                 VideoCapture1.Width = controlWidth;
                 VideoCapture1.Height = controlHeight;
-                VideoCapture1.RenderSize = new System.Windows.Size(controlWidth, controlHeight);
+                //VideoCapture1.RenderSize = new System.Windows.Size(controlWidth, controlHeight);
 
                 // restoring window
                 Left = windowLeft;

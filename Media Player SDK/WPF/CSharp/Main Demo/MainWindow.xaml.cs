@@ -2062,14 +2062,9 @@ namespace Main_Demo
                 Margin = new Thickness(0);
 
                 // resizing control
-                MediaPlayer1.Margin = new Thickness(0);
-                MediaPlayer1.Width = Width + 10;
-                MediaPlayer1.Height = Height + 10;
-
-                MediaPlayer1.Width = Width + 10;
-                MediaPlayer1.Height = Height + 10;
-
-                MediaPlayer1.RenderSize = new System.Windows.Size(Width + 10, Height + 10);
+                MediaPlayer1.Margin = new Thickness(0, 0, 0, 0);
+                MediaPlayer1.Width = Screen.AllScreens[0].Bounds.Width;
+                MediaPlayer1.Height = Screen.AllScreens[0].Bounds.Height;
 
                 MediaPlayer1.Video_Renderer_Update();
             }
@@ -2085,7 +2080,6 @@ namespace Main_Demo
 
                 MediaPlayer1.Width = controlWidth;
                 MediaPlayer1.Height = controlHeight;
-                MediaPlayer1.RenderSize = new System.Windows.Size(controlWidth, controlHeight);
 
                 // restoring window
                 Left = windowLeft;

@@ -2194,7 +2194,7 @@ namespace VideoEdit_CS_Demo
                 Width = Screen.AllScreens[0].WorkingArea.Width;
                 Height = Screen.AllScreens[0].WorkingArea.Height;
 
-                TopMost = true;
+                //TopMost = true;
                 FormBorderStyle = FormBorderStyle.None;
                 WindowState = FormWindowState.Maximized;
 
@@ -2210,13 +2210,7 @@ namespace VideoEdit_CS_Demo
             {
                 // going normal screen
                 fullScreen = false;
-
-                // restoring control
-                VideoEdit1.Left = controlLeft;
-                VideoEdit1.Top = controlTop;
-                VideoEdit1.Width = controlWidth;
-                VideoEdit1.Height = controlHeight;
-
+                
                 // restoring window
                 Left = windowLeft;
                 Top = windowTop;
@@ -2226,6 +2220,12 @@ namespace VideoEdit_CS_Demo
                 TopMost = false;
                 FormBorderStyle = FormBorderStyle.Sizable;
                 WindowState = FormWindowState.Normal;
+
+                // restoring control
+                VideoEdit1.Left = controlLeft;
+                VideoEdit1.Top = controlTop;
+                VideoEdit1.Width = controlWidth;
+                VideoEdit1.Height = controlHeight;
 
                 VideoEdit1.Video_Renderer_Update();
             }

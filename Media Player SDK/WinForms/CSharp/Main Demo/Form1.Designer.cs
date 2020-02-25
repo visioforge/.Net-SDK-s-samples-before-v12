@@ -7248,7 +7248,6 @@ namespace Media_Player_Demo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(757, 687);
-            this.Controls.Add(this.cbRunAsync);
             this.Controls.Add(this.MediaPlayer1);
             this.Controls.Add(this.edCustomSourceFilter);
             this.Controls.Add(this.label37);
@@ -7265,6 +7264,7 @@ namespace Media_Player_Demo
             this.Controls.Add(this.edFilenameOrURL);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.cbRunAsync);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Main Demo";

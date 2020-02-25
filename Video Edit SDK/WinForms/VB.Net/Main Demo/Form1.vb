@@ -1895,13 +1895,7 @@ Public Class Form1
         Else
             ' going normal screen
             fullScreen = False
-
-            ' restoring control
-            VideoEdit1.Left = controlLeft
-            VideoEdit1.Top = controlTop
-            VideoEdit1.Width = controlWidth
-            VideoEdit1.Height = controlHeight
-
+            
             ' restoring window
             Left = windowLeft
             Top = windowTop
@@ -1911,6 +1905,12 @@ Public Class Form1
             TopMost = False
             FormBorderStyle = FormBorderStyle.Sizable
             WindowState = FormWindowState.Normal
+
+            ' restoring control
+            VideoEdit1.Left = controlLeft
+            VideoEdit1.Top = controlTop
+            VideoEdit1.Width = controlWidth
+            VideoEdit1.Height = controlHeight
 
             VideoEdit1.Video_Renderer_Update()
 

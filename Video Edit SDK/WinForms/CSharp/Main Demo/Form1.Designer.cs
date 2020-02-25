@@ -7322,6 +7322,13 @@ namespace VideoEdit_CS_Demo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(773, 653);
+            this.Controls.Add(this.VideoEdit1);
+            this.Controls.Add(this.btStop);
+            this.Controls.Add(this.btStart);
+            this.Controls.Add(this.ProgressBar1);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tbSeeking);
+            this.Controls.Add(this.tabControl3);
             this.Controls.Add(this.cbTelemetry);
             this.Controls.Add(this.cbLicensing);
             this.Controls.Add(this.cbDebugMode);
@@ -7329,13 +7336,6 @@ namespace VideoEdit_CS_Demo
             this.Controls.Add(this.label130);
             this.Controls.Add(this.cbMode);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.tabControl3);
-            this.Controls.Add(this.VideoEdit1);
-            this.Controls.Add(this.btStop);
-            this.Controls.Add(this.btStart);
-            this.Controls.Add(this.ProgressBar1);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.tbSeeking);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "VisioForge Video Edit SDK .Net - Main Demo";

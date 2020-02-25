@@ -7,6 +7,7 @@
         x:Class="Main_Demo.MainWindow"
         Title="VisioForge Media Player SDK .Net Demo" Height="802" Width="843" Loaded="Window_Loaded" Closing="Window_Closing" Icon="visioforge_main_icon.ico">
     <Grid>
+        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,136,25,0" VerticalAlignment="Top"/>
         <TabControl Height="567" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="tabControl1" VerticalAlignment="Top" Width="382">
             <TabItem Header="Source">
                 <Grid>
@@ -793,6 +794,5 @@
                              OnAudioVUMeterProVolume="MediaPlayer1_OnAudioVUMeterProVolume" 
                              OnLicenseRequired="MediaPlayer1_OnLicenseRequired" OnMIDIFileInfo="MediaPlayer1_OnMIDIFileInfo" 
                              />
-        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,136,25,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

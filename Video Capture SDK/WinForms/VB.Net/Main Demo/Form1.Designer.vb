@@ -683,6 +683,9 @@ Partial Class Form1
         Me.rbDenoiseMosquito = New System.Windows.Forms.RadioButton()
         Me.cbDenoise = New System.Windows.Forms.CheckBox()
         Me.TabPage63 = New System.Windows.Forms.TabPage()
+        Me.label5 = New System.Windows.Forms.Label()
+        Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
+        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
         Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
@@ -1119,9 +1122,6 @@ Partial Class Form1
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
-        Me.label5 = New System.Windows.Forms.Label()
-        Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
-        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -1238,6 +1238,7 @@ Partial Class Form1
         Me.tabPage69.SuspendLayout
         Me.TabPage59.SuspendLayout
         Me.TabPage63.SuspendLayout
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbGPUContrast,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbGPUDarkness,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbGPULightness,System.ComponentModel.ISupportInitialize).BeginInit
@@ -1333,7 +1334,6 @@ Partial Class Form1
         Me.TabPage142.SuspendLayout
         Me.TabPage143.SuspendLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'fontDialog1
@@ -8008,6 +8008,36 @@ Partial Class Form1
         Me.TabPage63.Text = "GPU effects"
         Me.TabPage63.UseVisualStyleBackColor = true
         '
+        'label5
+        '
+        Me.label5.AutoSize = true
+        Me.label5.Location = New System.Drawing.Point(11, 269)
+        Me.label5.Name = "label5"
+        Me.label5.Size = New System.Drawing.Size(25, 13)
+        Me.label5.TabIndex = 100
+        Me.label5.Text = "Blur"
+        '
+        'tbGPUBlur
+        '
+        Me.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window
+        Me.tbGPUBlur.Location = New System.Drawing.Point(8, 285)
+        Me.tbGPUBlur.Maximum = 30
+        Me.tbGPUBlur.Name = "tbGPUBlur"
+        Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
+        Me.tbGPUBlur.TabIndex = 99
+        '
+        'cbVideoEffectsGPUDX11
+        '
+        Me.cbVideoEffectsGPUDX11.AutoSize = true
+        Me.cbVideoEffectsGPUDX11.Checked = true
+        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(179, 16)
+        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
+        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
+        Me.cbVideoEffectsGPUDX11.TabIndex = 98
+        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
+        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
+        '
         'cbVideoEffectsGPUEnabled
         '
         Me.cbVideoEffectsGPUEnabled.AutoSize = true
@@ -12642,42 +12672,11 @@ Partial Class Form1
         Me.cbRunAsync.Text = "Async"
         Me.cbRunAsync.UseVisualStyleBackColor = true
         '
-        'label5
-        '
-        Me.label5.AutoSize = true
-        Me.label5.Location = New System.Drawing.Point(11, 269)
-        Me.label5.Name = "label5"
-        Me.label5.Size = New System.Drawing.Size(25, 13)
-        Me.label5.TabIndex = 100
-        Me.label5.Text = "Blur"
-        '
-        'tbGPUBlur
-        '
-        Me.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUBlur.Location = New System.Drawing.Point(8, 285)
-        Me.tbGPUBlur.Maximum = 30
-        Me.tbGPUBlur.Name = "tbGPUBlur"
-        Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
-        Me.tbGPUBlur.TabIndex = 99
-        '
-        'cbVideoEffectsGPUDX11
-        '
-        Me.cbVideoEffectsGPUDX11.AutoSize = true
-        Me.cbVideoEffectsGPUDX11.Checked = true
-        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(179, 16)
-        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
-        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
-        Me.cbVideoEffectsGPUDX11.TabIndex = 98
-        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
-        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(808, 713)
-        Me.Controls.Add(Me.cbRunAsync)
         Me.Controls.Add(Me.VideoCapture1)
         Me.Controls.Add(Me.linkLabel1)
         Me.Controls.Add(Me.tabControl12)
@@ -12691,6 +12690,7 @@ Partial Class Form1
         Me.Controls.Add(Me.tabControl1)
         Me.Controls.Add(Me.lbTimestamp)
         Me.Controls.Add(Me.btSaveScreenshot)
+        Me.Controls.Add(Me.cbRunAsync)
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Tag = "0"
@@ -12871,6 +12871,7 @@ Partial Class Form1
         Me.TabPage59.PerformLayout
         Me.TabPage63.ResumeLayout(false)
         Me.TabPage63.PerformLayout
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbGPUContrast,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbGPUDarkness,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbGPULightness,System.ComponentModel.ISupportInitialize).EndInit
@@ -13011,7 +13012,6 @@ Partial Class Form1
         Me.TabPage143.ResumeLayout(false)
         Me.TabPage143.PerformLayout
         CType(Me.imgTagCover,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 

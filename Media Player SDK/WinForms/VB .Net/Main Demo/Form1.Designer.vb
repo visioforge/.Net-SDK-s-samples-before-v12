@@ -27,7 +27,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms4 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.tabControl3 = New System.Windows.Forms.TabControl()
         Me.tabPage10 = New System.Windows.Forms.TabPage()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
@@ -274,6 +274,9 @@ Partial Class Form1
         Me.rbDenoiseMosquito = New System.Windows.Forms.RadioButton()
         Me.cbDenoise = New System.Windows.Forms.CheckBox()
         Me.TabPage50 = New System.Windows.Forms.TabPage()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
+        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
         Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
@@ -612,9 +615,6 @@ Partial Class Form1
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.cbRunAsync = New System.Windows.Forms.CheckBox()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
-        Me.Label22 = New System.Windows.Forms.Label()
-        Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
-        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -674,6 +674,7 @@ Partial Class Form1
         Me.tabPage69.SuspendLayout
         Me.tabPage59.SuspendLayout
         Me.TabPage50.SuspendLayout
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbGPUContrast,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbGPUDarkness,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbGPULightness,System.ComponentModel.ISupportInitialize).BeginInit
@@ -762,7 +763,6 @@ Partial Class Form1
         CType(Me.tbReversePlaybackTrackbar,System.ComponentModel.ISupportInitialize).BeginInit
         Me.TabPage14.SuspendLayout
         Me.mnPlaylist.SuspendLayout
-        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).BeginInit
         Me.SuspendLayout
         '
         'tabControl3
@@ -3343,6 +3343,36 @@ Partial Class Form1
         Me.TabPage50.TabIndex = 9
         Me.TabPage50.Text = "Effects (GPU)"
         Me.TabPage50.UseVisualStyleBackColor = true
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = true
+        Me.Label22.Location = New System.Drawing.Point(10, 266)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(25, 13)
+        Me.Label22.TabIndex = 116
+        Me.Label22.Text = "Blur"
+        '
+        'tbGPUBlur
+        '
+        Me.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window
+        Me.tbGPUBlur.Location = New System.Drawing.Point(7, 282)
+        Me.tbGPUBlur.Maximum = 30
+        Me.tbGPUBlur.Name = "tbGPUBlur"
+        Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
+        Me.tbGPUBlur.TabIndex = 115
+        '
+        'cbVideoEffectsGPUDX11
+        '
+        Me.cbVideoEffectsGPUDX11.AutoSize = true
+        Me.cbVideoEffectsGPUDX11.Checked = true
+        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(178, 16)
+        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
+        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
+        Me.cbVideoEffectsGPUDX11.TabIndex = 114
+        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
+        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
         '
         'cbVideoEffectsGPUEnabled
         '
@@ -6855,62 +6885,31 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Effects_Enabled = false
         Me.MediaPlayer1.Video_Effects_GPU_Enabled = false
         Me.MediaPlayer1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9
-        VideoRendererSettingsWinForms4.Aspect_Ratio_Override = false
-        VideoRendererSettingsWinForms4.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms4.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms4.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms4.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms4.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms4.Deinterlace_VMR9_UseDefault = false
-        VideoRendererSettingsWinForms4.Flip_Horizontal = false
-        VideoRendererSettingsWinForms4.Flip_Vertical = false
-        VideoRendererSettingsWinForms4.RotationAngle = 0
-        VideoRendererSettingsWinForms4.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms4.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms4.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms4.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms4.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms4.Zoom_ShiftY = 0
-        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms4
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms1.Flip_Horizontal = false
+        VideoRendererSettingsWinForms1.Flip_Vertical = false
+        VideoRendererSettingsWinForms1.RotationAngle = 0
+        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
+        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false
         Me.MediaPlayer1.Video_Stream_Index = 0
-        '
-        'Label22
-        '
-        Me.Label22.AutoSize = true
-        Me.Label22.Location = New System.Drawing.Point(10, 266)
-        Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(25, 13)
-        Me.Label22.TabIndex = 116
-        Me.Label22.Text = "Blur"
-        '
-        'tbGPUBlur
-        '
-        Me.tbGPUBlur.BackColor = System.Drawing.SystemColors.Window
-        Me.tbGPUBlur.Location = New System.Drawing.Point(7, 282)
-        Me.tbGPUBlur.Maximum = 30
-        Me.tbGPUBlur.Name = "tbGPUBlur"
-        Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
-        Me.tbGPUBlur.TabIndex = 115
-        '
-        'cbVideoEffectsGPUDX11
-        '
-        Me.cbVideoEffectsGPUDX11.AutoSize = true
-        Me.cbVideoEffectsGPUDX11.Checked = true
-        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(178, 16)
-        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
-        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
-        Me.cbVideoEffectsGPUDX11.TabIndex = 114
-        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
-        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(757, 686)
-        Me.Controls.Add(Me.cbRunAsync)
         Me.Controls.Add(Me.MediaPlayer1)
         Me.Controls.Add(Me.linkLabel1)
         Me.Controls.Add(Me.btAddFileToPlaylist)
@@ -6925,6 +6924,7 @@ Partial Class Form1
         Me.Controls.Add(Me.groupBox3)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.tabControl1)
+        Me.Controls.Add(Me.cbRunAsync)
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "Media Player SDK .Net - Main Demo"
@@ -7014,6 +7014,7 @@ Partial Class Form1
         Me.tabPage59.PerformLayout
         Me.TabPage50.ResumeLayout(false)
         Me.TabPage50.PerformLayout
+        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbGPUContrast,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbGPUDarkness,System.ComponentModel.ISupportInitialize).EndInit
         CType(Me.tbGPULightness,System.ComponentModel.ISupportInitialize).EndInit
@@ -7135,7 +7136,6 @@ Partial Class Form1
         Me.TabPage14.ResumeLayout(false)
         Me.TabPage14.PerformLayout
         Me.mnPlaylist.ResumeLayout(false)
-        CType(Me.tbGPUBlur,System.ComponentModel.ISupportInitialize).EndInit
         Me.ResumeLayout(false)
         Me.PerformLayout
 

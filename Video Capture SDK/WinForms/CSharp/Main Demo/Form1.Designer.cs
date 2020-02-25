@@ -13105,8 +13105,6 @@ namespace VideoCapture_CSharp_Demo
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(804, 712);
-            this.Controls.Add(this.cbRunAsync);
-            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.VideoCapture1);
             this.Controls.Add(this.tabControl12);
             this.Controls.Add(this.tabControl10);
@@ -13119,6 +13117,8 @@ namespace VideoCapture_CSharp_Demo
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btSaveScreenshot);
             this.Controls.Add(this.lbTimestamp);
+            this.Controls.Add(this.cbRunAsync);
+            this.Controls.Add(this.linkLabel1);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
