@@ -1,4 +1,5 @@
-﻿using VisioForge.MediaFramework;
+﻿using System.Diagnostics;
+using VisioForge.MediaFramework;
 
 namespace VE_Main_Demo_CLI
 {
@@ -90,7 +91,7 @@ namespace VE_Main_Demo_CLI
         static void Main(string[] args)
         {
             var options = new CommandLineOptions();
-            if (!CommandLine.Parser.Default.ParseArguments(args, options))
+            if (!VisioForge.Shared.CommandLine.Parser.Default.ParseArguments(args, options))
             {
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
