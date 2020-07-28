@@ -1,4 +1,6 @@
-﻿namespace Computer_Vision_Demo
+﻿using System;
+
+namespace Computer_Vision_Demo
 {
     partial class Form1
     {
@@ -33,7 +35,7 @@
             VisioForge.Types.VideoRendererSettingsWinForms videoRendererSettingsWinForms2 = new VisioForge.Types.VideoRendererSettingsWinForms();
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tcMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btOpenFile = new System.Windows.Forms.Button();
             this.edFilename = new System.Windows.Forms.TextBox();
@@ -117,7 +119,7 @@
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.tabControl1.SuspendLayout();
+            this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbFDScaleFactor)).BeginInit();
@@ -155,20 +157,20 @@
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
-            // tabControl1
+            // tcMain
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tcMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(460, 658);
-            this.tabControl1.TabIndex = 83;
+            this.tcMain.Controls.Add(this.tabPage1);
+            this.tcMain.Controls.Add(this.tabPage2);
+            this.tcMain.Controls.Add(this.tabPage4);
+            this.tcMain.Controls.Add(this.tabPage5);
+            this.tcMain.Controls.Add(this.tabPage3);
+            this.tcMain.Location = new System.Drawing.Point(12, 12);
+            this.tcMain.Name = "tcMain";
+            this.tcMain.SelectedIndex = 0;
+            this.tcMain.Size = new System.Drawing.Size(460, 658);
+            this.tcMain.TabIndex = 83;
             // 
             // tabPage1
             // 
@@ -505,7 +507,6 @@
             this.label21.Size = new System.Drawing.Size(12, 13);
             this.label21.TabIndex = 155;
             this.label21.Text = "x";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // edFDMinFaceHeight
             // 
@@ -1089,7 +1090,7 @@
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(467, 348);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 82;
@@ -1119,6 +1120,7 @@
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -1210,6 +1212,7 @@
             this.MediaPlayer1.TabIndex = 84;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
+            this.MediaPlayer1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
@@ -1229,6 +1232,8 @@
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
+            this.MediaPlayer1.Virtual_Camera_Output_Enabled = false;
+            this.MediaPlayer1.Virtual_Camera_Output_LicenseKey = null;
             this.MediaPlayer1.OnVideoFrameBuffer += new System.EventHandler<VisioForge.Types.VideoFrameBufferEventArgs>(this.MediaPlayer1_OnVideoFrameBuffer);
             // 
             // dlgOpenFile
@@ -1241,7 +1246,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(960, 683);
             this.Controls.Add(this.MediaPlayer1);
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tcMain);
             this.Controls.Add(this.VideoCapture1);
             this.Controls.Add(this.btStop);
             this.Controls.Add(this.btStart);
@@ -1249,7 +1254,7 @@
             this.Name = "Form1";
             this.Text = "Computer Vision Demo - Video Capture SDK .Net";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.tabControl1.ResumeLayout(false);
+            this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1275,7 +1280,7 @@
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
         private System.Windows.Forms.Button btStop;
         private System.Windows.Forms.Button btStart;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tcMain;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.RadioButton rbVideoCaptureDevice;

@@ -27,7 +27,7 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms2 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.tabControl3 = New System.Windows.Forms.TabControl()
         Me.tabPage10 = New System.Windows.Forms.TabPage()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
@@ -613,8 +613,8 @@ Partial Class Form1
         Me.edFilenameOrURL = New System.Windows.Forms.TextBox()
         Me.label14 = New System.Windows.Forms.Label()
         Me.linkLabel1 = New System.Windows.Forms.LinkLabel()
-        Me.cbRunAsync = New System.Windows.Forms.CheckBox()
         Me.MediaPlayer1 = New VisioForge.Controls.UI.WinForms.MediaPlayer()
+        Me.rbVirtualCameraOutput = New System.Windows.Forms.RadioButton()
         Me.tabControl3.SuspendLayout
         Me.tabPage10.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -1872,7 +1872,7 @@ Partial Class Form1
         'label393
         '
         Me.label393.AutoSize = true
-        Me.label393.Location = New System.Drawing.Point(144, 262)
+        Me.label393.Location = New System.Drawing.Point(144, 312)
         Me.label393.Name = "label393"
         Me.label393.Size = New System.Drawing.Size(79, 13)
         Me.label393.TabIndex = 50
@@ -1883,7 +1883,7 @@ Partial Class Form1
         Me.cbDirect2DRotate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbDirect2DRotate.FormattingEnabled = true
         Me.cbDirect2DRotate.Items.AddRange(New Object() {"0", "90", "180", "270"})
-        Me.cbDirect2DRotate.Location = New System.Drawing.Point(147, 278)
+        Me.cbDirect2DRotate.Location = New System.Drawing.Point(147, 328)
         Me.cbDirect2DRotate.Name = "cbDirect2DRotate"
         Me.cbDirect2DRotate.Size = New System.Drawing.Size(122, 21)
         Me.cbDirect2DRotate.TabIndex = 49
@@ -1892,7 +1892,7 @@ Partial Class Form1
         '
         Me.pnVideoRendererBGColor.BackColor = System.Drawing.Color.Black
         Me.pnVideoRendererBGColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.pnVideoRendererBGColor.Location = New System.Drawing.Point(123, 163)
+        Me.pnVideoRendererBGColor.Location = New System.Drawing.Point(123, 213)
         Me.pnVideoRendererBGColor.Name = "pnVideoRendererBGColor"
         Me.pnVideoRendererBGColor.Size = New System.Drawing.Size(24, 24)
         Me.pnVideoRendererBGColor.TabIndex = 48
@@ -1900,7 +1900,7 @@ Partial Class Form1
         'label394
         '
         Me.label394.AutoSize = true
-        Me.label394.Location = New System.Drawing.Point(16, 168)
+        Me.label394.Location = New System.Drawing.Point(16, 218)
         Me.label394.Name = "label394"
         Me.label394.Size = New System.Drawing.Size(91, 13)
         Me.label394.TabIndex = 47
@@ -1908,7 +1908,7 @@ Partial Class Form1
         '
         'btFullScreen
         '
-        Me.btFullScreen.Location = New System.Drawing.Point(147, 305)
+        Me.btFullScreen.Location = New System.Drawing.Point(147, 355)
         Me.btFullScreen.Name = "btFullScreen"
         Me.btFullScreen.Size = New System.Drawing.Size(122, 23)
         Me.btFullScreen.TabIndex = 46
@@ -1924,7 +1924,7 @@ Partial Class Form1
         Me.groupBox28.Controls.Add(Me.btZoomIn)
         Me.groupBox28.Controls.Add(Me.btZoomShiftDown)
         Me.groupBox28.Controls.Add(Me.btZoomShiftUp)
-        Me.groupBox28.Location = New System.Drawing.Point(19, 262)
+        Me.groupBox28.Location = New System.Drawing.Point(19, 312)
         Me.groupBox28.Name = "groupBox28"
         Me.groupBox28.Size = New System.Drawing.Size(119, 129)
         Me.groupBox28.TabIndex = 45
@@ -1997,7 +1997,7 @@ Partial Class Form1
         'cbScreenFlipVertical
         '
         Me.cbScreenFlipVertical.AutoSize = true
-        Me.cbScreenFlipVertical.Location = New System.Drawing.Point(179, 187)
+        Me.cbScreenFlipVertical.Location = New System.Drawing.Point(179, 237)
         Me.cbScreenFlipVertical.Name = "cbScreenFlipVertical"
         Me.cbScreenFlipVertical.Size = New System.Drawing.Size(79, 17)
         Me.cbScreenFlipVertical.TabIndex = 44
@@ -2007,7 +2007,7 @@ Partial Class Form1
         'cbScreenFlipHorizontal
         '
         Me.cbScreenFlipHorizontal.AutoSize = true
-        Me.cbScreenFlipHorizontal.Location = New System.Drawing.Point(179, 164)
+        Me.cbScreenFlipHorizontal.Location = New System.Drawing.Point(179, 214)
         Me.cbScreenFlipHorizontal.Name = "cbScreenFlipHorizontal"
         Me.cbScreenFlipHorizontal.Size = New System.Drawing.Size(90, 17)
         Me.cbScreenFlipHorizontal.TabIndex = 43
@@ -2017,7 +2017,7 @@ Partial Class Form1
         'cbStretch
         '
         Me.cbStretch.AutoSize = true
-        Me.cbStretch.Location = New System.Drawing.Point(179, 212)
+        Me.cbStretch.Location = New System.Drawing.Point(179, 262)
         Me.cbStretch.Name = "cbStretch"
         Me.cbStretch.Size = New System.Drawing.Size(89, 17)
         Me.cbStretch.TabIndex = 42
@@ -2026,6 +2026,7 @@ Partial Class Form1
         '
         'groupBox13
         '
+        Me.groupBox13.Controls.Add(Me.rbVirtualCameraOutput)
         Me.groupBox13.Controls.Add(Me.rbDirect2D)
         Me.groupBox13.Controls.Add(Me.rbNone)
         Me.groupBox13.Controls.Add(Me.rbEVR)
@@ -2033,7 +2034,7 @@ Partial Class Form1
         Me.groupBox13.Controls.Add(Me.rbVR)
         Me.groupBox13.Location = New System.Drawing.Point(19, 11)
         Me.groupBox13.Name = "groupBox13"
-        Me.groupBox13.Size = New System.Drawing.Size(250, 138)
+        Me.groupBox13.Size = New System.Drawing.Size(250, 172)
         Me.groupBox13.TabIndex = 41
         Me.groupBox13.TabStop = false
         Me.groupBox13.Text = "Video Renderer"
@@ -2095,7 +2096,7 @@ Partial Class Form1
         'label15
         '
         Me.label15.AutoSize = true
-        Me.label15.Location = New System.Drawing.Point(71, 238)
+        Me.label15.Location = New System.Drawing.Point(71, 288)
         Me.label15.Name = "label15"
         Me.label15.Size = New System.Drawing.Size(12, 13)
         Me.label15.TabIndex = 40
@@ -2103,7 +2104,7 @@ Partial Class Form1
         '
         'edAspectRatioY
         '
-        Me.edAspectRatioY.Location = New System.Drawing.Point(85, 235)
+        Me.edAspectRatioY.Location = New System.Drawing.Point(85, 285)
         Me.edAspectRatioY.Name = "edAspectRatioY"
         Me.edAspectRatioY.Size = New System.Drawing.Size(30, 20)
         Me.edAspectRatioY.TabIndex = 39
@@ -2111,7 +2112,7 @@ Partial Class Form1
         '
         'edAspectRatioX
         '
-        Me.edAspectRatioX.Location = New System.Drawing.Point(36, 235)
+        Me.edAspectRatioX.Location = New System.Drawing.Point(36, 285)
         Me.edAspectRatioX.Name = "edAspectRatioX"
         Me.edAspectRatioX.Size = New System.Drawing.Size(30, 20)
         Me.edAspectRatioX.TabIndex = 38
@@ -2120,7 +2121,7 @@ Partial Class Form1
         'cbAspectRatioUseCustom
         '
         Me.cbAspectRatioUseCustom.AutoSize = true
-        Me.cbAspectRatioUseCustom.Location = New System.Drawing.Point(19, 212)
+        Me.cbAspectRatioUseCustom.Location = New System.Drawing.Point(19, 262)
         Me.cbAspectRatioUseCustom.Name = "cbAspectRatioUseCustom"
         Me.cbAspectRatioUseCustom.Size = New System.Drawing.Size(140, 17)
         Me.cbAspectRatioUseCustom.TabIndex = 37
@@ -6761,7 +6762,7 @@ Partial Class Form1
         Me.cbSourceMode.Location = New System.Drawing.Point(394, 122)
         Me.cbSourceMode.Margin = New System.Windows.Forms.Padding(2)
         Me.cbSourceMode.Name = "cbSourceMode"
-        Me.cbSourceMode.Size = New System.Drawing.Size(296, 21)
+        Me.cbSourceMode.Size = New System.Drawing.Size(350, 21)
         Me.cbSourceMode.TabIndex = 30
         '
         'label29
@@ -6813,17 +6814,6 @@ Partial Class Form1
         Me.linkLabel1.TabIndex = 34
         Me.linkLabel1.TabStop = true
         Me.linkLabel1.Text = "Watch video tutorials!"
-        '
-        'cbRunAsync
-        '
-        Me.cbRunAsync.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.cbRunAsync.AutoSize = true
-        Me.cbRunAsync.Location = New System.Drawing.Point(695, 124)
-        Me.cbRunAsync.Name = "cbRunAsync"
-        Me.cbRunAsync.Size = New System.Drawing.Size(55, 17)
-        Me.cbRunAsync.TabIndex = 35
-        Me.cbRunAsync.Text = "Async"
-        Me.cbRunAsync.UseVisualStyleBackColor = true
         '
         'MediaPlayer1
         '
@@ -6885,25 +6875,38 @@ Partial Class Form1
         Me.MediaPlayer1.Video_Effects_Enabled = false
         Me.MediaPlayer1.Video_Effects_GPU_Enabled = false
         Me.MediaPlayer1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
-        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false
-        VideoRendererSettingsWinForms1.Flip_Horizontal = false
-        VideoRendererSettingsWinForms1.Flip_Vertical = false
-        VideoRendererSettingsWinForms1.RotationAngle = 0
-        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
-        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms1
+        VideoRendererSettingsWinForms2.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms2.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms2.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms2.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms2.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms2.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms2.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms2.Flip_Horizontal = false
+        VideoRendererSettingsWinForms2.Flip_Vertical = false
+        VideoRendererSettingsWinForms2.RotationAngle = 0
+        VideoRendererSettingsWinForms2.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms2.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms2.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms2.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms2.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms2.Zoom_ShiftY = 0
+        Me.MediaPlayer1.Video_Renderer = VideoRendererSettingsWinForms2
         Me.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false
         Me.MediaPlayer1.Video_Stream_Index = 0
+        Me.MediaPlayer1.Virtual_Camera_Output_Enabled = false
+        Me.MediaPlayer1.Virtual_Camera_Output_LicenseKey = Nothing
+        '
+        'rbVirtualCameraOutput
+        '
+        Me.rbVirtualCameraOutput.AutoSize = true
+        Me.rbVirtualCameraOutput.Location = New System.Drawing.Point(12, 136)
+        Me.rbVirtualCameraOutput.Name = "rbVirtualCameraOutput"
+        Me.rbVirtualCameraOutput.Size = New System.Drawing.Size(165, 17)
+        Me.rbVirtualCameraOutput.TabIndex = 7
+        Me.rbVirtualCameraOutput.TabStop = true
+        Me.rbVirtualCameraOutput.Text = "Output to Virtual Camera SDK"
+        Me.rbVirtualCameraOutput.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -6924,7 +6927,6 @@ Partial Class Form1
         Me.Controls.Add(Me.groupBox3)
         Me.Controls.Add(Me.groupBox2)
         Me.Controls.Add(Me.tabControl1)
-        Me.Controls.Add(Me.cbRunAsync)
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Text = "Media Player SDK .Net - Main Demo"
@@ -7703,7 +7705,6 @@ End Sub
     Private WithEvents cbFlipY As CheckBox
     Private WithEvents cbFlipX As CheckBox
     Private WithEvents cbTelemetry As CheckBox
-    Private WithEvents cbRunAsync As CheckBox
     Friend WithEvents TabPage20 As TabPage
     Private WithEvents groupBox6 As GroupBox
     Private WithEvents rbGPUDirect3D As RadioButton
@@ -7727,4 +7728,5 @@ End Sub
     Private WithEvents Label22 As Label
     Private WithEvents tbGPUBlur As TrackBar
     Private WithEvents cbVideoEffectsGPUDX11 As CheckBox
+    Private WithEvents rbVirtualCameraOutput As RadioButton
 End Class

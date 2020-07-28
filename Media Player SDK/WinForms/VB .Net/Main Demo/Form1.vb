@@ -284,8 +284,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btSaveScreenshot_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSaveScreenshot.Click
-
+    Private Async Sub btSaveScreenshot_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSaveScreenshot.Click
         Dim dt As DateTime = DateTime.Now
 
         Dim s As String = dt.Hour.ToString() + "_" + dt.Minute.ToString() + "_" + dt.Second.ToString() + "_" + dt.Millisecond.ToString()
@@ -299,24 +298,17 @@ Public Class Form1
         End If
 
         Select Case (cbImageType.SelectedIndex)
-
             Case 0
-                MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".bmp", VFImageFormat.BMP, 0, customWidth, customHeight)
-
+                Await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".bmp", VFImageFormat.BMP, 0, customWidth, customHeight)
             Case 1
-                MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".jpg", VFImageFormat.JPEG, tbJPEGQuality.Value, customWidth, customHeight)
-
+                Await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".jpg", VFImageFormat.JPEG, tbJPEGQuality.Value, customWidth, customHeight)
             Case 2
-                MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".gif", VFImageFormat.GIF, 0, customWidth, customHeight)
-
+                Await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".gif", VFImageFormat.GIF, 0, customWidth, customHeight)
             Case 3
-                MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".png", VFImageFormat.PNG, 0, customWidth, customHeight)
-
+                Await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".png", VFImageFormat.PNG, 0, customWidth, customHeight)
             Case 4
-                MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".tiff", VFImageFormat.TIFF, 0, customWidth, customHeight)
-
+                Await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".tiff", VFImageFormat.TIFF, 0, customWidth, customHeight)
         End Select
-
     End Sub
 
     Private Sub cbDVDControlTitle_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbDVDControlTitle.SelectedIndexChanged
@@ -376,7 +368,7 @@ Public Class Form1
 
                 'play title
                 MediaPlayer1.DVD_Title_Play(cbDVDControlTitle.SelectedIndex)
-                tbTimeline.Maximum = MediaPlayer1.DVD_Title_GetDurationS()
+                tbTimeline.Maximum = MediaPlayer1.DVD_Title_GetDuration().TotalSeconds
 
             End If
         End If
@@ -502,7 +494,7 @@ Public Class Form1
 
         If (Convert.ToInt32(timer1.Tag) = 0) Then
 
-            MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000)
+            MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value))
 
         End If
 
@@ -629,7 +621,6 @@ Public Class Form1
             MediaInfo.ReadFileInfo(MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS, key, keyType, cbUseLibMediaInfo.Checked)
 
             For i As Integer = 0 To MediaInfo.Video_Streams_Count() - 1
-
                 mmInfo.Text += String.Empty + Environment.NewLine
                 mmInfo.Text += "Video #" + Convert.ToString(i + 1) + Environment.NewLine
                 mmInfo.Text += "Codec: " + MediaInfo.Video_Codec(i) + Environment.NewLine
@@ -641,11 +632,9 @@ Public Class Form1
                 mmInfo.Text += "Frame rate: " + MediaInfo.Video_FrameRate(i).ToString() + Environment.NewLine
                 mmInfo.Text += "Bitrate: " + MediaInfo.Video_Bitrate(i).ToString() + Environment.NewLine
                 mmInfo.Text += "Frames count: " + MediaInfo.Video_FramesCount(i).ToString() + Environment.NewLine
-
             Next
 
             For i As Integer = 0 To MediaInfo.Audio_Streams_Count() - 1
-
                 mmInfo.Text += String.Empty + Environment.NewLine
                 mmInfo.Text += "Audio #" + Convert.ToString(i + 1) + Environment.NewLine
                 mmInfo.Text += "Codec: " + MediaInfo.Audio_Codec(i) + Environment.NewLine
@@ -655,44 +644,35 @@ Public Class Form1
                 mmInfo.Text += "Channels: " + MediaInfo.Audio_Channels(i).ToString() + Environment.NewLine
                 mmInfo.Text += "Sample rate: " + MediaInfo.Audio_SampleRate(i).ToString() + Environment.NewLine
                 mmInfo.Text += "BPS: " + MediaInfo.Audio_BPS(i).ToString() + Environment.NewLine
-
             Next
 
             For i As Integer = 0 To MediaInfo.Text_Streams_Count() - 1
-
                 mmInfo.Text += String.Empty + Environment.NewLine
                 mmInfo.Text += "Text #" + Convert.ToString(i + 1) + Environment.NewLine
                 mmInfo.Text += "Codec: " + MediaInfo.Text_Codec(i) + Environment.NewLine
                 mmInfo.Text += "Name: " + MediaInfo.Text_Name(i) + Environment.NewLine
                 mmInfo.Text += "Language: " + MediaInfo.Text_Language(i) + Environment.NewLine
-
             Next
 
             ' timeline
             If (MediaInfo.Video_Streams_Count() > 0) Then
-
                 tbTimeline.Maximum = (MediaInfo.Video_DurationMSec(0) / 1000)
-
             ElseIf (MediaInfo.Audio_Streams_Count() > 0) Then
-
                 tbTimeline.Maximum = (MediaInfo.Audio_DurationMSec(0) / 1000)
-
             End If
 
             ' set audio streams tab
             Dim count As Integer = MediaInfo.Audio_Streams_Count()
             Dim oneOutput As Boolean = MediaInfo.Audio_Streams_AllInOne
 
-            If (count = 0) Then
-
-                Return
-
-            End If
-
             cbAudioStream1.Enabled = True
             cbAudioStream1.Checked = True
             tbVolume1.Enabled = True
             tbBalance1.Enabled = True
+
+            If (count = 0) Then
+                Return
+            End If
 
             If (count > 1) Then
 
@@ -811,9 +791,9 @@ Public Class Form1
     Private Sub timer1_Tick(ByVal sender As System.Object, ByVal e As EventArgs) Handles timer1.Tick
 
         timer1.Tag = 1
-        tbTimeline.Maximum = (MediaPlayer1.Duration_Time() / 1000.0)
+        tbTimeline.Maximum = MediaPlayer1.Duration_Time().TotalSeconds
 
-        Dim value As Integer = (MediaPlayer1.Position_Get_Time() / 1000.0)
+        Dim value As Integer = MediaPlayer1.Position_Get_Time().TotalSeconds
         If ((value > 0) And (value < tbTimeline.Maximum)) Then
 
             tbTimeline.Value = value
@@ -836,120 +816,94 @@ Public Class Form1
 
     End Sub
 
-    Private Sub FillAdjustRanges()
-
+    Private Async  Sub FillAdjustRanges()
         'updating adjust settings
-        Dim max As Single
-        Dim defaultValue As Single
-        Dim min As Single
-        Dim step1 As Single = 0
+        Dim brightness = await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Brightness)
+        If Not IsNothing(brightness) Then
+            tbAdjBrightness.Minimum = brightness.Min * 10
+            tbAdjBrightness.Maximum = brightness.Max * 10
+            tbAdjBrightness.SmallChange = brightness.Step * 10
 
-        If MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(VFVideoRendererAdjustment.Brightness, min, max, defaultValue, step1) Then
+            Dim def As Integer = brightness.Default * 10
 
-            tbAdjBrightness.Minimum = min * 10
-            tbAdjBrightness.Maximum = max * 10
-            tbAdjBrightness.SmallChange = step1 * 10
-
-            Dim def As Integer = defaultValue * 10
-
-            If (def > max * 10) Then
-
-                def = max * 10
-
+            If (def > brightness.max * 10) Then
+                def = brightness.max * 10
             End If
 
-            If (def < min * 10) Then
-
-                def = min * 10
-
+            If (def < brightness.min * 10) Then
+                def = brightness.min * 10
             End If
 
             tbAdjBrightness.Value = def
-            lbAdjBrightnessMin.Text = "Min: " + Convert.ToString(min)
-            lbAdjBrightnessMax.Text = "Max: " + Convert.ToString(max)
-            lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(defaultValue)
-
+            lbAdjBrightnessMin.Text = "Min: " + Convert.ToString(brightness.min)
+            lbAdjBrightnessMax.Text = "Max: " + Convert.ToString(brightness.max)
+            lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(brightness.Default)
         End If
 
-        If (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(VFVideoRendererAdjustment.Hue, min, max, step1, defaultValue)) Then
+        Dim hue = Await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Hue)
+        If Not IsNothing(hue) Then
+            tbAdjHue.Minimum = hue.min * 10
+            tbAdjHue.Maximum = hue.max * 10
+            tbAdjHue.SmallChange = hue.step * 10
 
-            tbAdjHue.Minimum = min * 10
-            tbAdjHue.Maximum = max * 10
-            tbAdjHue.SmallChange = step1 * 10
-
-            Dim def As Integer = defaultValue * 10
-
-            If (def > max * 10) Then
-
-                def = max * 10
-
+            Dim def As Integer = hue.default * 10
+            If (def > hue.max * 10) Then
+                def = hue.max * 10
             End If
 
-            If (def < min * 10) Then
-
-                def = min * 10
-
+            If (def < hue.min * 10) Then
+                def = hue.min * 10
             End If
 
             tbAdjHue.Value = def
-            lbAdjHueMin.Text = "Min: " + Convert.ToString(min)
-            lbAdjHueMax.Text = "Max: " + Convert.ToString(max)
-            lbAdjHueCurrent.Text = "Current: " + Convert.ToString(defaultValue)
-
+            lbAdjHueMin.Text = "Min: " + Convert.ToString(hue.min)
+            lbAdjHueMax.Text = "Max: " + Convert.ToString(hue.max)
+            lbAdjHueCurrent.Text = "Current: " + Convert.ToString(hue.default)
         End If
 
-        If (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(VFVideoRendererAdjustment.Saturation, min, max, step1, defaultValue)) Then
+        Dim saturation = Await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Saturation)
+        If not IsNothing(saturation) Then
+            tbAdjSaturation.Minimum = saturation.min * 10
+            tbAdjSaturation.Maximum = saturation.max * 10
+            tbAdjSaturation.SmallChange = saturation.step * 10
 
-            tbAdjSaturation.Minimum = min * 10
-            tbAdjSaturation.Maximum = max * 10
-            tbAdjSaturation.SmallChange = step1 * 10
+            Dim def As Integer = saturation.default * 10
 
-            Dim def As Integer = defaultValue * 10
-
-            If (def > max * 10) Then
-
-                def = max * 10
+            If (def > saturation.max * 10) Then
+                def = saturation.max * 10
             End If
 
-            If (def < min * 10) Then
-
-                def = min * 10
+            If (def < saturation.min * 10) Then
+                def = saturation.min * 10
             End If
 
             tbAdjSaturation.Value = def
-            lbAdjSaturationMin.Text = "Min: " + Convert.ToString(min)
-            lbAdjSaturationMax.Text = "Max: " + Convert.ToString(max)
-            lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(defaultValue)
-
+            lbAdjSaturationMin.Text = "Min: " + Convert.ToString(saturation.min)
+            lbAdjSaturationMax.Text = "Max: " + Convert.ToString(saturation.max)
+            lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(saturation.default)
         End If
 
-        If (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(VFVideoRendererAdjustment.Contrast, min, max, step1, defaultValue)) Then
+        Dim contrast = await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Contrast)
+        If not IsNothing(contrast) Then
+            tbAdjContrast.Minimum = contrast.min * 10
+            tbAdjContrast.Maximum = contrast.max * 10
+            tbAdjContrast.SmallChange = contrast.step * 10
 
-            tbAdjContrast.Minimum = min * 10
-            tbAdjContrast.Maximum = max * 10
-            tbAdjContrast.SmallChange = step1 * 10
+            Dim def As Integer = contrast.default * 10
 
-            Dim def As Integer = defaultValue * 10
-
-            If (def > max * 10) Then
-
-                def = max * 10
-
+            If (def > contrast.max * 10) Then
+                def = contrast.max * 10
             End If
 
-            If (def < min * 10) Then
-
-                def = min * 10
-
+            If (def < contrast.min * 10) Then
+                def = contrast.min * 10
             End If
 
             tbAdjContrast.Value = def
-            lbAdjContrastMin.Text = "Min: " + Convert.ToString(min)
-            lbAdjContrastMax.Text = "Max: " + Convert.ToString(max)
-            lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(defaultValue)
-
+            lbAdjContrastMin.Text = "Min: " + Convert.ToString(contrast.min)
+            lbAdjContrastMax.Text = "Max: " + Convert.ToString(contrast.max)
+            lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(contrast.default)
         End If
-
     End Sub
 
     Private Sub ConfigureObjectTracking()
@@ -996,31 +950,31 @@ Public Class Form1
                 ElseIf (rbGPUDirect3D.Checked) Then
                     MediaPlayer1.Source_GPU_Mode = VFMediaPlayerSourceGPUDecoder.Direct3D11
                 End If
-            Case 1
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG
             Case 2
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_FFMPEG
             Case 3
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
             Case 4
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_VLC
             Case 5
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.DVD_DS
             Case 6
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.BluRay
+            Case 7
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS
                 LoadToMemory()
-            Case 7
+            Case 8
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_FFMPEG
                 LoadToMemory()
-            Case 8
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS
             Case 9
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.MMS_WMV_DS
             Case 10
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_FFMPEG
             Case 11
-                MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.HTTP_RTSP_VLC
             Case 12
+                MediaPlayer1.Source_Mode = VFMediaPlayerSource.Encrypted_File_DS
+            Case 13
                 MediaPlayer1.Source_Mode = VFMediaPlayerSource.MIDI
         End Select
     End Sub
@@ -1171,7 +1125,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         MediaPlayer1.Debug_Mode = cbDebugMode.Checked
         MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked
@@ -1232,26 +1186,18 @@ Public Class Form1
         MediaPlayer1.Audio_OutputDevice = cbAudioOutputDevice.Text
 
         If (rbVR.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
-
         ElseIf (rbVMR9.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
-
         ElseIf (rbEVR.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
-
         ElseIf (rbDirect2D.Checked) Then
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.Direct2D
-
         Else
-
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None
-
         End If
+
+        MediaPlayer1.Virtual_Camera_Output_Enabled = rbVirtualCameraOutput.Checked
 
         MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
         MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
@@ -1285,11 +1231,11 @@ Public Class Form1
 
         If (MediaPlayer1.Audio_Effects_Enabled) Then
 
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1)
-            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
 
         End If
 
@@ -1346,9 +1292,7 @@ Public Class Form1
         MediaPlayer1.Barcode_Reader_Type = cbBarcodeType.SelectedIndex
 
         ' Motion detection
-        If (cbMotDetEnabled.Checked) Then
-            btMotDetUpdateSettings_Click(Nothing, Nothing)
-        End If
+        ConfigureMotionDetection()
 
         ' Object detection
         ConfigureObjectTracking()
@@ -1371,7 +1315,7 @@ Public Class Form1
 
         End If
 
-        MediaPlayer1.Play(cbRunAsync.Checked)
+        Await MediaPlayer1.PlayAsync()
 
         FillAdjustRanges()
 
@@ -1473,41 +1417,41 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btZoomIn_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomIn.Click
+    Private Async Sub btZoomIn_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomIn.Click
         MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio + 5
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomOut_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomOut.Click
+    Private Async Sub btZoomOut_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomOut.Click
         MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio - 5
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftDown_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftDown.Click
+    Private Async Sub btZoomShiftDown_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftDown.Click
         MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY - 2
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftLeft_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftLeft.Click
+    Private Async Sub btZoomShiftLeft_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftLeft.Click
         MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX - 2
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftRight_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftRight.Click
+    Private Async Sub btZoomShiftRight_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftRight.Click
         MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX + 2
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftUp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftUp.Click
+    Private Async Sub btZoomShiftUp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftUp.Click
         MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY + 2
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomReset_Click(sender As Object, e As EventArgs) Handles btZoomReset.Click
+    Private Async Sub btZoomReset_Click(sender As Object, e As EventArgs) Handles btZoomReset.Click
         MediaPlayer1.Video_Renderer.Zoom_Ratio = 0
         MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0
         MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0
-        MediaPlayer1.Video_Renderer_Update()
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
     Private Sub cbAudioStream1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudioStream1.CheckedChanged
@@ -1614,22 +1558,17 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbScreenFlipHorizontal_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipHorizontal.CheckedChanged
-
+    Private Async Sub cbScreenFlipHorizontal_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipHorizontal.CheckedChanged
         MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
-        MediaPlayer1.Video_Renderer_Update()
-
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
-
+    Private Async Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
         MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
-        MediaPlayer1.Video_Renderer_Update()
-
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
-
+    Private Async Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
         If (cbStretch.Checked) Then
 
             MediaPlayer1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Stretch
@@ -1640,13 +1579,13 @@ Public Class Form1
 
         End If
 
-        MediaPlayer1.Video_Renderer_Update()
-
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
 
-        MediaPlayer1.Stop()
+        Await MediaPlayer1.StopAsync()
+
         timer1.Enabled = False
         tbTimeline.Value = 0
 
@@ -1670,15 +1609,15 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
+    Private Async Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
 
-        MediaPlayer1.Resume()
+        Await MediaPlayer1.ResumeAsync()
 
     End Sub
 
-    Private Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
+    Private Async Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
 
-        MediaPlayer1.Pause()
+        Await MediaPlayer1.PauseAsync()
 
     End Sub
 
@@ -1704,13 +1643,11 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbAspectRatioUseCustom_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAspectRatioUseCustom.CheckedChanged
-
+    Private Async Sub cbAspectRatioUseCustom_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAspectRatioUseCustom.CheckedChanged
         MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked
         MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text)
         MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text)
-        MediaPlayer1.Video_Renderer_Update()
-
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
     Private Sub btAudEqRefresh_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btAudEqRefresh.Click
@@ -1877,15 +1814,13 @@ Public Class Form1
 
     Private Delegate Sub AFStopDelegate()
 
-    Private Sub AFStopDelegateMethod()
+    Private async Sub AFStopDelegateMethod()
 
         tbTimeline.Value = 0
 
         'playlist used, we still need to call from GUI thread, using delegate
         If (MediaPlayer1.FilenamesOrURL.Count > 0) Then
-
-            MediaPlayer1.Play()
-
+            await MediaPlayer1.PlayAsync()
         End If
 
     End Sub
@@ -1897,36 +1832,27 @@ Public Class Form1
 
     End Sub
 
-    Private Sub tbAdjBrightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjBrightness.Scroll
-
-        MediaPlayer1.Video_Renderer_VideoAdjust_SetValue(VFVideoRendererAdjustment.Brightness, (tbAdjBrightness.Value / 10.0))
+    Private Async Sub tbAdjBrightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjBrightness.Scroll
+        Await MediaPlayer1.Video_Renderer_VideoAdjust_SetValueAsync(VFVideoRendererAdjustment.Brightness, (tbAdjBrightness.Value / 10.0))
         lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(tbAdjBrightness.Value / 10.0)
-
     End Sub
 
-    Private Sub tbAdjContrast_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjContrast.Scroll
-
-        MediaPlayer1.Video_Renderer_VideoAdjust_SetValue(VFVideoRendererAdjustment.Contrast, (tbAdjContrast.Value / 10.0))
+    Private Async Sub tbAdjContrast_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjContrast.Scroll
+        Await MediaPlayer1.Video_Renderer_VideoAdjust_SetValueAsync(VFVideoRendererAdjustment.Contrast, (tbAdjContrast.Value / 10.0))
         lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(tbAdjContrast.Value / 10.0)
-
     End Sub
 
-    Private Sub tbAdjHue_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjHue.Scroll
-
-        MediaPlayer1.Video_Renderer_VideoAdjust_SetValue(VFVideoRendererAdjustment.Hue, (tbAdjHue.Value / 10.0))
+    Private Async Sub tbAdjHue_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjHue.Scroll
+        Await MediaPlayer1.Video_Renderer_VideoAdjust_SetValueAsync(VFVideoRendererAdjustment.Hue, (tbAdjHue.Value / 10.0))
         lbAdjHueCurrent.Text = "Current: " + Convert.ToString(tbAdjHue.Value / 10.0)
-
     End Sub
 
-    Private Sub tbAdjSaturation_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjSaturation.Scroll
-
-        MediaPlayer1.Video_Renderer_VideoAdjust_SetValue(VFVideoRendererAdjustment.Saturation, (tbAdjSaturation.Value / 10.0))
+    Private Async Sub tbAdjSaturation_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjSaturation.Scroll
+        Await MediaPlayer1.Video_Renderer_VideoAdjust_SetValueAsync(VFVideoRendererAdjustment.Saturation, (tbAdjSaturation.Value / 10.0))
         lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(tbAdjSaturation.Value / 10.0)
-
     End Sub
 
-    Private Sub btMotDetUpdateSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btMotDetUpdateSettings.Click
-
+    Private Sub ConfigureMotionDetection()
         If (cbMotDetEnabled.Checked) Then
             MediaPlayer1.Motion_Detection = New MotionDetectionSettings()
             MediaPlayer1.Motion_Detection.Enabled = cbMotDetEnabled.Checked
@@ -1946,7 +1872,10 @@ Public Class Form1
         Else
             MediaPlayer1.Motion_Detection = Nothing
         End If
+    End Sub
 
+    Private Sub btMotDetUpdateSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btMotDetUpdateSettings.Click
+        ConfigureMotionDetection()
     End Sub
 
     Private Sub btChromaKeySelectBGImage_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btChromaKeySelectBGImage.Click
@@ -2169,8 +2098,8 @@ Public Class Form1
         End If
 
         pan.Enabled = cbPan.Checked
-        pan.StartTime = Convert.ToInt32(edPanStartTime.Text)
-        pan.StopTime = Convert.ToInt32(edPanStopTime.Text)
+        pan.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text))
+        pan.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text))
         pan.StartX = Convert.ToInt32(edPanSourceLeft.Text)
         pan.StartY = Convert.ToInt32(edPanSourceTop.Text)
         pan.StartWidth = Convert.ToInt32(edPanSourceWidth.Text)
@@ -2237,8 +2166,8 @@ Public Class Form1
             End If
 
             fadeIn.Enabled = cbFadeInOut.Checked
-            fadeIn.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text)
-            fadeIn.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text)
+            fadeIn.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text))
+            fadeIn.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text))
         Else
             Dim fadeOut As IVFVideoEffectFadeOut
             Dim effect = MediaPlayer1.Video_Effects_Get("FadeOut")
@@ -2255,8 +2184,8 @@ Public Class Form1
             End If
 
             fadeOut.Enabled = cbFadeInOut.Checked
-            fadeOut.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text)
-            fadeOut.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text)
+            fadeOut.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text))
+            fadeOut.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text))
         End If
 
     End Sub
@@ -2296,8 +2225,7 @@ Public Class Form1
 
     Dim controlHeight As Integer
 
-    Private Sub btFullScreen_Click(sender As Object, e As EventArgs) Handles btFullScreen.Click
-
+    Private Async Sub btFullScreen_Click(sender As Object, e As EventArgs) Handles btFullScreen.Click
         If (Not fullScreen) Then
 
             ' going fullscreen
@@ -2330,8 +2258,7 @@ Public Class Form1
             MediaPlayer1.Width = Width
             MediaPlayer1.Height = Height
 
-            MediaPlayer1.Video_Renderer_Update()
-
+            Await MediaPlayer1.Video_Renderer_UpdateAsync()
         Else
             ' going normal screen
             fullScreen = False
@@ -2352,10 +2279,8 @@ Public Class Form1
             FormBorderStyle = FormBorderStyle.Sizable
             WindowState = FormWindowState.Normal
 
-            MediaPlayer1.Video_Renderer_Update()
-
+            Await MediaPlayer1.Video_Renderer_UpdateAsync()
         End If
-
     End Sub
 
     Private Sub MediaPlayer1_MouseDown(sender As Object, e As MouseEventArgs) Handles MediaPlayer1.MouseDown
@@ -2442,12 +2367,12 @@ Public Class Form1
 
         BeginInvoke(Sub()
                         volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
-                        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
+                        waveformPainter1.AddMax(e.ChannelLevels(0) / 100.0F)
 
                         If (e.ChannelLevelsDb.Length > 1) Then
 
                             volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
-                            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
+                            waveformPainter2.AddMax(e.ChannelLevels(1) / 100.0F)
 
                         End If
                     End Sub)
@@ -2458,7 +2383,7 @@ Public Class Form1
 
         Dim rotate As IVFVideoEffectRotate
         Dim effect = MediaPlayer1.Video_Effects_Get("Rotate")
-        If (effect is Nothing) Then
+        If (effect Is Nothing) Then
             rotate = New VFVideoEffectRotate(
                     cbLiveRotation.Checked,
                     tbLiveRotationAngle.Value,
@@ -2491,8 +2416,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub pnVideoRendererBGColor_Click(sender As Object, e As EventArgs) Handles pnVideoRendererBGColor.Click
-
+    Private Async Sub pnVideoRendererBGColor_Click(sender As Object, e As EventArgs) Handles pnVideoRendererBGColor.Click
         colorDialog1.Color = pnVideoRendererBGColor.BackColor
 
         If (colorDialog1.ShowDialog() = DialogResult.OK) Then
@@ -2500,16 +2424,13 @@ Public Class Form1
             pnVideoRendererBGColor.BackColor = colorDialog1.Color
 
             MediaPlayer1.Video_Renderer.BackgroundColor = colorDialog1.Color
-            MediaPlayer1.Video_Renderer_Update()
+            Await MediaPlayer1.Video_Renderer_UpdateAsync()
         End If
-
     End Sub
 
-    Private Sub cbDirect2DRotate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDirect2DRotate.SelectedIndexChanged
-
+    Private Async Sub cbDirect2DRotate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDirect2DRotate.SelectedIndexChanged
         MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
-        MediaPlayer1.Video_Renderer_Update()
-
+        Await MediaPlayer1.Video_Renderer_UpdateAsync()
     End Sub
 
     Private Sub cbFilters_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbFilters.SelectedIndexChanged
@@ -2811,7 +2732,7 @@ Public Class Form1
 
     Private Sub tbGPULightness_Scroll(sender As Object, e As EventArgs) Handles tbGPULightness.Scroll
 
-         Dim intf As IVFGPUVideoEffectBrightness
+        Dim intf As IVFGPUVideoEffectBrightness
         Dim effect = MediaPlayer1.Video_Effects_GPU_Get("Brightness")
         If (IsNothing(effect)) Then
             intf = New VFGPUVideoEffectBrightness(True, tbGPULightness.Value)
@@ -2886,7 +2807,7 @@ Public Class Form1
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUGreyscale.Checked
                 intf.Update()
             End If
@@ -2903,7 +2824,7 @@ Public Class Form1
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUInvert.Checked
                 intf.Update()
             End If
@@ -2920,7 +2841,7 @@ Public Class Form1
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUNightVision.Checked
                 intf.Update()
             End If
@@ -2930,14 +2851,14 @@ Public Class Form1
 
     Private Sub cbGPUPixelate_CheckedChanged(sender As Object, e As EventArgs) Handles cbGPUPixelate.CheckedChanged
 
-         Dim intf As IVFGPUVideoEffectPixelate
+        Dim intf As IVFGPUVideoEffectPixelate
         Dim effect = MediaPlayer1.Video_Effects_GPU_Get("Pixelate")
         If (IsNothing(effect)) Then
             intf = New VFGPUVideoEffectPixelate(cbGPUPixelate.Checked)
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUPixelate.Checked
                 intf.Update()
             End If
@@ -2954,7 +2875,7 @@ Public Class Form1
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUDenoise.Checked
                 intf.Update()
             End If
@@ -2970,7 +2891,7 @@ Public Class Form1
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUDeinterlace.Checked
                 intf.Update()
             End If
@@ -2985,7 +2906,7 @@ Public Class Form1
             MediaPlayer1.Video_Effects_GPU_Add(intf)
         Else
             intf = effect
-            If (not IsNothing(intf)) Then
+            If (Not IsNothing(intf)) Then
                 intf.Enabled = cbGPUOldMovie.Checked
                 intf.Update()
             End If
@@ -3008,12 +2929,12 @@ Public Class Form1
         MediaPlayer1.Width = Width - MediaPlayer1.Left - 30
         MediaPlayer1.Height = Height - MediaPlayer1.Top - 260
     End Sub
-    
+
     Private Sub cbFlipX_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipX.CheckedChanged
         Dim flip As IVFVideoEffectFlipDown
         Dim effect = MediaPlayer1.Video_Effects_Get("FlipDown")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            flip = New VFVideoEffectFlipHorizontal(cbFlipX.Checked)
             MediaPlayer1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -3027,7 +2948,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipRight
         Dim effect = MediaPlayer1.Video_Effects_Get("FlipRight")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            flip = New VFVideoEffectFlipVertical(cbFlipY.Checked)
             MediaPlayer1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -3088,10 +3009,10 @@ Public Class Form1
     End Sub
 
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
-        Dim dlg = new TextLogoSettingsDialog()
+        Dim dlg = New TextLogoSettingsDialog()
 
         Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1.Core)
-        Dim effect = new VFVideoEffectTextLogo(true, effectName)
+        Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         MediaPlayer1.Video_Effects_Add(effect)
         lbTextLogos.Items.Add(effect.Name)

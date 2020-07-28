@@ -1,12 +1,10 @@
 ﻿<Window
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-        xmlns:my="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI.NetCore"        
-        xmlns:VolumeMeterPro="clr-namespace:VisioForge.Controls.UI.WPF.VolumeMeterPro;assembly=VisioForge.Controls.UI.NetCore" x:Class="Main_Demo.Window1"
-    Title="Video Capture SDK .Net - Main Demo" Height="845" Width="975" Loaded="Form1_Load"        
-        Closed="Window_Closed" Icon="visioforge_main_icon.ico">
+    xmlns:my="clr-namespace:VisioForge.Controls.UI.WPF;assembly=VisioForge.Controls.UI.NetCore"        
+    xmlns:VolumeMeterPro="clr-namespace:VisioForge.Controls.UI.WPF.VolumeMeterPro;assembly=VisioForge.Controls.UI.NetCore" x:Class="Main_Demo.Window1"
+    Title="Video Capture SDK .Net - Main Demo" Height="845" Width="975" Loaded="Form1_Load" Icon="visioforge_main_icon.ico">
     <Grid>
-        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,0,25,48" VerticalAlignment="Bottom"/>
 
         <TabControl Height="638" HorizontalAlignment="Left" Margin="12,12,0,0" x:Name="tabControl1" VerticalAlignment="Top" Width="382">
             <TabItem Header="Capture" x:Name="tabItem1">
@@ -58,18 +56,20 @@
                                 <TabControl Height="290" HorizontalAlignment="Left" Margin="0,202,0,0" x:Name="tabControl7" VerticalAlignment="Top" Width="364">
                                     <TabItem Header="Text logo">
                                         <Grid>
-                                            <ListBox x:Name="lbTextLogos" HorizontalAlignment="Left" Height="217" VerticalAlignment="Top" Width="338" Margin="10,10,0,0"/>
+                                            <ListBox x:Name="lbTextLogos" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="338" Margin="10,30,0,0"/>
                                             <Button x:Name="btTextLogoAdd" Content="Add" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="74" Click="BtTextLogoAdd_Click"/>
                                             <Button x:Name="btTextLogoEdit" Content="Edit" HorizontalAlignment="Left" Margin="89,232,0,0" VerticalAlignment="Top" Width="76" Click="BtTextLogoEdit_Click"/>
                                             <Button x:Name="btTextLogoRemove" Content="Remove" HorizontalAlignment="Left" Margin="274,232,0,0" VerticalAlignment="Top" Width="74" Click="BtTextLogoRemove_Click"/>
+                                            <CheckBox x:Name="cbMergeTextLogos" Content="Merge text logos into one" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="Image logo">
                                         <Grid>
-                                            <ListBox x:Name="lbImageLogos" HorizontalAlignment="Left" Height="217" VerticalAlignment="Top" Width="338" Margin="10,10,0,0"/>
+                                            <ListBox x:Name="lbImageLogos" HorizontalAlignment="Left" Height="197" VerticalAlignment="Top" Width="338" Margin="10,30,0,0"/>
                                             <Button x:Name="btImageLogoAdd" Content="Add" HorizontalAlignment="Left" Margin="10,232,0,0" VerticalAlignment="Top" Width="74" Click="BtImageLogoAdd_Click"/>
                                             <Button x:Name="btImageLogoEdit" Content="Edit" HorizontalAlignment="Left" Margin="89,232,0,0" VerticalAlignment="Top" Width="76" Click="BtImageLogoEdit_Click"/>
                                             <Button x:Name="btImageLogoRemove" Content="Remove" HorizontalAlignment="Left" Margin="274,232,0,0" VerticalAlignment="Top" Width="74" Click="BtImageLogoRemove_Click"/>
+                                            <CheckBox x:Name="cbMergeImageLogos" Content="Merge image logos into one" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                                         </Grid>
                                     </TabItem>
                                     <TabItem Header="Zoom">
@@ -529,7 +529,16 @@
                                 <TextBox x:Name="edHLSSegmentCount" HorizontalAlignment="Left" Height="23" Margin="10,129,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="67"/>
                                 <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="84,130,0,0" TextWrapping="Wrap" Text="Use 0 to save all segments" VerticalAlignment="Top"/>
                                 <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="10,157,0,0" TextWrapping="Wrap" Text="You can set video (H264) and audio (AAC) settings in code" VerticalAlignment="Top"/>
-                                <Label x:Name="lbHLSConfigure" Content="How to configure HTTP server for HLS" Height="29" HorizontalAlignment="Left" Margin="10,198,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0016CF" MouseDown="lbHLSConfigure_MouseDown" />
+                                <Label x:Name="lbHLSConfigure" Content="How to configure HTTP server for HLS" Height="29" HorizontalAlignment="Left" Margin="10,323,0,0" VerticalAlignment="Top" FontWeight="Bold" Foreground="#FF0016CF" MouseDown="lbHLSConfigure_MouseDown" />
+                                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="10,200,0,0" TextWrapping="Wrap" Text="Mode (playlist type)" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="cbHLSMode" HorizontalAlignment="Left" Margin="10,221,0,0" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+                                    <ComboBoxItem>Live</ComboBoxItem>
+                                    <ComboBoxItem>VOD</ComboBoxItem>
+                                    <ComboBoxItem>Event</ComboBoxItem>
+                                </ComboBox>
+                                <CheckBox x:Name="cbHLSEmbeddedHTTPServerEnabled" Content="Use embedded HTTP server with port" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top"/>
+                                <TextBox x:Name="edHLSEmbeddedHTTPServerPort" HorizontalAlignment="Left" Height="23" Margin="252,257,0,0" TextWrapping="Wrap" Text="80" VerticalAlignment="Top" Width="40"/>
+                                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="10,291,0,0" TextWrapping="Wrap" Text="or" VerticalAlignment="Top"/>
                             </Grid>
                         </TabItem>
                         <TabItem Header="External">
@@ -836,8 +845,7 @@
                 <Grid>
                     <CheckBox Content="Debug mode" Height="16" HorizontalAlignment="Left" Margin="16,6,0,0" x:Name="cbDebugMode" VerticalAlignment="Top" />
                     <TextBox Height="73" HorizontalAlignment="Left" Margin="16,28,0,0" x:Name="mmLog" VerticalAlignment="Top" Width="337" />
-                    <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="120,6,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="cbTelemetry" Content="Telemetry" HorizontalAlignment="Left" Margin="228,6,0,0" VerticalAlignment="Top" IsChecked="True"/>
+                    <CheckBox x:Name="cbTelemetry" Content="Telemetry" HorizontalAlignment="Left" Margin="111,7,0,0" VerticalAlignment="Top" IsChecked="True"/>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -971,25 +979,25 @@
                             <Grid>
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="34,68,0,0" Maximum="100" x:Name="tbAdjBrightness" VerticalAlignment="Top" Width="188" Value="50" ValueChanged="tbAdjBrightness_Scroll" />
                                 <Label Content="Lightness" Height="28" HorizontalAlignment="Left" Margin="34,34,0,0" x:Name="label207" VerticalAlignment="Top" Width="86" />
-                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="179,39,0,0" x:Name="cbAdjBrightnessAuto" VerticalAlignment="Top" />
+                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="179,39,0,0" x:Name="cbAdjBrightnessAuto" VerticalAlignment="Top" Click="cbAdjBrightnessAuto_Click" />
                                 <Label Content="Min = 1" Height="28" HorizontalAlignment="Left" Margin="34,92,0,0" x:Name="lbAdjBrightnessMin" VerticalAlignment="Top" />
                                 <Label Content="Current = 40" Height="28" HorizontalAlignment="Left" Margin="145,92,0,0" x:Name="lbAdjBrightnessCurrent" VerticalAlignment="Top" />
                                 <Label Content="Max = 1" Height="28" HorizontalAlignment="Left" Margin="92,92,0,0" x:Name="lbAdjBrightnessMax" VerticalAlignment="Top" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="271,68,0,0" Maximum="100" x:Name="tbAdjHue" Value="50" VerticalAlignment="Top" Width="188" ValueChanged="tbAdjHue_Scroll" />
                                 <Label Content="Hue" Height="28" HorizontalAlignment="Left" Margin="271,34,0,0" x:Name="label211" VerticalAlignment="Top" Width="86" />
-                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="416,39,0,0" x:Name="cbAdjHueAuto" VerticalAlignment="Top" />
+                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="416,39,0,0" x:Name="cbAdjHueAuto" VerticalAlignment="Top" Click="cbAdjHueAuto_Click" />
                                 <Label Content="Min = 1" Height="28" HorizontalAlignment="Left" Margin="271,92,0,0" x:Name="lbAdjHueMin" VerticalAlignment="Top" />
                                 <Label Content="Current = 40" Height="28" HorizontalAlignment="Left" Margin="382,92,0,0" x:Name="lbAdjHueCurrent" VerticalAlignment="Top" />
                                 <Label Content="Max = 1" Height="28" HorizontalAlignment="Left" Margin="329,92,0,0" x:Name="lbAdjHueMax" VerticalAlignment="Top" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="34,196,0,0" Maximum="100" x:Name="tbAdjContrast" Value="50" VerticalAlignment="Top" Width="188" ValueChanged="tbAdjContrast_Scroll" />
                                 <Label Content="Contrast" Height="28" HorizontalAlignment="Left" Margin="34,161,0,0" x:Name="label215" VerticalAlignment="Top" Width="86" />
-                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="179,167,0,0" x:Name="cbAdjContrastAuto" VerticalAlignment="Top" />
+                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="179,167,0,0" x:Name="cbAdjContrastAuto" VerticalAlignment="Top" Click="cbAdjContrastAuto_Click" />
                                 <Label Content="Min = 1" Height="28" HorizontalAlignment="Left" Margin="34,219,0,0" x:Name="lbAdjContrastMin" VerticalAlignment="Top" />
                                 <Label Content="Current = 40" Height="28" HorizontalAlignment="Left" Margin="145,219,0,0" x:Name="lbAdjContrastCurrent" VerticalAlignment="Top" />
                                 <Label Content="Max = 1" Height="28" HorizontalAlignment="Left" Margin="92,219,0,0" x:Name="lbAdjContrastMax" VerticalAlignment="Top" />
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="271,196,0,0" Maximum="100" x:Name="tbAdjSaturation" Value="50" VerticalAlignment="Top" Width="188" ValueChanged="tbAdjSaturation_Scroll" />
                                 <Label Content="Saturation" Height="28" HorizontalAlignment="Left" Margin="271,161,0,0" x:Name="label219" VerticalAlignment="Top" Width="86" />
-                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="416,167,0,0" x:Name="cbAdjSaturationAuto" VerticalAlignment="Top" />
+                                <CheckBox Content="Auto" Height="16" HorizontalAlignment="Left" Margin="416,167,0,0" x:Name="cbAdjSaturationAuto" VerticalAlignment="Top" Click="cbAdjSaturationAuto_Click" />
                                 <Label Content="Min = 1" Height="28" HorizontalAlignment="Left" Margin="271,219,0,0" x:Name="lbAdjSaturationMin" VerticalAlignment="Top" />
                                 <Label Content="Current = 40" Height="28" HorizontalAlignment="Left" Margin="382,219,0,0" x:Name="lbAdjSaturationCurrent" VerticalAlignment="Top" />
                                 <Label Content="Max = 1" Height="28" HorizontalAlignment="Left" Margin="329,219,0,0" x:Name="lbAdjSaturationMax" VerticalAlignment="Top" />
@@ -1031,7 +1039,7 @@
                                 <Label x:Name="lbCCPanMax" Margin="70,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Max = 100" />
                                 <Label x:Name="lbCCPanMin" Margin="22,51,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Min = 1" />
                                 <Label Margin="13,27,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Pan"/>
-                                <Slider x:Name="tbCCPan" HorizontalAlignment="Left" Margin="64,32,0,0" VerticalAlignment="Top" Width="143"/>
+                                <Slider x:Name="tbCCPan" HorizontalAlignment="Left" Margin="64,32,0,0" VerticalAlignment="Top" Width="143" />
                                 <Slider x:Name="tbCCTilt" HorizontalAlignment="Left" Margin="275,32,0,0" VerticalAlignment="Top" Width="143"/>
                                 <Slider x:Name="tbCCFocus" HorizontalAlignment="Left" Margin="275,149,0,0" VerticalAlignment="Top" Width="143"/>
                                 <Slider x:Name="tbCCZoom" HorizontalAlignment="Left" Margin="64,149,0,0" VerticalAlignment="Top" Width="143"/>
@@ -1132,7 +1140,7 @@
                     <TabControl HorizontalAlignment="Left" Height="331" Margin="0,13,0,0" VerticalAlignment="Top" Width="514">
                         <TabItem Header="Main">
                             <Grid>
-                                <TextBox Height="23" Margin="53,10,10,0" x:Name="edIPUrl" Text="http://212.162.177.75/mjpg/video.mjpg" VerticalAlignment="Top" />
+                                <TextBox Height="23" Margin="53,10,10,0" x:Name="edIPUrl" Text="http://help.visioforge.com/video.mp4" VerticalAlignment="Top" />
                                 <Label Content="URL" Height="23" HorizontalAlignment="Left" Margin="4,6,0,0" x:Name="label220" VerticalAlignment="Top" Width="55" />
 
                                 <Label Content="Type" Height="35" HorizontalAlignment="Left" Margin="4,42,0,0" x:Name="label223" VerticalAlignment="Top" Width="55" />
@@ -1154,6 +1162,7 @@
                                     <ComboBoxItem Content="HTTP MJPEG Low Latency"/>
                                     <ComboBoxItem Content="RTSP Low Latency TCP"/>
                                     <ComboBoxItem Content="RTSP Low Latency UDP"/>
+                                    <ComboBoxItem Content="NDI" />
                                 </ComboBox>
                                 <Label x:Name="lbVLCRedist" Content="Please install VisioForge VLC redist to use VLC engine " HorizontalAlignment="Left" Margin="185,233,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist_MouseLeftButtonDown"/>
                                 <Button x:Name="btShowIPCamDatabase" Content="Show IP cam database" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="148" Click="btShowIPCamDatabase_Click"/>

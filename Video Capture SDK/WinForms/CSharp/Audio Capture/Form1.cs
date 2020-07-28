@@ -402,7 +402,7 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             oggVorbisSettingsDialog.SaveSettings(ref oggVorbisOutput);
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
 
@@ -497,22 +497,22 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             VideoCapture1.Audio_Effects_Clear(-1);
             VideoCapture1.Audio_Effects_Enabled = true;
 
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
   
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 3;
             tmRecording.Start();
         }
         
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
         private void llVideoTutorials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -521,17 +521,22 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void cbOutputFormat_SelectedIndexChanged(object sender, EventArgs e)
@@ -671,23 +676,21 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (IsHandleCreated)
             {
-                return;
+                var timestamp = VideoCapture1.Duration_Time();
+
+                if (Math.Abs(timestamp.TotalMilliseconds) < 0.01)
+                {
+                    return;
+                }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = "Recording time: " + timestamp.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
         }
     }
 }

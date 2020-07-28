@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.WinForms;
-using VisioForge.Types;
-
-namespace Video_Mixing_Demo
+﻿namespace Video_Mixing_Demo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Drawing;
+    using System.Windows.Forms;
+
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.WinForms;
+    using VisioForge.Types;
+
     public partial class Form1 : Form
     {
         private readonly List<PIPInfo> _pipInfos;
@@ -76,7 +77,7 @@ namespace Video_Mixing_Demo
             Process.Start(startInfo);
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
             MediaPlayer1.Info_UseLibMediaInfo = true;
@@ -90,9 +91,9 @@ namespace Video_Mixing_Demo
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
 
-            MediaPlayer1.Play();
+            await MediaPlayer1.PlayAsync();
 
-            MediaPlayer1.PIP_Sources_SetSourcePosition(0, _pipInfos[0].Rect, 1.0f);
+            await MediaPlayer1.PIP_Sources_SetSourcePositionAsync(0, _pipInfos[0].Rect, 1.0f);
 
             lbSourceFiles.SelectedIndex = 0;
 
@@ -101,7 +102,10 @@ namespace Video_Mixing_Demo
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Invoke((Action)(() =>
+                                   {
+mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+                                   }));
         }
 
         private void btTest_Click(object sender, EventArgs e)
@@ -116,25 +120,25 @@ namespace Video_Mixing_Demo
             AddFile(filename2);
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             timer1.Stop();
             
-            MediaPlayer1.Stop();
+            await MediaPlayer1.StopAsync();
 
             _pipInfos.Clear();
             MediaPlayer1.PIP_Sources_Clear();
             lbSourceFiles.Items.Clear();
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Resume();
+            await MediaPlayer1.ResumeAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Pause();
+            await MediaPlayer1.PauseAsync();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -160,7 +164,7 @@ namespace Video_Mixing_Demo
             }
         }
 
-        private void btUpdateRect_Click(object sender, EventArgs e)
+        private async void btUpdateRect_Click(object sender, EventArgs e)
         {
             int index = lbSourceFiles.SelectedIndex;
             if (index >= 0)
@@ -183,8 +187,12 @@ namespace Video_Mixing_Demo
                     lbSourceFiles.Items[index] = $@"{_pipInfos[index].Filename} ({left}.{top}px, width: {width}px, height: {height}px)";
                 }
 
-                MediaPlayer1.PIP_Sources_SetSourcePosition(index, _pipInfos[index].Rect, tbStreamTransparency.Value / 100.0f);
-                MediaPlayer1.PIP_Sources_SetSourceOrder(index, _pipInfos[index].ZOrder);
+                var transp = tbStreamTransparency.Value / 100.0f;
+                await MediaPlayer1.PIP_Sources_SetSourcePositionAsync(
+                        index,
+                        _pipInfos[index].Rect,
+                        transp);
+                await MediaPlayer1.PIP_Sources_SetSourceOrderAsync(index, _pipInfos[index].ZOrder);
             }
         }
 
@@ -213,9 +221,9 @@ namespace Video_Mixing_Demo
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Tag = 1;
-            tbTimeline.Maximum = (int)(MediaPlayer1.Duration_Time() / 1000.0);
+            tbTimeline.Maximum = (int)MediaPlayer1.Duration_Time().TotalSeconds;
 
-            int value = (int)(MediaPlayer1.Position_Get_Time() / 1000.0);
+            int value = (int)MediaPlayer1.Position_Get_Time().TotalSeconds;
             if ((value > 0) && (value < tbTimeline.Maximum))
             {
                 tbTimeline.Value = value;
@@ -235,15 +243,15 @@ namespace Video_Mixing_Demo
         {
             if (Convert.ToInt32(timer1.Tag) == 0)
             {
-                MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000);
+                MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value));
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private async void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (MediaPlayer1.Status != VFMediaPlayerStatus.Free)
             {
-                MediaPlayer1.Stop();
+                await MediaPlayer1.StopAsync();
             }
         }
     }

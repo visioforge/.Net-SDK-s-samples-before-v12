@@ -1,3 +1,5 @@
+using System;
+
 namespace VideoCapture_CSharp_Demo
 {
     using VisioForge.Controls.UI.WinForms.VolumeMeterPro;
@@ -69,11 +71,13 @@ namespace VideoCapture_CSharp_Demo
             this.label198 = new System.Windows.Forms.Label();
             this.tabControl7 = new System.Windows.Forms.TabControl();
             this.tabPage29 = new System.Windows.Forms.TabPage();
+            this.cbMergeTextLogos = new System.Windows.Forms.CheckBox();
             this.btTextLogoRemove = new System.Windows.Forms.Button();
             this.btTextLogoEdit = new System.Windows.Forms.Button();
             this.lbTextLogos = new System.Windows.Forms.ListBox();
             this.btTextLogoAdd = new System.Windows.Forms.Button();
             this.tabPage42 = new System.Windows.Forms.TabPage();
+            this.cbMergeImageLogos = new System.Windows.Forms.CheckBox();
             this.btImageLogoRemove = new System.Windows.Forms.Button();
             this.btImageLogoEdit = new System.Windows.Forms.Button();
             this.lbImageLogos = new System.Windows.Forms.ListBox();
@@ -202,13 +206,6 @@ namespace VideoCapture_CSharp_Demo
             this.edResizeWidth = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.cbResize = new System.Windows.Forms.CheckBox();
-            this.tabPage22 = new System.Windows.Forms.TabPage();
-            this.label85 = new System.Windows.Forms.Label();
-            this.label88 = new System.Windows.Forms.Label();
-            this.tbOCLBrightness = new System.Windows.Forms.TrackBar();
-            this.cbOCLInvert = new System.Windows.Forms.CheckBox();
-            this.cbOCLGreyscale = new System.Windows.Forms.CheckBox();
-            this.cbOpenCLEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage60 = new System.Windows.Forms.TabPage();
             this.btChromaKeySelectBGImage = new System.Windows.Forms.Button();
             this.edChromaKeyImage = new System.Windows.Forms.TextBox();
@@ -418,6 +415,11 @@ namespace VideoCapture_CSharp_Demo
             this.label371 = new System.Windows.Forms.Label();
             this.rbNetworkSSSoftware = new System.Windows.Forms.RadioButton();
             this.tabPage104 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.edHLSEmbeddedHTTPServerPort = new System.Windows.Forms.TextBox();
+            this.cbHLSEmbeddedHTTPServerEnabled = new System.Windows.Forms.CheckBox();
+            this.cbHLSMode = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.lbHLSConfigure = new System.Windows.Forms.LinkLabel();
             this.label532 = new System.Windows.Forms.Label();
             this.label531 = new System.Windows.Forms.Label();
@@ -1119,7 +1121,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabControl12 = new System.Windows.Forms.TabControl();
             this.tabPage53 = new System.Windows.Forms.TabPage();
             this.cbTelemetry = new System.Windows.Forms.CheckBox();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.openFileDialog3 = new System.Windows.Forms.OpenFileDialog();
@@ -1130,7 +1131,6 @@ namespace VideoCapture_CSharp_Demo
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -1163,8 +1163,6 @@ namespace VideoCapture_CSharp_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbGPULightness)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUSaturation)).BeginInit();
             this.tabPage9.SuspendLayout();
-            this.tabPage22.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbOCLBrightness)).BeginInit();
             this.tabPage60.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastHigh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastLow)).BeginInit();
@@ -1550,7 +1548,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabControl17.Controls.Add(this.tabPage59);
             this.tabControl17.Controls.Add(this.tabPage20);
             this.tabControl17.Controls.Add(this.tabPage9);
-            this.tabControl17.Controls.Add(this.tabPage22);
             this.tabControl17.Controls.Add(this.tabPage60);
             this.tabControl17.Controls.Add(this.tabPage70);
             this.tabControl17.Location = new System.Drawing.Point(6, 3);
@@ -1668,6 +1665,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage29
             // 
+            this.tabPage29.Controls.Add(this.cbMergeTextLogos);
             this.tabPage29.Controls.Add(this.btTextLogoRemove);
             this.tabPage29.Controls.Add(this.btTextLogoEdit);
             this.tabPage29.Controls.Add(this.lbTextLogos);
@@ -1679,6 +1677,16 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage29.TabIndex = 0;
             this.tabPage29.Text = "Text logo";
             this.tabPage29.UseVisualStyleBackColor = true;
+            // 
+            // cbMergeTextLogos
+            // 
+            this.cbMergeTextLogos.AutoSize = true;
+            this.cbMergeTextLogos.Location = new System.Drawing.Point(8, 11);
+            this.cbMergeTextLogos.Name = "cbMergeTextLogos";
+            this.cbMergeTextLogos.Size = new System.Drawing.Size(145, 17);
+            this.cbMergeTextLogos.TabIndex = 88;
+            this.cbMergeTextLogos.Text = "Merge text logos into one";
+            this.cbMergeTextLogos.UseVisualStyleBackColor = true;
             // 
             // btTextLogoRemove
             // 
@@ -1703,9 +1711,9 @@ namespace VideoCapture_CSharp_Demo
             // lbTextLogos
             // 
             this.lbTextLogos.FormattingEnabled = true;
-            this.lbTextLogos.Location = new System.Drawing.Point(8, 8);
+            this.lbTextLogos.Location = new System.Drawing.Point(8, 34);
             this.lbTextLogos.Name = "lbTextLogos";
-            this.lbTextLogos.Size = new System.Drawing.Size(257, 199);
+            this.lbTextLogos.Size = new System.Drawing.Size(257, 173);
             this.lbTextLogos.TabIndex = 1;
             // 
             // btTextLogoAdd
@@ -1720,6 +1728,7 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage42
             // 
+            this.tabPage42.Controls.Add(this.cbMergeImageLogos);
             this.tabPage42.Controls.Add(this.btImageLogoRemove);
             this.tabPage42.Controls.Add(this.btImageLogoEdit);
             this.tabPage42.Controls.Add(this.lbImageLogos);
@@ -1731,6 +1740,16 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage42.TabIndex = 1;
             this.tabPage42.Text = "Image logo";
             this.tabPage42.UseVisualStyleBackColor = true;
+            // 
+            // cbMergeImageLogos
+            // 
+            this.cbMergeImageLogos.AutoSize = true;
+            this.cbMergeImageLogos.Location = new System.Drawing.Point(8, 11);
+            this.cbMergeImageLogos.Name = "cbMergeImageLogos";
+            this.cbMergeImageLogos.Size = new System.Drawing.Size(156, 17);
+            this.cbMergeImageLogos.TabIndex = 87;
+            this.cbMergeImageLogos.Text = "Merge image logos into one";
+            this.cbMergeImageLogos.UseVisualStyleBackColor = true;
             // 
             // btImageLogoRemove
             // 
@@ -1755,9 +1774,9 @@ namespace VideoCapture_CSharp_Demo
             // lbImageLogos
             // 
             this.lbImageLogos.FormattingEnabled = true;
-            this.lbImageLogos.Location = new System.Drawing.Point(8, 8);
+            this.lbImageLogos.Location = new System.Drawing.Point(8, 34);
             this.lbImageLogos.Name = "lbImageLogos";
-            this.lbImageLogos.Size = new System.Drawing.Size(257, 199);
+            this.lbImageLogos.Size = new System.Drawing.Size(257, 173);
             this.lbImageLogos.TabIndex = 5;
             // 
             // btImageLogoAdd
@@ -2898,7 +2917,7 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage9.Padding = new System.Windows.Forms.Padding(2);
             this.tabPage9.Size = new System.Drawing.Size(290, 459);
             this.tabPage9.TabIndex = 8;
-            this.tabPage9.Text = "Resize / crop";
+            this.tabPage9.Text = "Resize / crop / rotate";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
             // label92
@@ -3078,68 +3097,6 @@ namespace VideoCapture_CSharp_Demo
             this.cbResize.TabIndex = 128;
             this.cbResize.Text = "Resize";
             this.cbResize.UseVisualStyleBackColor = true;
-            // 
-            // tabPage22
-            // 
-            this.tabPage22.Controls.Add(this.label85);
-            this.tabPage22.Controls.Add(this.label88);
-            this.tabPage22.Controls.Add(this.tbOCLBrightness);
-            this.tabPage22.Controls.Add(this.cbOCLInvert);
-            this.tabPage22.Controls.Add(this.cbOCLGreyscale);
-            this.tabPage22.Controls.Add(this.cbOpenCLEnabled);
-            this.tabPage22.Location = new System.Drawing.Point(4, 22);
-            this.tabPage22.Name = "tabPage22";
-            this.tabPage22.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage22.Size = new System.Drawing.Size(290, 459);
-            this.tabPage22.TabIndex = 7;
-            this.tabPage22.Text = "OpenCL";
-            this.tabPage22.UseVisualStyleBackColor = true;
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(14, 141);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(237, 13);
-            this.label85.TabIndex = 72;
-            this.label85.Text = "All other standard video effects are available too.";
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(14, 44);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(56, 13);
-            this.label88.TabIndex = 71;
-            this.label88.Text = "Brightness";
-            // 
-            // tbOCLBrightness
-            // 
-            this.tbOCLBrightness.Location = new System.Drawing.Point(0, 0);
-            this.tbOCLBrightness.Name = "tbOCLBrightness";
-            this.tbOCLBrightness.Size = new System.Drawing.Size(104, 45);
-            this.tbOCLBrightness.TabIndex = 73;
-            // 
-            // cbOCLInvert
-            // 
-            this.cbOCLInvert.Location = new System.Drawing.Point(0, 0);
-            this.cbOCLInvert.Name = "cbOCLInvert";
-            this.cbOCLInvert.Size = new System.Drawing.Size(104, 24);
-            this.cbOCLInvert.TabIndex = 74;
-            // 
-            // cbOCLGreyscale
-            // 
-            this.cbOCLGreyscale.Location = new System.Drawing.Point(0, 0);
-            this.cbOCLGreyscale.Name = "cbOCLGreyscale";
-            this.cbOCLGreyscale.Size = new System.Drawing.Size(104, 24);
-            this.cbOCLGreyscale.TabIndex = 75;
-            // 
-            // cbOpenCLEnabled
-            // 
-            this.cbOpenCLEnabled.Location = new System.Drawing.Point(0, 0);
-            this.cbOpenCLEnabled.Name = "cbOpenCLEnabled";
-            this.cbOpenCLEnabled.Size = new System.Drawing.Size(104, 24);
-            this.cbOpenCLEnabled.TabIndex = 76;
             // 
             // tabPage60
             // 
@@ -5411,6 +5368,11 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage104
             // 
+            this.tabPage104.Controls.Add(this.label19);
+            this.tabPage104.Controls.Add(this.edHLSEmbeddedHTTPServerPort);
+            this.tabPage104.Controls.Add(this.cbHLSEmbeddedHTTPServerEnabled);
+            this.tabPage104.Controls.Add(this.cbHLSMode);
+            this.tabPage104.Controls.Add(this.label6);
             this.tabPage104.Controls.Add(this.lbHLSConfigure);
             this.tabPage104.Controls.Add(this.label532);
             this.tabPage104.Controls.Add(this.label531);
@@ -5430,10 +5392,59 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage104.Text = "HLS";
             this.tabPage104.UseVisualStyleBackColor = true;
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(16, 300);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(16, 13);
+            this.label19.TabIndex = 15;
+            this.label19.Text = "or";
+            // 
+            // edHLSEmbeddedHTTPServerPort
+            // 
+            this.edHLSEmbeddedHTTPServerPort.Location = new System.Drawing.Point(230, 265);
+            this.edHLSEmbeddedHTTPServerPort.Name = "edHLSEmbeddedHTTPServerPort";
+            this.edHLSEmbeddedHTTPServerPort.Size = new System.Drawing.Size(41, 20);
+            this.edHLSEmbeddedHTTPServerPort.TabIndex = 14;
+            this.edHLSEmbeddedHTTPServerPort.Text = "80";
+            // 
+            // cbHLSEmbeddedHTTPServerEnabled
+            // 
+            this.cbHLSEmbeddedHTTPServerEnabled.AutoSize = true;
+            this.cbHLSEmbeddedHTTPServerEnabled.Location = new System.Drawing.Point(19, 267);
+            this.cbHLSEmbeddedHTTPServerEnabled.Name = "cbHLSEmbeddedHTTPServerEnabled";
+            this.cbHLSEmbeddedHTTPServerEnabled.Size = new System.Drawing.Size(205, 17);
+            this.cbHLSEmbeddedHTTPServerEnabled.TabIndex = 13;
+            this.cbHLSEmbeddedHTTPServerEnabled.Text = "Use embedded HTTP server with port";
+            this.cbHLSEmbeddedHTTPServerEnabled.UseVisualStyleBackColor = true;
+            // 
+            // cbHLSMode
+            // 
+            this.cbHLSMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbHLSMode.FormattingEnabled = true;
+            this.cbHLSMode.Items.AddRange(new object[] {
+            "Live",
+            "VOD",
+            "Event"});
+            this.cbHLSMode.Location = new System.Drawing.Point(19, 229);
+            this.cbHLSMode.Name = "cbHLSMode";
+            this.cbHLSMode.Size = new System.Drawing.Size(121, 21);
+            this.cbHLSMode.TabIndex = 12;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(16, 213);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Mode (playlist type)";
+            // 
             // lbHLSConfigure
             // 
             this.lbHLSConfigure.AutoSize = true;
-            this.lbHLSConfigure.Location = new System.Drawing.Point(16, 217);
+            this.lbHLSConfigure.Location = new System.Drawing.Point(16, 328);
             this.lbHLSConfigure.Name = "lbHLSConfigure";
             this.lbHLSConfigure.Size = new System.Drawing.Size(191, 13);
             this.lbHLSConfigure.TabIndex = 10;
@@ -9462,7 +9473,7 @@ namespace VideoCapture_CSharp_Demo
             this.edIPUrl.Name = "edIPUrl";
             this.edIPUrl.Size = new System.Drawing.Size(360, 20);
             this.edIPUrl.TabIndex = 80;
-            this.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg";
+            this.edIPUrl.Text = "http://help.visioforge.com/video.mp4";
             // 
             // label165
             // 
@@ -9568,7 +9579,8 @@ namespace VideoCapture_CSharp_Demo
             "RTSP over HTTP (FFMPEG engine)",
             "HTTP MJPEG Low Latency",
             "RTSP Low Latency TCP",
-            "RTSP Low Latency UDP"});
+            "RTSP Low Latency UDP",
+            "NDI"});
             this.cbIPCameraType.Location = new System.Drawing.Point(55, 50);
             this.cbIPCameraType.Name = "cbIPCameraType";
             this.cbIPCameraType.Size = new System.Drawing.Size(227, 21);
@@ -12832,7 +12844,6 @@ namespace VideoCapture_CSharp_Demo
             // tabPage53
             // 
             this.tabPage53.Controls.Add(this.cbTelemetry);
-            this.tabPage53.Controls.Add(this.cbLicensing);
             this.tabPage53.Controls.Add(this.cbDebugMode);
             this.tabPage53.Controls.Add(this.mmLog);
             this.tabPage53.Location = new System.Drawing.Point(4, 22);
@@ -12848,22 +12859,12 @@ namespace VideoCapture_CSharp_Demo
             this.cbTelemetry.AutoSize = true;
             this.cbTelemetry.Checked = true;
             this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbTelemetry.Location = new System.Drawing.Point(150, 6);
+            this.cbTelemetry.Location = new System.Drawing.Point(73, 6);
             this.cbTelemetry.Name = "cbTelemetry";
             this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
             this.cbTelemetry.TabIndex = 77;
             this.cbTelemetry.Text = "Telemetry";
             this.cbTelemetry.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(73, 6);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(71, 17);
-            this.cbLicensing.TabIndex = 75;
-            this.cbLicensing.Text = "Licensing";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
@@ -12940,17 +12941,6 @@ namespace VideoCapture_CSharp_Demo
             // openFileDialog2
             // 
             this.openFileDialog2.Filter = "Pictures|*.bmp; *.jpg; *.jpeg; *.jpe; *.png; *.gif; *.tiff;|All files|*.*";
-            // 
-            // cbRunAsync
-            // 
-            this.cbRunAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbRunAsync.AutoSize = true;
-            this.cbRunAsync.Location = new System.Drawing.Point(741, 654);
-            this.cbRunAsync.Name = "cbRunAsync";
-            this.cbRunAsync.Size = new System.Drawing.Size(55, 17);
-            this.cbRunAsync.TabIndex = 96;
-            this.cbRunAsync.Text = "Async";
-            this.cbRunAsync.UseVisualStyleBackColor = true;
             // 
             // VideoCapture1
             // 
@@ -13029,7 +13019,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(467, 321);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 77;
@@ -13060,6 +13050,8 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
+            this.VideoCapture1.Video_Effects_MergeImageLogos = false;
+            this.VideoCapture1.Video_Effects_MergeTextLogos = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -13117,13 +13109,11 @@ namespace VideoCapture_CSharp_Demo
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btSaveScreenshot);
             this.Controls.Add(this.lbTimestamp);
-            this.Controls.Add(this.cbRunAsync);
             this.Controls.Add(this.linkLabel1);
             this.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Video Capture SDK .Net - Main Demo";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabControl1.ResumeLayout(false);
@@ -13135,7 +13125,9 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage68.PerformLayout();
             this.tabControl7.ResumeLayout(false);
             this.tabPage29.ResumeLayout(false);
+            this.tabPage29.PerformLayout();
             this.tabPage42.ResumeLayout(false);
+            this.tabPage42.PerformLayout();
             this.tabPage91.ResumeLayout(false);
             this.tabPage91.PerformLayout();
             this.groupBox37.ResumeLayout(false);
@@ -13171,9 +13163,6 @@ namespace VideoCapture_CSharp_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUSaturation)).EndInit();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
-            this.tabPage22.ResumeLayout(false);
-            this.tabPage22.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbOCLBrightness)).EndInit();
             this.tabPage60.ResumeLayout(false);
             this.tabPage60.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastHigh)).EndInit();
@@ -13807,13 +13796,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btSeparateCaptureChangeFilename;
         private System.Windows.Forms.TextBox edNewFilename;
         private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.TabPage tabPage22;
-        private System.Windows.Forms.Label label88;
-        private System.Windows.Forms.TrackBar tbOCLBrightness;
-        private System.Windows.Forms.CheckBox cbOCLInvert;
-        private System.Windows.Forms.CheckBox cbOCLGreyscale;
-        private System.Windows.Forms.CheckBox cbOpenCLEnabled;
-        private System.Windows.Forms.Label label85;
         private System.Windows.Forms.TabControl tabControl5;
         private System.Windows.Forms.TabPage tabPage23;
         private System.Windows.Forms.Button btRefreshClients;
@@ -14290,7 +14272,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.RadioButton rbNetworkRTMPFFMPEGCustom;
         private System.Windows.Forms.RadioButton rbNetworkRTMPFFMPEG;
         private System.Windows.Forms.CheckBox cbUseClosedCaptions;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.TabPage tabPage141;
         internal System.Windows.Forms.TabControl TabControl32;
         internal System.Windows.Forms.TabPage TabPage142;
@@ -14515,7 +14496,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.Button btVLCClearParameters;
         private System.Windows.Forms.TextBox edVLCParameter;
         private System.Windows.Forms.ListBox lbVLCParameters;
-        private System.Windows.Forms.CheckBox cbRunAsync;
         private System.Windows.Forms.CheckBox cbOSDEnabled;
         private System.Windows.Forms.CheckBox cbVideoEffectsGPUEnabled;
         private System.Windows.Forms.CheckedListBox lbOSDLayers;
@@ -14532,6 +14512,13 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.CheckBox cbVideoEffectsGPUDX11;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TrackBar tbGPUBlur;
+        private System.Windows.Forms.CheckBox cbMergeImageLogos;
+        private System.Windows.Forms.CheckBox cbMergeTextLogos;
+        private System.Windows.Forms.ComboBox cbHLSMode;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox edHLSEmbeddedHTTPServerPort;
+        private System.Windows.Forms.CheckBox cbHLSEmbeddedHTTPServerEnabled;
+        private System.Windows.Forms.Label label19;
     }
 }
 

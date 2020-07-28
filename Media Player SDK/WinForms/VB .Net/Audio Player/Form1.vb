@@ -7,7 +7,7 @@ Imports VisioForge.Controls.UI.WinForms
 
 Public Class Form1
 
-    Dim withEvents MediaPlayer1 As MediaPlayerCore
+    Dim WithEvents MediaPlayer1 As MediaPlayerCore
 
     Private Sub btSelectFile_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSelectFile.Click
 
@@ -20,18 +20,18 @@ Public Class Form1
     Private Sub tbTimeline_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbTimeline.Scroll
 
         If (Convert.ToInt32(timer1.Tag) = 0) Then
-            MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000)
+            MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value))
         End If
 
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         mmError.Clear()
 
         MediaPlayer1.FilenamesOrURL.Add(edFilename.Text)
         MediaPlayer1.Audio_PlayAudio = True
-        MediaPlayer1.Info_UseLibMediaInfo = true
+        MediaPlayer1.Info_UseLibMediaInfo = True
 
         MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
         MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device"
@@ -40,7 +40,7 @@ Public Class Form1
 
         MediaPlayer1.Debug_Mode = cbDebugMode.Checked
 
-        MediaPlayer1.Play()
+        Await MediaPlayer1.PlayAsync()
 
         MediaPlayer1.Audio_OutputDevice_Balance_Set(0, tbBalance1.Value)
         MediaPlayer1.Audio_OutputDevice_Volume_Set(0, tbVolume1.Value)
@@ -49,21 +49,22 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
+    Private Async Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
 
-        MediaPlayer1.Resume()
-
-    End Sub
-
-    Private Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
-
-        MediaPlayer1.Pause()
+        Await MediaPlayer1.ResumeAsync()
 
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
 
-        MediaPlayer1.Stop()
+        Await MediaPlayer1.PauseAsync()
+
+    End Sub
+
+    Private Async Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+
+        Await MediaPlayer1.StopAsync()
+
         timer1.Enabled = False
         tbTimeline.Value = 0
 
@@ -93,9 +94,9 @@ Public Class Form1
     Private Sub timer1_Tick(ByVal sender As System.Object, ByVal e As EventArgs) Handles timer1.Tick
 
         timer1.Tag = 1
-        tbTimeline.Maximum = MediaPlayer1.Duration_Time() / 1000
+        tbTimeline.Maximum = MediaPlayer1.Duration_Time().TotalSeconds
 
-        Dim value As Integer = MediaPlayer1.Position_Get_Time() / 1000
+        Dim value As Integer = MediaPlayer1.Position_Get_Time().TotalSeconds
         If ((value > 0) And (value < tbTimeline.Maximum)) Then
             tbTimeline.Value = value
         End If
@@ -108,7 +109,9 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnStop(ByVal sender As System.Object, ByVal e As EventArgs) Handles MediaPlayer1.OnStop
 
-        tbTimeline.Value = 0
+        Invoke(Sub()
+                   tbTimeline.Value = 0
+               End Sub)
 
     End Sub
 
@@ -119,19 +122,22 @@ Public Class Form1
 
     End Sub
 
-    Private Sub MediaPlayer1_OnError(sender As Object, e As ErrorsEventArgs) Handles MediaPlayer1.OnError 
+    Private Sub MediaPlayer1_OnError(sender As Object, e As ErrorsEventArgs) Handles MediaPlayer1.OnError
 
-        mmError.Text = mmError.Text + e.Message + Environment.NewLine
+        Invoke(Sub()
+                   mmError.Text = mmError.Text + e.Message + Environment.NewLine
+               End Sub)
 
     End Sub
 
-    Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired 
+    Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired
 
-        If cbLicensing.Checked Then
+        Invoke(Sub()
+                   If cbLicensing.Checked Then
+                       mmError.Text = mmError.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
+                   End If
+               End Sub)
 
-            mmError.Text = mmError.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-
-        End If
     End Sub
 
     Private Sub MediaPlayer1_OnStop(sender As Object, e As MediaPlayerStopEventArgs) Handles MediaPlayer1.OnStop

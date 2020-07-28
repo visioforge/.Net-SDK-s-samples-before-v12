@@ -1,4 +1,5 @@
 ﻿using VisioForge.Types;
+using System;
 
 namespace Kinect_2_Demo
 {
@@ -158,7 +159,7 @@ namespace Kinect_2_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(429, 326);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 0;

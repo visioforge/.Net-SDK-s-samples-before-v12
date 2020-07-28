@@ -78,8 +78,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btScreenCaptureUpdate_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btScreenCaptureUpdate.Click
-        VideoCapture1.Screen_Capture_UpdateParameters(Convert.ToInt32(edScreenLeft.Text), Convert.ToInt32(edScreenTop.Text), cbScreenCapture_GrabMouseCursor.Checked)
+    Private async Sub btScreenCaptureUpdate_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btScreenCaptureUpdate.Click
+        Await VideoCapture1.Screen_Capture_UpdateParametersAsync(Convert.ToInt32(edScreenLeft.Text), Convert.ToInt32(edScreenTop.Text), cbScreenCapture_GrabMouseCursor.Checked)
     End Sub
     
     Private Sub cbAudioInputDevice_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbAudioInputDevice.SelectedIndexChanged
@@ -328,7 +328,7 @@ Public Class Form1
     End Function
 
 
-    Private Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
+    Private async Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
 
         VideoCapture1.Video_Sample_Grabber_Enabled = True
 
@@ -376,13 +376,7 @@ Public Class Form1
         End If
 
         'apply capture parameters
-        If VideoCapture.Filter_Supported_EVR() Then
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
-        ElseIf VideoCapture.Filter_Supported_VMR9() Then
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
-        Else
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
-        End If
+        VideoCapture1.Video_Renderer_SetAuto
 
         VideoCapture1.Video_Effects_Enabled = True
         VideoCapture1.Video_Effects_Clear()
@@ -459,16 +453,16 @@ Public Class Form1
         lbLogos.Items.Clear()
         ConfigureVideoEffects()
 
-        VideoCapture1.Start()
+        Await VideoCapture1.StartAsync()
 
         tcMain.SelectedIndex = 3
         tmRecording.Start()
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStop.Click
+    Private async Sub btStop_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStop.Click
 
         tmRecording.Stop()
-        VideoCapture1.Stop()
+        Await VideoCapture1.StopAsync()
 
     End Sub
 
@@ -479,18 +473,20 @@ Public Class Form1
 
     End Sub
 
-    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
-
-        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
-
+    Private Sub Log(msg As String)
+        If (IsHandleCreated) Then
+            Invoke(Sub()
+                mmLog.Text = mmLog.Text + msg + Environment.NewLine
+            End Sub)
+        End If
     End Sub
 
-    Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles VideoCapture1.OnLicenseRequired
+    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
+        Log(e.Message)
+    End Sub
 
-        If cbLicensing.Checked Then
-            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-        End If
-
+    Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs)  Handles VideoCapture1.OnLicenseRequired
+        Log(e.Message)
     End Sub
 
     Private Sub cbOutputFormat_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbOutputFormat.SelectedIndexChanged
@@ -524,25 +520,26 @@ Public Class Form1
         End Select
     End Sub
 
-    Private Sub btResume_Click(sender As Object, e As EventArgs) Handles btResume.Click
-        VideoCapture1.Resume()
+    Private async Sub btResume_Click(sender As Object, e As EventArgs) Handles btResume.Click
+        Await VideoCapture1.ResumeAsync()
     End Sub
 
-    Private Sub btPause_Click(sender As Object, e As EventArgs) Handles btPause.Click
-        VideoCapture1.Pause()
+    Private async Sub btPause_Click(sender As Object, e As EventArgs) Handles btPause.Click
+        Await VideoCapture1.PauseAsync()
     End Sub
 
     Private Sub UpdateRecordingTime()
-        Dim timestamp As Long = VideoCapture1.Duration_Time()
+        If Me.IsHandleCreated Then
+            Dim ts = VideoCapture1.Duration_Time()
 
-        If (timestamp < 0) Then
-            Return
+            If (Math.Abs(ts.TotalMilliseconds) < 0.01) Then
+                Return
+            End If
+
+            BeginInvoke(Sub()
+                            lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
+                        End Sub)
         End If
-
-        BeginInvoke(Sub()
-                        Dim ts = TimeSpan.FromMilliseconds(timestamp)
-                        lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
-                    End Sub)
     End Sub
 
     Private Sub btOutputConfigure_Click(sender As Object, e As EventArgs) Handles btOutputConfigure.Click
@@ -629,30 +626,25 @@ Public Class Form1
         End Select
     End Sub
 
-    Private Sub btSaveScreenshot_Click(sender As Object, e As EventArgs) Handles btSaveScreenshot.Click
+    Private Async Sub btSaveScreenshot_Click(sender As Object, e As EventArgs) Handles btSaveScreenshot.Click
         If (screenshotSaveDialog.ShowDialog(Me) = DialogResult.OK) Then
             Dim filename = screenshotSaveDialog.FileName
             Dim ext = Path.GetExtension(filename)?.ToLowerInvariant()
             Select Case (ext)
                 Case ".bmp"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0)
                 Case ".jpg"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85)
                 Case ".gif"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0)
                 Case ".png"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0)
                 Case ".tiff"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0)
             End Select
         End If
     End Sub
 
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        btStop_Click(Nothing, Nothing)
-    End Sub
-
-    
     Private Sub ConfigureVideoEffects()
         
         'Other effects
@@ -790,7 +782,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipDown
         Dim effect = VideoCapture1.Video_Effects_Get("FlipDown")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            flip = New VFVideoEffectFlipHorizontal(cbFlipX.Checked)
             VideoCapture1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -804,7 +796,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipRight
         Dim effect = VideoCapture1.Video_Effects_Get("FlipRight")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            flip = New VFVideoEffectFlipVertical(cbFlipY.Checked)
             VideoCapture1.Video_Effects_Add(flip)
         Else
             flip = effect

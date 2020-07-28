@@ -36,11 +36,9 @@ namespace VideoEdit_CS_Demo
 
                 lbFiles.Items.Add(s);
 
-                long videoDuration;
-                long audioDuration;
-                VideoEdit.GetFileLength(s, out videoDuration, out audioDuration);
+                VideoEdit.GetFileLength(s, out var videoDuration, out var audioDuration);
 
-                VideoEdit1.Sources_AddFile(s, videoDuration > 0, audioDuration > 0);
+                VideoEdit1.Sources_AddFile(s, videoDuration.TotalMilliseconds > 0, audioDuration.TotalMilliseconds > 0);
             }
         }
 
@@ -153,18 +151,18 @@ namespace VideoEdit_CS_Demo
 
             if (cbVideoEffects.Checked)
             {
-                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Lightness, 0, 0, tbLightness.Value, 0);
-                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Contrast, 0, 0, tbContrast.Value, 0);
-                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Saturation, 0, 0, tbSaturation.Value, 0);
+                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Lightness, TimeSpan.Zero, TimeSpan.Zero, tbLightness.Value, 0);
+                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Contrast, TimeSpan.Zero, TimeSpan.Zero, tbContrast.Value, 0);
+                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Saturation, TimeSpan.Zero, TimeSpan.Zero, tbSaturation.Value, 0);
 
                 if (cbInvert.Checked)
                 {
-                    VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Invert, 0, 0, 0, 0);
+                    VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Invert, TimeSpan.Zero, TimeSpan.Zero, 0, 0);
                 }
 
                 if (cbGreyscale.Checked)
                 {
-                    VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Greyscale, 0, 0, 0, 0);
+                    VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Greyscale, TimeSpan.Zero, TimeSpan.Zero, 0, 0);
                 }
 
                 if (cbGraphicLogo.Checked)
@@ -172,8 +170,8 @@ namespace VideoEdit_CS_Demo
                     if (!cbGraphicLogoShowAlways.Checked)
                     {
                         VideoEdit1.Video_Effects_Add_ImageLogo(
-                            Convert.ToInt32(edGraphicLogoStartTime.Text),
-                            Convert.ToInt32(edGraphicLogoStopTime.Text),
+                            TimeSpan.FromMilliseconds(Convert.ToInt32(edGraphicLogoStartTime.Text)),
+                            TimeSpan.FromMilliseconds(Convert.ToInt32(edGraphicLogoStopTime.Text)),
                             edGraphicLogoFilename.Text,
                             Convert.ToInt32(edGraphicLogoLeft.Text),
                             Convert.ToInt32(edGraphicLogoTop.Text));
@@ -181,8 +179,8 @@ namespace VideoEdit_CS_Demo
                     else
                     {
                         VideoEdit1.Video_Effects_Add_ImageLogo(
-                            0,
-                            0,
+                            TimeSpan.Zero, 
+                            TimeSpan.Zero, 
                             edGraphicLogoFilename.Text,
                             Convert.ToInt32(edGraphicLogoLeft.Text),
                             Convert.ToInt32(edGraphicLogoTop.Text));
@@ -194,8 +192,8 @@ namespace VideoEdit_CS_Demo
                     if (!cbTextLogoShowAlways.Checked)
                     {
                         VideoEdit1.Video_Effects_Add_TextLogo(
-                            Convert.ToInt32(edTextLogoStartTime.Text),
-                            Convert.ToInt32(edTextLogoStopTime.Text),
+                            TimeSpan.FromMilliseconds(Convert.ToInt32(edTextLogoStartTime.Text)),
+                            TimeSpan.FromMilliseconds(Convert.ToInt32(edTextLogoStopTime.Text)),
                             edTextLogoValue.Text,
                             Convert.ToInt32(edTextLogoLeft.Text),
                             Convert.ToInt32(edTextLogoTop.Text),
@@ -206,8 +204,8 @@ namespace VideoEdit_CS_Demo
                     else
                     {
                         VideoEdit1.Video_Effects_Add_TextLogo(
-                            0,
-                            0,
+                            TimeSpan.Zero, 
+                            TimeSpan.Zero, 
                             edTextLogoValue.Text,
                             Convert.ToInt32(edTextLogoLeft.Text),
                             Convert.ToInt32(edTextLogoTop.Text),
@@ -231,14 +229,14 @@ namespace VideoEdit_CS_Demo
             if (cbZoom.Checked)
             {
                 double zoom = tbZoom.Value / 10.0;
-                VideoEdit1.Video_Effects_Add_Zoom(0, 0, zoom, zoom, 0, 0);
+                VideoEdit1.Video_Effects_Add_Zoom(TimeSpan.Zero, TimeSpan.Zero, zoom, zoom, 0, 0);
             }
 
             if (cbPan.Checked)
             {
                 VideoEdit1.Video_Effects_Add_Pan(
-                    Convert.ToInt32(edPanStartTime.Text),
-                    Convert.ToInt32(edPanStopTime.Text),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text)),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text)),
                     Convert.ToInt32(edPanSourceLeft.Text),
                     Convert.ToInt32(edPanSourceTop.Text),
                     Convert.ToInt32(edPanSourceWidth.Text),
@@ -255,8 +253,8 @@ namespace VideoEdit_CS_Demo
                 {
                     VideoEdit1.Video_Effects_Add_Simple(
                         VFVideoEffectType.FadeIn,
-                        Convert.ToInt32(edFadeInOutStartTime.Text),
-                        Convert.ToInt32(edFadeInOutStopTime.Text),
+                        TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                        TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                         0,
                         0);
                 }
@@ -264,8 +262,8 @@ namespace VideoEdit_CS_Demo
                 {
                     VideoEdit1.Video_Effects_Add_Simple(
                         VFVideoEffectType.FadeOut,
-                        Convert.ToInt32(edFadeInOutStartTime.Text),
-                        Convert.ToInt32(edFadeInOutStopTime.Text),
+                        TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                        TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                         0,
                         0);
                 }
@@ -504,8 +502,8 @@ namespace VideoEdit_CS_Demo
             {
                 VideoEdit1.Video_Effects_Add_Simple(
                     VFVideoEffectType.FadeIn,
-                    Convert.ToInt32(edFadeInOutStartTime.Text),
-                    Convert.ToInt32(edFadeInOutStopTime.Text),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                     0,
                     0);
             }
@@ -513,8 +511,8 @@ namespace VideoEdit_CS_Demo
             {
                 VideoEdit1.Video_Effects_Add_Simple(
                     VFVideoEffectType.FadeOut,
-                    Convert.ToInt32(edFadeInOutStartTime.Text),
-                    Convert.ToInt32(edFadeInOutStopTime.Text),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                     0,
                     0);
             }

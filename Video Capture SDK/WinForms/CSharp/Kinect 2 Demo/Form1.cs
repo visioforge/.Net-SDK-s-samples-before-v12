@@ -476,18 +476,21 @@ namespace Kinect_2_Demo
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (IsHandleCreated)
             {
-                return;
+                var ts = VideoCapture1.Duration_Time();
+
+                if (Math.Abs(ts.TotalMilliseconds) < 0.01)
+                {
+                    return;
+                }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
         }
 
         private void cbOutputFormat_SelectedIndexChanged(object sender, EventArgs e)

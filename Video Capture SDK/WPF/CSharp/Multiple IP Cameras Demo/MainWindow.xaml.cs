@@ -36,7 +36,7 @@ namespace Multiple_IP_Cameras_Demo_WPF
             InitializeComponent();
         }
 
-        private void StartCamera(string url, bool preview, VideoCapture videoCapture, int index)
+        private Task StartCamera(string url, bool preview, VideoCapture videoCapture, int index)
         {
             // source
             videoCapture.IP_Camera_Source = new IPCameraSourceSettings { URL = url };
@@ -110,12 +110,12 @@ namespace Multiple_IP_Cameras_Demo_WPF
                 videoCapture.Debug_Dir = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $@"VisioForge\cam_{index}\");
             }
 
-            videoCapture.Start();
+            return videoCapture.StartAsync();
         }
 
-        private void btStart1_Click(object sender, RoutedEventArgs e)
+        private async void btStart1_Click(object sender, RoutedEventArgs e)
         {
-            StartCamera(edURL1.Text, rbPreview1.IsChecked == true, videoCapture1, 1);
+            await StartCamera(edURL1.Text, rbPreview1.IsChecked == true, videoCapture1, 1);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -123,9 +123,9 @@ namespace Multiple_IP_Cameras_Demo_WPF
             Title += " (SDK v" + videoCapture1.SDK_Version + ", " + videoCapture1.SDK_State + ")";
         }
 
-        private void btStop1_Click(object sender, RoutedEventArgs e)
+        private async void btStop1_Click(object sender, RoutedEventArgs e)
         {
-            videoCapture1.Stop();
+            await videoCapture1.StopAsync();
         }
 
         private void videoCapture_OnError(object sender, ErrorsEventArgs e)
@@ -136,34 +136,34 @@ namespace Multiple_IP_Cameras_Demo_WPF
                                                    }));
         }
 
-        private void btStart2_Click(object sender, RoutedEventArgs e)
+        private async void btStart2_Click(object sender, RoutedEventArgs e)
         {
-            StartCamera(edURL2.Text, rbPreview2.IsChecked == true, videoCapture2, 2);
+            await StartCamera(edURL2.Text, rbPreview2.IsChecked == true, videoCapture2, 2);
         }
 
-        private void btStop2_Click(object sender, RoutedEventArgs e)
+        private async void btStop2_Click(object sender, RoutedEventArgs e)
         {
-            videoCapture2.Stop();
+            await videoCapture2.StopAsync();
         }
 
-        private void btStart3_Click(object sender, RoutedEventArgs e)
+        private async void btStart3_Click(object sender, RoutedEventArgs e)
         {
-            StartCamera(edURL3.Text, rbPreview3.IsChecked == true, videoCapture3, 3);
+            await StartCamera(edURL3.Text, rbPreview3.IsChecked == true, videoCapture3, 3);
         }
 
-        private void btStop3_Click(object sender, RoutedEventArgs e)
+        private async void btStop3_Click(object sender, RoutedEventArgs e)
         {
-            videoCapture3.Stop();
+            await videoCapture3.StopAsync();
         }
 
-        private void btStart4_Click(object sender, RoutedEventArgs e)
+        private async void btStart4_Click(object sender, RoutedEventArgs e)
         {
-            StartCamera(edURL4.Text, rbPreview4.IsChecked == true, videoCapture4, 4);
+            await StartCamera(edURL4.Text, rbPreview4.IsChecked == true, videoCapture4, 4);
         }
 
-        private void btStop4_Click(object sender, RoutedEventArgs e)
+        private async void btStop4_Click(object sender, RoutedEventArgs e)
         {
-            videoCapture4.Stop();
+            await videoCapture4.StopAsync();
         }
     }
 }

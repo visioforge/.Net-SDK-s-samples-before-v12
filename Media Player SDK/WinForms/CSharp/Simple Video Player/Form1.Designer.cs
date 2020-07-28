@@ -121,7 +121,6 @@ namespace Video_Player_Demo
             this.tbVolume1.BackColor = System.Drawing.SystemColors.Window;
             this.tbVolume1.Location = new System.Drawing.Point(19, 44);
             this.tbVolume1.Maximum = 100;
-            this.tbVolume1.Minimum = 20;
             this.tbVolume1.Name = "tbVolume1";
             this.tbVolume1.Size = new System.Drawing.Size(85, 45);
             this.tbVolume1.TabIndex = 8;
@@ -380,6 +379,7 @@ namespace Video_Player_Demo
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
+            this.MediaPlayer1.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer1.CustomParameters")));
             this.MediaPlayer1.CustomRedist_Enabled = false;
             this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
@@ -389,15 +389,18 @@ namespace Video_Player_Demo
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
+            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(12, 56);
             this.MediaPlayer1.Loop = false;
             this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
+            this.MediaPlayer1.MIDI_Renderer = null;
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.OSD_Enabled = false;
             this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.Play_PauseAtFirstFrame = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
@@ -407,6 +410,7 @@ namespace Video_Player_Demo
             this.MediaPlayer1.Selection_Stop = 0;
             this.MediaPlayer1.Size = new System.Drawing.Size(415, 306);
             this.MediaPlayer1.Source_Custom_CLSID = null;
+            this.MediaPlayer1.Source_GPU_Mode = VisioForge.Types.VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
             this.MediaPlayer1.Source_Stream_AudioPresent = true;
@@ -414,6 +418,7 @@ namespace Video_Player_Demo
             this.MediaPlayer1.Source_Stream_VideoPresent = true;
             this.MediaPlayer1.TabIndex = 34;
             this.MediaPlayer1.Video_Effects_Enabled = false;
+            this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -459,7 +464,7 @@ namespace Video_Player_Demo
             "FFMPEG",
             "VLC"});
             this.cbSourceMode.Location = new System.Drawing.Point(434, 278);
-            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2);
             this.cbSourceMode.Name = "cbSourceMode";
             this.cbSourceMode.Size = new System.Drawing.Size(221, 21);
             this.cbSourceMode.TabIndex = 51;

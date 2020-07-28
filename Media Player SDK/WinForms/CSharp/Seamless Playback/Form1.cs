@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using VisioForge.Controls.UI;
-
-namespace SeamlessPlaybackDemo
+﻿namespace SeamlessPlaybackDemo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Threading.Tasks;
+    using System.Windows.Forms;
+
+    using VisioForge.Controls.UI;
     using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
 
     public partial class Form1 : Form
     {
-        private List<string> sourceFiles;
+        private readonly List<string> sourceFiles;
 
         private MediaPlayer CurrentPlayer;
 
@@ -47,19 +43,19 @@ namespace SeamlessPlaybackDemo
             }
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            CurrentPlayer.Resume();
+            await CurrentPlayer.ResumeAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            CurrentPlayer.Pause();
+            await CurrentPlayer.PauseAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            CurrentPlayer.Stop();
+            await CurrentPlayer.StopAsync();
             timer1.Enabled = false;
             tbTimeline.Value = 0;
         }
@@ -67,9 +63,9 @@ namespace SeamlessPlaybackDemo
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Tag = 1;
-            tbTimeline.Maximum = (int)(CurrentPlayer.Duration_Time() / 1000.0);
+            tbTimeline.Maximum = (int)CurrentPlayer.Duration_Time().TotalSeconds;
 
-            int value = (int)(CurrentPlayer.Position_Get_Time() / 1000.0);
+            int value = (int)CurrentPlayer.Position_Get_Time().TotalSeconds;
             if ((value > 0) && (value < tbTimeline.Maximum))
             {
                 tbTimeline.Value = value;
@@ -112,18 +108,17 @@ namespace SeamlessPlaybackDemo
             }
         }
 
-        private void PlayFile(string filename, MediaPlayer player)
+        private async Task PlayFile(string filename, MediaPlayer player)
         {
             player.FilenamesOrURL.Clear();
             player.FilenamesOrURL.Add(filename);
 
-            player.Play();
+            await player.PlayAsync();
 
             timer1.Enabled = true;
         }
 
-
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             if (lbSourceFiles.Items.Count < 2)
             {
@@ -143,12 +138,12 @@ namespace SeamlessPlaybackDemo
 
             MediaPlayer1.Show();
             MediaPlayer2.Hide();
-            PlayFile(sourceFiles[0], MediaPlayer1);
+            await PlayFile(sourceFiles[0], MediaPlayer1);
             sourceFiles.RemoveAt(0);
 
-            PlayFile(sourceFiles[0], MediaPlayer2);
+            await PlayFile(sourceFiles[0], MediaPlayer2);
             sourceFiles.RemoveAt(0);
-            MediaPlayer2.Pause();
+            await MediaPlayer2.PauseAsync();
         }
 
         private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
@@ -165,7 +160,7 @@ namespace SeamlessPlaybackDemo
 
         private delegate void StopDelegate2();
 
-        private void StopDelegateMethod1()
+        private async void StopDelegateMethod1()
         {
             //timer1.Enabled = false;
             tbTimeline.Value = 0;
@@ -174,15 +169,16 @@ namespace SeamlessPlaybackDemo
             MediaPlayer2.Show();
 
             CurrentPlayer = MediaPlayer2;
-            MediaPlayer2.Resume();
+            await MediaPlayer2.ResumeAsync();
             if (sourceFiles.Count > 0)
             {
                 PlayFile(sourceFiles[0], MediaPlayer1);
                 sourceFiles.RemoveAt(0);
-                MediaPlayer1.Pause();
+                await MediaPlayer1.PauseAsync();
             }
         }
-        private void StopDelegateMethod2()
+
+        private async void StopDelegateMethod2()
         {
             //timer1.Enabled = false;
             tbTimeline.Value = 0;
@@ -191,25 +187,25 @@ namespace SeamlessPlaybackDemo
             MediaPlayer2.Hide();
 
             CurrentPlayer = MediaPlayer1;
-            MediaPlayer1.Resume();
+            await MediaPlayer1.ResumeAsync();
             if (sourceFiles.Count > 0)
             {
                 PlayFile(sourceFiles[0], MediaPlayer2);
                 sourceFiles.RemoveAt(0);
-                MediaPlayer2.Pause();
+                await MediaPlayer2.PauseAsync();
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private async void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (MediaPlayer1.Status != VFMediaPlayerStatus.Free)
             {
-                MediaPlayer1.Stop();
+                await MediaPlayer1.StopAsync();
             }
 
             if (MediaPlayer2.Status != VFMediaPlayerStatus.Free)
             {
-                MediaPlayer2.Stop();
+                await MediaPlayer2.StopAsync();
             }
         }
 
@@ -217,7 +213,7 @@ namespace SeamlessPlaybackDemo
         {
             if (Convert.ToInt32(timer1.Tag) == 0)
             {
-                CurrentPlayer.Position_Set_Time(tbTimeline.Value * 1000);
+                CurrentPlayer.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value));
             }
         }
 
@@ -225,6 +221,22 @@ namespace SeamlessPlaybackDemo
         {
             var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
+        }
+
+        private void MediaPlayer2_OnError(object sender, ErrorsEventArgs e)
+        {
+            Invoke((Action)(() =>
+                                   {
+                                       mmLog.Text += e.Message + Environment.NewLine;
+                                   }));
+        }
+
+        private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
+        {
+            Invoke((Action)(() =>
+                                   {
+                                       mmLog.Text += e.Message + Environment.NewLine;
+                                   }));
         }
     }
 }

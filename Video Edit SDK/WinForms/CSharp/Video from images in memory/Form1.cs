@@ -1,18 +1,19 @@
 ﻿// ReSharper disable InconsistentNaming
 
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Tools;
-
 namespace Video_From_Images
 {
     using System;
     using System.Diagnostics;
     using System.Drawing;
     using System.Windows.Forms;
+
     using Properties;
+
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WinForms;
+    using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
     using VisioForge.Types.VideoEffects;
@@ -155,7 +156,8 @@ namespace Video_From_Images
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoEdit1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoEdit1.Video_Codecs.ToArray(),
                     VideoEdit1.Audio_Codecs.ToArray());
             }
 
@@ -183,7 +185,8 @@ namespace Video_From_Images
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoEdit1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoEdit1.Video_Codecs.ToArray(),
                     VideoEdit1.Audio_Codecs.ToArray());
             }
 
@@ -197,7 +200,7 @@ namespace Video_From_Images
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
 
@@ -340,33 +343,33 @@ namespace Video_From_Images
             ConfigureVideoEffects();
 
             VideoEdit1.Input_Clear_List();
-            VideoEdit1.Input_AddVideoBlank(10000, 0, 640, 480, Color.Black);
+            await VideoEdit1.Input_AddVideoBlankAsync(TimeSpan.FromMilliseconds(10000), TimeSpan.FromMilliseconds(0), 640, 480, Color.Black);
 
-            VideoEdit1.Start();
+            await VideoEdit1.StartAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            VideoEdit1.Stop();
+            await VideoEdit1.StopAsync();
             ProgressBar1.Value = 0;
         }
         
         private void VideoEdit1_OnVideoFrameBitmap(object sender, VideoFrameBitmapEventArgs e)
         {
             Bitmap frame;
-            if (e.StartTime < 2000)
+            if (e.StartTime.TotalMilliseconds < 2000)
             {
                 frame = Resources._1;
             }
-            else if (e.StartTime < 4000)
+            else if (e.StartTime.TotalMilliseconds < 4000)
             {
                 frame = Resources._2;
             }
-            else if (e.StartTime < 6000)
+            else if (e.StartTime.TotalMilliseconds < 6000)
             {
                 frame = Resources._3;
             }
-            else if (e.StartTime < 8000)
+            else if (e.StartTime.TotalMilliseconds < 8000)
             {
                 frame = Resources._4;
             }
@@ -384,12 +387,12 @@ namespace Video_From_Images
 
         private void VideoEdit1_OnProgress(object sender, ProgressEventArgs e)
         {
-            ProgressBar1.Value = e.Progress;
+            Invoke((Action)(() => { ProgressBar1.Value = e.Progress; }));
         }
 
         private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)
         {
-            ProgressBar1.Value = 0;
+            Invoke((Action)(() => { ProgressBar1.Value = 0; }));
 
             if (e.Successful)
             {
@@ -403,10 +406,14 @@ namespace Video_From_Images
 
         private void VideoEdit1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Invoke((Action)(() =>
+                                   {
+                                       if (cbLicensing.Checked)
+                                       {
+                                           mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message
+                                                         + Environment.NewLine;
+                                       }
+                                   }));
         }
 
         private void cbOutputFormat_SelectedIndexChanged(object sender, EventArgs e)
@@ -479,7 +486,8 @@ namespace Video_From_Images
                 {
                     if (aviSettingsDialog == null)
                     {
-                        aviSettingsDialog = new AVISettingsDialog(VideoEdit1.Video_Codecs.ToArray(),
+                        aviSettingsDialog = new AVISettingsDialog(
+                            VideoEdit1.Video_Codecs.ToArray(),
                             VideoEdit1.Audio_Codecs.ToArray());
                     }
 
@@ -491,7 +499,8 @@ namespace Video_From_Images
                 {
                     if (aviSettingsDialog == null)
                     {
-                        aviSettingsDialog = new AVISettingsDialog(VideoEdit1.Video_Codecs.ToArray(),
+                        aviSettingsDialog = new AVISettingsDialog(
+                            VideoEdit1.Video_Codecs.ToArray(),
                             VideoEdit1.Audio_Codecs.ToArray());
                     }
 
@@ -573,7 +582,7 @@ namespace Video_From_Images
                             mp4v11SettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MP4v11);
                     }
 
-                        mp4v11SettingsDialog.ShowDialog(this);
+                    mp4v11SettingsDialog.ShowDialog(this);
 
                     break;
                 }
@@ -730,7 +739,7 @@ namespace Video_From_Images
             var effect = VideoEdit1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.Checked);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.Checked);
                 VideoEdit1.Video_Effects_Add(flip);
             }
             else
@@ -749,7 +758,7 @@ namespace Video_From_Images
             var effect = VideoEdit1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.Checked);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.Checked);
                 VideoEdit1.Video_Effects_Add(flip);
             }
             else
@@ -860,6 +869,14 @@ namespace Video_From_Images
                     darkness.Value = tbDarkness.Value;
                 }
             }
+        }
+
+        private void VideoEdit1_OnError(object sender, ErrorsEventArgs e)
+        {
+            Invoke((Action)(() =>
+                                   {
+                                       mmLog.Text += e.Message + Environment.NewLine;
+                                   }));
         }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
 {
     using VisioForge.Types;
@@ -115,7 +117,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.lbLogos = new System.Windows.Forms.ListBox();
             this.btImageLogoAdd = new System.Windows.Forms.Button();
             this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.rbCapture = new System.Windows.Forms.RadioButton();
@@ -213,7 +214,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.edIPUrl.Name = "edIPUrl";
             this.edIPUrl.Size = new System.Drawing.Size(360, 20);
             this.edIPUrl.TabIndex = 80;
-            this.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg";
+            this.edIPUrl.Text = "http://help.visioforge.com/video.mp4";
             // 
             // label165
             // 
@@ -319,7 +320,8 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             "RTSP over HTTP (FFMPEG engine)",
             "HTTP MJPEG Low Latency",
             "RTSP Low Latency TCP",
-            "RTSP Low Latency UDP"});
+            "RTSP Low Latency UDP",
+            "NDI"});
             this.cbIPCameraType.Location = new System.Drawing.Point(57, 41);
             this.cbIPCameraType.Name = "cbIPCameraType";
             this.cbIPCameraType.Size = new System.Drawing.Size(227, 21);
@@ -934,7 +936,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             // 
             // tabPage7
             // 
-            this.tabPage7.Controls.Add(this.cbLicensing);
             this.tabPage7.Controls.Add(this.cbDebugMode);
             this.tabPage7.Controls.Add(this.mmLog);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
@@ -944,16 +945,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.tabPage7.TabIndex = 3;
             this.tabPage7.Text = "Log";
             this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(105, 10);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 79;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
@@ -1075,7 +1066,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
-            this.VideoCapture1.Debug_Telemetry = true;
+            this.VideoCapture1.Debug_Telemetry = false;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
@@ -1102,6 +1093,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.OSD_Enabled = false;
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -1116,7 +1108,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(429, 354);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 93;
@@ -1145,6 +1137,8 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -1248,7 +1242,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "IP Capture Demo - Video Capture SDK .Net";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1289,7 +1282,6 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TabPage tabPage7;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.TabControl tabControl15;

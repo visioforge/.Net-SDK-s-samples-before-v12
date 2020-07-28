@@ -1,3 +1,5 @@
+using System;
+
 namespace VisioForge_SDK_Screen_Capture_Demo
 {
     using VisioForge.Types;
@@ -97,7 +99,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.lbLogos = new System.Windows.Forms.ListBox();
             this.btImageLogoAdd = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.btStop = new System.Windows.Forms.Button();
@@ -852,7 +853,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.cbLicensing);
             this.tabPage4.Controls.Add(this.cbDebugMode);
             this.tabPage4.Controls.Add(this.mmLog);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -862,16 +862,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(104, 11);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 82;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
@@ -1361,7 +1351,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(430, 311);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 93;
@@ -1391,6 +1381,7 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -1519,7 +1510,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Screen Capture Demo - Video Capture SDK .Net";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1625,7 +1615,6 @@ namespace VisioForge_SDK_Screen_Capture_Demo
         private System.Windows.Forms.Label label93;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox cbScreenCapture_DesktopDuplication;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.Button btSelectOutput;

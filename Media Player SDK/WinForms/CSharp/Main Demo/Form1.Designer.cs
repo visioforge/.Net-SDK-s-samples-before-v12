@@ -108,6 +108,7 @@ namespace Media_Player_Demo
             this.cbScreenFlipHorizontal = new System.Windows.Forms.CheckBox();
             this.cbStretch = new System.Windows.Forms.CheckBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.rbVirtualCameraOutput = new System.Windows.Forms.RadioButton();
             this.rbMadVR = new System.Windows.Forms.RadioButton();
             this.rbDirect2D = new System.Windows.Forms.RadioButton();
             this.rbNone = new System.Windows.Forms.RadioButton();
@@ -588,7 +589,6 @@ namespace Media_Player_Demo
             this.tabControl3 = new System.Windows.Forms.TabControl();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.cbTelemetry = new System.Windows.Forms.CheckBox();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
@@ -625,7 +625,6 @@ namespace Media_Player_Demo
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label37 = new System.Windows.Forms.Label();
             this.edCustomSourceFilter = new System.Windows.Forms.TextBox();
-            this.cbRunAsync = new System.Windows.Forms.CheckBox();
             this.MediaPlayer1 = new VisioForge.Controls.UI.WinForms.MediaPlayer();
             this.tabControl1.SuspendLayout();
             this.tabPage20.SuspendLayout();
@@ -1604,6 +1603,7 @@ namespace Media_Player_Demo
             // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.rbVirtualCameraOutput);
             this.groupBox13.Controls.Add(this.rbMadVR);
             this.groupBox13.Controls.Add(this.rbDirect2D);
             this.groupBox13.Controls.Add(this.rbNone);
@@ -1612,10 +1612,21 @@ namespace Media_Player_Demo
             this.groupBox13.Controls.Add(this.rbVR);
             this.groupBox13.Location = new System.Drawing.Point(16, 16);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(250, 181);
+            this.groupBox13.Size = new System.Drawing.Size(250, 186);
             this.groupBox13.TabIndex = 26;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Video Renderer";
+            // 
+            // rbVirtualCameraOutput
+            // 
+            this.rbVirtualCameraOutput.AutoSize = true;
+            this.rbVirtualCameraOutput.Location = new System.Drawing.Point(12, 159);
+            this.rbVirtualCameraOutput.Name = "rbVirtualCameraOutput";
+            this.rbVirtualCameraOutput.Size = new System.Drawing.Size(165, 17);
+            this.rbVirtualCameraOutput.TabIndex = 6;
+            this.rbVirtualCameraOutput.TabStop = true;
+            this.rbVirtualCameraOutput.Text = "Output to Virtual Camera SDK";
+            this.rbVirtualCameraOutput.UseVisualStyleBackColor = true;
             // 
             // rbMadVR
             // 
@@ -6515,7 +6526,6 @@ namespace Media_Player_Demo
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.btPreviousFrame);
             this.groupBox2.Controls.Add(this.cbLoop);
             this.groupBox2.Controls.Add(this.btNextFrame);
@@ -6645,7 +6655,6 @@ namespace Media_Player_Demo
             // 
             // groupBox3
             // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.btDVDControlRootMenu);
             this.groupBox3.Controls.Add(this.btDVDControlTitleMenu);
             this.groupBox3.Controls.Add(this.cbDVDControlSubtitles);
@@ -6772,7 +6781,6 @@ namespace Media_Player_Demo
             // tabPage10
             // 
             this.tabPage10.Controls.Add(this.cbTelemetry);
-            this.tabPage10.Controls.Add(this.cbLicensing);
             this.tabPage10.Controls.Add(this.mmLog);
             this.tabPage10.Controls.Add(this.cbDebugMode);
             this.tabPage10.Location = new System.Drawing.Point(4, 22);
@@ -6788,22 +6796,12 @@ namespace Media_Player_Demo
             this.cbTelemetry.AutoSize = true;
             this.cbTelemetry.Checked = true;
             this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbTelemetry.Location = new System.Drawing.Point(177, 13);
+            this.cbTelemetry.Location = new System.Drawing.Point(80, 13);
             this.cbTelemetry.Name = "cbTelemetry";
             this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
             this.cbTelemetry.TabIndex = 4;
             this.cbTelemetry.Text = "Telemetry";
             this.cbTelemetry.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(80, 13);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 3;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // mmLog
             // 
@@ -7017,6 +7015,7 @@ namespace Media_Player_Demo
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label29
@@ -7054,7 +7053,7 @@ namespace Media_Player_Demo
             this.cbSourceMode.Location = new System.Drawing.Point(432, 125);
             this.cbSourceMode.Margin = new System.Windows.Forms.Padding(2);
             this.cbSourceMode.Name = "cbSourceMode";
-            this.cbSourceMode.Size = new System.Drawing.Size(258, 21);
+            this.cbSourceMode.Size = new System.Drawing.Size(312, 21);
             this.cbSourceMode.TabIndex = 15;
             // 
             // lbSourceFiles
@@ -7142,19 +7141,10 @@ namespace Media_Player_Demo
             this.edCustomSourceFilter.Size = new System.Drawing.Size(312, 20);
             this.edCustomSourceFilter.TabIndex = 22;
             // 
-            // cbRunAsync
-            // 
-            this.cbRunAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbRunAsync.AutoSize = true;
-            this.cbRunAsync.Location = new System.Drawing.Point(695, 127);
-            this.cbRunAsync.Name = "cbRunAsync";
-            this.cbRunAsync.Size = new System.Drawing.Size(55, 17);
-            this.cbRunAsync.TabIndex = 23;
-            this.cbRunAsync.Text = "Async";
-            this.cbRunAsync.UseVisualStyleBackColor = true;
-            // 
             // MediaPlayer1
             // 
+            this.MediaPlayer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MediaPlayer1.Audio_Channel_Mapper = null;
             this.MediaPlayer1.Audio_Effects_Enabled = false;
             this.MediaPlayer1.Audio_Effects_UseLegacyEffects = false;
@@ -7232,6 +7222,8 @@ namespace Media_Player_Demo
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
+            this.MediaPlayer1.Virtual_Camera_Output_Enabled = false;
+            this.MediaPlayer1.Virtual_Camera_Output_LicenseKey = null;
             this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
             this.MediaPlayer1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.MediaPlayer1_OnLicenseRequired);
             this.MediaPlayer1.OnMotion += new System.EventHandler<VisioForge.Types.MotionDetectionEventArgs>(this.MediaPlayer1_OnMotion);
@@ -7264,14 +7256,12 @@ namespace Media_Player_Demo
             this.Controls.Add(this.edFilenameOrURL);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.cbRunAsync);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Media Player SDK .Net - Main Demo";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.SizeChanged += new System.EventHandler(this.Form1_SizeChanged);
             this.tabControl1.ResumeLayout(false);
             this.tabPage20.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
@@ -7996,7 +7986,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.RadioButton rbEncryptionKeyFile;
         private System.Windows.Forms.TextBox edEncryptionKeyString;
         private System.Windows.Forms.RadioButton rbEncryptionKeyString;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.TabPage tabPage49;
         private System.Windows.Forms.Button btReadTags;
         private System.Windows.Forms.TextBox edTags;
@@ -8060,7 +8049,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbFlipY;
         private System.Windows.Forms.CheckBox cbFlipX;
         private System.Windows.Forms.CheckBox cbTelemetry;
-        private System.Windows.Forms.CheckBox cbRunAsync;
         private System.Windows.Forms.TabPage tabPage20;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.LinkLabel linkLabel3;
@@ -8085,5 +8073,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbVideoEffectsGPUDX11;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TrackBar tbGPUBlur;
+        private System.Windows.Forms.RadioButton rbVirtualCameraOutput;
     }
 }

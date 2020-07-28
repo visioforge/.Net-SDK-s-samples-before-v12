@@ -194,39 +194,39 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             }
         }
 
-        private void btDVFF_Click(object sender, EventArgs e)
+        private async void btDVFF_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.FastForward);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.FastForward);
         }
 
-        private void btDVPause_Click(object sender, EventArgs e)
+        private async void btDVPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Pause);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Pause);
         }
 
-        private void btDVRewind_Click(object sender, EventArgs e)
+        private async void btDVRewind_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Rew);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Rew);
         }
 
-        private void btDVPlay_Click(object sender, EventArgs e)
+        private async void btDVPlay_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Play);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Play);
         }
 
-        private void btDVStepFWD_Click(object sender, EventArgs e)
+        private async void btDVStepFWD_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.StepFw);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepFw);
         }
 
-        private void btDVStepRev_Click(object sender, EventArgs e)
+        private async void btDVStepRev_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.StepRev);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepRev);
         }
 
-        private void btDVStop_Click(object sender, EventArgs e)
+        private async void btDVStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Stop);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Stop);
         }
 
         private void SetMP4Output(ref VFMP4v8v10Output mp4Output)
@@ -376,7 +376,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
 
@@ -402,18 +402,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             }
 
             // apply capture parameters
-            if (VideoCapture.Filter_Supported_EVR())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
-            }
-            else if (VideoCapture.Filter_Supported_VMR9())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
-            }
-            else
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
-            }
+            VideoCapture1.Video_Renderer_SetAuto();
 
             VideoCapture1.Video_CaptureDevice = cbVideoInputDevice.Text;
             VideoCapture1.Video_CaptureDevice_IsAudioSource = true;
@@ -560,17 +549,17 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             lbLogos.Items.Clear();
             ConfigureVideoEffects();
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 3;
             tmRecording.Start();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
         private void llVideoTutorials_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -579,30 +568,35 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += @"LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
-        private void btSaveScreenshot_Click(object sender, EventArgs e)
+        private async void btSaveScreenshot_Click(object sender, EventArgs e)
         {
             if (screenshotSaveDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -611,19 +605,19 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
                 switch (ext)
                 {
                     case ".bmp":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0);
                         break;
                     case ".jpg":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85);
                         break;
                     case ".gif":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0);
                         break;
                     case ".png":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0);
                         break;
                     case ".tiff":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0);
                         break;
                 }
             }
@@ -865,26 +859,23 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (IsHandleCreated)
             {
-                return;
+                var ts = VideoCapture1.Duration_Time();
+
+                if (Math.Abs(ts.TotalMilliseconds) < 0.01)
+                {
+                    return;
+                }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
-        }
-
-        
         private void btTextLogoAdd_Click(object sender, EventArgs e)
         {
             var dlg = new TextLogoSettingsDialog();
@@ -1013,7 +1004,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             var effect = VideoCapture1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.Checked);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.Checked);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -1032,7 +1023,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             var effect = VideoCapture1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.Checked);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.Checked);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else

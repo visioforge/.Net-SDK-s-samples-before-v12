@@ -3,26 +3,30 @@
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable StyleCop.SA1601
 
-using System.IO;
-using Microsoft.Win32;
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs;
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-using VisioForge.Types.VideoEffects;
-
 namespace IP_Capture
 {
     using System;
     using System.Diagnostics;
+    using System.IO;
+    using System.Timers;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
+
+    using Microsoft.Win32;
+
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs;
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Shared.IPCameraDB;
     using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
     using VisioForge.Types.Sources;
+    using VisioForge.Types.VideoEffects;
+
+    using Application = System.Windows.Forms.Application;
 
     public partial class Window1
     {
@@ -50,14 +54,14 @@ namespace IP_Capture
 
         private GIFSettingsDialog gifSettingsDialog;
 
-        private readonly SaveFileDialog screenshotSaveDialog = new SaveFileDialog()
-        {
-            FileName = "image.jpg",
-            Filter = "JPEG|*.jpg|BMP|*.bmp|PNG|*.png|GIF|*.gif|TIFF|*.tiff",
-            InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
-        };
+        private readonly SaveFileDialog screenshotSaveDialog = new SaveFileDialog
+                                                                   {
+                                                                       FileName = "image.jpg",
+                                                                       Filter = "JPEG|*.jpg|BMP|*.bmp|PNG|*.png|GIF|*.gif|TIFF|*.tiff",
+                                                                       InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
+                                                                   };
 
-        private readonly System.Timers.Timer tmRecording = new System.Timers.Timer(1000);
+        private readonly Timer tmRecording = new Timer(1000);
 
         private readonly SaveFileDialog saveFileDialog1 = new SaveFileDialog();
 
@@ -77,12 +81,12 @@ namespace IP_Capture
         {
             InitializeComponent();
 
-            System.Windows.Forms.Application.EnableVisualStyles();
+            Application.EnableVisualStyles();
         }
 
         private void lbVLCRedist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe",HelpLinks.RedistVLCx86);
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
             Process.Start(startInfo);
         }
 
@@ -102,7 +106,7 @@ namespace IP_Capture
                             "output.mp4";
         }
         
-        private void btSaveScreenshot_Click(object sender, RoutedEventArgs e)
+        private async void btSaveScreenshot_Click(object sender, RoutedEventArgs e)
         {
             if (screenshotSaveDialog.ShowDialog() == true)
             {
@@ -111,19 +115,19 @@ namespace IP_Capture
                 switch (ext)
                 {
                     case ".bmp":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0);
                         break;
                     case ".jpg":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85);
                         break;
                     case ".gif":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0);
                         break;
                     case ".png":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0);
                         break;
                     case ".tiff":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0);
                         break;
                 }
             }
@@ -242,7 +246,8 @@ namespace IP_Capture
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
@@ -270,7 +275,8 @@ namespace IP_Capture
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
@@ -284,7 +290,7 @@ namespace IP_Capture
             }
         }
 
-        private void btStart_Click(object sender, RoutedEventArgs e)
+        private async void btStart_Click(object sender, RoutedEventArgs e)
         {
 #if !NETCOREAPP
             if (onvifControl != null)
@@ -295,6 +301,7 @@ namespace IP_Capture
 
                 btONVIFConnect.Content = "Connect";
             }
+
 #endif
 
             mmLog.Clear();
@@ -361,6 +368,9 @@ namespace IP_Capture
                     VideoCapture1.IP_Camera_Source.Type = VFIPSource.RTSP_LowLatency;
                     VideoCapture1.IP_Camera_Source.RTSP_LowLatency_UseUDP = true;
                     break;
+                case 12:
+                    VideoCapture1.IP_Camera_Source.Type = VFIPSource.NDI;
+                    break;
             }
 
             VideoCapture1.IP_Camera_Source.AudioCapture = cbIPAudioCapture.IsChecked == true;
@@ -406,6 +416,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 1:
                         {
                             var mkvOutput = new VFMKVv1Output();
@@ -414,6 +425,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 2:
                         {
                             var wmvOutput = new VFWMVOutput();
@@ -422,6 +434,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 3:
                         {
                             var dvOutput = new VFDVOutput();
@@ -430,6 +443,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 4:
                         {
                             var webmOutput = new VFWebMOutput();
@@ -438,6 +452,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 5:
                         {
                             var ffmpegDLLOutput = new VFFFMPEGDLLOutput();
@@ -446,6 +461,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 6:
                         {
                             var ffmpegOutput = new VFFFMPEGEXEOutput();
@@ -454,6 +470,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 7:
                         {
                             var mp4Output = new VFMP4v8v10Output();
@@ -462,6 +479,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 8:
                         {
                             var mp4Output = new VFMP4v11Output();
@@ -470,6 +488,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 9:
                         {
                             var gifOutput = new VFAnimatedGIFOutput();
@@ -479,6 +498,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 10:
                         {
                             var encOutput = new VFMP4v8v10Output();
@@ -490,6 +510,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 11:
                         {
                             var tsOutput = new VFMPEGTSOutput();
@@ -498,6 +519,7 @@ namespace IP_Capture
 
                             break;
                         }
+
                     case 12:
                         {
                             var movOutput = new VFMOVOutput();
@@ -514,7 +536,7 @@ namespace IP_Capture
             lbLogos.Items.Clear();
             ConfigureVideoEffects();
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 3;
             tmRecording.Start();
@@ -563,11 +585,11 @@ namespace IP_Capture
             }
         }
 
-        private void btStop_Click(object sender, RoutedEventArgs e)
+        private async void btStop_Click(object sender, RoutedEventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
         private void llVideoTutorials_LinkClicked(object sender, MouseButtonEventArgs e)
@@ -576,17 +598,19 @@ namespace IP_Capture
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            Dispatcher.Invoke(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; });
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.IsChecked == true)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void btShowIPCamDatabase_Click(object sender, RoutedEventArgs e)
@@ -663,6 +687,7 @@ namespace IP_Capture
                     onvifControl = null;
                 }
             }
+
 #endif
         }
 
@@ -816,61 +841,73 @@ namespace IP_Capture
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
                         break;
                     }
+
                 case 1:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mkv");
                         break;
                     }
+
                 case 2:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wmv");
                         break;
                     }
+
                 case 3:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
                         break;
                     }
+
                 case 4:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".webm");
                         break;
                     }
+
                 case 5:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
                         break;
                     }
+
                 case 6:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
                         break;
                     }
+
                 case 7:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4");
                         break;
                     }
+
                 case 8:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4");
                         break;
                     }
+
                 case 9:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".gif");
                         break;
                     }
+
                 case 10:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".enc");
                         break;
                     }
+
                 case 11:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ts");
                         break;
                     }
+
                 case 12:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mov");
@@ -879,19 +916,18 @@ namespace IP_Capture
             }
         }
 
-        private void BtResume_Click(object sender, RoutedEventArgs e)
+        private async void BtResume_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
-        private void BtPause_Click(object sender, RoutedEventArgs e)
+        private async void BtPause_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
         private void BtOutputConfigure_Click(object sender, RoutedEventArgs e)
         {
-
             switch (cbOutputFormat.SelectedIndex)
             {
                 case 0:
@@ -905,6 +941,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 1:
                     {
                         if (aviSettingsDialog == null)
@@ -916,6 +953,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 2:
                     {
                         if (wmvSettingsDialog == null)
@@ -928,6 +966,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 3:
                     {
                         if (dvSettingsDialog == null)
@@ -939,6 +978,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 4:
                     {
                         if (webmSettingsDialog == null)
@@ -950,6 +990,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 5:
                     {
                         if (ffmpegDLLSettingsDialog == null)
@@ -961,6 +1002,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 6:
                     {
                         if (ffmpegEXESettingsDialog == null)
@@ -972,6 +1014,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 7:
                     {
                         if (mp4V10SettingsDialog == null)
@@ -983,6 +1026,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 8:
                     {
                         if (mp4v11SettingsDialog == null)
@@ -994,6 +1038,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 9:
                     {
                         if (gifSettingsDialog == null)
@@ -1005,6 +1050,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 10:
                     {
                         if (mp4V10SettingsDialog == null)
@@ -1016,6 +1062,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 11:
                     {
                         if (mpegTSSettingsDialog == null)
@@ -1027,6 +1074,7 @@ namespace IP_Capture
 
                         break;
                     }
+
                 case 12:
                     {
                         if (movSettingsDialog == null)
@@ -1043,25 +1091,18 @@ namespace IP_Capture
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
+            var ts = VideoCapture1.Duration_Time();
 
-            if (timestamp < 0)
+            if (Math.Abs(ts.TotalMilliseconds) < 0.01)
             {
                 return;
             }
 
             Dispatcher.BeginInvoke((Action)(() =>
             {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
                 lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
             }));
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            btStop_Click(null, null);
-        }
-
 
         private void cbGreyscale_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -1186,7 +1227,7 @@ namespace IP_Capture
             var effect = VideoCapture1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.IsChecked == true);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.IsChecked == true);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -1205,7 +1246,7 @@ namespace IP_Capture
             var effect = VideoCapture1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.IsChecked == true);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.IsChecked == true);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else

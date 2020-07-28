@@ -69,7 +69,7 @@ namespace Video_From_Images_CLI
 
             foreach (string img in files)
             {
-                ve.Input_AddImageFile(img, 2000, insertTime, VFVideoEditStretchMode.Letterbox, 0, videoWidth, videoHeight);
+                ve.Input_AddImageFile(img, TimeSpan.FromMilliseconds(2000), TimeSpan.FromMilliseconds(insertTime), VFVideoEditStretchMode.Letterbox, 0, videoWidth, videoHeight);
                 insertTime += 2000;
             }
 

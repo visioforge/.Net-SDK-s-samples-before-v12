@@ -3,6 +3,7 @@
 namespace MultipleWebCameras
 {
     using System;
+    using System.Diagnostics;
     using System.Linq;
     using System.Windows;
 
@@ -37,7 +38,7 @@ namespace MultipleWebCameras
             }
         }
 
-        private void btStart1_Click(object sender, RoutedEventArgs e)
+        private async void btStart1_Click(object sender, RoutedEventArgs e)
         {
             videoCapture1.Video_CaptureDevice = cbCamera1.Text;
             videoCapture1.Video_CaptureFormat_UseBest = true;
@@ -54,15 +55,16 @@ namespace MultipleWebCameras
             // videoCapture1.OnError += VideoCapture1OnOnError;
             videoCapture1.Mode = VFVideoCaptureMode.VideoPreview;
             videoCapture1.Audio_PlayAudio = false;
-            videoCapture1.Start();
+
+            await videoCapture1.StartAsync();
         }
 
-        private void btStop1_Click(object sender, RoutedEventArgs e)
+        private async void btStop1_Click(object sender, RoutedEventArgs e)
         {
-            videoCapture1.Stop();
+            await videoCapture1.StopAsync();
         }
 
-        private void btStart2_Click(object sender, RoutedEventArgs e)
+        private async void btStart2_Click(object sender, RoutedEventArgs e)
         {
             videoCapture2.Video_CaptureDevice = cbCamera2.Text;
             videoCapture2.Video_CaptureFormat_UseBest = true;
@@ -79,18 +81,22 @@ namespace MultipleWebCameras
             // videoCapture2.OnError += VideoCapture2OnOnError;
             videoCapture2.Mode = VFVideoCaptureMode.VideoPreview;
             videoCapture2.Audio_PlayAudio = false;
-            videoCapture2.Start();
+            await videoCapture2.StartAsync();
         }
 
-        private void btStop2_Click(object sender, RoutedEventArgs e)
+        private async void btStop2_Click(object sender, RoutedEventArgs e)
         {
-            videoCapture2.Stop();
+            await videoCapture2.StopAsync();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private void videoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            btStop1_Click(null, null);
-            btStop2_Click(null, null);
+            Debug.WriteLine("CAM1: " + e.Message);
+        }
+
+        private void videoCapture2_OnError(object sender, ErrorsEventArgs e)
+        {
+            Debug.WriteLine("CAM2: " + e.Message);
         }
     }
 }

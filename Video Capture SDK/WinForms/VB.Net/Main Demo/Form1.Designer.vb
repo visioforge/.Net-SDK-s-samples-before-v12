@@ -40,7 +40,6 @@ Partial Class Form1
         Me.tabControl12 = New System.Windows.Forms.TabControl()
         Me.tabPage53 = New System.Windows.Forms.TabPage()
         Me.cbTelemetry = New System.Windows.Forms.CheckBox()
-        Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
         Me.mmLog = New System.Windows.Forms.TextBox()
         Me.tabControl10 = New System.Windows.Forms.TabControl()
@@ -589,11 +588,13 @@ Partial Class Form1
         Me.label198 = New System.Windows.Forms.Label()
         Me.tabControl7 = New System.Windows.Forms.TabControl()
         Me.tabPage29 = New System.Windows.Forms.TabPage()
+        Me.cbMergeTextLogos = New System.Windows.Forms.CheckBox()
         Me.btTextLogoRemove = New System.Windows.Forms.Button()
         Me.btTextLogoEdit = New System.Windows.Forms.Button()
         Me.lbTextLogos = New System.Windows.Forms.ListBox()
         Me.btTextLogoAdd = New System.Windows.Forms.Button()
         Me.tabPage42 = New System.Windows.Forms.TabPage()
+        Me.cbMergeImageLogos = New System.Windows.Forms.CheckBox()
         Me.btImageLogoRemove = New System.Windows.Forms.Button()
         Me.btImageLogoEdit = New System.Windows.Forms.Button()
         Me.lbImageLogos = New System.Windows.Forms.ListBox()
@@ -923,6 +924,8 @@ Partial Class Form1
         Me.label371 = New System.Windows.Forms.Label()
         Me.rbNetworkSSSoftware = New System.Windows.Forms.RadioButton()
         Me.TabPage147 = New System.Windows.Forms.TabPage()
+        Me.cbHLSMode = New System.Windows.Forms.ComboBox()
+        Me.label6 = New System.Windows.Forms.Label()
         Me.lbHLSConfigure = New System.Windows.Forms.LinkLabel()
         Me.label532 = New System.Windows.Forms.Label()
         Me.label531 = New System.Windows.Forms.Label()
@@ -1121,7 +1124,9 @@ Partial Class Form1
         Me.VideoCapture1 = New VisioForge.Controls.UI.WinForms.VideoCapture()
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.lbTimestamp = New System.Windows.Forms.Label()
-        Me.cbRunAsync = New System.Windows.Forms.CheckBox()
+        Me.label19 = New System.Windows.Forms.Label()
+        Me.edHLSEmbeddedHTTPServerPort = New System.Windows.Forms.TextBox()
+        Me.cbHLSEmbeddedHTTPServerEnabled = New System.Windows.Forms.CheckBox()
         Me.tabControl12.SuspendLayout
         Me.tabPage53.SuspendLayout
         Me.tabControl10.SuspendLayout
@@ -1369,7 +1374,6 @@ Partial Class Form1
         'tabPage53
         '
         Me.tabPage53.Controls.Add(Me.cbTelemetry)
-        Me.tabPage53.Controls.Add(Me.cbLicensing)
         Me.tabPage53.Controls.Add(Me.cbDebugMode)
         Me.tabPage53.Controls.Add(Me.mmLog)
         Me.tabPage53.Location = New System.Drawing.Point(4, 22)
@@ -1385,22 +1389,12 @@ Partial Class Form1
         Me.cbTelemetry.AutoSize = true
         Me.cbTelemetry.Checked = true
         Me.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbTelemetry.Location = New System.Drawing.Point(200, 6)
+        Me.cbTelemetry.Location = New System.Drawing.Point(102, 6)
         Me.cbTelemetry.Name = "cbTelemetry"
         Me.cbTelemetry.Size = New System.Drawing.Size(72, 17)
         Me.cbTelemetry.TabIndex = 78
         Me.cbTelemetry.Text = "Telemetry"
         Me.cbTelemetry.UseVisualStyleBackColor = true
-        '
-        'cbLicensing
-        '
-        Me.cbLicensing.AutoSize = true
-        Me.cbLicensing.Location = New System.Drawing.Point(103, 6)
-        Me.cbLicensing.Name = "cbLicensing"
-        Me.cbLicensing.Size = New System.Drawing.Size(91, 17)
-        Me.cbLicensing.TabIndex = 74
-        Me.cbLicensing.Text = "Licensing info"
-        Me.cbLicensing.UseVisualStyleBackColor = true
         '
         'cbDebugMode
         '
@@ -3696,7 +3690,7 @@ Partial Class Form1
         Me.edIPUrl.Name = "edIPUrl"
         Me.edIPUrl.Size = New System.Drawing.Size(360, 20)
         Me.edIPUrl.TabIndex = 80
-        Me.edIPUrl.Text = "http://212.162.177.75/mjpg/video.mjpg"
+        Me.edIPUrl.Text = "http://help.visioforge.com/video.mp4"
         '
         'label165
         '
@@ -3788,7 +3782,7 @@ Partial Class Form1
         '
         Me.cbIPCameraType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cbIPCameraType.FormattingEnabled = true
-        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency", "RTSP Low Latency TCP", "RTSP Low Latency UDP"})
+        Me.cbIPCameraType.Items.AddRange(New Object() {"Auto (VLC engine)", "Auto (FFMPEG engine)", "Auto (LAV engine)", "RTSP (Live555 engine)", "HTTP (FFMPEG engine)", "MMS - WMV", "RTSP - UDP (FFMPEG engine)", "RTSP - TCP (FFMPEG engine)", "RTSP over HTTP (FFMPEG engine)", "HTTP MJPEG Low Latency", "RTSP Low Latency TCP", "RTSP Low Latency UDP", "NDI"})
         Me.cbIPCameraType.Location = New System.Drawing.Point(58, 40)
         Me.cbIPCameraType.Name = "cbIPCameraType"
         Me.cbIPCameraType.Size = New System.Drawing.Size(227, 21)
@@ -7029,6 +7023,7 @@ Partial Class Form1
         '
         'tabPage29
         '
+        Me.tabPage29.Controls.Add(Me.cbMergeTextLogos)
         Me.tabPage29.Controls.Add(Me.btTextLogoRemove)
         Me.tabPage29.Controls.Add(Me.btTextLogoEdit)
         Me.tabPage29.Controls.Add(Me.lbTextLogos)
@@ -7040,6 +7035,16 @@ Partial Class Form1
         Me.tabPage29.TabIndex = 0
         Me.tabPage29.Text = "Text logo"
         Me.tabPage29.UseVisualStyleBackColor = true
+        '
+        'cbMergeTextLogos
+        '
+        Me.cbMergeTextLogos.AutoSize = true
+        Me.cbMergeTextLogos.Location = New System.Drawing.Point(9, 11)
+        Me.cbMergeTextLogos.Name = "cbMergeTextLogos"
+        Me.cbMergeTextLogos.Size = New System.Drawing.Size(145, 17)
+        Me.cbMergeTextLogos.TabIndex = 88
+        Me.cbMergeTextLogos.Text = "Merge text logos into one"
+        Me.cbMergeTextLogos.UseVisualStyleBackColor = true
         '
         'btTextLogoRemove
         '
@@ -7062,9 +7067,9 @@ Partial Class Form1
         'lbTextLogos
         '
         Me.lbTextLogos.FormattingEnabled = true
-        Me.lbTextLogos.Location = New System.Drawing.Point(9, 11)
+        Me.lbTextLogos.Location = New System.Drawing.Point(9, 37)
         Me.lbTextLogos.Name = "lbTextLogos"
-        Me.lbTextLogos.Size = New System.Drawing.Size(257, 199)
+        Me.lbTextLogos.Size = New System.Drawing.Size(257, 173)
         Me.lbTextLogos.TabIndex = 5
         '
         'btTextLogoAdd
@@ -7078,6 +7083,7 @@ Partial Class Form1
         '
         'tabPage42
         '
+        Me.tabPage42.Controls.Add(Me.cbMergeImageLogos)
         Me.tabPage42.Controls.Add(Me.btImageLogoRemove)
         Me.tabPage42.Controls.Add(Me.btImageLogoEdit)
         Me.tabPage42.Controls.Add(Me.lbImageLogos)
@@ -7089,6 +7095,16 @@ Partial Class Form1
         Me.tabPage42.TabIndex = 1
         Me.tabPage42.Text = "Image logo"
         Me.tabPage42.UseVisualStyleBackColor = true
+        '
+        'cbMergeImageLogos
+        '
+        Me.cbMergeImageLogos.AutoSize = true
+        Me.cbMergeImageLogos.Location = New System.Drawing.Point(9, 11)
+        Me.cbMergeImageLogos.Name = "cbMergeImageLogos"
+        Me.cbMergeImageLogos.Size = New System.Drawing.Size(156, 17)
+        Me.cbMergeImageLogos.TabIndex = 87
+        Me.cbMergeImageLogos.Text = "Merge image logos into one"
+        Me.cbMergeImageLogos.UseVisualStyleBackColor = true
         '
         'btImageLogoRemove
         '
@@ -7111,9 +7127,9 @@ Partial Class Form1
         'lbImageLogos
         '
         Me.lbImageLogos.FormattingEnabled = true
-        Me.lbImageLogos.Location = New System.Drawing.Point(9, 11)
+        Me.lbImageLogos.Location = New System.Drawing.Point(9, 37)
         Me.lbImageLogos.Name = "lbImageLogos"
-        Me.lbImageLogos.Size = New System.Drawing.Size(257, 199)
+        Me.lbImageLogos.Size = New System.Drawing.Size(257, 173)
         Me.lbImageLogos.TabIndex = 9
         '
         'btImageLogoAdd
@@ -10513,6 +10529,11 @@ Partial Class Form1
         '
         'TabPage147
         '
+        Me.TabPage147.Controls.Add(Me.label19)
+        Me.TabPage147.Controls.Add(Me.edHLSEmbeddedHTTPServerPort)
+        Me.TabPage147.Controls.Add(Me.cbHLSEmbeddedHTTPServerEnabled)
+        Me.TabPage147.Controls.Add(Me.cbHLSMode)
+        Me.TabPage147.Controls.Add(Me.label6)
         Me.TabPage147.Controls.Add(Me.lbHLSConfigure)
         Me.TabPage147.Controls.Add(Me.label532)
         Me.TabPage147.Controls.Add(Me.label531)
@@ -10532,10 +10553,29 @@ Partial Class Form1
         Me.TabPage147.Text = "HLS"
         Me.TabPage147.UseVisualStyleBackColor = true
         '
+        'cbHLSMode
+        '
+        Me.cbHLSMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cbHLSMode.FormattingEnabled = true
+        Me.cbHLSMode.Items.AddRange(New Object() {"Live", "VOD", "Event"})
+        Me.cbHLSMode.Location = New System.Drawing.Point(12, 236)
+        Me.cbHLSMode.Name = "cbHLSMode"
+        Me.cbHLSMode.Size = New System.Drawing.Size(121, 21)
+        Me.cbHLSMode.TabIndex = 23
+        '
+        'label6
+        '
+        Me.label6.AutoSize = true
+        Me.label6.Location = New System.Drawing.Point(9, 220)
+        Me.label6.Name = "label6"
+        Me.label6.Size = New System.Drawing.Size(97, 13)
+        Me.label6.TabIndex = 22
+        Me.label6.Text = "Mode (playlist type)"
+        '
         'lbHLSConfigure
         '
         Me.lbHLSConfigure.AutoSize = true
-        Me.lbHLSConfigure.Location = New System.Drawing.Point(9, 213)
+        Me.lbHLSConfigure.Location = New System.Drawing.Point(9, 329)
         Me.lbHLSConfigure.Name = "lbHLSConfigure"
         Me.lbHLSConfigure.Size = New System.Drawing.Size(191, 13)
         Me.lbHLSConfigure.TabIndex = 21
@@ -12583,7 +12623,7 @@ Partial Class Form1
         Me.VideoCapture1.SeparateCapture_FileSizeThreshold = CType(0,Long)
         Me.VideoCapture1.SeparateCapture_GMFMode = true
         Me.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal
-        Me.VideoCapture1.SeparateCapture_TimeThreshold = CType(0,Long)
+        Me.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero
         Me.VideoCapture1.Size = New System.Drawing.Size(465, 323)
         Me.VideoCapture1.Start_DelayEnabled = false
         Me.VideoCapture1.TabIndex = 94
@@ -12614,6 +12654,8 @@ Partial Class Form1
         Me.VideoCapture1.Video_Effects_Enabled = false
         Me.VideoCapture1.Video_Effects_GPU_Enabled = false
         Me.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11
+        Me.VideoCapture1.Video_Effects_MergeImageLogos = false
+        Me.VideoCapture1.Video_Effects_MergeTextLogos = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
         VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
@@ -12661,16 +12703,32 @@ Partial Class Form1
         Me.lbTimestamp.TabIndex = 96
         Me.lbTimestamp.Text = "Recording time: 00:00:00"
         '
-        'cbRunAsync
+        'label19
         '
-        Me.cbRunAsync.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.cbRunAsync.AutoSize = true
-        Me.cbRunAsync.Location = New System.Drawing.Point(741, 657)
-        Me.cbRunAsync.Name = "cbRunAsync"
-        Me.cbRunAsync.Size = New System.Drawing.Size(55, 17)
-        Me.cbRunAsync.TabIndex = 97
-        Me.cbRunAsync.Text = "Async"
-        Me.cbRunAsync.UseVisualStyleBackColor = true
+        Me.label19.AutoSize = true
+        Me.label19.Location = New System.Drawing.Point(9, 301)
+        Me.label19.Name = "label19"
+        Me.label19.Size = New System.Drawing.Size(16, 13)
+        Me.label19.TabIndex = 26
+        Me.label19.Text = "or"
+        '
+        'edHLSEmbeddedHTTPServerPort
+        '
+        Me.edHLSEmbeddedHTTPServerPort.Location = New System.Drawing.Point(223, 270)
+        Me.edHLSEmbeddedHTTPServerPort.Name = "edHLSEmbeddedHTTPServerPort"
+        Me.edHLSEmbeddedHTTPServerPort.Size = New System.Drawing.Size(41, 20)
+        Me.edHLSEmbeddedHTTPServerPort.TabIndex = 25
+        Me.edHLSEmbeddedHTTPServerPort.Text = "80"
+        '
+        'cbHLSEmbeddedHTTPServerEnabled
+        '
+        Me.cbHLSEmbeddedHTTPServerEnabled.AutoSize = true
+        Me.cbHLSEmbeddedHTTPServerEnabled.Location = New System.Drawing.Point(12, 272)
+        Me.cbHLSEmbeddedHTTPServerEnabled.Name = "cbHLSEmbeddedHTTPServerEnabled"
+        Me.cbHLSEmbeddedHTTPServerEnabled.Size = New System.Drawing.Size(205, 17)
+        Me.cbHLSEmbeddedHTTPServerEnabled.TabIndex = 24
+        Me.cbHLSEmbeddedHTTPServerEnabled.Text = "Use embedded HTTP server with port"
+        Me.cbHLSEmbeddedHTTPServerEnabled.UseVisualStyleBackColor = true
         '
         'Form1
         '
@@ -12690,7 +12748,6 @@ Partial Class Form1
         Me.Controls.Add(Me.tabControl1)
         Me.Controls.Add(Me.lbTimestamp)
         Me.Controls.Add(Me.btSaveScreenshot)
-        Me.Controls.Add(Me.cbRunAsync)
         Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.Name = "Form1"
         Me.Tag = "0"
@@ -12842,7 +12899,9 @@ Partial Class Form1
         Me.tabPage68.PerformLayout
         Me.tabControl7.ResumeLayout(false)
         Me.tabPage29.ResumeLayout(false)
+        Me.tabPage29.PerformLayout
         Me.tabPage42.ResumeLayout(false)
+        Me.tabPage42.PerformLayout
         Me.TabPage88.ResumeLayout(false)
         Me.TabPage88.PerformLayout
         Me.groupBox37.ResumeLayout(false)
@@ -13899,7 +13958,6 @@ End Sub
     Friend WithEvents imgTagCover As PictureBox
     Friend WithEvents Label499 As Label
     Private WithEvents cbUseClosedCaptions As CheckBox
-    Private WithEvents cbLicensing As CheckBox
     Private WithEvents Label250 As Label
     Friend WithEvents TabPage26 As TabPage
     Private WithEvents pbAFMotionLevel As ProgressBar
@@ -14090,7 +14148,6 @@ End Sub
     Private WithEvents lbCCPanMin As Label
     Private WithEvents tbCCPan As TrackBar
     Private WithEvents label96 As Label
-    Private WithEvents cbRunAsync As CheckBox
     Private WithEvents cbOSDEnabled As CheckBox
     Private WithEvents btOSDClearLayer As Button
     Friend WithEvents cbVideoEffectsGPUEnabled As CheckBox
@@ -14108,4 +14165,11 @@ End Sub
     Private WithEvents label5 As Label
     Private WithEvents tbGPUBlur As TrackBar
     Private WithEvents cbVideoEffectsGPUDX11 As CheckBox
+    Private WithEvents cbMergeTextLogos As CheckBox
+    Private WithEvents cbMergeImageLogos As CheckBox
+    Private WithEvents cbHLSMode As ComboBox
+    Private WithEvents label6 As Label
+    Private WithEvents label19 As Label
+    Private WithEvents edHLSEmbeddedHTTPServerPort As TextBox
+    Private WithEvents cbHLSEmbeddedHTTPServerEnabled As CheckBox
 End Class

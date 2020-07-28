@@ -37,7 +37,7 @@ namespace screen_capture
             cbScreenCaptureDisplayIndex.SelectedIndex = 0;
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             // configure source
             var screenSource = new ScreenCaptureSourceSettings();
@@ -72,22 +72,22 @@ namespace screen_capture
                 VideoCapture1.Mode = VFVideoCaptureMode.ScreenPreview;
             }
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
         private void btSelectOutput_Click(object sender, EventArgs e)
@@ -98,17 +98,22 @@ namespace screen_capture
             }
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
     }
 }

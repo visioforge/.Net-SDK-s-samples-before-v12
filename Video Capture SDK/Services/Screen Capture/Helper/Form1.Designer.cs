@@ -2,6 +2,8 @@
 
 namespace ScreenCaptureServiceHelper
 {
+    using System;
+
     partial class Form1
     {
         /// <summary>
@@ -80,7 +82,7 @@ namespace ScreenCaptureServiceHelper
             this.VideoCapture1.SeparateCapture_Enabled = false;
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(183, 149);
             this.VideoCapture1.TabIndex = 0;
             this.VideoCapture1.TVTuner_Channel = 0;

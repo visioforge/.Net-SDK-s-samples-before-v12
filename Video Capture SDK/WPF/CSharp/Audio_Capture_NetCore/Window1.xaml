@@ -1,8 +1,7 @@
 ﻿<Window x:Class="Audio_Capture.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Audio Capture Demo - Video Capture SDK .Net" Height="640" Width="427" IsEnabled="True" Loaded="Form1_Load" ResizeMode="CanMinimize" Closing="Window_Closing" 
-    Icon="visioforge_main_icon.ico">
+    Title="Audio Capture Demo - Video Capture SDK .Net" Height="640" Width="427" IsEnabled="True" Loaded="Form1_Load" ResizeMode="CanMinimize" Icon="visioforge_main_icon.ico">
     <Grid>
         <TabControl Margin="15,12,0,0" Name="tabControl1" HorizontalAlignment="Left" Width="391" Height="544" VerticalAlignment="Top">
             <TabItem Header="Input &amp; Output Devices" IsEnabled="True" Name="tabPage1" IsSelected="True">
@@ -106,7 +105,6 @@
                 <Grid>
                     <TextBox Margin="11,31,0,0" Name="mmLog" TextWrapping="Wrap" Height="475" VerticalAlignment="Top" HorizontalAlignment="Left" Width="364" />
                     <CheckBox Height="16" HorizontalAlignment="Left" Margin="274,10,0,0" Name="cbDebugMode" VerticalAlignment="Top" Width="101">Debug Mode</CheckBox>
-                    <CheckBox x:Name="cbLicensing" Content="Licensing info" HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>

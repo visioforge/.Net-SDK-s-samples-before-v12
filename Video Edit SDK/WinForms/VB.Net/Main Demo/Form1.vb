@@ -69,7 +69,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btAddInputFile_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btAddInputFile.Click
+    Private Async Sub btAddInputFile_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btAddInputFile.Click
 
         Dim s As String
 
@@ -95,60 +95,60 @@ Public Class Form1
                 If (cbAddFullFile.Checked) Then
 
                     If (cbInsertAfterPreviousFile.Checked) Then
-                        VideoEdit1.Input_AddImageFile(s, 2000, -1, VFVideoEditStretchMode.Letterbox)
+                        Await VideoEdit1.Input_AddImageFileAsync(s, TimeSpan.FromMilliseconds(2000), Nothing, VFVideoEditStretchMode.Letterbox)
                     Else
-                        VideoEdit1.Input_AddImageFile(s, 2000, Convert.ToInt32(edInsertTime.Text), VFVideoEditStretchMode.Letterbox)
+                        Await VideoEdit1.Input_AddImageFileAsync(s, TimeSpan.FromMilliseconds(2000), TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), VFVideoEditStretchMode.Letterbox)
                     End If
 
                 Else
                     If (cbInsertAfterPreviousFile.Checked) Then
-                        VideoEdit1.Input_AddImageFile(s, Convert.ToInt32(edStopTime.Text) - Convert.ToInt32(edStartTime.Text), -1, VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight)
+                        Await VideoEdit1.Input_AddImageFileAsync(s, TimeSpan.FromMilliseconds(Convert.ToInt32(edStopTime.Text) - Convert.ToInt32(edStartTime.Text)), Nothing, VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight)
                     Else
-                        VideoEdit1.Input_AddImageFile(s, Convert.ToInt32(edStopTime.Text) - Convert.ToInt32(edStartTime.Text), Convert.ToInt32(edInsertTime.Text), VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight)
+                        Await VideoEdit1.Input_AddImageFileAsync(s, TimeSpan.FromMilliseconds(Convert.ToInt32(edStopTime.Text) - Convert.ToInt32(edStartTime.Text)), TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight)
                     End If
                 End If
 
             ElseIf ((String.Compare(GetFileExt(s), ".WAV", True) = 0) Or (String.Compare(GetFileExt(s), ".MP3", True) = 0) Or (String.Compare(GetFileExt(s), ".OGG", True) = 0) Or (String.Compare(GetFileExt(s), ".WMA", True) = 0)) Then
 
                 If (cbAddFullFile.Checked) Then
-                    Dim audioFile = New VFVEAudioSource(s, -1, -1, String.Empty, 0, tbSpeed.Value / 100.0)
+                    Dim audioFile = New VFVEAudioSource(s, Nothing, Nothing, String.Empty, 0, tbSpeed.Value / 100.0)
                     If (cbInsertAfterPreviousFile.Checked) Then
-                        VideoEdit1.Input_AddAudioFile(audioFile, -1, 0)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, Nothing, 0)
                     Else
-                        VideoEdit1.Input_AddAudioFile(audioFile, Convert.ToInt32(edInsertTime.Text), 0)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), 0)
                     End If
                 Else
-                    Dim audioFile = New VFVEAudioSource(s, Convert.ToInt32(edStartTime.Text), Convert.ToInt32(edStopTime.Text), String.Empty, 0, tbSpeed.Value / 100.0)
+                    Dim audioFile = New VFVEAudioSource(s, TimeSpan.FromMilliseconds(Convert.ToInt32(edStartTime.Text)), TimeSpan.FromMilliseconds(Convert.ToInt32(edStopTime.Text)), String.Empty, 0, tbSpeed.Value / 100.0)
                     If (cbInsertAfterPreviousFile.Checked) Then
-                        VideoEdit1.Input_AddAudioFile(audioFile, -1, 0)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, Nothing, 0)
                     Else
-                        VideoEdit1.Input_AddAudioFile(audioFile, Convert.ToInt32(edInsertTime.Text), 0)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), 0)
                     End If
                 End If
             Else
                 If (cbAddFullFile.Checked) Then
                     Dim videoFile = New VFVEVideoSource(
-                                s, -1, -1, VFVideoEditStretchMode.Letterbox, 0, tbSpeed.Value / 100.0)
-                    Dim audioFile = New VFVEAudioSource(s, -1, -1, String.Empty, 0, tbSpeed.Value / 100.0)
+                                s, Nothing, Nothing, VFVideoEditStretchMode.Letterbox, 0, tbSpeed.Value / 100.0)
+                    Dim audioFile = New VFVEAudioSource(s, Nothing, Nothing, String.Empty, 0, tbSpeed.Value / 100.0)
 
                     If (cbInsertAfterPreviousFile.Checked) Then
-                        VideoEdit1.Input_AddVideoFile(videoFile, -1, 0, customWidth, customHeight)
-                        VideoEdit1.Input_AddAudioFile(audioFile, -1, 0)
+                        Await VideoEdit1.Input_AddVideoFileAsync(videoFile, Nothing, 0, customWidth, customHeight)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, Nothing, 0)
                     Else
-                        VideoEdit1.Input_AddVideoFile(videoFile, Convert.ToInt32(edInsertTime.Text), 0, customWidth, customHeight)
-                        VideoEdit1.Input_AddAudioFile(audioFile, Convert.ToInt32(edInsertTime.Text), 0)
+                        Await VideoEdit1.Input_AddVideoFileAsync(videoFile, TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), 0, customWidth, customHeight)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), 0)
                     End If
                 Else
                     Dim videoFile = New VFVEVideoSource(
-                                s, Convert.ToInt32(edStartTime.Text), Convert.ToInt32(edStopTime.Text), VFVideoEditStretchMode.Letterbox, 0, tbSpeed.Value / 100.0)
-                    Dim audioFile = New VFVEAudioSource(s, Convert.ToInt32(edStartTime.Text), Convert.ToInt32(edStopTime.Text), String.Empty, 0, tbSpeed.Value / 100.0)
+                                s, TimeSpan.FromMilliseconds(Convert.ToInt32(edStartTime.Text)), TimeSpan.FromMilliseconds(Convert.ToInt32(edStopTime.Text)), VFVideoEditStretchMode.Letterbox, 0, tbSpeed.Value / 100.0)
+                    Dim audioFile = New VFVEAudioSource(s, TimeSpan.FromMilliseconds(Convert.ToInt32(edStartTime.Text)), TimeSpan.FromMilliseconds(Convert.ToInt32(edStopTime.Text)), String.Empty, 0, tbSpeed.Value / 100.0)
 
                     If (cbInsertAfterPreviousFile.Checked) Then
-                        VideoEdit1.Input_AddVideoFile(videoFile, -1, 0, customWidth, customHeight)
-                        VideoEdit1.Input_AddAudioFile(audioFile, -1, 0)
+                        Await VideoEdit1.Input_AddVideoFileAsync(videoFile, Nothing, 0, customWidth, customHeight)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, Nothing, 0)
                     Else
-                        VideoEdit1.Input_AddVideoFile(videoFile, Convert.ToInt32(edInsertTime.Text), 0, customWidth, customHeight)
-                        VideoEdit1.Input_AddAudioFile(audioFile, Convert.ToInt32(edInsertTime.Text), 0)
+                        Await VideoEdit1.Input_AddVideoFileAsync(videoFile, TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), 0, customWidth, customHeight)
+                        Await VideoEdit1.Input_AddAudioFileAsync(audioFile, TimeSpan.FromMilliseconds(Convert.ToInt32(edInsertTime.Text)), 0)
                     End If
                 End If
 
@@ -233,35 +233,37 @@ Public Class Form1
     End Sub
 
     Private Sub VideoEdit1_OnStop(ByVal sender As System.Object, ByVal e As VideoEditStopEventArgs) Handles VideoEdit1.OnStop
+        Invoke(Sub()
+                   ProgressBar1.Value = 0
 
-        ProgressBar1.Value = 0
+                   lbFiles.Items.Clear()
+
+                   lbTransitions.Items.Clear()
+
+                   'clear VU Meters
+                   Dim data(19) As Int32
+
+                   peakMeterCtrl1.SetData(data, 0, 19)
+                   peakMeterCtrl1.Stop()
+                   waveformPainter1.Clear()
+                   waveformPainter2.Clear()
+
+                   volumeMeter1.Clear()
+                   volumeMeter2.Clear()
+
+                   lbImageLogos.Items.Clear()
+                   lbTextLogos.Items.Clear()
+               End Sub)
+
+        VideoEdit1.Input_Clear_List()
+        VideoEdit1.Video_Transition_Clear()
+        VideoEdit1.Video_Effects_Clear()
+
         If (e.Successful) Then
             MessageBox.Show("Completed successfully", String.Empty, MessageBoxButtons.OK)
         Else
             MessageBox.Show("Stopped with error", String.Empty, MessageBoxButtons.OK)
         End If
-
-        VideoEdit1.Input_Clear_List()
-        lbFiles.Items.Clear()
-
-        VideoEdit1.Video_Transition_Clear()
-        lbTransitions.Items.Clear()
-
-        'clear VU Meters
-        Dim data(19) As Int32
-
-        peakMeterCtrl1.SetData(data, 0, 19)
-        peakMeterCtrl1.Stop()
-        waveformPainter1.Clear()
-        waveformPainter2.Clear()
-
-        volumeMeter1.Clear()
-        volumeMeter2.Clear()
-
-        VideoEdit1.Video_Effects_Clear()
-        lbImageLogos.Items.Clear()
-        lbTextLogos.Items.Clear()
-
     End Sub
 
     Private Sub ConfigureDecklink()
@@ -285,7 +287,6 @@ Public Class Form1
     End Sub
 
     Private Sub ConfigureObjectTracking()
-
         If (cbAFMotionDetection.Checked) Then
             VideoEdit1.Motion_DetectionEx = New MotionDetectionExSettings()
             If (cbAFMotionHighlight.Checked) Then
@@ -510,7 +511,7 @@ Public Class Form1
     End Sub
 
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         VideoEdit1.Debug_Mode = cbDebugMode.Checked
         VideoEdit1.Debug_Telemetry = cbTelemetry.Checked
@@ -855,11 +856,11 @@ Public Class Form1
         VideoEdit1.Audio_Effects_Enabled = cbAudioEffectsEnabled.Checked
         If (VideoEdit1.Audio_Effects_Enabled) Then
 
-            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1)
-            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1)
-            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1)
-            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1)
-            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
+            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+            VideoEdit1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
 
             tbAudAmplifyAmp_Scroll(sender, e)
             tbAudDynAmp_Scroll(sender, e)
@@ -896,9 +897,7 @@ Public Class Form1
         End If
 
         'motion detection
-        If (cbMotDetEnabled.Checked) Then
-            btMotDetUpdateSettings_Click(sender, e) 'apply settings
-        End If
+        ConfigureMotionDetection()
 
         ' Barcode detection
         VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked
@@ -946,7 +945,7 @@ Public Class Form1
 
         End If
 
-        VideoEdit1.Start()
+        Await VideoEdit1.StartAsync()
 
         lbTransitions.Items.Clear()
 
@@ -1097,9 +1096,9 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
 
-        VideoEdit1.Stop()
+        Await VideoEdit1.StopAsync()
 
         lbFiles.Items.Clear()
         VideoEdit1.Input_Clear_List()
@@ -1481,7 +1480,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
+    Private Async Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
 
         If (cbStretch.Checked) Then
             VideoEdit1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Stretch
@@ -1489,21 +1488,21 @@ Public Class Form1
             VideoEdit1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Letterbox
         End If
 
-        VideoEdit1.Video_Renderer_Update()
+        Await VideoEdit1.Video_Renderer_UpdateAsync()
 
     End Sub
 
-    Private Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
+    Private Async Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
 
         VideoEdit1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
-        VideoEdit1.Video_Renderer_Update()
+        Await VideoEdit1.Video_Renderer_UpdateAsync()
 
     End Sub
 
-    Private Sub cbScreenFlipHorizontal_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbScreenFlipHorizontal.CheckedChanged
+    Private Async Sub cbScreenFlipHorizontal_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbScreenFlipHorizontal.CheckedChanged
 
         VideoEdit1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
-        VideoEdit1.Video_Renderer_Update()
+        Await VideoEdit1.Video_Renderer_UpdateAsync()
 
     End Sub
 
@@ -1522,30 +1521,29 @@ Public Class Form1
 
     Private Sub tbSeeking_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbSeeking.Scroll
 
-        VideoEdit1.Position_Set(tbSeeking.Value)
+        VideoEdit1.Position_Set(TimeSpan.FromMilliseconds(tbSeeking.Value))
 
     End Sub
 
     Private Sub VideoEdit1_OnStart(ByVal sender As Object, ByVal e As EventArgs) Handles VideoEdit1.OnStart
-
-        tbSeeking.Maximum = VideoEdit1.Duration()
-
+        Invoke(Sub()
+                   tbSeeking.Maximum = VideoEdit1.Duration().TotalMilliseconds
+               End Sub)
     End Sub
 
     Private Sub VideoEdit1_OnProgress(ByVal sender As Object, ByVal e As ProgressEventArgs) Handles VideoEdit1.OnProgress
-
-        ProgressBar1.Value = e.Progress
-
+        Invoke(Sub()
+                   ProgressBar1.Value = e.Progress
+               End Sub)
     End Sub
 
     Private Sub VideoEdit1_OnError(ByVal sender As Object, ByVal e As ErrorsEventArgs) Handles VideoEdit1.OnError
-
-        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
-
+        Invoke(Sub()
+                   mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
+               End Sub)
     End Sub
 
-    Private Sub btMotDetUpdateSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btMotDetUpdateSettings.Click
-
+    Private Sub ConfigureMotionDetection()
         If (cbMotDetEnabled.Checked) Then
             VideoEdit1.Motion_Detection = New MotionDetectionSettings()
             VideoEdit1.Motion_Detection.Enabled = cbMotDetEnabled.Checked
@@ -1565,7 +1563,10 @@ Public Class Form1
         Else
             VideoEdit1.Motion_Detection = Nothing
         End If
+    End Sub
 
+    Private Sub btMotDetUpdateSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btMotDetUpdateSettings.Click
+        ConfigureMotionDetection()
     End Sub
 
     Private Delegate Sub MotionDelegate(ByVal e As MotionDetectionEventArgs)
@@ -1716,8 +1717,8 @@ Public Class Form1
         End If
 
         pan.Enabled = cbPan.Checked
-        pan.StartTime = Convert.ToInt32(edPanStartTime.Text)
-        pan.StopTime = Convert.ToInt32(edPanStopTime.Text)
+        pan.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text))
+        pan.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text))
         pan.StartX = Convert.ToInt32(edPanSourceLeft.Text)
         pan.StartY = Convert.ToInt32(edPanSourceTop.Text)
         pan.StartWidth = Convert.ToInt32(edPanSourceWidth.Text)
@@ -1805,8 +1806,8 @@ Public Class Form1
             End If
 
             fadeIn.Enabled = cbVideoFadeInOut.Checked
-            fadeIn.StartTime = Convert.ToInt64(edVideoFadeInOutStartTime.Text)
-            fadeIn.StopTime = Convert.ToInt64(edVideoFadeInOutStopTime.Text)
+            fadeIn.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edVideoFadeInOutStartTime.Text))
+            fadeIn.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edVideoFadeInOutStopTime.Text))
         Else
             Dim fadeOut As IVFVideoEffectFadeOut
             Dim effect = VideoEdit1.Video_Effects_Get("FadeOut")
@@ -1823,8 +1824,8 @@ Public Class Form1
             End If
 
             fadeOut.Enabled = cbVideoFadeInOut.Checked
-            fadeOut.StartTime = Convert.ToInt64(edVideoFadeInOutStartTime.Text)
-            fadeOut.StopTime = Convert.ToInt64(edVideoFadeInOutStopTime.Text)
+            fadeOut.StartTime =TimeSpan.FromMilliseconds(Convert.ToInt64(edVideoFadeInOutStartTime.Text))
+            fadeOut.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edVideoFadeInOutStopTime.Text))
         End If
 
     End Sub
@@ -1856,7 +1857,7 @@ Public Class Form1
 
     Dim controlHeight As Integer
 
-    Private Sub btFullScreen_Click(sender As Object, e As EventArgs) Handles btFullScreen.Click
+    Private Async Sub btFullScreen_Click(sender As Object, e As EventArgs) Handles btFullScreen.Click
 
         If (Not fullScreen) Then
 
@@ -1890,12 +1891,12 @@ Public Class Form1
             VideoEdit1.Width = Width
             VideoEdit1.Height = Height
 
-            VideoEdit1.Video_Renderer_Update()
+            Await VideoEdit1.Video_Renderer_UpdateAsync()
 
         Else
             ' going normal screen
             fullScreen = False
-            
+
             ' restoring window
             Left = windowLeft
             Top = windowTop
@@ -1912,7 +1913,7 @@ Public Class Form1
             VideoEdit1.Width = controlWidth
             VideoEdit1.Height = controlHeight
 
-            VideoEdit1.Video_Renderer_Update()
+            Await VideoEdit1.Video_Renderer_UpdateAsync()
 
         End If
 
@@ -1937,22 +1938,22 @@ Public Class Form1
 
     End Sub
 
-    Private Sub pnVideoRendererBGColor_Click(sender As Object, e As EventArgs) Handles pnVideoRendererBGColor.Click
+    Private Async Sub pnVideoRendererBGColor_Click(sender As Object, e As EventArgs) Handles pnVideoRendererBGColor.Click
 
         colorDialog1.Color = pnVideoRendererBGColor.BackColor
 
         If (colorDialog1.ShowDialog() = DialogResult.OK) Then
             pnVideoRendererBGColor.BackColor = colorDialog1.Color
             VideoEdit1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor
-            VideoEdit1.Video_Renderer_Update()
+            Await VideoEdit1.Video_Renderer_UpdateAsync()
         End If
 
     End Sub
 
-    Private Sub cbDirect2DRotate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDirect2DRotate.SelectedIndexChanged
+    Private Async Sub cbDirect2DRotate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDirect2DRotate.SelectedIndexChanged
 
         VideoEdit1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
-        VideoEdit1.Video_Renderer_Update()
+        Await VideoEdit1.Video_Renderer_UpdateAsync()
 
     End Sub
 
@@ -2103,11 +2104,11 @@ Public Class Form1
     End Sub
 
     Private Sub VideoEdit1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles VideoEdit1.OnLicenseRequired
-
-        If cbLicensing.Checked Then
-            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-        End If
-
+        Invoke(Sub()
+                   If cbLicensing.Checked Then
+                       mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
+                   End If
+               End Sub)
     End Sub
 
     Private Delegate Sub FFMPEGInfoDelegate(ByVal message As String)
@@ -2175,8 +2176,8 @@ Public Class Form1
 
         VideoEdit1.FastEdit_CutFile(
                 edSourceFileToCut.Text,
-                Convert.ToInt32(edStartTimeCut.Text),
-                Convert.ToInt32(edStopTimeCut.Text),
+                 TimeSpan.FromMilliseconds(Convert.ToInt32(edStartTimeCut.Text)),
+                TimeSpan.FromMilliseconds(Convert.ToInt32(edStopTimeCut.Text)),
                 edOutputFileCut.Text)
 
     End Sub
@@ -2545,17 +2546,19 @@ Public Class Form1
     End Sub
 
     Private Sub VideoEdit1_OnAudioVUMeter(sender As Object, e As VUMeterEventArgs) Handles VideoEdit1.OnAudioVUMeter
-        BeginInvoke(New VUDelegate(AddressOf VUDelegateMethod), e)
+        Invoke(New VUDelegate(AddressOf VUDelegateMethod), e)
     End Sub
 
     Private Sub VideoEdit1_OnAudioVUMeterProVolume(sender As Object, e As AudioLevelEventArgs) Handles VideoEdit1.OnAudioVUMeterProVolume
-        volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
-        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
+        Invoke(Sub()
+                   volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
+                   waveformPainter1.AddMax(e.ChannelLevels(0) / 100.0F)
 
-        If (e.ChannelLevelsDb.Length > 1) Then
-            volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
-            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
-        End If
+                   If (e.ChannelLevelsDb.Length > 1) Then
+                       volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
+                       waveformPainter2.AddMax(e.ChannelLevels(1) / 100.0F)
+                   End If
+               End Sub)
     End Sub
 
     Private Sub btConfigure_Click(sender As Object, e As EventArgs) Handles btConfigure.Click
@@ -2726,7 +2729,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipDown
         Dim effect = VideoEdit1.Video_Effects_Get("FlipDown")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            flip = New VFVideoEffectFlipHorizontal(cbFlipX.Checked)
             VideoEdit1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -2740,7 +2743,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipRight
         Dim effect = VideoEdit1.Video_Effects_Get("FlipRight")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            flip = New VFVideoEffectFlipVertical(cbFlipY.Checked)
             VideoEdit1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -2801,10 +2804,10 @@ Public Class Form1
     End Sub
 
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
-        Dim dlg = new TextLogoSettingsDialog()
+        Dim dlg = New TextLogoSettingsDialog()
 
         Dim effectName = dlg.GenerateNewEffectName(VideoEdit1.Core)
-        Dim effect = new VFVideoEffectTextLogo(true, effectName)
+        Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         VideoEdit1.Video_Effects_Add(effect)
         lbTextLogos.Items.Add(effect.Name)

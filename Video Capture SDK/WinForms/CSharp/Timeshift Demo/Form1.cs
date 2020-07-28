@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-
-namespace VC_Timeshift_Demo
+﻿namespace VC_Timeshift_Demo
 {
+    using System;
     using System.Globalization;
+    using System.Linq;
+    using System.Windows.Forms;
 
     using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
@@ -172,7 +171,7 @@ namespace VC_Timeshift_Demo
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
 
@@ -205,8 +204,14 @@ namespace VC_Timeshift_Demo
                 TempFolder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\SBE\\",
                 Player_AudioOutput_Enabled = cbPlayerPlayAudio.Checked
             };
-            var mp4Settings = new VFMP4v8v10Output();
-            mp4Settings.Video.IDR_Period = 5;
+
+            var mp4Settings = new VFMP4v8v10Output
+                                  {
+                                      Video =
+                                          {
+                                              IDR_Period = 5
+                                          }
+                                  };
 
             VideoCapture1.Timeshift_Settings.EncodingSettings = mp4Settings;
 
@@ -243,27 +248,27 @@ namespace VC_Timeshift_Demo
                     break;
             }
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             timer1.Interval = 1000;
             timer1.Enabled = true;
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Stop();
-            VideoCapture1.Stop();
+            await MediaPlayer1.StopAsync();
+            await VideoCapture1.StopAsync();
         }
 
-        private void btPlayerPause_Click(object sender, EventArgs e)
+        private async void btPlayerPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Test();
-            //MediaPlayer1.Pause();
+            //VideoCapture1.Test();
+            await MediaPlayer1.PauseAsync();
         }
 
-        private void btPlayerResume_Click(object sender, EventArgs e)
+        private async void btPlayerResume_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Resume();
+            await MediaPlayer1.ResumeAsync();
         }
 
         private string FormatTime(TimeSpan span)
@@ -273,23 +278,22 @@ namespace VC_Timeshift_Demo
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            int dur = (int)MediaPlayer1.Duration_Time();
-            TimeSpan spanDur = new TimeSpan(0, 0, 0, 0, dur);
+            var spanDur = MediaPlayer1.Duration_Time();
             lbDuration.Text = FormatTime(spanDur);
 
-            tbTimeline.Maximum = dur / 1000;
+            tbTimeline.Maximum = (int)spanDur.TotalSeconds;
 
             TimeSpan spanPos;
-            int pos = (int)MediaPlayer1.Position_Get_Time();
-            if (pos < dur)
+            var pos = MediaPlayer1.Position_Get_Time();
+            if (pos < spanDur)
             {
-                spanPos = new TimeSpan(0, 0, 0, 0, pos);
-                tbTimeline.Value = pos / 1000;
+                spanPos = pos;
+                tbTimeline.Value = (int)pos.TotalSeconds;
             }
             else
             {
-                spanPos = new TimeSpan(0, 0, 0, 0, dur);
-                tbTimeline.Value = dur / 1000;
+                spanPos = spanDur;
+                tbTimeline.Value = (int)spanDur.TotalSeconds;
             }
 
             lbPostion.Text = FormatTime(spanPos);
@@ -302,22 +306,30 @@ namespace VC_Timeshift_Demo
 
         private void tbTimeline_MouseUp(object sender, MouseEventArgs e)
         {
-            MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000);
+            MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value));
 
             timer1.Enabled = true;
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
-        private void VideoCapture1_OnTimeshiftFileCreated(object sender, TimeshiftFileEventArgs e)
+        private async void VideoCapture1_OnTimeshiftFileCreated(object sender, TimeshiftFileEventArgs e)
         {
             MediaPlayer1.Debug_Mode = true;
             MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
@@ -329,12 +341,7 @@ namespace VC_Timeshift_Demo
 
             MediaPlayer1.Source_Mode = VFMediaPlayerSource.Timeshift;
 
-            MediaPlayer1.Play();
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
+            await MediaPlayer1.PlayAsync();
         }
     }
 }

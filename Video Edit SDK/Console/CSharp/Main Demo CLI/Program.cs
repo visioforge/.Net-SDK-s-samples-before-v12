@@ -19,13 +19,13 @@ namespace VE_Main_Demo_CLI
             {
                 src = new VFVEVideoSource(
                     option[0],
-                    new[] { new VFVEFileSegment(-1, -1) });
+                    new[] { new VFVEFileSegment(null, null) });
             }
             else
             {
                 src = new VFVEVideoSource(
                     option[0],
-                    new[] { new VFVEFileSegment(Convert.ToInt32(option[2]), Convert.ToInt32(option[3])) });
+                    new[] { new VFVEFileSegment(TimeSpan.FromMilliseconds(Convert.ToInt32(option[2])), TimeSpan.FromMilliseconds(Convert.ToInt32(option[3]))) });
             }
 
             if (option.Length == 2)
@@ -34,7 +34,7 @@ namespace VE_Main_Demo_CLI
             }
             else
             {
-                core.Input_AddVideoFile(src, Convert.ToInt32(option[4]));
+                core.Input_AddVideoFile(src, TimeSpan.FromMilliseconds(Convert.ToInt32(option[4])));
             }
         }
 
@@ -45,13 +45,13 @@ namespace VE_Main_Demo_CLI
             {
                 src = new VFVEAudioSource(
                     option[0],
-                    new[] { new VFVEFileSegment(-1, -1) });
+                    new[] { new VFVEFileSegment(null, null) });
             }
             else
             {
                 src = new VFVEAudioSource(
                     option[0],
-                    new[] { new VFVEFileSegment(Convert.ToInt32(option[2]), Convert.ToInt32(option[3])) });
+                    new[] { new VFVEFileSegment(TimeSpan.FromMilliseconds(Convert.ToInt32(option[2])), TimeSpan.FromMilliseconds(Convert.ToInt32(option[3]))) });
             }
 
             if (option.Length == 2)
@@ -60,7 +60,7 @@ namespace VE_Main_Demo_CLI
             }
             else
             {
-                core.Input_AddAudioFile(src, Convert.ToInt32(option[4]));
+                core.Input_AddAudioFile(src, TimeSpan.FromMilliseconds(Convert.ToInt32(option[4])));
             }
         }
 

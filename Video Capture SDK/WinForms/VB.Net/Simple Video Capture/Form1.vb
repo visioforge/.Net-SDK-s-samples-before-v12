@@ -2,6 +2,7 @@
 
 Imports System.IO
 Imports System.Linq
+Imports VisioForge.Controls.UI
 Imports VisioForge.Controls.UI.Dialogs.OutputFormats
 Imports VisioForge.Controls.UI.Dialogs.VideoEffects
 Imports VisioForge.Types
@@ -36,9 +37,9 @@ Public Class Form1
 
     Dim gifSettingsDialog As GIFSettingsDialog
 
-    Dim screenshotSaveDialog as SaveFileDialog
+    Dim screenshotSaveDialog As SaveFileDialog
 
-    private readonly tmRecording as Timers.Timer = new Timers.Timer(1000)
+    Private ReadOnly tmRecording As Timers.Timer = New Timers.Timer(1000)
 
     Public Sub New()
 
@@ -51,7 +52,7 @@ Public Class Form1
 
     Private Sub cbAudioInputDevice_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbAudioInputDevice.SelectedIndexChanged
-        If cbAudioInputDevice.SelectedIndex <> - 1 Then
+        If cbAudioInputDevice.SelectedIndex <> -1 Then
 
             VideoCapture1.Audio_CaptureDevice = cbAudioInputDevice.Text
             cbAudioInputFormat.Items.Clear()
@@ -139,7 +140,7 @@ Public Class Form1
 
     Private Sub cbVideoInputDevice_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbVideoInputDevice.SelectedIndexChanged
-        If cbVideoInputDevice.SelectedIndex <> - 1 Then
+        If cbVideoInputDevice.SelectedIndex <> -1 Then
             VideoCapture1.Video_CaptureDevice = cbVideoInputDevice.Text
 
             cbVideoInputFormat.Items.Clear()
@@ -147,8 +148,8 @@ Public Class Form1
             Dim deviceItem =
                     (From info In VideoCapture1.Video_CaptureDevicesInfo Where info.Name = cbVideoInputDevice.Text)?.
                     First()
-            if IsNothing(deviceItem) Then
-                Exit sub
+            If IsNothing(deviceItem) Then
+                Exit Sub
             End If
 
             Dim formats = deviceItem.VideoFormats
@@ -178,7 +179,7 @@ Public Class Form1
 
     Private Sub cbVideoInputFormat_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbVideoInputFormat.SelectedIndexChanged
-        If cbVideoInputFormat.SelectedIndex <> - 1 Then
+        If cbVideoInputFormat.SelectedIndex <> -1 Then
             VideoCapture1.Video_CaptureDevice_Format = cbVideoInputFormat.Text
         Else
             VideoCapture1.Video_CaptureDevice_Format = ""
@@ -206,84 +207,84 @@ Public Class Form1
 
     Private Sub cbAudAmplifyEnabled_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbAudAmplifyEnabled.CheckedChanged
-        VideoCapture1.Audio_Effects_Enable(- 1, 0, cbAudAmplifyEnabled.Checked)
+        VideoCapture1.Audio_Effects_Enable(-1, 0, cbAudAmplifyEnabled.Checked)
     End Sub
 
     Private Sub tbAudAmplifyAmp_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudAmplifyAmp.Scroll
-        VideoCapture1.Audio_Effects_Amplify(- 1, 0, tbAudAmplifyAmp.Value*10, False)
+        VideoCapture1.Audio_Effects_Amplify(-1, 0, tbAudAmplifyAmp.Value * 10, False)
     End Sub
 
     Private Sub cbAudEqualizerEnabled_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbAudEqualizerEnabled.CheckedChanged
-        VideoCapture1.Audio_Effects_Enable(- 1, 1, cbAudEqualizerEnabled.Checked)
+        VideoCapture1.Audio_Effects_Enable(-1, 1, cbAudEqualizerEnabled.Checked)
     End Sub
 
     Private Sub tbAudEq0_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq0.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 0, tbAudEq0.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 0, tbAudEq0.Value)
     End Sub
 
     Private Sub tbAudEq1_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq1.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 1, tbAudEq1.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 1, tbAudEq1.Value)
     End Sub
 
     Private Sub tbAudEq2_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq2.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 2, tbAudEq2.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 2, tbAudEq2.Value)
     End Sub
 
     Private Sub tbAudEq3_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq3.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 3, tbAudEq3.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 3, tbAudEq3.Value)
     End Sub
 
     Private Sub tbAudEq4_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq4.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 4, tbAudEq4.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 4, tbAudEq4.Value)
     End Sub
 
     Private Sub tbAudEq5_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq5.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 5, tbAudEq5.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 5, tbAudEq5.Value)
     End Sub
 
     Private Sub tbAudEq6_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq6.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 6, tbAudEq6.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 6, tbAudEq6.Value)
     End Sub
 
     Private Sub tbAudEq7_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq7.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 7, tbAudEq7.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 7, tbAudEq7.Value)
     End Sub
 
     Private Sub tbAudEq8_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq8.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 8, tbAudEq8.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 8, tbAudEq8.Value)
     End Sub
 
     Private Sub tbAudEq9_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudEq9.Scroll
-        VideoCapture1.Audio_Effects_Equalizer_Band_Set(- 1, 1, 9, tbAudEq9.Value)
+        VideoCapture1.Audio_Effects_Equalizer_Band_Set(-1, 1, 9, tbAudEq9.Value)
     End Sub
 
     Private Sub cbAudEqualizerPreset_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbAudEqualizerPreset.SelectedIndexChanged
-        VideoCapture1.Audio_Effects_Equalizer_Preset_Set(- 1, 1, cbAudEqualizerPreset.SelectedIndex)
+        VideoCapture1.Audio_Effects_Equalizer_Preset_Set(-1, 1, cbAudEqualizerPreset.SelectedIndex)
         btAudEqRefresh_Click(sender, e)
     End Sub
 
     Private Sub btAudEqRefresh_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btAudEqRefresh.Click
-        tbAudEq0.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 0)
-        tbAudEq1.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 1)
-        tbAudEq2.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 2)
-        tbAudEq3.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 3)
-        tbAudEq4.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 4)
-        tbAudEq5.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 5)
-        tbAudEq6.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 6)
-        tbAudEq7.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 7)
-        tbAudEq8.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 8)
-        tbAudEq9.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(- 1, 1, 9)
+        tbAudEq0.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 0)
+        tbAudEq1.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 1)
+        tbAudEq2.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 2)
+        tbAudEq3.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 3)
+        tbAudEq4.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 4)
+        tbAudEq5.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 5)
+        tbAudEq6.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 6)
+        tbAudEq7.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 7)
+        tbAudEq8.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 8)
+        tbAudEq9.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 9)
     End Sub
 
     Private Sub cbAudTrueBassEnabled_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) _
         Handles cbAudTrueBassEnabled.CheckedChanged
-        VideoCapture1.Audio_Effects_Enable(- 1, 5, cbAudTrueBassEnabled.Checked)
+        VideoCapture1.Audio_Effects_Enable(-1, 5, cbAudTrueBassEnabled.Checked)
     End Sub
 
     Private Sub tbAudTrueBass_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbAudTrueBass.Scroll
-        VideoCapture1.Audio_Effects_TrueBass(- 1, 5, 200, False, tbAudTrueBass.Value)
+        VideoCapture1.Audio_Effects_TrueBass(-1, 5, 200, False, tbAudTrueBass.Value)
     End Sub
 
     Private Sub btSelectOutput_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btSelectOutput.Click
@@ -291,7 +292,7 @@ Public Class Form1
             edOutput.Text = saveFileDialog1.FileName
         End If
     End Sub
-       
+
     Private Sub SetMP4v11Output(ByRef mp4Output As VFMP4v11Output)
         If (mp4v11SettingsDialog Is Nothing) Then
             mp4v11SettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MP4v11)
@@ -417,14 +418,10 @@ Public Class Form1
     End Sub
 
 
-    Private Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
         mmLog.Clear()
 
-        VideoCapture1.Video_Sample_Grabber_Enabled = true
-
-        VideoCapture1.Video_Renderer.Zoom_Ratio = 0
-        VideoCapture1.Video_Renderer.Zoom_ShiftX = 0
-        VideoCapture1.Video_Renderer.Zoom_ShiftY = 0
+        VideoCapture1.Video_Sample_Grabber_Enabled = True
 
         VideoCapture1.Debug_Mode = cbDebugMode.Checked
         VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
@@ -439,14 +436,8 @@ Public Class Form1
         End If
 
         'apply capture parameters
-        If VideoCapture.Filter_Supported_EVR() Then
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR
-        ElseIf VideoCapture.Filter_Supported_VMR9() Then
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9
-        Else
-            VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
-        End If
-
+        VideoCapture1.Video_Renderer_SetAuto
+        
         VideoCapture1.Video_CaptureDevice = cbVideoInputDevice.Text
         VideoCapture1.Video_CaptureDevice_IsAudioSource = cbUseAudioInputFromVideoCaptureDevice.Checked
         VideoCapture1.Audio_OutputDevice = cbAudioOutputDevice.Text
@@ -456,7 +447,7 @@ Public Class Form1
         VideoCapture1.Audio_CaptureDevice = cbAudioInputDevice.Text
         VideoCapture1.Audio_CaptureDevice_Format = cbAudioInputFormat.Text
 
-        If cbFramerate.SelectedIndex <> - 1 Then
+        If cbFramerate.SelectedIndex <> -1 Then
             VideoCapture1.Video_CaptureDevice_FrameRate = CSng(Convert.ToDouble(cbFramerate.Text))
         End If
 
@@ -516,7 +507,7 @@ Public Class Form1
                     encOutput.Encryption_Format = VFEncryptionFormat.MP4_H264_SW_AAC
 
                     VideoCapture1.Output_Format = encOutput
-                                    Case 11
+                Case 11
                     Dim tsOutput = New VFMPEGTSOutput()
                     SetMPEGTSOutput(tsOutput)
                     VideoCapture1.Output_Format = tsOutput
@@ -528,27 +519,29 @@ Public Class Form1
         End If
 
         'Audio processing
-        VideoCapture1.Audio_Effects_Clear(- 1)
+        VideoCapture1.Audio_Effects_Clear(-1)
         VideoCapture1.Audio_Effects_Enabled = True
 
-        VideoCapture1.Audio_Effects_Add(- 1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, - 1, - 1)
-        VideoCapture1.Audio_Effects_Add(- 1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, - 1, - 1)
-        VideoCapture1.Audio_Effects_Add(- 1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, - 1, - 1)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
 
-        VideoCapture1.Video_Effects_Enabled = true
+        VideoCapture1.Video_Effects_Enabled = True
+        VideoCapture1.Video_Effects_MergeImageLogos = cbMergeImageLogos.Checked
+        VideoCapture1.Video_Effects_MergeTextLogos = cbMergeTextLogos.Checked
         VideoCapture1.Video_Effects_Clear()
         lbLogos.Items.Clear()
         ConfigureVideoEffects()
 
-        VideoCapture1.Start()
+        Await VideoCapture1.StartAsync()
 
         tcMain.SelectedIndex = 4
         tmRecording.Start()
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btStop_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStop.Click
         tmRecording.Stop()
-        VideoCapture1.[Stop]()
+        Await VideoCapture1.StopAsync()
     End Sub
 
 
@@ -558,7 +551,7 @@ Public Class Form1
 
         AddHandler tmRecording.Elapsed, AddressOf UpdateRecordingTime
 
-        screenshotSaveDialog = new SaveFileDialog()
+        screenshotSaveDialog = New SaveFileDialog()
         screenshotSaveDialog.FileName = "image.jpg"
         screenshotSaveDialog.Filter = "JPEG|*.jpg|BMP|*.bmp|PNG|*.png|GIF|*.gif|TIFF|*.tiff"
         screenshotSaveDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) +
@@ -566,7 +559,7 @@ Public Class Form1
 
         cbOutputFormat.SelectedIndex = 7
 
-        For i as Int32 = 0 To VideoCapture1.Video_CaptureDevicesInfo.Count - 1
+        For i As Int32 = 0 To VideoCapture1.Video_CaptureDevicesInfo.Count - 1
             cbVideoInputDevice.Items.Add(VideoCapture1.Video_CaptureDevicesInfo.Item(i).Name)
         Next
 
@@ -576,7 +569,7 @@ Public Class Form1
 
         cbVideoInputDevice_SelectedIndexChanged(Nothing, Nothing)
 
-        For i as Int32 = 0 To VideoCapture1.Audio_CaptureDevicesInfo.Count - 1
+        For i As Int32 = 0 To VideoCapture1.Audio_CaptureDevicesInfo.Count - 1
             cbAudioInputDevice.Items.Add(VideoCapture1.Audio_CaptureDevicesInfo.Item(i).Name)
         Next
 
@@ -589,7 +582,7 @@ Public Class Form1
 
         Dim deviceItem As List(Of AudioCaptureDeviceInfo) =
                 (From info In VideoCapture1.Audio_CaptureDevicesInfo Where info.Name = cbAudioInputDevice.Text).ToList()
-        If Not IsNothing(deviceItem) and deviceItem.Any() Then
+        If Not IsNothing(deviceItem) And deviceItem.Any() Then
             Dim lines = deviceItem.First.Lines
             For Each item As String In lines
                 cbAudioInputLine.Items.Add(item)
@@ -619,161 +612,162 @@ Public Class Form1
             cbAudioOutputDevice_SelectedIndexChanged(Nothing, Nothing)
         End If
 
-        For i as Int32 = 0 To VideoCapture1.Audio_Effects_Equalizer_Presets.Count - 1
+        For i As Int32 = 0 To VideoCapture1.Audio_Effects_Equalizer_Presets.Count - 1
             cbAudEqualizerPreset.Items.Add(VideoCapture1.Audio_Effects_Equalizer_Presets.Item(i))
         Next
 
         edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\" + "output.mp4"
     End Sub
 
-    Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As LinkLabelLinkClickedEventArgs) _
-        Handles llVideoTutorials.LinkClicked
+    Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles llVideoTutorials.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
+
     End Sub
 
-    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) _
-        Handles VideoCapture1.OnError
-
-        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
-    End Sub
-
-
-    Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) _
-        Handles VideoCapture1.OnLicenseRequired
-
-        If cbLicensing.Checked Then
-            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
+    Private Sub Log(msg As String)
+        If (IsHandleCreated) Then
+            Invoke(Sub()
+                mmLog.Text = mmLog.Text + msg + Environment.NewLine
+            End Sub)
         End If
+    End Sub
+
+    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
+        Log(e.Message)
+    End Sub
+
+    Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs)  Handles VideoCapture1.OnLicenseRequired
+        Log(e.Message)
     End Sub
 
     Private Sub cbOutputFormat_SelectedIndexChanged(sender As Object, e As EventArgs) _
         Handles cbOutputFormat.SelectedIndexChanged
-        select case (cbOutputFormat.SelectedIndex)
-            case 0 :
+        Select Case (cbOutputFormat.SelectedIndex)
+            Case 0
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
-            case 1 :
+            Case 1
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mkv")
-            case 2 :
+            Case 2
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wmv")
-            case 3 :
+            Case 3
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
-            case 4 :
+            Case 4
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".webm")
-            case 5 :
+            Case 5
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
-            case 6 :
+            Case 6
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi")
-            case 7 :
+            Case 7
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4")
-            case 8 :
+            Case 8
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4")
-            case 9 :
+            Case 9
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".gif")
-            case 10 :
+            Case 10
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".enc")
-                            Case 11
+            Case 11
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ts")
             Case 12
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mov")
-        end select
+        End Select
     End Sub
 
-    Private Sub btResume_Click(sender As Object, e As EventArgs) Handles btResume.Click
-        VideoCapture1.Resume()
+    Private Async Sub btResume_Click(sender As Object, e As EventArgs) Handles btResume.Click
+        Await VideoCapture1.ResumeAsync()
     End Sub
 
-    Private Sub btPause_Click(sender As Object, e As EventArgs) Handles btPause.Click
-        VideoCapture1.Pause()
+    Private Async Sub btPause_Click(sender As Object, e As EventArgs) Handles btPause.Click
+        Await VideoCapture1.PauseAsync()
     End Sub
 
     Private Sub UpdateRecordingTime()
-        Dim timestamp As Long = VideoCapture1.Duration_Time()
+        If Me.IsHandleCreated Then
+            Dim ts = VideoCapture1.Duration_Time()
 
-        If (timestamp < 0) Then
-            Return
+            If (Math.Abs(ts.TotalMilliseconds) < 0.01) Then
+                Return
+            End If
+
+            BeginInvoke(Sub()
+                            lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
+                        End Sub)
         End If
-
-        BeginInvoke(Sub()
-            Dim ts = TimeSpan.FromMilliseconds(timestamp)
-            lbTimestamp.Text = $"Recording time: " +
-                               String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
-        End Sub)
     End Sub
 
     Private Sub btOutputConfigure_Click(sender As Object, e As EventArgs) Handles btOutputConfigure.Click
-        Select case (cbOutputFormat.SelectedIndex)
-            case 0 :
-                if (aviSettingsDialog is Nothing)
-                    aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+        Select Case (cbOutputFormat.SelectedIndex)
+            Case 0
+                If (aviSettingsDialog Is Nothing) Then
+                    aviSettingsDialog = New AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
                                                               VideoCapture1.Audio_Codecs.ToArray())
-                end if
+                End If
 
                 aviSettingsDialog.ShowDialog(Me)
-            case 1 :
-                if (aviSettingsDialog is Nothing)
-                    aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+            Case 1
+                If (aviSettingsDialog Is Nothing) Then
+                    aviSettingsDialog = New AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
                                                               VideoCapture1.Audio_Codecs.ToArray())
-                end if
+                End If
 
                 aviSettingsDialog.ShowDialog(Me)
-            case 2 :
-                if (wmvSettingsDialog is Nothing)
-                    wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core)
-                end if
+            Case 2
+                If (wmvSettingsDialog Is Nothing) Then
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+                End If
 
-                wmvSettingsDialog.WMA = false
+                wmvSettingsDialog.WMA = False
                 wmvSettingsDialog.ShowDialog(Me)
-            case 3 :
-                if (dvSettingsDialog is Nothing)
-                    dvSettingsDialog = new DVSettingsDialog()
-                end if
+            Case 3
+                If (dvSettingsDialog Is Nothing) Then
+                    dvSettingsDialog = New DVSettingsDialog()
+                End If
 
                 dvSettingsDialog.ShowDialog(Me)
-            case 4 :
-                if (webmSettingsDialog is Nothing)
-                    webmSettingsDialog = new WebMSettingsDialog()
-                end if
+            Case 4
+                If (webmSettingsDialog Is Nothing) Then
+                    webmSettingsDialog = New WebMSettingsDialog()
+                End If
 
                 webmSettingsDialog.ShowDialog(Me)
-            case 5 :
-                if (ffmpegDLLSettingsDialog is Nothing)
-                    ffmpegDLLSettingsDialog = new FFMPEGDLLSettingsDialog()
-                end if
+            Case 5
+                If (ffmpegDLLSettingsDialog Is Nothing) Then
+                    ffmpegDLLSettingsDialog = New FFMPEGDLLSettingsDialog()
+                End If
 
                 ffmpegDLLSettingsDialog.ShowDialog(Me)
-            case 6 :
-                if (ffmpegEXESettingsDialog is Nothing)
-                    ffmpegEXESettingsDialog = new FFMPEGEXESettingsDialog()
-                end if
+            Case 6
+                If (ffmpegEXESettingsDialog Is Nothing) Then
+                    ffmpegEXESettingsDialog = New FFMPEGEXESettingsDialog()
+                End If
 
                 ffmpegEXESettingsDialog.ShowDialog(Me)
-            case 7 :
-                if (mp4V10SettingsDialog is Nothing)
-                    mp4V10SettingsDialog = new MP4v10SettingsDialog()
-                end if
+            Case 7
+                If (mp4V10SettingsDialog Is Nothing) Then
+                    mp4V10SettingsDialog = New MP4v10SettingsDialog()
+                End If
 
                 mp4V10SettingsDialog.ShowDialog(Me)
-            case 8 :
-                if (mp4v11SettingsDialog is Nothing)
-                    mp4v11SettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MP4v11)
-                end if
+            Case 8
+                If (mp4v11SettingsDialog Is Nothing) Then
+                    mp4v11SettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MP4v11)
+                End If
 
                 mp4v11SettingsDialog.ShowDialog(Me)
-            case 9 :
-                if (gifSettingsDialog is Nothing)
-                    gifSettingsDialog = new GIFSettingsDialog()
-                end if
+            Case 9
+                If (gifSettingsDialog Is Nothing) Then
+                    gifSettingsDialog = New GIFSettingsDialog()
+                End If
 
                 gifSettingsDialog.ShowDialog(Me)
-            case 10 :
-                if (mp4V10SettingsDialog is Nothing)
-                    mp4V10SettingsDialog = new MP4v10SettingsDialog()
-                end if
+            Case 10
+                If (mp4V10SettingsDialog Is Nothing) Then
+                    mp4V10SettingsDialog = New MP4v10SettingsDialog()
+                End If
 
                 mp4V10SettingsDialog.ShowDialog(Me)
-                            Case 11
+            Case 11
                 If (mpegTSSettingsDialog Is Nothing) Then
                     mpegTSSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MPEGTS)
                 End If
@@ -785,35 +779,30 @@ Public Class Form1
                 End If
 
                 movSettingsDialog.ShowDialog(Me)
-        End select
+        End Select
     End Sub
 
-    Private Sub btSaveScreenshot_Click(sender As Object, e As EventArgs) Handles btSaveScreenshot.Click
+    Private Async Sub btSaveScreenshot_Click(sender As Object, e As EventArgs) Handles btSaveScreenshot.Click
         If (screenshotSaveDialog.ShowDialog(Me) = DialogResult.OK) Then
             Dim filename = screenshotSaveDialog.FileName
             Dim ext = Path.GetExtension(filename)?.ToLowerInvariant()
             Select Case (ext)
                 Case ".bmp"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0)
                 Case ".jpg"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85)
                 Case ".gif"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0)
                 Case ".png"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0)
                 Case ".tiff"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0)
             End Select
         End If
     End Sub
 
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        btStop_Click(Nothing, Nothing)
-    End Sub
-
-    
     Private Sub ConfigureVideoEffects()
-        
+
         'Other effects
         If tbLightness.Value > 0 Then
             tbLightness_Scroll(Nothing, Nothing)
@@ -847,7 +836,7 @@ Public Class Form1
             cbFlipY_CheckedChanged(Nothing, Nothing)
         End If
     End Sub
-    
+
     Private Sub tbLightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbLightness.Scroll
 
         Dim intf As IVFVideoEffectLightness
@@ -912,7 +901,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub cbGreyscale_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
 
         Dim intf As IVFVideoEffectGrayscale
@@ -928,7 +917,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub cbInvert_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbInvert.CheckedChanged
 
         Dim intf As IVFVideoEffectInvert
@@ -944,12 +933,12 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub cbFlipX_CheckedChanged(sender As Object, e As EventArgs) Handles cbFlipX.CheckedChanged
         Dim flip As IVFVideoEffectFlipDown
         Dim effect = VideoCapture1.Video_Effects_Get("FlipDown")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            flip = New VFVideoEffectFlipHorizontal(cbFlipX.Checked)
             VideoCapture1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -963,7 +952,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipRight
         Dim effect = VideoCapture1.Video_Effects_Get("FlipRight")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            flip = New VFVideoEffectFlipVertical(cbFlipY.Checked)
             VideoCapture1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -974,10 +963,10 @@ Public Class Form1
     End Sub
 
     Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
-        Dim dlg = new ImageLogoSettingsDialog()
+        Dim dlg = New ImageLogoSettingsDialog()
 
         Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
-        Dim effect = new VFVideoEffectImageLogo(true, effectName)
+        Dim effect = New VFVideoEffectImageLogo(True, effectName)
 
         VideoCapture1.Video_Effects_Add(effect)
         lbLogos.Items.Add(effect.Name)

@@ -1,6 +1,7 @@
 ' ReSharper disable InconsistentNaming
 
 Imports System.Linq
+Imports VisioForge.Controls.UI
 Imports VisioForge.Controls.UI.Dialogs.OutputFormats
 Imports VisioForge.Types
 Imports VisioForge.Controls.VideoCapture
@@ -9,12 +10,12 @@ Imports VisioForge.Types.OutputFormat
 
 Public Class Form1
 
-    Dim VideoCapture1 As VideoCaptureCore
-    
+    Dim WithEvents VideoCapture1 As VideoCaptureCore
+
     Dim pcmSettingsDialog As PCMSettingsDialog
 
     Dim mp3SettingsDialog As MP3SettingsDialog
-    
+
     Dim flacSettingsDialog As FLACSettingsDialog
 
     Dim oggVorbisSettingsDialog As OggVorbisSettingsDialog
@@ -22,9 +23,9 @@ Public Class Form1
     Dim speexSettingsDialog As SpeexSettingsDialog
 
     Dim m4aSettingsDialog As M4ASettingsDialog
-    
+
     Dim wmvSettingsDialog As WMVSettingsDialog
-    
+
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
         VideoCapture1 = New VideoCaptureCore()
 
@@ -89,7 +90,7 @@ Public Class Form1
 
         edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\" + "output.mp3"
     End Sub
-    
+
     Private Sub cbAudioInputDevice_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbAudioInputDevice.SelectedIndexChanged
         If cbAudioInputDevice.SelectedIndex <> -1 Then
             VideoCapture1.Audio_CaptureDevice = cbAudioInputDevice.Text
@@ -261,7 +262,7 @@ Public Class Form1
         End If
 
     End Sub
-    
+
     Private Sub SetM4AOutput(ByRef m4aOutput As VFM4AOutput)
         If (m4aSettingsDialog Is Nothing) Then
             m4aSettingsDialog = New M4ASettingsDialog()
@@ -320,13 +321,8 @@ Public Class Form1
     End Sub
 
 
-    Private Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
-
+    Private Async Sub btStart_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStart.Click
         mmLog.Clear()
-
-        VideoCapture1.Video_Renderer.Zoom_Ratio = 0
-        VideoCapture1.Video_Renderer.Zoom_ShiftX = 0
-        VideoCapture1.Video_Renderer.Zoom_ShiftY = 0
 
         VideoCapture1.Debug_Mode = cbDebugMode.Checked
         VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
@@ -347,86 +343,87 @@ Public Class Form1
             VideoCapture1.Audio_RecordAudio = True
             VideoCapture1.Output_Filename = edOutput.Text
 
-             Select case (cbOutputFormat.SelectedIndex)
-                    case 0:
-                        Dim acmOutput = new VFACMOutput()
-                        SetACMOutput(acmOutput)
-                        VideoCapture1.Output_Format = acmOutput
-                    case 1:
-                        Dim mp3Output = new VFMP3Output()
-                        SetMP3Output(mp3Output)
-                        VideoCapture1.Output_Format = mp3Output
-                    case 2:
-                        Dim wmaOutput = new VFWMAOutput()
-                        SetWMAOutput(wmaOutput)
-                        VideoCapture1.Output_Format = wmaOutput
-                    case 3:
-                        Dim oggVorbisOutput = new VFOGGVorbisOutput()
-                        SetOGGOutput(oggVorbisOutput)
-                        VideoCapture1.Output_Format = oggVorbisOutput
-                    case 4:
-                        Dim flacOutput = new VFFLACOutput()
-                        SetFLACOutput(flacOutput)
-                        VideoCapture1.Output_Format = flacOutput
-                    case 5:
-                        Dim speexOutput = new VFSpeexOutput()
-                        SetSpeexOutput(speexOutput)
-                        VideoCapture1.Output_Format = speexOutput
-                    case 6:
-                        Dim m4aOutput = new VFM4AOutput()
-                        SetM4AOutput(m4aOutput)
-                        VideoCapture1.Output_Format = m4aOutput
-                end select
+            Select Case (cbOutputFormat.SelectedIndex)
+                Case 0
+                    Dim acmOutput = New VFACMOutput()
+                    SetACMOutput(acmOutput)
+                    VideoCapture1.Output_Format = acmOutput
+                Case 1
+                    Dim mp3Output = New VFMP3Output()
+                    SetMP3Output(mp3Output)
+                    VideoCapture1.Output_Format = mp3Output
+                Case 2
+                    Dim wmaOutput = New VFWMAOutput()
+                    SetWMAOutput(wmaOutput)
+                    VideoCapture1.Output_Format = wmaOutput
+                Case 3
+                    Dim oggVorbisOutput = New VFOGGVorbisOutput()
+                    SetOGGOutput(oggVorbisOutput)
+                    VideoCapture1.Output_Format = oggVorbisOutput
+                Case 4
+                    Dim flacOutput = New VFFLACOutput()
+                    SetFLACOutput(flacOutput)
+                    VideoCapture1.Output_Format = flacOutput
+                Case 5
+                    Dim speexOutput = New VFSpeexOutput()
+                    SetSpeexOutput(speexOutput)
+                    VideoCapture1.Output_Format = speexOutput
+                Case 6
+                    Dim m4aOutput = New VFM4AOutput()
+                    SetM4AOutput(m4aOutput)
+                    VideoCapture1.Output_Format = m4aOutput
+            End Select
         End If
 
         'Audio processing
         VideoCapture1.Audio_Effects_Clear(-1)
         VideoCapture1.Audio_Effects_Enabled = True
 
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
 
-        VideoCapture1.Start()
+        Await VideoCapture1.StartAsync()
 
     End Sub
-    Private Sub btStop_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btStop_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btStop.Click
 
-        VideoCapture1.[Stop]()
+        Await VideoCapture1.StopAsync()
 
     End Sub
 
     Private Sub llVideoTutorials_LinkClicked(ByVal sender As System.Object, ByVal e As LinkLabelLinkClickedEventArgs) Handles llVideoTutorials.LinkClicked
 
-        Dim startInfo = New ProcessStartInfo("explorer.exe", "http://www.visioforge.com/video_tutorials")
+        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials)
         Process.Start(startInfo)
 
     End Sub
 
-    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs)
-
-        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
-
+    Private Sub Log(msg As String)
+        If (IsHandleCreated) Then
+            Invoke(Sub()
+                       mmLog.Text = mmLog.Text + msg + Environment.NewLine
+                   End Sub)
+        End If
     End Sub
 
-    Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs)
+    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
+        Log(e.Message)
+    End Sub
 
-        If cbLicensing.Checked Then
-            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-        End If
-
+    Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles VideoCapture1.OnLicenseRequired
+        Log(e.Message)
     End Sub
 
     Private Sub VideoCapture1_OnAudioFrameBuffer(sender As Object, e As AudioFrameBufferEventArgs)
 
-        If (e.Timestamp < 0) Then
+        If (e.Timestamp.TotalMilliseconds < 0) Then
             Return
         End If
 
         BeginInvoke(Sub()
-                        Dim ts = TimeSpan.FromMilliseconds(e.Timestamp)
-                        lbTimestamp.Text = $"Recording time: " +  String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
+                        lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", e.Timestamp.Hours, e.Timestamp.Minutes, e.Timestamp.Seconds)
                     End Sub)
     End Sub
 
@@ -503,11 +500,7 @@ Public Class Form1
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg")
             Case 6
                 edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".m4a")
-        End select
-    End Sub
-
-    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        btStop_Click(Nothing, Nothing)
+        End Select
     End Sub
 End Class
 

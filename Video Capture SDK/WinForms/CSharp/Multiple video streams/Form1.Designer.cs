@@ -1,4 +1,5 @@
 ﻿using VisioForge.Types;
+using System;
 
 namespace multiple_video_streams
 {
@@ -49,7 +50,6 @@ namespace multiple_video_streams
             this.edFilename = new System.Windows.Forms.TextBox();
             this.videoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
             this.videoScreen2 = new System.Windows.Forms.PictureBox();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.lbTimestamp = new System.Windows.Forms.Label();
             this.btSelectOutput = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.videoScreen2)).BeginInit();
@@ -225,8 +225,11 @@ namespace multiple_video_streams
             this.videoCapture1.BDA_Source = null;
             this.videoCapture1.ChromaKey = null;
             this.videoCapture1.Custom_Source = null;
+            this.videoCapture1.CustomRedist_Enabled = false;
+            this.videoCapture1.CustomRedist_Path = null;
             this.videoCapture1.Debug_Dir = "";
             this.videoCapture1.Debug_Mode = false;
+            this.videoCapture1.Debug_Telemetry = false;
             this.videoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.videoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.videoCapture1.Decklink_Input_IREUSA = false;
@@ -253,6 +256,7 @@ namespace multiple_video_streams
             this.videoCapture1.Network_Streaming_Output = null;
             this.videoCapture1.Network_Streaming_URL = "";
             this.videoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.videoCapture1.OSD_Enabled = false;
             this.videoCapture1.Output_Filename = "";
             this.videoCapture1.Output_Format = null;
             this.videoCapture1.PIP_AddSampleGrabbers = false;
@@ -267,7 +271,7 @@ namespace multiple_video_streams
             this.videoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.videoCapture1.SeparateCapture_GMFMode = true;
             this.videoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.videoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.videoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.videoCapture1.Size = new System.Drawing.Size(295, 228);
             this.videoCapture1.Start_DelayEnabled = false;
             this.videoCapture1.TabIndex = 0;
@@ -296,6 +300,8 @@ namespace multiple_video_streams
             this.videoCapture1.Video_Decoder = null;
             this.videoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.videoCapture1.Video_Effects_Enabled = false;
+            this.videoCapture1.Video_Effects_GPU_Enabled = false;
+            this.videoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
@@ -335,16 +341,6 @@ namespace multiple_video_streams
             this.videoScreen2.TabIndex = 20;
             this.videoScreen2.TabStop = false;
             // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(723, 12);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 21;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
-            // 
             // lbTimestamp
             // 
             this.lbTimestamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -371,7 +367,6 @@ namespace multiple_video_streams
             this.ClientSize = new System.Drawing.Size(915, 340);
             this.Controls.Add(this.btSelectOutput);
             this.Controls.Add(this.lbTimestamp);
-            this.Controls.Add(this.cbLicensing);
             this.Controls.Add(this.videoScreen2);
             this.Controls.Add(this.edFilename);
             this.Controls.Add(this.label4);
@@ -395,7 +390,6 @@ namespace multiple_video_streams
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Video Capture SDK .Net - Multiple video streams captured into one file";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.videoScreen2)).EndInit();
             this.ResumeLayout(false);
@@ -422,7 +416,6 @@ namespace multiple_video_streams
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox edFilename;
         private System.Windows.Forms.PictureBox videoScreen2;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.Label lbTimestamp;
         private System.Windows.Forms.Button btSelectOutput;
     }

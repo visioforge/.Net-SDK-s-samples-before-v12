@@ -17,7 +17,7 @@
             _videoInfoList = new List<YouTubeVideoInfo>();
         }
 
-        private void BtStart_Click(object sender, EventArgs e)
+        private async void BtStart_Click(object sender, EventArgs e)
         {
             if (_videoInfoList.Count == 0)
             {
@@ -29,25 +29,31 @@
             MediaPlayer1.FilenamesOrURL.Clear();
             MediaPlayer1.FilenamesOrURL.Add(_videoInfoList[cbFormat.SelectedIndex].Uri);
 
-            MediaPlayer1.Play();
+            await MediaPlayer1.PlayAsync();
         }
 
-        private void BtStop_Click(object sender, EventArgs e)
+        private async void BtStop_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Stop();
+            await MediaPlayer1.StopAsync();
         }
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Invoke((Action)(() =>
+                                   {
+                                       mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+                                   }));
         }
 
         private void MediaPlayer1_OnYouTubeVideoPlayback(object sender, YouTubeVideoPlaybackEventArgs e)
         {
-            if (cbFormat.Items.Count > 0)
-            {
-                e.SelectedFormatIndex = cbFormat.SelectedIndex;
-            }
+            Invoke((Action)(() =>
+                                   {
+                                       if (cbFormat.Items.Count > 0)
+                                       {
+                                           e.SelectedFormatIndex = cbFormat.SelectedIndex;
+                                       }
+                                   }));
         }
 
         private void BtReadFormats_Click(object sender, EventArgs e)

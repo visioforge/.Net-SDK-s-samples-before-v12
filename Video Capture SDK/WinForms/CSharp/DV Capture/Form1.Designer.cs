@@ -1,3 +1,5 @@
+using System;
+
 namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
 {
     using VisioForge.Types;
@@ -76,6 +78,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbDeinterlaceCAVT = new System.Windows.Forms.CheckBox();
             this.cbFlipY = new System.Windows.Forms.CheckBox();
             this.cbFlipX = new System.Windows.Forms.CheckBox();
             this.cbInvert = new System.Windows.Forms.CheckBox();
@@ -96,7 +99,6 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.btImageLogoAdd = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -109,7 +111,6 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.btPause = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
-            this.cbDeinterlaceCAVT = new System.Windows.Forms.CheckBox();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox21.SuspendLayout();
@@ -129,10 +130,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.rbCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbCapture.AutoSize = true;
-            this.rbCapture.Location = new System.Drawing.Point(918, 737);
-            this.rbCapture.Margin = new System.Windows.Forms.Padding(6);
+            this.rbCapture.Location = new System.Drawing.Point(459, 381);
             this.rbCapture.Name = "rbCapture";
-            this.rbCapture.Size = new System.Drawing.Size(119, 29);
+            this.rbCapture.Size = new System.Drawing.Size(62, 17);
             this.rbCapture.TabIndex = 64;
             this.rbCapture.Text = "Capture";
             this.rbCapture.UseVisualStyleBackColor = true;
@@ -142,10 +142,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.rbPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rbPreview.AutoSize = true;
             this.rbPreview.Checked = true;
-            this.rbPreview.Location = new System.Drawing.Point(780, 737);
-            this.rbPreview.Margin = new System.Windows.Forms.Padding(6);
+            this.rbPreview.Location = new System.Drawing.Point(390, 381);
             this.rbPreview.Name = "rbPreview";
-            this.rbPreview.Size = new System.Drawing.Size(119, 29);
+            this.rbPreview.Size = new System.Drawing.Size(63, 17);
             this.rbPreview.TabIndex = 63;
             this.rbPreview.TabStop = true;
             this.rbPreview.Text = "Preview";
@@ -155,10 +154,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.btStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btStop.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStop.Location = new System.Drawing.Point(1502, 727);
-            this.btStop.Margin = new System.Windows.Forms.Padding(6);
+            this.btStop.Location = new System.Drawing.Point(751, 378);
             this.btStop.Name = "btStop";
-            this.btStop.Size = new System.Drawing.Size(124, 44);
+            this.btStop.Size = new System.Drawing.Size(62, 23);
             this.btStop.TabIndex = 62;
             this.btStop.Text = "Stop";
             this.btStop.UseVisualStyleBackColor = true;
@@ -168,10 +166,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.btStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btStart.Location = new System.Drawing.Point(1372, 727);
-            this.btStart.Margin = new System.Windows.Forms.Padding(6);
+            this.btStart.Location = new System.Drawing.Point(686, 378);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(124, 44);
+            this.btStart.Size = new System.Drawing.Size(62, 23);
             this.btStart.TabIndex = 61;
             this.btStart.Text = "Start";
             this.btStart.UseVisualStyleBackColor = true;
@@ -185,11 +182,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.tcMain.Controls.Add(this.tabPage2);
             this.tcMain.Controls.Add(this.tabPage3);
             this.tcMain.Controls.Add(this.tabPage4);
-            this.tcMain.Location = new System.Drawing.Point(6, 6);
-            this.tcMain.Margin = new System.Windows.Forms.Padding(6);
+            this.tcMain.Location = new System.Drawing.Point(3, 3);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
-            this.tcMain.Size = new System.Drawing.Size(756, 760);
+            this.tcMain.Size = new System.Drawing.Size(378, 395);
             this.tcMain.TabIndex = 57;
             // 
             // tabPage1
@@ -212,11 +208,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.tabPage1.Controls.Add(this.cbRecordAudio);
             this.tabPage1.Controls.Add(this.cbAudioOutputDevice);
             this.tabPage1.Controls.Add(this.label15);
-            this.tabPage1.Location = new System.Drawing.Point(8, 39);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(6);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage1.Size = new System.Drawing.Size(740, 713);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(370, 369);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Input";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -227,11 +222,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.groupBox21.Controls.Add(this.rbDVResQuarter);
             this.groupBox21.Controls.Add(this.rbDVResHalf);
             this.groupBox21.Controls.Add(this.rbDVResFull);
-            this.groupBox21.Location = new System.Drawing.Point(10, 223);
-            this.groupBox21.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox21.Location = new System.Drawing.Point(5, 116);
             this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox21.Size = new System.Drawing.Size(722, 87);
+            this.groupBox21.Size = new System.Drawing.Size(361, 45);
             this.groupBox21.TabIndex = 130;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "Resolution";
@@ -239,10 +232,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // rbDVResDC
             // 
             this.rbDVResDC.AutoSize = true;
-            this.rbDVResDC.Location = new System.Drawing.Point(558, 37);
-            this.rbDVResDC.Margin = new System.Windows.Forms.Padding(6);
+            this.rbDVResDC.Location = new System.Drawing.Point(279, 19);
             this.rbDVResDC.Name = "rbDVResDC";
-            this.rbDVResDC.Size = new System.Drawing.Size(73, 29);
+            this.rbDVResDC.Size = new System.Drawing.Size(40, 17);
             this.rbDVResDC.TabIndex = 3;
             this.rbDVResDC.Text = "DC";
             this.rbDVResDC.UseVisualStyleBackColor = true;
@@ -250,10 +242,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // rbDVResQuarter
             // 
             this.rbDVResQuarter.AutoSize = true;
-            this.rbDVResQuarter.Location = new System.Drawing.Point(366, 37);
-            this.rbDVResQuarter.Margin = new System.Windows.Forms.Padding(6);
+            this.rbDVResQuarter.Location = new System.Drawing.Point(183, 19);
             this.rbDVResQuarter.Name = "rbDVResQuarter";
-            this.rbDVResQuarter.Size = new System.Drawing.Size(115, 29);
+            this.rbDVResQuarter.Size = new System.Drawing.Size(60, 17);
             this.rbDVResQuarter.TabIndex = 2;
             this.rbDVResQuarter.Text = "Quarter";
             this.rbDVResQuarter.UseVisualStyleBackColor = true;
@@ -261,10 +252,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // rbDVResHalf
             // 
             this.rbDVResHalf.AutoSize = true;
-            this.rbDVResHalf.Location = new System.Drawing.Point(208, 37);
-            this.rbDVResHalf.Margin = new System.Windows.Forms.Padding(6);
+            this.rbDVResHalf.Location = new System.Drawing.Point(104, 19);
             this.rbDVResHalf.Name = "rbDVResHalf";
-            this.rbDVResHalf.Size = new System.Drawing.Size(81, 29);
+            this.rbDVResHalf.Size = new System.Drawing.Size(44, 17);
             this.rbDVResHalf.TabIndex = 1;
             this.rbDVResHalf.Text = "Half";
             this.rbDVResHalf.UseVisualStyleBackColor = true;
@@ -273,10 +263,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.rbDVResFull.AutoSize = true;
             this.rbDVResFull.Checked = true;
-            this.rbDVResFull.Location = new System.Drawing.Point(44, 37);
-            this.rbDVResFull.Margin = new System.Windows.Forms.Padding(6);
+            this.rbDVResFull.Location = new System.Drawing.Point(22, 19);
             this.rbDVResFull.Name = "rbDVResFull";
-            this.rbDVResFull.Size = new System.Drawing.Size(78, 29);
+            this.rbDVResFull.Size = new System.Drawing.Size(41, 17);
             this.rbDVResFull.TabIndex = 0;
             this.rbDVResFull.TabStop = true;
             this.rbDVResFull.Text = "Full";
@@ -291,21 +280,18 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.groupBox3.Controls.Add(this.btDVPause);
             this.groupBox3.Controls.Add(this.btDVPlay);
             this.groupBox3.Controls.Add(this.btDVRewind);
-            this.groupBox3.Location = new System.Drawing.Point(10, 513);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
+            this.groupBox3.Location = new System.Drawing.Point(5, 267);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox3.Size = new System.Drawing.Size(722, 192);
+            this.groupBox3.Size = new System.Drawing.Size(361, 100);
             this.groupBox3.TabIndex = 129;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Controls";
             // 
             // btDVStepFWD
             // 
-            this.btDVStepFWD.Location = new System.Drawing.Point(502, 112);
-            this.btDVStepFWD.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVStepFWD.Location = new System.Drawing.Point(251, 58);
             this.btDVStepFWD.Name = "btDVStepFWD";
-            this.btDVStepFWD.Size = new System.Drawing.Size(136, 44);
+            this.btDVStepFWD.Size = new System.Drawing.Size(68, 23);
             this.btDVStepFWD.TabIndex = 6;
             this.btDVStepFWD.Text = "Step FWD";
             this.btDVStepFWD.UseVisualStyleBackColor = true;
@@ -313,10 +299,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVStepRev
             // 
-            this.btDVStepRev.Location = new System.Drawing.Point(104, 112);
-            this.btDVStepRev.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVStepRev.Location = new System.Drawing.Point(52, 58);
             this.btDVStepRev.Name = "btDVStepRev";
-            this.btDVStepRev.Size = new System.Drawing.Size(136, 44);
+            this.btDVStepRev.Size = new System.Drawing.Size(68, 23);
             this.btDVStepRev.TabIndex = 5;
             this.btDVStepRev.Text = "Step REV";
             this.btDVStepRev.UseVisualStyleBackColor = true;
@@ -324,10 +309,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVFF
             // 
-            this.btDVFF.Location = new System.Drawing.Point(572, 44);
-            this.btDVFF.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVFF.Location = new System.Drawing.Point(286, 23);
             this.btDVFF.Name = "btDVFF";
-            this.btDVFF.Size = new System.Drawing.Size(120, 44);
+            this.btDVFF.Size = new System.Drawing.Size(60, 23);
             this.btDVFF.TabIndex = 4;
             this.btDVFF.Text = "F.F.";
             this.btDVFF.UseVisualStyleBackColor = true;
@@ -335,10 +319,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVStop
             // 
-            this.btDVStop.Location = new System.Drawing.Point(440, 44);
-            this.btDVStop.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVStop.Location = new System.Drawing.Point(220, 23);
             this.btDVStop.Name = "btDVStop";
-            this.btDVStop.Size = new System.Drawing.Size(120, 44);
+            this.btDVStop.Size = new System.Drawing.Size(60, 23);
             this.btDVStop.TabIndex = 3;
             this.btDVStop.Text = "Stop";
             this.btDVStop.UseVisualStyleBackColor = true;
@@ -346,10 +329,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVPause
             // 
-            this.btDVPause.Location = new System.Drawing.Point(308, 44);
-            this.btDVPause.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVPause.Location = new System.Drawing.Point(154, 23);
             this.btDVPause.Name = "btDVPause";
-            this.btDVPause.Size = new System.Drawing.Size(120, 44);
+            this.btDVPause.Size = new System.Drawing.Size(60, 23);
             this.btDVPause.TabIndex = 2;
             this.btDVPause.Text = "Pause";
             this.btDVPause.UseVisualStyleBackColor = true;
@@ -357,10 +339,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVPlay
             // 
-            this.btDVPlay.Location = new System.Drawing.Point(176, 44);
-            this.btDVPlay.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVPlay.Location = new System.Drawing.Point(88, 23);
             this.btDVPlay.Name = "btDVPlay";
-            this.btDVPlay.Size = new System.Drawing.Size(120, 44);
+            this.btDVPlay.Size = new System.Drawing.Size(60, 23);
             this.btDVPlay.TabIndex = 1;
             this.btDVPlay.Text = "Play";
             this.btDVPlay.UseVisualStyleBackColor = true;
@@ -368,10 +349,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btDVRewind
             // 
-            this.btDVRewind.Location = new System.Drawing.Point(44, 44);
-            this.btDVRewind.Margin = new System.Windows.Forms.Padding(6);
+            this.btDVRewind.Location = new System.Drawing.Point(22, 23);
             this.btDVRewind.Name = "btDVRewind";
-            this.btDVRewind.Size = new System.Drawing.Size(120, 44);
+            this.btDVRewind.Size = new System.Drawing.Size(60, 23);
             this.btDVRewind.TabIndex = 0;
             this.btDVRewind.Text = "Rewind";
             this.btDVRewind.UseVisualStyleBackColor = true;
@@ -380,20 +360,18 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(678, 177);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Location = new System.Drawing.Point(339, 92);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 25);
+            this.label1.Size = new System.Drawing.Size(21, 13);
             this.label1.TabIndex = 128;
             this.label1.Text = "fps";
             // 
             // cbUseBestVideoInputFormat
             // 
             this.cbUseBestVideoInputFormat.AutoSize = true;
-            this.cbUseBestVideoInputFormat.Location = new System.Drawing.Point(376, 138);
-            this.cbUseBestVideoInputFormat.Margin = new System.Windows.Forms.Padding(6);
+            this.cbUseBestVideoInputFormat.Location = new System.Drawing.Point(188, 72);
             this.cbUseBestVideoInputFormat.Name = "cbUseBestVideoInputFormat";
-            this.cbUseBestVideoInputFormat.Size = new System.Drawing.Size(129, 29);
+            this.cbUseBestVideoInputFormat.Size = new System.Drawing.Size(68, 17);
             this.cbUseBestVideoInputFormat.TabIndex = 127;
             this.cbUseBestVideoInputFormat.Text = "Use best";
             this.cbUseBestVideoInputFormat.UseVisualStyleBackColor = true;
@@ -401,10 +379,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btVideoCaptureDeviceSettings
             // 
-            this.btVideoCaptureDeviceSettings.Location = new System.Drawing.Point(538, 65);
-            this.btVideoCaptureDeviceSettings.Margin = new System.Windows.Forms.Padding(6);
+            this.btVideoCaptureDeviceSettings.Location = new System.Drawing.Point(269, 34);
             this.btVideoCaptureDeviceSettings.Name = "btVideoCaptureDeviceSettings";
-            this.btVideoCaptureDeviceSettings.Size = new System.Drawing.Size(132, 44);
+            this.btVideoCaptureDeviceSettings.Size = new System.Drawing.Size(66, 23);
             this.btVideoCaptureDeviceSettings.TabIndex = 126;
             this.btVideoCaptureDeviceSettings.Text = "Settings";
             this.btVideoCaptureDeviceSettings.UseVisualStyleBackColor = true;
@@ -413,10 +390,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(532, 140);
-            this.label18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label18.Location = new System.Drawing.Point(266, 73);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(116, 25);
+            this.label18.Size = new System.Drawing.Size(57, 13);
             this.label18.TabIndex = 125;
             this.label18.Text = "Frame rate";
             // 
@@ -424,20 +400,18 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbFramerate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFramerate.FormattingEnabled = true;
-            this.cbFramerate.Location = new System.Drawing.Point(538, 171);
-            this.cbFramerate.Margin = new System.Windows.Forms.Padding(6);
+            this.cbFramerate.Location = new System.Drawing.Point(269, 89);
             this.cbFramerate.Name = "cbFramerate";
-            this.cbFramerate.Size = new System.Drawing.Size(126, 33);
+            this.cbFramerate.Size = new System.Drawing.Size(65, 21);
             this.cbFramerate.TabIndex = 124;
             // 
             // cbVideoInputFormat
             // 
             this.cbVideoInputFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVideoInputFormat.FormattingEnabled = true;
-            this.cbVideoInputFormat.Location = new System.Drawing.Point(18, 171);
-            this.cbVideoInputFormat.Margin = new System.Windows.Forms.Padding(6);
+            this.cbVideoInputFormat.Location = new System.Drawing.Point(9, 89);
             this.cbVideoInputFormat.Name = "cbVideoInputFormat";
-            this.cbVideoInputFormat.Size = new System.Drawing.Size(490, 33);
+            this.cbVideoInputFormat.Size = new System.Drawing.Size(247, 21);
             this.cbVideoInputFormat.TabIndex = 123;
             this.cbVideoInputFormat.SelectedIndexChanged += new System.EventHandler(this.cbVideoInputFormat_SelectedIndexChanged);
             // 
@@ -445,52 +419,47 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbVideoInputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbVideoInputDevice.FormattingEnabled = true;
-            this.cbVideoInputDevice.Location = new System.Drawing.Point(18, 69);
-            this.cbVideoInputDevice.Margin = new System.Windows.Forms.Padding(6);
+            this.cbVideoInputDevice.Location = new System.Drawing.Point(9, 36);
             this.cbVideoInputDevice.Name = "cbVideoInputDevice";
-            this.cbVideoInputDevice.Size = new System.Drawing.Size(490, 33);
+            this.cbVideoInputDevice.Size = new System.Drawing.Size(247, 21);
             this.cbVideoInputDevice.TabIndex = 122;
             this.cbVideoInputDevice.SelectedIndexChanged += new System.EventHandler(this.cbVideoInputDevice_SelectedIndexChanged);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(10, 140);
-            this.label13.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label13.Location = new System.Drawing.Point(5, 73);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(186, 25);
+            this.label13.Size = new System.Drawing.Size(92, 13);
             this.label13.TabIndex = 121;
             this.label13.Text = "Video input format";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 38);
-            this.label11.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label11.Location = new System.Drawing.Point(6, 20);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(189, 25);
+            this.label11.Size = new System.Drawing.Size(95, 13);
             this.label11.TabIndex = 120;
             this.label11.Text = "Video input device";
             // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(394, 425);
-            this.label55.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label55.Location = new System.Drawing.Point(197, 221);
             this.label55.Name = "label55";
-            this.label55.Size = new System.Drawing.Size(90, 25);
+            this.label55.Size = new System.Drawing.Size(46, 13);
             this.label55.TabIndex = 90;
             this.label55.Text = "Balance";
             // 
             // tbAudioBalance
             // 
             this.tbAudioBalance.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAudioBalance.Location = new System.Drawing.Point(496, 415);
-            this.tbAudioBalance.Margin = new System.Windows.Forms.Padding(6);
+            this.tbAudioBalance.Location = new System.Drawing.Point(248, 216);
             this.tbAudioBalance.Maximum = 100;
             this.tbAudioBalance.Minimum = -100;
             this.tbAudioBalance.Name = "tbAudioBalance";
-            this.tbAudioBalance.Size = new System.Drawing.Size(228, 90);
+            this.tbAudioBalance.Size = new System.Drawing.Size(114, 45);
             this.tbAudioBalance.TabIndex = 89;
             this.tbAudioBalance.TickFrequency = 5;
             this.tbAudioBalance.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -499,22 +468,20 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label54
             // 
             this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(12, 425);
-            this.label54.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label54.Location = new System.Drawing.Point(6, 221);
             this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(84, 25);
+            this.label54.Size = new System.Drawing.Size(42, 13);
             this.label54.TabIndex = 88;
             this.label54.Text = "Volume";
             // 
             // tbAudioVolume
             // 
             this.tbAudioVolume.BackColor = System.Drawing.SystemColors.Window;
-            this.tbAudioVolume.Location = new System.Drawing.Point(106, 415);
-            this.tbAudioVolume.Margin = new System.Windows.Forms.Padding(6);
+            this.tbAudioVolume.Location = new System.Drawing.Point(53, 216);
             this.tbAudioVolume.Maximum = 100;
             this.tbAudioVolume.Minimum = 20;
             this.tbAudioVolume.Name = "tbAudioVolume";
-            this.tbAudioVolume.Size = new System.Drawing.Size(232, 90);
+            this.tbAudioVolume.Size = new System.Drawing.Size(116, 45);
             this.tbAudioVolume.TabIndex = 87;
             this.tbAudioVolume.TickFrequency = 10;
             this.tbAudioVolume.TickStyle = System.Windows.Forms.TickStyle.None;
@@ -526,10 +493,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.cbRecordAudio.AutoSize = true;
             this.cbRecordAudio.Checked = true;
             this.cbRecordAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbRecordAudio.Location = new System.Drawing.Point(504, 331);
-            this.cbRecordAudio.Margin = new System.Windows.Forms.Padding(6);
+            this.cbRecordAudio.Location = new System.Drawing.Point(252, 172);
             this.cbRecordAudio.Name = "cbRecordAudio";
-            this.cbRecordAudio.Size = new System.Drawing.Size(220, 29);
+            this.cbRecordAudio.Size = new System.Drawing.Size(115, 17);
             this.cbRecordAudio.TabIndex = 86;
             this.cbRecordAudio.Text = "Play/Record audio";
             this.cbRecordAudio.UseVisualStyleBackColor = true;
@@ -538,19 +504,17 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbAudioOutputDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAudioOutputDevice.FormattingEnabled = true;
-            this.cbAudioOutputDevice.Location = new System.Drawing.Point(16, 363);
-            this.cbAudioOutputDevice.Margin = new System.Windows.Forms.Padding(6);
+            this.cbAudioOutputDevice.Location = new System.Drawing.Point(8, 189);
             this.cbAudioOutputDevice.Name = "cbAudioOutputDevice";
-            this.cbAudioOutputDevice.Size = new System.Drawing.Size(704, 33);
+            this.cbAudioOutputDevice.Size = new System.Drawing.Size(354, 21);
             this.cbAudioOutputDevice.TabIndex = 85;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 333);
-            this.label15.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label15.Location = new System.Drawing.Point(5, 173);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(202, 25);
+            this.label15.Size = new System.Drawing.Size(102, 13);
             this.label15.TabIndex = 84;
             this.label15.Text = "Audio output device";
             // 
@@ -563,21 +527,19 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.tabPage2.Controls.Add(this.cbOutputFormat);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Location = new System.Drawing.Point(8, 39);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage2.Size = new System.Drawing.Size(740, 713);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(370, 369);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Output";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btSelectOutput
             // 
-            this.btSelectOutput.Location = new System.Drawing.Point(680, 300);
-            this.btSelectOutput.Margin = new System.Windows.Forms.Padding(6);
+            this.btSelectOutput.Location = new System.Drawing.Point(340, 156);
             this.btSelectOutput.Name = "btSelectOutput";
-            this.btSelectOutput.Size = new System.Drawing.Size(48, 44);
+            this.btSelectOutput.Size = new System.Drawing.Size(24, 23);
             this.btSelectOutput.TabIndex = 113;
             this.btSelectOutput.Text = "...";
             this.btSelectOutput.UseVisualStyleBackColor = true;
@@ -585,29 +547,26 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // edOutput
             // 
-            this.edOutput.Location = new System.Drawing.Point(24, 304);
-            this.edOutput.Margin = new System.Windows.Forms.Padding(6);
+            this.edOutput.Location = new System.Drawing.Point(12, 158);
             this.edOutput.Name = "edOutput";
-            this.edOutput.Size = new System.Drawing.Size(640, 31);
+            this.edOutput.Size = new System.Drawing.Size(322, 20);
             this.edOutput.TabIndex = 112;
             this.edOutput.Text = "c:\\capture.avi";
             // 
             // lbInfo
             // 
             this.lbInfo.AutoSize = true;
-            this.lbInfo.Location = new System.Drawing.Point(18, 112);
-            this.lbInfo.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbInfo.Location = new System.Drawing.Point(9, 58);
             this.lbInfo.Name = "lbInfo";
-            this.lbInfo.Size = new System.Drawing.Size(541, 25);
+            this.lbInfo.Size = new System.Drawing.Size(267, 13);
             this.lbInfo.TabIndex = 111;
             this.lbInfo.Text = "You can use dialog or code to configure format settings";
             // 
             // btOutputConfigure
             // 
-            this.btOutputConfigure.Location = new System.Drawing.Point(24, 142);
-            this.btOutputConfigure.Margin = new System.Windows.Forms.Padding(6);
+            this.btOutputConfigure.Location = new System.Drawing.Point(12, 74);
             this.btOutputConfigure.Name = "btOutputConfigure";
-            this.btOutputConfigure.Size = new System.Drawing.Size(150, 44);
+            this.btOutputConfigure.Size = new System.Drawing.Size(75, 23);
             this.btOutputConfigure.TabIndex = 110;
             this.btOutputConfigure.Text = "Configure";
             this.btOutputConfigure.UseVisualStyleBackColor = true;
@@ -632,30 +591,27 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             "Encrypted video",
             "MPEG-TS",
             "MOV"});
-            this.cbOutputFormat.Location = new System.Drawing.Point(24, 58);
-            this.cbOutputFormat.Margin = new System.Windows.Forms.Padding(6);
+            this.cbOutputFormat.Location = new System.Drawing.Point(12, 30);
             this.cbOutputFormat.Name = "cbOutputFormat";
-            this.cbOutputFormat.Size = new System.Drawing.Size(554, 33);
+            this.cbOutputFormat.Size = new System.Drawing.Size(279, 21);
             this.cbOutputFormat.TabIndex = 109;
             this.cbOutputFormat.SelectedIndexChanged += new System.EventHandler(this.cbOutputFormat_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 273);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(9, 142);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 25);
+            this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 108;
             this.label4.Text = "File name";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(18, 25);
-            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Location = new System.Drawing.Point(9, 13);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(79, 25);
+            this.label7.Size = new System.Drawing.Size(39, 13);
             this.label7.TabIndex = 106;
             this.label7.Text = "Format";
             // 
@@ -681,22 +637,34 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.tabPage3.Controls.Add(this.lbLogos);
             this.tabPage3.Controls.Add(this.btImageLogoAdd);
             this.tabPage3.Controls.Add(this.label5);
-            this.tabPage3.Location = new System.Drawing.Point(8, 39);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage3.Size = new System.Drawing.Size(740, 713);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Size = new System.Drawing.Size(370, 369);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Video effects";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // cbDeinterlaceCAVT
+            // 
+            this.cbDeinterlaceCAVT.AutoSize = true;
+            this.cbDeinterlaceCAVT.Checked = true;
+            this.cbDeinterlaceCAVT.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbDeinterlaceCAVT.Location = new System.Drawing.Point(19, 318);
+            this.cbDeinterlaceCAVT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbDeinterlaceCAVT.Name = "cbDeinterlaceCAVT";
+            this.cbDeinterlaceCAVT.Size = new System.Drawing.Size(117, 17);
+            this.cbDeinterlaceCAVT.TabIndex = 105;
+            this.cbDeinterlaceCAVT.Text = "Deinterlace (CAVT)";
+            this.cbDeinterlaceCAVT.UseVisualStyleBackColor = true;
+            this.cbDeinterlaceCAVT.CheckedChanged += new System.EventHandler(this.cbDeinterlaceCAVT_CheckedChanged);
+            // 
             // cbFlipY
             // 
             this.cbFlipY.AutoSize = true;
-            this.cbFlipY.Location = new System.Drawing.Point(438, 555);
-            this.cbFlipY.Margin = new System.Windows.Forms.Padding(6);
+            this.cbFlipY.Location = new System.Drawing.Point(219, 289);
             this.cbFlipY.Name = "cbFlipY";
-            this.cbFlipY.Size = new System.Drawing.Size(100, 29);
+            this.cbFlipY.Size = new System.Drawing.Size(52, 17);
             this.cbFlipY.TabIndex = 104;
             this.cbFlipY.Text = "Flip Y";
             this.cbFlipY.UseVisualStyleBackColor = true;
@@ -705,10 +673,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // cbFlipX
             // 
             this.cbFlipX.AutoSize = true;
-            this.cbFlipX.Location = new System.Drawing.Point(320, 555);
-            this.cbFlipX.Margin = new System.Windows.Forms.Padding(6);
+            this.cbFlipX.Location = new System.Drawing.Point(160, 289);
             this.cbFlipX.Name = "cbFlipX";
-            this.cbFlipX.Size = new System.Drawing.Size(99, 29);
+            this.cbFlipX.Size = new System.Drawing.Size(52, 17);
             this.cbFlipX.TabIndex = 103;
             this.cbFlipX.Text = "Flip X";
             this.cbFlipX.UseVisualStyleBackColor = true;
@@ -718,10 +685,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.cbInvert.AutoSize = true;
             this.cbInvert.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.cbInvert.Location = new System.Drawing.Point(198, 555);
-            this.cbInvert.Margin = new System.Windows.Forms.Padding(6);
+            this.cbInvert.Location = new System.Drawing.Point(99, 289);
             this.cbInvert.Name = "cbInvert";
-            this.cbInvert.Size = new System.Drawing.Size(97, 29);
+            this.cbInvert.Size = new System.Drawing.Size(53, 17);
             this.cbInvert.TabIndex = 102;
             this.cbInvert.Text = "Invert";
             this.cbInvert.UseVisualStyleBackColor = true;
@@ -730,10 +696,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // cbGreyscale
             // 
             this.cbGreyscale.AutoSize = true;
-            this.cbGreyscale.Location = new System.Drawing.Point(38, 555);
-            this.cbGreyscale.Margin = new System.Windows.Forms.Padding(6);
+            this.cbGreyscale.Location = new System.Drawing.Point(19, 289);
             this.cbGreyscale.Name = "cbGreyscale";
-            this.cbGreyscale.Size = new System.Drawing.Size(141, 29);
+            this.cbGreyscale.Size = new System.Drawing.Size(73, 17);
             this.cbGreyscale.TabIndex = 101;
             this.cbGreyscale.Text = "Greyscale";
             this.cbGreyscale.UseVisualStyleBackColor = true;
@@ -742,84 +707,76 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label201
             // 
             this.label201.AutoSize = true;
-            this.label201.Location = new System.Drawing.Point(304, 420);
-            this.label201.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label201.Location = new System.Drawing.Point(152, 218);
             this.label201.Name = "label201";
-            this.label201.Size = new System.Drawing.Size(103, 25);
+            this.label201.Size = new System.Drawing.Size(52, 13);
             this.label201.TabIndex = 100;
             this.label201.Text = "Darkness";
             // 
             // tbDarkness
             // 
             this.tbDarkness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbDarkness.Location = new System.Drawing.Point(304, 457);
-            this.tbDarkness.Margin = new System.Windows.Forms.Padding(6);
+            this.tbDarkness.Location = new System.Drawing.Point(152, 238);
             this.tbDarkness.Maximum = 255;
             this.tbDarkness.Name = "tbDarkness";
-            this.tbDarkness.Size = new System.Drawing.Size(260, 90);
+            this.tbDarkness.Size = new System.Drawing.Size(130, 45);
             this.tbDarkness.TabIndex = 99;
             this.tbDarkness.Scroll += new System.EventHandler(this.tbDarkness_Scroll);
             // 
             // label200
             // 
             this.label200.AutoSize = true;
-            this.label200.Location = new System.Drawing.Point(32, 420);
-            this.label200.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label200.Location = new System.Drawing.Point(16, 218);
             this.label200.Name = "label200";
-            this.label200.Size = new System.Drawing.Size(93, 25);
+            this.label200.Size = new System.Drawing.Size(46, 13);
             this.label200.TabIndex = 98;
             this.label200.Text = "Contrast";
             // 
             // label199
             // 
             this.label199.AutoSize = true;
-            this.label199.Location = new System.Drawing.Point(304, 320);
-            this.label199.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label199.Location = new System.Drawing.Point(152, 166);
             this.label199.Name = "label199";
-            this.label199.Size = new System.Drawing.Size(110, 25);
+            this.label199.Size = new System.Drawing.Size(55, 13);
             this.label199.TabIndex = 97;
             this.label199.Text = "Saturation";
             // 
             // label198
             // 
             this.label198.AutoSize = true;
-            this.label198.Location = new System.Drawing.Point(32, 320);
-            this.label198.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label198.Location = new System.Drawing.Point(16, 166);
             this.label198.Name = "label198";
-            this.label198.Size = new System.Drawing.Size(105, 25);
+            this.label198.Size = new System.Drawing.Size(52, 13);
             this.label198.TabIndex = 96;
             this.label198.Text = "Lightness";
             // 
             // tbContrast
             // 
             this.tbContrast.BackColor = System.Drawing.SystemColors.Window;
-            this.tbContrast.Location = new System.Drawing.Point(26, 457);
-            this.tbContrast.Margin = new System.Windows.Forms.Padding(6);
+            this.tbContrast.Location = new System.Drawing.Point(13, 238);
             this.tbContrast.Maximum = 255;
             this.tbContrast.Name = "tbContrast";
-            this.tbContrast.Size = new System.Drawing.Size(260, 90);
+            this.tbContrast.Size = new System.Drawing.Size(130, 45);
             this.tbContrast.TabIndex = 95;
             this.tbContrast.Scroll += new System.EventHandler(this.tbContrast_Scroll);
             // 
             // tbLightness
             // 
             this.tbLightness.BackColor = System.Drawing.SystemColors.Window;
-            this.tbLightness.Location = new System.Drawing.Point(26, 349);
-            this.tbLightness.Margin = new System.Windows.Forms.Padding(6);
+            this.tbLightness.Location = new System.Drawing.Point(13, 181);
             this.tbLightness.Maximum = 255;
             this.tbLightness.Name = "tbLightness";
-            this.tbLightness.Size = new System.Drawing.Size(260, 90);
+            this.tbLightness.Size = new System.Drawing.Size(130, 45);
             this.tbLightness.TabIndex = 94;
             this.tbLightness.Scroll += new System.EventHandler(this.tbLightness_Scroll);
             // 
             // tbSaturation
             // 
             this.tbSaturation.BackColor = System.Drawing.SystemColors.Window;
-            this.tbSaturation.Location = new System.Drawing.Point(304, 349);
-            this.tbSaturation.Margin = new System.Windows.Forms.Padding(6);
+            this.tbSaturation.Location = new System.Drawing.Point(152, 181);
             this.tbSaturation.Maximum = 255;
             this.tbSaturation.Name = "tbSaturation";
-            this.tbSaturation.Size = new System.Drawing.Size(260, 90);
+            this.tbSaturation.Size = new System.Drawing.Size(130, 45);
             this.tbSaturation.TabIndex = 93;
             this.tbSaturation.Value = 255;
             this.tbSaturation.Scroll += new System.EventHandler(this.tbSaturation_Scroll);
@@ -827,19 +784,17 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 24);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(10, 12);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(188, 25);
+            this.label3.Size = new System.Drawing.Size(95, 13);
             this.label3.TabIndex = 92;
             this.label3.Text = "Text / image logos";
             // 
             // btTextLogoAdd
             // 
-            this.btTextLogoAdd.Location = new System.Drawing.Point(236, 249);
-            this.btTextLogoAdd.Margin = new System.Windows.Forms.Padding(6);
+            this.btTextLogoAdd.Location = new System.Drawing.Point(118, 129);
             this.btTextLogoAdd.Name = "btTextLogoAdd";
-            this.btTextLogoAdd.Size = new System.Drawing.Size(198, 44);
+            this.btTextLogoAdd.Size = new System.Drawing.Size(99, 23);
             this.btTextLogoAdd.TabIndex = 91;
             this.btTextLogoAdd.Text = "Add text logo";
             this.btTextLogoAdd.UseVisualStyleBackColor = true;
@@ -847,10 +802,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btLogoRemove
             // 
-            this.btLogoRemove.Location = new System.Drawing.Point(598, 249);
-            this.btLogoRemove.Margin = new System.Windows.Forms.Padding(6);
+            this.btLogoRemove.Location = new System.Drawing.Point(299, 129);
             this.btLogoRemove.Name = "btLogoRemove";
-            this.btLogoRemove.Size = new System.Drawing.Size(118, 44);
+            this.btLogoRemove.Size = new System.Drawing.Size(59, 23);
             this.btLogoRemove.TabIndex = 90;
             this.btLogoRemove.Text = "Remove";
             this.btLogoRemove.UseVisualStyleBackColor = true;
@@ -858,10 +812,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             // btLogoEdit
             // 
-            this.btLogoEdit.Location = new System.Drawing.Point(468, 249);
-            this.btLogoEdit.Margin = new System.Windows.Forms.Padding(6);
+            this.btLogoEdit.Location = new System.Drawing.Point(234, 129);
             this.btLogoEdit.Name = "btLogoEdit";
-            this.btLogoEdit.Size = new System.Drawing.Size(118, 44);
+            this.btLogoEdit.Size = new System.Drawing.Size(59, 23);
             this.btLogoEdit.TabIndex = 89;
             this.btLogoEdit.Text = "Edit";
             this.btLogoEdit.UseVisualStyleBackColor = true;
@@ -870,19 +823,16 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // lbLogos
             // 
             this.lbLogos.FormattingEnabled = true;
-            this.lbLogos.ItemHeight = 25;
-            this.lbLogos.Location = new System.Drawing.Point(26, 55);
-            this.lbLogos.Margin = new System.Windows.Forms.Padding(6);
+            this.lbLogos.Location = new System.Drawing.Point(13, 29);
             this.lbLogos.Name = "lbLogos";
-            this.lbLogos.Size = new System.Drawing.Size(686, 179);
+            this.lbLogos.Size = new System.Drawing.Size(345, 95);
             this.lbLogos.TabIndex = 88;
             // 
             // btImageLogoAdd
             // 
-            this.btImageLogoAdd.Location = new System.Drawing.Point(26, 249);
-            this.btImageLogoAdd.Margin = new System.Windows.Forms.Padding(6);
+            this.btImageLogoAdd.Location = new System.Drawing.Point(13, 129);
             this.btImageLogoAdd.Name = "btImageLogoAdd";
-            this.btImageLogoAdd.Size = new System.Drawing.Size(198, 44);
+            this.btImageLogoAdd.Size = new System.Drawing.Size(99, 23);
             this.btImageLogoAdd.TabIndex = 87;
             this.btImageLogoAdd.Text = "Add image logo";
             this.btImageLogoAdd.UseVisualStyleBackColor = true;
@@ -891,45 +841,30 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(134, 667);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(67, 347);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(484, 25);
+            this.label5.Size = new System.Drawing.Size(239, 13);
             this.label5.TabIndex = 86;
             this.label5.Text = "More effects and settings available in Main Demo";
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.cbLicensing);
             this.tabPage4.Controls.Add(this.cbDebugMode);
             this.tabPage4.Controls.Add(this.mmLog);
-            this.tabPage4.Location = new System.Drawing.Point(8, 39);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(6);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage4.Size = new System.Drawing.Size(740, 713);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Size = new System.Drawing.Size(370, 369);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(202, 12);
-            this.cbLicensing.Margin = new System.Windows.Forms.Padding(6);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(177, 29);
-            this.cbLicensing.TabIndex = 79;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
-            // 
             // cbDebugMode
             // 
             this.cbDebugMode.AutoSize = true;
-            this.cbDebugMode.Location = new System.Drawing.Point(16, 12);
-            this.cbDebugMode.Margin = new System.Windows.Forms.Padding(6);
+            this.cbDebugMode.Location = new System.Drawing.Point(8, 6);
             this.cbDebugMode.Name = "cbDebugMode";
-            this.cbDebugMode.Size = new System.Drawing.Size(166, 29);
+            this.cbDebugMode.Size = new System.Drawing.Size(87, 17);
             this.cbDebugMode.TabIndex = 78;
             this.cbDebugMode.Text = "Debug mode";
             this.cbDebugMode.UseVisualStyleBackColor = true;
@@ -939,11 +874,10 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.mmLog.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.mmLog.Location = new System.Drawing.Point(16, 56);
-            this.mmLog.Margin = new System.Windows.Forms.Padding(6);
+            this.mmLog.Location = new System.Drawing.Point(8, 29);
             this.mmLog.Multiline = true;
             this.mmLog.Name = "mmLog";
-            this.mmLog.Size = new System.Drawing.Size(708, 639);
+            this.mmLog.Size = new System.Drawing.Size(356, 334);
             this.mmLog.TabIndex = 77;
             // 
             // openFileDialog2
@@ -955,10 +889,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.llVideoTutorials.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.llVideoTutorials.AutoSize = true;
             this.llVideoTutorials.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.llVideoTutorials.Location = new System.Drawing.Point(1488, 17);
-            this.llVideoTutorials.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.llVideoTutorials.Location = new System.Drawing.Point(744, 9);
             this.llVideoTutorials.Name = "llVideoTutorials";
-            this.llVideoTutorials.Size = new System.Drawing.Size(138, 25);
+            this.llVideoTutorials.Size = new System.Drawing.Size(68, 13);
             this.llVideoTutorials.TabIndex = 92;
             this.llVideoTutorials.TabStop = true;
             this.llVideoTutorials.Text = "Video tutorial";
@@ -998,8 +931,11 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.BDA_Source = null;
             this.VideoCapture1.ChromaKey = null;
             this.VideoCapture1.Custom_Source = null;
+            this.VideoCapture1.CustomRedist_Enabled = false;
+            this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
+            this.VideoCapture1.Debug_Telemetry = false;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
@@ -1010,8 +946,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.DV_Decoder_Video_Resolution = VisioForge.Types.VFDVVideoResolution.Full;
             this.VideoCapture1.Face_Tracking = null;
             this.VideoCapture1.IP_Camera_Source = null;
-            this.VideoCapture1.Location = new System.Drawing.Point(780, 48);
-            this.VideoCapture1.Margin = new System.Windows.Forms.Padding(6);
+            this.VideoCapture1.Location = new System.Drawing.Point(390, 25);
             this.VideoCapture1.Mode = VisioForge.Types.VFVideoCaptureMode.VideoCapture;
             this.VideoCapture1.Motion_Detection = null;
             this.VideoCapture1.Motion_DetectionEx = null;
@@ -1027,6 +962,7 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.OSD_Enabled = false;
             this.VideoCapture1.Output_Filename = "";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -1041,8 +977,8 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
-            this.VideoCapture1.Size = new System.Drawing.Size(844, 612);
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
+            this.VideoCapture1.Size = new System.Drawing.Size(422, 318);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 93;
             this.VideoCapture1.Tags = null;
@@ -1070,6 +1006,8 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
@@ -1103,20 +1041,18 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.lbTimestamp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTimestamp.AutoSize = true;
-            this.lbTimestamp.Location = new System.Drawing.Point(774, 685);
-            this.lbTimestamp.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lbTimestamp.Location = new System.Drawing.Point(387, 356);
             this.lbTimestamp.Name = "lbTimestamp";
-            this.lbTimestamp.Size = new System.Drawing.Size(252, 25);
+            this.lbTimestamp.Size = new System.Drawing.Size(126, 13);
             this.lbTimestamp.TabIndex = 96;
             this.lbTimestamp.Text = "Recording time: 00:00:00";
             // 
             // btSaveScreenshot
             // 
             this.btSaveScreenshot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btSaveScreenshot.Location = new System.Drawing.Point(1372, 671);
-            this.btSaveScreenshot.Margin = new System.Windows.Forms.Padding(6);
+            this.btSaveScreenshot.Location = new System.Drawing.Point(686, 349);
             this.btSaveScreenshot.Name = "btSaveScreenshot";
-            this.btSaveScreenshot.Size = new System.Drawing.Size(254, 44);
+            this.btSaveScreenshot.Size = new System.Drawing.Size(127, 23);
             this.btSaveScreenshot.TabIndex = 99;
             this.btSaveScreenshot.Text = "Save screenshot";
             this.btSaveScreenshot.UseVisualStyleBackColor = true;
@@ -1125,10 +1061,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // btResume
             // 
             this.btResume.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btResume.Location = new System.Drawing.Point(1232, 727);
-            this.btResume.Margin = new System.Windows.Forms.Padding(6);
+            this.btResume.Location = new System.Drawing.Point(616, 378);
             this.btResume.Name = "btResume";
-            this.btResume.Size = new System.Drawing.Size(110, 44);
+            this.btResume.Size = new System.Drawing.Size(55, 23);
             this.btResume.TabIndex = 98;
             this.btResume.Text = "Resume";
             this.btResume.UseVisualStyleBackColor = true;
@@ -1137,10 +1072,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // btPause
             // 
             this.btPause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btPause.Location = new System.Drawing.Point(1110, 727);
-            this.btPause.Margin = new System.Windows.Forms.Padding(6);
+            this.btPause.Location = new System.Drawing.Point(555, 378);
             this.btPause.Name = "btPause";
-            this.btPause.Size = new System.Drawing.Size(110, 44);
+            this.btPause.Size = new System.Drawing.Size(55, 23);
             this.btPause.TabIndex = 97;
             this.btPause.Text = "Pause";
             this.btPause.UseVisualStyleBackColor = true;
@@ -1150,10 +1084,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(982, 17);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(491, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(433, 25);
+            this.label2.Size = new System.Drawing.Size(214, 13);
             this.label2.TabIndex = 100;
             this.label2.Text = "Much more features available in Main Demo";
             // 
@@ -1164,24 +1097,11 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.fontDialog1.FontMustExist = true;
             this.fontDialog1.ShowColor = true;
             // 
-            // cbDeinterlaceCAVT
-            // 
-            this.cbDeinterlaceCAVT.AutoSize = true;
-            this.cbDeinterlaceCAVT.Checked = true;
-            this.cbDeinterlaceCAVT.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbDeinterlaceCAVT.Location = new System.Drawing.Point(38, 611);
-            this.cbDeinterlaceCAVT.Name = "cbDeinterlaceCAVT";
-            this.cbDeinterlaceCAVT.Size = new System.Drawing.Size(229, 29);
-            this.cbDeinterlaceCAVT.TabIndex = 105;
-            this.cbDeinterlaceCAVT.Text = "Deinterlace (CAVT)";
-            this.cbDeinterlaceCAVT.UseVisualStyleBackColor = true;
-            this.cbDeinterlaceCAVT.CheckedChanged += new System.EventHandler(this.cbDeinterlaceCAVT_CheckedChanged);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1648, 779);
+            this.ClientSize = new System.Drawing.Size(824, 405);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btSaveScreenshot);
             this.Controls.Add(this.btResume);
@@ -1196,11 +1116,9 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
             this.Controls.Add(this.tcMain);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DV Capture Demo - Video Capture SDK .Net";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tcMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -1269,7 +1187,6 @@ namespace VisioForge_SDK_4_DV_Capture_CSharp_Demo
         private System.Windows.Forms.Button btDVRewind;
         internal System.Windows.Forms.LinkLabel llVideoTutorials;
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.Label lbInfo;

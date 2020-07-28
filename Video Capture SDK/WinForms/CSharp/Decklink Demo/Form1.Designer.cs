@@ -1,4 +1,6 @@
-﻿namespace Decklink_Demo
+﻿using System;
+
+namespace Decklink_Demo
 {
     partial class Form1
     {
@@ -99,7 +101,6 @@
             this.label95 = new System.Windows.Forms.Label();
             this.cbAudAmplifyEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -892,7 +893,6 @@
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.cbLicensing);
             this.tabPage4.Controls.Add(this.cbDebugMode);
             this.tabPage4.Controls.Add(this.mmLog);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -902,16 +902,6 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Log";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(104, 11);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 79;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
@@ -1012,7 +1002,7 @@
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(455, 347);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 120;
@@ -1042,6 +1032,7 @@
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
@@ -1187,7 +1178,6 @@
         private System.Windows.Forms.Label label95;
         private System.Windows.Forms.CheckBox cbAudAmplifyEnabled;
         private System.Windows.Forms.TabPage tabPage4;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;

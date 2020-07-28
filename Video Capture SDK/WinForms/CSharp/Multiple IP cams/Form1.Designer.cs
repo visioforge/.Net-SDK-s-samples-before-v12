@@ -1,4 +1,5 @@
 ﻿using VisioForge.Types;
+using System;
 
 namespace multiple_ap_cams
 {
@@ -46,7 +47,6 @@ namespace multiple_ap_cams
             this.lbTimestamp1 = new System.Windows.Forms.Label();
             this.lbTimestamp2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -82,8 +82,11 @@ namespace multiple_ap_cams
             this.videoCapture1.BDA_Source = null;
             this.videoCapture1.ChromaKey = null;
             this.videoCapture1.Custom_Source = null;
+            this.videoCapture1.CustomRedist_Enabled = false;
+            this.videoCapture1.CustomRedist_Path = null;
             this.videoCapture1.Debug_Dir = "";
             this.videoCapture1.Debug_Mode = false;
+            this.videoCapture1.Debug_Telemetry = false;
             this.videoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.videoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.videoCapture1.Decklink_Input_IREUSA = false;
@@ -110,6 +113,7 @@ namespace multiple_ap_cams
             this.videoCapture1.Network_Streaming_Output = null;
             this.videoCapture1.Network_Streaming_URL = "";
             this.videoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.videoCapture1.OSD_Enabled = false;
             this.videoCapture1.Output_Filename = "";
             this.videoCapture1.Output_Format = null;
             this.videoCapture1.PIP_AddSampleGrabbers = false;
@@ -124,7 +128,7 @@ namespace multiple_ap_cams
             this.videoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.videoCapture1.SeparateCapture_GMFMode = true;
             this.videoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.videoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.videoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.videoCapture1.Size = new System.Drawing.Size(295, 228);
             this.videoCapture1.Start_DelayEnabled = false;
             this.videoCapture1.TabIndex = 0;
@@ -153,6 +157,8 @@ namespace multiple_ap_cams
             this.videoCapture1.Video_Decoder = null;
             this.videoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.videoCapture1.Video_Effects_Enabled = false;
+            this.videoCapture1.Video_Effects_GPU_Enabled = false;
+            this.videoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
@@ -213,8 +219,11 @@ namespace multiple_ap_cams
             this.videoCapture2.BDA_Source = null;
             this.videoCapture2.ChromaKey = null;
             this.videoCapture2.Custom_Source = null;
+            this.videoCapture2.CustomRedist_Enabled = false;
+            this.videoCapture2.CustomRedist_Path = null;
             this.videoCapture2.Debug_Dir = "";
             this.videoCapture2.Debug_Mode = false;
+            this.videoCapture2.Debug_Telemetry = false;
             this.videoCapture2.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.videoCapture2.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.videoCapture2.Decklink_Input_IREUSA = false;
@@ -241,6 +250,7 @@ namespace multiple_ap_cams
             this.videoCapture2.Network_Streaming_Output = null;
             this.videoCapture2.Network_Streaming_URL = "";
             this.videoCapture2.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.videoCapture2.OSD_Enabled = false;
             this.videoCapture2.Output_Filename = "";
             this.videoCapture2.Output_Format = null;
             this.videoCapture2.PIP_AddSampleGrabbers = false;
@@ -255,7 +265,7 @@ namespace multiple_ap_cams
             this.videoCapture2.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.videoCapture2.SeparateCapture_GMFMode = true;
             this.videoCapture2.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.videoCapture2.SeparateCapture_TimeThreshold = ((long)(0));
+            this.videoCapture2.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.videoCapture2.Size = new System.Drawing.Size(295, 228);
             this.videoCapture2.Start_DelayEnabled = false;
             this.videoCapture2.TabIndex = 1;
@@ -284,6 +294,8 @@ namespace multiple_ap_cams
             this.videoCapture2.Video_Decoder = null;
             this.videoCapture2.Video_Effects_AllowMultipleStreams = false;
             this.videoCapture2.Video_Effects_Enabled = false;
+            this.videoCapture2.Video_Effects_GPU_Enabled = false;
+            this.videoCapture2.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_X = 16;
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 9;
@@ -415,16 +427,6 @@ namespace multiple_ap_cams
             this.label3.Text = "All settings set to default. You can check IP Capture Demo or Main Demo for more " +
     "options";
             // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(105, 346);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 109;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
-            // 
             // cbDebugMode
             // 
             this.cbDebugMode.AutoSize = true;
@@ -451,7 +453,6 @@ namespace multiple_ap_cams
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(635, 558);
-            this.Controls.Add(this.cbLicensing);
             this.Controls.Add(this.cbDebugMode);
             this.Controls.Add(this.mmLog);
             this.Controls.Add(this.label3);
@@ -472,7 +473,6 @@ namespace multiple_ap_cams
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Video Capture SDK .Net - Multiple IP cameras";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -494,7 +494,6 @@ namespace multiple_ap_cams
         private System.Windows.Forms.Label lbTimestamp1;
         private System.Windows.Forms.Label lbTimestamp2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
     }

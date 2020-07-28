@@ -249,7 +249,7 @@
             return source;
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
 
@@ -387,27 +387,32 @@
                     }
             }
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 2;
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
+        }
+
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
         }
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void btOutputConfigure_Click(object sender, EventArgs e)
@@ -639,11 +644,6 @@
             {
                 edOutput.Text = saveFileDialog1.FileName;
             }
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
         }
 
         private void btScreenSourceWindowSelect_Click(object sender, EventArgs e)

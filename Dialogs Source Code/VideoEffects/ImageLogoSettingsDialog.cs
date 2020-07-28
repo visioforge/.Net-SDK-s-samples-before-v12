@@ -53,7 +53,7 @@ namespace VisioForge.Controls.UI.Dialogs.VideoEffects
             tbImageLogoTransp.Value = _intf.TransparencyLevel;
             pnImageLogoColorKey.ForeColor= _intf.ColorKey;
             cbImageLogoUseColorKey.Checked = _intf.UseColorKey;
-            cbImageLogoShowAlways.Checked = _intf.StartTime == 0 && _intf.StopTime == 0;
+            cbImageLogoShowAlways.Checked = _intf.StartTime == TimeSpan.Zero && _intf.StopTime == TimeSpan.Zero;
         }
 
         public void Fill(IVFVideoEffect effect)
@@ -141,13 +141,13 @@ namespace VisioForge.Controls.UI.Dialogs.VideoEffects
 
             if (cbImageLogoShowAlways.Checked)
             {
-                imageLogo.StartTime = 0;
-                imageLogo.StopTime = 0;
+                imageLogo.StartTime = TimeSpan.Zero;
+                imageLogo.StopTime = TimeSpan.Zero;
             }  
             else
             {
-                imageLogo.StartTime = Convert.ToInt32(edImageLogoStartTime.Text);
-                imageLogo.StopTime = Convert.ToInt32(edImageLogoStopTime.Text);
+                imageLogo.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edImageLogoStartTime.Text));
+                imageLogo.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edImageLogoStopTime.Text));
             }
 
             imageLogo.Update();

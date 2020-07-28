@@ -297,6 +297,8 @@
             this.VideoEdit1.Video_Custom_Resizer_CLSID = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.VideoEdit1.Video_Effects_AllowMultipleStreams = false;
             this.VideoEdit1.Video_Effects_Enabled = false;
+            this.VideoEdit1.Video_Effects_GPU_Enabled = false;
+            this.VideoEdit1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
@@ -429,6 +431,7 @@
             this.Controls.Add(this.lbFiles);
             this.Controls.Add(this.cbDebugMode);
             this.Controls.Add(this.label10);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "VisioForge Video Edit SDK .Net - Video Join Demo";
             this.Load += new System.EventHandler(this.Form1_Load);

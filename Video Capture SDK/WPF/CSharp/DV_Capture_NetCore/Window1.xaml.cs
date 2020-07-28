@@ -117,7 +117,7 @@ namespace DVCapture
                             "output.mp4";
         }
         
-        private void btSaveScreenshot_Click(object sender, RoutedEventArgs e)
+        private async void btSaveScreenshot_Click(object sender, RoutedEventArgs e)
         {
             if (screenshotSaveDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -126,19 +126,19 @@ namespace DVCapture
                 switch (ext)
                 {
                     case ".bmp":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0);
                         break;
                     case ".jpg":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85);
                         break;
                     case ".gif":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0);
                         break;
                     case ".png":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0);
                         break;
                     case ".tiff":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0);
                         break;
                 }
             }
@@ -227,39 +227,39 @@ namespace DVCapture
             }
         }
 
-        private void btDVFF_Click(object sender, RoutedEventArgs e)
+        private async void btDVFF_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.FastForward);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.FastForward);
         }
 
-        private void btDVPause_Click(object sender, RoutedEventArgs e)
+        private async void btDVPause_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Pause);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Pause);
         }
 
-        private void btDVRewind_Click(object sender, RoutedEventArgs e)
+        private async void btDVRewind_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Rew);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Rew);
         }
 
-        private void btDVPlay_Click(object sender, RoutedEventArgs e)
+        private async void btDVPlay_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Play);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Play);
         }
 
-        private void btDVStepFWD_Click(object sender, RoutedEventArgs e)
+        private async void btDVStepFWD_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.StepFw);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepFw);
         }
 
-        private void btDVStepRev_Click(object sender, RoutedEventArgs e)
+        private async void btDVStepRev_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.StepRev);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepRev);
         }
 
-        private void btDVStop_Click(object sender, RoutedEventArgs e)
+        private async void btDVStop_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Stop);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Stop);
         }
 
 
@@ -410,7 +410,7 @@ namespace DVCapture
             }
         }
 
-        private void btStart_Click(object sender, RoutedEventArgs e)
+        private async void btStart_Click(object sender, RoutedEventArgs e)
         {
             VideoCapture1.Video_Sample_Grabber_Enabled = true;
 
@@ -579,7 +579,7 @@ namespace DVCapture
             lbLogos.Items.Clear();
             ConfigureVideoEffects();
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 3;
             tmRecording.Start();
@@ -633,11 +633,11 @@ namespace DVCapture
             }
         }
 
-        private void btStop_Click(object sender, RoutedEventArgs e)
+        private async void btStop_Click(object sender, RoutedEventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
         private void llVideoTutorials_LinkClicked(object sender, MouseButtonEventArgs e)
@@ -646,22 +646,24 @@ namespace DVCapture
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            Dispatcher.Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.IsChecked == true)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
-        private void BtPause_Click(object sender, RoutedEventArgs e)
+        private async void BtPause_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
         private void cbOutputFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -900,30 +902,24 @@ namespace DVCapture
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
+            var ts = VideoCapture1.Duration_Time();
 
-            if (timestamp < 0)
+            if (Math.Abs(ts.TotalMilliseconds) < 0.01)
             {
                 return;
             }
 
             Dispatcher.BeginInvoke((Action)(() =>
             {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
                 lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
             }));
         }
 
-        private void BtResume_Click(object sender, RoutedEventArgs e)
+        private async void BtResume_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            btStop_Click(null, null);
-        }
-        
+       
         private void cbGreyscale_CheckedChanged(object sender, RoutedEventArgs e)
         {
             IVFVideoEffectGrayscale grayscale;
@@ -1047,7 +1043,7 @@ namespace DVCapture
             var effect = VideoCapture1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.IsChecked == true);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.IsChecked == true);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -1066,7 +1062,7 @@ namespace DVCapture
             var effect = VideoCapture1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.IsChecked == true);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.IsChecked == true);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else

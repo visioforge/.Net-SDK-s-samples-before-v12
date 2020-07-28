@@ -55,7 +55,7 @@ namespace Video_Join_Demo
             return filename.Substring(k, filename.Length - k);
         }
 
-        private void BtAddInputFile_Click(object sender, EventArgs e)
+        private async void BtAddInputFile_Click(object sender, EventArgs e)
         {
             if (OpenDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -81,23 +81,23 @@ namespace Video_Join_Demo
                    (string.Compare(GetFileExt(s), ".GIF", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".PNG", StringComparison.OrdinalIgnoreCase) == 0))
                 {
-                    VideoEdit1.Input_AddImageFile(s, 2000, -1, VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight);
+                    await VideoEdit1.Input_AddImageFileAsync(s, TimeSpan.FromMilliseconds(2000), null, VFVideoEditStretchMode.Letterbox, 0, customWidth, customHeight);
                 }
                 else if ((string.Compare(GetFileExt(s), ".WAV", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".MP3", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".OGG", StringComparison.OrdinalIgnoreCase) == 0) ||
                    (string.Compare(GetFileExt(s), ".WMA", StringComparison.OrdinalIgnoreCase) == 0))
                 {
-                    var audioFile = new VFVEAudioSource(s, -1, -1, string.Empty);
-                    VideoEdit1.Input_AddAudioFile(audioFile, -1, 0);
+                    var audioFile = new VFVEAudioSource(s, TimeSpan.Zero, TimeSpan.Zero, string.Empty);
+                    await VideoEdit1.Input_AddAudioFileAsync(audioFile, null, 0);
                 }
                 else
                 {
-                    var videoFile = new VFVEVideoSource(s, -1, -1, VFVideoEditStretchMode.Letterbox);
-                    var audioFile = new VFVEAudioSource(s, -1, -1, string.Empty);
+                    var videoFile = new VFVEVideoSource(s, TimeSpan.Zero, TimeSpan.Zero, VFVideoEditStretchMode.Letterbox);
+                    var audioFile = new VFVEAudioSource(s, TimeSpan.Zero, TimeSpan.Zero, string.Empty);
 
-                    VideoEdit1.Input_AddVideoFile(videoFile, -1, 0, customWidth, customHeight);
-                    VideoEdit1.Input_AddAudioFile(audioFile, -1, 0);
+                    await VideoEdit1.Input_AddVideoFileAsync(videoFile, null, 0, customWidth, customHeight);
+                    await VideoEdit1.Input_AddAudioFileAsync(audioFile, null, 0);
                 }
             }
         }
@@ -439,7 +439,7 @@ namespace Video_Join_Demo
             }
         }
 
-        private void BtStart_Click(object sender, EventArgs e)
+        private async void BtStart_Click(object sender, EventArgs e)
         {
             VideoEdit1.Debug_Mode = cbDebugMode.Checked;
             VideoEdit1.Debug_Telemetry = cbTelemetry.Checked;
@@ -596,12 +596,12 @@ namespace Video_Join_Demo
 
             VideoEdit1.Audio_Preview_Enabled = true;
 
-            VideoEdit1.Start();
+            await VideoEdit1.StartAsync();
         }
 
-        private void BtStop_Click(object sender, EventArgs e)
+        private async void BtStop_Click(object sender, EventArgs e)
         {
-            VideoEdit1.Stop();
+            await VideoEdit1.StopAsync();
 
             lbFiles.Items.Clear();
             VideoEdit1.Input_Clear_List();
@@ -610,17 +610,24 @@ namespace Video_Join_Demo
 
         private void VideoEdit1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + "(" + e.CallSite + ")" + Environment.NewLine;
+            Invoke((Action)(() =>
+                                   {
+                                       mmLog.Text = mmLog.Text + e.Message + "(" + e.CallSite + ")" + Environment.NewLine;
+                                   }));
         }
 
         private void VideoEdit1_OnProgress(object sender, ProgressEventArgs e)
         {
-            ProgressBar1.Value = e.Progress;
+            Invoke((Action)(() => { ProgressBar1.Value = e.Progress; }));
         }
 
         private void VideoEdit1_OnStop(object sender, VideoEditStopEventArgs e)
         {
-            ProgressBar1.Value = 0;
+            Invoke((Action)(() =>
+                                   {
+                                       ProgressBar1.Value = 0;
+                                       lbFiles.Items.Clear();
+                                   }));
 
             if (e.Successful)
             {
@@ -631,7 +638,6 @@ namespace Video_Join_Demo
                 MessageBox.Show("Stopped with error", string.Empty, MessageBoxButtons.OK);
             }
 
-            lbFiles.Items.Clear();
             VideoEdit1.Input_Clear_List();
 
             VideoEdit1.Video_Transition_Clear();

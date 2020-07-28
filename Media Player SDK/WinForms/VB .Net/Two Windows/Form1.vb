@@ -8,11 +8,11 @@ Public Class Form1
 
     Dim WithEvents form2 As Form2
 
-    private sub form2_SizeChanged Handles form2.OnWindowSizeChanged
+    Private Sub form2_SizeChanged() Handles form2.OnWindowSizeChanged
         MediaPlayer1.MultiScreen_UpdateSize(0, form2.Screen.Width, form2.Screen.Height)
-    End sub
+    End Sub
 
-    Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired 
+    Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired
         form2.LogLicensing(e.Message)
     End Sub
 
@@ -27,16 +27,16 @@ Public Class Form1
     Private Sub tbTimeline_Scroll(ByVal sender As Object, ByVal e As EventArgs) Handles tbTimeline.Scroll
 
         If (Convert.ToInt32(timer1.Tag) = 0) Then
-            MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000)
+            MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value))
         End If
 
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         MediaPlayer1.FilenamesOrURL.Add(edFilename.Text)
         MediaPlayer1.Audio_PlayAudio = True
-        MediaPlayer1.Info_UseLibMediaInfo = true
+        MediaPlayer1.Info_UseLibMediaInfo = True
         MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
 
         MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device"
@@ -49,11 +49,11 @@ Public Class Form1
             MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer
         End If
 
-        MediaPlayer1.MultiScreen_Enabled = true
+        MediaPlayer1.MultiScreen_Enabled = True
         MediaPlayer1.MultiScreen_Clear()
         MediaPlayer1.MultiScreen_AddScreen(form2.Screen.Handle, form2.Screen.Width, form2.Screen.Height)
 
-        MediaPlayer1.Play()
+        Await MediaPlayer1.PlayAsync()
 
         MediaPlayer1.Audio_OutputDevice_Balance_Set(0, tbBalance1.Value)
         MediaPlayer1.Audio_OutputDevice_Volume_Set(0, tbVolume1.Value)
@@ -62,21 +62,22 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
+    Private Async Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
 
-        MediaPlayer1.Resume()
-
-    End Sub
-
-    Private Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
-
-        MediaPlayer1.Pause()
+        Await MediaPlayer1.ResumeAsync()
 
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
 
-        MediaPlayer1.Stop()
+        Await MediaPlayer1.PauseAsync()
+
+    End Sub
+
+    Private Async Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+
+        Await MediaPlayer1.StopAsync()
+
         timer1.Enabled = False
         tbTimeline.Value = 0
 
@@ -109,7 +110,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As EventArgs) Handles MyBase.Load
-        
+
         MediaPlayer1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
 
         form2 = New Form2
@@ -123,10 +124,10 @@ Public Class Form1
     Private Sub timer1_Tick(ByVal sender As System.Object, ByVal e As EventArgs) Handles timer1.Tick
 
         timer1.Tag = 1
-        tbTimeline.Maximum = MediaPlayer1.Duration_Time() / 1000
+        tbTimeline.Maximum = MediaPlayer1.Duration_Time().TotalSeconds
 
         Dim value As Integer
-        value = MediaPlayer1.Position_Get_Time() / 1000
+        value = MediaPlayer1.Position_Get_Time().TotalSeconds
         If ((value > 0) And (value < tbTimeline.Maximum)) Then
             tbTimeline.Value = value
         End If
@@ -146,7 +147,9 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnError(sender As Object, e As ErrorsEventArgs) Handles MediaPlayer1.OnError
 
-        form2.Log(e.Message)
+        Invoke(Sub()
+                   form2.Log(e.Message)
+               End Sub)
 
     End Sub
 

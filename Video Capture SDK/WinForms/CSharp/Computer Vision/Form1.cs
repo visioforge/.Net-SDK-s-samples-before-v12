@@ -1,17 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Form1.cs" company="VisioForge">
+//   Computer Vision demo.
+// </copyright>
+// <summary>
+//   Defines the Form1 type.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace Computer_Vision_Demo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
     using System.Diagnostics;
+    using System.Drawing;
     using System.Globalization;
     using System.IO;
+    using System.Linq;
+    using System.Text;
+    using System.Windows.Forms;
 
     using VisioForge.Controls.CV;
     using VisioForge.Shared.MFP;
@@ -397,11 +405,19 @@ namespace Computer_Vision_Demo
             }
         }
 
-        private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
+        private void Log(string txt)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
         }
 
+        private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
+        {
+            Log(e.Message);
+        }
+        
         private void ConfigureVideoCapture()
         {
             // select source
@@ -436,6 +452,8 @@ namespace Computer_Vision_Demo
             VideoCapture1.Audio_PlayAudio = false;
 
             VideoCapture1.Video_Sample_Grabber_Enabled = true;
+
+            VideoCapture1.Video_Renderer_SetAuto();
         }
 
         #endregion
@@ -451,7 +469,7 @@ namespace Computer_Vision_Demo
             MediaPlayer1.FilenamesOrURL.Clear();
             MediaPlayer1.FilenamesOrURL.Add(edFilename.Text);
 
-            MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
+            MediaPlayer1.Video_Renderer_SetAuto();
         }
 
         private void MediaPlayer1_OnVideoFrameBuffer(object sender, VideoFrameBufferEventArgs e)
@@ -461,9 +479,10 @@ namespace Computer_Vision_Demo
 
         #endregion
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
+            tcMain.SelectedIndex = 4;
 
             if (rbVideoFile.Checked)
             {
@@ -500,20 +519,20 @@ namespace Computer_Vision_Demo
             {
                 MediaPlayer1.Show();
                 VideoCapture1.Hide();
-                MediaPlayer1.Play();
+                await MediaPlayer1.PlayAsync();
             }
             else
             {
                 MediaPlayer1.Hide();
                 VideoCapture1.Show();
-                VideoCapture1.Start();
+                await VideoCapture1.StartAsync();
             }
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Stop();
-            MediaPlayer1.Stop();
+            await VideoCapture1.StopAsync();
+            await MediaPlayer1.StopAsync();
 
             FaceDetectionRemove();
             CarCounterRemove();
@@ -526,11 +545,6 @@ namespace Computer_Vision_Demo
             {
                 edFilename.Text = dlgOpenFile.FileName;
             }
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -266,7 +266,7 @@ namespace Media_Player_Demo
             }
         }
 
-        private void btSaveScreenshot_Click(object sender, EventArgs e)
+        private async void btSaveScreenshot_Click(object sender, EventArgs e)
         {
             DateTime dt = DateTime.Now;
 
@@ -284,19 +284,19 @@ namespace Media_Player_Demo
             switch (cbImageType.SelectedIndex)
             {
                 case 0:
-                    MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".bmp", VFImageFormat.BMP, 0, customWidth, customHeight);
+                    await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".bmp", VFImageFormat.BMP, 0, customWidth, customHeight);
                     break;
                 case 1:
-                    MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".jpg", VFImageFormat.JPEG, tbJPEGQuality.Value, customWidth, customHeight);
+                    await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".jpg", VFImageFormat.JPEG, tbJPEGQuality.Value, customWidth, customHeight);
                     break;
                 case 2:
-                    MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".gif", VFImageFormat.GIF, 0, customWidth, customHeight);
+                    await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".gif", VFImageFormat.GIF, 0, customWidth, customHeight);
                     break;
                 case 3:
-                    MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".png", VFImageFormat.PNG, 0, customWidth, customHeight);
+                    await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".png", VFImageFormat.PNG, 0, customWidth, customHeight);
                     break;
                 case 4:
-                    MediaPlayer1.Frame_Save(edScreenshotsFolder.Text + "\\" + s + ".tiff", VFImageFormat.TIFF, 0, customWidth, customHeight);
+                    await MediaPlayer1.Frame_SaveAsync(edScreenshotsFolder.Text + "\\" + s + ".tiff", VFImageFormat.TIFF, 0, customWidth, customHeight);
                     break;
             }
         }
@@ -402,7 +402,7 @@ namespace Media_Player_Demo
         {
             if (Convert.ToInt32(timer1.Tag) == 0)
             {
-                MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000);
+                MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value));
             }
         }
 
@@ -545,16 +545,16 @@ namespace Media_Player_Demo
                 int count = MediaInfo.Audio_Streams_Count();
                 bool one_output = MediaInfo.Audio_Streams_AllInOne;
 
-                if (count == 0)
-                {
-                    return;
-                }
-
                 cbAudioStream1.Enabled = true;
                 cbAudioStream1.Checked = true;
                 tbVolume1.Enabled = true;
                 tbBalance1.Enabled = true;
 
+                if (count == 0)
+                {
+                    return;
+                }
+                
                 if (count > 1)
                 {
                     cbAudioStream2.Enabled = true;
@@ -661,9 +661,9 @@ namespace Media_Player_Demo
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Tag = 1;
-            tbTimeline.Maximum = (int)(MediaPlayer1.Duration_Time() / 1000.0);
+            tbTimeline.Maximum = (int)MediaPlayer1.Duration_Time().TotalSeconds;
 
-            int value = (int)(MediaPlayer1.Position_Get_Time() / 1000.0);
+            int value = (int)MediaPlayer1.Position_Get_Time().TotalSeconds;
             if ((value > 0) && (value < tbTimeline.Maximum))
             {
                 tbTimeline.Value = value;
@@ -682,112 +682,107 @@ namespace Media_Player_Demo
             timer1.Tag = 0;
         }
 
-        private void FillAdjustRanges()
+        private async void FillVideoRendererAdjustRanges()
         {
             // updating adjust settings
-            float max;
-            float defaultValue;
-            float min;
-            float step;
-
-            if (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(
-                VFVideoRendererAdjustment.Brightness, out min, out max, out step, out defaultValue))
+            var brightness = await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Brightness);
+            if (brightness != null)
             {
-                tbAdjBrightness.Minimum = (int)min * 10;
-                tbAdjBrightness.Maximum = (int)max * 10;
-                tbAdjBrightness.SmallChange = (int)step * 10;
+                tbAdjBrightness.Minimum = (int)brightness.Min * 10;
+                tbAdjBrightness.Maximum = (int)brightness.Max * 10;
+                tbAdjBrightness.SmallChange = (int)brightness.Step * 10;
 
-                int def = (int)defaultValue * 10;
+                int def = (int)brightness.Default * 10;
 
-                if (def > (int)max * 10)
+                if (def > (int)brightness.Max * 10)
                 {
-                    def = (int)max * 10;
+                    def = (int)brightness.Max * 10;
                 }
 
-                if (def < (int)min * 10)
+                if (def < (int)brightness.Min * 10)
                 {
-                    def = (int)min * 10;
+                    def = (int)brightness.Min * 10;
                 }
 
                 tbAdjBrightness.Value = def;
-                lbAdjBrightnessMin.Text = "Min: " + Convert.ToString(min, CultureInfo.InvariantCulture);
-                lbAdjBrightnessMax.Text = "Max: " + Convert.ToString(max, CultureInfo.InvariantCulture);
-                lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture);
+                lbAdjBrightnessMin.Text = "Min: " + Convert.ToString(brightness.Min, CultureInfo.InvariantCulture);
+                lbAdjBrightnessMax.Text = "Max: " + Convert.ToString(brightness.Max, CultureInfo.InvariantCulture);
+                lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(brightness.Default, CultureInfo.InvariantCulture);
             }
 
-            if (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(
-                VFVideoRendererAdjustment.Hue, out min, out max, out step, out defaultValue))
+            var hue = await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Hue);
+            if (hue != null)
             {
-                tbAdjHue.Minimum = (int)min * 10;
-                tbAdjHue.Maximum = (int)max * 10;
-                tbAdjHue.SmallChange = (int)step * 10;
+                tbAdjHue.Minimum = (int)hue.Min * 10;
+                tbAdjHue.Maximum = (int)hue.Max * 10;
+                tbAdjHue.SmallChange = (int)hue.Step * 10;
 
-                int def = (int)defaultValue * 10;
+                int def = (int)hue.Default * 10;
 
-                if (def > (int)max * 10)
+                if (def > (int)hue.Max * 10)
                 {
-                    def = (int)max * 10;
+                    def = (int)hue.Max * 10;
                 }
 
-                if (def < (int)min * 10)
+                if (def < (int)hue.Min * 10)
                 {
-                    def = (int)min * 10;
+                    def = (int)hue.Min * 10;
                 }
 
                 tbAdjHue.Value = def;
-                lbAdjHueMin.Text = "Min: " + Convert.ToString(min, CultureInfo.InvariantCulture);
-                lbAdjHueMax.Text = "Max: " + Convert.ToString(max, CultureInfo.InvariantCulture);
-                lbAdjHueCurrent.Text = "Current: " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture);
+                lbAdjHueMin.Text = "Min: " + Convert.ToString(hue.Min, CultureInfo.InvariantCulture);
+                lbAdjHueMax.Text = "Max: " + Convert.ToString(hue.Max, CultureInfo.InvariantCulture);
+                lbAdjHueCurrent.Text = "Current: " + Convert.ToString(hue.Default, CultureInfo.InvariantCulture);
             }
 
-            if (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(
-                VFVideoRendererAdjustment.Saturation, out min, out max, out step, out defaultValue))
+            var saturation = await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Saturation);
+            if (saturation != null)
             {
-                tbAdjSaturation.Minimum = (int)min * 10;
-                tbAdjSaturation.Maximum = (int)max * 10;
-                tbAdjSaturation.SmallChange = (int)step * 10;
+                tbAdjSaturation.Minimum = (int)saturation.Min * 10;
+                tbAdjSaturation.Maximum = (int)saturation.Max * 10;
+                tbAdjSaturation.SmallChange = (int)saturation.Step * 10;
 
-                int def = (int)defaultValue * 10;
+                int def = (int)saturation.Default * 10;
 
-                if (def > (int)max * 10)
+                if (def > (int)saturation.Max * 10)
                 {
-                    def = (int)max * 10;
+                    def = (int)saturation.Max * 10;
                 }
 
-                if (def < (int)min * 10)
+                if (def < (int)saturation.Min * 10)
                 {
-                    def = (int)min * 10;
+                    def = (int)saturation.Min * 10;
                 }
 
                 tbAdjSaturation.Value = def;
-                lbAdjSaturationMin.Text = "Min: " + Convert.ToString(min, CultureInfo.InvariantCulture);
-                lbAdjSaturationMax.Text = "Max: " + Convert.ToString(max, CultureInfo.InvariantCulture);
-                lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture);
+                lbAdjSaturationMin.Text = "Min: " + Convert.ToString(saturation.Min, CultureInfo.InvariantCulture);
+                lbAdjSaturationMax.Text = "Max: " + Convert.ToString(saturation.Max, CultureInfo.InvariantCulture);
+                lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(saturation.Default, CultureInfo.InvariantCulture);
             }
 
-            if (MediaPlayer1.Video_Renderer_VideoAdjust_GetRanges(
-                VFVideoRendererAdjustment.Contrast, out min, out max, out step, out defaultValue))
+            var contrast = await MediaPlayer1.Video_Renderer_VideoAdjust_GetRangesAsync(VFVideoRendererAdjustment.Contrast);
+            if (contrast != null)
             {
-                tbAdjContrast.Minimum = (int)min * 10;
-                tbAdjContrast.Maximum = (int)max * 10;
-                tbAdjContrast.SmallChange = (int)step * 10;
+                tbAdjContrast.Minimum = (int)contrast.Min * 10;
+                tbAdjContrast.Maximum = (int)contrast.Max * 10;
+                tbAdjContrast.SmallChange = (int)contrast.Step * 10;
 
-                int def = (int)defaultValue * 10;
+                int def = (int)contrast.Default * 10;
 
-                if (def > (int)max * 10)
+                if (def > (int)contrast.Max * 10)
                 {
-                    def = (int)max * 10;
+                    def = (int)contrast.Max * 10;
                 }
 
-                if (def < (int)min * 10)
+                if (def < (int)contrast.Min * 10)
                 {
-                    def = (int)min * 10;
+                    def = (int)contrast.Min * 10;
                 }
 
                 tbAdjContrast.Value = def;
-                lbAdjContrastMin.Text = "Min: " + Convert.ToString(min, CultureInfo.InvariantCulture);
-                lbAdjContrastMax.Text = "Max: " + Convert.ToString(max, CultureInfo.InvariantCulture);
-                lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture);
+                lbAdjContrastMin.Text = "Min: " + Convert.ToString(contrast.Min, CultureInfo.InvariantCulture);
+                lbAdjContrastMax.Text = "Max: " + Convert.ToString(contrast.Max, CultureInfo.InvariantCulture);
+                lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(contrast.Default, CultureInfo.InvariantCulture);
             }
         }
 
@@ -1113,8 +1108,9 @@ namespace Media_Player_Demo
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
-        {            
+        private async void btStart_Click(object sender, EventArgs e)
+        {
+            //http://help.visioforge.com/video.mp4
             //  MediaPlayer1.CustomRedist_Enabled = true;
             //  MediaPlayer1.CustomRedist_Path = @"C:\Projects\TEMP\redist";
 
@@ -1237,6 +1233,8 @@ namespace Media_Player_Demo
                 MediaPlayer1.Video_Renderer.Video_Renderer = VFVideoRenderer.None;
             }
 
+            MediaPlayer1.Virtual_Camera_Output_Enabled = rbVirtualCameraOutput.Checked;
+
             MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text);
             MediaPlayer1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor;
             MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked;
@@ -1277,12 +1275,12 @@ namespace Media_Player_Demo
             MediaPlayer1.Audio_Effects_Enabled = cbAudioEffectsEnabled.Checked;
             if (MediaPlayer1.Audio_Effects_Enabled)
             {
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
-                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.PitchShift, cbAudPitchShiftEnabled.Checked, -1, -1);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+                MediaPlayer1.Audio_Effects_Add(-1, VFAudioEffectType.PitchShift, cbAudPitchShiftEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
             }
 
             if (cbAudPitchShiftEnabled.Checked)
@@ -1324,10 +1322,7 @@ namespace Media_Player_Demo
                                                         : VFGPUEffectsEngine.DirectX9;
 
             // Motion detection
-            if (cbMotDetEnabled.Checked)
-            {
-                btMotDetUpdateSettings_Click(null, null);
-            }
+            ConfigureMotionDetection();
 
             // Barcode detection
             MediaPlayer1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.Checked;
@@ -1355,9 +1350,11 @@ namespace Media_Player_Demo
 
             MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = MediaPlayer1.Video_Effects_Enabled;
 
-            MediaPlayer1.Play(cbRunAsync.Checked);
+            //MediaPlayer1.Play(cbRunAsync.Checked);
 
-            FillAdjustRanges();
+            await MediaPlayer1.PlayAsync().ConfigureAwait(true);
+
+            FillVideoRendererAdjustRanges();
 
             // DVD
             if (MediaPlayer1.Source_Mode == VFMediaPlayerSource.DVD_DS)
@@ -1447,48 +1444,48 @@ namespace Media_Player_Demo
             MediaPlayer1.DVD_Menu_Show(VFDVDMenu.Title);
         }
 
-        private void btZoomIn_Click(object sender, EventArgs e)
+        private async void btZoomIn_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio + 5;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomOut_Click(object sender, EventArgs e)
+        private async void btZoomOut_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_Ratio = MediaPlayer1.Video_Renderer.Zoom_Ratio - 5;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftDown_Click(object sender, EventArgs e)
+        private async void btZoomShiftDown_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY - 2;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync(); 
         }
 
-        private void btZoomShiftLeft_Click(object sender, EventArgs e)
+        private async void btZoomShiftLeft_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX - 2;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftRight_Click(object sender, EventArgs e)
+        private async void btZoomShiftRight_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_ShiftX = MediaPlayer1.Video_Renderer.Zoom_ShiftX + 2;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftUp_Click(object sender, EventArgs e)
+        private async void btZoomShiftUp_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_ShiftY = MediaPlayer1.Video_Renderer.Zoom_ShiftY + 2;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomReset_Click(object sender, EventArgs e)
+        private async void btZoomReset_Click(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Zoom_Ratio = 0;
             MediaPlayer1.Video_Renderer.Zoom_ShiftX = 0;
             MediaPlayer1.Video_Renderer.Zoom_ShiftY = 0;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
         private void cbAudioStream1_CheckedChanged(object sender, EventArgs e)
@@ -1634,24 +1631,24 @@ namespace Media_Player_Demo
                 {
                     // play title
                     MediaPlayer1.DVD_Title_Play(cbDVDControlTitle.SelectedIndex);
-                    tbTimeline.Maximum = MediaPlayer1.DVD_Title_GetDurationS();
+                    tbTimeline.Maximum = (int)MediaPlayer1.DVD_Title_GetDuration().TotalSeconds;
                 }
             }
         }
 
-        private void cbScreenFlipHorizontal_CheckedChanged(object sender, EventArgs e)
+        private async void cbScreenFlipHorizontal_CheckedChanged(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void cbScreenFlipVertical_CheckedChanged(object sender, EventArgs e)
+        private async void cbScreenFlipVertical_CheckedChanged(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked;
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void cbStretch_CheckedChanged(object sender, EventArgs e)
+        private async void cbStretch_CheckedChanged(object sender, EventArgs e)
         {
             if (cbStretch.Checked)
             {
@@ -1662,12 +1659,13 @@ namespace Media_Player_Demo
                 MediaPlayer1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Letterbox;
             }
 
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Stop();
+            await MediaPlayer1.StopAsync();
+
             timer1.Enabled = false;
             tbTimeline.Value = 0;
 
@@ -1692,14 +1690,14 @@ namespace Media_Player_Demo
             multiscreenWindows.Clear();
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Resume();
+            await MediaPlayer1.ResumeAsync().ConfigureAwait(false);
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Pause();
+            await MediaPlayer1.PauseAsync().ConfigureAwait(false);
         }
 
         private void btNextFrame_Click(object sender, EventArgs e)
@@ -1749,12 +1747,12 @@ namespace Media_Player_Demo
             }
         }
 
-        private void cbAspectRatioUseCustom_CheckedChanged(object sender, EventArgs e)
+        private async void cbAspectRatioUseCustom_CheckedChanged(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.Aspect_Ratio_Override = cbAspectRatioUseCustom.Checked;
             MediaPlayer1.Video_Renderer.Aspect_Ratio_X = Convert.ToInt32(edAspectRatioX.Text);
             MediaPlayer1.Video_Renderer.Aspect_Ratio_Y = Convert.ToInt32(edAspectRatioY.Text);
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
         private void btAudEqRefresh_Click(object sender, EventArgs e)
@@ -1917,9 +1915,9 @@ namespace Media_Player_Demo
             }
         }
 
-        private void tbAdjBrightness_Scroll(object sender, EventArgs e)
+        private async void tbAdjBrightness_Scroll(object sender, EventArgs e)
         {
-            MediaPlayer1.Video_Renderer_VideoAdjust_SetValue(VFVideoRendererAdjustment.Brightness, (float)(tbAdjBrightness.Value / 10.0));
+            await MediaPlayer1.Video_Renderer_VideoAdjust_SetValueAsync(VFVideoRendererAdjustment.Brightness, (float)(tbAdjBrightness.Value / 10.0));
             lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(tbAdjBrightness.Value / 10.0, CultureInfo.InvariantCulture);
         }
 
@@ -1941,32 +1939,37 @@ namespace Media_Player_Demo
             lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(tbAdjSaturation.Value / 10.0, CultureInfo.InvariantCulture);
         }
 
-        private void btMotDetUpdateSettings_Click(object sender, EventArgs e)
+        private void ConfigureMotionDetection()
         {
             if (cbMotDetEnabled.Checked)
             {
                 MediaPlayer1.Motion_Detection = new MotionDetectionSettings
-                {
-                    Enabled = cbMotDetEnabled.Checked,
-                    Compare_Red = cbCompareRed.Checked,
-                    Compare_Green = cbCompareGreen.Checked,
-                    Compare_Blue = cbCompareBlue.Checked,
-                    Compare_Greyscale = cbCompareGreyscale.Checked,
-                    Highlight_Color = (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
-                    Highlight_Enabled = cbMotDetHLEnabled.Checked,
-                    Highlight_Threshold = tbMotDetHLThreshold.Value,
-                    FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
-                    Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
-                    Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
-                    DropFrames_Enabled = cbMotDetDropFramesEnabled.Checked,
-                    DropFrames_Threshold = tbMotDetDropFramesThreshold.Value
-                };
+                                                    {
+                                                        Enabled = cbMotDetEnabled.Checked,
+                                                        Compare_Red = cbCompareRed.Checked,
+                                                        Compare_Green = cbCompareGreen.Checked,
+                                                        Compare_Blue = cbCompareBlue.Checked,
+                                                        Compare_Greyscale = cbCompareGreyscale.Checked,
+                                                        Highlight_Color = (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
+                                                        Highlight_Enabled = cbMotDetHLEnabled.Checked,
+                                                        Highlight_Threshold = tbMotDetHLThreshold.Value,
+                                                        FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
+                                                        Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
+                                                        Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
+                                                        DropFrames_Enabled = cbMotDetDropFramesEnabled.Checked,
+                                                        DropFrames_Threshold = tbMotDetDropFramesThreshold.Value
+                                                    };
                 MediaPlayer1.MotionDetection_Update();
             }
             else
             {
                 MediaPlayer1.Motion_Detection = null;
             }
+        }
+
+        private void btMotDetUpdateSettings_Click(object sender, EventArgs e)
+        {
+            ConfigureMotionDetection();
         }
 
         private void btChromaKeySelectBGImage_Click(object sender, EventArgs e)
@@ -2019,25 +2022,32 @@ namespace Media_Player_Demo
 
         private void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
-            string s = string.Empty;
-            int k = 0;
-            foreach (byte b in e.Matrix)
+            try
             {
-                s += b.ToString("D3") + " ";
+                string s = string.Empty;
+                int k = 0;
+                foreach (byte b in e.Matrix)
+                {
+                    s += b.ToString("D3") + " ";
 
-                if (k == MediaPlayer1.Motion_Detection.Matrix_Width - 1)
-                {
-                    k = 0;
-                    s += Environment.NewLine;
+                    if (k == MediaPlayer1.Motion_Detection.Matrix_Width - 1)
+                    {
+                        k = 0;
+                        s += Environment.NewLine;
+                    }
+                    else
+                    {
+                        k++;
+                    }
                 }
-                else
-                {
-                    k++;
-                }
+
+                mmMotDetMatrix.Text = s.Trim();
+                pbMotionLevel.Value = e.Level;
             }
-
-            mmMotDetMatrix.Text = s.Trim();
-            pbMotionLevel.Value = e.Level;
+            catch (Exception exception)
+            {
+                Debug.WriteLine(exception);
+            }
         }
 
         private void MediaPlayer1_OnMotion(object sender, MotionDetectionEventArgs e)
@@ -2162,11 +2172,11 @@ namespace Media_Player_Demo
             MediaPlayer1.MultiScreen_SetParameters(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private async void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             if (MediaPlayer1.Status != VFMediaPlayerStatus.Free)
             {
-                MediaPlayer1.Stop();
+                await MediaPlayer1.StopAsync();
             }
         }
 
@@ -2262,8 +2272,8 @@ namespace Media_Player_Demo
             }
 
             pan.Enabled = cbPan.Checked;
-            pan.StartTime = Convert.ToInt32(edPanStartTime.Text);
-            pan.StopTime = Convert.ToInt32(edPanStopTime.Text);
+            pan.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text));
+            pan.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text));
             pan.StartX = Convert.ToInt32(edPanSourceLeft.Text);
             pan.StartY = Convert.ToInt32(edPanSourceTop.Text);
             pan.StartWidth = Convert.ToInt32(edPanSourceWidth.Text);
@@ -2332,8 +2342,8 @@ namespace Media_Player_Demo
                 }
 
                 fadeIn.Enabled = cbFadeInOut.Checked;
-                fadeIn.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text);
-                fadeIn.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text);
+                fadeIn.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text));
+                fadeIn.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text));
             }
             else
             {
@@ -2356,8 +2366,8 @@ namespace Media_Player_Demo
                 }
 
                 fadeOut.Enabled = cbFadeInOut.Checked;
-                fadeOut.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text);
-                fadeOut.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text);
+                fadeOut.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text));
+                fadeOut.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text));
             }
         }
 
@@ -2392,7 +2402,7 @@ namespace Media_Player_Demo
 
         private int controlHeight;
 
-        private void btFullScreen_Click(object sender, EventArgs e)
+        private async void btFullScreen_Click(object sender, EventArgs e)
         {
             if (!fullScreen)
             {
@@ -2426,7 +2436,7 @@ namespace Media_Player_Demo
                 MediaPlayer1.Width = Width;
                 MediaPlayer1.Height = Height;
 
-                MediaPlayer1.Video_Renderer_Update();
+                await MediaPlayer1.Video_Renderer_UpdateAsync();
             }
             else
             {
@@ -2449,7 +2459,7 @@ namespace Media_Player_Demo
                 FormBorderStyle = FormBorderStyle.Sizable;
                 WindowState = FormWindowState.Normal;
 
-                MediaPlayer1.Video_Renderer_Update();
+                await MediaPlayer1.Video_Renderer_UpdateAsync();
             }
         }
 
@@ -2496,14 +2506,24 @@ namespace Media_Player_Demo
 
         private void MediaPlayer1_OnAudioVUMeterProVolume(object sender, AudioLevelEventArgs e)
         {
-            volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
-            waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
+            BeginInvoke((Action)(() =>
+                                   {
+                                       try
+                                       {
+                                           volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
+                                           waveformPainter1.AddMax(e.ChannelLevels[0] / 100f);
 
-            if (e.ChannelLevelsDb.Length > 1)
-            {
-                volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
-                waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
-            }
+                                           if (e.ChannelLevelsDb.Length > 1)
+                                           {
+                                               volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
+                                               waveformPainter2.AddMax(e.ChannelLevels[1] / 100f);
+                                           }
+                                       }
+                                       catch (Exception ex)
+                                       {
+                                           Debug.WriteLine(ex);
+                                       }
+                                   }));
         }
 
         private void tbVUMeterAmplification_Scroll(object sender, EventArgs e)
@@ -2558,7 +2578,7 @@ namespace Media_Player_Demo
             cbLiveRotation_CheckedChanged(sender, e);
         }
 
-        private void pnVideoRendererBGColor_Click(object sender, EventArgs e)
+        private async void pnVideoRendererBGColor_Click(object sender, EventArgs e)
         {
             colorDialog1.Color = pnVideoRendererBGColor.BackColor;
 
@@ -2567,14 +2587,14 @@ namespace Media_Player_Demo
                 pnVideoRendererBGColor.BackColor = colorDialog1.Color;
 
                 MediaPlayer1.Video_Renderer.BackgroundColor = colorDialog1.Color;
-                MediaPlayer1.Video_Renderer_Update();
+                await MediaPlayer1.Video_Renderer_UpdateAsync();
             }
         }
 
-        private void cbDirect2DRotate_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbDirect2DRotate_SelectedIndexChanged(object sender, EventArgs e)
         {
             MediaPlayer1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text);
-            MediaPlayer1.Video_Renderer_Update();
+            await MediaPlayer1.Video_Renderer_UpdateAsync();
         }
 
         private void cbFilters_SelectedIndexChanged(object sender, EventArgs e)
@@ -2785,10 +2805,11 @@ namespace Media_Player_Demo
 
         private void MediaPlayer1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            BeginInvoke((Action)(() =>
+                                        {
+                                            mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+                                        }));
+
         }
 
         private void btReadTags_Click(object sender, EventArgs e)
@@ -3076,6 +3097,11 @@ namespace Media_Player_Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //edFilenameOrURL.Text = Path.Combine(
+            //    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            //    "VisioForge",
+            //    "live.ts");
+
             Text += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + "), C#";
 
             // set combobox indexes
@@ -3149,12 +3175,6 @@ namespace Media_Player_Demo
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             MediaPlayer1.Debug_Dir =
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
-        }
-
-        private void Form1_SizeChanged(object sender, EventArgs e)
-        {
-            MediaPlayer1.Width = Width - MediaPlayer1.Left - 30;
-            MediaPlayer1.Height = Height - MediaPlayer1.Top - 230;
         }
 
         private void btTextLogoAdd_Click(object sender, EventArgs e)
@@ -3237,7 +3257,7 @@ namespace Media_Player_Demo
             var effect = MediaPlayer1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.Checked);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.Checked);
                 MediaPlayer1.Video_Effects_Add(flip);
             }
             else
@@ -3256,7 +3276,7 @@ namespace Media_Player_Demo
             var effect = MediaPlayer1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.Checked);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.Checked);
                 MediaPlayer1.Video_Effects_Add(flip);
             }
             else

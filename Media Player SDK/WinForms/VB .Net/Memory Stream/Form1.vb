@@ -19,12 +19,12 @@ Public Class Form1
     Private Sub tbTimeline_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbTimeline.Scroll
 
         If (Convert.ToInt32(timer1.Tag) = 0) Then
-            MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000)
+            MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value))
         End If
 
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         mmError.Text = String.Empty
 
@@ -70,9 +70,9 @@ Public Class Form1
         End If
 
         MediaPlayer1.Debug_Mode = cbDebugMode.Checked
-        MediaPlayer1.Play()
+        Await MediaPlayer1.PlayAsync()
 
-        tbTimeline.Maximum = MediaPlayer1.Duration_Time() / 1000
+        tbTimeline.Maximum = MediaPlayer1.Duration_Time().TotalSeconds
         timer1.Enabled = True
 
     End Sub
@@ -84,21 +84,22 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
+    Private Async Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
 
-        MediaPlayer1.Resume()
-
-    End Sub
-
-    Private Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
-
-        MediaPlayer1.Pause()
+        Await MediaPlayer1.ResumeAsync()
 
     End Sub
 
-    Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
 
-        MediaPlayer1.Stop()
+        Await MediaPlayer1.PauseAsync()
+
+    End Sub
+
+    Private Async Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+
+        Await MediaPlayer1.StopAsync()
+
         timer1.Enabled = False
         tbTimeline.Value = 0
 
@@ -140,9 +141,9 @@ Public Class Form1
     Private Sub timer1_Tick(ByVal sender As System.Object, ByVal e As EventArgs) Handles timer1.Tick
 
         timer1.Tag = 1
-        tbTimeline.Maximum = MediaPlayer1.Duration_Time() / 1000
+        tbTimeline.Maximum = MediaPlayer1.Duration_Time().TotalSeconds
 
-        Dim value As Integer = MediaPlayer1.Position_Get_Time() / 1000
+        Dim value As Integer = MediaPlayer1.Position_Get_Time().TotalSeconds
         If ((value > 0) And (value < tbTimeline.Maximum)) Then
             tbTimeline.Value = value
         End If
@@ -155,7 +156,9 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnError(sender As System.Object, e As ErrorsEventArgs) Handles MediaPlayer1.OnError
 
-        mmError.Text = mmError.Text + e.Message + Environment.NewLine
+        Invoke(Sub()
+                   mmError.Text = mmError.Text + e.Message + Environment.NewLine
+               End Sub)
 
     End Sub
 
@@ -168,9 +171,11 @@ Public Class Form1
 
     Private Sub MediaPlayer1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles MediaPlayer1.OnLicenseRequired
 
-        If cbLicensing.Checked Then
-            mmError.Text = mmError.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-        End If
+        Invoke(Sub()
+                   If cbLicensing.Checked Then
+                       mmError.Text = mmError.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
+                   End If
+               End Sub)
 
     End Sub
 

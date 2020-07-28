@@ -61,7 +61,7 @@ Public Class Form1
 
     Dim gifSettingsDialog As GIFSettingsDialog
 
-    Dim screenshotSaveDialog as SaveFileDialog
+    Dim screenshotSaveDialog As SaveFileDialog
 
     Dim onvifControl As ONVIFControl
 
@@ -83,20 +83,20 @@ Public Class Form1
     ReadOnly multiscreenWindows As List(Of Form) = New List(Of Form)
 
     ReadOnly audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
-    
-    private readonly tmRecording as Timers.Timer = new Timers.Timer(1000)
 
-    private WithEvents windowCaptureForm as WindowCaptureForm
-    
+    Private ReadOnly tmRecording As Timers.Timer = New Timers.Timer(1000)
+
+    Private WithEvents windowCaptureForm As WindowCaptureForm
+
     Private Sub AddAudioEffects()
 
         VideoCapture1.Audio_Effects_Clear(-1)
 
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1)
-        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
+        VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero)
     End Sub
 
     Private Sub Form1_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
@@ -107,7 +107,7 @@ Public Class Form1
 
         AddHandler tmRecording.Elapsed, AddressOf UpdateRecordingTime
 
-        screenshotSaveDialog = new SaveFileDialog()
+        screenshotSaveDialog = New SaveFileDialog()
         screenshotSaveDialog.FileName = "image.jpg"
         screenshotSaveDialog.Filter = "JPEG|*.jpg|BMP|*.bmp|PNG|*.png|GIF|*.gif|TIFF|*.tiff"
         screenshotSaveDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
@@ -149,6 +149,8 @@ Public Class Form1
         cbFaceTrackingColorMode.SelectedIndex = 0
         cbFaceTrackingScalingMode.SelectedIndex = 0
         cbFaceTrackingSearchMode.SelectedIndex = 1
+
+        cbHLSMode.SelectedIndex = 0
 
         rbMotionDetectionExProcessor.SelectedIndex = 1
         rbMotionDetectionExDetector.SelectedIndex = 1
@@ -611,7 +613,7 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
+    Private Async Sub btStart_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStart.Click
 
         VideoCapture1.Debug_Mode = cbDebugMode.Checked
         VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\VisioForge\"
@@ -971,9 +973,7 @@ Public Class Form1
         ConfigureMPEGDVDecoding()
 
         'motion detection
-        If (cbMotDetEnabled.Checked) Then
-            btMotDetUpdateSettings_Click(sender, e) 'apply settings
-        End If
+        ConfigureMotionDetection()
 
         'VU Meters
         ConfigureVUMeter()
@@ -1027,7 +1027,7 @@ Public Class Form1
         End If
 
         ' start
-        VideoCapture1.Start(cbRunAsync.Checked)
+        Await VideoCapture1.StartAsync()
 
         edNetworkURL.Text = VideoCapture1.Network_Streaming_URL
 
@@ -1035,7 +1035,6 @@ Public Class Form1
     End Sub
 
     Private Sub ConfigureMotionDetectionEx()
-
         If (cbMotionDetectionEx.Checked) Then
             VideoCapture1.Motion_DetectionEx = New MotionDetectionExSettings()
             VideoCapture1.Motion_DetectionEx.ProcessorType = rbMotionDetectionExProcessor.SelectedIndex
@@ -1043,7 +1042,6 @@ Public Class Form1
         Else
             VideoCapture1.Motion_DetectionEx = Nothing
         End If
-
     End Sub
 
     Private Sub ConfigureOutputTags()
@@ -1081,7 +1079,7 @@ Public Class Form1
             ElseIf (rbSeparateCaptureSplitByDuration.Checked) Then
                 VideoCapture1.SeparateCapture_Mode = VFSeparateCaptureMode.SplitByDuration
                 VideoCapture1.SeparateCapture_AutostartCapture = True
-                VideoCapture1.SeparateCapture_TimeThreshold = Convert.ToInt32(edSeparateCaptureDuration.Text)
+                VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.FromMilliseconds(Convert.ToInt32(edSeparateCaptureDuration.Text))
             ElseIf (rbSeparateCaptureSplitBySize.Checked) Then
                 VideoCapture1.SeparateCapture_Mode = VFSeparateCaptureMode.SplitByFileSize
                 VideoCapture1.SeparateCapture_AutostartCapture = True
@@ -1278,6 +1276,8 @@ Public Class Form1
     Private Sub ConfigureVideoEffects()
 
         VideoCapture1.Video_Effects_Enabled = cbEffects.Checked
+        VideoCapture1.Video_Effects_MergeImageLogos = cbMergeImageLogos.Checked
+        VideoCapture1.Video_Effects_MergeTextLogos = cbMergeTextLogos.Checked
         VideoCapture1.Video_Effects_Clear()
 
         'Deinterlace
@@ -1782,6 +1782,9 @@ Public Class Form1
                 hls.HLS.SegmentDuration = Convert.ToInt32(edHLSSegmentDuration.Text)
                 hls.HLS.NumSegments = Convert.ToInt32(edHLSSegmentCount.Text)
                 hls.HLS.OutputFolder = edHLSOutputFolder.Text
+                hls.HLS.PlaylistType = cbHLSMode.SelectedIndex
+                hls.HLS.Custom_HTTP_Server_Enabled = cbHLSEmbeddedHTTPServerEnabled.Checked
+                hls.HLS.Custom_HTTP_Server_Port = Convert.ToInt32(edHLSEmbeddedHTTPServerPort.Text)
                 VideoCapture1.Network_Streaming_Output = hls
             Case 6
                 VideoCapture1.Network_Streaming_Format = VFNetworkStreamingFormat.External
@@ -1905,6 +1908,8 @@ Public Class Form1
             Case 11
                 settings.Type = VFIPSource.RTSP_LowLatency
                 settings.RTSP_LowLatency_UseUDP = True
+            Case 12
+                settings.Type = VFIPSource.NDI
         End Select
 
         settings.AudioCapture = cbIPAudioCapture.Checked
@@ -1973,11 +1978,11 @@ Public Class Form1
         Return settings
     End Function
 
-    Private Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
+    Private Async Sub btStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btStop.Click
 
         tmRecording.Stop()
 
-        VideoCapture1.Stop()
+        Await VideoCapture1.StopAsync()
 
         If cbMultiscreenDrawOnPanels.Checked Then
             pnScreen1.Refresh()
@@ -2009,7 +2014,7 @@ Public Class Form1
         VideoCapture1.Video_Filters_Clear()
     End Sub
 
-' ReSharper disable once UnusedParameter.Local
+    ' ReSharper disable once UnusedParameter.Local
     Private Sub cbAudioInputSelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs)
         VideoCapture1.Audio_CaptureDevice_Format = cbAudioInputFormat.Text
     End Sub
@@ -2028,7 +2033,7 @@ Public Class Form1
         If cbCrossbarInput.SelectedIndex <> -1 Then
             VideoCapture1.Video_CaptureDevice_CrossBar_GetRelated(cbCrossbarInput.Text, cbCrossbarOutput.Text, RelatedInput, RelatedOutput)
         End If
-        End Sub
+    End Sub
 
     Private Sub cbCrossbarOutput_SelectedIndexChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbCrossbarOutput.SelectedIndexChanged
         cbCrossbarInput.Items.Clear()
@@ -2103,14 +2108,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Form1_FormClosed(ByVal sender As Object, ByVal e As FormClosedEventArgs) Handles MyBase.FormClosed
-
-        If VideoCapture1.Status = VFVideoCaptureStatus.Work Then
-            VideoCapture1.Stop()
-        End If
-
-    End Sub
-
     Private Sub cbGreyscale_CheckedChanged(ByVal sender As Object, ByVal e As EventArgs) Handles cbGreyscale.CheckedChanged
 
         Dim intf As IVFVideoEffectGrayscale
@@ -2127,21 +2124,21 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btSaveScreenshot_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btSaveScreenshot.Click
+    Private Async Sub btSaveScreenshot_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btSaveScreenshot.Click
         If (screenshotSaveDialog.ShowDialog(Me) = DialogResult.OK) Then
             Dim filename = screenshotSaveDialog.FileName
             Dim ext = Path.GetExtension(filename)?.ToLowerInvariant()
             Select Case (ext)
                 Case ".bmp"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0)
                 Case ".jpg"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85)
                 Case ".gif"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0)
                 Case ".png"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0)
                 Case ".tiff"
-                    VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0)
+                    Await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0)
             End Select
         End If
     End Sub
@@ -2162,32 +2159,24 @@ Public Class Form1
 
     End Sub
 
-    Private Sub tbAdjBrightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjBrightness.Scroll
-
-        VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Brightness, tbAdjBrightness.Value, cbAdjBrightnessAuto.Checked)
+    Private Async Sub tbAdjBrightness_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjBrightness.Scroll, cbAdjBrightnessAuto.CheckedChanged
+        Await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Brightness, New VideoCaptureDeviceAdjustValue(tbAdjBrightness.Value, cbAdjBrightnessAuto.Checked))
         lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(tbAdjBrightness.Value)
-
     End Sub
 
-    Private Sub tbAdjContrast_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjContrast.Scroll
-
-        VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Contrast, tbAdjContrast.Value, cbAdjContrastAuto.Checked)
+    Private Async Sub tbAdjContrast_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjContrast.Scroll, cbAdjContrastAuto.CheckedChanged
+        Await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Contrast, New VideoCaptureDeviceAdjustValue(tbAdjContrast.Value, cbAdjContrastAuto.Checked))
         lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(tbAdjContrast.Value)
-
     End Sub
 
-    Private Sub tbAdjHue_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjHue.Scroll
-
-        VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Hue, tbAdjHue.Value, cbAdjHueAuto.Checked)
+    Private Async Sub tbAdjHue_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjHue.Scroll, cbAdjHueAuto.CheckedChanged
+        Await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Hue, New VideoCaptureDeviceAdjustValue(tbAdjHue.Value, cbAdjHueAuto.Checked))
         lbAdjHueCurrent.Text = "Current: " + Convert.ToString(tbAdjHue.Value)
-
     End Sub
 
-    Private Sub tbAdjSaturation_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjSaturation.Scroll
-
-        VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Saturation, tbAdjSaturation.Value, cbAdjSaturationAuto.Checked)
+    Private Async Sub tbAdjSaturation_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbAdjSaturation.Scroll, cbAdjSaturationAuto.CheckedChanged
+        Await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Saturation, New VideoCaptureDeviceAdjustValue(tbAdjSaturation.Value, cbAdjSaturationAuto.Checked))
         lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(tbAdjSaturation.Value)
-
     End Sub
 
     Private Sub cbUseAudioInputFromVideoCaptureDevice_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbUseAudioInputFromVideoCaptureDevice.CheckedChanged
@@ -2237,7 +2226,6 @@ Public Class Form1
     End Sub
 
     Private Sub btConnect_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btConnect.Click
-
         Dim input1 As String
 
         If (cbCrossbarInput.SelectedIndex <> -1) And (cbCrossbarOutput.SelectedIndex <> -1) Then
@@ -2245,55 +2233,38 @@ Public Class Form1
 
             lbRotes.Items.Clear()
             For i As Integer = 0 To cbCrossbarOutput.Items.Count - 1
-
                 input1 = VideoCapture1.Video_CaptureDevice_CrossBar_GetConnectedInputForOutput(cbCrossbarOutput.Items.Item(i).ToString())
                 lbRotes.Items.Add("Input: " + input1 + ", Output: " + cbCrossbarOutput.Items.Item(i))
-
             Next i
         End If
-
     End Sub
 
-    Private Sub btDVFF_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVFF.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.FastestFwd)
-
+    Private Async Sub btDVFF_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVFF.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.FastestFwd)
     End Sub
 
-    Private Sub btDVPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVPause.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.Pause)
-
+    Private Async Sub btDVPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVPause.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Pause)
     End Sub
 
-    Private Sub btDVRewind_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVRewind.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.Rew)
-
+    Private Async Sub btDVRewind_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVRewind.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Rew)
     End Sub
 
-    Private Sub btDVPlay_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVPlay.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.Play)
-
+    Private Async Sub btDVPlay_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVPlay.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Play)
     End Sub
 
-    Private Sub btDVStepFWD_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVStepFWD.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.StepFw)
-
+    Private Async Sub btDVStepFWD_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVStepFWD.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepFw)
     End Sub
 
-    Private Sub btDVStepRev_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVStepRev.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.StepRev)
-
+    Private Async Sub btDVStepRev_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVStepRev.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepRev)
     End Sub
 
-    Private Sub btDVStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVStop.Click
-
-        VideoCapture1.DV_SendCommand(VFDVCommand.Stop)
-
+    Private Async Sub btDVStop_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btDVStop.Click
+        Await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Stop)
     End Sub
 
     Private Sub btRefreshClients_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btRefreshClients.Click
@@ -2380,11 +2351,11 @@ Public Class Form1
 
         End If
     End Sub
-    
-    Private Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
+
+    Private Async Sub cbStretch_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch.CheckedChanged
 
         VideoCapture1.Video_Renderer.StretchMode = cbStretch.Checked
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
 
     End Sub
 
@@ -2472,15 +2443,15 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
+    Private Async Sub btPause_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btPause.Click
 
-        VideoCapture1.Pause()
+        Await VideoCapture1.PauseAsync()
 
     End Sub
 
-    Private Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
+    Private Async Sub btResume_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btResume.Click
 
-        VideoCapture1.Resume()
+        Await VideoCapture1.ResumeAsync()
 
     End Sub
 
@@ -2687,10 +2658,8 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btScreenCaptureUpdate_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btScreenCaptureUpdate.Click
-
-        VideoCapture1.Screen_Capture_UpdateParameters(Convert.ToInt32(edScreenLeft.Text), Convert.ToInt32(edScreenTop.Text), cbScreenCapture_GrabMouseCursor.Checked)
-
+    Private Async Sub btScreenCaptureUpdate_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btScreenCaptureUpdate.Click
+        Await VideoCapture1.Screen_Capture_UpdateParametersAsync(Convert.ToInt32(edScreenLeft.Text), Convert.ToInt32(edScreenTop.Text), cbScreenCapture_GrabMouseCursor.Checked)
     End Sub
 
     Private Sub cbPIPDevice_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbPIPDevice.SelectedIndexChanged
@@ -2786,24 +2755,22 @@ Public Class Form1
     End Sub
 
 
-    Private Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
+    Private Async Sub cbScreenFlipVertical_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipVertical.CheckedChanged
 
         VideoCapture1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
 
     End Sub
 
-    Private Sub cbScreenFlipHorizontal_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipHorizontal.CheckedChanged
+    Private Async Sub cbScreenFlipHorizontal_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbScreenFlipHorizontal.CheckedChanged
 
         VideoCapture1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
 
     End Sub
 
-    Private Sub btMotDetUpdateSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btMotDetUpdateSettings.Click
-
+    Private Sub ConfigureMotionDetection()
         If (cbMotDetEnabled.Checked) Then
-
             VideoCapture1.Motion_Detection = New MotionDetectionSettings()
             VideoCapture1.Motion_Detection.Enabled = cbMotDetEnabled.Checked
             VideoCapture1.Motion_Detection.Compare_Red = cbCompareRed.Checked
@@ -2819,18 +2786,18 @@ Public Class Form1
             VideoCapture1.Motion_Detection.DropFrames_Enabled = cbMotDetDropFramesEnabled.Checked
             VideoCapture1.Motion_Detection.DropFrames_Threshold = tbMotDetDropFramesThreshold.Value
             VideoCapture1.MotionDetection_Update()
-
         Else
-
             VideoCapture1.Motion_Detection = Nothing
-
         End If
-
     End Sub
 
-    Private Sub btSignal_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSignal.Click
+    Private Sub btMotDetUpdateSettings_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btMotDetUpdateSettings.Click
+        ConfigureMotionDetection()
+    End Sub
 
-        If VideoCapture1.Video_CaptureDevice_SignalPresent() Then
+    Private Async Sub btSignal_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btSignal.Click
+
+        If Await VideoCapture1.Video_CaptureDevice_SignalPresentAsync() Then
             MessageBox.Show("Signal present")
         Else
             MessageBox.Show("Signal not present")
@@ -2838,57 +2805,57 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbStretch1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch1.CheckedChanged
+    Private Async Sub cbStretch1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch1.CheckedChanged
 
-        VideoCapture1.MultiScreen_SetParameters(0, cbStretch1.Checked, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked)
-
-    End Sub
-
-    Private Sub cbFlipVertical1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipVertical1.CheckedChanged
-
-        VideoCapture1.MultiScreen_SetParameters(0, cbStretch1.Checked, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked)
+        Await VideoCapture1.MultiScreen_SetParametersAsync(0, cbStretch1.Checked, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked)
 
     End Sub
 
-    Private Sub cbFlipHorizontal1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipHorizontal1.CheckedChanged
+    Private Async Sub cbFlipVertical1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipVertical1.CheckedChanged
 
-        VideoCapture1.MultiScreen_SetParameters(0, cbStretch1.Checked, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked)
-
-    End Sub
-
-    Private Sub cbStretch2_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch2.CheckedChanged
-
-        VideoCapture1.MultiScreen_SetParameters(1, cbStretch2.Checked, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked)
+        Await VideoCapture1.MultiScreen_SetParametersAsync(0, cbStretch1.Checked, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked)
 
     End Sub
 
-    Private Sub cbFlipVertical2_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipVertical2.CheckedChanged
+    Private Async Sub cbFlipHorizontal1_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipHorizontal1.CheckedChanged
 
-        VideoCapture1.MultiScreen_SetParameters(1, cbStretch2.Checked, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked)
-
-    End Sub
-
-    Private Sub cbFlipHorizontal2_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipHorizontal2.CheckedChanged
-
-        VideoCapture1.MultiScreen_SetParameters(1, cbStretch2.Checked, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked)
+        Await VideoCapture1.MultiScreen_SetParametersAsync(0, cbStretch1.Checked, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked)
 
     End Sub
 
-    Private Sub cbStretch3_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch3.CheckedChanged
+    Private Async Sub cbStretch2_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch2.CheckedChanged
 
-        VideoCapture1.MultiScreen_SetParameters(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
-
-    End Sub
-
-    Private Sub cbFlipVertical3_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipVertical3.CheckedChanged
-
-        VideoCapture1.MultiScreen_SetParameters(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
+        Await VideoCapture1.MultiScreen_SetParametersAsync(1, cbStretch2.Checked, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked)
 
     End Sub
 
-    Private Sub cbFlipHorizontal3_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipHorizontal3.CheckedChanged
+    Private Async Sub cbFlipVertical2_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipVertical2.CheckedChanged
 
-        VideoCapture1.MultiScreen_SetParameters(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
+        Await VideoCapture1.MultiScreen_SetParametersAsync(1, cbStretch2.Checked, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked)
+
+    End Sub
+
+    Private Async Sub cbFlipHorizontal2_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipHorizontal2.CheckedChanged
+
+        Await VideoCapture1.MultiScreen_SetParametersAsync(1, cbStretch2.Checked, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked)
+
+    End Sub
+
+    Private Async Sub cbStretch3_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbStretch3.CheckedChanged
+
+        Await VideoCapture1.MultiScreen_SetParametersAsync(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
+
+    End Sub
+
+    Private Async Sub cbFlipVertical3_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipVertical3.CheckedChanged
+
+        Await VideoCapture1.MultiScreen_SetParametersAsync(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
+
+    End Sub
+
+    Private Async Sub cbFlipHorizontal3_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbFlipHorizontal3.CheckedChanged
+
+        Await VideoCapture1.MultiScreen_SetParametersAsync(2, cbStretch3.Checked, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked)
 
     End Sub
 
@@ -2986,41 +2953,42 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btZoomIn_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomIn.Click
+    Private Async Sub btZoomIn_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomIn.Click
         VideoCapture1.Video_Renderer.Zoom_Ratio = VideoCapture1.Video_Renderer.Zoom_Ratio + 10
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomOut_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomOut.Click
+    Private Async Sub btZoomOut_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomOut.Click
         VideoCapture1.Video_Renderer.Zoom_Ratio = VideoCapture1.Video_Renderer.Zoom_Ratio - 10
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftDown_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftDown.Click
+    Private Async Sub btZoomShiftDown_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftDown.Click
         VideoCapture1.Video_Renderer.Zoom_ShiftY = VideoCapture1.Video_Renderer.Zoom_ShiftY - 10
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftLeft_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftLeft.Click
+    Private Async Sub btZoomShiftLeft_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftLeft.Click
         VideoCapture1.Video_Renderer.Zoom_ShiftX = VideoCapture1.Video_Renderer.Zoom_ShiftX - 10
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftRight_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftRight.Click
+    Private Async Sub btZoomShiftRight_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftRight.Click
         VideoCapture1.Video_Renderer.Zoom_ShiftX = VideoCapture1.Video_Renderer.Zoom_ShiftX + 10
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomShiftUp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftUp.Click
+    Private Async Sub btZoomShiftUp_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btZoomShiftUp.Click
         VideoCapture1.Video_Renderer.Zoom_ShiftY = VideoCapture1.Video_Renderer.Zoom_ShiftY + 10
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
-    Private Sub btZoomReset_Click(sender As Object, e As EventArgs) Handles btZoomReset.Click
+    Private Async Sub btZoomReset_Click(sender As Object, e As EventArgs) Handles btZoomReset.Click
         VideoCapture1.Video_Renderer.Zoom_Ratio = 0
         VideoCapture1.Video_Renderer.Zoom_ShiftX = 0
         VideoCapture1.Video_Renderer.Zoom_ShiftY = 0
-        VideoCapture1.Video_Renderer_Update()
+
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
     End Sub
 
     Private Sub cbAudAmplifyEnabled_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbAudAmplifyEnabled.CheckedChanged
@@ -3235,14 +3203,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
-
-        BeginInvoke(Sub()
-                        mmLog.Text = mmLog.Text + e.Message + Environment.NewLine
-                    End Sub)
-
-    End Sub
-
     Private Delegate Sub VUDelegate(ByVal e As VUMeterEventArgs)
 
     Private Sub VUDelegateMethod(ByVal e As VUMeterEventArgs)
@@ -3261,7 +3221,7 @@ Public Class Form1
 
     End Sub
 
-' ReSharper disable once MemberCanBePrivate.Global
+    ' ReSharper disable once MemberCanBePrivate.Global
     Public Sub New()
 
         ' This call is required by the designer.
@@ -3300,21 +3260,21 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btSeparateCaptureStart_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureStart.Click
+    Private Async Sub btSeparateCaptureStart_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureStart.Click
 
-        VideoCapture1.SeparateCapture_Start(edOutput.Text)
-
-    End Sub
-
-    Private Sub btSeparateCaptureStop_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureStop.Click
-
-        VideoCapture1.SeparateCapture_Stop()
+        Await VideoCapture1.SeparateCapture_StartAsync(edOutput.Text)
 
     End Sub
 
-    Private Sub btSeparateCaptureChangeFilename_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureChangeFilename.Click
+    Private Async Sub btSeparateCaptureStop_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureStop.Click
 
-        VideoCapture1.SeparateCapture_ChangeFilenameOnTheFly(edNewFilename.Text)
+        Await VideoCapture1.SeparateCapture_StopAsync()
+
+    End Sub
+
+    Private Async Sub btSeparateCaptureChangeFilename_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureChangeFilename.Click
+
+        Await VideoCapture1.SeparateCapture_ChangeFilenameOnTheFlyAsync(edNewFilename.Text)
 
     End Sub
 
@@ -3387,15 +3347,15 @@ Public Class Form1
 
     End Sub
 
-    Private Sub btSeparateCapturePause_Click(sender As System.Object, e As EventArgs) Handles btSeparateCapturePause.Click
+    Private Async Sub btSeparateCapturePause_Click(sender As System.Object, e As EventArgs) Handles btSeparateCapturePause.Click
 
-        VideoCapture1.SeparateCapture_Pause()
+        Await VideoCapture1.SeparateCapture_PauseAsync()
 
     End Sub
 
-    Private Sub btSeparateCaptureResume_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureResume.Click
+    Private Async Sub btSeparateCaptureResume_Click(sender As System.Object, e As EventArgs) Handles btSeparateCaptureResume.Click
 
-        VideoCapture1.SeparateCapture_Resume()
+        Await VideoCapture1.SeparateCapture_ResumeAsync()
 
     End Sub
 
@@ -3508,8 +3468,8 @@ Public Class Form1
         End If
 
         pan.Enabled = cbPan.Checked
-        pan.StartTime = Convert.ToInt32(edPanStartTime.Text)
-        pan.StopTime = Convert.ToInt32(edPanStopTime.Text)
+        pan.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text))
+        pan.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text))
         pan.StartX = Convert.ToInt32(edPanSourceLeft.Text)
         pan.StartY = Convert.ToInt32(edPanSourceTop.Text)
         pan.StartWidth = Convert.ToInt32(edPanSourceWidth.Text)
@@ -3599,8 +3559,8 @@ Public Class Form1
             End If
 
             fadeIn.Enabled = cbFadeInOut.Checked
-            fadeIn.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text)
-            fadeIn.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text)
+            fadeIn.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text))
+            fadeIn.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text))
         Else
             Dim fadeOut As IVFVideoEffectFadeOut
             Dim effect = VideoCapture1.Video_Effects_Get("FadeOut")
@@ -3617,8 +3577,8 @@ Public Class Form1
             End If
 
             fadeOut.Enabled = cbFadeInOut.Checked
-            fadeOut.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text)
-            fadeOut.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text)
+            fadeOut.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text))
+            fadeOut.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text))
         End If
 
     End Sub
@@ -3705,10 +3665,9 @@ Public Class Form1
 
     Dim controlHeight As Integer
 
-    Private Sub btFullScreen_Click(sender As Object, e As EventArgs) Handles btFullScreen.Click
+    Private Async Sub btFullScreen_Click(sender As Object, e As EventArgs) Handles btFullScreen.Click
 
         If (Not fullScreen) Then
-
             ' going fullscreen
             fullScreen = True
 
@@ -3739,8 +3698,7 @@ Public Class Form1
             VideoCapture1.Width = Width
             VideoCapture1.Height = Height
 
-            VideoCapture1.Video_Renderer_Update()
-
+            Await VideoCapture1.Video_Renderer_UpdateAsync()
         Else
             ' going normal screen
             fullScreen = False
@@ -3761,8 +3719,7 @@ Public Class Form1
             FormBorderStyle = FormBorderStyle.Sizable
             WindowState = FormWindowState.Normal
 
-            VideoCapture1.Video_Renderer_Update()
-
+            Await VideoCapture1.Video_Renderer_UpdateAsync()
         End If
 
     End Sub
@@ -3807,12 +3764,12 @@ Public Class Form1
 
         BeginInvoke(Sub()
                         volumeMeter1.Amplitude = e.ChannelLevelsDb(0)
-                        waveformPainter1.AddMax(e.ChannelLevelsDb(0))
+                        waveformPainter1.AddMax(e.ChannelLevels(0) / 100.0F)
 
                         If (e.ChannelLevelsDb.Length > 1) Then
 
                             volumeMeter2.Amplitude = e.ChannelLevelsDb(1)
-                            waveformPainter2.AddMax(e.ChannelLevelsDb(1))
+                            waveformPainter2.AddMax(e.ChannelLevels(1) / 100.0F)
 
                         End If
                     End Sub)
@@ -3856,14 +3813,14 @@ Public Class Form1
 
     End Sub
 
-    Private Sub cbDirect2DRotate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDirect2DRotate.SelectedIndexChanged
+    Private Async Sub cbDirect2DRotate_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbDirect2DRotate.SelectedIndexChanged
 
         VideoCapture1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text)
-        VideoCapture1.Video_Renderer_Update()
+        Await VideoCapture1.Video_Renderer_UpdateAsync()
 
     End Sub
 
-    Private Sub pnVideoRendererBGColor_Click(sender As Object, e As EventArgs) Handles pnVideoRendererBGColor.Click
+    Private Async Sub pnVideoRendererBGColor_Click(sender As Object, e As EventArgs) Handles pnVideoRendererBGColor.Click
 
         colorDialog1.Color = pnVideoRendererBGColor.BackColor
 
@@ -3872,7 +3829,7 @@ Public Class Form1
             pnVideoRendererBGColor.BackColor = colorDialog1.Color
 
             VideoCapture1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor
-            VideoCapture1.Video_Renderer_Update()
+            Await VideoCapture1.Video_Renderer_UpdateAsync()
 
         End If
 
@@ -4163,14 +4120,20 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Log(msg As String)
+        If (IsHandleCreated) Then
+            Invoke(Sub()
+                       mmLog.Text = mmLog.Text + msg + Environment.NewLine
+                   End Sub)
+        End If
+    End Sub
+
+    Private Sub VideoCapture1_OnError(ByVal sender As System.Object, ByVal e As ErrorsEventArgs) Handles VideoCapture1.OnError
+        Log(e.Message)
+    End Sub
+
     Private Sub VideoCapture1_OnLicenseRequired(sender As Object, e As LicenseEventArgs) Handles VideoCapture1.OnLicenseRequired
-
-        BeginInvoke(Sub()
-                        If (cbLicensing.Checked) Then
-                            mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
-                        End If
-                    End Sub)
-
+        Log(e.Message)
     End Sub
 
     Private Delegate Sub FFMPEGInfoDelegate(ByVal message As String)
@@ -4279,9 +4242,9 @@ Public Class Form1
 
     Private Delegate Sub NetworkStopDelegate()
 
-    Private Sub NetworkStopDelegateMethod()
+    Private Async Sub NetworkStopDelegateMethod()
 
-        VideoCapture1.Stop()
+        Await VideoCapture1.StopAsync()
 
         MessageBox.Show("Network source stopped or disconnected!")
 
@@ -4887,7 +4850,7 @@ Public Class Form1
                 End If
 
                 mp4V10SettingsDialog.ShowDialog(Me)
-                            Case 26
+            Case 26
                 If (mpegTSSettingsDialog Is Nothing) Then
                     mpegTSSettingsDialog = New MFSettingsDialog(MFSettingsDialogMode.MPEGTS)
                 End If
@@ -4903,16 +4866,17 @@ Public Class Form1
     End Sub
 
     Private Sub UpdateRecordingTime()
-        Dim timestamp As Long = VideoCapture1.Duration_Time()
+        If Me.IsHandleCreated Then
+            Dim ts = VideoCapture1.Duration_Time()
 
-        If (timestamp < 0) Then
-            Return
+            If (Math.Abs(ts.TotalMilliseconds) < 0.01) Then
+                Return
+            End If
+
+            BeginInvoke(Sub()
+                            lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
+                        End Sub)
         End If
-
-        BeginInvoke(Sub()
-                        Dim ts = TimeSpan.FromMilliseconds(timestamp)
-                        lbTimestamp.Text = $"Recording time: " + String.Format("{0:00}:{1:00}:{2:00}", ts.Hours, ts.Minutes, ts.Seconds)
-                    End Sub)
     End Sub
 
     Private Sub Form1_SizeChanged(sender As Object, e As EventArgs) Handles MyBase.SizeChanged
@@ -4924,7 +4888,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipDown
         Dim effect = VideoCapture1.Video_Effects_Get("FlipDown")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipDown(cbFlipX.Checked)
+            flip = New VFVideoEffectFlipHorizontal(cbFlipX.Checked)
             VideoCapture1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -4938,7 +4902,7 @@ Public Class Form1
         Dim flip As IVFVideoEffectFlipRight
         Dim effect = VideoCapture1.Video_Effects_Get("FlipRight")
         If (effect Is Nothing) Then
-            flip = New VFVideoEffectFlipRight(cbFlipY.Checked)
+            flip = New VFVideoEffectFlipVertical(cbFlipY.Checked)
             VideoCapture1.Video_Effects_Add(flip)
         Else
             flip = effect
@@ -4999,10 +4963,10 @@ Public Class Form1
     End Sub
 
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
-        Dim dlg = new TextLogoSettingsDialog()
+        Dim dlg = New TextLogoSettingsDialog()
 
         Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
-        Dim effect = new VFVideoEffectTextLogo(true, effectName)
+        Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         VideoCapture1.Video_Effects_Add(effect)
         lbTextLogos.Items.Add(effect.Name)
@@ -5012,7 +4976,7 @@ Public Class Form1
         dlg.Dispose()
     End Sub
 
-    Private Sub btCCPanApply_Click(sender As Object, e As EventArgs) Handles btCCPanApply.Click
+    Private Async Sub btCCPanApply_Click(sender As Object, e As EventArgs) Handles btCCPanApply.Click
         Dim flags = VFCameraControlFlags.None
 
         If (cbCCPanManual.Checked) Then
@@ -5027,10 +4991,10 @@ Public Class Form1
             flags = flags Or VFCameraControlFlags.Relative
         End If
 
-        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Pan, tbCCPan.Value, flags)
+        Await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Pan, New VideoCaptureDeviceCameraControlValue(tbCCPan.Value, flags))
     End Sub
 
-    Private Sub btCCZoomApply_Click(sender As Object, e As EventArgs) Handles btCCZoomApply.Click
+    Private Async Sub btCCZoomApply_Click(sender As Object, e As EventArgs) Handles btCCZoomApply.Click
         Dim flags = VFCameraControlFlags.None
 
         If (cbCCZoomManual.Checked) Then
@@ -5045,10 +5009,10 @@ Public Class Form1
             flags = flags Or VFCameraControlFlags.Relative
         End If
 
-        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Zoom, tbCCZoom.Value, flags)
+        Await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Zoom, New VideoCaptureDeviceCameraControlValue(tbCCZoom.Value, flags))
     End Sub
 
-    Private Sub btCCTiltApply_Click(sender As Object, e As EventArgs) Handles btCCTiltApply.Click
+    Private Async Sub btCCTiltApply_Click(sender As Object, e As EventArgs) Handles btCCTiltApply.Click
         Dim flags = VFCameraControlFlags.None
 
         If (cbCCTiltManual.Checked) Then
@@ -5063,10 +5027,10 @@ Public Class Form1
             flags = flags Or VFCameraControlFlags.Relative
         End If
 
-        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Tilt, tbCCTilt.Value, flags)
+        Await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Tilt, New VideoCaptureDeviceCameraControlValue(tbCCTilt.Value, flags))
     End Sub
 
-    Private Sub btCCFocusApply_Click(sender As Object, e As EventArgs) Handles btCCFocusApply.Click
+    Private Async Sub btCCFocusApply_Click(sender As Object, e As EventArgs) Handles btCCFocusApply.Click
         Dim flags = VFCameraControlFlags.None
 
         If (cbCCFocusManual.Checked) Then
@@ -5081,70 +5045,68 @@ Public Class Form1
             flags = flags Or VFCameraControlFlags.Relative
         End If
 
-        VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Focus, tbCCFocus.Value, flags)
+        Await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Focus, New VideoCaptureDeviceCameraControlValue(tbCCFocus.Value, flags))
     End Sub
 
-    Private Sub btCCReadValues_Click(sender As Object, e As EventArgs) Handles btCCReadValues.Click
-        Dim max = 0
-        Dim defaultValue = 0
-        Dim min = 0
-        Dim step_ = 0
-        Dim flags As VFCameraControlFlags
+    Private Async Sub btCCReadValues_Click(sender As Object, e As EventArgs) Handles btCCReadValues.Click
+        Dim pan As VideoCaptureDeviceCameraControlRanges = Await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Pan)
+        If (Not IsNothing(pan)) Then
+            tbCCPan.Minimum = pan.Min
+            tbCCPan.Maximum = pan.Max
+            tbCCPan.SmallChange = pan.Step
+            tbCCPan.Value = pan.Default
+            lbCCPanMin.Text = "Min: " + Convert.ToString(pan.Min)
+            lbCCPanMax.Text = "Max: " + Convert.ToString(pan.Max)
+            lbCCPanCurrent.Text = "Current: " + Convert.ToString(pan.Default)
 
-        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Pan, min, max, step_, defaultValue, flags)) Then
-            tbCCPan.Minimum = min
-            tbCCPan.Maximum = max
-            tbCCPan.SmallChange = step_
-            tbCCPan.Value = defaultValue
-            lbCCPanMin.Text = "Min: " + Convert.ToString(min)
-            lbCCPanMax.Text = "Max: " + Convert.ToString(max)
-            lbCCPanCurrent.Text = "Current: " + Convert.ToString(defaultValue)
-
-            cbCCPanManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
-            cbCCPanAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
-            cbCCPanRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+            cbCCPanManual.Checked = (pan.Flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCPanAuto.Checked = (pan.Flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCPanRelative.Checked = (pan.Flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
         End If
 
-        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Tilt, min, max, step_, defaultValue, flags)) Then
-            tbCCTilt.Minimum = min
-            tbCCTilt.Maximum = max
-            tbCCTilt.SmallChange = step_
-            tbCCTilt.Value = defaultValue
-            lbCCTiltMin.Text = "Min: " + Convert.ToString(min)
-            lbCCTiltMax.Text = "Max: " + Convert.ToString(max)
-            lbCCTiltCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+        Dim tilt As VideoCaptureDeviceCameraControlRanges = Await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Tilt)
+        If (Not IsNothing(tilt)) Then
+            tbCCTilt.Minimum = tilt.Min
+            tbCCTilt.Maximum = tilt.Max
+            tbCCTilt.SmallChange = tilt.Step
+            tbCCTilt.Value = tilt.Default
+            lbCCTiltMin.Text = "Min: " + Convert.ToString(tilt.Min)
+            lbCCTiltMax.Text = "Max: " + Convert.ToString(tilt.Max)
+            lbCCTiltCurrent.Text = "Current: " + Convert.ToString(tilt.Default)
 
-            cbCCTiltManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
-            cbCCTiltAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
-            cbCCTiltRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+            cbCCTiltManual.Checked = (tilt.Flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCTiltAuto.Checked = (tilt.Flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCTiltRelative.Checked = (tilt.Flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
         End If
 
-        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Focus, min, max, step_, defaultValue, flags)) Then
-            tbCCFocus.Minimum = min
-            tbCCFocus.Maximum = max
-            tbCCFocus.SmallChange = step_
-            tbCCFocus.Value = defaultValue
-            lbCCFocusMin.Text = "Min: " + Convert.ToString(min)
-            lbCCFocusMax.Text = "Max: " + Convert.ToString(max)
-            lbCCFocusCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+        Dim focus As VideoCaptureDeviceCameraControlRanges = Await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Focus)
+        If (Not IsNothing(focus)) Then
+            tbCCFocus.Minimum = focus.Min
+            tbCCFocus.Maximum = focus.Max
+            tbCCFocus.SmallChange = focus.Step
+            tbCCFocus.Value = focus.Default
+            lbCCFocusMin.Text = "Min: " + Convert.ToString(focus.Min)
+            lbCCFocusMax.Text = "Max: " + Convert.ToString(focus.Max)
+            lbCCFocusCurrent.Text = "Current: " + Convert.ToString(focus.Default)
 
-            cbCCFocusManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
-            cbCCFocusAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
-            cbCCFocusRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+            cbCCFocusManual.Checked = (focus.Flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCFocusAuto.Checked = (focus.Flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCFocusRelative.Checked = (focus.Flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
         End If
 
-        If (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Zoom, min, max, step_, defaultValue, flags)) Then
-            tbCCZoom.Minimum = min
-            tbCCZoom.Maximum = max
-            tbCCZoom.SmallChange = step_
-            tbCCZoom.Value = defaultValue
-            lbCCZoomMin.Text = "Min: " + Convert.ToString(min)
-            lbCCZoomMax.Text = "Max: " + Convert.ToString(max)
-            lbCCZoomCurrent.Text = "Current: " + Convert.ToString(defaultValue)
+        Dim zoom As VideoCaptureDeviceCameraControlRanges = Await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Zoom)
+        If (Not IsNothing(zoom)) Then
+            tbCCZoom.Minimum = zoom.Min
+            tbCCZoom.Maximum = zoom.Max
+            tbCCZoom.SmallChange = zoom.Step
+            tbCCZoom.Value = zoom.Default
+            lbCCZoomMin.Text = "Min: " + Convert.ToString(zoom.Min)
+            lbCCZoomMax.Text = "Max: " + Convert.ToString(zoom.Max)
+            lbCCZoomCurrent.Text = "Current: " + Convert.ToString(zoom.Default)
 
-            cbCCZoomManual.Checked = (flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
-            cbCCZoomAuto.Checked = (flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
-            cbCCZoomRelative.Checked = (flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
+            cbCCZoomManual.Checked = (zoom.Flags And VFCameraControlFlags.Manual) = VFCameraControlFlags.Manual
+            cbCCZoomAuto.Checked = (zoom.Flags And VFCameraControlFlags.Auto) = VFCameraControlFlags.Auto
+            cbCCZoomRelative.Checked = (zoom.Flags And VFCameraControlFlags.Relative) = VFCameraControlFlags.Relative
         End If
     End Sub
 

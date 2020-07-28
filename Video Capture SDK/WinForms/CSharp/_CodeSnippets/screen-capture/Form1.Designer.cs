@@ -1,5 +1,7 @@
 ﻿namespace screen_capture
 {
+    using System;
+
     partial class Form1
     {
         /// <summary>
@@ -59,7 +61,6 @@
             this.cbCapture = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.cbTelemetry = new System.Windows.Forms.CheckBox();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.btResume = new System.Windows.Forms.Button();
@@ -121,9 +122,9 @@
             this.cbScreenCapture_DesktopDuplication.AutoSize = true;
             this.cbScreenCapture_DesktopDuplication.Location = new System.Drawing.Point(11, 235);
             this.cbScreenCapture_DesktopDuplication.Name = "cbScreenCapture_DesktopDuplication";
-            this.cbScreenCapture_DesktopDuplication.Size = new System.Drawing.Size(210, 17);
+            this.cbScreenCapture_DesktopDuplication.Size = new System.Drawing.Size(225, 17);
             this.cbScreenCapture_DesktopDuplication.TabIndex = 79;
-            this.cbScreenCapture_DesktopDuplication.Text = "Allow Win8 Desktop Duplication usage";
+            this.cbScreenCapture_DesktopDuplication.Text = "Allow Desktop Duplication usage (Win 8+)";
             this.cbScreenCapture_DesktopDuplication.UseVisualStyleBackColor = true;
             // 
             // cbScreenCaptureDisplayIndex
@@ -364,7 +365,6 @@
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.cbTelemetry);
-            this.tabPage3.Controls.Add(this.cbLicensing);
             this.tabPage3.Controls.Add(this.cbDebugMode);
             this.tabPage3.Controls.Add(this.mmLog);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
@@ -380,22 +380,12 @@
             this.cbTelemetry.AutoSize = true;
             this.cbTelemetry.Checked = true;
             this.cbTelemetry.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbTelemetry.Location = new System.Drawing.Point(153, 14);
+            this.cbTelemetry.Location = new System.Drawing.Point(76, 14);
             this.cbTelemetry.Name = "cbTelemetry";
             this.cbTelemetry.Size = new System.Drawing.Size(72, 17);
             this.cbTelemetry.TabIndex = 81;
             this.cbTelemetry.Text = "Telemetry";
             this.cbTelemetry.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(76, 14);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(71, 17);
-            this.cbLicensing.TabIndex = 80;
-            this.cbLicensing.Text = "Licensing";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
@@ -491,9 +481,11 @@
             this.VideoCapture1.BDA_Source = null;
             this.VideoCapture1.ChromaKey = null;
             this.VideoCapture1.Custom_Source = null;
+            this.VideoCapture1.CustomRedist_Enabled = false;
+            this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
             this.VideoCapture1.Debug_Mode = false;
-            this.VideoCapture1.Debug_Telemetry = true;
+            this.VideoCapture1.Debug_Telemetry = false;
             this.VideoCapture1.Decklink_Input = VisioForge.Types.DecklinkInput.Auto;
             this.VideoCapture1.Decklink_Input_Capture_Timecode_Source = VisioForge.Types.DecklinkCaptureTimecodeSource.Auto;
             this.VideoCapture1.Decklink_Input_IREUSA = false;
@@ -520,6 +512,7 @@
             this.VideoCapture1.Network_Streaming_Output = null;
             this.VideoCapture1.Network_Streaming_URL = "";
             this.VideoCapture1.Network_Streaming_WMV_Maximum_Clients = 10;
+            this.VideoCapture1.OSD_Enabled = false;
             this.VideoCapture1.Output_Filename = "C:\\Users\\roman\\Documents\\VisioForge\\output.avi";
             this.VideoCapture1.Output_Format = null;
             this.VideoCapture1.PIP_AddSampleGrabbers = false;
@@ -534,7 +527,7 @@
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = ((long)(0));
+            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
             this.VideoCapture1.Size = new System.Drawing.Size(478, 312);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 78;
@@ -563,6 +556,8 @@
             this.VideoCapture1.Video_Decoder = null;
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Enabled = false;
+            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 16;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 9;
@@ -624,7 +619,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox cbTelemetry;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.Button btResume;

@@ -36,11 +36,11 @@ Public Class Form1
 
             lbFiles.Items.Add(s)
 
-            Dim videoDuration As Int32
-            Dim audioDuration As Int32
+            Dim videoDuration As TimeSpan
+            Dim audioDuration As TimeSpan
             VideoEdit.GetFileLength(s, videoDuration, audioDuration)
 
-            VideoEdit1.Sources_AddFile(s, videoDuration > 0, audioDuration > 0)
+            VideoEdit1.Sources_AddFile(s, videoDuration.TotalMilliseconds > 0, audioDuration.TotalMilliseconds > 0)
 
         End If
 
@@ -198,18 +198,18 @@ Public Class Form1
 
         If (cbVideoEffects.Checked) Then
 
-            VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Lightness, 0, 0, tbLightness.Value, 0)
-            VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Contrast, 0, 0, tbContrast.Value, 0)
-            VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Saturation, 0, 0, tbSaturation.Value, 0)
+            VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Lightness, TimeSpan.Zero, TimeSpan.Zero, tbLightness.Value, 0)
+            VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Contrast, TimeSpan.Zero, TimeSpan.Zero, tbContrast.Value, 0)
+            VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Saturation, TimeSpan.Zero, TimeSpan.Zero, tbSaturation.Value, 0)
 
             If (cbInvert.Checked) Then
 
-                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Invert, 0, 0, 0, 0)
+                VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Invert, TimeSpan.Zero, TimeSpan.Zero, 0, 0)
 
 
                 If (cbGreyscale.Checked) Then
 
-                    VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Greyscale, 0, 0, 0, 0)
+                    VideoEdit1.Video_Effects_Add_Simple(VFVideoEffectType.Greyscale, TimeSpan.Zero, TimeSpan.Zero, 0, 0)
 
                 End If
 
@@ -218,8 +218,8 @@ Public Class Form1
                     If (Not cbGraphicLogoShowAlways.Checked) Then
 
                         VideoEdit1.Video_Effects_Add_ImageLogo(
-                            Convert.ToInt32(edGraphicLogoStartTime.Text),
-                            Convert.ToInt32(edGraphicLogoStopTime.Text),
+                            TimeSpan.FromMilliseconds(Convert.ToInt32(edGraphicLogoStartTime.Text)),
+                                                      TimeSpan.FromMilliseconds(Convert.ToInt32(edGraphicLogoStopTime.Text)),
                             edGraphicLogoFilename.Text,
                             Convert.ToInt32(edGraphicLogoLeft.Text),
                             Convert.ToInt32(edGraphicLogoTop.Text))
@@ -228,8 +228,8 @@ Public Class Form1
                 Else
 
                     VideoEdit1.Video_Effects_Add_ImageLogo(
-                        0,
-                        0,
+                        TimeSpan.Zero,
+                        TimeSpan.Zero,
                         edGraphicLogoFilename.Text,
                         Convert.ToInt32(edGraphicLogoLeft.Text),
                         Convert.ToInt32(edGraphicLogoTop.Text))
@@ -241,8 +241,8 @@ Public Class Form1
                 If (Not cbTextLogoShowAlways.Checked) Then
 
                     VideoEdit1.Video_Effects_Add_TextLogo(
-                        Convert.ToInt32(edTextLogoStartTime.Text),
-                        Convert.ToInt32(edTextLogoStopTime.Text),
+                        TimeSpan.FromMilliseconds(Convert.ToInt32(edTextLogoStartTime.Text)),
+                                                  TimeSpan.FromMilliseconds(Convert.ToInt32(edTextLogoStopTime.Text)),
                         edTextLogoValue.Text,
                         Convert.ToInt32(edTextLogoLeft.Text),
                         Convert.ToInt32(edTextLogoTop.Text),
@@ -253,8 +253,8 @@ Public Class Form1
                 Else
 
                     VideoEdit1.Video_Effects_Add_TextLogo(
-                        0,
-                        0,
+                        TimeSpan.Zero,
+                        TimeSpan.Zero,
                         edTextLogoValue.Text,
                         Convert.ToInt32(edTextLogoLeft.Text),
                         Convert.ToInt32(edTextLogoTop.Text),
@@ -280,15 +280,15 @@ Public Class Form1
         If (cbZoom.Checked) Then
 
             Dim zoom As Double = tbZoom.Value / 10.0
-            VideoEdit1.Video_Effects_Add_Zoom(0, 0, zoom, zoom, 0, 0)
+            VideoEdit1.Video_Effects_Add_Zoom(TimeSpan.Zero, TimeSpan.Zero, zoom, zoom, 0, 0)
 
         End If
 
         If (cbPan.Checked) Then
 
             VideoEdit1.Video_Effects_Add_Pan(
-                Convert.ToInt32(edPanStartTime.Text),
-                Convert.ToInt32(edPanStopTime.Text),
+                TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text)),
+                                          TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text)),
                 Convert.ToInt32(edPanSourceLeft.Text),
                 Convert.ToInt32(edPanSourceTop.Text),
                 Convert.ToInt32(edPanSourceWidth.Text),
@@ -306,8 +306,8 @@ Public Class Form1
 
                 VideoEdit1.Video_Effects_Add_Simple(
                     VFVideoEffectType.FadeIn,
-                    Convert.ToInt32(edFadeInOutStartTime.Text),
-                    Convert.ToInt32(edFadeInOutStopTime.Text),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                                              TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                     0,
                     0)
 
@@ -315,8 +315,8 @@ Public Class Form1
 
                 VideoEdit1.Video_Effects_Add_Simple(
                     VFVideoEffectType.FadeOut,
-                    Convert.ToInt32(edFadeInOutStartTime.Text),
-                    Convert.ToInt32(edFadeInOutStopTime.Text),
+                    TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                                              TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                     0,
                     0)
 
@@ -533,8 +533,8 @@ Public Class Form1
 
             VideoEdit1.Video_Effects_Add_Simple(
                 VFVideoEffectType.FadeIn,
-                Convert.ToInt32(edFadeInOutStartTime.Text),
-                Convert.ToInt32(edFadeInOutStopTime.Text),
+                TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                                          TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                 0,
                 0)
 
@@ -542,8 +542,8 @@ Public Class Form1
 
             VideoEdit1.Video_Effects_Add_Simple(
                 VFVideoEffectType.FadeOut,
-                Convert.ToInt32(edFadeInOutStartTime.Text),
-                Convert.ToInt32(edFadeInOutStopTime.Text),
+                TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStartTime.Text)),
+                                          TimeSpan.FromMilliseconds(Convert.ToInt32(edFadeInOutStopTime.Text)),
                 0,
                 0)
 

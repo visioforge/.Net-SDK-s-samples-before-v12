@@ -47,7 +47,6 @@ Partial Class Form1
         Me.lbLogos = New System.Windows.Forms.ListBox()
         Me.btImageLogoAdd = New System.Windows.Forms.Button()
         Me.tabPage4 = New System.Windows.Forms.TabPage()
-        Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
         Me.mmLog = New System.Windows.Forms.TextBox()
         Me.cbUseBestAudioInputFormat = New System.Windows.Forms.CheckBox()
@@ -74,6 +73,11 @@ Partial Class Form1
         Me.edScreenLeft = New System.Windows.Forms.TextBox()
         Me.tcMain = New System.Windows.Forms.TabControl()
         Me.tabPage1 = New System.Windows.Forms.TabPage()
+        Me.textBox1 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lbScreenSourceWindowText = New System.Windows.Forms.Label()
+        Me.btScreenSourceWindowSelect = New System.Windows.Forms.Button()
+        Me.rbScreenCaptureWindow = New System.Windows.Forms.RadioButton()
         Me.cbScreenCapture_DesktopDuplication = New System.Windows.Forms.CheckBox()
         Me.cbScreenCaptureDisplayIndex = New System.Windows.Forms.ComboBox()
         Me.label93 = New System.Windows.Forms.Label()
@@ -98,11 +102,6 @@ Partial Class Form1
         Me.btSaveScreenshot = New System.Windows.Forms.Button()
         Me.btResume = New System.Windows.Forms.Button()
         Me.btPause = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.lbScreenSourceWindowText = New System.Windows.Forms.Label()
-        Me.btScreenSourceWindowSelect = New System.Windows.Forms.Button()
-        Me.rbScreenCaptureWindow = New System.Windows.Forms.RadioButton()
-        Me.textBox1 = New System.Windows.Forms.TextBox()
         Me.tabPage3.SuspendLayout
         CType(Me.tbDarkness,System.ComponentModel.ISupportInitialize).BeginInit
         CType(Me.tbContrast,System.ComponentModel.ISupportInitialize).BeginInit
@@ -343,7 +342,6 @@ Partial Class Form1
         '
         'tabPage4
         '
-        Me.tabPage4.Controls.Add(Me.cbLicensing)
         Me.tabPage4.Controls.Add(Me.cbDebugMode)
         Me.tabPage4.Controls.Add(Me.mmLog)
         Me.tabPage4.Location = New System.Drawing.Point(4, 22)
@@ -353,16 +351,6 @@ Partial Class Form1
         Me.tabPage4.TabIndex = 3
         Me.tabPage4.Text = "Log"
         Me.tabPage4.UseVisualStyleBackColor = true
-        '
-        'cbLicensing
-        '
-        Me.cbLicensing.AutoSize = true
-        Me.cbLicensing.Location = New System.Drawing.Point(99, 6)
-        Me.cbLicensing.Name = "cbLicensing"
-        Me.cbLicensing.Size = New System.Drawing.Size(91, 17)
-        Me.cbLicensing.TabIndex = 82
-        Me.cbLicensing.Text = "Licensing info"
-        Me.cbLicensing.UseVisualStyleBackColor = true
         '
         'cbDebugMode
         '
@@ -644,6 +632,56 @@ Partial Class Form1
         Me.tabPage1.Text = "Input"
         Me.tabPage1.UseVisualStyleBackColor = true
         '
+        'textBox1
+        '
+        Me.textBox1.BackColor = System.Drawing.Color.White
+        Me.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.textBox1.Location = New System.Drawing.Point(196, 14)
+        Me.textBox1.Multiline = true
+        Me.textBox1.Name = "textBox1"
+        Me.textBox1.ReadOnly = true
+        Me.textBox1.Size = New System.Drawing.Size(167, 47)
+        Me.textBox1.TabIndex = 94
+        Me.textBox1.Text = "You can update left/top position and mouse cursor capturing on-the-fly"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = true
+        Me.Label1.Location = New System.Drawing.Point(172, 181)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(191, 13)
+        Me.Label1.TabIndex = 93
+        Me.Label1.Text = "(You can capture background window)"
+        '
+        'lbScreenSourceWindowText
+        '
+        Me.lbScreenSourceWindowText.AutoSize = true
+        Me.lbScreenSourceWindowText.Location = New System.Drawing.Point(193, 164)
+        Me.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText"
+        Me.lbScreenSourceWindowText.Size = New System.Drawing.Size(107, 13)
+        Me.lbScreenSourceWindowText.TabIndex = 92
+        Me.lbScreenSourceWindowText.Text = "(no window selected)"
+        '
+        'btScreenSourceWindowSelect
+        '
+        Me.btScreenSourceWindowSelect.Location = New System.Drawing.Point(296, 131)
+        Me.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect"
+        Me.btScreenSourceWindowSelect.Size = New System.Drawing.Size(49, 23)
+        Me.btScreenSourceWindowSelect.TabIndex = 91
+        Me.btScreenSourceWindowSelect.Text = "Select"
+        Me.btScreenSourceWindowSelect.UseVisualStyleBackColor = true
+        '
+        'rbScreenCaptureWindow
+        '
+        Me.rbScreenCaptureWindow.AutoSize = true
+        Me.rbScreenCaptureWindow.Location = New System.Drawing.Point(178, 134)
+        Me.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow"
+        Me.rbScreenCaptureWindow.Size = New System.Drawing.Size(101, 17)
+        Me.rbScreenCaptureWindow.TabIndex = 90
+        Me.rbScreenCaptureWindow.TabStop = true
+        Me.rbScreenCaptureWindow.Text = "Capture window"
+        Me.rbScreenCaptureWindow.UseVisualStyleBackColor = true
+        '
         'cbScreenCapture_DesktopDuplication
         '
         Me.cbScreenCapture_DesktopDuplication.AutoSize = true
@@ -881,7 +919,7 @@ Partial Class Form1
         Me.VideoCapture1.SeparateCapture_FileSizeThreshold = CType(0,Long)
         Me.VideoCapture1.SeparateCapture_GMFMode = true
         Me.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal
-        Me.VideoCapture1.SeparateCapture_TimeThreshold = CType(0,Long)
+        Me.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero
         Me.VideoCapture1.Size = New System.Drawing.Size(427, 322)
         Me.VideoCapture1.Start_DelayEnabled = false
         Me.VideoCapture1.TabIndex = 93
@@ -911,6 +949,7 @@ Partial Class Form1
         Me.VideoCapture1.Video_Effects_AllowMultipleStreams = false
         Me.VideoCapture1.Video_Effects_Enabled = false
         Me.VideoCapture1.Video_Effects_GPU_Enabled = false
+        Me.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
         VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
@@ -1012,56 +1051,6 @@ Partial Class Form1
         Me.btPause.Text = "Pause"
         Me.btPause.UseVisualStyleBackColor = true
         '
-        'Label1
-        '
-        Me.Label1.AutoSize = true
-        Me.Label1.Location = New System.Drawing.Point(172, 181)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(191, 13)
-        Me.Label1.TabIndex = 93
-        Me.Label1.Text = "(You can capture background window)"
-        '
-        'lbScreenSourceWindowText
-        '
-        Me.lbScreenSourceWindowText.AutoSize = true
-        Me.lbScreenSourceWindowText.Location = New System.Drawing.Point(193, 164)
-        Me.lbScreenSourceWindowText.Name = "lbScreenSourceWindowText"
-        Me.lbScreenSourceWindowText.Size = New System.Drawing.Size(107, 13)
-        Me.lbScreenSourceWindowText.TabIndex = 92
-        Me.lbScreenSourceWindowText.Text = "(no window selected)"
-        '
-        'btScreenSourceWindowSelect
-        '
-        Me.btScreenSourceWindowSelect.Location = New System.Drawing.Point(296, 131)
-        Me.btScreenSourceWindowSelect.Name = "btScreenSourceWindowSelect"
-        Me.btScreenSourceWindowSelect.Size = New System.Drawing.Size(49, 23)
-        Me.btScreenSourceWindowSelect.TabIndex = 91
-        Me.btScreenSourceWindowSelect.Text = "Select"
-        Me.btScreenSourceWindowSelect.UseVisualStyleBackColor = true
-        '
-        'rbScreenCaptureWindow
-        '
-        Me.rbScreenCaptureWindow.AutoSize = true
-        Me.rbScreenCaptureWindow.Location = New System.Drawing.Point(178, 134)
-        Me.rbScreenCaptureWindow.Name = "rbScreenCaptureWindow"
-        Me.rbScreenCaptureWindow.Size = New System.Drawing.Size(101, 17)
-        Me.rbScreenCaptureWindow.TabIndex = 90
-        Me.rbScreenCaptureWindow.TabStop = true
-        Me.rbScreenCaptureWindow.Text = "Capture window"
-        Me.rbScreenCaptureWindow.UseVisualStyleBackColor = true
-        '
-        'textBox1
-        '
-        Me.textBox1.BackColor = System.Drawing.Color.White
-        Me.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.textBox1.Location = New System.Drawing.Point(196, 14)
-        Me.textBox1.Multiline = true
-        Me.textBox1.Name = "textBox1"
-        Me.textBox1.ReadOnly = true
-        Me.textBox1.Size = New System.Drawing.Size(167, 47)
-        Me.textBox1.TabIndex = 94
-        Me.textBox1.Text = "You can update left/top position and mouse cursor capturing on-the-fly"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
@@ -1139,7 +1128,6 @@ End Sub
     Private WithEvents label93 As System.Windows.Forms.Label
     Private WithEvents label34 As System.Windows.Forms.Label
     Private WithEvents cbScreenCapture_DesktopDuplication As System.Windows.Forms.CheckBox
-    Private WithEvents cbLicensing As CheckBox
     Private WithEvents cbDebugMode As CheckBox
     Private WithEvents mmLog As TextBox
     Private WithEvents edOutput As TextBox

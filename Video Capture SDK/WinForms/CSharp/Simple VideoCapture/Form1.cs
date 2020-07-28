@@ -56,12 +56,12 @@ namespace VisioForge_SDK_Video_Capture_Demo
         };
 
         private readonly System.Timers.Timer tmRecording = new System.Timers.Timer(1000);
-        
+
         public Form1()
         {
             InitializeComponent();
         }
-        
+
         private void cbAudioInputDevice_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbAudioInputDevice.SelectedIndex != -1)
@@ -172,7 +172,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
                     cbVideoInputFormat.SelectedIndex = 0;
                     cbVideoInputFormat_SelectedIndexChanged(null, null);
                 }
-                
+
                 cbFramerate.Items.Clear();
                 foreach (string frameRate in deviceItem.VideoFrameRates)
                 {
@@ -325,7 +325,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmLog.Clear();
 
@@ -337,7 +337,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
 
             VideoCapture1.Debug_Mode = cbDebugMode.Checked;
             VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
-            
+
             VideoCapture1.Audio_OutputDevice = "Default DirectSound Device";
 
             if (cbRecordAudio.Checked)
@@ -360,7 +360,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             VideoCapture1.Video_CaptureDevice_Format = cbVideoInputFormat.Text;
             VideoCapture1.Audio_CaptureDevice = cbAudioInputDevice.Text;
             VideoCapture1.Audio_CaptureDevice_Format = cbAudioInputFormat.Text;
-            
+
             if (cbFramerate.SelectedIndex != -1)
             {
                 VideoCapture1.Video_CaptureDevice_FrameRate = (float)Convert.ToDouble(cbFramerate.Text);
@@ -489,6 +489,8 @@ namespace VisioForge_SDK_Video_Capture_Demo
             }
 
             VideoCapture1.Video_Effects_Enabled = true;
+            VideoCapture1.Video_Effects_MergeImageLogos = cbMergeImageLogos.Checked;
+            VideoCapture1.Video_Effects_MergeTextLogos = cbMergeTextLogos.Checked;
             VideoCapture1.Video_Effects_Clear();
             lbLogos.Items.Clear();
             ConfigureVideoEffects();
@@ -497,21 +499,21 @@ namespace VisioForge_SDK_Video_Capture_Demo
             VideoCapture1.Audio_Effects_Clear(-1);
             VideoCapture1.Audio_Effects_Enabled = true;
 
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 4;
             tmRecording.Start();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -524,7 +526,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             };
 
             cbOutputFormat.SelectedIndex = 7;
-            
+
             foreach (var device in VideoCapture1.Video_CaptureDevicesInfo)
             {
                 cbVideoInputDevice.Items.Add(device.Name);
@@ -620,20 +622,25 @@ namespace VisioForge_SDK_Video_Capture_Demo
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
-        private void btSaveScreenshot_Click(object sender, EventArgs e)
+        private async void btSaveScreenshot_Click(object sender, EventArgs e)
         {
             if (screenshotSaveDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -642,19 +649,19 @@ namespace VisioForge_SDK_Video_Capture_Demo
                 switch (ext)
                 {
                     case ".bmp":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0);
                         break;
                     case ".jpg":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85);
                         break;
                     case ".gif":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0);
                         break;
                     case ".png":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0);
                         break;
                     case ".tiff":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0);
                         break;
                 }
             }
@@ -710,7 +717,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
 
             ffmpegDLLSettingsDialog.SaveSettings(ref ffmpegDLLOutput);
         }
-               
+
         private void SetMP4v11Output(ref VFMP4v11Output mp4Output)
         {
             if (mp4v11SettingsDialog == null)
@@ -879,14 +886,14 @@ namespace VisioForge_SDK_Video_Capture_Demo
             }
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
         private void btOutputConfigure_Click(object sender, EventArgs e)
@@ -1042,23 +1049,21 @@ namespace VisioForge_SDK_Video_Capture_Demo
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (IsHandleCreated)
             {
-                return;
+                var ts = VideoCapture1.Duration_Time();
+
+                if (Math.Abs(ts.TotalMilliseconds) < 0.01)
+                {
+                    return;
+                }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
         }
 
         private void btTextLogoAdd_Click(object sender, EventArgs e)
@@ -1189,7 +1194,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             var effect = VideoCapture1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.Checked);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.Checked);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -1208,7 +1213,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             var effect = VideoCapture1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.Checked);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.Checked);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else

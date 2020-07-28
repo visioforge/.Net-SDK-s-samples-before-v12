@@ -50,7 +50,7 @@ namespace Audio_Capture
 
             System.Windows.Forms.Application.EnableVisualStyles();
         }
-        
+
         private void Form1_Load(object sender, RoutedEventArgs e)
         {
             Title += " (SDK v" + VideoCaptureCore.SDK_Version + ", " + VideoCaptureCore.SDK_State + ")";
@@ -330,7 +330,7 @@ namespace Audio_Capture
         {
             VideoCapture1.Audio_Effects_TrueBass(-1, 4, 200, false, (ushort)tbAudTrueBass.Value);
         }
-        
+
         private void cbAudSound3DEnabled_CheckedChanged(object sender, RoutedEventArgs e)
         {
             VideoCapture1.Audio_Effects_Enable(-1, 4, cbAudSound3DEnabled.IsChecked == true);
@@ -420,8 +420,8 @@ namespace Audio_Capture
 
             oggVorbisSettingsDialog.SaveSettings(ref oggVorbisOutput);
         }
-        
-        private void btStart_Click(object sender, RoutedEventArgs e)
+
+        private async void btStart_Click(object sender, RoutedEventArgs e)
         {
             mmLog.Clear();
 
@@ -512,17 +512,17 @@ namespace Audio_Capture
             VideoCapture1.Audio_Effects_Clear(-1);
             VideoCapture1.Audio_Effects_Enabled = true;
 
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.IsChecked == true, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.IsChecked == true, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.IsChecked == true, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.IsChecked == true, -1, -1);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.IsChecked == true, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.IsChecked == true, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.IsChecked == true, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.IsChecked == true, TimeSpan.Zero, TimeSpan.Zero);
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
         }
 
-        private void btStop_Click(object sender, RoutedEventArgs e)
+        private async void btStop_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
 
         private void llVideoTutorials_MouseDown(object sender, MouseButtonEventArgs e)
@@ -531,17 +531,19 @@ namespace Audio_Capture
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            Dispatcher.Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.IsChecked == true)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void btOutputConfigure_Click(object sender, RoutedEventArgs e)
@@ -639,54 +641,53 @@ namespace Audio_Capture
             switch (cbOutputFormat.SelectedIndex)
             {
                 case 0:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wav");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wav");
+                        break;
+                    }
                 case 1:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp3");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp3");
+                        break;
+                    }
                 case 2:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wma");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wma");
+                        break;
+                    }
                 case 3:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg");
+                        break;
+                    }
                 case 4:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".flac");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".flac");
+                        break;
+                    }
                 case 5:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ogg");
+                        break;
+                    }
                 case 6:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".m4a");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".m4a");
+                        break;
+                    }
             }
         }
 
         private void VideoCapture1_OnAudioFrameBuffer(object sender, AudioFrameBufferEventArgs e)
         {
-            if (e.Timestamp < 0)
+            if (e.Timestamp.TotalMilliseconds < 0)
             {
                 return;
             }
 
             Dispatcher.BeginInvoke((Action)(() =>
             {
-                TimeSpan ts = TimeSpan.FromMilliseconds(e.Timestamp);
-                lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                lbTimestamp.Text = "Recording time: " + e.Timestamp.ToString(@"hh\:mm\:ss");
             }));
         }
 
@@ -696,11 +697,6 @@ namespace Audio_Capture
             {
                 lbTimestamp.Text = "Recording time: 00:00:00";
             }));
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            btStop_Click(null, null);
         }
     }
 }

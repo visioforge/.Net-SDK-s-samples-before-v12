@@ -7,7 +7,6 @@
         x:Class="Main_Demo.MainWindow"
         Title="VisioForge Media Player SDK .Net Demo" Height="802" Width="843" Loaded="Window_Loaded" Closing="Window_Closing" Icon="visioforge_main_icon.ico">
     <Grid>
-        <CheckBox x:Name="cbRunAsync" Content="Async" HorizontalAlignment="Right" Margin="0,136,25,0" VerticalAlignment="Top"/>
         <TabControl Height="567" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="tabControl1" VerticalAlignment="Top" Width="382">
             <TabItem Header="Source">
                 <Grid>
@@ -569,26 +568,27 @@
             <TabItem Header="Display" x:Name="tabItem1">
                 <Grid>
                     <Button x:Name="btFullScreen" Content="Full screen" HorizontalAlignment="Left" Margin="54.163,320.21,0,0" VerticalAlignment="Top" Width="75" Height="28.96" Click="btFullScreen_Click"/>
-                    <GroupBox Header="Video Renderer" Height="122" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="groupBox26" VerticalAlignment="Top" Width="142">
+                    <GroupBox Header="Video Renderer" Height="144" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="groupBox26" VerticalAlignment="Top" Width="237">
                         <Grid>
                             <RadioButton Content="WPF" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="rbWPF" VerticalAlignment="Top" IsChecked="True" Checked="rbVR_Checked" />
                             <RadioButton Content="None" Height="16" HorizontalAlignment="Left" Margin="10,73,0,0" x:Name="rbNone" VerticalAlignment="Top" Checked="rbVR_Checked" />
                             <RadioButton Content="Direct2D" Height="16" HorizontalAlignment="Left" Margin="10,31,0,0" x:Name="rbDirect2D" VerticalAlignment="Top" Checked="rbVR_Checked" />
                             <RadioButton Content="EVR" Height="16" HorizontalAlignment="Left" Margin="10,52,0,0" x:Name="rbEVR" VerticalAlignment="Top" Checked="rbVR_Checked" />
+                            <RadioButton Content="Virtual Camera SDK output" Height="16" HorizontalAlignment="Left" Margin="10,94,0,0" x:Name="rbVirtualCameraOutput" VerticalAlignment="Top" />
                         </Grid>
                     </GroupBox>
-                    <CheckBox Content="Stretch video" Height="16" HorizontalAlignment="Left" Margin="167,22,0,0" x:Name="cbStretch" VerticalAlignment="Top" Checked="cbStretch_Checked" Unchecked="cbStretch_Checked" />
-                    <CheckBox x:Name="cbScreenFlipVertical" Content="Flip vertical" HorizontalAlignment="Left" Margin="167,43,0,0" VerticalAlignment="Top" Checked="cbScreenFlipVertical_Checked" Unchecked="cbScreenFlipVertical_Checked" IsEnabled="False"/>
-                    <CheckBox x:Name="cbScreenFlipHorizontal" Content="Flip horizontal" HorizontalAlignment="Left" Margin="167,63.098,0,0" VerticalAlignment="Top" Checked="cbScreenFlipHorizontal_Checked" Unchecked="cbScreenFlipHorizontal_Checked" IsEnabled="False"/>
-                    <Label Content="Rotate" HorizontalAlignment="Left" Margin="167,84.04,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="cbDirect2DRotate" HorizontalAlignment="Left" Margin="167,110,0,0" VerticalAlignment="Top" Width="95.215" SelectionChanged="cbDirect2DRotate_SelectionChanged" IsEnabled="False">
+                    <CheckBox Content="Stretch video" Height="16" HorizontalAlignment="Left" Margin="263,12,0,0" x:Name="cbStretch" VerticalAlignment="Top" Checked="cbStretch_Checked" Unchecked="cbStretch_Checked" />
+                    <CheckBox x:Name="cbScreenFlipVertical" Content="Flip vertical" HorizontalAlignment="Left" Margin="263,33,0,0" VerticalAlignment="Top" Checked="cbScreenFlipVertical_Checked" Unchecked="cbScreenFlipVertical_Checked" IsEnabled="False"/>
+                    <CheckBox x:Name="cbScreenFlipHorizontal" Content="Flip horizontal" HorizontalAlignment="Left" Margin="263,53,0,0" VerticalAlignment="Top" Checked="cbScreenFlipHorizontal_Checked" Unchecked="cbScreenFlipHorizontal_Checked" IsEnabled="False"/>
+                    <Label Content="Rotate" HorizontalAlignment="Left" Margin="263,74,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="cbDirect2DRotate" HorizontalAlignment="Left" Margin="263,100,0,0" VerticalAlignment="Top" Width="95" SelectionChanged="cbDirect2DRotate_SelectionChanged" IsEnabled="False">
                         <ComboBoxItem Content="0" />
                         <ComboBoxItem Content="90" />
                         <ComboBoxItem Content="180" />
                         <ComboBoxItem Content="270" />
                     </ComboBox>
-                    <Rectangle Fill="Black" Height="29" HorizontalAlignment="Left" Margin="286,136.96,0,0" x:Name="pnVideoRendererBGColor" Stroke="Black" VerticalAlignment="Top" Width="32" MouseDown="pnVideoRendererBGColor_MouseDown" />
-                    <Label Content="Background color" Height="28" HorizontalAlignment="Left" Margin="167,136.96,0,0" VerticalAlignment="Top" />
+                    <Rectangle Fill="Black" Height="29" HorizontalAlignment="Left" Margin="312,205,0,0" x:Name="pnVideoRendererBGColor" Stroke="Black" VerticalAlignment="Top" Width="32" MouseDown="pnVideoRendererBGColor_MouseDown" />
+                    <Label Content="Background color" Height="28" HorizontalAlignment="Left" Margin="193,205,0,0" VerticalAlignment="Top" />
                     <GroupBox x:Name="pnZoom" Header="Zoom" HorizontalAlignment="Left" Margin="10,193.25,0,0" VerticalAlignment="Top" Height="121.96" Width="161" IsEnabled="False">
                         <Grid>
                             <Button x:Name="btZoomShiftUp" Content="Up" HorizontalAlignment="Left" Margin="42,11,0,0" VerticalAlignment="Top" Width="69" Click="btZoomShiftUp_Click"/>
@@ -688,7 +688,7 @@
                         <TabItem Header="Main" x:Name="tabItem45">
                             <Grid>
                                 <Label Content="Folder" Height="23" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="label170" VerticalAlignment="Top" Width="62" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="72,10,0,0" x:Name="edScreenshotsFolder" VerticalAlignment="Top" Width="162" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="72,10,0,0" x:Name="edScreenshotsFolder" VerticalAlignment="Top" Width="171" />
                                 <Button Click="btSelectScreenshotsFolder_Click" Content="..." Height="23" HorizontalAlignment="Right" Margin="0,10,77,0" x:Name="btSelectScreenshotsFolder" VerticalAlignment="Top" Width="24" />
                                 <Button Click="btSaveScreenshot_Click" Content="Save" Height="23" HorizontalAlignment="Left" IsDefault="False" IsEnabled="True" Margin="274,10,0,0" x:Name="btSaveScreenshot" VerticalAlignment="Top" Width="56" />
                                 <ComboBox Height="23" HorizontalAlignment="Left" Margin="14,54,0,0" x:Name="cbImageType" VerticalAlignment="Top" Width="106">
@@ -718,8 +718,8 @@
         </TabControl>
         <Label Content="Watch tutorials" FontWeight="Bold" Foreground="#FF0016CF" Height="29" HorizontalAlignment="Right" Margin="0,1,25,0" x:Name="label129" VerticalAlignment="Top" MouseDown="label129_MouseDown" />
         <Label Content="File name" Height="28" HorizontalAlignment="Left" Margin="406,6,0,0" x:Name="label17" VerticalAlignment="Top" />
-        <TextBox Height="23" Margin="407,30,108,0" x:Name="edFilenameOrURL" VerticalAlignment="Top" Text="c:\Samples\!video.mp4" />
-        <Button Content="..." Height="23" HorizontalAlignment="Right" Margin="0,30,28,0" x:Name="btSelectFile" VerticalAlignment="Top" Width="23" Click="btSelectFile_Click" />
+        <TextBox Height="23" Margin="407,30,105,0" x:Name="edFilenameOrURL" VerticalAlignment="Top" Text="c:\Samples\!video.mp4" />
+        <Button Content="..." Height="23" HorizontalAlignment="Right" Margin="0,30,25,0" x:Name="btSelectFile" VerticalAlignment="Top" Width="23" Click="btSelectFile_Click" />
         <GroupBox Header="Controls" Height="89" HorizontalAlignment="Left" Margin="407,0,0,217" x:Name="groupBox1" VerticalAlignment="Bottom" Width="403">
             <Grid>
                 <Slider Height="23" HorizontalAlignment="Left" Margin="8,6,0,0" x:Name="tbTimeline" VerticalAlignment="Top" Width="146" Maximum="100" ValueChanged="tbTimeline_ValueChanged" />
@@ -750,7 +750,7 @@
             </Grid>
         </GroupBox>
         <Label Content="Source mode" HorizontalAlignment="Left" Margin="406,130.04,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbSourceMode" Margin="491,134,81,0" VerticalAlignment="Top">
+        <ComboBox x:Name="cbSourceMode" Margin="491,134,25,0" VerticalAlignment="Top">
             <ComboBoxItem Content="File / Network stream (decode using LAV)"/>
             <ComboBoxItem Content="File / Network stream (decode using GPU)"/>
             <ComboBoxItem Content="File (decode using FFMPEG)"/>
@@ -767,7 +767,7 @@
             <ComboBoxItem Content="MIDI / KAR"/>
         </ComboBox>
         <Label Content="Playlist" HorizontalAlignment="Left" Margin="407,53,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Right" Margin="0,30,56,0" VerticalAlignment="Top" Width="47" Height="23" Click="btAddFileToPlaylist_Click"/>
+        <Button x:Name="btAddFileToPlaylist" Content="Add" HorizontalAlignment="Right" Margin="0,30,53,0" VerticalAlignment="Top" Width="47" Height="23" Click="btAddFileToPlaylist_Click"/>
         <ListBox x:Name="lbSourceFiles" Height="46" Margin="406,79,25,0" VerticalAlignment="Top">
             <ListBox.ContextMenu>
                 <ContextMenu>

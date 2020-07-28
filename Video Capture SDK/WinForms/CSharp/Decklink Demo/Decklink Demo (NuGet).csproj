@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" 
-  xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -37,6 +36,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,9 +46,32 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>visioforge_main_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework" />
@@ -107,29 +130,29 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="VisioForge.Types, Version=11.4.7.0, Culture=neutral, PublicKeyToken=722de1c1c0a7f49e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.Types.dll</HintPath>
+    <Reference Include="VisioForge.Types, Version=12.0.24.0, Culture=neutral, PublicKeyToken=722de1c1c0a7f49e, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.Types.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.Controls, Version=11.4.7.0, Culture=neutral, PublicKeyToken=5873e863f1bcda5d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.Controls.dll</HintPath>
+    <Reference Include="VisioForge.Controls, Version=12.0.24.0, Culture=neutral, PublicKeyToken=5873e863f1bcda5d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.Controls.UI, Version=11.4.7.0, Culture=neutral, PublicKeyToken=eafa6bd21aa991fd, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.Controls.UI.dll</HintPath>
+    <Reference Include="VisioForge.Controls.UI, Version=12.0.24.0, Culture=neutral, PublicKeyToken=eafa6bd21aa991fd, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.Controls.UI.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.Controls.UI.Dialogs, Version=11.4.7.0, Culture=neutral, PublicKeyToken=3d84672df68c33ac, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.Controls.UI.Dialogs.dll</HintPath>
+    <Reference Include="VisioForge.Controls.UI.Dialogs, Version=12.0.24.0, Culture=neutral, PublicKeyToken=3d84672df68c33ac, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.Controls.UI.Dialogs.dll</HintPath>
     </Reference>
     <Reference Include="VisioForge.DirectX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=2f064561f42d5b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.DirectX.dll</HintPath>
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.DirectX.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.MediaFramework, Version=11.4.7.0, Culture=neutral, PublicKeyToken=14e66dd726c53f11, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.MediaFramework.dll</HintPath>
+    <Reference Include="VisioForge.MediaFramework, Version=12.0.24.0, Culture=neutral, PublicKeyToken=14e66dd726c53f11, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.MediaFramework.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.Shared, Version=11.4.7.0, Culture=neutral, PublicKeyToken=4cb7f6778cad43a2, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.Shared.dll</HintPath>
+    <Reference Include="VisioForge.Shared, Version=12.0.24.0, Culture=neutral, PublicKeyToken=4cb7f6778cad43a2, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.Shared.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.Tools, Version=11.4.7.0, Culture=neutral, PublicKeyToken=33c6ded9724deec2, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.11.4.7\lib\net45\VisioForge.Tools.dll</HintPath>
+    <Reference Include="VisioForge.Tools, Version=12.0.24.0, Culture=neutral, PublicKeyToken=33c6ded9724deec2, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.24\lib\net45\VisioForge.Tools.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

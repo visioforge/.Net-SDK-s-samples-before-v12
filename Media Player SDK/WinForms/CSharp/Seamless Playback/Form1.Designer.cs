@@ -299,22 +299,28 @@
             this.MediaPlayer1.Custom_Audio_Decoder = null;
             this.MediaPlayer1.Custom_Splitter = null;
             this.MediaPlayer1.Custom_Video_Decoder = null;
+            this.MediaPlayer1.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer1.CustomParameters")));
+            this.MediaPlayer1.CustomRedist_Enabled = false;
+            this.MediaPlayer1.CustomRedist_Path = null;
             this.MediaPlayer1.Debug_DeepCleanUp = false;
             this.MediaPlayer1.Debug_Dir = null;
             this.MediaPlayer1.Debug_Mode = false;
-            this.MediaPlayer1.Debug_Telemetry = true;
+            this.MediaPlayer1.Debug_Telemetry = false;
             this.MediaPlayer1.Encryption_Key = "";
             this.MediaPlayer1.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer1.Face_Tracking = null;
+            this.MediaPlayer1.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer1.FilenamesOrURL")));
             this.MediaPlayer1.Info_UseLibMediaInfo = false;
             this.MediaPlayer1.Location = new System.Drawing.Point(14, 8);
             this.MediaPlayer1.Loop = false;
             this.MediaPlayer1.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer1.MaximalSpeedPlayback = false;
+            this.MediaPlayer1.MIDI_Renderer = null;
             this.MediaPlayer1.Motion_Detection = null;
             this.MediaPlayer1.Motion_DetectionEx = null;
             this.MediaPlayer1.MultiScreen_Enabled = false;
             this.MediaPlayer1.Name = "MediaPlayer1";
+            this.MediaPlayer1.OSD_Enabled = false;
             this.MediaPlayer1.Play_DelayEnabled = false;
             this.MediaPlayer1.Play_PauseAtFirstFrame = false;
             this.MediaPlayer1.ReversePlayback_CacheSize = 0;
@@ -324,6 +330,7 @@
             this.MediaPlayer1.Selection_Stop = 0;
             this.MediaPlayer1.Size = new System.Drawing.Size(418, 312);
             this.MediaPlayer1.Source_Custom_CLSID = null;
+            this.MediaPlayer1.Source_GPU_Mode = VisioForge.Types.VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
             this.MediaPlayer1.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer1.Source_Stream = null;
             this.MediaPlayer1.Source_Stream_AudioPresent = false;
@@ -331,6 +338,8 @@
             this.MediaPlayer1.Source_Stream_VideoPresent = false;
             this.MediaPlayer1.TabIndex = 30;
             this.MediaPlayer1.Video_Effects_Enabled = false;
+            this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
+            this.MediaPlayer1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -350,6 +359,9 @@
             this.MediaPlayer1.Video_Renderer = videoRendererSettingsWinForms1;
             this.MediaPlayer1.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer1.Video_Stream_Index = 0;
+            this.MediaPlayer1.Virtual_Camera_Output_Enabled = false;
+            this.MediaPlayer1.Virtual_Camera_Output_LicenseKey = null;
+            this.MediaPlayer1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer1_OnError);
             this.MediaPlayer1.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer1_OnStop);
             // 
             // timer1
@@ -378,22 +390,28 @@
             this.MediaPlayer2.Custom_Audio_Decoder = null;
             this.MediaPlayer2.Custom_Splitter = null;
             this.MediaPlayer2.Custom_Video_Decoder = null;
+            this.MediaPlayer2.CustomParameters = ((System.Collections.Generic.Dictionary<string, string>)(resources.GetObject("MediaPlayer2.CustomParameters")));
+            this.MediaPlayer2.CustomRedist_Enabled = false;
+            this.MediaPlayer2.CustomRedist_Path = null;
             this.MediaPlayer2.Debug_DeepCleanUp = false;
             this.MediaPlayer2.Debug_Dir = null;
             this.MediaPlayer2.Debug_Mode = false;
-            this.MediaPlayer2.Debug_Telemetry = true;
+            this.MediaPlayer2.Debug_Telemetry = false;
             this.MediaPlayer2.Encryption_Key = "";
             this.MediaPlayer2.Encryption_KeyType = VisioForge.Types.VFEncryptionKeyType.String;
             this.MediaPlayer2.Face_Tracking = null;
+            this.MediaPlayer2.FilenamesOrURL = ((System.Collections.Generic.List<string>)(resources.GetObject("MediaPlayer2.FilenamesOrURL")));
             this.MediaPlayer2.Info_UseLibMediaInfo = false;
             this.MediaPlayer2.Location = new System.Drawing.Point(14, 8);
             this.MediaPlayer2.Loop = false;
             this.MediaPlayer2.Loop_DoNotSeekToBeginning = false;
             this.MediaPlayer2.MaximalSpeedPlayback = false;
+            this.MediaPlayer2.MIDI_Renderer = null;
             this.MediaPlayer2.Motion_Detection = null;
             this.MediaPlayer2.Motion_DetectionEx = null;
             this.MediaPlayer2.MultiScreen_Enabled = false;
             this.MediaPlayer2.Name = "MediaPlayer2";
+            this.MediaPlayer2.OSD_Enabled = false;
             this.MediaPlayer2.Play_DelayEnabled = false;
             this.MediaPlayer2.Play_PauseAtFirstFrame = false;
             this.MediaPlayer2.ReversePlayback_CacheSize = 0;
@@ -403,6 +421,7 @@
             this.MediaPlayer2.Selection_Stop = 0;
             this.MediaPlayer2.Size = new System.Drawing.Size(418, 312);
             this.MediaPlayer2.Source_Custom_CLSID = null;
+            this.MediaPlayer2.Source_GPU_Mode = VisioForge.Types.VFMediaPlayerSourceGPUDecoder.nVidiaCUVID;
             this.MediaPlayer2.Source_Mode = VisioForge.Types.VFMediaPlayerSource.File_DS;
             this.MediaPlayer2.Source_Stream = null;
             this.MediaPlayer2.Source_Stream_AudioPresent = false;
@@ -410,6 +429,8 @@
             this.MediaPlayer2.Source_Stream_VideoPresent = false;
             this.MediaPlayer2.TabIndex = 33;
             this.MediaPlayer2.Video_Effects_Enabled = false;
+            this.MediaPlayer2.Video_Effects_GPU_Enabled = false;
+            this.MediaPlayer2.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;
@@ -429,6 +450,9 @@
             this.MediaPlayer2.Video_Renderer = videoRendererSettingsWinForms2;
             this.MediaPlayer2.Video_Sample_Grabber_UseForVideoEffects = false;
             this.MediaPlayer2.Video_Stream_Index = 0;
+            this.MediaPlayer2.Virtual_Camera_Output_Enabled = false;
+            this.MediaPlayer2.Virtual_Camera_Output_LicenseKey = null;
+            this.MediaPlayer2.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.MediaPlayer2_OnError);
             this.MediaPlayer2.OnStop += new System.EventHandler<VisioForge.Types.MediaPlayerStopEventArgs>(this.MediaPlayer2_OnStop);
             // 
             // Form1

@@ -2,6 +2,7 @@
 
 // ReSharper disable StyleCop.SA1600
 // ReSharper disable StyleCop.SA1601
+// ReSharper disable LocalizableElement
 namespace multiple_video_streams
 {
     using System;
@@ -25,7 +26,7 @@ namespace multiple_video_streams
 
         private readonly System.Timers.Timer tmRecording = new System.Timers.Timer(1000);
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             // 1st device
             videoCapture1.Video_CaptureDevice = cbCamera1.Text;
@@ -53,7 +54,7 @@ namespace multiple_video_streams
             videoCapture1.Output_Format = wmvOutput;
 
             // main options
-            videoCapture1.OnError += VideoCapture1OnOnError;
+            videoCapture1.OnError += videoCapture1_OnError;
 
             videoCapture1.Output_Filename = edFilename.Text;
             videoCapture1.Mode = VFVideoCaptureMode.VideoCapture;
@@ -65,19 +66,14 @@ namespace multiple_video_streams
             videoCapture1.Debug_Mode = cbDebugMode.Checked;
             videoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             
-            videoCapture1.Start();
+            await videoCapture1.StartAsync();
             tmRecording.Start();
         }
 
-        private void VideoCapture1OnOnError(object sender, ErrorsEventArgs errorsEventArgs)
-        {
-            edLog.Text += errorsEventArgs.Message + Environment.NewLine;
-        }
-
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             tmRecording.Stop();
-            videoCapture1.Stop();
+            await videoCapture1.StopAsync();
 
             videoScreen2.Image = null;
         }
@@ -102,18 +98,7 @@ namespace multiple_video_streams
             edFilename.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\"
                               + "multiple_video_streams.wmv";
 
-            if (VideoCapture.Filter_Supported_EVR())
-            {
-                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
-            }
-            else if (VideoCapture.Filter_Supported_VMR9())
-            {
-                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
-            }
-            else
-            {
-                videoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
-            }
+            videoCapture1.Video_Renderer_SetAuto();
 
             tmRecording.Elapsed += (senderx, args) =>
             {
@@ -203,33 +188,41 @@ namespace multiple_video_streams
             }
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { edLog.Text = edLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
+        private void videoCapture1_OnError(object sender, ErrorsEventArgs e)
+        {
+            Log(e.Message);
+        }
+
         private void videoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                edLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void UpdateRecordingTime()
         {
-            long timestamp = videoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (IsHandleCreated)
             {
-                return;
+                var ts = videoCapture1.Duration_Time();
+
+                if (Math.Abs(ts.TotalMilliseconds) < 0.01)
+                {
+                    return;
+                }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
         }
     }
 }

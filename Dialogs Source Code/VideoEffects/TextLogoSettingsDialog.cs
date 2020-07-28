@@ -332,7 +332,7 @@ namespace VisioForge.Controls.UI.Dialogs.VideoEffects
             if (cbTextLogoFadeIn.Checked)
             {
                 textLogo.FadeIn = true;
-                textLogo.FadeInDuration = 5000;
+                textLogo.FadeInDuration = TimeSpan.FromSeconds(5);
             }
             else
             {
@@ -342,7 +342,7 @@ namespace VisioForge.Controls.UI.Dialogs.VideoEffects
             if (cbTextLogoFadeOut.Checked)
             {
                 textLogo.FadeOut = true;
-                textLogo.FadeOutDuration = 5000;
+                textLogo.FadeOutDuration = TimeSpan.FromSeconds(5);
             }
             else
             {

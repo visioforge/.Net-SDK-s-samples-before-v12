@@ -20,24 +20,29 @@ namespace speaker_capture
     {
         private VideoCaptureCore VideoCapture1;
 
-        private long _currentTimestamp;
+        private TimeSpan _currentTimestamp;
 
         public Form1()
         {
             InitializeComponent();
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,7 +62,7 @@ namespace speaker_capture
             _currentTimestamp = e.Timestamp;
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             VideoCapture1.Audio_CaptureDevice = "VisioForge What You Hear Source";
             VideoCapture1.Audio_CaptureDevice_Format_UseBest = true;
@@ -72,34 +77,33 @@ namespace speaker_capture
 
             VideoCapture1.Audio_Sample_Grabber_Enabled = true;
 
-            _currentTimestamp = 0;
+            _currentTimestamp = TimeSpan.Zero;
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             timer1.Start();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
 
             timer1.Stop();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            var ts = new TimeSpan(_currentTimestamp * TimeSpan.TicksPerMillisecond);
-            lbTimestamp.Text = ts.ToString(@"hh\:mm\:ss");
+            lbTimestamp.Text = _currentTimestamp.ToString(@"hh\:mm\:ss");
         }
     }
 }

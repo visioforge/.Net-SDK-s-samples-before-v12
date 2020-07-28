@@ -34,7 +34,6 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.btStop = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.cbLicensing = new System.Windows.Forms.CheckBox();
             this.cbDebugMode = new System.Windows.Forms.CheckBox();
             this.mmLog = new System.Windows.Forms.TextBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -161,7 +160,6 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.cbLicensing);
             this.tabPage4.Controls.Add(this.cbDebugMode);
             this.tabPage4.Controls.Add(this.mmLog);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
@@ -171,16 +169,6 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Logs";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // cbLicensing
-            // 
-            this.cbLicensing.AutoSize = true;
-            this.cbLicensing.Location = new System.Drawing.Point(105, 6);
-            this.cbLicensing.Name = "cbLicensing";
-            this.cbLicensing.Size = new System.Drawing.Size(91, 17);
-            this.cbLicensing.TabIndex = 79;
-            this.cbLicensing.Text = "Licensing info";
-            this.cbLicensing.UseVisualStyleBackColor = true;
             // 
             // cbDebugMode
             // 
@@ -1035,7 +1023,6 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Text = "Audio Capture Demo - Video Capture SDK .Net";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
@@ -1147,7 +1134,6 @@ namespace VisioForge_SDK_4_Audio_Capture_CSharp
         internal System.Windows.Forms.LinkLabel llVideoTutorials;
         private System.Windows.Forms.Label lbInfo;
         private System.Windows.Forms.Button btOutputConfigure;
-        private System.Windows.Forms.CheckBox cbLicensing;
         private System.Windows.Forms.CheckBox cbDebugMode;
         private System.Windows.Forms.TextBox mmLog;
         private System.Windows.Forms.Label lbTimestamp;

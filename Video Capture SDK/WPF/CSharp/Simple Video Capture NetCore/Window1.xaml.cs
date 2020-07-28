@@ -210,9 +210,19 @@ namespace Simple_Video_Capture
             VideoCapture1.Video_CaptureDevice_SettingsDialog_Show(IntPtr.Zero, cbVideoInputDevice.Text);
         }
 
+        private void Log(string txt)
+        {
+            Dispatcher.Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
+        }
+
+        private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
+        {
+            Log(e.Message);
         }
 
         private void tbAudioVolume_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -480,7 +490,7 @@ namespace Simple_Video_Capture
             }
         }
 
-        private void btStart_Click(object sender, RoutedEventArgs e)
+        private async void btStart_Click(object sender, RoutedEventArgs e)
         {
             mmLog.Clear();
 
@@ -644,11 +654,13 @@ namespace Simple_Video_Capture
             }
 
             VideoCapture1.Video_Effects_Enabled = true;
+            VideoCapture1.Video_Effects_MergeImageLogos = cbMergeImageLogos.IsChecked == true;
+            VideoCapture1.Video_Effects_MergeTextLogos = cbMergeTextLogos.IsChecked == true;
             VideoCapture1.Video_Effects_Clear();
             lbLogos.Items.Clear();
             ConfigureVideoEffects();
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 3;
             tmRecording.Start();
@@ -697,21 +709,21 @@ namespace Simple_Video_Capture
             }
         }
 
-        private void BtResume_Click(object sender, RoutedEventArgs e)
+        private async void BtResume_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
-        private void BtPause_Click(object sender, RoutedEventArgs e)
+        private async void BtPause_Click(object sender, RoutedEventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
-        private void btStop_Click(object sender, RoutedEventArgs e)
+        private async void btStop_Click(object sender, RoutedEventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
         }
         
         private void cbAudioInputFormat_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -745,17 +757,8 @@ namespace Simple_Video_Capture
                 VideoCapture1.Video_CaptureFormat = string.Empty;
             }
         }
-
-        private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
-        {
-            if (cbLicensing.IsChecked == true)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
-        }
-
-
-        private void btSaveScreenshot_Click(object sender, RoutedEventArgs e)
+        
+        private async void btSaveScreenshot_Click(object sender, RoutedEventArgs e)
         {
             if (screenshotSaveDialog.ShowDialog() == true)
             {
@@ -764,25 +767,25 @@ namespace Simple_Video_Capture
                 switch (ext)
                 {
                     case ".bmp":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0);
                         break;
                     case ".jpg":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85);
                         break;
                     case ".gif":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0);
                         break;
                     case ".png":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0);
                         break;
                     case ".tiff":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0);
                         break;
                 }
             }
         }
 
-        private void BtOutputConfigure_Click(object sender, RoutedEventArgs e)
+        private void btOutputConfigure_Click(object sender, RoutedEventArgs e)
         {
             switch (cbOutputFormat.SelectedIndex)
             {
@@ -1007,25 +1010,18 @@ namespace Simple_Video_Capture
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
+            var ts = VideoCapture1.Duration_Time();
 
-            if (timestamp < 0)
+            if (Math.Abs(ts.TotalMilliseconds) < 0.01)
             {
                 return;
             }
 
             Dispatcher.BeginInvoke((Action)(() =>
             {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
                 lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
             }));
         }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            btStop_Click(null, null);
-        }
-
 
         private void cbGreyscale_CheckedChanged(object sender, RoutedEventArgs e)
         {
@@ -1150,7 +1146,7 @@ namespace Simple_Video_Capture
             var effect = VideoCapture1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.IsChecked == true);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.IsChecked == true);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -1169,7 +1165,7 @@ namespace Simple_Video_Capture
             var effect = VideoCapture1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.IsChecked == true);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.IsChecked == true);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else

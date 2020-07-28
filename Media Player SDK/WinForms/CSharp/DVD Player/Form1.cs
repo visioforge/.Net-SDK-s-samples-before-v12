@@ -1,15 +1,14 @@
 // ReSharper disable InconsistentNaming
 
-using VisioForge.Controls.UI;
-
 namespace DVD_Player_Demo
 {
     using System;
     using System.Diagnostics;
     using System.Windows.Forms;
 
-    using VisioForge.Tools.MediaInfo;
+    using VisioForge.Controls.UI;
     using VisioForge.Controls.UI.WinForms;
+    using VisioForge.Tools.MediaInfo;
     using VisioForge.Types;
 
     public partial class Form1 : Form
@@ -49,7 +48,7 @@ namespace DVD_Player_Demo
         {
             if (Convert.ToInt32(timer1.Tag) == 0)
             {
-                MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000);
+                MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value));
             }
         }
 
@@ -58,19 +57,19 @@ namespace DVD_Player_Demo
             MediaPlayer1.DVD_SetSpeed(tbSpeed.Value / 10.0, false);
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Resume();
+            await MediaPlayer1.ResumeAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Pause();
+            await MediaPlayer1.PauseAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Stop();
+            await MediaPlayer1.StopAsync();
             timer1.Enabled = false;
             tbTimeline.Value = 0;
         }
@@ -128,11 +127,11 @@ namespace DVD_Player_Demo
                 cbDVDControlSubtitles.SelectedIndex = 0;
 
                 // if (nil we just enumerate titles and chapters
-                if (sender != null) 
+                if (sender != null)
                 {
                     // play title
                     MediaPlayer1.DVD_Title_Play(cbDVDControlTitle.SelectedIndex);
-                    tbTimeline.Maximum = MediaPlayer1.DVD_Title_GetDurationS();
+                    tbTimeline.Maximum = (int)MediaPlayer1.DVD_Title_GetDuration().TotalSeconds;
                 }
             }
         }
@@ -174,7 +173,7 @@ namespace DVD_Player_Demo
             MediaPlayer1.DVD_Menu_Show(VFDVDMenu.Root);
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmError.Clear();
 
@@ -215,7 +214,7 @@ namespace DVD_Player_Demo
 
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
 
-            MediaPlayer1.Play();
+            await MediaPlayer1.PlayAsync();
 
             // DVD
             // select and play first title
@@ -237,9 +236,9 @@ namespace DVD_Player_Demo
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Tag = 1;
-            tbTimeline.Maximum = (int)(MediaPlayer1.Duration_Time() / 1000);
+            tbTimeline.Maximum = (int)MediaPlayer1.Duration_Time().TotalSeconds;
 
-            int value = (int)(MediaPlayer1.Position_Get_Time() / 1000);
+            int value = (int)MediaPlayer1.Position_Get_Time().TotalSeconds;
             if ((value > 0) && (value < tbTimeline.Maximum))
             {
                 tbTimeline.Value = value;
@@ -266,25 +265,41 @@ namespace DVD_Player_Demo
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmError.Text = mmError.Text + e.Message + Environment.NewLine;
+            Invoke((Action)(() =>
+                                   {
+                                       mmError.Text = mmError.Text + e.Message + Environment.NewLine;
+                                   }));
+
         }
 
         private void MediaPlayer1_OnDVDPlaybackError(object sender, DVDEventArgs e)
         {
-            mmError.Text = mmError.Text + e.Message + Environment.NewLine;
+            Invoke((Action)(() =>
+                                   {
+                                       mmError.Text = mmError.Text + e.Message + Environment.NewLine;
+                                   }));
+
         }
 
         private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
-            tbTimeline.Value = 0;
+            Invoke((Action)(() =>
+                                   {
+                                       tbTimeline.Value = 0;
+                                   }));
+
         }
 
         private void MediaPlayer1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Invoke((Action)(() =>
+                                   {
+                                       if (cbLicensing.Checked)
+                                       {
+                                           mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+                                       }
+                                   }));
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -1,15 +1,19 @@
 ﻿// ReSharper disable StyleCop.SA1600
 
-using VisioForge.Controls.UI.Dialogs.OutputFormats;
-using VisioForge.Tools;
+
 // ReSharper disable InconsistentNaming
+// ReSharper disable LocalizableElement
 
 namespace Push_Source_Demo
 {
     using System;
     using System.Drawing;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
+
+    using VisioForge.Controls.UI.Dialogs.OutputFormats;
     using VisioForge.Controls.UI.WinForms;
+    using VisioForge.Tools;
     using VisioForge.Types;
     using VisioForge.Types.OutputFormat;
     using VisioForge.Types.Sources;
@@ -60,81 +64,76 @@ namespace Push_Source_Demo
             edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" +
                             "output.mp4";
 
-            if (VideoCapture.Filter_Supported_EVR())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.EVR;
-            }
-            else if (VideoCapture.Filter_Supported_VMR9())
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VMR9;
-            }
-            else
-            {
-                VideoCapture1.Video_Renderer.Video_Renderer = VFVideoRenderer.VideoRenderer;
-            }
+            VideoCapture1.Video_Renderer_SetAuto();
 
             cbOutputFormat.SelectedIndex = 7;
         }
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (InvokeRequired)
             {
-                return;
-            }
+                var ts = VideoCapture1.Duration_Time();
 
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
-        }
-
-        private void PushImages()
-        {
-            Bitmap bmp = null;
-            for (int k = 0; k < 5; k++)
-            {
-                for (int i = 0; i < 25; i++)
+                if (Math.Abs(ts.TotalMilliseconds) < 0.01)
                 {
-                    switch (k)
-                    {
-                        case 0:
-                            bmp = new Bitmap(Properties.Resources._1);
-                            break;
-                        case 1:
-                            bmp = new Bitmap(Properties.Resources._2);
-                            break;
-                        case 2:
-                            bmp = new Bitmap(Properties.Resources._3);
-                            break;
-                        case 3:
-                            bmp = new Bitmap(Properties.Resources._4);
-                            break;
-                        case 4:
-                            bmp = new Bitmap(Properties.Resources._5);
-                            break;
-                    }
-
-                    if (bmp != null)
-                    {
-                        VideoCapture1.Push_Source_AddVideoFrame(bmp);
-                        bmp.Dispose();
-                    }
-
-                    Application.DoEvents();
+                    return;
                 }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = $"Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            VideoCapture1.Stop();
-
-            tmRecording.Stop();
-
-            MessageBox.Show("Done!");
         }
 
+        private Task PushImagesAsync()
+        {
+           return Task.Run(
+               async () =>
+                    {
+                        Bitmap bmp = null;
+                        for (int k = 0; k < 5; k++)
+                        {
+                            for (int i = 0; i < 25; i++)
+                            {
+                                switch (k)
+                                {
+                                    case 0:
+                                        bmp = new Bitmap(Properties.Resources._1);
+                                        break;
+                                    case 1:
+                                        bmp = new Bitmap(Properties.Resources._2);
+                                        break;
+                                    case 2:
+                                        bmp = new Bitmap(Properties.Resources._3);
+                                        break;
+                                    case 3:
+                                        bmp = new Bitmap(Properties.Resources._4);
+                                        break;
+                                    case 4:
+                                        bmp = new Bitmap(Properties.Resources._5);
+                                        break;
+                                }
+
+                                if (bmp != null)
+                                {
+                                    VideoCapture1.Push_Source_AddVideoFrame(bmp);
+                                    bmp.Dispose();
+                                }
+
+                                Application.DoEvents();
+                            }
+                        }
+
+                        await VideoCapture1.StopAsync();
+
+                        tmRecording.Stop();
+
+                        MessageBox.Show("Done!");
+                    });
+        }
 
         private void SetMP4Output(ref VFMP4v8v10Output mp4Output)
         {
@@ -186,7 +185,7 @@ namespace Push_Source_Demo
 
             ffmpegDLLSettingsDialog.SaveSettings(ref ffmpegDLLOutput);
         }
-               
+
         private void SetMP4v11Output(ref VFMP4v11Output mp4Output)
         {
             if (mp4v11SettingsDialog == null)
@@ -241,7 +240,8 @@ namespace Push_Source_Demo
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
@@ -269,7 +269,8 @@ namespace Push_Source_Demo
         {
             if (aviSettingsDialog == null)
             {
-                aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
+                aviSettingsDialog = new AVISettingsDialog(
+                    VideoCapture1.Video_Codecs.ToArray(),
                     VideoCapture1.Audio_Codecs.ToArray());
             }
 
@@ -283,12 +284,8 @@ namespace Push_Source_Demo
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Video_Renderer.Zoom_Ratio = 0;
-            VideoCapture1.Video_Renderer.Zoom_ShiftX = 0;
-            VideoCapture1.Video_Renderer.Zoom_ShiftY = 0;
-
             VideoCapture1.Debug_Mode = cbDebugMode.Checked;
             VideoCapture1.Debug_Dir =
                 Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
@@ -319,97 +316,97 @@ namespace Push_Source_Demo
                 switch (cbOutputFormat.SelectedIndex)
                 {
                     case 0:
-                    {
-                        var aviOutput = new VFAVIOutput();
-                        SetAVIOutput(ref aviOutput);
-                        VideoCapture1.Output_Format = aviOutput;
+                        {
+                            var aviOutput = new VFAVIOutput();
+                            SetAVIOutput(ref aviOutput);
+                            VideoCapture1.Output_Format = aviOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 1:
-                    {
-                        var mkvOutput = new VFMKVv1Output();
-                        SetMKVOutput(ref mkvOutput);
-                        VideoCapture1.Output_Format = mkvOutput;
+                        {
+                            var mkvOutput = new VFMKVv1Output();
+                            SetMKVOutput(ref mkvOutput);
+                            VideoCapture1.Output_Format = mkvOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 2:
-                    {
-                        var wmvOutput = new VFWMVOutput();
-                        SetWMVOutput(ref wmvOutput);
-                        VideoCapture1.Output_Format = wmvOutput;
+                        {
+                            var wmvOutput = new VFWMVOutput();
+                            SetWMVOutput(ref wmvOutput);
+                            VideoCapture1.Output_Format = wmvOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 3:
-                    {
-                        var dvOutput = new VFDVOutput();
-                        SetDVOutput(ref dvOutput);
-                        VideoCapture1.Output_Format = dvOutput;
+                        {
+                            var dvOutput = new VFDVOutput();
+                            SetDVOutput(ref dvOutput);
+                            VideoCapture1.Output_Format = dvOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 4:
-                    {
-                        var webmOutput = new VFWebMOutput();
-                        SetWebMOutput(ref webmOutput);
-                        VideoCapture1.Output_Format = webmOutput;
+                        {
+                            var webmOutput = new VFWebMOutput();
+                            SetWebMOutput(ref webmOutput);
+                            VideoCapture1.Output_Format = webmOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 5:
-                    {
-                        var ffmpegDLLOutput = new VFFFMPEGDLLOutput();
-                        SetFFMPEGDLLOutput(ref ffmpegDLLOutput);
-                        VideoCapture1.Output_Format = ffmpegDLLOutput;
+                        {
+                            var ffmpegDLLOutput = new VFFFMPEGDLLOutput();
+                            SetFFMPEGDLLOutput(ref ffmpegDLLOutput);
+                            VideoCapture1.Output_Format = ffmpegDLLOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 6:
-                    {
-                        var ffmpegOutput = new VFFFMPEGEXEOutput();
-                        SetFFMPEGEXEOutput(ref ffmpegOutput);
-                        VideoCapture1.Output_Format = ffmpegOutput;
+                        {
+                            var ffmpegOutput = new VFFFMPEGEXEOutput();
+                            SetFFMPEGEXEOutput(ref ffmpegOutput);
+                            VideoCapture1.Output_Format = ffmpegOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 7:
-                    {
-                        var mp4Output = new VFMP4v8v10Output();
-                        SetMP4Output(ref mp4Output);
-                        VideoCapture1.Output_Format = mp4Output;
+                        {
+                            var mp4Output = new VFMP4v8v10Output();
+                            SetMP4Output(ref mp4Output);
+                            VideoCapture1.Output_Format = mp4Output;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 8:
-                    {
-                        var mp4Output = new VFMP4v11Output();
-                        SetMP4v11Output(ref mp4Output);
-                        VideoCapture1.Output_Format = mp4Output;
+                        {
+                            var mp4Output = new VFMP4v11Output();
+                            SetMP4v11Output(ref mp4Output);
+                            VideoCapture1.Output_Format = mp4Output;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 9:
-                    {
-                        var gifOutput = new VFAnimatedGIFOutput();
-                        SetGIFOutput(ref gifOutput);
+                        {
+                            var gifOutput = new VFAnimatedGIFOutput();
+                            SetGIFOutput(ref gifOutput);
 
-                        VideoCapture1.Output_Format = gifOutput;
+                            VideoCapture1.Output_Format = gifOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 10:
-                    {
-                        var encOutput = new VFMP4v8v10Output();
-                        SetMP4Output(ref encOutput);
-                        encOutput.Encryption = true;
-                        encOutput.Encryption_Format = VFEncryptionFormat.MP4_H264_SW_AAC;
+                        {
+                            var encOutput = new VFMP4v8v10Output();
+                            SetMP4Output(ref encOutput);
+                            encOutput.Encryption = true;
+                            encOutput.Encryption_Format = VFEncryptionFormat.MP4_H264_SW_AAC;
 
-                        VideoCapture1.Output_Format = encOutput;
+                            VideoCapture1.Output_Format = encOutput;
 
-                        break;
-                    }
+                            break;
+                        }
                     case 11:
                         {
                             var tsOutput = new VFMPEGTSOutput();
@@ -429,32 +426,37 @@ namespace Push_Source_Demo
                 }
             }
 
-            VideoCapture1.Start();
+            await VideoCapture1.StartAsync();
 
             tcMain.SelectedIndex = 2;
             tmRecording.Start();
 
-            PushImages();
+            await PushImagesAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
+        }
+
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
         }
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Log(e.Message);
         }
 
         private void btSelectOutput_Click(object sender, EventArgs e)
@@ -470,60 +472,60 @@ namespace Push_Source_Demo
             switch (cbOutputFormat.SelectedIndex)
             {
                 case 0:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
+                        break;
+                    }
                 case 1:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mkv");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mkv");
+                        break;
+                    }
                 case 2:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wmv");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".wmv");
+                        break;
+                    }
                 case 3:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
+                        break;
+                    }
                 case 4:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".webm");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".webm");
+                        break;
+                    }
                 case 5:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
+                        break;
+                    }
                 case 6:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".avi");
+                        break;
+                    }
                 case 7:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4");
+                        break;
+                    }
                 case 8:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".mp4");
+                        break;
+                    }
                 case 9:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".gif");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".gif");
+                        break;
+                    }
                 case 10:
-                {
-                    edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".enc");
-                    break;
-                }
+                    {
+                        edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".enc");
+                        break;
+                    }
                 case 11:
                     {
                         edOutput.Text = FilenameHelper.ChangeFileExt(edOutput.Text, ".ts");
@@ -542,129 +544,131 @@ namespace Push_Source_Demo
             switch (cbOutputFormat.SelectedIndex)
             {
                 case 0:
-                {
-                    if (aviSettingsDialog == null)
                     {
-                        aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
-                            VideoCapture1.Audio_Codecs.ToArray());
+                        if (aviSettingsDialog == null)
+                        {
+                            aviSettingsDialog = new AVISettingsDialog(
+                                VideoCapture1.Video_Codecs.ToArray(),
+                                VideoCapture1.Audio_Codecs.ToArray());
+                        }
+
+                        aviSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    aviSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 1:
-                {
-                    if (aviSettingsDialog == null)
                     {
-                        aviSettingsDialog = new AVISettingsDialog(VideoCapture1.Video_Codecs.ToArray(),
-                            VideoCapture1.Audio_Codecs.ToArray());
+                        if (aviSettingsDialog == null)
+                        {
+                            aviSettingsDialog = new AVISettingsDialog(
+                                VideoCapture1.Video_Codecs.ToArray(),
+                                VideoCapture1.Audio_Codecs.ToArray());
+                        }
+
+                        aviSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    aviSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 2:
-                {
-                    if (wmvSettingsDialog == null)
                     {
-                        wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                        if (wmvSettingsDialog == null)
+                        {
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                        }
+
+                        wmvSettingsDialog.WMA = false;
+                        wmvSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    wmvSettingsDialog.WMA = false;
-                    wmvSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 3:
-                {
-                    if (dvSettingsDialog == null)
                     {
-                        dvSettingsDialog = new DVSettingsDialog();
+                        if (dvSettingsDialog == null)
+                        {
+                            dvSettingsDialog = new DVSettingsDialog();
+                        }
+
+                        dvSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    dvSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 4:
-                {
-                    if (webmSettingsDialog == null)
                     {
-                        webmSettingsDialog = new WebMSettingsDialog();
+                        if (webmSettingsDialog == null)
+                        {
+                            webmSettingsDialog = new WebMSettingsDialog();
+                        }
+
+                        webmSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    webmSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 5:
-                {
-                    if (ffmpegDLLSettingsDialog == null)
                     {
-                        ffmpegDLLSettingsDialog = new FFMPEGDLLSettingsDialog();
+                        if (ffmpegDLLSettingsDialog == null)
+                        {
+                            ffmpegDLLSettingsDialog = new FFMPEGDLLSettingsDialog();
+                        }
+
+                        ffmpegDLLSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    ffmpegDLLSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 6:
-                {
-                    if (ffmpegEXESettingsDialog == null)
                     {
-                        ffmpegEXESettingsDialog = new FFMPEGEXESettingsDialog();
+                        if (ffmpegEXESettingsDialog == null)
+                        {
+                            ffmpegEXESettingsDialog = new FFMPEGEXESettingsDialog();
+                        }
+
+                        ffmpegEXESettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    ffmpegEXESettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 7:
-                {
-                    if (mp4V10SettingsDialog == null)
                     {
-                        mp4V10SettingsDialog = new MP4v10SettingsDialog();
+                        if (mp4V10SettingsDialog == null)
+                        {
+                            mp4V10SettingsDialog = new MP4v10SettingsDialog();
+                        }
+
+                        mp4V10SettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    mp4V10SettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 8:
-                {
-                    if (mp4v11SettingsDialog == null)
                     {
+                        if (mp4v11SettingsDialog == null)
+                        {
                             mp4v11SettingsDialog = new MFSettingsDialog(MFSettingsDialogMode.MP4v11);
-                    }
+                        }
 
                         mp4v11SettingsDialog.ShowDialog(this);
 
-                    break;
-                }
+                        break;
+                    }
                 case 9:
-                {
-                    if (gifSettingsDialog == null)
                     {
-                        gifSettingsDialog = new GIFSettingsDialog();
+                        if (gifSettingsDialog == null)
+                        {
+                            gifSettingsDialog = new GIFSettingsDialog();
+                        }
+
+                        gifSettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    gifSettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 10:
-                {
-                    if (mp4V10SettingsDialog == null)
                     {
-                        mp4V10SettingsDialog = new MP4v10SettingsDialog();
+                        if (mp4V10SettingsDialog == null)
+                        {
+                            mp4V10SettingsDialog = new MP4v10SettingsDialog();
+                        }
+
+                        mp4V10SettingsDialog.ShowDialog(this);
+
+                        break;
                     }
-
-                    mp4V10SettingsDialog.ShowDialog(this);
-
-                    break;
-                }
                 case 11:
                     {
                         if (mpegTSSettingsDialog == null)
@@ -688,11 +692,6 @@ namespace Push_Source_Demo
                         break;
                     }
             }
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
         }
     }
 }

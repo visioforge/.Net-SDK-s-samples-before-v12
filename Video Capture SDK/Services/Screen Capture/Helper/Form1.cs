@@ -137,7 +137,7 @@ namespace ScreenCaptureServiceHelper
         private static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-        public static extern uint RegisterWindowMessage(string lpString);
+        private static extern uint RegisterWindowMessage(string lpString);
 
         [EnvironmentPermission(SecurityAction.LinkDemand, Unrestricted = true)]
         protected override void WndProc(ref Message m)

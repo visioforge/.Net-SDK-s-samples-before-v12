@@ -1,14 +1,13 @@
 // ReSharper disable InconsistentNaming
 
-using VisioForge.Controls.MediaPlayer;
-using VisioForge.Controls.UI;
-
 namespace Audio_Player_Demo
 {
     using System;
     using System.Diagnostics;
     using System.Windows.Forms;
 
+    using VisioForge.Controls.MediaPlayer;
+    using VisioForge.Controls.UI;
     using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
 
@@ -38,11 +37,11 @@ namespace Audio_Player_Demo
         {
             if (Convert.ToInt32(timer1.Tag) == 0)
             {
-                MediaPlayer1.Position_Set_Time(tbTimeline.Value * 1000);
+                MediaPlayer1.Position_Set_Time(TimeSpan.FromSeconds(tbTimeline.Value));
             }
         }
 
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             mmError.Clear();
 
@@ -57,7 +56,7 @@ namespace Audio_Player_Demo
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
             MediaPlayer1.Info_UseLibMediaInfo = true;
 
-            MediaPlayer1.Play();
+            await MediaPlayer1.PlayAsync();
 
             MediaPlayer1.Audio_OutputDevice_Balance_Set(0, tbBalance1.Value);
             MediaPlayer1.Audio_OutputDevice_Volume_Set(0, tbVolume1.Value);
@@ -65,19 +64,19 @@ namespace Audio_Player_Demo
             timer1.Enabled = true;
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Resume();
+            await MediaPlayer1.ResumeAsync();
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Pause();
+            await MediaPlayer1.PauseAsync();
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
-            MediaPlayer1.Stop();
+            await MediaPlayer1.StopAsync();
             timer1.Enabled = false;
             tbTimeline.Value = 0;
         }
@@ -101,9 +100,9 @@ namespace Audio_Player_Demo
         private void timer1_Tick(object sender, EventArgs e)
         {
             timer1.Tag = 1;
-            tbTimeline.Maximum = (int)(MediaPlayer1.Duration_Time() / 1000);
+            tbTimeline.Maximum = (int)MediaPlayer1.Duration_Time().TotalSeconds;
 
-            int value = (int)(MediaPlayer1.Position_Get_Time() / 1000);
+            int value = (int)MediaPlayer1.Position_Get_Time().TotalSeconds;
             if ((value > 0) && (value < tbTimeline.Maximum))
             {
                 tbTimeline.Value = value;
@@ -116,26 +115,29 @@ namespace Audio_Player_Demo
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var startInfo = new ProcessStartInfo("explorer.exe",HelpLinks.VideoTutorials);
+            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.VideoTutorials);
             Process.Start(startInfo);
         }
 
         private void MediaPlayer1_OnError(object sender, ErrorsEventArgs e)
         {
-            mmError.Text = mmError.Text + e.Message + Environment.NewLine;
+            Invoke((Action)(() => mmError.Text = mmError.Text + e.Message + Environment.NewLine));
         }
 
         private void MediaPlayer1_OnStop(object sender, MediaPlayerStopEventArgs e)
         {
-            tbTimeline.Value = 0;
+            Invoke((Action)(() => tbTimeline.Value = 0));
         }
 
         private void MediaPlayer1_OnLicenseRequired(object sender, LicenseEventArgs e)
         {
-            if (cbLicensing.Checked)
-            {
-                mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-            }
+            Invoke((Action)(() =>
+                                   {
+                                       if (cbLicensing.Checked)
+                                       {
+                                           mmError.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+                                       }
+                                   }));
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

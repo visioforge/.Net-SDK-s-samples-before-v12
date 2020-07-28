@@ -90,7 +90,6 @@ Partial Class Form1
         Me.label253 = New System.Windows.Forms.Label()
         Me.cbAudSound3DEnabled = New System.Windows.Forms.CheckBox()
         Me.tabPage4 = New System.Windows.Forms.TabPage()
-        Me.cbLicensing = New System.Windows.Forms.CheckBox()
         Me.cbDebugMode = New System.Windows.Forms.CheckBox()
         Me.mmLog = New System.Windows.Forms.TextBox()
         Me.btStop = New System.Windows.Forms.Button()
@@ -875,7 +874,6 @@ Partial Class Form1
         '
         'tabPage4
         '
-        Me.tabPage4.Controls.Add(Me.cbLicensing)
         Me.tabPage4.Controls.Add(Me.cbDebugMode)
         Me.tabPage4.Controls.Add(Me.mmLog)
         Me.tabPage4.Location = New System.Drawing.Point(4, 22)
@@ -885,16 +883,6 @@ Partial Class Form1
         Me.tabPage4.TabIndex = 3
         Me.tabPage4.Text = "Logs"
         Me.tabPage4.UseVisualStyleBackColor = true
-        '
-        'cbLicensing
-        '
-        Me.cbLicensing.AutoSize = true
-        Me.cbLicensing.Location = New System.Drawing.Point(141, 6)
-        Me.cbLicensing.Name = "cbLicensing"
-        Me.cbLicensing.Size = New System.Drawing.Size(91, 17)
-        Me.cbLicensing.TabIndex = 79
-        Me.cbLicensing.Text = "Licensing info"
-        Me.cbLicensing.UseVisualStyleBackColor = true
         '
         'cbDebugMode
         '
@@ -982,7 +970,7 @@ Partial Class Form1
         Me.Controls.Add(Me.btStop)
         Me.Controls.Add(Me.btStart)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Icon = CType(resources.GetObject("$this.Icon"),System.Drawing.Icon)
         Me.MaximizeBox = false
         Me.MinimizeBox = false
         Me.Name = "Form1"
@@ -1090,7 +1078,6 @@ End Sub
     Friend WithEvents llVideoTutorials As System.Windows.Forms.LinkLabel
     Private WithEvents cbMode As ComboBox
     Private WithEvents lbTimestamp As Label
-    Private WithEvents cbLicensing As CheckBox
     Private WithEvents cbDebugMode As CheckBox
     Private WithEvents mmLog As TextBox
     Private WithEvents lbInfo As Label

@@ -123,11 +123,11 @@ namespace VideoCapture_CSharp_Demo
         {
             VideoCapture1.Audio_Effects_Clear(-1);
 
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, -1, -1);
-            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, -1, -1);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Amplify, cbAudAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Equalizer, cbAudEqualizerEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.DynamicAmplify, cbAudDynamicAmplifyEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.Sound3D, cbAudSound3DEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
+            VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.Checked, TimeSpan.Zero, TimeSpan.Zero);
         }
 
         /// <summary>
@@ -198,6 +198,8 @@ namespace VideoCapture_CSharp_Demo
 
             rbMotionDetectionExProcessor.SelectedIndex = 1;
             rbMotionDetectionExDetector.SelectedIndex = 1;
+
+            cbHLSMode.SelectedIndex = 0;
 
             var genres = new List<string>();
             foreach (var genre in VideoCapture.Tags_GetDefaultVideoGenres())
@@ -696,7 +698,7 @@ namespace VideoCapture_CSharp_Demo
         /// <param name="e">
         /// Event args.
         /// </param>
-        private void btStart_Click(object sender, EventArgs e)
+        private async void btStart_Click(object sender, EventArgs e)
         {
             //VideoCapture1.VLC_Path = @"c:\Projects\_Projects\MediaFrameworkDotNet\_SHARED_DLL_VLC\x86\";// Environment.GetEnvironmentVariable("VFVLCPATH");
 
@@ -1113,6 +1115,8 @@ namespace VideoCapture_CSharp_Demo
 
             // Video effects CPU
             VideoCapture1.Video_Effects_Enabled = cbVideoEffects.Checked;
+            VideoCapture1.Video_Effects_MergeImageLogos = cbMergeImageLogos.Checked;
+            VideoCapture1.Video_Effects_MergeTextLogos = cbMergeTextLogos.Checked;
             VideoCapture1.Video_Effects_Clear();
             ConfigureVideoEffects();
 
@@ -1150,10 +1154,7 @@ namespace VideoCapture_CSharp_Demo
             ConfigureDecoders();
 
             // motion detection
-            if (cbMotDetEnabled.Checked)
-            {
-                btMotDetUpdateSettings_Click(null, null); // apply settings
-            }
+            ConfigureMotionDetection();
 
             // Audio enhancement
             VideoCapture1.Audio_Enhancer_Enabled = cbAudioEnhancementEnabled.Checked;
@@ -1223,7 +1224,7 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.Video_Sample_Grabber_Enabled = true;
 
             // start
-            VideoCapture1.Start(cbRunAsync.Checked);
+            await VideoCapture1.StartAsync();
 
             edNetworkURL.Text = VideoCapture1.Network_Streaming_URL;
 
@@ -1325,7 +1326,7 @@ namespace VideoCapture_CSharp_Demo
                 {
                     VideoCapture1.SeparateCapture_Mode = VFSeparateCaptureMode.SplitByDuration;
                     VideoCapture1.SeparateCapture_AutostartCapture = true;
-                    VideoCapture1.SeparateCapture_TimeThreshold = Convert.ToInt32(edSeparateCaptureDuration.Text);
+                    VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.FromMilliseconds(Convert.ToInt32(edSeparateCaptureDuration.Text));
                 }
                 else if (rbSeparateCaptureSplitBySize.Checked)
                 {
@@ -2238,7 +2239,10 @@ namespace VideoCapture_CSharp_Demo
                             {
                                 SegmentDuration = Convert.ToInt32(edHLSSegmentDuration.Text),
                                 NumSegments = Convert.ToInt32(edHLSSegmentCount.Text),
-                                OutputFolder = edHLSOutputFolder.Text
+                                OutputFolder = edHLSOutputFolder.Text,
+                                PlaylistType = (VFHLSPlaylistType)cbHLSMode.SelectedIndex,
+                                Custom_HTTP_Server_Enabled = cbHLSEmbeddedHTTPServerEnabled.Checked,
+                                Custom_HTTP_Server_Port = Convert.ToInt32(edHLSEmbeddedHTTPServerPort.Text)
                             }
                         };
 
@@ -2386,6 +2390,9 @@ namespace VideoCapture_CSharp_Demo
                     settings.Type = VFIPSource.RTSP_LowLatency;
                     settings.RTSP_LowLatency_UseUDP = true;
                     break;
+                case 12:
+                    settings.Type = VFIPSource.NDI;
+                    break;
             }
 
             settings.AudioCapture = cbIPAudioCapture.Checked;
@@ -2486,11 +2493,11 @@ namespace VideoCapture_CSharp_Demo
             settings.AllowDesktopDuplicationEngine = cbScreenCapture_DesktopDuplication.Checked;
         }
 
-        private void btStop_Click(object sender, EventArgs e)
+        private async void btStop_Click(object sender, EventArgs e)
         {
             tmRecording.Stop();
 
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
 
             if (cbMultiscreenDrawOnPanels.Checked)
             {
@@ -2682,7 +2689,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btSaveScreenshot_Click(object sender, EventArgs e)
+        private async void btSaveScreenshot_Click(object sender, EventArgs e)
         {
             if (screenshotSaveDialog.ShowDialog(this) == DialogResult.OK)
             {
@@ -2691,19 +2698,19 @@ namespace VideoCapture_CSharp_Demo
                 switch (ext)
                 {
                     case ".bmp":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.BMP, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.BMP, 0);
                         break;
                     case ".jpg":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.JPEG, 85);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.JPEG, 85);
                         break;
                     case ".gif":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.GIF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.GIF, 0);
                         break;
                     case ".png":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.PNG, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.PNG, 0);
                         break;
                     case ".tiff":
-                        VideoCapture1.Frame_Save(filename, VFImageFormat.TIFF, 0);
+                        await VideoCapture1.Frame_SaveAsync(filename, VFImageFormat.TIFF, 0);
                         break;
                 }
             }
@@ -2728,21 +2735,21 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void tbAdjContrast_Scroll(object sender, EventArgs e)
+        private async void tbAdjContrast_Scroll(object sender, EventArgs e)
         {
-            VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Contrast, tbAdjContrast.Value, cbAdjContrastAuto.Checked);
+            await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Contrast, new VideoCaptureDeviceAdjustValue(tbAdjContrast.Value, cbAdjContrastAuto.Checked));
             lbAdjContrastCurrent.Text = "Current: " + Convert.ToString(tbAdjContrast.Value);
         }
 
-        private void tbAdjHue_Scroll(object sender, EventArgs e)
+        private async void tbAdjHue_Scroll(object sender, EventArgs e)
         {
-            VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Hue, tbAdjHue.Value, cbAdjHueAuto.Checked);
+            await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Hue, new VideoCaptureDeviceAdjustValue(tbAdjHue.Value, cbAdjHueAuto.Checked));
             lbAdjHueCurrent.Text = "Current: " + Convert.ToString(tbAdjHue.Value);
         }
 
-        private void tbAdjSaturation_Scroll(object sender, EventArgs e)
+        private async void tbAdjSaturation_Scroll(object sender, EventArgs e)
         {
-            VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Saturation, tbAdjSaturation.Value, cbAdjSaturationAuto.Checked);
+            await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(VFVideoHardwareAdjustment.Saturation, new VideoCaptureDeviceAdjustValue(tbAdjSaturation.Value, cbAdjSaturationAuto.Checked));
             lbAdjSaturationCurrent.Text = "Current: " + Convert.ToString(tbAdjSaturation.Value);
         }
 
@@ -2760,8 +2767,10 @@ namespace VideoCapture_CSharp_Demo
 
         private void rbVR_CheckedChanged(object sender, EventArgs e)
         {
-            cbScreenFlipVertical.Enabled = rbVMR9.Checked || rbDirect2D.Checked;
-            cbScreenFlipHorizontal.Enabled = rbVMR9.Checked || rbDirect2D.Checked;
+            bool flipAvailable = rbVMR9.Checked || rbDirect2D.Checked;
+
+            cbScreenFlipVertical.Enabled = cbFlipVertical1.Enabled = cbFlipVertical2.Enabled = cbFlipVertical3.Enabled = flipAvailable;
+            cbScreenFlipHorizontal.Enabled = cbFlipHorizontal1.Enabled = cbFlipHorizontal2.Enabled = cbFlipHorizontal3.Enabled = flipAvailable;
             cbDirect2DRotate.Enabled = rbDirect2D.Checked;
 
             if (VideoCapture1.Video_Renderer == null)
@@ -2825,9 +2834,9 @@ namespace VideoCapture_CSharp_Demo
         /// <param name="e">
         /// Event args.
         /// </param>
-        private void btDVFF_Click(object sender, EventArgs e)
+        private async void btDVFF_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.FastForward);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.FastForward);
         }
 
         /// <summary>
@@ -2839,34 +2848,34 @@ namespace VideoCapture_CSharp_Demo
         /// <param name="e">
         /// Event args.
         /// </param>
-        private void btDVPause_Click(object sender, EventArgs e)
+        private async void btDVPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Pause);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Pause);
         }
 
-        private void btDVRewind_Click(object sender, EventArgs e)
+        private async void btDVRewind_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Rew);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Rew);
         }
 
-        private void btDVPlay_Click(object sender, EventArgs e)
+        private async void btDVPlay_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Play);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Play);
         }
 
-        private void btDVStepFWD_Click(object sender, EventArgs e)
+        private async void btDVStepFWD_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.StepFw);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepFw);
         }
 
-        private void btDVStepRev_Click(object sender, EventArgs e)
+        private async void btDVStepRev_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.StepRev);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.StepRev);
         }
 
-        private void btDVStop_Click(object sender, EventArgs e)
+        private async void btDVStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.DV_SendCommand(VFDVCommand.Stop);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Stop);
         }
 
         private void btRefreshClients_Click(object sender, EventArgs e)
@@ -2943,7 +2952,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void cbStretch_CheckedChanged(object sender, EventArgs e)
+        private async void cbStretch_CheckedChanged(object sender, EventArgs e)
         {
             if (VideoCapture1.Video_Renderer == null)
             {
@@ -2959,7 +2968,7 @@ namespace VideoCapture_CSharp_Demo
                 VideoCapture1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
         private void cbTVMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -3061,14 +3070,14 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btPause_Click(object sender, EventArgs e)
+        private async void btPause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Pause();
+            await VideoCapture1.PauseAsync();
         }
 
-        private void btResume_Click(object sender, EventArgs e)
+        private async void btResume_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Resume();
+            await VideoCapture1.ResumeAsync();
         }
 
         private void btMPEGEncoderShowDialog_Click(object sender, EventArgs e)
@@ -3254,9 +3263,9 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btScreenCaptureUpdate_Click(object sender, EventArgs e)
+        private async void btScreenCaptureUpdate_Click(object sender, EventArgs e)
         {
-            VideoCapture1.Screen_Capture_UpdateParameters(
+            await VideoCapture1.Screen_Capture_UpdateParametersAsync(
                 Convert.ToInt32(edScreenLeft.Text),
                 Convert.ToInt32(edScreenTop.Text),
                 cbScreenCapture_GrabMouseCursor.Checked);
@@ -3415,7 +3424,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void cbScreenFlipVertical_CheckedChanged(object sender, EventArgs e)
+        private async void cbScreenFlipVertical_CheckedChanged(object sender, EventArgs e)
         {
             if (VideoCapture1.Video_Renderer == null)
             {
@@ -3423,16 +3432,16 @@ namespace VideoCapture_CSharp_Demo
             }
 
             VideoCapture1.Video_Renderer.Flip_Vertical = cbScreenFlipVertical.Checked;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void cbScreenFlipHorizontal_CheckedChanged(object sender, EventArgs e)
+        private async void cbScreenFlipHorizontal_CheckedChanged(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Flip_Horizontal = cbScreenFlipHorizontal.Checked;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btMotDetUpdateSettings_Click(object sender, EventArgs e)
+        private void ConfigureMotionDetection()
         {
             if (cbMotDetEnabled.Checked)
             {
@@ -3459,6 +3468,11 @@ namespace VideoCapture_CSharp_Demo
             {
                 VideoCapture1.Motion_Detection = null;
             }
+        }
+
+        private void btMotDetUpdateSettings_Click(object sender, EventArgs e)
+        {
+            ConfigureMotionDetection();
         }
 
         #region Barcode detector
@@ -3532,9 +3546,9 @@ namespace VideoCapture_CSharp_Demo
             tbAudEq9.Value = VideoCapture1.Audio_Effects_Equalizer_Band_Get(-1, 1, 9);
         }
 
-        private void btSignal_Click(object sender, EventArgs e)
+        private async void btSignal_Click(object sender, EventArgs e)
         {
-            if (VideoCapture1.Video_CaptureDevice_SignalPresent())
+            if (await VideoCapture1.Video_CaptureDevice_SignalPresentAsync())
             {
                 MessageBox.Show("Signal present");
             }
@@ -3544,48 +3558,48 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btZoomIn_Click(object sender, EventArgs e)
+        private async void btZoomIn_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_Ratio = VideoCapture1.Video_Renderer.Zoom_Ratio + 5;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomOut_Click(object sender, EventArgs e)
+        private async void btZoomOut_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_Ratio = VideoCapture1.Video_Renderer.Zoom_Ratio - 5;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftDown_Click(object sender, EventArgs e)
+        private async void btZoomShiftDown_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_ShiftY = VideoCapture1.Video_Renderer.Zoom_ShiftY - 2;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftLeft_Click(object sender, EventArgs e)
+        private async void btZoomShiftLeft_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_ShiftX = VideoCapture1.Video_Renderer.Zoom_ShiftX - 2;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftRight_Click(object sender, EventArgs e)
+        private async void btZoomShiftRight_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_ShiftX = VideoCapture1.Video_Renderer.Zoom_ShiftX + 2;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomShiftUp_Click(object sender, EventArgs e)
+        private async void btZoomShiftUp_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_ShiftY = VideoCapture1.Video_Renderer.Zoom_ShiftY + 2;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void btZoomReset_Click(object sender, EventArgs e)
+        private async void btZoomReset_Click(object sender, EventArgs e)
         {
             VideoCapture1.Video_Renderer.Zoom_Ratio = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftX = 0;
             VideoCapture1.Video_Renderer.Zoom_ShiftY = 0;
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
         private void cbAudAmplifyEnabled_CheckedChanged(object sender, EventArgs e)
@@ -3619,7 +3633,7 @@ namespace VideoCapture_CSharp_Demo
             VideoCapture1.Audio_Effects_Enable(-1, 4, cbAudTrueBassEnabled.Checked);
         }
 
-        private void cbStretch1_CheckedChanged(object sender, EventArgs e)
+        private async void cbStretch1_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch1.Checked)
@@ -3631,10 +3645,10 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(0, stretch, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(0, stretch, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked);
         }
 
-        private void cbStretch2_CheckedChanged(object sender, EventArgs e)
+        private async void cbStretch2_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch2.Checked)
@@ -3646,13 +3660,13 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
         }
 
-        private void cbStretch3_CheckedChanged(object sender, EventArgs e)
+        private async void cbStretch3_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
-            if (cbStretch2.Checked)
+            if (cbStretch3.Checked)
             {
                 stretch = VFVideoRendererStretchMode.Stretch;
             }
@@ -3661,12 +3675,14 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
         }
 
-        private void tbAdjBrightness_Scroll(object sender, EventArgs e)
+        private async void tbAdjBrightness_Scroll(object sender, EventArgs e)
         {
-            VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValue(VFVideoHardwareAdjustment.Brightness, tbAdjBrightness.Value, cbAdjBrightnessAuto.Checked);
+            await VideoCapture1.Video_CaptureDevice_VideoAdjust_SetValueAsync(
+                VFVideoHardwareAdjustment.Brightness,
+                new VideoCaptureDeviceAdjustValue(tbAdjBrightness.Value, cbAdjBrightnessAuto.Checked));
             lbAdjBrightnessCurrent.Text = "Current: " + Convert.ToString(tbAdjBrightness.Value);
         }
 
@@ -3834,7 +3850,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void cbFlipVertical1_CheckedChanged(object sender, EventArgs e)
+        private async void cbFlipVertical1_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch1.Checked)
@@ -3846,10 +3862,10 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(0, stretch, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(0, stretch, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked);
         }
 
-        private void cbFlipHorizontal1_CheckedChanged(object sender, EventArgs e)
+        private async void cbFlipHorizontal1_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch1.Checked)
@@ -3861,10 +3877,10 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(0, stretch, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(0, stretch, cbFlipHorizontal1.Checked, cbFlipVertical1.Checked);
         }
 
-        private void cbFlipVertical2_CheckedChanged(object sender, EventArgs e)
+        private async void cbFlipVertical2_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch2.Checked)
@@ -3876,10 +3892,10 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
         }
 
-        private void cbFlipHorizontal2_CheckedChanged(object sender, EventArgs e)
+        private async void cbFlipHorizontal2_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch2.Checked)
@@ -3891,10 +3907,10 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(1, stretch, cbFlipHorizontal2.Checked, cbFlipVertical2.Checked);
         }
 
-        private void cbFlipVertical3_CheckedChanged(object sender, EventArgs e)
+        private async void cbFlipVertical3_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch3.Checked)
@@ -3906,10 +3922,10 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
         }
 
-        private void cbFlipHorizontal3_CheckedChanged(object sender, EventArgs e)
+        private async void cbFlipHorizontal3_CheckedChanged(object sender, EventArgs e)
         {
             VFVideoRendererStretchMode stretch;
             if (cbStretch3.Checked)
@@ -3921,7 +3937,7 @@ namespace VideoCapture_CSharp_Demo
                 stretch = VFVideoRendererStretchMode.Letterbox;
             }
 
-            VideoCapture1.MultiScreen_SetParameters(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
+            await VideoCapture1.MultiScreen_SetParametersAsync(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
         }
 
         private void tbChromaKeyContrastLow_Scroll(object sender, EventArgs e)
@@ -3954,12 +3970,22 @@ namespace VideoCapture_CSharp_Demo
             Process.Start(startInfo);
         }
 
+        private void Log(string txt)
+        {
+            if (IsHandleCreated)
+            {
+                Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            }
+        }
+
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)
         {
-            BeginInvoke((Action)(() =>
-            {
-                mmLog.Text = mmLog.Text + e.Message + Environment.NewLine;
-            }));
+            Log(e.Message);
+        }
+
+        private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
+        {
+            Log(e.Message);
         }
 
         private void VideoCapture1_OnTVTunerTuneChannels(object sender, TVTunerTuneChannelsEventArgs e)
@@ -4023,91 +4049,89 @@ namespace VideoCapture_CSharp_Demo
             ConfigureMotionDetectionEx();
         }
 
-        private void btSeparateCaptureStart_Click(object sender, EventArgs e)
+        private async void btSeparateCaptureStart_Click(object sender, EventArgs e)
         {
-            VideoCapture1.SeparateCapture_Start(edOutput.Text);
+            await VideoCapture1.SeparateCapture_StartAsync(edOutput.Text);
         }
 
-        private void btSeparateCaptureStop_Click(object sender, EventArgs e)
+        private async void btSeparateCaptureStop_Click(object sender, EventArgs e)
         {
-            VideoCapture1.SeparateCapture_Stop();
+            await VideoCapture1.SeparateCapture_StopAsync();
         }
 
-        private void btSeparateCaptureChangeFilename_Click(object sender, EventArgs e)
+        private async void btSeparateCaptureChangeFilename_Click(object sender, EventArgs e)
         {
-            VideoCapture1.SeparateCapture_ChangeFilenameOnTheFly(edNewFilename.Text);
+            await VideoCapture1.SeparateCapture_ChangeFilenameOnTheFlyAsync(edNewFilename.Text);
         }
 
-        private void btCCReadValues_Click(object sender, EventArgs e)
+        private async void btCCReadValues_Click(object sender, EventArgs e)
         {
-            int max;
-            int defaultValue;
-            int min;
-            int step;
-            VFCameraControlFlags flags;
-
-            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Pan, out min, out max, out step, out defaultValue, out flags))
+            var pan = await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Pan);
+            if (pan != null)
             {
-                tbCCPan.Minimum = min;
-                tbCCPan.Maximum = max;
-                tbCCPan.SmallChange = step;
-                tbCCPan.Value = defaultValue;
-                lbCCPanMin.Text = "Min: " + Convert.ToString(min);
-                lbCCPanMax.Text = "Max: " + Convert.ToString(max);
-                lbCCPanCurrent.Text = "Current: " + Convert.ToString(defaultValue);
+                tbCCPan.Minimum = pan.Min;
+                tbCCPan.Maximum = pan.Max;
+                tbCCPan.SmallChange = pan.Step;
+                tbCCPan.Value = pan.Default;
+                lbCCPanMin.Text = "Min: " + Convert.ToString(pan.Min);
+                lbCCPanMax.Text = "Max: " + Convert.ToString(pan.Max);
+                lbCCPanCurrent.Text = "Current: " + Convert.ToString(pan.Default);
 
-                cbCCPanManual.Checked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
-                cbCCPanAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
-                cbCCPanRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+                cbCCPanManual.Checked = (pan.Flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCPanAuto.Checked = (pan.Flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCPanRelative.Checked = (pan.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
 
-            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Tilt, out min, out max, out step, out defaultValue, out flags))
+            var tilt = await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Tilt);
+            if (tilt != null) 
             {
-                tbCCTilt.Minimum = min;
-                tbCCTilt.Maximum = max;
-                tbCCTilt.SmallChange = step;
-                tbCCTilt.Value = defaultValue;
-                lbCCTiltMin.Text = "Min: " + Convert.ToString(min);
-                lbCCTiltMax.Text = "Max: " + Convert.ToString(max);
-                lbCCTiltCurrent.Text = "Current: " + Convert.ToString(defaultValue);
+                tbCCTilt.Minimum = tilt.Min;
+                tbCCTilt.Maximum = tilt.Max;
+                tbCCTilt.SmallChange = tilt.Step;
+                tbCCTilt.Value = tilt.Default;
+                lbCCTiltMin.Text = "Min: " + Convert.ToString(tilt.Min);
+                lbCCTiltMax.Text = "Max: " + Convert.ToString(tilt.Max);
+                lbCCTiltCurrent.Text = "Current: " + Convert.ToString(tilt.Default);
 
-                cbCCTiltManual.Checked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
-                cbCCTiltAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
-                cbCCTiltRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+                cbCCTiltManual.Checked = (tilt.Flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCTiltAuto.Checked = (tilt.Flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCTiltRelative.Checked = (tilt.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
 
-            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Focus, out min, out max, out step, out defaultValue, out flags))
+            var focus = await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Focus);
+            if (focus != null)
             {
-                tbCCFocus.Minimum = min;
-                tbCCFocus.Maximum = max;
-                tbCCFocus.SmallChange = step;
-                tbCCFocus.Value = defaultValue;
-                lbCCFocusMin.Text = "Min: " + Convert.ToString(min);
-                lbCCFocusMax.Text = "Max: " + Convert.ToString(max);
-                lbCCFocusCurrent.Text = "Current: " + Convert.ToString(defaultValue);
+                tbCCFocus.Minimum = focus.Min;
+                tbCCFocus.Maximum = focus.Max;
+                tbCCFocus.SmallChange = focus.Step;
+                tbCCFocus.Value = focus.Default;
+                lbCCFocusMin.Text = "Min: " + Convert.ToString(focus.Min);
+                lbCCFocusMax.Text = "Max: " + Convert.ToString(focus.Max);
+                lbCCFocusCurrent.Text = "Current: " + Convert.ToString(focus.Default);
 
-                cbCCFocusManual.Checked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
-                cbCCFocusAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
-                cbCCFocusRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+                cbCCFocusManual.Checked = (focus.Flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCFocusAuto.Checked = (focus.Flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCFocusRelative.Checked = (focus.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
 
-            if (VideoCapture1.Video_CaptureDevice_CameraControl_GetRange(VFCameraControlProperty.Zoom, out min, out max, out step, out defaultValue, out flags))
+            var zoom = await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Zoom);
+            if (zoom != null)
             {
-                tbCCZoom.Minimum = min;
-                tbCCZoom.Maximum = max;
-                tbCCZoom.SmallChange = step;
-                tbCCZoom.Value = defaultValue;
-                lbCCZoomMin.Text = "Min: " + Convert.ToString(min);
-                lbCCZoomMax.Text = "Max: " + Convert.ToString(max);
-                lbCCZoomCurrent.Text = "Current: " + Convert.ToString(defaultValue);
+                tbCCZoom.Minimum = zoom.Min;
+                tbCCZoom.Maximum = zoom.Max;
+                tbCCZoom.SmallChange = zoom.Step;
+                tbCCZoom.Value = zoom.Default;
+                lbCCZoomMin.Text = "Min: " + Convert.ToString(zoom.Min);
+                lbCCZoomMax.Text = "Max: " + Convert.ToString(zoom.Max);
+                lbCCZoomCurrent.Text = "Current: " + Convert.ToString(zoom.Default);
 
-                cbCCZoomManual.Checked = (flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
-                cbCCZoomAuto.Checked = (flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
-                cbCCZoomRelative.Checked = (flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+                cbCCZoomManual.Checked = (zoom.Flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCZoomAuto.Checked = (zoom.Flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCZoomRelative.Checked = (zoom.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
         }
 
-        private void btCCPanApply_Click(object sender, EventArgs e)
+        private async void btCCPanApply_Click(object sender, EventArgs e)
         {
             VFCameraControlFlags flags = VFCameraControlFlags.None;
 
@@ -4126,10 +4150,10 @@ namespace VideoCapture_CSharp_Demo
                 flags = flags | VFCameraControlFlags.Relative;
             }
 
-            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Pan, tbCCPan.Value, flags);
+            await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Pan, new VideoCaptureDeviceCameraControlValue(tbCCPan.Value, flags));
         }
 
-        private void btCCTiltApply_Click(object sender, EventArgs e)
+        private async void btCCTiltApply_Click(object sender, EventArgs e)
         {
             VFCameraControlFlags flags = VFCameraControlFlags.None;
 
@@ -4148,7 +4172,7 @@ namespace VideoCapture_CSharp_Demo
                 flags = flags | VFCameraControlFlags.Relative;
             }
 
-            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Tilt, tbCCTilt.Value, flags);
+            await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Tilt, new VideoCaptureDeviceCameraControlValue(tbCCTilt.Value, flags));
         }
 
         private void btPIPAddIPCamera_Click(object sender, EventArgs e)
@@ -4187,16 +4211,16 @@ namespace VideoCapture_CSharp_Demo
             cbPIPDevices.Items.Clear();
         }
 
-        private void btPIPUpdate_Click(object sender, EventArgs e)
+        private async void btPIPUpdate_Click(object sender, EventArgs e)
         {
             if (cbPIPDevices.SelectedIndex != -1)
             {
-                VideoCapture1.PIP_Sources_SetSourcePosition(
-                    cbPIPDevices.SelectedIndex,
+                var pos = new Rectangle(
                     Convert.ToInt32(edPIPLeft.Text),
                     Convert.ToInt32(edPIPTop.Text),
                     Convert.ToInt32(edPIPWidth.Text),
                     Convert.ToInt32(edPIPHeight.Text));
+                await VideoCapture1.PIP_Sources_SetSourcePositionAsync(cbPIPDevices.SelectedIndex, pos);
             }
             else
             {
@@ -4204,11 +4228,11 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btPIPSet_Click(object sender, EventArgs e)
+        private async void btPIPSet_Click(object sender, EventArgs e)
         {
             if (cbPIPDevices.SelectedIndex != -1)
             {
-                VideoCapture1.PIP_Sources_SetSourceSettings(cbPIPDevices.SelectedIndex, tbPIPTransparency.Value, false, false);
+                await VideoCapture1.PIP_Sources_SetSourceSettingsAsync(cbPIPDevices.SelectedIndex, tbPIPTransparency.Value, false, false);
             }
             else
             {
@@ -4237,14 +4261,14 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btSeparateCapturePause_Click(object sender, EventArgs e)
+        private async void btSeparateCapturePause_Click(object sender, EventArgs e)
         {
-            VideoCapture1.SeparateCapture_Pause();
+            await VideoCapture1.SeparateCapture_PauseAsync();
         }
 
-        private void btSeparateCaptureResume_Click(object sender, EventArgs e)
+        private async void btSeparateCaptureResume_Click(object sender, EventArgs e)
         {
-            VideoCapture1.SeparateCapture_Resume();
+            await VideoCapture1.SeparateCapture_ResumeAsync();
         }
 
         private void cbZoom_CheckedChanged(object sender, EventArgs e)
@@ -4339,8 +4363,8 @@ namespace VideoCapture_CSharp_Demo
             }
 
             pan.Enabled = cbPan.Checked;
-            pan.StartTime = Convert.ToInt32(edPanStartTime.Text);
-            pan.StopTime = Convert.ToInt32(edPanStopTime.Text);
+            pan.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStartTime.Text));
+            pan.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt32(edPanStopTime.Text));
             pan.StartX = Convert.ToInt32(edPanSourceLeft.Text);
             pan.StartY = Convert.ToInt32(edPanSourceTop.Text);
             pan.StartWidth = Convert.ToInt32(edPanSourceWidth.Text);
@@ -4406,8 +4430,8 @@ namespace VideoCapture_CSharp_Demo
                 }
 
                 fadeIn.Enabled = cbFadeInOut.Checked;
-                fadeIn.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text);
-                fadeIn.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text);
+                fadeIn.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text));
+                fadeIn.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text));
             }
             else
             {
@@ -4430,8 +4454,8 @@ namespace VideoCapture_CSharp_Demo
                 }
 
                 fadeOut.Enabled = cbFadeInOut.Checked;
-                fadeOut.StartTime = Convert.ToInt64(edFadeInOutStartTime.Text);
-                fadeOut.StopTime = Convert.ToInt64(edFadeInOutStopTime.Text);
+                fadeOut.StartTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStartTime.Text));
+                fadeOut.StopTime = TimeSpan.FromMilliseconds(Convert.ToInt64(edFadeInOutStopTime.Text));
             }
         }
 
@@ -4514,7 +4538,7 @@ namespace VideoCapture_CSharp_Demo
 
         private int controlHeight;
 
-        private void btFullScreen_Click(object sender, EventArgs e)
+        private async void btFullScreen_Click(object sender, EventArgs e)
         {
             if (!fullScreen)
             {
@@ -4550,7 +4574,7 @@ namespace VideoCapture_CSharp_Demo
                 VideoCapture1.Width = Width;
                 VideoCapture1.Height = Height;
 
-                VideoCapture1.Video_Renderer_Update();
+                await VideoCapture1.Video_Renderer_UpdateAsync();
             }
             else
             {
@@ -4573,7 +4597,7 @@ namespace VideoCapture_CSharp_Demo
                 FormBorderStyle = FormBorderStyle.Sizable;
                 WindowState = FormWindowState.Normal;
 
-                VideoCapture1.Video_Renderer_Update();
+                await VideoCapture1.Video_Renderer_UpdateAsync();
             }
         }
 
@@ -4600,9 +4624,9 @@ namespace VideoCapture_CSharp_Demo
 
         public delegate void NetworkStopDelegate();
 
-        public void NetworkStopDelegateMethod()
+        public async void NetworkStopDelegateMethod()
         {
-            VideoCapture1.Stop();
+            await VideoCapture1.StopAsync();
 
             MessageBox.Show("Network source stopped or disconnected!");
         }
@@ -4612,12 +4636,12 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke((Action)(() =>
            {
                volumeMeter1.Amplitude = e.ChannelLevelsDb[0];
-               waveformPainter1.AddMax(e.ChannelLevelsDb[0]);
+               waveformPainter1.AddMax(e.ChannelLevels[0] / 100f);
 
                if (e.ChannelLevelsDb.Length > 1)
                {
                    volumeMeter2.Amplitude = e.ChannelLevelsDb[1];
-                   waveformPainter2.AddMax(e.ChannelLevelsDb[1]);
+                   waveformPainter2.AddMax(e.ChannelLevels[1] / 100f);
                }
            }));
         }
@@ -4674,7 +4698,7 @@ namespace VideoCapture_CSharp_Demo
             cbLiveRotation_CheckedChanged(sender, e);
         }
 
-        private void cbDirect2DRotate_SelectedIndexChanged(object sender, EventArgs e)
+        private async void cbDirect2DRotate_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (VideoCapture1.Video_Renderer == null)
             {
@@ -4682,10 +4706,10 @@ namespace VideoCapture_CSharp_Demo
             }
 
             VideoCapture1.Video_Renderer.RotationAngle = Convert.ToInt32(cbDirect2DRotate.Text);
-            VideoCapture1.Video_Renderer_Update();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
-        private void pnVideoRendererBGColor_Click(object sender, EventArgs e)
+        private async void pnVideoRendererBGColor_Click(object sender, EventArgs e)
         {
             colorDialog1.Color = pnVideoRendererBGColor.BackColor;
 
@@ -4694,7 +4718,7 @@ namespace VideoCapture_CSharp_Demo
                 pnVideoRendererBGColor.BackColor = colorDialog1.Color;
 
                 VideoCapture1.Video_Renderer.BackgroundColor = pnVideoRendererBGColor.BackColor;
-                VideoCapture1.Video_Renderer_Update();
+                await VideoCapture1.Video_Renderer_UpdateAsync();
             }
         }
 
@@ -4969,17 +4993,6 @@ namespace VideoCapture_CSharp_Demo
             lbAudioTimeshift.Text = tbAudioTimeshift.Value.ToString(CultureInfo.InvariantCulture) + " ms";
 
             VideoCapture1.Audio_Enhancer_Timeshift(tbAudioTimeshift.Value);
-        }
-
-        private void VideoCapture1_OnLicenseRequired(object sender, LicenseEventArgs e)
-        {
-            BeginInvoke((Action)(() =>
-            {
-                if (cbLicensing.Checked)
-                {
-                    mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
-                }
-            }));
         }
 
         private delegate void FFMPEGInfoDelegate(string message);
@@ -5951,18 +5964,21 @@ namespace VideoCapture_CSharp_Demo
 
         private void UpdateRecordingTime()
         {
-            long timestamp = VideoCapture1.Duration_Time();
-
-            if (timestamp < 0)
+            if (IsHandleCreated)
             {
-                return;
+                var ts = VideoCapture1.Duration_Time();
+
+                if (Math.Abs(ts.TotalMilliseconds) < 0.01)
+                {
+                    return;
+                }
+
+                BeginInvoke(
+                    (Action)(() =>
+                                    {
+                                        lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
+                                    }));
             }
-
-            BeginInvoke((Action)(() =>
-            {
-                TimeSpan ts = TimeSpan.FromMilliseconds(timestamp);
-                lbTimestamp.Text = "Recording time: " + ts.ToString(@"hh\:mm\:ss");
-            }));
         }
 
         private void Form1_SizeChanged(object sender, EventArgs e)
@@ -5973,11 +5989,6 @@ namespace VideoCapture_CSharp_Demo
 
             VideoCapture1.Width = Width - VideoCapture1.Left - (int)(30 * dpiX / 96);
             VideoCapture1.Height = Height - VideoCapture1.Top - (int)(110 * dpiY / 96);
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            btStop_Click(null, null);
         }
 
         private void btTextLogoAdd_Click(object sender, EventArgs e)
@@ -6060,7 +6071,7 @@ namespace VideoCapture_CSharp_Demo
             var effect = VideoCapture1.Video_Effects_Get("FlipDown");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipDown(cbFlipX.Checked);
+                flip = new VFVideoEffectFlipHorizontal(cbFlipX.Checked);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -6079,7 +6090,7 @@ namespace VideoCapture_CSharp_Demo
             var effect = VideoCapture1.Video_Effects_Get("FlipRight");
             if (effect == null)
             {
-                flip = new VFVideoEffectFlipRight(cbFlipY.Checked);
+                flip = new VFVideoEffectFlipVertical(cbFlipY.Checked);
                 VideoCapture1.Video_Effects_Add(flip);
             }
             else
@@ -6092,7 +6103,7 @@ namespace VideoCapture_CSharp_Demo
             }
         }
 
-        private void btCCZoomApply_Click(object sender, EventArgs e)
+        private async void btCCZoomApply_Click(object sender, EventArgs e)
         {
             VFCameraControlFlags flags = VFCameraControlFlags.None;
 
@@ -6111,10 +6122,10 @@ namespace VideoCapture_CSharp_Demo
                 flags = flags | VFCameraControlFlags.Relative;
             }
 
-            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Zoom, tbCCZoom.Value, flags);
+            await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Zoom, new VideoCaptureDeviceCameraControlValue(tbCCZoom.Value, flags));
         }
 
-        private void btCCFocusApply_Click(object sender, EventArgs e)
+        private async void btCCFocusApply_Click(object sender, EventArgs e)
         {
             VFCameraControlFlags flags = VFCameraControlFlags.None;
 
@@ -6133,7 +6144,7 @@ namespace VideoCapture_CSharp_Demo
                 flags = flags | VFCameraControlFlags.Relative;
             }
 
-            VideoCapture1.Video_CaptureDevice_CameraControl_Set(VFCameraControlProperty.Focus, tbCCFocus.Value, flags);
+            await VideoCapture1.Video_CaptureDevice_CameraControl_SetAsync(VFCameraControlProperty.Focus, new VideoCaptureDeviceCameraControlValue(tbCCFocus.Value, flags));
         }
 
         private void btVLCAddParameter_Click(object sender, EventArgs e)
