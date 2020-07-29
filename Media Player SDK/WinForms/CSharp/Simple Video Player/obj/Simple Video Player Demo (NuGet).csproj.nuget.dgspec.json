@@ -1,0 +1,69 @@
+{
+  "format": 1,
+  "restore": {
+    "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj": {}
+  },
+  "projects": {
+    "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
+        "projectName": "Simple Video Player Demo (NuGet)",
+        "projectPath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
+        "packagesPath": "C:\\Users\\roman\\.nuget\\packages\\",
+        "outputPath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\roman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net45"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net45": {
+            "projectReferences": {}
+          }
+        }
+      },
+      "frameworks": {
+        "net45": {
+          "dependencies": {
+            "VisioForge.DotNet.Core.Redist.Base.x64": {
+              "target": "Package",
+              "version": "[12.0.27, )"
+            },
+            "VisioForge.DotNet.Core.Redist.Base.x86": {
+              "target": "Package",
+              "version": "[12.0.27, )"
+            },
+            "VisioForge.DotNet.MediaPlayer.TRIAL": {
+              "target": "Package",
+              "version": "[12.0.27, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

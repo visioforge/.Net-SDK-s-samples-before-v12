@@ -1,0 +1,315 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "VisioForge.DotNet.Core.Redist.Base.x64/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.Redist.Base.x86/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.TRIAL/12.0.27": {
+        "type": "package",
+        "compile": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        }
+      },
+      "VisioForge.DotNet.MediaPlayer.TRIAL/12.0.27": {
+        "type": "package",
+        "dependencies": {
+          "VisioForge.DotNet.Core.TRIAL": "12.0.27"
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win": {
+      "VisioForge.DotNet.Core.Redist.Base.x64/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.Redist.Base.x86/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.TRIAL/12.0.27": {
+        "type": "package",
+        "compile": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        }
+      },
+      "VisioForge.DotNet.MediaPlayer.TRIAL/12.0.27": {
+        "type": "package",
+        "dependencies": {
+          "VisioForge.DotNet.Core.TRIAL": "12.0.27"
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x64": {
+      "VisioForge.DotNet.Core.Redist.Base.x64/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.Redist.Base.x86/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.TRIAL/12.0.27": {
+        "type": "package",
+        "compile": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        }
+      },
+      "VisioForge.DotNet.MediaPlayer.TRIAL/12.0.27": {
+        "type": "package",
+        "dependencies": {
+          "VisioForge.DotNet.Core.TRIAL": "12.0.27"
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x86": {
+      "VisioForge.DotNet.Core.Redist.Base.x64/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.Redist.Base.x86/12.0.27": {
+        "type": "package"
+      },
+      "VisioForge.DotNet.Core.TRIAL/12.0.27": {
+        "type": "package",
+        "compile": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        },
+        "runtime": {
+          "lib/net45/VisioForge.Controls.UI.Dialogs.dll": {},
+          "lib/net45/VisioForge.Controls.UI.dll": {},
+          "lib/net45/VisioForge.Controls.dll": {},
+          "lib/net45/VisioForge.DirectX.dll": {},
+          "lib/net45/VisioForge.MediaFramework.dll": {},
+          "lib/net45/VisioForge.Shared.dll": {},
+          "lib/net45/VisioForge.Tools.dll": {},
+          "lib/net45/VisioForge.Types.dll": {}
+        }
+      },
+      "VisioForge.DotNet.MediaPlayer.TRIAL/12.0.27": {
+        "type": "package",
+        "dependencies": {
+          "VisioForge.DotNet.Core.TRIAL": "12.0.27"
+        }
+      }
+    }
+  },
+  "libraries": {
+    "VisioForge.DotNet.Core.Redist.Base.x64/12.0.27": {
+      "sha512": "/77diNj0QhWXEmGpzLvmCtIFEYmSRFYkRgu1xT0dcQx0wxgkn825Zw5EWdhVW/YFG2lC/GE/gfqUApdnM0OTQg==",
+      "type": "package",
+      "path": "visioforge.dotnet.core.redist.base.x64/12.0.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/native/x64/MediaInfoX64.dll",
+        "build/native/x64/VisioForge_Audio_ChannelMapper_x64.ax",
+        "build/native/x64/VisioForge_Audio_Effects_4.ax",
+        "build/native/x64/VisioForge_Audio_Enhancer_x64.ax",
+        "build/native/x64/VisioForge_D2D_Video_Renderer_x64.ax",
+        "build/native/x64/VisioForge_DXP64.dll",
+        "build/native/x64/VisioForge_MFP64.dll",
+        "build/native/x64/VisioForge_RGB2YUV_x64.ax",
+        "build/native/x64/VisioForge_Video_Effects_Pro_x64.ax",
+        "build/native/x64/VisioForge_Video_Mixer_x64.ax",
+        "build/native/x64/VisioForge_Video_Resize_x64.ax",
+        "build/native/x64/VisioForge_WhatYouHear_Source_x64.ax",
+        "build/native/x64/VisioForge_YUV2RGB_x64.ax",
+        "build/native/x64/atl100.dll",
+        "build/native/x64/msvcp100.dll",
+        "build/native/x64/msvcr100.dll",
+        "redist-readme.txt",
+        "visioforge.dotnet.core.redist.base.x64.12.0.27.nupkg.sha512",
+        "visioforge.dotnet.core.redist.base.x64.nuspec"
+      ]
+    },
+    "VisioForge.DotNet.Core.Redist.Base.x86/12.0.27": {
+      "sha512": "/0Jjra7HoBVqtcuGfu2exOStHoU8ksg5RkyXO0J+7jWWRlxdU4pkzXRz+tTSxAlYqRmVBzEVIp8x0nUNLgMniQ==",
+      "type": "package",
+      "path": "visioforge.dotnet.core.redist.base.x86/12.0.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "build/native/x86/MediaInfo.dll",
+        "build/native/x86/VisioForge_Audio_ChannelMapper.ax",
+        "build/native/x86/VisioForge_Audio_Effects_4.ax",
+        "build/native/x86/VisioForge_Audio_Enhancer.ax",
+        "build/native/x86/VisioForge_D2D_Video_Renderer.ax",
+        "build/native/x86/VisioForge_DXP.dll",
+        "build/native/x86/VisioForge_MFP.dll",
+        "build/native/x86/VisioForge_RGB2YUV.ax",
+        "build/native/x86/VisioForge_Video_Effects_Pro.ax",
+        "build/native/x86/VisioForge_Video_Mixer.ax",
+        "build/native/x86/VisioForge_Video_Resize.ax",
+        "build/native/x86/VisioForge_WhatYouHear_Source.ax",
+        "build/native/x86/VisioForge_YUV2RGB.ax",
+        "build/native/x86/atl100.dll",
+        "build/native/x86/msvcp100.dll",
+        "build/native/x86/msvcr100.dll",
+        "redist-readme.txt",
+        "visioforge.dotnet.core.redist.base.x86.12.0.27.nupkg.sha512",
+        "visioforge.dotnet.core.redist.base.x86.nuspec"
+      ]
+    },
+    "VisioForge.DotNet.Core.TRIAL/12.0.27": {
+      "sha512": "hdOhf+fGCgrjPOp14SyR+4CXg4SY1iu/shR5gj1yYq4mvC0aStadHTEAQ6mGGV9QPee+3/nke095i1CyzJb8CA==",
+      "type": "package",
+      "path": "visioforge.dotnet.core.trial/12.0.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/VisioForge.Controls.UI.Dialogs.dll",
+        "lib/net45/VisioForge.Controls.UI.dll",
+        "lib/net45/VisioForge.Controls.dll",
+        "lib/net45/VisioForge.DirectX.dll",
+        "lib/net45/VisioForge.MediaFramework.dll",
+        "lib/net45/VisioForge.Shared.dll",
+        "lib/net45/VisioForge.Tools.dll",
+        "lib/net45/VisioForge.Types.dll",
+        "readme.txt",
+        "visioforge.dotnet.core.trial.12.0.27.nupkg.sha512",
+        "visioforge.dotnet.core.trial.nuspec"
+      ]
+    },
+    "VisioForge.DotNet.MediaPlayer.TRIAL/12.0.27": {
+      "sha512": "1XPrSRV8lZ405LNoIirTndONQEY2B8lsCMPjM0JLEFcDJ/sAiHLtcmbhTiU+/v/PB9vYNL3SE+J7Rm3RERAs2g==",
+      "type": "package",
+      "path": "visioforge.dotnet.mediaplayer.trial/12.0.27",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "readme.txt",
+        "visioforge.dotnet.mediaplayer.trial.12.0.27.nupkg.sha512",
+        "visioforge.dotnet.mediaplayer.trial.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": [
+      "VisioForge.DotNet.Core.Redist.Base.x64 >= 12.0.27",
+      "VisioForge.DotNet.Core.Redist.Base.x86 >= 12.0.27",
+      "VisioForge.DotNet.MediaPlayer.TRIAL >= 12.0.27"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\roman\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
+      "projectName": "Simple Video Player Demo (NuGet)",
+      "projectPath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
+      "packagesPath": "C:\\Users\\roman\\.nuget\\packages\\",
+      "outputPath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\roman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net45"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net45": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net45": {
+        "dependencies": {
+          "VisioForge.DotNet.Core.Redist.Base.x64": {
+            "target": "Package",
+            "version": "[12.0.27, )"
+          },
+          "VisioForge.DotNet.Core.Redist.Base.x86": {
+            "target": "Package",
+            "version": "[12.0.27, )"
+          },
+          "VisioForge.DotNet.MediaPlayer.TRIAL": {
+            "target": "Package",
+            "version": "[12.0.27, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

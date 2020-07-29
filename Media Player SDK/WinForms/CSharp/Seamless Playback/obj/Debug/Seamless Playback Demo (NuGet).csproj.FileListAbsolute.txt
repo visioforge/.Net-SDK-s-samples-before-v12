@@ -1,0 +1,19 @@
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\SeamlessPlaybackDemo.exe.config
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\SeamlessPlaybackDemo.exe
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\SeamlessPlaybackDemo.pdb
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.Controls.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.Controls.UI.Dialogs.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.Controls.UI.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.DirectX.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.MediaFramework.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.Shared.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.Tools.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\bin\Debug\VisioForge.Types.dll
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\Seamless Playback Demo (NuGet).csprojAssemblyReference.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\SeamlessPlaybackDemo.Form1.resources
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\SeamlessPlaybackDemo.Properties.Resources.resources
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\Seamless Playback Demo (NuGet).csproj.GenerateResource.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\Seamless Playback Demo (NuGet).csproj.CoreCompileInputs.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\Seamless Playback Demo (NuGet).csproj.CopyComplete
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\SeamlessPlaybackDemo.exe
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Seamless Playback\obj\Debug\SeamlessPlaybackDemo.pdb
