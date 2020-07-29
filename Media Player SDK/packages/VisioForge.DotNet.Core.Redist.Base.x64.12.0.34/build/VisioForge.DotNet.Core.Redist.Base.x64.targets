@@ -1,0 +1,11 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <NativeLibs Include="$(MSBuildThisFileDirectory)**\*.dll" />
+    <NativeLibs Include="$(MSBuildThisFileDirectory)**\*.manifest" />
+    <NativeLibs Include="$(MSBuildThisFileDirectory)**\*.ax" />
+    <None Include="@(NativeLibs)">
+      <Link>%(RecursiveDir)%(FileName)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>

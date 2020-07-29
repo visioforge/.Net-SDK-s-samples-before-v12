@@ -12,4 +12,7 @@
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <PkgVisioForge_DotNet_Core_Redist_Base_x86 Condition=" '$(PkgVisioForge_DotNet_Core_Redist_Base_x86)' == '' ">C:\Users\roman\.nuget\packages\visioforge.dotnet.core.redist.base.x86\12.0.34</PkgVisioForge_DotNet_Core_Redist_Base_x86>
+  </PropertyGroup>
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj": {}
+    "C:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj": {}
   },
   "projects": {
-    "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj": {
+    "C:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
+        "projectUniqueName": "C:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
         "projectName": "Simple Video Player Demo (NuGet)",
-        "projectPath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
+        "projectPath": "C:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\Simple Video Player Demo (NuGet).csproj",
         "packagesPath": "C:\\Users\\roman\\.nuget\\packages\\",
-        "outputPath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\obj\\",
+        "outputPath": "C:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\GitHub\\Media Player SDK\\WinForms\\CSharp\\Simple Video Player\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
@@ -40,15 +40,35 @@
           "dependencies": {
             "VisioForge.DotNet.Core.Redist.Base.x64": {
               "target": "Package",
-              "version": "[12.0.27, )"
+              "version": "[12.0.34, )"
             },
             "VisioForge.DotNet.Core.Redist.Base.x86": {
               "target": "Package",
-              "version": "[12.0.27, )"
+              "version": "[12.0.34, )"
+            },
+            "VisioForge.DotNet.Core.Redist.FFMPEGDLL.x86": {
+              "target": "Package",
+              "version": "[12.0.34, )"
+            },
+            "VisioForge.DotNet.Core.Redist.LAV.x64": {
+              "target": "Package",
+              "version": "[12.0.34, )"
+            },
+            "VisioForge.DotNet.Core.Redist.LAV.x86": {
+              "target": "Package",
+              "version": "[12.0.34, )"
+            },
+            "VisioForge.DotNet.Core.Redist.VLC.x64": {
+              "target": "Package",
+              "version": "[12.0.34, )"
+            },
+            "VisioForge.DotNet.Core.Redist.VLC.x86": {
+              "target": "Package",
+              "version": "[12.0.34, )"
             },
             "VisioForge.DotNet.MediaPlayer.TRIAL": {
               "target": "Package",
-              "version": "[12.0.27, )"
+              "version": "[12.0.29, )"
             }
           }
         }

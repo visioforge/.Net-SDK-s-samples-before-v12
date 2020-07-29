@@ -1,0 +1,52 @@
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\Audio_Player_Demo.exe.config
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\Audio_Player_Demo.exe
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\Audio_Player_Demo.pdb
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.Controls.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.Controls.UI.Dialogs.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.Controls.UI.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.DirectX.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.MediaFramework.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.Shared.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.Tools.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\VisioForge.Types.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio Player Demo (NuGet).csprojAssemblyReference.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio Player Demo (NuGet).csproj.ResolveComReference.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio_Player_Demo.Form1.resources
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio_Player_Demo.Properties.Resources.resources
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio Player Demo (NuGet).csproj.GenerateResource.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio Player Demo (NuGet).csproj.CoreCompileInputs.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio Player Demo (NuGet).csproj.CopyComplete
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio_Player_Demo.exe
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\obj\x86\Debug\Audio_Player_Demo.pdb
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\atl100.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\MediaInfo.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\msvcp100.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\msvcr100.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_DXP.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_MFP.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_Audio_ChannelMapper.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_Audio_Effects_4.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_Audio_Enhancer.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_D2D_Video_Renderer.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_RGB2YUV.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_Video_Effects_Pro.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_Video_Mixer.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_Video_Resize.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_WhatYouHear_Source.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x86\VisioForge_YUV2RGB.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\atl100.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\MediaInfoX64.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\msvcp100.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\msvcr100.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_DXP64.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_MFP64.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_Audio_ChannelMapper_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_Audio_Effects_4.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_Audio_Enhancer_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_D2D_Video_Renderer_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_RGB2YUV_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_Video_Effects_Pro_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_Video_Mixer_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_Video_Resize_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_WhatYouHear_Source_x64.ax
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WinForms\CSharp\Audio Player\bin\x86\Debug\x64\VisioForge_YUV2RGB_x64.ax

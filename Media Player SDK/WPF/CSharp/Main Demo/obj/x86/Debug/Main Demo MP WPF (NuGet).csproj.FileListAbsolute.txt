@@ -1,0 +1,23 @@
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\Main Demo.exe.config
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\Main Demo.exe
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\Main Demo.pdb
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.Controls.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.Controls.UI.Dialogs.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.Controls.UI.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.DirectX.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.MediaFramework.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.Shared.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.Tools.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\bin\x86\Debug\VisioForge.Types.dll
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo MP WPF (NuGet).csprojAssemblyReference.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\MainWindow.baml
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\MainWindow.g.cs
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\App.g.cs
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo_MarkupCompile.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo.g.resources
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main_Demo.Properties.Resources.resources
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo MP WPF (NuGet).csproj.GenerateResource.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo MP WPF (NuGet).csproj.CoreCompileInputs.cache
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo MP WPF (NuGet).csproj.CopyComplete
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo.exe
+C:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\GitHub\Media Player SDK\WPF\CSharp\Main Demo\obj\x86\Debug\Main Demo.pdb
