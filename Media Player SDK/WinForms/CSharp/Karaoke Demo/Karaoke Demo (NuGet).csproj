@@ -110,13 +110,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.Base.x64">
-<Version>12.0.38</Version>
+<Version>12.0.39</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.Base.x86">
-<Version>12.0.38</Version>
+<Version>12.0.39</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.MediaPlayer.TRIAL">
-<Version>12.0.38</Version>
+<Version>12.0.39</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
