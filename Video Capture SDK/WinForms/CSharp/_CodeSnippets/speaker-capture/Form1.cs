@@ -77,6 +77,10 @@ namespace speaker_capture
 
             VideoCapture1.Audio_Sample_Grabber_Enabled = true;
 
+            VideoCapture1.Debug_Mode = cbDebugMode.Checked;
+            VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
+            VideoCapture1.Debug_Telemetry = cbTelemetry.Checked;
+
             _currentTimestamp = TimeSpan.Zero;
 
             await VideoCapture1.StartAsync();

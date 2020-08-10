@@ -39,6 +39,10 @@ namespace screen_capture
 
         private async void btStart_Click(object sender, EventArgs e)
         {
+            VideoCapture1.Debug_Mode = cbDebugMode.Checked;
+            VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
+            VideoCapture1.Debug_Telemetry = cbTelemetry.Checked;
+
             // configure source
             var screenSource = new ScreenCaptureSourceSettings();
 
