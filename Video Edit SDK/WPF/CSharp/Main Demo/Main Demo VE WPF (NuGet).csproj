@@ -36,6 +36,8 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -97,29 +99,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="VisioForge.Controls, Version=12.0.42.0, Culture=neutral, PublicKeyToken=5873e863f1bcda5d, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls.UI, Version=12.0.42.0, Culture=neutral, PublicKeyToken=eafa6bd21aa991fd, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.Controls.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls.UI.Dialogs, Version=12.0.42.0, Culture=neutral, PublicKeyToken=3d84672df68c33ac, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.Controls.UI.Dialogs.dll</HintPath>
-    </Reference>
     <Reference Include="VisioForge.DirectX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=2f064561f42d5b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.DirectX.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.MediaFramework, Version=12.0.42.0, Culture=neutral, PublicKeyToken=14e66dd726c53f11, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.MediaFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Shared, Version=12.0.42.0, Culture=neutral, PublicKeyToken=4cb7f6778cad43a2, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Tools, Version=12.0.42.0, Culture=neutral, PublicKeyToken=33c6ded9724deec2, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Types, Version=12.0.42.0, Culture=neutral, PublicKeyToken=722de1c1c0a7f49e, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.42\lib\net45\VisioForge.Types.dll</HintPath>
+      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.43\lib\net45\VisioForge.DirectX.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -167,7 +148,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -176,6 +156,41 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="visioforge_main_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.Base.x64">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.Base.x86">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.FFMPEGDLL.x86">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.FFMPEGEXE.x64">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.FFMPEGEXE.x86">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.MP4.x64">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.MP4.x86">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.WebM.x86">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.XIPH.x64">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.XIPH.x86">
+<Version>12.0.43</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.VideoEdit.TRIAL">
+<Version>12.0.43</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

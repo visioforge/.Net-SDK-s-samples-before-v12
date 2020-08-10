@@ -22,11 +22,6 @@ namespace Video_From_Images_CLI
 
         static void Main(string[] args)
         {
-            //var optionsz = new CommandLineOptions { InputFolder = "c:\\samples\\pics\\", OutputFile = "c:\\vf\\output.avi", Resolution = new[] { "1920", "1080" }, Duration = 2000, Format = "mp4" };
-            //var arguments = CommandLine.Parser.Default.FormatCommandLine(optionsz);
-
-
-
             var options = new CommandLineOptions();
             if (!VisioForge.Shared.CommandLine.Parser.Default.ParseArguments(args, options))
             {
