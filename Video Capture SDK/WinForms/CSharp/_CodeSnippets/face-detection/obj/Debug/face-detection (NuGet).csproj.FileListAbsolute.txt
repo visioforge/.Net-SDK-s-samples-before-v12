@@ -1,0 +1,5 @@
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\face-detection\obj\Debug\face-detection (NuGet).csprojAssemblyReference.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\face-detection\obj\Debug\face_detection.Form1.resources
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\face-detection\obj\Debug\face_detection.Properties.Resources.resources
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\face-detection\obj\Debug\face-detection (NuGet).csproj.GenerateResource.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\face-detection\obj\Debug\face-detection (NuGet).csproj.CoreCompileInputs.cache

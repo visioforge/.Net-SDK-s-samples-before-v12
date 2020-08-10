@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "/S9QszWZu5Dcda9BuclWy5uka9tWkVQFf9vdFqFhFduZL6fjfUNgq4JGz727nc0jTJXlREpJyDDtIDPzNFReNg==",
+  "success": true,
+  "projectFilePath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\FILES\\Demos\\Video Capture SDK\\WinForms\\CSharp\\Audio Capture\\Audio Capture Demo (NuGet).csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\12.0.41\\visioforge.dotnet.core.redist.base.x64.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x86\\12.0.41\\visioforge.dotnet.core.redist.base.x86.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.videocapture.x64\\12.0.41\\visioforge.dotnet.core.redist.videocapture.x64.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.videocapture.x86\\12.0.41\\visioforge.dotnet.core.redist.videocapture.x86.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.trial\\12.0.41\\visioforge.dotnet.core.trial.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.videocapture.trial\\12.0.41\\visioforge.dotnet.videocapture.trial.12.0.41.nupkg.sha512"
+  ],
+  "logs": []
+}

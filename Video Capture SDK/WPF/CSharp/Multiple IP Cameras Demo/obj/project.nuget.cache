@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "Eq2ShPS/a+mh8TzaOLbG4zLYKVVa01oR9l6KIjeoLRasdgbEQD8VxCclfJB3tDXYZAdSK4MnUjElIs59+BHNxw==",
+  "success": true,
+  "projectFilePath": "c:\\Projects\\_Projects\\MediaFrameworkDotNet\\_SETUP\\FILES\\Demos\\Video Capture SDK\\WPF\\CSharp\\Multiple IP Cameras Demo\\Multiple IP Cameras Demo WPF (NuGet).csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x64\\12.0.41\\visioforge.dotnet.core.redist.base.x64.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.base.x86\\12.0.41\\visioforge.dotnet.core.redist.base.x86.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.videocapture.x64\\12.0.41\\visioforge.dotnet.core.redist.videocapture.x64.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.redist.videocapture.x86\\12.0.41\\visioforge.dotnet.core.redist.videocapture.x86.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.core.trial\\12.0.41\\visioforge.dotnet.core.trial.12.0.41.nupkg.sha512",
+    "C:\\Users\\roman\\.nuget\\packages\\visioforge.dotnet.videocapture.trial\\12.0.41\\visioforge.dotnet.videocapture.trial.12.0.41.nupkg.sha512"
+  ],
+  "logs": []
+}

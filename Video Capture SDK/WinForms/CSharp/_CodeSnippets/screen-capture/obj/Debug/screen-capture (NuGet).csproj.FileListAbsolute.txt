@@ -1,0 +1,5 @@
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\screen-capture\obj\Debug\screen-capture (NuGet).csprojAssemblyReference.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\screen-capture\obj\Debug\screen_capture.Form1.resources
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\screen-capture\obj\Debug\screen_capture.Properties.Resources.resources
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\screen-capture\obj\Debug\screen-capture (NuGet).csproj.GenerateResource.cache
+c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\screen-capture\obj\Debug\screen-capture (NuGet).csproj.CoreCompileInputs.cache
