@@ -195,6 +195,8 @@ namespace Main_Demo
             rbMotionDetectionExProcessor.SelectedIndex = 1;
             rbMotionDetectionExDetector.SelectedIndex = 1;
 
+            pnChromaKeyColor.Fill = new SolidColorBrush(Color.FromArgb(255, 128, 218, 128));
+
             var genres = new List<string>();
             foreach (var genre in VideoCapture.Tags_GetDefaultVideoGenres())
             {
@@ -1817,37 +1819,9 @@ namespace Main_Demo
 
             // Video effects GPU
             VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
-            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
-                                                         ? VFGPUEffectsEngine.DirectX11
-                                                         : VFGPUEffectsEngine.DirectX9;
 
             // Chromakey
-            if (cbChromaKeyEnabled.IsChecked == true)
-            {
-                VideoCapture1.ChromaKey = new ChromaKeySettings
-                {
-                    ContrastHigh = (int)tbChromaKeyContrastHigh.Value,
-                    ContrastLow = (int)tbChromaKeyContrastLow.Value,
-                    ImageFilename = edChromaKeyImage.Text
-                };
-
-                if (rbChromaKeyGreen.IsChecked == true)
-                {
-                    VideoCapture1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.IsChecked == true)
-                {
-                    VideoCapture1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    VideoCapture1.ChromaKey.Color = VFChromaColor.Red;
-                }
-            }
-            else
-            {
-                VideoCapture1.ChromaKey = null;
-            }
+            ConfigureChromaKey();
 
             // Object detection 
             ConfigureMotionDetectionEx();
@@ -2133,6 +2107,40 @@ namespace Main_Demo
             else
             {
                 VideoCapture1.Motion_DetectionEx = null;
+            }
+        }
+
+        private void ConfigureChromaKey()
+        {
+            if (VideoCapture1 == null)
+            {
+                return;
+            }
+
+            if (VideoCapture1.ChromaKey != null)
+            {
+                VideoCapture1.ChromaKey.Dispose();
+                VideoCapture1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
+            if (cbChromaKeyEnabled.IsChecked == true)
+            {
+                VideoCapture1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+                                              {
+                                                  Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
+                                                  ThresholdSensitivity = (float)(tbChromaKeyThresholdSensitivity.Value / 1000f),
+                                                  Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color)
+                                              };
+            }
+            else
+            {
+                VideoCapture1.ChromaKey = null;
             }
         }
 
@@ -3442,35 +3450,6 @@ namespace Main_Demo
         {
             VideoCapture1?.Audio_Effects_DynamicAmplify(
                 -1, 2, (ushort)tbAudAttack.Value, (ushort)tbAudDynAmp.Value, (int)tbAudRelease.Value);
-        }
-
-        private void tbChromaKeyContrastLow_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (VideoCapture1?.ChromaKey != null)
-            {
-                VideoCapture1.ChromaKey.ContrastLow = (int)tbChromaKeyContrastLow.Value;
-            }
-        }
-
-        private void tbChromaKeyContrastHigh_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (VideoCapture1?.ChromaKey != null)
-            {
-                VideoCapture1.ChromaKey.ContrastHigh = (int)tbChromaKeyContrastHigh.Value;
-            }
-        }
-
-        private void btChromaKeySelectBGImage_Click(object sender, RoutedEventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == true)
-            {
-                if (VideoCapture1.ChromaKey != null)
-                {
-                    VideoCapture1.ChromaKey.ImageFilename = edChromaKeyImage.Text = openFileDialog1.FileName;
-                }
-
-                edChromaKeyImage.Text = openFileDialog1.FileName;
-            }
         }
 
         private void linkLabel1_LinkClicked(object sender, MouseButtonEventArgs e)
@@ -5783,13 +5762,6 @@ namespace Main_Demo
             lbScreenSourceWindowText.Content = e.Caption;
         }
 
-        private void cbVideoEffectsGPUDX11_Click(object sender, RoutedEventArgs e)
-        {
-            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
-                                                         ? VFGPUEffectsEngine.DirectX11
-                                                         : VFGPUEffectsEngine.DirectX9;
-        }
-
         private void tbGPUBlur_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             IVFGPUVideoEffectBlur intf;
@@ -5829,6 +5801,36 @@ namespace Main_Demo
         private async void cbAdjSaturationAuto_Click(object sender, RoutedEventArgs e)
         {
             tbAdjSaturation_Scroll(null, null);
+        }
+
+        private void pnChromaKeyColor_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            colorDialog1.Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color);
+
+            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pnChromaKeyColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
+                ConfigureChromaKey();
+            }
+        }
+
+        private void btChromaKeySelectBGImage_Click(object sender, RoutedEventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == true)
+            {
+                edChromaKeyImage.Text = openFileDialog1.FileName;
+                ConfigureChromaKey();
+            }
+        }
+
+        private void tbChromaKeyThresholdSensitivity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void tbChromaKeySmoothing_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConfigureChromaKey();
         }
     }
 }

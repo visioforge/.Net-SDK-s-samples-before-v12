@@ -169,7 +169,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage20 = new System.Windows.Forms.TabPage();
             this.label5 = new System.Windows.Forms.Label();
             this.tbGPUBlur = new System.Windows.Forms.TrackBar();
-            this.cbVideoEffectsGPUDX11 = new System.Windows.Forms.CheckBox();
             this.cbVideoEffectsGPUEnabled = new System.Windows.Forms.CheckBox();
             this.cbGPUOldMovie = new System.Windows.Forms.CheckBox();
             this.cbGPUDeinterlace = new System.Windows.Forms.CheckBox();
@@ -207,16 +206,14 @@ namespace VideoCapture_CSharp_Demo
             this.label29 = new System.Windows.Forms.Label();
             this.cbResize = new System.Windows.Forms.CheckBox();
             this.tabPage60 = new System.Windows.Forms.TabPage();
+            this.pnChromaKeyColor = new System.Windows.Forms.Panel();
             this.btChromaKeySelectBGImage = new System.Windows.Forms.Button();
             this.edChromaKeyImage = new System.Windows.Forms.TextBox();
             this.label216 = new System.Windows.Forms.Label();
-            this.rbChromaKeyRed = new System.Windows.Forms.RadioButton();
-            this.rbChromaKeyBlue = new System.Windows.Forms.RadioButton();
-            this.rbChromaKeyGreen = new System.Windows.Forms.RadioButton();
             this.label215 = new System.Windows.Forms.Label();
-            this.tbChromaKeyContrastHigh = new System.Windows.Forms.TrackBar();
+            this.tbChromaKeySmoothing = new System.Windows.Forms.TrackBar();
             this.label214 = new System.Windows.Forms.Label();
-            this.tbChromaKeyContrastLow = new System.Windows.Forms.TrackBar();
+            this.tbChromaKeyThresholdSensitivity = new System.Windows.Forms.TrackBar();
             this.label213 = new System.Windows.Forms.Label();
             this.cbChromaKeyEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage70 = new System.Windows.Forms.TabPage();
@@ -1164,8 +1161,8 @@ namespace VideoCapture_CSharp_Demo
             ((System.ComponentModel.ISupportInitialize)(this.tbGPUSaturation)).BeginInit();
             this.tabPage9.SuspendLayout();
             this.tabPage60.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastHigh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastLow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeySmoothing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyThresholdSensitivity)).BeginInit();
             this.tabPage70.SuspendLayout();
             this.tabControl14.SuspendLayout();
             this.tabPage127.SuspendLayout();
@@ -2665,7 +2662,6 @@ namespace VideoCapture_CSharp_Demo
             // 
             this.tabPage20.Controls.Add(this.label5);
             this.tabPage20.Controls.Add(this.tbGPUBlur);
-            this.tabPage20.Controls.Add(this.cbVideoEffectsGPUDX11);
             this.tabPage20.Controls.Add(this.cbVideoEffectsGPUEnabled);
             this.tabPage20.Controls.Add(this.cbGPUOldMovie);
             this.tabPage20.Controls.Add(this.cbGPUDeinterlace);
@@ -2708,19 +2704,6 @@ namespace VideoCapture_CSharp_Demo
             this.tbGPUBlur.Size = new System.Drawing.Size(130, 45);
             this.tbGPUBlur.TabIndex = 84;
             this.tbGPUBlur.Scroll += new System.EventHandler(this.tbGPUBlur_Scroll);
-            // 
-            // cbVideoEffectsGPUDX11
-            // 
-            this.cbVideoEffectsGPUDX11.AutoSize = true;
-            this.cbVideoEffectsGPUDX11.Checked = true;
-            this.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbVideoEffectsGPUDX11.Location = new System.Drawing.Point(174, 16);
-            this.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11";
-            this.cbVideoEffectsGPUDX11.Size = new System.Drawing.Size(98, 17);
-            this.cbVideoEffectsGPUDX11.TabIndex = 82;
-            this.cbVideoEffectsGPUDX11.Text = "Use DirectX 11";
-            this.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true;
-            this.cbVideoEffectsGPUDX11.CheckedChanged += new System.EventHandler(this.cbVideoEffectsGPUDX11_CheckedChanged);
             // 
             // cbVideoEffectsGPUEnabled
             // 
@@ -3100,16 +3083,14 @@ namespace VideoCapture_CSharp_Demo
             // 
             // tabPage60
             // 
+            this.tabPage60.Controls.Add(this.pnChromaKeyColor);
             this.tabPage60.Controls.Add(this.btChromaKeySelectBGImage);
             this.tabPage60.Controls.Add(this.edChromaKeyImage);
             this.tabPage60.Controls.Add(this.label216);
-            this.tabPage60.Controls.Add(this.rbChromaKeyRed);
-            this.tabPage60.Controls.Add(this.rbChromaKeyBlue);
-            this.tabPage60.Controls.Add(this.rbChromaKeyGreen);
             this.tabPage60.Controls.Add(this.label215);
-            this.tabPage60.Controls.Add(this.tbChromaKeyContrastHigh);
+            this.tabPage60.Controls.Add(this.tbChromaKeySmoothing);
             this.tabPage60.Controls.Add(this.label214);
-            this.tabPage60.Controls.Add(this.tbChromaKeyContrastLow);
+            this.tabPage60.Controls.Add(this.tbChromaKeyThresholdSensitivity);
             this.tabPage60.Controls.Add(this.label213);
             this.tabPage60.Controls.Add(this.cbChromaKeyEnabled);
             this.tabPage60.Location = new System.Drawing.Point(4, 22);
@@ -3120,121 +3101,99 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage60.Text = "Chroma key";
             this.tabPage60.UseVisualStyleBackColor = true;
             // 
+            // pnChromaKeyColor
+            // 
+            this.pnChromaKeyColor.BackColor = System.Drawing.Color.Lime;
+            this.pnChromaKeyColor.ForeColor = System.Drawing.SystemColors.Control;
+            this.pnChromaKeyColor.Location = new System.Drawing.Point(57, 200);
+            this.pnChromaKeyColor.Name = "pnChromaKeyColor";
+            this.pnChromaKeyColor.Size = new System.Drawing.Size(26, 24);
+            this.pnChromaKeyColor.TabIndex = 43;
+            this.pnChromaKeyColor.Click += new System.EventHandler(this.pnChromaKeyColor_Click);
+            // 
             // btChromaKeySelectBGImage
             // 
-            this.btChromaKeySelectBGImage.Location = new System.Drawing.Point(260, 268);
+            this.btChromaKeySelectBGImage.Location = new System.Drawing.Point(257, 262);
             this.btChromaKeySelectBGImage.Name = "btChromaKeySelectBGImage";
             this.btChromaKeySelectBGImage.Size = new System.Drawing.Size(24, 23);
-            this.btChromaKeySelectBGImage.TabIndex = 20;
+            this.btChromaKeySelectBGImage.TabIndex = 42;
             this.btChromaKeySelectBGImage.Text = "...";
             this.btChromaKeySelectBGImage.UseVisualStyleBackColor = true;
             this.btChromaKeySelectBGImage.Click += new System.EventHandler(this.btChromaKeySelectBGImage_Click);
             // 
             // edChromaKeyImage
             // 
-            this.edChromaKeyImage.Location = new System.Drawing.Point(18, 270);
+            this.edChromaKeyImage.Location = new System.Drawing.Point(15, 264);
             this.edChromaKeyImage.Name = "edChromaKeyImage";
             this.edChromaKeyImage.Size = new System.Drawing.Size(235, 20);
-            this.edChromaKeyImage.TabIndex = 19;
-            this.edChromaKeyImage.Text = "c:\\chroma_bg.bmp";
+            this.edChromaKeyImage.TabIndex = 41;
+            this.edChromaKeyImage.Text = "c:\\Samples\\pics\\1.jpg";
             // 
             // label216
             // 
             this.label216.AutoSize = true;
-            this.label216.Location = new System.Drawing.Point(15, 254);
+            this.label216.Location = new System.Drawing.Point(12, 248);
             this.label216.Name = "label216";
-            this.label216.Size = new System.Drawing.Size(96, 13);
-            this.label216.TabIndex = 18;
-            this.label216.Text = "Background image";
-            // 
-            // rbChromaKeyRed
-            // 
-            this.rbChromaKeyRed.AutoSize = true;
-            this.rbChromaKeyRed.Location = new System.Drawing.Point(152, 219);
-            this.rbChromaKeyRed.Name = "rbChromaKeyRed";
-            this.rbChromaKeyRed.Size = new System.Drawing.Size(45, 17);
-            this.rbChromaKeyRed.TabIndex = 17;
-            this.rbChromaKeyRed.Text = "Red";
-            this.rbChromaKeyRed.UseVisualStyleBackColor = true;
-            // 
-            // rbChromaKeyBlue
-            // 
-            this.rbChromaKeyBlue.AutoSize = true;
-            this.rbChromaKeyBlue.Location = new System.Drawing.Point(87, 219);
-            this.rbChromaKeyBlue.Name = "rbChromaKeyBlue";
-            this.rbChromaKeyBlue.Size = new System.Drawing.Size(46, 17);
-            this.rbChromaKeyBlue.TabIndex = 16;
-            this.rbChromaKeyBlue.Text = "Blue";
-            this.rbChromaKeyBlue.UseVisualStyleBackColor = true;
-            // 
-            // rbChromaKeyGreen
-            // 
-            this.rbChromaKeyGreen.AutoSize = true;
-            this.rbChromaKeyGreen.Checked = true;
-            this.rbChromaKeyGreen.Location = new System.Drawing.Point(18, 219);
-            this.rbChromaKeyGreen.Name = "rbChromaKeyGreen";
-            this.rbChromaKeyGreen.Size = new System.Drawing.Size(54, 17);
-            this.rbChromaKeyGreen.TabIndex = 15;
-            this.rbChromaKeyGreen.TabStop = true;
-            this.rbChromaKeyGreen.Text = "Green";
-            this.rbChromaKeyGreen.UseVisualStyleBackColor = true;
+            this.label216.Size = new System.Drawing.Size(112, 13);
+            this.label216.TabIndex = 40;
+            this.label216.Text = "Image background file";
             // 
             // label215
             // 
             this.label215.AutoSize = true;
-            this.label215.Location = new System.Drawing.Point(15, 205);
+            this.label215.Location = new System.Drawing.Point(12, 204);
             this.label215.Name = "label215";
             this.label215.Size = new System.Drawing.Size(31, 13);
-            this.label215.TabIndex = 14;
+            this.label215.TabIndex = 39;
             this.label215.Text = "Color";
             // 
-            // tbChromaKeyContrastHigh
+            // tbChromaKeySmoothing
             // 
-            this.tbChromaKeyContrastHigh.BackColor = System.Drawing.SystemColors.Window;
-            this.tbChromaKeyContrastHigh.Location = new System.Drawing.Point(18, 146);
-            this.tbChromaKeyContrastHigh.Maximum = 255;
-            this.tbChromaKeyContrastHigh.Name = "tbChromaKeyContrastHigh";
-            this.tbChromaKeyContrastHigh.Size = new System.Drawing.Size(154, 45);
-            this.tbChromaKeyContrastHigh.TabIndex = 13;
-            this.tbChromaKeyContrastHigh.Value = 150;
-            this.tbChromaKeyContrastHigh.Scroll += new System.EventHandler(this.tbChromaKeyContrastHigh_Scroll);
+            this.tbChromaKeySmoothing.BackColor = System.Drawing.SystemColors.Window;
+            this.tbChromaKeySmoothing.Location = new System.Drawing.Point(15, 145);
+            this.tbChromaKeySmoothing.Maximum = 1000;
+            this.tbChromaKeySmoothing.Name = "tbChromaKeySmoothing";
+            this.tbChromaKeySmoothing.Size = new System.Drawing.Size(154, 45);
+            this.tbChromaKeySmoothing.TabIndex = 38;
+            this.tbChromaKeySmoothing.Value = 80;
+            this.tbChromaKeySmoothing.Scroll += new System.EventHandler(this.tbChromaKeySmoothing_Scroll);
             // 
             // label214
             // 
             this.label214.AutoSize = true;
-            this.label214.Location = new System.Drawing.Point(15, 128);
+            this.label214.Location = new System.Drawing.Point(12, 127);
             this.label214.Name = "label214";
-            this.label214.Size = new System.Drawing.Size(71, 13);
-            this.label214.TabIndex = 12;
-            this.label214.Text = "Contrast-High";
+            this.label214.Size = new System.Drawing.Size(57, 13);
+            this.label214.TabIndex = 37;
+            this.label214.Text = "Smoothing";
             // 
-            // tbChromaKeyContrastLow
+            // tbChromaKeyThresholdSensitivity
             // 
-            this.tbChromaKeyContrastLow.BackColor = System.Drawing.SystemColors.Window;
-            this.tbChromaKeyContrastLow.Location = new System.Drawing.Point(18, 73);
-            this.tbChromaKeyContrastLow.Maximum = 255;
-            this.tbChromaKeyContrastLow.Name = "tbChromaKeyContrastLow";
-            this.tbChromaKeyContrastLow.Size = new System.Drawing.Size(154, 45);
-            this.tbChromaKeyContrastLow.TabIndex = 11;
-            this.tbChromaKeyContrastLow.Value = 10;
-            this.tbChromaKeyContrastLow.Scroll += new System.EventHandler(this.tbChromaKeyContrastLow_Scroll);
+            this.tbChromaKeyThresholdSensitivity.BackColor = System.Drawing.SystemColors.Window;
+            this.tbChromaKeyThresholdSensitivity.Location = new System.Drawing.Point(15, 72);
+            this.tbChromaKeyThresholdSensitivity.Maximum = 200;
+            this.tbChromaKeyThresholdSensitivity.Name = "tbChromaKeyThresholdSensitivity";
+            this.tbChromaKeyThresholdSensitivity.Size = new System.Drawing.Size(154, 45);
+            this.tbChromaKeyThresholdSensitivity.TabIndex = 36;
+            this.tbChromaKeyThresholdSensitivity.Value = 180;
+            this.tbChromaKeyThresholdSensitivity.Scroll += new System.EventHandler(this.tbChromaKeyThresholdSensitivity_Scroll);
             // 
             // label213
             // 
             this.label213.AutoSize = true;
-            this.label213.Location = new System.Drawing.Point(15, 55);
+            this.label213.Location = new System.Drawing.Point(12, 54);
             this.label213.Name = "label213";
-            this.label213.Size = new System.Drawing.Size(69, 13);
-            this.label213.TabIndex = 10;
-            this.label213.Text = "Contrast-Low";
+            this.label213.Size = new System.Drawing.Size(102, 13);
+            this.label213.TabIndex = 35;
+            this.label213.Text = "Threshold sensitivity";
             // 
             // cbChromaKeyEnabled
             // 
             this.cbChromaKeyEnabled.AutoSize = true;
-            this.cbChromaKeyEnabled.Location = new System.Drawing.Point(18, 16);
+            this.cbChromaKeyEnabled.Location = new System.Drawing.Point(15, 15);
             this.cbChromaKeyEnabled.Name = "cbChromaKeyEnabled";
             this.cbChromaKeyEnabled.Size = new System.Drawing.Size(65, 17);
-            this.cbChromaKeyEnabled.TabIndex = 9;
+            this.cbChromaKeyEnabled.TabIndex = 34;
             this.cbChromaKeyEnabled.Text = "Enabled";
             this.cbChromaKeyEnabled.UseVisualStyleBackColor = true;
             // 
@@ -12973,6 +12932,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.BDA_Source = null;
             this.VideoCapture1.ChromaKey = null;
             this.VideoCapture1.Custom_Source = null;
+            this.VideoCapture1.CustomRedist_Auto = true;
             this.VideoCapture1.CustomRedist_Enabled = false;
             this.VideoCapture1.CustomRedist_Path = null;
             this.VideoCapture1.Debug_Dir = "";
@@ -13019,7 +12979,7 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
+            this.VideoCapture1.SeparateCapture_TimeThreshold = System.TimeSpan.Parse("00:00:00");
             this.VideoCapture1.Size = new System.Drawing.Size(467, 321);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 77;
@@ -13049,7 +13009,6 @@ namespace VideoCapture_CSharp_Demo
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
-            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             this.VideoCapture1.Video_Effects_MergeImageLogos = false;
             this.VideoCapture1.Video_Effects_MergeTextLogos = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
@@ -13165,8 +13124,8 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage9.PerformLayout();
             this.tabPage60.ResumeLayout(false);
             this.tabPage60.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastHigh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastLow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeySmoothing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyThresholdSensitivity)).EndInit();
             this.tabPage70.ResumeLayout(false);
             this.tabPage70.PerformLayout();
             this.tabControl14.ResumeLayout(false);
@@ -13773,18 +13732,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.CheckBox cbDenoise;
         private System.Windows.Forms.RadioButton rbDenoiseMosquito;
         private System.Windows.Forms.RadioButton rbDenoiseCAST;
-        private System.Windows.Forms.CheckBox cbChromaKeyEnabled;
-        private System.Windows.Forms.TrackBar tbChromaKeyContrastHigh;
-        private System.Windows.Forms.Label label214;
-        private System.Windows.Forms.TrackBar tbChromaKeyContrastLow;
-        private System.Windows.Forms.Label label213;
-        private System.Windows.Forms.RadioButton rbChromaKeyRed;
-        private System.Windows.Forms.RadioButton rbChromaKeyBlue;
-        private System.Windows.Forms.RadioButton rbChromaKeyGreen;
-        private System.Windows.Forms.Label label215;
-        private System.Windows.Forms.Label label216;
-        private System.Windows.Forms.Button btChromaKeySelectBGImage;
-        private System.Windows.Forms.TextBox edChromaKeyImage;
         private VisioForge.Controls.UI.WinForms.VideoCapture VideoCapture1;
         private System.Windows.Forms.TabPage tabPage12;
         private System.Windows.Forms.Label label83;
@@ -14509,7 +14456,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.CheckBox cbNetworkRTMPFFMPEGUsePipes;
         private System.Windows.Forms.CheckBox cbNetworkUDPFFMPEGUsePipes;
         private System.Windows.Forms.CheckBox cbNetworkSSUsePipes;
-        private System.Windows.Forms.CheckBox cbVideoEffectsGPUDX11;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TrackBar tbGPUBlur;
         private System.Windows.Forms.CheckBox cbMergeImageLogos;
@@ -14519,6 +14465,16 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TextBox edHLSEmbeddedHTTPServerPort;
         private System.Windows.Forms.CheckBox cbHLSEmbeddedHTTPServerEnabled;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel pnChromaKeyColor;
+        private System.Windows.Forms.Button btChromaKeySelectBGImage;
+        private System.Windows.Forms.TextBox edChromaKeyImage;
+        private System.Windows.Forms.Label label216;
+        private System.Windows.Forms.Label label215;
+        private System.Windows.Forms.TrackBar tbChromaKeySmoothing;
+        private System.Windows.Forms.Label label214;
+        private System.Windows.Forms.TrackBar tbChromaKeyThresholdSensitivity;
+        private System.Windows.Forms.Label label213;
+        private System.Windows.Forms.CheckBox cbChromaKeyEnabled;
     }
 }
 

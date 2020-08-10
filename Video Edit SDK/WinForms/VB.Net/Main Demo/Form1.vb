@@ -194,6 +194,8 @@ Public Class Form1
         cbDecklinkOutputNTSC.SelectedIndex = 0
         cbDecklinkOutputSingleField.SelectedIndex = 0
 
+        pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128)
+
         For Each item As String In VideoEdit1.DirectShow_Filters()
             cbFilters.Items.Add(item)
         Next
@@ -890,11 +892,9 @@ Public Class Form1
 
         ' Video effects GPU
         VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
-        If cbVideoEffectsGPUDX11.Checked Then
-            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
-        Else
-            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
-        End If
+
+        ' chroma key
+        ConfigureChromaKey()
 
         'motion detection
         ConfigureMotionDetection()
@@ -2817,14 +2817,6 @@ Public Class Form1
         dlg.Dispose()
     End Sub
 
-    Private Sub cbVideoEffectsGPUDX11_CheckedChanged(sender As Object, e As EventArgs) Handles cbVideoEffectsGPUDX11.CheckedChanged
-        If cbVideoEffectsGPUDX11.Checked Then
-            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
-        Else
-            VideoEdit1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
-        End If
-    End Sub
-
     Private Sub tbGPUBlur_Scroll(sender As Object, e As EventArgs) Handles tbGPUBlur.Scroll
         Dim intf As IVFGPUVideoEffectBlur
         Dim effect = VideoEdit1.Video_Effects_GPU_Get("Blur")
@@ -2838,6 +2830,50 @@ Public Class Form1
                 intf.Value = tbGPUBlur.Value
                 intf.Update()
             End If
+        End If
+    End Sub
+
+    Private Sub ConfigureChromaKey()
+        If (Not IsNothing(VideoEdit1.ChromaKey)) Then
+            VideoEdit1.ChromaKey.Dispose()
+            VideoEdit1.ChromaKey = Nothing
+        End If
+
+        If (Not File.Exists(edChromaKeyImage.Text)) Then
+            MessageBox.Show("Chroma-key background file doesn't exists.")
+            Return
+        End If
+
+        If (cbChromaKeyEnabled.Checked) Then
+            VideoEdit1.ChromaKey = New ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+            VideoEdit1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
+            VideoEdit1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F
+            VideoEdit1.ChromaKey.Color = pnChromaKeyColor.BackColor
+        Else
+
+            VideoEdit1.ChromaKey = Nothing
+        End If
+    End Sub
+
+    Private Sub tbChromaKeyThresholdSensitivity_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeyThresholdSensitivity.Scroll
+        ConfigureChromaKey()
+    End Sub
+
+    Private Sub tbChromaKeySmoothing_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeySmoothing.Scroll
+        ConfigureChromaKey()
+    End Sub
+
+    Private Sub pnChromaKeyColor_MouseDown(sender As Object, e As MouseEventArgs) Handles pnChromaKeyColor.MouseDown
+        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
+            pnChromaKeyColor.BackColor = colorDialog1.Color
+            ConfigureChromaKey()
+        End If
+    End Sub
+
+    Private Sub btChromaKeySelectBGImage_Click(sender As Object, e As EventArgs) Handles btChromaKeySelectBGImage.Click
+        If (openFileDialog1.ShowDialog() = DialogResult.OK) Then
+            edChromaKeyImage.Text = openFileDialog1.FileName
+            ConfigureChromaKey()
         End If
     End Sub
 End Class

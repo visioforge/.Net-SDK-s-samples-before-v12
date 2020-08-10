@@ -1,5 +1,6 @@
 ' ReSharper disable InconsistentNaming
 
+Imports System.IO
 Imports VisioForge.Controls.UI
 Imports VisioForge.Types
 Imports VisioForge.Controls.UI.WinForms
@@ -75,6 +76,8 @@ Public Class Form1
         cbVideoEncoder.SelectedIndex = 1
         cbAudioSampleRate.SelectedIndex = 0
         cbContainer.SelectedIndex = 0
+
+        pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128)
 
     End Sub
 
@@ -342,21 +345,23 @@ Public Class Form1
     End Sub
 
     Private Sub ConfigureChromaKey()
+        If (Not IsNothing(VideoEdit1.ChromaKey)) Then
+            VideoEdit1.ChromaKey.Dispose()
+            VideoEdit1.ChromaKey = Nothing
+        End If
 
-        If cbChromaKeyEnabled.Checked Then
-            VideoEdit1.ChromaKey = New ChromaKeySettings()
-            VideoEdit1.ChromaKey.ContrastHigh = tbChromaKeyContrastHigh.Value
-            VideoEdit1.ChromaKey.ContrastLow = tbChromaKeyContrastLow.Value
-            VideoEdit1.ChromaKey.ImageFilename = edChromaKeyImage.Text
+        If (Not File.Exists(edChromaKeyImage.Text)) Then
+            MessageBox.Show("Chroma-key background file doesn't exists.")
+            Return
+        End If
 
-            If (rbChromaKeyGreen.Checked) Then
-                VideoEdit1.ChromaKey.Color = VFChromaColor.Green
-            ElseIf (rbChromaKeyBlue.Checked) Then
-                VideoEdit1.ChromaKey.Color = VFChromaColor.Blue
-            Else
-                VideoEdit1.ChromaKey.Color = VFChromaColor.Red
-            End If
+        If (cbChromaKeyEnabled.Checked) Then
+            VideoEdit1.ChromaKey = New ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+            VideoEdit1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
+            VideoEdit1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F
+            VideoEdit1.ChromaKey.Color = pnChromaKeyColor.BackColor
         Else
+
             VideoEdit1.ChromaKey = Nothing
         End If
     End Sub
@@ -499,26 +504,11 @@ Public Class Form1
 
     End Sub
 
-    Private Sub tbChromaKeyContrastLow_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeyContrastLow.Scroll
-
-        ConfigureChromaKey()
-
-    End Sub
-
-    Private Sub tbChromaKeyContrastHigh_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeyContrastHigh.Scroll
-
-        ConfigureChromaKey()
-
-    End Sub
-
-    Private Sub btChromaKeySelectBGImage_Click(sender As Object, e As EventArgs) Handles btChromaKeySelectBGImage.Click
-
+    Private Sub btChromaKeySelectBGImage_Click(sender As Object, e As EventArgs) Handles btChromaKeySelectBGImage.Click 
         If (openFileDialog1.ShowDialog() = DialogResult.OK) Then
-
             edChromaKeyImage.Text = openFileDialog1.FileName
-
+            ConfigureChromaKey()
         End If
-
     End Sub
 
     Private Sub btFont_Click1(sender As Object, e As EventArgs) Handles btFont.Click
@@ -557,6 +547,21 @@ Public Class Form1
             mmLog.Text = mmLog.Text + "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine
         End If
 
+    End Sub
+
+    Private Sub tbChromaKeyThresholdSensitivity_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeyThresholdSensitivity.Scroll
+        ConfigureChromaKey()
+    End Sub
+
+    Private Sub tbChromaKeySmoothing_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeySmoothing.Scroll
+        ConfigureChromaKey()
+    End Sub
+
+    Private Sub pnChromaKeyColor_MouseDown(sender As Object, e As MouseEventArgs) Handles pnChromaKeyColor.MouseDown
+        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
+            pnChromaKeyColor.BackColor = colorDialog1.Color
+            ConfigureChromaKey()
+        End If
     End Sub
 End Class
 

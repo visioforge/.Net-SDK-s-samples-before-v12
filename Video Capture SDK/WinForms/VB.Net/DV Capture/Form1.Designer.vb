@@ -955,7 +955,6 @@ Partial Class Form1
         Me.VideoCapture1.Video_Effects_AllowMultipleStreams = false
         Me.VideoCapture1.Video_Effects_Enabled = false
         Me.VideoCapture1.Video_Effects_GPU_Enabled = false
-        Me.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11
         VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
         VideoRendererSettingsWinForms1.Aspect_Ratio_X = 16
         VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 9

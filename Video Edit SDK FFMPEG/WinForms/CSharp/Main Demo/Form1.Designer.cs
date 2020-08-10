@@ -170,16 +170,14 @@ namespace VideoEdit_CS_Demo
             this.label66 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage20 = new System.Windows.Forms.TabPage();
+            this.pnChromaKeyColor = new System.Windows.Forms.Panel();
             this.btChromaKeySelectBGImage = new System.Windows.Forms.Button();
             this.edChromaKeyImage = new System.Windows.Forms.TextBox();
             this.label216 = new System.Windows.Forms.Label();
-            this.rbChromaKeyRed = new System.Windows.Forms.RadioButton();
-            this.rbChromaKeyBlue = new System.Windows.Forms.RadioButton();
-            this.rbChromaKeyGreen = new System.Windows.Forms.RadioButton();
             this.label215 = new System.Windows.Forms.Label();
-            this.tbChromaKeyContrastHigh = new System.Windows.Forms.TrackBar();
+            this.tbChromaKeySmoothing = new System.Windows.Forms.TrackBar();
             this.label214 = new System.Windows.Forms.Label();
-            this.tbChromaKeyContrastLow = new System.Windows.Forms.TrackBar();
+            this.tbChromaKeyThresholdSensitivity = new System.Windows.Forms.TrackBar();
             this.label213 = new System.Windows.Forms.Label();
             this.cbChromaKeyEnabled = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -292,8 +290,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage21.SuspendLayout();
             this.tabPage26.SuspendLayout();
             this.tabPage20.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastHigh)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastLow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeySmoothing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyThresholdSensitivity)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabControl18.SuspendLayout();
             this.tabPage71.SuspendLayout();
@@ -1882,16 +1880,14 @@ namespace VideoEdit_CS_Demo
             // 
             // tabPage20
             // 
+            this.tabPage20.Controls.Add(this.pnChromaKeyColor);
             this.tabPage20.Controls.Add(this.btChromaKeySelectBGImage);
             this.tabPage20.Controls.Add(this.edChromaKeyImage);
             this.tabPage20.Controls.Add(this.label216);
-            this.tabPage20.Controls.Add(this.rbChromaKeyRed);
-            this.tabPage20.Controls.Add(this.rbChromaKeyBlue);
-            this.tabPage20.Controls.Add(this.rbChromaKeyGreen);
             this.tabPage20.Controls.Add(this.label215);
-            this.tabPage20.Controls.Add(this.tbChromaKeyContrastHigh);
+            this.tabPage20.Controls.Add(this.tbChromaKeySmoothing);
             this.tabPage20.Controls.Add(this.label214);
-            this.tabPage20.Controls.Add(this.tbChromaKeyContrastLow);
+            this.tabPage20.Controls.Add(this.tbChromaKeyThresholdSensitivity);
             this.tabPage20.Controls.Add(this.label213);
             this.tabPage20.Controls.Add(this.cbChromaKeyEnabled);
             this.tabPage20.Location = new System.Drawing.Point(4, 22);
@@ -1902,121 +1898,99 @@ namespace VideoEdit_CS_Demo
             this.tabPage20.Text = "Chroma key";
             this.tabPage20.UseVisualStyleBackColor = true;
             // 
+            // pnChromaKeyColor
+            // 
+            this.pnChromaKeyColor.BackColor = System.Drawing.Color.Lime;
+            this.pnChromaKeyColor.ForeColor = System.Drawing.SystemColors.Control;
+            this.pnChromaKeyColor.Location = new System.Drawing.Point(54, 201);
+            this.pnChromaKeyColor.Name = "pnChromaKeyColor";
+            this.pnChromaKeyColor.Size = new System.Drawing.Size(26, 24);
+            this.pnChromaKeyColor.TabIndex = 43;
+            this.pnChromaKeyColor.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnChromaKeyColor_MouseDown);
+            // 
             // btChromaKeySelectBGImage
             // 
-            this.btChromaKeySelectBGImage.Location = new System.Drawing.Point(259, 272);
+            this.btChromaKeySelectBGImage.Location = new System.Drawing.Point(254, 263);
             this.btChromaKeySelectBGImage.Name = "btChromaKeySelectBGImage";
             this.btChromaKeySelectBGImage.Size = new System.Drawing.Size(24, 23);
-            this.btChromaKeySelectBGImage.TabIndex = 32;
+            this.btChromaKeySelectBGImage.TabIndex = 42;
             this.btChromaKeySelectBGImage.Text = "...";
             this.btChromaKeySelectBGImage.UseVisualStyleBackColor = true;
             this.btChromaKeySelectBGImage.Click += new System.EventHandler(this.btChromaKeySelectBGImage_Click);
             // 
             // edChromaKeyImage
             // 
-            this.edChromaKeyImage.Location = new System.Drawing.Point(17, 274);
+            this.edChromaKeyImage.Location = new System.Drawing.Point(12, 265);
             this.edChromaKeyImage.Name = "edChromaKeyImage";
             this.edChromaKeyImage.Size = new System.Drawing.Size(235, 20);
-            this.edChromaKeyImage.TabIndex = 31;
-            this.edChromaKeyImage.Text = "c:\\chroma_bg.bmp";
+            this.edChromaKeyImage.TabIndex = 41;
+            this.edChromaKeyImage.Text = "c:\\Samples\\pics\\1.jpg";
             // 
             // label216
             // 
             this.label216.AutoSize = true;
-            this.label216.Location = new System.Drawing.Point(14, 258);
+            this.label216.Location = new System.Drawing.Point(9, 249);
             this.label216.Name = "label216";
-            this.label216.Size = new System.Drawing.Size(96, 13);
-            this.label216.TabIndex = 30;
-            this.label216.Text = "Background image";
-            // 
-            // rbChromaKeyRed
-            // 
-            this.rbChromaKeyRed.AutoSize = true;
-            this.rbChromaKeyRed.Location = new System.Drawing.Point(151, 223);
-            this.rbChromaKeyRed.Name = "rbChromaKeyRed";
-            this.rbChromaKeyRed.Size = new System.Drawing.Size(45, 17);
-            this.rbChromaKeyRed.TabIndex = 29;
-            this.rbChromaKeyRed.Text = "Red";
-            this.rbChromaKeyRed.UseVisualStyleBackColor = true;
-            // 
-            // rbChromaKeyBlue
-            // 
-            this.rbChromaKeyBlue.AutoSize = true;
-            this.rbChromaKeyBlue.Location = new System.Drawing.Point(86, 223);
-            this.rbChromaKeyBlue.Name = "rbChromaKeyBlue";
-            this.rbChromaKeyBlue.Size = new System.Drawing.Size(46, 17);
-            this.rbChromaKeyBlue.TabIndex = 28;
-            this.rbChromaKeyBlue.Text = "Blue";
-            this.rbChromaKeyBlue.UseVisualStyleBackColor = true;
-            // 
-            // rbChromaKeyGreen
-            // 
-            this.rbChromaKeyGreen.AutoSize = true;
-            this.rbChromaKeyGreen.Checked = true;
-            this.rbChromaKeyGreen.Location = new System.Drawing.Point(17, 223);
-            this.rbChromaKeyGreen.Name = "rbChromaKeyGreen";
-            this.rbChromaKeyGreen.Size = new System.Drawing.Size(54, 17);
-            this.rbChromaKeyGreen.TabIndex = 27;
-            this.rbChromaKeyGreen.TabStop = true;
-            this.rbChromaKeyGreen.Text = "Green";
-            this.rbChromaKeyGreen.UseVisualStyleBackColor = true;
+            this.label216.Size = new System.Drawing.Size(112, 13);
+            this.label216.TabIndex = 40;
+            this.label216.Text = "Image background file";
             // 
             // label215
             // 
             this.label215.AutoSize = true;
-            this.label215.Location = new System.Drawing.Point(14, 209);
+            this.label215.Location = new System.Drawing.Point(9, 205);
             this.label215.Name = "label215";
             this.label215.Size = new System.Drawing.Size(31, 13);
-            this.label215.TabIndex = 26;
+            this.label215.TabIndex = 39;
             this.label215.Text = "Color";
             // 
-            // tbChromaKeyContrastHigh
+            // tbChromaKeySmoothing
             // 
-            this.tbChromaKeyContrastHigh.BackColor = System.Drawing.SystemColors.Window;
-            this.tbChromaKeyContrastHigh.Location = new System.Drawing.Point(17, 150);
-            this.tbChromaKeyContrastHigh.Maximum = 255;
-            this.tbChromaKeyContrastHigh.Name = "tbChromaKeyContrastHigh";
-            this.tbChromaKeyContrastHigh.Size = new System.Drawing.Size(154, 45);
-            this.tbChromaKeyContrastHigh.TabIndex = 25;
-            this.tbChromaKeyContrastHigh.Value = 150;
-            this.tbChromaKeyContrastHigh.Scroll += new System.EventHandler(this.tbChromaKeyContrastHigh_Scroll);
+            this.tbChromaKeySmoothing.BackColor = System.Drawing.SystemColors.Window;
+            this.tbChromaKeySmoothing.Location = new System.Drawing.Point(12, 146);
+            this.tbChromaKeySmoothing.Maximum = 1000;
+            this.tbChromaKeySmoothing.Name = "tbChromaKeySmoothing";
+            this.tbChromaKeySmoothing.Size = new System.Drawing.Size(154, 45);
+            this.tbChromaKeySmoothing.TabIndex = 38;
+            this.tbChromaKeySmoothing.Value = 80;
+            this.tbChromaKeySmoothing.Scroll += new System.EventHandler(this.tbChromaKeySmoothing_Scroll);
             // 
             // label214
             // 
             this.label214.AutoSize = true;
-            this.label214.Location = new System.Drawing.Point(14, 132);
+            this.label214.Location = new System.Drawing.Point(9, 128);
             this.label214.Name = "label214";
-            this.label214.Size = new System.Drawing.Size(71, 13);
-            this.label214.TabIndex = 24;
-            this.label214.Text = "Contrast-High";
+            this.label214.Size = new System.Drawing.Size(57, 13);
+            this.label214.TabIndex = 37;
+            this.label214.Text = "Smoothing";
             // 
-            // tbChromaKeyContrastLow
+            // tbChromaKeyThresholdSensitivity
             // 
-            this.tbChromaKeyContrastLow.BackColor = System.Drawing.SystemColors.Window;
-            this.tbChromaKeyContrastLow.Location = new System.Drawing.Point(17, 77);
-            this.tbChromaKeyContrastLow.Maximum = 255;
-            this.tbChromaKeyContrastLow.Name = "tbChromaKeyContrastLow";
-            this.tbChromaKeyContrastLow.Size = new System.Drawing.Size(154, 45);
-            this.tbChromaKeyContrastLow.TabIndex = 23;
-            this.tbChromaKeyContrastLow.Value = 10;
-            this.tbChromaKeyContrastLow.Scroll += new System.EventHandler(this.tbChromaKeyContrastLow_Scroll);
+            this.tbChromaKeyThresholdSensitivity.BackColor = System.Drawing.SystemColors.Window;
+            this.tbChromaKeyThresholdSensitivity.Location = new System.Drawing.Point(12, 73);
+            this.tbChromaKeyThresholdSensitivity.Maximum = 200;
+            this.tbChromaKeyThresholdSensitivity.Name = "tbChromaKeyThresholdSensitivity";
+            this.tbChromaKeyThresholdSensitivity.Size = new System.Drawing.Size(154, 45);
+            this.tbChromaKeyThresholdSensitivity.TabIndex = 36;
+            this.tbChromaKeyThresholdSensitivity.Value = 180;
+            this.tbChromaKeyThresholdSensitivity.Scroll += new System.EventHandler(this.tbChromaKeyThresholdSensitivity_Scroll);
             // 
             // label213
             // 
             this.label213.AutoSize = true;
-            this.label213.Location = new System.Drawing.Point(14, 59);
+            this.label213.Location = new System.Drawing.Point(9, 55);
             this.label213.Name = "label213";
-            this.label213.Size = new System.Drawing.Size(69, 13);
-            this.label213.TabIndex = 22;
-            this.label213.Text = "Contrast-Low";
+            this.label213.Size = new System.Drawing.Size(102, 13);
+            this.label213.TabIndex = 35;
+            this.label213.Text = "Threshold sensitivity";
             // 
             // cbChromaKeyEnabled
             // 
             this.cbChromaKeyEnabled.AutoSize = true;
-            this.cbChromaKeyEnabled.Location = new System.Drawing.Point(17, 20);
+            this.cbChromaKeyEnabled.Location = new System.Drawing.Point(12, 16);
             this.cbChromaKeyEnabled.Name = "cbChromaKeyEnabled";
             this.cbChromaKeyEnabled.Size = new System.Drawing.Size(65, 17);
-            this.cbChromaKeyEnabled.TabIndex = 21;
+            this.cbChromaKeyEnabled.TabIndex = 34;
             this.cbChromaKeyEnabled.Text = "Enabled";
             this.cbChromaKeyEnabled.UseVisualStyleBackColor = true;
             // 
@@ -2921,8 +2895,8 @@ namespace VideoEdit_CS_Demo
             this.tabPage26.PerformLayout();
             this.tabPage20.ResumeLayout(false);
             this.tabPage20.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastHigh)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyContrastLow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeySmoothing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbChromaKeyThresholdSensitivity)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabControl18.ResumeLayout(false);
@@ -3030,18 +3004,6 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.Label label171;
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Button btChromaKeySelectBGImage;
-        private System.Windows.Forms.TextBox edChromaKeyImage;
-        private System.Windows.Forms.Label label216;
-        private System.Windows.Forms.RadioButton rbChromaKeyRed;
-        private System.Windows.Forms.RadioButton rbChromaKeyBlue;
-        private System.Windows.Forms.RadioButton rbChromaKeyGreen;
-        private System.Windows.Forms.Label label215;
-        private System.Windows.Forms.TrackBar tbChromaKeyContrastHigh;
-        private System.Windows.Forms.Label label214;
-        private System.Windows.Forms.TrackBar tbChromaKeyContrastLow;
-        private System.Windows.Forms.Label label213;
-        private System.Windows.Forms.CheckBox cbChromaKeyEnabled;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TabPage tabPage27;
         private System.Windows.Forms.TabControl tabControl9;
@@ -3192,6 +3154,16 @@ namespace VideoEdit_CS_Demo
         private System.Windows.Forms.TextBox edBufferSize;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.CheckBox cbLicensing;
+        private System.Windows.Forms.Panel pnChromaKeyColor;
+        private System.Windows.Forms.Button btChromaKeySelectBGImage;
+        private System.Windows.Forms.TextBox edChromaKeyImage;
+        private System.Windows.Forms.Label label216;
+        private System.Windows.Forms.Label label215;
+        private System.Windows.Forms.TrackBar tbChromaKeySmoothing;
+        private System.Windows.Forms.Label label214;
+        private System.Windows.Forms.TrackBar tbChromaKeyThresholdSensitivity;
+        private System.Windows.Forms.Label label213;
+        private System.Windows.Forms.CheckBox cbChromaKeyEnabled;
     }
 }
 

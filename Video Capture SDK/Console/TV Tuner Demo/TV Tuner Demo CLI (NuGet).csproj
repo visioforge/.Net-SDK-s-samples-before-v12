@@ -11,6 +11,8 @@
     <AssemblyName>TV Tuner Demo</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -70,36 +72,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="VisioForge.Tools, Version=12.0.39.0, Culture=neutral, PublicKeyToken=33c6ded9724deec2, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.Tools.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Types, Version=12.0.39.0, Culture=neutral, PublicKeyToken=722de1c1c0a7f49e, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.Types.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls, Version=12.0.39.0, Culture=neutral, PublicKeyToken=5873e863f1bcda5d, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls.UI, Version=12.0.39.0, Culture=neutral, PublicKeyToken=eafa6bd21aa991fd, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.Controls.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Controls.UI.Dialogs, Version=12.0.39.0, Culture=neutral, PublicKeyToken=3d84672df68c33ac, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.Controls.UI.Dialogs.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.DirectX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=2f064561f42d5b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.DirectX.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.MediaFramework, Version=12.0.39.0, Culture=neutral, PublicKeyToken=14e66dd726c53f11, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.MediaFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="VisioForge.Shared, Version=12.0.39.0, Culture=neutral, PublicKeyToken=4cb7f6778cad43a2, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.39\lib\net45\VisioForge.Shared.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="visioforge_main_icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.VideoCapture.x64">
+<Version>12.0.41</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.Core.Redist.VideoCapture.x86">
+<Version>12.0.41</Version>
+    </PackageReference>
+    <PackageReference Include="VisioForge.DotNet.VideoCapture.TRIAL">
+<Version>12.0.41</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -7,8 +7,6 @@ Imports VisioForge.Types.VideoEffects ' ReSharper disable InconsistentNaming
 
 Imports System.IO
 Imports VisioForge.Tools.MediaInfo
-Imports VisioForge.Types
-Imports VisioForge.Tools
 
 Public Class Form1
     Private ReadOnly audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
@@ -39,6 +37,8 @@ Public Class Form1
 
         rbMotionDetectionExProcessor.SelectedIndex = 1
         rbMotionDetectionExDetector.SelectedIndex = 1
+
+        pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128)
 
         For Each device As String In MediaPlayer1.Audio_OutputDevices
 
@@ -1278,11 +1278,6 @@ Public Class Form1
 
         ' Video effects GPU
         MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked
-        If cbVideoEffectsGPUDX11.Checked Then
-            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
-        Else
-            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
-        End If
 
         ' Video effects
         AddVideoEffects()
@@ -1296,6 +1291,9 @@ Public Class Form1
 
         ' Object detection
         ConfigureObjectTracking()
+
+        ' chroma key
+        ConfigureChromaKey
 
         ' Encryption
         If (rbEncryptionKeyString.Checked) Then
@@ -1878,14 +1876,11 @@ Public Class Form1
         ConfigureMotionDetection()
     End Sub
 
-    Private Sub btChromaKeySelectBGImage_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btChromaKeySelectBGImage.Click
-
+    Private Sub btChromaKeySelectBGImage_Click(ByVal sender As System.Object, ByVal e As EventArgs) Handles btChromaKeySelectBGImage.Click 
         If (openFileDialog1.ShowDialog() = DialogResult.OK) Then
-
             edChromaKeyImage.Text = openFileDialog1.FileName
-
+            ConfigureChromaKey()
         End If
-
     End Sub
 
     Private Sub cbAFMotionDetection_CheckedChanged(ByVal sender As System.Object, ByVal e As EventArgs) Handles cbMotionDetectionEx.CheckedChanged
@@ -1910,35 +1905,19 @@ Public Class Form1
     End Sub
 
     Private Sub ConfigureChromaKey()
+        If (Not IsNothing(MediaPlayer1.ChromaKey)) Then
+            MediaPlayer1.ChromaKey.Dispose()
+            MediaPlayer1.ChromaKey = Nothing
+        End If
 
-        If cbChromaKeyEnabled.Checked Then
-            MediaPlayer1.ChromaKey = New ChromaKeySettings()
-            MediaPlayer1.ChromaKey.ContrastHigh = tbChromaKeyContrastHigh.Value
-            MediaPlayer1.ChromaKey.ContrastLow = tbChromaKeyContrastLow.Value
-            MediaPlayer1.ChromaKey.ImageFilename = edChromaKeyImage.Text
-
-            If (rbChromaKeyGreen.Checked) Then
-                MediaPlayer1.ChromaKey.Color = VFChromaColor.Green
-            ElseIf (rbChromaKeyBlue.Checked) Then
-                MediaPlayer1.ChromaKey.Color = VFChromaColor.Blue
-            Else
-                MediaPlayer1.ChromaKey.Color = VFChromaColor.Red
-            End If
+        If (cbChromaKeyEnabled.Checked) Then
+            MediaPlayer1.ChromaKey = New ChromaKeySettings(New Bitmap(edChromaKeyImage.Text))
+            MediaPlayer1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
+            MediaPlayer1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F
+            MediaPlayer1.ChromaKey.Color = pnChromaKeyColor.BackColor
         Else
             MediaPlayer1.ChromaKey = Nothing
         End If
-    End Sub
-
-    Private Sub tbChromaKeyContrastLow_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbChromaKeyContrastLow.Scroll
-
-        ConfigureChromaKey()
-
-    End Sub
-
-    Private Sub tbChromaKeyContrastHigh_Scroll(ByVal sender As System.Object, ByVal e As EventArgs) Handles tbChromaKeyContrastHigh.Scroll
-
-        ConfigureChromaKey()
-
     End Sub
 
     Private Delegate Sub MotionDelegate(ByVal e As MotionDetectionEventArgs)
@@ -3069,14 +3048,6 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub cbVideoEffectsGPUDX11_CheckedChanged(sender As Object, e As EventArgs) Handles cbVideoEffectsGPUDX11.CheckedChanged
-        If cbVideoEffectsGPUDX11.Checked Then
-            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11
-        Else
-            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX9
-        End If
-    End Sub
-
     Private Sub tbGPUBlur_Scroll(sender As Object, e As EventArgs) Handles tbGPUBlur.Scroll
         Dim intf As IVFGPUVideoEffectBlur
         Dim effect = MediaPlayer1.Video_Effects_GPU_Get("Blur")
@@ -3090,6 +3061,21 @@ Public Class Form1
                 intf.Value = tbGPUBlur.Value
                 intf.Update()
             End If
+        End If
+    End Sub
+
+    Private Sub tbChromaKeyThresholdSensitivity_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeyThresholdSensitivity.Scroll
+        ConfigureChromaKey()
+    End Sub
+
+    Private Sub tbChromaKeySmoothing_Scroll(sender As Object, e As EventArgs) Handles tbChromaKeySmoothing.Scroll
+        ConfigureChromaKey()
+    End Sub
+
+    Private Sub pnChromaKeyColor_Click(sender As Object, e As EventArgs) Handles pnChromaKeyColor.Click
+        If (colorDialog1.ShowDialog() = DialogResult.OK) Then
+            pnChromaKeyColor.BackColor = colorDialog1.Color
+            ConfigureChromaKey()
         End If
     End Sub
 End Class

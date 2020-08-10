@@ -68,7 +68,6 @@
 
 
             MediaPlayer1.Video_Effects_GPU_Enabled = true;
-            MediaPlayer1.Video_Effects_GPU_Engine = VFGPUEffectsEngine.DirectX11;
             MediaPlayer1.Video_Effects_GPU_Clear();
 
             if (rbVRCubemap.Checked)

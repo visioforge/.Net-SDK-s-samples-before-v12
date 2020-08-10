@@ -136,6 +136,8 @@ namespace Main_Demo
             rbMotionDetectionExProcessor.SelectedIndex = 1;
             rbMotionDetectionExDetector.SelectedIndex = 1;
 
+            pnChromaKeyColor.Fill = new SolidColorBrush(Color.FromArgb(255, 128, 218, 128));
+
             string defaultAudioRenderer = string.Empty;
             foreach (string audioOutputDevice in MediaPlayer1.Audio_OutputDevices)
             {
@@ -967,11 +969,11 @@ namespace Main_Demo
             // Video effects CPU
             AddVideoEffects();
 
+            // Configure chroma-key
+            ConfigureChromaKey();
+
             // Video effects GPU
             MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
-            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
-                                                        ? VFGPUEffectsEngine.DirectX11
-                                                        : VFGPUEffectsEngine.DirectX9;
 
             // Motion detection
             ConfigureMotionDetection();
@@ -1035,21 +1037,21 @@ namespace Main_Demo
                     {
                         MediaPlayer1.Audio_OutputDevice_Balance_Set(1, (int)tbBalance2.Value);
                         MediaPlayer1.Audio_OutputDevice_Volume_Set(1, (int)tbVolume2.Value);
-                        MediaPlayer1.Audio_Streams_Set(1, false); //disable stream
+                        MediaPlayer1.Audio_Streams_Set(1, false); // disable stream
                     }
 
                     if (count > 2)
                     {
                         MediaPlayer1.Audio_OutputDevice_Balance_Set(2, (int)tbBalance3.Value);
                         MediaPlayer1.Audio_OutputDevice_Volume_Set(2, (int)tbVolume3.Value);
-                        MediaPlayer1.Audio_Streams_Set(2, false); //disable stream
+                        MediaPlayer1.Audio_Streams_Set(2, false); // disable stream
                     }
 
                     if (count > 3)
                     {
                         MediaPlayer1.Audio_OutputDevice_Balance_Set(3, (int)tbBalance4.Value);
                         MediaPlayer1.Audio_OutputDevice_Volume_Set(3, (int)tbVolume4.Value);
-                        MediaPlayer1.Audio_Streams_Set(3, false); //disable stream
+                        MediaPlayer1.Audio_Streams_Set(3, false); // disable stream
                     }
                 }
                 else
@@ -1683,6 +1685,7 @@ namespace Main_Demo
             if (openFileDialog1.ShowDialog() == true)
             {
                 edChromaKeyImage.Text = openFileDialog1.FileName;
+                ConfigureChromaKey();
             }
         }
 
@@ -1707,9 +1710,9 @@ namespace Main_Demo
             ConfigureMotionDetectionEx();
         }
 
-        public delegate void AFMotionDelegate(float level);
+        private delegate void AFMotionDelegate(float level);
 
-        public void AFMotionDelegateMethod(float level)
+        private void AFMotionDelegateMethod(float level)
         {
             pbAFMotionLevel.Value = (int)(level * 100);
         }
@@ -1721,27 +1724,31 @@ namespace Main_Demo
 
         private void ConfigureChromaKey()
         {
+            if (MediaPlayer1 == null)
+            {
+                return;
+            }
+
+            if (MediaPlayer1.ChromaKey != null)
+            {
+                MediaPlayer1.ChromaKey.Dispose();
+                MediaPlayer1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
             if (cbChromaKeyEnabled.IsChecked == true)
             {
-                MediaPlayer1.ChromaKey = new ChromaKeySettings
+                MediaPlayer1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                 {
-                    ContrastHigh = (int)tbChromaKeyContrastHigh.Value,
-                    ContrastLow = (int)tbChromaKeyContrastLow.Value,
-                    ImageFilename = edChromaKeyImage.Text
+                    Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
+                    ThresholdSensitivity = (float)(tbChromaKeyThresholdSensitivity.Value / 1000f),
+                    Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color)
                 };
-
-                if (rbChromaKeyGreen.IsChecked == true)
-                {
-                    MediaPlayer1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.IsChecked == true)
-                {
-                    MediaPlayer1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    MediaPlayer1.ChromaKey.Color = VFChromaColor.Red;
-                }
             }
             else
             {
@@ -1749,25 +1756,9 @@ namespace Main_Demo
             }
         }
 
-        private void tbChromaKeyContrastLow_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (MediaPlayer1 != null)
-            {
-                ConfigureChromaKey();
-            }
-        }
+        private delegate void MotionDelegate(MotionDetectionEventArgs e);
 
-        private void tbChromaKeyContrastHigh_Scroll(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (MediaPlayer1 != null)
-            {
-                ConfigureChromaKey();
-            }
-        }
-
-        public delegate void MotionDelegate(MotionDetectionEventArgs e);
-
-        public void MotionDelegateMethod(MotionDetectionEventArgs e)
+        private void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
             int k = 0;
@@ -1938,9 +1929,9 @@ namespace Main_Demo
 
         #region Barcode detector
 
-        public delegate void BarcodeDelegate(BarcodeEventArgs value);
+        private delegate void BarcodeDelegate(BarcodeEventArgs value);
 
-        public void BarcodeDelegateMethod(BarcodeEventArgs value)
+        private void BarcodeDelegateMethod(BarcodeEventArgs value)
         {
             edBarcode.Text = value.Value;
             edBarcodeMetadata.Text = string.Empty;
@@ -2140,9 +2131,9 @@ namespace Main_Demo
 
         private void tbReversePlaybackTrackbar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            if (tbReversePlaybackTrackbar != null && MediaPlayer1 != null)
+            if (tbReversePlaybackTrackbar != null)
             {
-                MediaPlayer1.ReversePlayback_GoToFrame((int)tbReversePlaybackTrackbar.Value);
+                MediaPlayer1?.ReversePlayback_GoToFrame((int)tbReversePlaybackTrackbar.Value);
             }
         }
 
@@ -3013,13 +3004,6 @@ namespace Main_Demo
             }
         }
 
-        private void cbVideoEffectsGPUDX11_Click(object sender, RoutedEventArgs e)
-        {
-            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
-                                                        ? VFGPUEffectsEngine.DirectX11
-                                                        : VFGPUEffectsEngine.DirectX9;
-        }
-
         private void tbGPUBlur_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             IVFGPUVideoEffectBlur intf;
@@ -3039,6 +3023,27 @@ namespace Main_Demo
                     intf.Update();
                 }
             }
+        }
+
+        private void pnChromaKeyColor_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            colorDialog1.Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color);
+
+            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pnChromaKeyColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
+                ConfigureChromaKey();
+            }
+        }
+
+        private void tbChromaKeyThresholdSensitivity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void tbChromaKeySmoothing_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConfigureChromaKey();
         }
     }
 }

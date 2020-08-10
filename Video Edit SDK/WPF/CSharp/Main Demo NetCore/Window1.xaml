@@ -246,23 +246,20 @@
                                 <CheckBox x:Name="cbVideoEffectsGPUEnabled" Content="Enabled" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                                 <Slider Height="23" HorizontalAlignment="Left" Margin="28,280,0,0" Maximum="30" x:Name="tbGPUBlur" VerticalAlignment="Top" Width="100" ValueChanged="tbGPUBlur_ValueChanged" />
                                 <Label Content="Blur" Height="28" HorizontalAlignment="Left" Margin="49,253,0,0" VerticalAlignment="Top" Width="60" />
-                                <CheckBox x:Name="cbVideoEffectsGPUDX11" Content="Use DirectX 11" HorizontalAlignment="Left" Margin="260,10,0,0" VerticalAlignment="Top" Width="96" IsChecked="True" Click="cbVideoEffectsGPUDX11_Click" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Chroma key" x:Name="tabItem35">
                             <Grid>
-                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="16,16,0,0" x:Name="cbChromaKeyEnabled" VerticalAlignment="Top" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="123,64,0,0" Maximum="255" x:Name="tbChromaKeyContrastLow" VerticalAlignment="Top" Width="100" ValueChanged="tbChromaKeyContrastLow_ValueChanged" Value="10" />
-                                <Label Content="Contrast-Low" Height="28" HorizontalAlignment="Left" Margin="132,38,0,0" x:Name="label177" VerticalAlignment="Top" Width="86" />
-                                <Slider Height="23" HorizontalAlignment="Left" Margin="123,127,0,0" Maximum="255" x:Name="tbChromaKeyContrastHigh" VerticalAlignment="Top" Width="100" ValueChanged="tbChromaKeyContrastHigh_ValueChanged" Value="150" />
-                                <Label Content="Contrast-High" Height="28" HorizontalAlignment="Left" Margin="132,100,0,0" x:Name="label178" VerticalAlignment="Top" Width="86" />
-                                <RadioButton Content="Green" Height="16" HorizontalAlignment="Left" IsChecked="True" Margin="57,195,0,0" x:Name="rbChromaKeyGreen" VerticalAlignment="Top" />
-                                <RadioButton Content="Blue" Height="16" HorizontalAlignment="Left" Margin="156,195,0,0" x:Name="rbChromaKeyBlue" VerticalAlignment="Top" />
-                                <RadioButton Content="Red" Height="16" HorizontalAlignment="Left" Margin="255,195,0,0" x:Name="rbChromaKeyRed" VerticalAlignment="Top" />
-                                <Label Content="Background image" Height="23" HorizontalAlignment="Left" Margin="32,231,0,0" x:Name="label179" VerticalAlignment="Top" Width="131" />
-                                <TextBox Height="23" HorizontalAlignment="Left" Margin="28,260,0,0" x:Name="edChromaKeyImage" VerticalAlignment="Top" Width="280" />
-                                <Button Content="..." Height="23" HorizontalAlignment="Left" Margin="314,259,0,0" x:Name="btChromaKeySelectBGImage" VerticalAlignment="Top" Width="24" Click="btChromaKeySelectBGImage_Click" />
-                                <Label Content="Color" Height="23" HorizontalAlignment="Left" Margin="57,166,0,0" x:Name="label180" VerticalAlignment="Top" Width="59" />
+                                <CheckBox Content="Enabled" Height="16" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="cbChromaKeyEnabled" VerticalAlignment="Top" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="10,65,0,0" Maximum="200" x:Name="tbChromaKeyThresholdSensitivity" VerticalAlignment="Top" Width="100" Value="180" />
+                                <Label Content="Threshold sensitivity" Height="28" HorizontalAlignment="Left" Margin="10,37,0,0" x:Name="label1111" VerticalAlignment="Top" Width="144" />
+                                <Slider Height="23" HorizontalAlignment="Left" Margin="10,124,0,0" Maximum="1000" x:Name="tbChromaKeySmoothing" VerticalAlignment="Top" Width="100" Value="80" />
+                                <Label Content="Smoothing" Height="28" HorizontalAlignment="Left" Margin="10,96,0,0" x:Name="labe1l112" VerticalAlignment="Top" Width="86" />
+                                <Label Content="Image background file" Height="29" HorizontalAlignment="Left" Margin="10,212,0,0" x:Name="label1115" VerticalAlignment="Top" Width="131" />
+                                <TextBox Height="23" HorizontalAlignment="Left" Margin="10,241,0,0" x:Name="edChromaKeyImage" VerticalAlignment="Top" Width="321" Text="c:\Samples\pics\1.jpg" />
+                                <Button Click="btChromaKeySelectBGImage_Click" Content="..." Height="23" HorizontalAlignment="Left" Margin="336,241,0,0" x:Name="btChromaKeySelectBGImage" VerticalAlignment="Top" Width="24" />
+                                <Label Content="Color" Height="23" HorizontalAlignment="Left" Margin="10,167,0,0" x:Name="label1116" VerticalAlignment="Top" Width="59" />
+                                <Rectangle Fill="#FF80DA80" Height="29" HorizontalAlignment="Left" Margin="78,167,0,0" x:Name="pnChromaKeyColor" Stroke="Black" VerticalAlignment="Top" Width="32" MouseDown="pnChromaKeyColor_MouseDown" />
                             </Grid>
                         </TabItem>
                         <TabItem Header="Object detection" x:Name="tabItem36">

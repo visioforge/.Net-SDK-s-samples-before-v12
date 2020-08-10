@@ -25,7 +25,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
-        Dim VideoRendererSettingsWinForms1 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
+        Dim VideoRendererSettingsWinForms4 As VisioForge.Types.VideoRendererSettingsWinForms = New VisioForge.Types.VideoRendererSettingsWinForms()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
         Me.OpenDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.SaveDialog1 = New System.Windows.Forms.SaveFileDialog()
@@ -165,7 +165,6 @@ Partial Class Form1
         Me.TabPage82 = New System.Windows.Forms.TabPage()
         Me.label5 = New System.Windows.Forms.Label()
         Me.tbGPUBlur = New System.Windows.Forms.TrackBar()
-        Me.cbVideoEffectsGPUDX11 = New System.Windows.Forms.CheckBox()
         Me.cbVideoEffectsGPUEnabled = New System.Windows.Forms.CheckBox()
         Me.cbGPUOldMovie = New System.Windows.Forms.CheckBox()
         Me.cbGPUDeinterlace = New System.Windows.Forms.CheckBox()
@@ -195,16 +194,14 @@ Partial Class Form1
         Me.label66 = New System.Windows.Forms.Label()
         Me.label16 = New System.Windows.Forms.Label()
         Me.TabPage21 = New System.Windows.Forms.TabPage()
+        Me.pnChromaKeyColor = New System.Windows.Forms.Panel()
         Me.btChromaKeySelectBGImage = New System.Windows.Forms.Button()
         Me.edChromaKeyImage = New System.Windows.Forms.TextBox()
         Me.label216 = New System.Windows.Forms.Label()
-        Me.rbChromaKeyRed = New System.Windows.Forms.RadioButton()
-        Me.rbChromaKeyBlue = New System.Windows.Forms.RadioButton()
-        Me.rbChromaKeyGreen = New System.Windows.Forms.RadioButton()
         Me.label215 = New System.Windows.Forms.Label()
-        Me.tbChromaKeyContrastHigh = New System.Windows.Forms.TrackBar()
+        Me.tbChromaKeySmoothing = New System.Windows.Forms.TrackBar()
         Me.label214 = New System.Windows.Forms.Label()
-        Me.tbChromaKeyContrastLow = New System.Windows.Forms.TrackBar()
+        Me.tbChromaKeyThresholdSensitivity = New System.Windows.Forms.TrackBar()
         Me.label213 = New System.Windows.Forms.Label()
         Me.cbChromaKeyEnabled = New System.Windows.Forms.CheckBox()
         Me.tabPage70 = New System.Windows.Forms.TabPage()
@@ -654,8 +651,8 @@ Partial Class Form1
         Me.TabPage26.SuspendLayout
         Me.TabPage27.SuspendLayout
         Me.TabPage21.SuspendLayout
-        CType(Me.tbChromaKeyContrastHigh,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbChromaKeyContrastLow,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbChromaKeySmoothing,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbChromaKeyThresholdSensitivity,System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabPage70.SuspendLayout
         Me.TabPage81.SuspendLayout
         Me.tabPage9.SuspendLayout
@@ -2119,7 +2116,6 @@ Partial Class Form1
         '
         Me.TabPage82.Controls.Add(Me.label5)
         Me.TabPage82.Controls.Add(Me.tbGPUBlur)
-        Me.TabPage82.Controls.Add(Me.cbVideoEffectsGPUDX11)
         Me.TabPage82.Controls.Add(Me.cbVideoEffectsGPUEnabled)
         Me.TabPage82.Controls.Add(Me.cbGPUOldMovie)
         Me.TabPage82.Controls.Add(Me.cbGPUDeinterlace)
@@ -2161,18 +2157,6 @@ Partial Class Form1
         Me.tbGPUBlur.Name = "tbGPUBlur"
         Me.tbGPUBlur.Size = New System.Drawing.Size(130, 45)
         Me.tbGPUBlur.TabIndex = 102
-        '
-        'cbVideoEffectsGPUDX11
-        '
-        Me.cbVideoEffectsGPUDX11.AutoSize = true
-        Me.cbVideoEffectsGPUDX11.Checked = true
-        Me.cbVideoEffectsGPUDX11.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cbVideoEffectsGPUDX11.Location = New System.Drawing.Point(182, 16)
-        Me.cbVideoEffectsGPUDX11.Name = "cbVideoEffectsGPUDX11"
-        Me.cbVideoEffectsGPUDX11.Size = New System.Drawing.Size(98, 17)
-        Me.cbVideoEffectsGPUDX11.TabIndex = 101
-        Me.cbVideoEffectsGPUDX11.Text = "Use DirectX 11"
-        Me.cbVideoEffectsGPUDX11.UseVisualStyleBackColor = true
         '
         'cbVideoEffectsGPUEnabled
         '
@@ -2347,7 +2331,7 @@ Partial Class Form1
         '
         Me.tabControl15.Controls.Add(Me.TabPage26)
         Me.tabControl15.Controls.Add(Me.TabPage27)
-        Me.tabControl15.Location = New System.Drawing.Point(5, 34)
+        Me.tabControl15.Location = New System.Drawing.Point(6, 6)
         Me.tabControl15.Name = "tabControl15"
         Me.tabControl15.SelectedIndex = 0
         Me.tabControl15.Size = New System.Drawing.Size(278, 371)
@@ -2452,16 +2436,14 @@ Partial Class Form1
         '
         'TabPage21
         '
+        Me.TabPage21.Controls.Add(Me.pnChromaKeyColor)
         Me.TabPage21.Controls.Add(Me.btChromaKeySelectBGImage)
         Me.TabPage21.Controls.Add(Me.edChromaKeyImage)
         Me.TabPage21.Controls.Add(Me.label216)
-        Me.TabPage21.Controls.Add(Me.rbChromaKeyRed)
-        Me.TabPage21.Controls.Add(Me.rbChromaKeyBlue)
-        Me.TabPage21.Controls.Add(Me.rbChromaKeyGreen)
         Me.TabPage21.Controls.Add(Me.label215)
-        Me.TabPage21.Controls.Add(Me.tbChromaKeyContrastHigh)
+        Me.TabPage21.Controls.Add(Me.tbChromaKeySmoothing)
         Me.TabPage21.Controls.Add(Me.label214)
-        Me.TabPage21.Controls.Add(Me.tbChromaKeyContrastLow)
+        Me.TabPage21.Controls.Add(Me.tbChromaKeyThresholdSensitivity)
         Me.TabPage21.Controls.Add(Me.label213)
         Me.TabPage21.Controls.Add(Me.cbChromaKeyEnabled)
         Me.TabPage21.Location = New System.Drawing.Point(4, 22)
@@ -2472,118 +2454,95 @@ Partial Class Form1
         Me.TabPage21.Text = "Chroma key"
         Me.TabPage21.UseVisualStyleBackColor = true
         '
+        'pnChromaKeyColor
+        '
+        Me.pnChromaKeyColor.BackColor = System.Drawing.Color.Lime
+        Me.pnChromaKeyColor.ForeColor = System.Drawing.SystemColors.Control
+        Me.pnChromaKeyColor.Location = New System.Drawing.Point(54, 199)
+        Me.pnChromaKeyColor.Name = "pnChromaKeyColor"
+        Me.pnChromaKeyColor.Size = New System.Drawing.Size(26, 24)
+        Me.pnChromaKeyColor.TabIndex = 43
+        '
         'btChromaKeySelectBGImage
         '
-        Me.btChromaKeySelectBGImage.Location = New System.Drawing.Point(256, 260)
+        Me.btChromaKeySelectBGImage.Location = New System.Drawing.Point(254, 261)
         Me.btChromaKeySelectBGImage.Name = "btChromaKeySelectBGImage"
-        Me.btChromaKeySelectBGImage.Size = New System.Drawing.Size(24, 22)
-        Me.btChromaKeySelectBGImage.TabIndex = 44
+        Me.btChromaKeySelectBGImage.Size = New System.Drawing.Size(24, 23)
+        Me.btChromaKeySelectBGImage.TabIndex = 42
         Me.btChromaKeySelectBGImage.Text = "..."
         Me.btChromaKeySelectBGImage.UseVisualStyleBackColor = true
         '
         'edChromaKeyImage
         '
-        Me.edChromaKeyImage.Location = New System.Drawing.Point(14, 262)
+        Me.edChromaKeyImage.Location = New System.Drawing.Point(12, 263)
         Me.edChromaKeyImage.Name = "edChromaKeyImage"
         Me.edChromaKeyImage.Size = New System.Drawing.Size(235, 20)
-        Me.edChromaKeyImage.TabIndex = 43
-        Me.edChromaKeyImage.Text = "c:\chroma_bg.bmp"
+        Me.edChromaKeyImage.TabIndex = 41
+        Me.edChromaKeyImage.Text = "c:\Samples\pics\1.jpg"
         '
         'label216
         '
         Me.label216.AutoSize = true
-        Me.label216.Location = New System.Drawing.Point(11, 247)
+        Me.label216.Location = New System.Drawing.Point(9, 247)
         Me.label216.Name = "label216"
-        Me.label216.Size = New System.Drawing.Size(96, 13)
-        Me.label216.TabIndex = 42
-        Me.label216.Text = "Background image"
-        '
-        'rbChromaKeyRed
-        '
-        Me.rbChromaKeyRed.AutoSize = true
-        Me.rbChromaKeyRed.Location = New System.Drawing.Point(148, 214)
-        Me.rbChromaKeyRed.Name = "rbChromaKeyRed"
-        Me.rbChromaKeyRed.Size = New System.Drawing.Size(45, 17)
-        Me.rbChromaKeyRed.TabIndex = 41
-        Me.rbChromaKeyRed.Text = "Red"
-        Me.rbChromaKeyRed.UseVisualStyleBackColor = true
-        '
-        'rbChromaKeyBlue
-        '
-        Me.rbChromaKeyBlue.AutoSize = true
-        Me.rbChromaKeyBlue.Location = New System.Drawing.Point(83, 214)
-        Me.rbChromaKeyBlue.Name = "rbChromaKeyBlue"
-        Me.rbChromaKeyBlue.Size = New System.Drawing.Size(46, 17)
-        Me.rbChromaKeyBlue.TabIndex = 40
-        Me.rbChromaKeyBlue.Text = "Blue"
-        Me.rbChromaKeyBlue.UseVisualStyleBackColor = true
-        '
-        'rbChromaKeyGreen
-        '
-        Me.rbChromaKeyGreen.AutoSize = true
-        Me.rbChromaKeyGreen.Checked = true
-        Me.rbChromaKeyGreen.Location = New System.Drawing.Point(14, 214)
-        Me.rbChromaKeyGreen.Name = "rbChromaKeyGreen"
-        Me.rbChromaKeyGreen.Size = New System.Drawing.Size(54, 17)
-        Me.rbChromaKeyGreen.TabIndex = 39
-        Me.rbChromaKeyGreen.TabStop = true
-        Me.rbChromaKeyGreen.Text = "Green"
-        Me.rbChromaKeyGreen.UseVisualStyleBackColor = true
+        Me.label216.Size = New System.Drawing.Size(112, 13)
+        Me.label216.TabIndex = 40
+        Me.label216.Text = "Image background file"
         '
         'label215
         '
         Me.label215.AutoSize = true
-        Me.label215.Location = New System.Drawing.Point(11, 200)
+        Me.label215.Location = New System.Drawing.Point(9, 203)
         Me.label215.Name = "label215"
         Me.label215.Size = New System.Drawing.Size(31, 13)
-        Me.label215.TabIndex = 38
+        Me.label215.TabIndex = 39
         Me.label215.Text = "Color"
         '
-        'tbChromaKeyContrastHigh
+        'tbChromaKeySmoothing
         '
-        Me.tbChromaKeyContrastHigh.BackColor = System.Drawing.SystemColors.Window
-        Me.tbChromaKeyContrastHigh.Location = New System.Drawing.Point(14, 144)
-        Me.tbChromaKeyContrastHigh.Maximum = 255
-        Me.tbChromaKeyContrastHigh.Name = "tbChromaKeyContrastHigh"
-        Me.tbChromaKeyContrastHigh.Size = New System.Drawing.Size(154, 45)
-        Me.tbChromaKeyContrastHigh.TabIndex = 37
-        Me.tbChromaKeyContrastHigh.Value = 150
+        Me.tbChromaKeySmoothing.BackColor = System.Drawing.SystemColors.Window
+        Me.tbChromaKeySmoothing.Location = New System.Drawing.Point(12, 144)
+        Me.tbChromaKeySmoothing.Maximum = 1000
+        Me.tbChromaKeySmoothing.Name = "tbChromaKeySmoothing"
+        Me.tbChromaKeySmoothing.Size = New System.Drawing.Size(154, 45)
+        Me.tbChromaKeySmoothing.TabIndex = 38
+        Me.tbChromaKeySmoothing.Value = 80
         '
         'label214
         '
         Me.label214.AutoSize = true
-        Me.label214.Location = New System.Drawing.Point(11, 126)
+        Me.label214.Location = New System.Drawing.Point(9, 126)
         Me.label214.Name = "label214"
-        Me.label214.Size = New System.Drawing.Size(71, 13)
-        Me.label214.TabIndex = 36
-        Me.label214.Text = "Contrast-High"
+        Me.label214.Size = New System.Drawing.Size(57, 13)
+        Me.label214.TabIndex = 37
+        Me.label214.Text = "Smoothing"
         '
-        'tbChromaKeyContrastLow
+        'tbChromaKeyThresholdSensitivity
         '
-        Me.tbChromaKeyContrastLow.BackColor = System.Drawing.SystemColors.Window
-        Me.tbChromaKeyContrastLow.Location = New System.Drawing.Point(14, 73)
-        Me.tbChromaKeyContrastLow.Maximum = 255
-        Me.tbChromaKeyContrastLow.Name = "tbChromaKeyContrastLow"
-        Me.tbChromaKeyContrastLow.Size = New System.Drawing.Size(154, 45)
-        Me.tbChromaKeyContrastLow.TabIndex = 35
-        Me.tbChromaKeyContrastLow.Value = 10
+        Me.tbChromaKeyThresholdSensitivity.BackColor = System.Drawing.SystemColors.Window
+        Me.tbChromaKeyThresholdSensitivity.Location = New System.Drawing.Point(12, 71)
+        Me.tbChromaKeyThresholdSensitivity.Maximum = 200
+        Me.tbChromaKeyThresholdSensitivity.Name = "tbChromaKeyThresholdSensitivity"
+        Me.tbChromaKeyThresholdSensitivity.Size = New System.Drawing.Size(154, 45)
+        Me.tbChromaKeyThresholdSensitivity.TabIndex = 36
+        Me.tbChromaKeyThresholdSensitivity.Value = 180
         '
         'label213
         '
         Me.label213.AutoSize = true
-        Me.label213.Location = New System.Drawing.Point(11, 56)
+        Me.label213.Location = New System.Drawing.Point(9, 53)
         Me.label213.Name = "label213"
-        Me.label213.Size = New System.Drawing.Size(69, 13)
-        Me.label213.TabIndex = 34
-        Me.label213.Text = "Contrast-Low"
+        Me.label213.Size = New System.Drawing.Size(102, 13)
+        Me.label213.TabIndex = 35
+        Me.label213.Text = "Threshold sensitivity"
         '
         'cbChromaKeyEnabled
         '
         Me.cbChromaKeyEnabled.AutoSize = true
-        Me.cbChromaKeyEnabled.Location = New System.Drawing.Point(14, 18)
+        Me.cbChromaKeyEnabled.Location = New System.Drawing.Point(12, 14)
         Me.cbChromaKeyEnabled.Name = "cbChromaKeyEnabled"
         Me.cbChromaKeyEnabled.Size = New System.Drawing.Size(65, 17)
-        Me.cbChromaKeyEnabled.TabIndex = 33
+        Me.cbChromaKeyEnabled.TabIndex = 34
         Me.cbChromaKeyEnabled.Text = "Enabled"
         Me.cbChromaKeyEnabled.UseVisualStyleBackColor = true
         '
@@ -5906,6 +5865,7 @@ Partial Class Form1
         Me.VideoEdit1.Barcode_Reader_Enabled = false
         Me.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.[Auto]
         Me.VideoEdit1.ChromaKey = Nothing
+        Me.VideoEdit1.CustomRedist_Auto = true
         Me.VideoEdit1.CustomRedist_Enabled = false
         Me.VideoEdit1.CustomRedist_Path = Nothing
         Me.VideoEdit1.Debug_Dir = ""
@@ -5939,26 +5899,25 @@ Partial Class Form1
         Me.VideoEdit1.Video_Effects_AllowMultipleStreams = false
         Me.VideoEdit1.Video_Effects_Enabled = false
         Me.VideoEdit1.Video_Effects_GPU_Enabled = false
-        Me.VideoEdit1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9
         Me.VideoEdit1.Video_FrameRate = 25R
         Me.VideoEdit1.Video_Preview_Enabled = true
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Override = false
-        VideoRendererSettingsWinForms1.Aspect_Ratio_X = 0
-        VideoRendererSettingsWinForms1.Aspect_Ratio_Y = 0
-        VideoRendererSettingsWinForms1.BackgroundColor = System.Drawing.Color.Empty
-        VideoRendererSettingsWinForms1.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_Mode = Nothing
-        VideoRendererSettingsWinForms1.Deinterlace_VMR9_UseDefault = false
-        VideoRendererSettingsWinForms1.Flip_Horizontal = false
-        VideoRendererSettingsWinForms1.Flip_Vertical = false
-        VideoRendererSettingsWinForms1.RotationAngle = 0
-        VideoRendererSettingsWinForms1.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
-        VideoRendererSettingsWinForms1.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
-        VideoRendererSettingsWinForms1.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
-        VideoRendererSettingsWinForms1.Zoom_Ratio = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftX = 0
-        VideoRendererSettingsWinForms1.Zoom_ShiftY = 0
-        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms1
+        VideoRendererSettingsWinForms4.Aspect_Ratio_Override = false
+        VideoRendererSettingsWinForms4.Aspect_Ratio_X = 0
+        VideoRendererSettingsWinForms4.Aspect_Ratio_Y = 0
+        VideoRendererSettingsWinForms4.BackgroundColor = System.Drawing.Color.Empty
+        VideoRendererSettingsWinForms4.Deinterlace_EVR_Mode = VisioForge.Types.EVRDeinterlaceMode.[Auto]
+        VideoRendererSettingsWinForms4.Deinterlace_VMR9_Mode = Nothing
+        VideoRendererSettingsWinForms4.Deinterlace_VMR9_UseDefault = false
+        VideoRendererSettingsWinForms4.Flip_Horizontal = false
+        VideoRendererSettingsWinForms4.Flip_Vertical = false
+        VideoRendererSettingsWinForms4.RotationAngle = 0
+        VideoRendererSettingsWinForms4.StretchMode = VisioForge.Types.VFVideoRendererStretchMode.Letterbox
+        VideoRendererSettingsWinForms4.Video_Renderer = VisioForge.Types.VFVideoRenderer.VideoRenderer
+        VideoRendererSettingsWinForms4.VideoRendererInternal = VisioForge.Types.VFVideoRendererInternal.VideoRenderer
+        VideoRendererSettingsWinForms4.Zoom_Ratio = 0
+        VideoRendererSettingsWinForms4.Zoom_ShiftX = 0
+        VideoRendererSettingsWinForms4.Zoom_ShiftY = 0
+        Me.VideoEdit1.Video_Renderer = VideoRendererSettingsWinForms4
         Me.VideoEdit1.Video_Resize = false
         Me.VideoEdit1.Video_Resize_Height = 480
         Me.VideoEdit1.Video_Resize_Width = 640
@@ -6932,8 +6891,8 @@ Partial Class Form1
         Me.TabPage27.PerformLayout
         Me.TabPage21.ResumeLayout(false)
         Me.TabPage21.PerformLayout
-        CType(Me.tbChromaKeyContrastHigh,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbChromaKeyContrastLow,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbChromaKeySmoothing,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbChromaKeyThresholdSensitivity,System.ComponentModel.ISupportInitialize).EndInit
         Me.tabPage70.ResumeLayout(false)
         Me.tabPage70.PerformLayout
         Me.TabPage81.ResumeLayout(false)
@@ -7229,18 +7188,6 @@ End Sub
     Private WithEvents label171 As System.Windows.Forms.Label
     Private WithEvents label66 As System.Windows.Forms.Label
     Private WithEvents label16 As System.Windows.Forms.Label
-    Private WithEvents btChromaKeySelectBGImage As System.Windows.Forms.Button
-    Private WithEvents edChromaKeyImage As System.Windows.Forms.TextBox
-    Private WithEvents label216 As System.Windows.Forms.Label
-    Private WithEvents rbChromaKeyRed As System.Windows.Forms.RadioButton
-    Private WithEvents rbChromaKeyBlue As System.Windows.Forms.RadioButton
-    Private WithEvents rbChromaKeyGreen As System.Windows.Forms.RadioButton
-    Private WithEvents label215 As System.Windows.Forms.Label
-    Private WithEvents tbChromaKeyContrastHigh As System.Windows.Forms.TrackBar
-    Private WithEvents label214 As System.Windows.Forms.Label
-    Private WithEvents tbChromaKeyContrastLow As System.Windows.Forms.TrackBar
-    Private WithEvents label213 As System.Windows.Forms.Label
-    Private WithEvents cbChromaKeyEnabled As System.Windows.Forms.CheckBox
     Friend WithEvents TabPage28 As System.Windows.Forms.TabPage
     Private WithEvents openFileDialog1 As System.Windows.Forms.OpenFileDialog
     Private WithEvents tabControl9 As System.Windows.Forms.TabControl
@@ -7660,5 +7607,14 @@ End Sub
     Friend WithEvents cbVideoEffectsGPUEnabled As CheckBox
     Private WithEvents label5 As Label
     Private WithEvents tbGPUBlur As TrackBar
-    Private WithEvents cbVideoEffectsGPUDX11 As CheckBox
+    Private WithEvents pnChromaKeyColor As Panel
+    Private WithEvents btChromaKeySelectBGImage As Button
+    Private WithEvents edChromaKeyImage As TextBox
+    Private WithEvents label216 As Label
+    Private WithEvents label215 As Label
+    Private WithEvents tbChromaKeySmoothing As TrackBar
+    Private WithEvents label214 As Label
+    Private WithEvents tbChromaKeyThresholdSensitivity As TrackBar
+    Private WithEvents label213 As Label
+    Private WithEvents cbChromaKeyEnabled As CheckBox
 End Class

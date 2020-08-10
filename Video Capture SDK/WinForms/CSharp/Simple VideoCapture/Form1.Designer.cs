@@ -71,6 +71,8 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.label4 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.cbMergeTextLogos = new System.Windows.Forms.CheckBox();
+            this.cbMergeImageLogos = new System.Windows.Forms.CheckBox();
             this.cbFlipY = new System.Windows.Forms.CheckBox();
             this.cbFlipX = new System.Windows.Forms.CheckBox();
             this.cbInvert = new System.Windows.Forms.CheckBox();
@@ -144,8 +146,6 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.btResume = new System.Windows.Forms.Button();
             this.btPause = new System.Windows.Forms.Button();
             this.VideoCapture1 = new VisioForge.Controls.UI.WinForms.VideoCapture();
-            this.cbMergeImageLogos = new System.Windows.Forms.CheckBox();
-            this.cbMergeTextLogos = new System.Windows.Forms.CheckBox();
             this.tcMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbAudioBalance)).BeginInit();
@@ -209,7 +209,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.tcMain.Controls.Add(this.tabPage3);
             this.tcMain.Controls.Add(this.tabPage5);
             this.tcMain.Controls.Add(this.tabPage4);
-            this.tcMain.Location = new System.Drawing.Point(2, 3);
+            this.tcMain.Location = new System.Drawing.Point(3, 3);
             this.tcMain.Name = "tcMain";
             this.tcMain.SelectedIndex = 0;
             this.tcMain.Size = new System.Drawing.Size(378, 427);
@@ -632,6 +632,26 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Video effects";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // cbMergeTextLogos
+            // 
+            this.cbMergeTextLogos.AutoSize = true;
+            this.cbMergeTextLogos.Location = new System.Drawing.Point(188, 155);
+            this.cbMergeTextLogos.Name = "cbMergeTextLogos";
+            this.cbMergeTextLogos.Size = new System.Drawing.Size(145, 17);
+            this.cbMergeTextLogos.TabIndex = 87;
+            this.cbMergeTextLogos.Text = "Merge text logos into one";
+            this.cbMergeTextLogos.UseVisualStyleBackColor = true;
+            // 
+            // cbMergeImageLogos
+            // 
+            this.cbMergeImageLogos.AutoSize = true;
+            this.cbMergeImageLogos.Location = new System.Drawing.Point(12, 155);
+            this.cbMergeImageLogos.Name = "cbMergeImageLogos";
+            this.cbMergeImageLogos.Size = new System.Drawing.Size(156, 17);
+            this.cbMergeImageLogos.TabIndex = 86;
+            this.cbMergeImageLogos.Text = "Merge image logos into one";
+            this.cbMergeImageLogos.UseVisualStyleBackColor = true;
             // 
             // cbFlipY
             // 
@@ -1484,7 +1504,7 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.VideoCapture1.SeparateCapture_FileSizeThreshold = ((long)(0));
             this.VideoCapture1.SeparateCapture_GMFMode = true;
             this.VideoCapture1.SeparateCapture_Mode = VisioForge.Types.VFSeparateCaptureMode.Normal;
-            this.VideoCapture1.SeparateCapture_TimeThreshold = TimeSpan.Zero;
+            this.VideoCapture1.SeparateCapture_TimeThreshold = System.TimeSpan.Parse("00:00:00");
             this.VideoCapture1.Size = new System.Drawing.Size(454, 332);
             this.VideoCapture1.Start_DelayEnabled = false;
             this.VideoCapture1.TabIndex = 93;
@@ -1514,8 +1534,8 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.VideoCapture1.Video_Effects_AllowMultipleStreams = false;
             this.VideoCapture1.Video_Effects_Enabled = false;
             this.VideoCapture1.Video_Effects_GPU_Enabled = false;
-            this.VideoCapture1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX11;
             this.VideoCapture1.Video_Effects_MergeImageLogos = false;
+            this.VideoCapture1.Video_Effects_MergeTextLogos = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -1544,26 +1564,6 @@ namespace VisioForge_SDK_Video_Capture_Demo
             this.VideoCapture1.VLC_Path = null;
             this.VideoCapture1.OnError += new System.EventHandler<VisioForge.Types.ErrorsEventArgs>(this.VideoCapture1_OnError);
             this.VideoCapture1.OnLicenseRequired += new System.EventHandler<VisioForge.Types.LicenseEventArgs>(this.VideoCapture1_OnLicenseRequired);
-            // 
-            // cbMergeImageLogos
-            // 
-            this.cbMergeImageLogos.AutoSize = true;
-            this.cbMergeImageLogos.Location = new System.Drawing.Point(12, 155);
-            this.cbMergeImageLogos.Name = "cbMergeImageLogos";
-            this.cbMergeImageLogos.Size = new System.Drawing.Size(156, 17);
-            this.cbMergeImageLogos.TabIndex = 86;
-            this.cbMergeImageLogos.Text = "Merge image logos into one";
-            this.cbMergeImageLogos.UseVisualStyleBackColor = true;
-            // 
-            // cbMergeTextLogos
-            // 
-            this.cbMergeTextLogos.AutoSize = true;
-            this.cbMergeTextLogos.Location = new System.Drawing.Point(188, 155);
-            this.cbMergeTextLogos.Name = "cbMergeTextLogos";
-            this.cbMergeTextLogos.Size = new System.Drawing.Size(145, 17);
-            this.cbMergeTextLogos.TabIndex = 87;
-            this.cbMergeTextLogos.Text = "Merge text logos into one";
-            this.cbMergeTextLogos.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

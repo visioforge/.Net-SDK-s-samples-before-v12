@@ -788,27 +788,26 @@ namespace Media_Player_Demo
 
         private void ConfigureChromaKey()
         {
+            if (MediaPlayer1.ChromaKey != null)
+            {
+                MediaPlayer1.ChromaKey.Dispose();
+                MediaPlayer1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
             if (cbChromaKeyEnabled.Checked)
             {
-                MediaPlayer1.ChromaKey = new ChromaKeySettings
+                MediaPlayer1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                 {
-                    ContrastHigh = tbChromaKeyContrastHigh.Value,
-                    ContrastLow = tbChromaKeyContrastLow.Value,
-                    ImageFilename = edChromaKeyImage.Text
+                    Smoothing = tbChromaKeySmoothing.Value / 1000f,
+                    ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000f,
+                    Color = pnChromaKeyColor.BackColor
                 };
-
-                if (rbChromaKeyGreen.Checked)
-                {
-                    MediaPlayer1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.Checked)
-                {
-                    MediaPlayer1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    MediaPlayer1.ChromaKey.Color = VFChromaColor.Red;
-                }
             }
             else
             {
@@ -1110,10 +1109,6 @@ namespace Media_Player_Demo
 
         private async void btStart_Click(object sender, EventArgs e)
         {
-            //http://help.visioforge.com/video.mp4
-            //  MediaPlayer1.CustomRedist_Enabled = true;
-            //  MediaPlayer1.CustomRedist_Path = @"C:\Projects\TEMP\redist";
-
             MediaPlayer1.Debug_Mode = cbDebugMode.Checked;
             MediaPlayer1.Debug_Telemetry = cbTelemetry.Checked;
             
@@ -1317,9 +1312,6 @@ namespace Media_Player_Demo
 
             // Video effects GPU
             MediaPlayer1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
-            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
-                                                        ? VFGPUEffectsEngine.DirectX11
-                                                        : VFGPUEffectsEngine.DirectX9;
 
             // Motion detection
             ConfigureMotionDetection();
@@ -1977,6 +1969,7 @@ namespace Media_Player_Demo
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 edChromaKeyImage.Text = openFileDialog1.FileName;
+                ConfigureChromaKey();
             }
         }
 
@@ -3097,11 +3090,6 @@ namespace Media_Player_Demo
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //edFilenameOrURL.Text = Path.Combine(
-            //    Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            //    "VisioForge",
-            //    "live.ts");
-
             Text += " (SDK v" + MediaPlayer1.SDK_Version + ", " + MediaPlayer1.SDK_State + "), C#";
 
             // set combobox indexes
@@ -3113,6 +3101,7 @@ namespace Media_Player_Demo
 
             rbMotionDetectionExProcessor.SelectedIndex = 1;
             rbMotionDetectionExDetector.SelectedIndex = 1;
+            pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128);
 
             string defaultAudioRenderer = string.Empty;
             foreach (string audioOutputDevice in MediaPlayer1.Audio_OutputDevices)
@@ -3349,13 +3338,6 @@ namespace Media_Player_Demo
             }
         }
 
-        private void cbVideoEffectsGPUDX11_CheckedChanged(object sender, EventArgs e)
-        {
-            MediaPlayer1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
-                                                        ? VFGPUEffectsEngine.DirectX11
-                                                        : VFGPUEffectsEngine.DirectX9;
-        }
-
         private void tbGPUBlur_Scroll(object sender, EventArgs e)
         {
             IVFGPUVideoEffectBlur intf;
@@ -3374,6 +3356,15 @@ namespace Media_Player_Demo
                     intf.Value = tbGPUBlur.Value;
                     intf.Update();
                 }
+            }
+        }
+
+        private void pnChromaKeyColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pnChromaKeyColor.BackColor = colorDialog1.Color;
+                ConfigureChromaKey();
             }
         }
     }

@@ -7,6 +7,8 @@ namespace Main_Demo
     using System;
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
+    using System.Drawing;
+    using System.IO;
     using System.Windows;
     using System.Windows.Forms;
     using System.Windows.Input;
@@ -26,6 +28,7 @@ namespace Main_Demo
         private readonly Microsoft.Win32.SaveFileDialog saveFileDialog1 = new Microsoft.Win32.SaveFileDialog();
         private readonly Microsoft.Win32.OpenFileDialog openFileDialog1 = new Microsoft.Win32.OpenFileDialog();
         private readonly Microsoft.Win32.OpenFileDialog openFileDialog2 = new Microsoft.Win32.OpenFileDialog();
+        private readonly ColorDialog colorDialog1 = new ColorDialog();
 
         public Window1()
         {
@@ -51,6 +54,8 @@ namespace Main_Demo
             cbVideoEncoder.SelectedIndex = 1;
             cbAudioSampleRate.SelectedIndex = 0;
             cbContainer.SelectedIndex = 0;
+
+            pnChromaKeyColor.Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 128, 218, 128));
         }
 
 
@@ -264,36 +269,52 @@ namespace Main_Demo
             ConfigureObjectDetection();
 
             // Chroma key
-            if (cbChromaKeyEnabled.IsChecked == true)
-            {
-                VideoEdit1.ChromaKey = new ChromaKeySettings();
-                VideoEdit1.ChromaKey.ContrastHigh = (int)tbChromaKeyContrastHigh.Value;
-                VideoEdit1.ChromaKey.ContrastLow = (int)tbChromaKeyContrastLow.Value;
-                VideoEdit1.ChromaKey.ImageFilename = edChromaKeyImage.Text;
-
-                if (rbChromaKeyGreen.IsChecked == true)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.IsChecked == true)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Red;
-                }
-            }
-            else
-            {
-                VideoEdit1.ChromaKey = null;
-            }
+            ConfigureChromaKey();
 
             // Barcode detection
             VideoEdit1.Barcode_Reader_Enabled = cbBarcodeDetectionEnabled.IsChecked == true;
             VideoEdit1.Barcode_Reader_Type = (VFBarcodeType)cbBarcodeType.SelectedIndex;
 
             VideoEdit1.Start();
+        }
+
+        private static System.Drawing.Color ColorConv(System.Windows.Media.Color color)
+        {
+            return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
+
+        private static System.Windows.Media.Color ColorConv(System.Drawing.Color color)
+        {
+            return System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
+
+        private void ConfigureChromaKey()
+        {
+            if (VideoEdit1.ChromaKey != null)
+            {
+                VideoEdit1.ChromaKey.Dispose();
+                VideoEdit1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
+            if (cbChromaKeyEnabled.IsChecked == true)
+            {
+                VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+                                           {
+                                               Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
+                                               ThresholdSensitivity = (float)(tbChromaKeyThresholdSensitivity.Value / 1000f),
+                                               Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color)
+                                           };
+            }
+            else
+            {
+                VideoEdit1.ChromaKey = null;
+            }
         }
 
         private void ConfigureObjectDetection()
@@ -422,6 +443,7 @@ namespace Main_Demo
             if (openFileDialog1.ShowDialog() == true)
             {
                 edChromaKeyImage.Text = openFileDialog1.FileName;
+                ConfigureChromaKey();
             }
         }
 
@@ -524,6 +546,27 @@ namespace Main_Demo
             {
                 mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
             }
+        }
+
+        private void pnChromaKeyColor_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            colorDialog1.Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color);
+
+            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pnChromaKeyColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
+                ConfigureChromaKey();
+            }
+        }
+
+        private void tbChromaKeyThresholdSensitivity_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void tbChromaKeySmoothing_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            ConfigureChromaKey();
         }
     }
 }

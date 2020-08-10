@@ -57,6 +57,7 @@ namespace Two_Windows_Demo
             MediaPlayer1.Audio_PlayAudio = true;
             MediaPlayer1.Info_UseLibMediaInfo = true;
             MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device";
+            MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV;
 
             if (MediaPlayer1.Filter_Supported_EVR())
             {

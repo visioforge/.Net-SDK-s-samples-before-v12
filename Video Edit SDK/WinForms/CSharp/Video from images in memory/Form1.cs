@@ -3,8 +3,10 @@
 namespace Video_From_Images
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
 
     using Properties;
@@ -39,6 +41,14 @@ namespace Video_From_Images
         private FFMPEGEXESettingsDialog ffmpegEXESettingsDialog;
 
         private GIFSettingsDialog gifSettingsDialog;
+
+        private bool predefinedImagesUsed;
+
+        private Bitmap loadedImage;
+
+        private string loadedImageFilename;
+
+        private string[] loadedFiles;
 
         public Form1()
         {
@@ -343,9 +353,63 @@ namespace Video_From_Images
             ConfigureVideoEffects();
 
             VideoEdit1.Input_Clear_List();
-            await VideoEdit1.Input_AddVideoBlankAsync(TimeSpan.FromMilliseconds(10000), TimeSpan.FromMilliseconds(0), 640, 480, Color.Black);
+
+            if (rbImagesPredefined.Checked)
+            {
+                predefinedImagesUsed = true;
+
+                await VideoEdit1.Input_AddVideoBlankAsync(
+                    TimeSpan.FromMilliseconds(10000),
+                    TimeSpan.FromMilliseconds(0),
+                    1280,
+                    720,
+                    Color.Black);
+            }
+            else
+            {
+                predefinedImagesUsed = false;
+
+                if (!Directory.Exists(edImagesFolder.Text))
+                {
+                    MessageBox.Show(this, "Folder with images doesn't exists!");
+                    return;
+                }
+
+                loadedFiles = EnumerateImageFiles(edImagesFolder.Text);
+
+                int width = Convert.ToInt32(edWidth.Text);
+                int height = Convert.ToInt32(edHeight.Text);
+
+                loadedImageFilename = null;
+                if (loadedImage != null)
+                {
+                    loadedImage.Dispose();
+                    loadedImage = null;
+                }
+
+                await VideoEdit1.Input_AddVideoBlankAsync(
+                    TimeSpan.FromSeconds(loadedFiles.Length * 2),
+                    TimeSpan.FromMilliseconds(0),
+                    width,
+                    height,
+                    Color.Black);
+            }
 
             await VideoEdit1.StartAsync();
+        }
+
+        private static string[] EnumerateImageFiles(string path)
+        {
+            var res = new List<string>(); 
+
+            var exts = new string[] { "*.jpg", "*.jpeg", "*.png", "*.gif", "*.bmp" };
+            foreach (var ext in exts)
+            {
+                var files = Directory.GetFiles(path, ext);
+                res.AddRange(files);
+            }
+
+            return res.ToArray();
         }
 
         private async void btStop_Click(object sender, EventArgs e)
@@ -353,34 +417,54 @@ namespace Video_From_Images
             await VideoEdit1.StopAsync();
             ProgressBar1.Value = 0;
         }
-        
+
         private void VideoEdit1_OnVideoFrameBitmap(object sender, VideoFrameBitmapEventArgs e)
         {
             Bitmap frame;
-            if (e.StartTime.TotalMilliseconds < 2000)
+
+            if (predefinedImagesUsed)
             {
-                frame = Resources._1;
-            }
-            else if (e.StartTime.TotalMilliseconds < 4000)
-            {
-                frame = Resources._2;
-            }
-            else if (e.StartTime.TotalMilliseconds < 6000)
-            {
-                frame = Resources._3;
-            }
-            else if (e.StartTime.TotalMilliseconds < 8000)
-            {
-                frame = Resources._4;
+                if (e.StartTime.TotalMilliseconds < 2000)
+                {
+                    frame = Resources._1;
+                }
+                else if (e.StartTime.TotalMilliseconds < 4000)
+                {
+                    frame = Resources._2;
+                }
+                else if (e.StartTime.TotalMilliseconds < 6000)
+                {
+                    frame = Resources._3;
+                }
+                else if (e.StartTime.TotalMilliseconds < 8000)
+                {
+                    frame = Resources._4;
+                }
+                else
+                {
+                    frame = Resources._5;
+                }
             }
             else
             {
-                frame = Resources._5;
+                int index = (int)Math.Truncate(e.StartTime.TotalMilliseconds / 2000);
+                if (loadedImageFilename == loadedFiles[index])
+                {
+                    frame = loadedImage;
+                }
+                else
+                {
+                    loadedImageFilename = loadedFiles[index];
+                    loadedImage?.Dispose();
+                    loadedImage = new Bitmap(loadedFiles[index]);
+
+                    frame = loadedImage;
+                }
             }
 
             using (Graphics g = Graphics.FromImage(e.Frame))
             {
-                g.DrawImage(frame, 0, 0, frame.Width, frame.Height);
+                g.DrawImage(frame, new RectangleF(0, 0, e.Frame.Width, e.Frame.Height), new RectangleF(0, 0, frame.Width, frame.Height), GraphicsUnit.Pixel);
                 e.UpdateData = true;
             }
         }
@@ -877,6 +961,14 @@ namespace Video_From_Images
                                    {
                                        mmLog.Text += e.Message + Environment.NewLine;
                                    }));
+        }
+
+        private void btSelectImagesFolder_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                edImagesFolder.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
     }
 }

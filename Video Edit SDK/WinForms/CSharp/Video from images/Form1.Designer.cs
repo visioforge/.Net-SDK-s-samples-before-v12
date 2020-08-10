@@ -869,7 +869,6 @@
             this.VideoEdit1.Video_Effects_AllowMultipleStreams = false;
             this.VideoEdit1.Video_Effects_Enabled = false;
             this.VideoEdit1.Video_Effects_GPU_Enabled = false;
-            this.VideoEdit1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;

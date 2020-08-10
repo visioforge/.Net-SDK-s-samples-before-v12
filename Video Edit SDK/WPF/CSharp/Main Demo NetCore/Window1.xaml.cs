@@ -126,6 +126,8 @@ namespace Main_Demo
             cbNetworkStreamingMode.SelectedIndex = 0;
             cbDirect2DRotate.SelectedIndex = 0;
 
+            pnChromaKeyColor.Fill = new SolidColorBrush(Color.FromArgb(255, 128, 218, 128));
+
             edOutput.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.avi";
             edOutputFileCut.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.avi";
             edOutputFileJoin.Text = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\" + "output.avi";
@@ -881,9 +883,6 @@ namespace Main_Demo
 
             // Video effects GPU
             VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.IsChecked == true;
-            VideoEdit1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
-                                                      ? VFGPUEffectsEngine.DirectX11
-                                                      : VFGPUEffectsEngine.DirectX9;
 
             // Chromakey
             ConfigureChromaKey();
@@ -1439,27 +1438,26 @@ namespace Main_Demo
 
         private void ConfigureChromaKey()
         {
+            if (VideoEdit1.ChromaKey != null)
+            {
+                VideoEdit1.ChromaKey.Dispose();
+                VideoEdit1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
             if (cbChromaKeyEnabled.IsChecked == true)
             {
-                VideoEdit1.ChromaKey = new ChromaKeySettings
+                VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                                            {
-                                               ContrastHigh = (int)tbChromaKeyContrastHigh.Value,
-                                               ContrastLow = (int)tbChromaKeyContrastLow.Value,
-                                               ImageFilename = edChromaKeyImage.Text
-                                           };
-
-                if (rbChromaKeyGreen.IsChecked == true)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.IsChecked == true)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Red;
-                }
+                                               Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
+                                               ThresholdSensitivity = (float)(tbChromaKeyThresholdSensitivity.Value / 1000f),
+                                               Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color)
+                };
             }
             else
             {
@@ -3327,13 +3325,6 @@ namespace Main_Demo
             }
         }
 
-        private void cbVideoEffectsGPUDX11_Click(object sender, RoutedEventArgs e)
-        {
-            VideoEdit1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.IsChecked == true
-                                                      ? VFGPUEffectsEngine.DirectX11
-                                                      : VFGPUEffectsEngine.DirectX9;
-        }
-
         private void tbGPUBlur_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             IVFGPUVideoEffectBlur intf;
@@ -3352,6 +3343,16 @@ namespace Main_Demo
                     intf.Value = (int)tbGPUBlur.Value;
                     intf.Update();
                 }
+            }
+        }
+
+        private void pnChromaKeyColor_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            colorDialog1.Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color);
+
+            if (colorDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                pnChromaKeyColor.Fill = new SolidColorBrush(ColorConv(colorDialog1.Color));
             }
         }
     }

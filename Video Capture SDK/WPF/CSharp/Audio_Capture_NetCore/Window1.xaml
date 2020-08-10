@@ -1,7 +1,8 @@
 ﻿<Window x:Class="Audio_Capture.Window1"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Title="Audio Capture Demo - Video Capture SDK .Net" Height="640" Width="427" IsEnabled="True" Loaded="Form1_Load" ResizeMode="CanMinimize" Icon="visioforge_main_icon.ico">
+    Title="Audio Capture Demo - Video Capture SDK .Net" Height="640" Width="427" IsEnabled="True" Loaded="Form1_Load" ResizeMode="CanMinimize" 
+    Icon="visioforge_main_icon.ico">
     <Grid>
         <TabControl Margin="15,12,0,0" Name="tabControl1" HorizontalAlignment="Left" Width="391" Height="544" VerticalAlignment="Top">
             <TabItem Header="Input &amp; Output Devices" IsEnabled="True" Name="tabPage1" IsSelected="True">

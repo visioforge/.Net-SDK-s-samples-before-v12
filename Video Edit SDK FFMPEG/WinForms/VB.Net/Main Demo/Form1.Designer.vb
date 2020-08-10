@@ -172,16 +172,14 @@ Partial Class Form1
         Me.label66 = New System.Windows.Forms.Label()
         Me.label16 = New System.Windows.Forms.Label()
         Me.tabPage20 = New System.Windows.Forms.TabPage()
+        Me.pnChromaKeyColor = New System.Windows.Forms.Panel()
         Me.btChromaKeySelectBGImage = New System.Windows.Forms.Button()
         Me.edChromaKeyImage = New System.Windows.Forms.TextBox()
         Me.label216 = New System.Windows.Forms.Label()
-        Me.rbChromaKeyRed = New System.Windows.Forms.RadioButton()
-        Me.rbChromaKeyBlue = New System.Windows.Forms.RadioButton()
-        Me.rbChromaKeyGreen = New System.Windows.Forms.RadioButton()
         Me.label215 = New System.Windows.Forms.Label()
-        Me.tbChromaKeyContrastHigh = New System.Windows.Forms.TrackBar()
+        Me.tbChromaKeySmoothing = New System.Windows.Forms.TrackBar()
         Me.label214 = New System.Windows.Forms.Label()
-        Me.tbChromaKeyContrastLow = New System.Windows.Forms.TrackBar()
+        Me.tbChromaKeyThresholdSensitivity = New System.Windows.Forms.TrackBar()
         Me.label213 = New System.Windows.Forms.Label()
         Me.cbChromaKeyEnabled = New System.Windows.Forms.CheckBox()
         Me.tabPage3 = New System.Windows.Forms.TabPage()
@@ -286,8 +284,8 @@ Partial Class Form1
         Me.tabPage21.SuspendLayout
         Me.tabPage26.SuspendLayout
         Me.tabPage20.SuspendLayout
-        CType(Me.tbChromaKeyContrastHigh,System.ComponentModel.ISupportInitialize).BeginInit
-        CType(Me.tbChromaKeyContrastLow,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbChromaKeySmoothing,System.ComponentModel.ISupportInitialize).BeginInit
+        CType(Me.tbChromaKeyThresholdSensitivity,System.ComponentModel.ISupportInitialize).BeginInit
         Me.tabPage3.SuspendLayout
         Me.tabControl18.SuspendLayout
         Me.tabPage71.SuspendLayout
@@ -1805,16 +1803,14 @@ Partial Class Form1
         '
         'tabPage20
         '
+        Me.tabPage20.Controls.Add(Me.pnChromaKeyColor)
         Me.tabPage20.Controls.Add(Me.btChromaKeySelectBGImage)
         Me.tabPage20.Controls.Add(Me.edChromaKeyImage)
         Me.tabPage20.Controls.Add(Me.label216)
-        Me.tabPage20.Controls.Add(Me.rbChromaKeyRed)
-        Me.tabPage20.Controls.Add(Me.rbChromaKeyBlue)
-        Me.tabPage20.Controls.Add(Me.rbChromaKeyGreen)
         Me.tabPage20.Controls.Add(Me.label215)
-        Me.tabPage20.Controls.Add(Me.tbChromaKeyContrastHigh)
+        Me.tabPage20.Controls.Add(Me.tbChromaKeySmoothing)
         Me.tabPage20.Controls.Add(Me.label214)
-        Me.tabPage20.Controls.Add(Me.tbChromaKeyContrastLow)
+        Me.tabPage20.Controls.Add(Me.tbChromaKeyThresholdSensitivity)
         Me.tabPage20.Controls.Add(Me.label213)
         Me.tabPage20.Controls.Add(Me.cbChromaKeyEnabled)
         Me.tabPage20.Location = New System.Drawing.Point(4, 22)
@@ -1825,118 +1821,95 @@ Partial Class Form1
         Me.tabPage20.Text = "Chroma key"
         Me.tabPage20.UseVisualStyleBackColor = true
         '
+        'pnChromaKeyColor
+        '
+        Me.pnChromaKeyColor.BackColor = System.Drawing.Color.Lime
+        Me.pnChromaKeyColor.ForeColor = System.Drawing.SystemColors.Control
+        Me.pnChromaKeyColor.Location = New System.Drawing.Point(55, 199)
+        Me.pnChromaKeyColor.Name = "pnChromaKeyColor"
+        Me.pnChromaKeyColor.Size = New System.Drawing.Size(26, 24)
+        Me.pnChromaKeyColor.TabIndex = 43
+        '
         'btChromaKeySelectBGImage
         '
-        Me.btChromaKeySelectBGImage.Location = New System.Drawing.Point(259, 272)
+        Me.btChromaKeySelectBGImage.Location = New System.Drawing.Point(255, 261)
         Me.btChromaKeySelectBGImage.Name = "btChromaKeySelectBGImage"
         Me.btChromaKeySelectBGImage.Size = New System.Drawing.Size(24, 23)
-        Me.btChromaKeySelectBGImage.TabIndex = 32
+        Me.btChromaKeySelectBGImage.TabIndex = 42
         Me.btChromaKeySelectBGImage.Text = "..."
         Me.btChromaKeySelectBGImage.UseVisualStyleBackColor = true
         '
         'edChromaKeyImage
         '
-        Me.edChromaKeyImage.Location = New System.Drawing.Point(17, 274)
+        Me.edChromaKeyImage.Location = New System.Drawing.Point(13, 263)
         Me.edChromaKeyImage.Name = "edChromaKeyImage"
         Me.edChromaKeyImage.Size = New System.Drawing.Size(235, 20)
-        Me.edChromaKeyImage.TabIndex = 31
-        Me.edChromaKeyImage.Text = "c:\chroma_bg.bmp"
+        Me.edChromaKeyImage.TabIndex = 41
+        Me.edChromaKeyImage.Text = "c:\Samples\pics\1.jpg"
         '
         'label216
         '
         Me.label216.AutoSize = true
-        Me.label216.Location = New System.Drawing.Point(14, 258)
+        Me.label216.Location = New System.Drawing.Point(10, 247)
         Me.label216.Name = "label216"
-        Me.label216.Size = New System.Drawing.Size(96, 13)
-        Me.label216.TabIndex = 30
-        Me.label216.Text = "Background image"
-        '
-        'rbChromaKeyRed
-        '
-        Me.rbChromaKeyRed.AutoSize = true
-        Me.rbChromaKeyRed.Location = New System.Drawing.Point(151, 223)
-        Me.rbChromaKeyRed.Name = "rbChromaKeyRed"
-        Me.rbChromaKeyRed.Size = New System.Drawing.Size(45, 17)
-        Me.rbChromaKeyRed.TabIndex = 29
-        Me.rbChromaKeyRed.Text = "Red"
-        Me.rbChromaKeyRed.UseVisualStyleBackColor = true
-        '
-        'rbChromaKeyBlue
-        '
-        Me.rbChromaKeyBlue.AutoSize = true
-        Me.rbChromaKeyBlue.Location = New System.Drawing.Point(86, 223)
-        Me.rbChromaKeyBlue.Name = "rbChromaKeyBlue"
-        Me.rbChromaKeyBlue.Size = New System.Drawing.Size(46, 17)
-        Me.rbChromaKeyBlue.TabIndex = 28
-        Me.rbChromaKeyBlue.Text = "Blue"
-        Me.rbChromaKeyBlue.UseVisualStyleBackColor = true
-        '
-        'rbChromaKeyGreen
-        '
-        Me.rbChromaKeyGreen.AutoSize = true
-        Me.rbChromaKeyGreen.Checked = true
-        Me.rbChromaKeyGreen.Location = New System.Drawing.Point(17, 223)
-        Me.rbChromaKeyGreen.Name = "rbChromaKeyGreen"
-        Me.rbChromaKeyGreen.Size = New System.Drawing.Size(54, 17)
-        Me.rbChromaKeyGreen.TabIndex = 27
-        Me.rbChromaKeyGreen.TabStop = true
-        Me.rbChromaKeyGreen.Text = "Green"
-        Me.rbChromaKeyGreen.UseVisualStyleBackColor = true
+        Me.label216.Size = New System.Drawing.Size(112, 13)
+        Me.label216.TabIndex = 40
+        Me.label216.Text = "Image background file"
         '
         'label215
         '
         Me.label215.AutoSize = true
-        Me.label215.Location = New System.Drawing.Point(14, 209)
+        Me.label215.Location = New System.Drawing.Point(10, 203)
         Me.label215.Name = "label215"
         Me.label215.Size = New System.Drawing.Size(31, 13)
-        Me.label215.TabIndex = 26
+        Me.label215.TabIndex = 39
         Me.label215.Text = "Color"
         '
-        'tbChromaKeyContrastHigh
+        'tbChromaKeySmoothing
         '
-        Me.tbChromaKeyContrastHigh.BackColor = System.Drawing.SystemColors.Window
-        Me.tbChromaKeyContrastHigh.Location = New System.Drawing.Point(17, 150)
-        Me.tbChromaKeyContrastHigh.Maximum = 255
-        Me.tbChromaKeyContrastHigh.Name = "tbChromaKeyContrastHigh"
-        Me.tbChromaKeyContrastHigh.Size = New System.Drawing.Size(154, 45)
-        Me.tbChromaKeyContrastHigh.TabIndex = 25
-        Me.tbChromaKeyContrastHigh.Value = 150
+        Me.tbChromaKeySmoothing.BackColor = System.Drawing.SystemColors.Window
+        Me.tbChromaKeySmoothing.Location = New System.Drawing.Point(13, 144)
+        Me.tbChromaKeySmoothing.Maximum = 1000
+        Me.tbChromaKeySmoothing.Name = "tbChromaKeySmoothing"
+        Me.tbChromaKeySmoothing.Size = New System.Drawing.Size(154, 45)
+        Me.tbChromaKeySmoothing.TabIndex = 38
+        Me.tbChromaKeySmoothing.Value = 80
         '
         'label214
         '
         Me.label214.AutoSize = true
-        Me.label214.Location = New System.Drawing.Point(14, 132)
+        Me.label214.Location = New System.Drawing.Point(10, 126)
         Me.label214.Name = "label214"
-        Me.label214.Size = New System.Drawing.Size(71, 13)
-        Me.label214.TabIndex = 24
-        Me.label214.Text = "Contrast-High"
+        Me.label214.Size = New System.Drawing.Size(57, 13)
+        Me.label214.TabIndex = 37
+        Me.label214.Text = "Smoothing"
         '
-        'tbChromaKeyContrastLow
+        'tbChromaKeyThresholdSensitivity
         '
-        Me.tbChromaKeyContrastLow.BackColor = System.Drawing.SystemColors.Window
-        Me.tbChromaKeyContrastLow.Location = New System.Drawing.Point(17, 77)
-        Me.tbChromaKeyContrastLow.Maximum = 255
-        Me.tbChromaKeyContrastLow.Name = "tbChromaKeyContrastLow"
-        Me.tbChromaKeyContrastLow.Size = New System.Drawing.Size(154, 45)
-        Me.tbChromaKeyContrastLow.TabIndex = 23
-        Me.tbChromaKeyContrastLow.Value = 10
+        Me.tbChromaKeyThresholdSensitivity.BackColor = System.Drawing.SystemColors.Window
+        Me.tbChromaKeyThresholdSensitivity.Location = New System.Drawing.Point(13, 71)
+        Me.tbChromaKeyThresholdSensitivity.Maximum = 200
+        Me.tbChromaKeyThresholdSensitivity.Name = "tbChromaKeyThresholdSensitivity"
+        Me.tbChromaKeyThresholdSensitivity.Size = New System.Drawing.Size(154, 45)
+        Me.tbChromaKeyThresholdSensitivity.TabIndex = 36
+        Me.tbChromaKeyThresholdSensitivity.Value = 180
         '
         'label213
         '
         Me.label213.AutoSize = true
-        Me.label213.Location = New System.Drawing.Point(14, 59)
+        Me.label213.Location = New System.Drawing.Point(10, 53)
         Me.label213.Name = "label213"
-        Me.label213.Size = New System.Drawing.Size(69, 13)
-        Me.label213.TabIndex = 22
-        Me.label213.Text = "Contrast-Low"
+        Me.label213.Size = New System.Drawing.Size(102, 13)
+        Me.label213.TabIndex = 35
+        Me.label213.Text = "Threshold sensitivity"
         '
         'cbChromaKeyEnabled
         '
         Me.cbChromaKeyEnabled.AutoSize = true
-        Me.cbChromaKeyEnabled.Location = New System.Drawing.Point(17, 20)
+        Me.cbChromaKeyEnabled.Location = New System.Drawing.Point(13, 14)
         Me.cbChromaKeyEnabled.Name = "cbChromaKeyEnabled"
         Me.cbChromaKeyEnabled.Size = New System.Drawing.Size(65, 17)
-        Me.cbChromaKeyEnabled.TabIndex = 21
+        Me.cbChromaKeyEnabled.TabIndex = 34
         Me.cbChromaKeyEnabled.Text = "Enabled"
         Me.cbChromaKeyEnabled.UseVisualStyleBackColor = true
         '
@@ -2762,8 +2735,8 @@ Partial Class Form1
         Me.tabPage26.PerformLayout
         Me.tabPage20.ResumeLayout(false)
         Me.tabPage20.PerformLayout
-        CType(Me.tbChromaKeyContrastHigh,System.ComponentModel.ISupportInitialize).EndInit
-        CType(Me.tbChromaKeyContrastLow,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbChromaKeySmoothing,System.ComponentModel.ISupportInitialize).EndInit
+        CType(Me.tbChromaKeyThresholdSensitivity,System.ComponentModel.ISupportInitialize).EndInit
         Me.tabPage3.ResumeLayout(false)
         Me.tabPage3.PerformLayout
         Me.tabControl18.ResumeLayout(false)
@@ -2982,18 +2955,6 @@ End Sub
     Private WithEvents label66 As System.Windows.Forms.Label
     Private WithEvents label16 As System.Windows.Forms.Label
     Private WithEvents tabPage20 As System.Windows.Forms.TabPage
-    Private WithEvents btChromaKeySelectBGImage As System.Windows.Forms.Button
-    Private WithEvents edChromaKeyImage As System.Windows.Forms.TextBox
-    Private WithEvents label216 As System.Windows.Forms.Label
-    Private WithEvents rbChromaKeyRed As System.Windows.Forms.RadioButton
-    Private WithEvents rbChromaKeyBlue As System.Windows.Forms.RadioButton
-    Private WithEvents rbChromaKeyGreen As System.Windows.Forms.RadioButton
-    Private WithEvents label215 As System.Windows.Forms.Label
-    Private WithEvents tbChromaKeyContrastHigh As System.Windows.Forms.TrackBar
-    Private WithEvents label214 As System.Windows.Forms.Label
-    Private WithEvents tbChromaKeyContrastLow As System.Windows.Forms.TrackBar
-    Private WithEvents label213 As System.Windows.Forms.Label
-    Private WithEvents cbChromaKeyEnabled As System.Windows.Forms.CheckBox
     Private WithEvents tabControl18 As System.Windows.Forms.TabControl
     Private WithEvents tabPage71 As System.Windows.Forms.TabPage
     Private WithEvents label231 As System.Windows.Forms.Label
@@ -3030,4 +2991,14 @@ End Sub
     Private WithEvents label18 As Label
     Private WithEvents edMinimalBitrate As TextBox
     Private WithEvents label19 As Label
+    Private WithEvents pnChromaKeyColor As Panel
+    Private WithEvents btChromaKeySelectBGImage As Button
+    Private WithEvents edChromaKeyImage As TextBox
+    Private WithEvents label216 As Label
+    Private WithEvents label215 As Label
+    Private WithEvents tbChromaKeySmoothing As TrackBar
+    Private WithEvents label214 As Label
+    Private WithEvents tbChromaKeyThresholdSensitivity As TrackBar
+    Private WithEvents label213 As Label
+    Private WithEvents cbChromaKeyEnabled As CheckBox
 End Class

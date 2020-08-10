@@ -271,6 +271,8 @@ namespace VideoEdit_CS_Demo
             cbDecklinkOutputHDTVPulldown.SelectedIndex = 0;
             cbDecklinkOutputNTSC.SelectedIndex = 0;
 
+            pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128);
+
             var genres = new List<string>();
             foreach (var genre in VideoCapture.Tags_GetDefaultVideoGenres())
             {
@@ -1022,9 +1024,6 @@ namespace VideoEdit_CS_Demo
 
             // Video effects GPU
             VideoEdit1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
-            VideoEdit1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
-                                                      ? VFGPUEffectsEngine.DirectX11
-                                                      : VFGPUEffectsEngine.DirectX9;
 
             // Decklink output
             ConfigureDecklinkOutput();
@@ -1747,16 +1746,6 @@ namespace VideoEdit_CS_Demo
             ConfigureObjectDetection();
         }
 
-        private void tbChromaKeyContrastLow_Scroll(object sender, EventArgs e)
-        {
-            ConfigureChromaKey();
-        }
-
-        private void tbChromaKeyContrastHigh_Scroll(object sender, EventArgs e)
-        {
-            ConfigureChromaKey();
-        }
-
         private void btChromaKeySelectBGImage_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -2080,27 +2069,26 @@ namespace VideoEdit_CS_Demo
 
         private void ConfigureChromaKey()
         {
+            if (VideoEdit1.ChromaKey != null)
+            {
+                VideoEdit1.ChromaKey.Dispose();
+                VideoEdit1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
             if (cbChromaKeyEnabled.Checked)
             {
-                VideoEdit1.ChromaKey = new ChromaKeySettings
-                {
-                    ContrastHigh = tbChromaKeyContrastHigh.Value,
-                    ContrastLow = tbChromaKeyContrastLow.Value,
-                    ImageFilename = edChromaKeyImage.Text
-                };
-
-                if (rbChromaKeyGreen.Checked)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.Checked)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Red;
-                }
+                VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+                                           {
+                                               Smoothing = tbChromaKeySmoothing.Value / 1000f,
+                                               ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000f,
+                                               Color = pnChromaKeyColor.BackColor
+                                           };
             }
             else
             {
@@ -3385,13 +3373,6 @@ namespace VideoEdit_CS_Demo
                 false);
         }
 
-        private void cbVideoEffectsGPUDX11_CheckedChanged(object sender, EventArgs e)
-        {
-            VideoEdit1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
-                                                      ? VFGPUEffectsEngine.DirectX11
-                                                      : VFGPUEffectsEngine.DirectX9;
-        }
-
         private void tbGPUBlur_Scroll(object sender, EventArgs e)
         {
             IVFGPUVideoEffectBlur intf;
@@ -3410,6 +3391,25 @@ namespace VideoEdit_CS_Demo
                     intf.Value = tbGPUBlur.Value;
                     intf.Update();
                 }
+            }
+        }
+
+        private void tbChromaKeyThresholdSensitivity_Scroll(object sender, EventArgs e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void tbChromaKeySmoothing_Scroll(object sender, EventArgs e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void pnChromaKeyColor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pnChromaKeyColor.BackColor = colorDialog1.Color;
+                ConfigureChromaKey();
             }
         }
     }

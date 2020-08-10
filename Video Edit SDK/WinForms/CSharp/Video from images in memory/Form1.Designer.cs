@@ -42,6 +42,10 @@
             this.VideoEdit1 = new VisioForge.Controls.UI.WinForms.VideoEdit();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btSelectImagesFolder = new System.Windows.Forms.Button();
+            this.edImagesFolder = new System.Windows.Forms.TextBox();
+            this.rbImagesFolder = new System.Windows.Forms.RadioButton();
+            this.rbImagesPredefined = new System.Windows.Forms.RadioButton();
             this.cbOutputFormat = new System.Windows.Forms.ComboBox();
             this.lbInfo = new System.Windows.Forms.Label();
             this.btConfigure = new System.Windows.Forms.Button();
@@ -85,6 +89,8 @@
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label6 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage5.SuspendLayout();
@@ -189,6 +195,7 @@
             this.VideoEdit1.Barcode_Reader_Enabled = false;
             this.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
             this.VideoEdit1.ChromaKey = null;
+            this.VideoEdit1.CustomRedist_Auto = true;
             this.VideoEdit1.CustomRedist_Enabled = false;
             this.VideoEdit1.CustomRedist_Path = null;
             this.VideoEdit1.Debug_Dir = "";
@@ -222,7 +229,6 @@
             this.VideoEdit1.Video_Effects_AllowMultipleStreams = false;
             this.VideoEdit1.Video_Effects_Enabled = false;
             this.VideoEdit1.Video_Effects_GPU_Enabled = false;
-            this.VideoEdit1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             this.VideoEdit1.Video_FrameRate = 25D;
             this.VideoEdit1.Video_Preview_Enabled = true;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
@@ -267,6 +273,11 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.btSelectImagesFolder);
+            this.tabPage1.Controls.Add(this.edImagesFolder);
+            this.tabPage1.Controls.Add(this.rbImagesFolder);
+            this.tabPage1.Controls.Add(this.rbImagesPredefined);
             this.tabPage1.Controls.Add(this.cbOutputFormat);
             this.tabPage1.Controls.Add(this.lbInfo);
             this.tabPage1.Controls.Add(this.btConfigure);
@@ -283,11 +294,51 @@
             this.tabPage1.Controls.Add(this.cbResize);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(322, 376);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Output";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btSelectImagesFolder
+            // 
+            this.btSelectImagesFolder.Location = new System.Drawing.Point(279, 130);
+            this.btSelectImagesFolder.Name = "btSelectImagesFolder";
+            this.btSelectImagesFolder.Size = new System.Drawing.Size(26, 23);
+            this.btSelectImagesFolder.TabIndex = 127;
+            this.btSelectImagesFolder.Text = "...";
+            this.btSelectImagesFolder.UseVisualStyleBackColor = true;
+            this.btSelectImagesFolder.Click += new System.EventHandler(this.btSelectImagesFolder_Click);
+            // 
+            // edImagesFolder
+            // 
+            this.edImagesFolder.Location = new System.Drawing.Point(27, 132);
+            this.edImagesFolder.Name = "edImagesFolder";
+            this.edImagesFolder.Size = new System.Drawing.Size(246, 20);
+            this.edImagesFolder.TabIndex = 126;
+            this.edImagesFolder.Text = "c:\\Samples\\pics_test\\";
+            // 
+            // rbImagesFolder
+            // 
+            this.rbImagesFolder.AutoSize = true;
+            this.rbImagesFolder.Location = new System.Drawing.Point(16, 109);
+            this.rbImagesFolder.Name = "rbImagesFolder";
+            this.rbImagesFolder.Size = new System.Drawing.Size(111, 17);
+            this.rbImagesFolder.TabIndex = 125;
+            this.rbImagesFolder.Text = "Images from folder";
+            this.rbImagesFolder.UseVisualStyleBackColor = true;
+            // 
+            // rbImagesPredefined
+            // 
+            this.rbImagesPredefined.AutoSize = true;
+            this.rbImagesPredefined.Checked = true;
+            this.rbImagesPredefined.Location = new System.Drawing.Point(16, 86);
+            this.rbImagesPredefined.Name = "rbImagesPredefined";
+            this.rbImagesPredefined.Size = new System.Drawing.Size(124, 17);
+            this.rbImagesPredefined.TabIndex = 124;
+            this.rbImagesPredefined.TabStop = true;
+            this.rbImagesPredefined.Text = "Predefined image set";
+            this.rbImagesPredefined.UseVisualStyleBackColor = true;
             // 
             // cbOutputFormat
             // 
@@ -305,7 +356,7 @@
             "MP4 v11",
             "Animated GIF",
             "Encrypted video"});
-            this.cbOutputFormat.Location = new System.Drawing.Point(16, 110);
+            this.cbOutputFormat.Location = new System.Drawing.Point(16, 220);
             this.cbOutputFormat.Name = "cbOutputFormat";
             this.cbOutputFormat.Size = new System.Drawing.Size(289, 21);
             this.cbOutputFormat.TabIndex = 123;
@@ -314,7 +365,7 @@
             // lbInfo
             // 
             this.lbInfo.AutoSize = true;
-            this.lbInfo.Location = new System.Drawing.Point(13, 142);
+            this.lbInfo.Location = new System.Drawing.Point(13, 252);
             this.lbInfo.Name = "lbInfo";
             this.lbInfo.Size = new System.Drawing.Size(267, 13);
             this.lbInfo.TabIndex = 62;
@@ -322,7 +373,7 @@
             // 
             // btConfigure
             // 
-            this.btConfigure.Location = new System.Drawing.Point(16, 164);
+            this.btConfigure.Location = new System.Drawing.Point(16, 274);
             this.btConfigure.Name = "btConfigure";
             this.btConfigure.Size = new System.Drawing.Size(61, 23);
             this.btConfigure.TabIndex = 61;
@@ -333,7 +384,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 94);
+            this.label9.Location = new System.Drawing.Point(13, 204);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(39, 13);
             this.label9.TabIndex = 59;
@@ -461,7 +512,7 @@
             this.tabPage5.Controls.Add(this.label5);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(322, 376);
             this.tabPage5.TabIndex = 2;
             this.tabPage5.Text = "Video processing";
@@ -663,7 +714,7 @@
             this.tabPage2.Controls.Add(this.cbDebugMode);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(322, 376);
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "Log";
@@ -720,6 +771,15 @@
             this.fontDialog1.Font = new System.Drawing.Font("Microsoft Sans Serif", 32F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fontDialog1.FontMustExist = true;
             this.fontDialog1.ShowColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 155);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(200, 13);
+            this.label6.TabIndex = 128;
+            this.label6.Text = "Resolution from resize option will be used";
             // 
             // Form1
             // 
@@ -810,6 +870,12 @@
         private System.Windows.Forms.ListBox lbLogos;
         private System.Windows.Forms.Button btImageLogoAdd;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.RadioButton rbImagesFolder;
+        private System.Windows.Forms.RadioButton rbImagesPredefined;
+        private System.Windows.Forms.Button btSelectImagesFolder;
+        private System.Windows.Forms.TextBox edImagesFolder;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label label6;
     }
 }
 

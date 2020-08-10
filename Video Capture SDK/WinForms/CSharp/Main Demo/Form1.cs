@@ -201,6 +201,8 @@ namespace VideoCapture_CSharp_Demo
 
             cbHLSMode.SelectedIndex = 0;
 
+            pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128);
+
             var genres = new List<string>();
             foreach (var genre in VideoCapture.Tags_GetDefaultVideoGenres())
             {
@@ -1122,9 +1124,6 @@ namespace VideoCapture_CSharp_Demo
 
             // Video effects GPU
             VideoCapture1.Video_Effects_GPU_Enabled = cbVideoEffectsGPUEnabled.Checked;
-            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
-                                                         ? VFGPUEffectsEngine.DirectX11
-                                                         : VFGPUEffectsEngine.DirectX9;
 
             // Virtual camera output
             VideoCapture1.Virtual_Camera_Output_Enabled = cbVirtualCamera.Checked;
@@ -1452,27 +1451,26 @@ namespace VideoCapture_CSharp_Demo
 
         private void ConfigureChromaKey()
         {
+            if (VideoCapture1.ChromaKey != null)
+            {
+                VideoCapture1.ChromaKey.Dispose();
+                VideoCapture1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
             if (cbChromaKeyEnabled.Checked)
             {
-                VideoCapture1.ChromaKey = new ChromaKeySettings
-                {
-                    ContrastHigh = tbChromaKeyContrastHigh.Value,
-                    ContrastLow = tbChromaKeyContrastLow.Value,
-                    ImageFilename = edChromaKeyImage.Text
-                };
-
-                if (rbChromaKeyGreen.Checked)
-                {
-                    VideoCapture1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.Checked)
-                {
-                    VideoCapture1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    VideoCapture1.ChromaKey.Color = VFChromaColor.Red;
-                }
+                VideoCapture1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+                                              {
+                                                  Smoothing = tbChromaKeySmoothing.Value / 1000f,
+                                                  ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000f,
+                                                  Color = pnChromaKeyColor.BackColor
+                                              };
             }
             else
             {
@@ -3940,27 +3938,12 @@ namespace VideoCapture_CSharp_Demo
             await VideoCapture1.MultiScreen_SetParametersAsync(2, stretch, cbFlipHorizontal3.Checked, cbFlipVertical3.Checked);
         }
 
-        private void tbChromaKeyContrastLow_Scroll(object sender, EventArgs e)
-        {
-            if (VideoCapture1.ChromaKey != null)
-            {
-                VideoCapture1.ChromaKey.ContrastLow = tbChromaKeyContrastLow.Value;
-            }
-        }
-
-        private void tbChromaKeyContrastHigh_Scroll(object sender, EventArgs e)
-        {
-            if (VideoCapture1.ChromaKey != null)
-            {
-                VideoCapture1.ChromaKey.ContrastHigh = tbChromaKeyContrastHigh.Value;
-            }
-        }
-
         private void btChromaKeySelectBGImage_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 edChromaKeyImage.Text = openFileDialog1.FileName;
+                ConfigureChromaKey();
             }
         }
 
@@ -6199,13 +6182,6 @@ namespace VideoCapture_CSharp_Demo
             lbScreenSourceWindowText.Text = e.Caption;
         }
 
-        private void cbVideoEffectsGPUDX11_CheckedChanged(object sender, EventArgs e)
-        {
-            VideoCapture1.Video_Effects_GPU_Engine = cbVideoEffectsGPUDX11.Checked
-                                                         ? VFGPUEffectsEngine.DirectX11
-                                                         : VFGPUEffectsEngine.DirectX9;
-        }
-
         private void tbGPUBlur_Scroll(object sender, EventArgs e)
         {
             IVFGPUVideoEffectBlur intf;
@@ -6224,6 +6200,25 @@ namespace VideoCapture_CSharp_Demo
                     intf.Value = tbGPUBlur.Value;
                     intf.Update();
                 }
+            }
+        }
+
+        private void tbChromaKeyThresholdSensitivity_Scroll(object sender, EventArgs e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void tbChromaKeySmoothing_Scroll(object sender, EventArgs e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void pnChromaKeyColor_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pnChromaKeyColor.BackColor = colorDialog1.Color;
+                ConfigureChromaKey();
             }
         }
     }

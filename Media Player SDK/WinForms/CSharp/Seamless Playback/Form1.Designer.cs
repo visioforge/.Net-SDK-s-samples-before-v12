@@ -339,7 +339,6 @@
             this.MediaPlayer1.TabIndex = 30;
             this.MediaPlayer1.Video_Effects_Enabled = false;
             this.MediaPlayer1.Video_Effects_GPU_Enabled = false;
-            this.MediaPlayer1.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             videoRendererSettingsWinForms1.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms1.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms1.Aspect_Ratio_Y = 0;
@@ -430,7 +429,6 @@
             this.MediaPlayer2.TabIndex = 33;
             this.MediaPlayer2.Video_Effects_Enabled = false;
             this.MediaPlayer2.Video_Effects_GPU_Enabled = false;
-            this.MediaPlayer2.Video_Effects_GPU_Engine = VisioForge.Types.VFGPUEffectsEngine.DirectX9;
             videoRendererSettingsWinForms2.Aspect_Ratio_Override = false;
             videoRendererSettingsWinForms2.Aspect_Ratio_X = 0;
             videoRendererSettingsWinForms2.Aspect_Ratio_Y = 0;

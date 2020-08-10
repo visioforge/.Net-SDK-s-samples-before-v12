@@ -1,14 +1,14 @@
 // ReSharper disable InconsistentNaming
 
-using VisioForge.Controls.UI;
-
 namespace VideoEdit_CS_Demo
 {
     using System;
     using System.Diagnostics;
     using System.Drawing;
+    using System.IO;
     using System.Windows.Forms;
 
+    using VisioForge.Controls.UI;
     using VisioForge.Controls.UI.WinForms;
     using VisioForge.Types;
 
@@ -69,6 +69,8 @@ namespace VideoEdit_CS_Demo
             cbVideoEncoder.SelectedIndex = 1;
             cbAudioSampleRate.SelectedIndex = 0;
             cbContainer.SelectedIndex = 0;
+
+            pnChromaKeyColor.BackColor = Color.FromArgb(128, 218, 128);
         }
 
         private void ConfigureObjectDetection()
@@ -307,25 +309,26 @@ namespace VideoEdit_CS_Demo
 
         private void ConfigureChromaKey()
         {
+            if (VideoEdit1.ChromaKey != null)
+            {
+                VideoEdit1.ChromaKey.Dispose();
+                VideoEdit1.ChromaKey = null;
+            }
+
+            if (!File.Exists(edChromaKeyImage.Text))
+            {
+                MessageBox.Show("Chroma-key background file doesn't exists.");
+                return;
+            }
+
             if (cbChromaKeyEnabled.Checked)
             {
-                VideoEdit1.ChromaKey = new ChromaKeySettings();
-                VideoEdit1.ChromaKey.ContrastHigh = tbChromaKeyContrastHigh.Value;
-                VideoEdit1.ChromaKey.ContrastLow = tbChromaKeyContrastLow.Value;
-                VideoEdit1.ChromaKey.ImageFilename = edChromaKeyImage.Text;
-
-                if (rbChromaKeyGreen.Checked)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Green;
-                }
-                else if (rbChromaKeyBlue.Checked)
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Blue;
-                }
-                else
-                {
-                    VideoEdit1.ChromaKey.Color = VFChromaColor.Red;
-                }
+                VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
+                                           {
+                                               Smoothing = tbChromaKeySmoothing.Value / 1000f,
+                                               ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000f,
+                                               Color = pnChromaKeyColor.BackColor
+                                           };
             }
             else
             {
@@ -358,7 +361,7 @@ namespace VideoEdit_CS_Demo
             Process.Start(startInfo);
         }
 
-        public delegate void AFErrorDelegate(string error);
+        private delegate void AFErrorDelegate(string error);
 
         private void AFErrorDelegateMethod(string error)
         {
@@ -370,14 +373,11 @@ namespace VideoEdit_CS_Demo
             BeginInvoke(new AFErrorDelegate(AFErrorDelegateMethod), e.Message);
         }
 
-        public delegate void ProgressDelegate(int progress);
+        private delegate void ProgressDelegate(int progress);
 
-        public void ProgressDelegateMethod(int progress)
+        private void ProgressDelegateMethod(int progress)
         {
-            // if (ProgressBar1.Value < progress)
-            // {
-                ProgressBar1.Value = progress;
-            // }
+            ProgressBar1.Value = progress;
         }
 
         private void VideoEdit1_OnProgress(object sender, ProgressEventArgs e)
@@ -385,9 +385,9 @@ namespace VideoEdit_CS_Demo
             BeginInvoke(new ProgressDelegate(ProgressDelegateMethod), e.Progress);
         }
 
-        public delegate void AFStopDelegate();
+        private delegate void AFStopDelegate();
 
-        public void AFStopDelegateMethod()
+        private void AFStopDelegateMethod()
         {
             ProgressBar1.Value = 0;
             VideoEdit1.Sources_Clear();
@@ -406,33 +406,18 @@ namespace VideoEdit_CS_Demo
             ConfigureObjectDetection();
         }
 
-        private void tbChromaKeyContrastLow_Scroll(object sender, EventArgs e)
-        {
-            if (VideoEdit1.ChromaKey != null)
-            {
-                VideoEdit1.ChromaKey.ContrastLow = tbChromaKeyContrastLow.Value;
-            }
-        }
-
-        private void tbChromaKeyContrastHigh_Scroll(object sender, EventArgs e)
-        {
-            if (VideoEdit1.ChromaKey != null)
-            {
-                VideoEdit1.ChromaKey.ContrastHigh = tbChromaKeyContrastHigh.Value;
-            }
-        }
-
         private void btChromaKeySelectBGImage_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 edChromaKeyImage.Text = openFileDialog1.FileName;
+                ConfigureChromaKey();
             }
         }
 
-        public delegate void MotionDelegate(MotionDetectionEventArgs e);
+        private delegate void MotionDelegate(MotionDetectionEventArgs e);
 
-        public void MotionDelegateMethod(MotionDetectionEventArgs e)
+        private void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
             foreach (byte b in e.Matrix)
@@ -449,9 +434,9 @@ namespace VideoEdit_CS_Demo
             BeginInvoke(new MotionDelegate(MotionDelegateMethod), e);
         }
 
-        public delegate void AFMotionDelegate(float level);
+        private delegate void AFMotionDelegate(float level);
 
-        public void AFMotionDelegateMethod(float level)
+        private void AFMotionDelegateMethod(float level)
         {
             pbAFMotionLevel.Value = (int)(level * 100);
         }
@@ -463,9 +448,9 @@ namespace VideoEdit_CS_Demo
 
         #region Barcode detector
 
-        public delegate void BarcodeDelegate(BarcodeEventArgs value);
+        private delegate void BarcodeDelegate(BarcodeEventArgs value);
 
-        public void BarcodeDelegateMethod(BarcodeEventArgs value)
+        private void BarcodeDelegateMethod(BarcodeEventArgs value)
         {
             edBarcode.Text = value.Value;
             edBarcodeMetadata.Text = string.Empty;
@@ -528,6 +513,25 @@ namespace VideoEdit_CS_Demo
             if (cbLicensing.Checked)
             {
                 mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
+            }
+        }
+
+        private void tbChromaKeyThresholdSensitivity_Scroll(object sender, EventArgs e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void tbChromaKeySmoothing_Scroll(object sender, EventArgs e)
+        {
+            ConfigureChromaKey();
+        }
+
+        private void pnChromaKeyColor_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pnChromaKeyColor.BackColor = colorDialog1.Color;
+                ConfigureChromaKey();
             }
         }
     }
