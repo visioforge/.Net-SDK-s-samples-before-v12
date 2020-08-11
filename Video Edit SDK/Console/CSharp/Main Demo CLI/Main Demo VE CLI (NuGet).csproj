@@ -10,8 +10,8 @@
     <AssemblyName>VE Main Demo CLI</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    
+    
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -77,22 +77,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.MP4.x64">
-<Version>12.0.45</Version>
+<Version>12.0.46</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.MP4.x86">
-<Version>12.0.45</Version>
+<Version>12.0.46</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.VideoEdit.x64">
-<Version>12.0.45</Version>
+<Version>12.0.46</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.VideoEdit.x86">
-<Version>12.0.45</Version>
+<Version>12.0.46</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.WebM.x86">
-<Version>12.0.45</Version>
+<Version>12.0.46</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.VideoEdit.TRIAL">
-<Version>12.0.45</Version>
+<Version>12.0.46</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
