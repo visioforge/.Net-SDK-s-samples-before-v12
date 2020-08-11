@@ -19,12 +19,6 @@ Imports VisioForge.Tools
 
 Public Class Form1
 
-    <DllImport("user32.dll", EntryPoint:="FindWindow", SetLastError:=True, CharSet:=CharSet.Unicode)>
-    Private Shared Function FindWindowByClass(
-     ByVal lpClassName As String,
-     ByVal zero As IntPtr) As IntPtr
-    End Function
-
     Dim mp4v11SettingsDialog As MFSettingsDialog
 
     Dim mpegTSSettingsDialog As MFSettingsDialog
@@ -4143,13 +4137,6 @@ Public Class Form1
             imgTagCover.Tag = openFileDialog2.FileName
 
         End If
-
-    End Sub
-
-    Private Sub linkLabel7_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel7.LinkClicked
-
-        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86)
-        Process.Start(startInfo)
 
     End Sub
 

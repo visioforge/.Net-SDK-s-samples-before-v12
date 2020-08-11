@@ -2565,18 +2565,6 @@ namespace Main_Demo
             }
         }
 
-        private void lbVLCRedist86_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
-            Process.Start(startInfo);
-        }
-
-        private void lbVLCRedist64_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64);
-            Process.Start(startInfo);
-        }
-
         private void btAudioChannelMapperClear_Click(object sender, RoutedEventArgs e)
         {
             audioChannelMapperItems.Clear();

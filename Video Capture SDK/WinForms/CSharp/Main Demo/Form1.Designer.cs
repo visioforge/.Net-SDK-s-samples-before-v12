@@ -798,7 +798,6 @@ namespace VideoCapture_CSharp_Demo
             this.label165 = new System.Windows.Forms.Label();
             this.cbIPCameraONVIF = new System.Windows.Forms.CheckBox();
             this.btShowIPCamDatabase = new System.Windows.Forms.Button();
-            this.linkLabel7 = new System.Windows.Forms.LinkLabel();
             this.cbIPDisconnect = new System.Windows.Forms.CheckBox();
             this.edIPForcedFramerateID = new System.Windows.Forms.TextBox();
             this.label344 = new System.Windows.Forms.Label();
@@ -9405,7 +9404,6 @@ namespace VideoCapture_CSharp_Demo
             this.tabPage144.Controls.Add(this.label165);
             this.tabPage144.Controls.Add(this.cbIPCameraONVIF);
             this.tabPage144.Controls.Add(this.btShowIPCamDatabase);
-            this.tabPage144.Controls.Add(this.linkLabel7);
             this.tabPage144.Controls.Add(this.cbIPDisconnect);
             this.tabPage144.Controls.Add(this.edIPForcedFramerateID);
             this.tabPage144.Controls.Add(this.label344);
@@ -9462,17 +9460,6 @@ namespace VideoCapture_CSharp_Demo
             this.btShowIPCamDatabase.Text = "Show IP cam database";
             this.btShowIPCamDatabase.UseVisualStyleBackColor = true;
             this.btShowIPCamDatabase.Click += new System.EventHandler(this.btShowIPCamDatabase_Click);
-            // 
-            // linkLabel7
-            // 
-            this.linkLabel7.AutoSize = true;
-            this.linkLabel7.Location = new System.Drawing.Point(10, 224);
-            this.linkLabel7.Name = "linkLabel7";
-            this.linkLabel7.Size = new System.Drawing.Size(264, 13);
-            this.linkLabel7.TabIndex = 76;
-            this.linkLabel7.TabStop = true;
-            this.linkLabel7.Text = "Please install VisioForge VLC redist to use VLC engine ";
-            this.linkLabel7.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel7_LinkClicked);
             // 
             // cbIPDisconnect
             // 
@@ -14334,7 +14321,6 @@ namespace VideoCapture_CSharp_Demo
         private System.Windows.Forms.TabControl tabControl15;
         private System.Windows.Forms.TabPage tabPage144;
         private System.Windows.Forms.Button btShowIPCamDatabase;
-        private System.Windows.Forms.LinkLabel linkLabel7;
         private System.Windows.Forms.CheckBox cbIPDisconnect;
         private System.Windows.Forms.TextBox edIPForcedFramerateID;
         private System.Windows.Forms.Label label344;

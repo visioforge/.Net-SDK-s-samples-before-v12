@@ -1,6 +1,3 @@
-using VisioForge.Controls.UI;
-using VisioForge.Controls.UI.Dialogs.VideoEffects;
-
 // ReSharper disable NotAccessedVariable
 // ReSharper disable InconsistentNaming
 // ReSharper disable InlineOutVariableDeclaration
@@ -13,9 +10,10 @@ namespace Media_Player_Demo
     using System.Drawing;
     using System.Globalization;
     using System.IO;
-    using System.Threading;
     using System.Windows.Forms;
 
+    using VisioForge.Controls.UI;
+    using VisioForge.Controls.UI.Dialogs.VideoEffects;
     using VisioForge.Controls.UI.WinForms;
     using VisioForge.Tools;
     using VisioForge.Tools.MediaInfo;
@@ -1676,6 +1674,7 @@ namespace Media_Player_Demo
             foreach (var form in multiscreenWindows)
             {
                 form.Close();
+
                 // form.Dispose();
             }
 
@@ -1710,7 +1709,7 @@ namespace Media_Player_Demo
             memoryFileStream = new FileStream(edFilenameOrURL.Text, FileMode.Open);
             ManagedIStream stream = new ManagedIStream(memoryFileStream);
 
-            // specifing settings
+            // specifying settings
             // MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
             MediaPlayer1.Source_Stream = stream;
             MediaPlayer1.Source_Stream_Size = memoryFileStream.Length;
@@ -2802,7 +2801,6 @@ namespace Media_Player_Demo
                                         {
                                             mmLog.Text += "LICENSING:" + Environment.NewLine + e.Message + Environment.NewLine;
                                         }));
-
         }
 
         private void btReadTags_Click(object sender, EventArgs e)
@@ -2827,12 +2825,6 @@ namespace Media_Player_Demo
         private void btReversePlaybackPrevFrame_Click(object sender, EventArgs e)
         {
             MediaPlayer1.ReversePlayback_PreviousFrame();
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
-            Process.Start(startInfo);
         }
 
         private void btAudioChannelMapperClear_Click(object sender, EventArgs e)
@@ -3286,12 +3278,6 @@ namespace Media_Player_Demo
                                     edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine;
                                     edTags.Text += e.Info.ToString();
                                 }));
-        }
-
-        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64);
-            Process.Start(startInfo);
         }
 
         private void btOSDClearLayer_Click(object sender, EventArgs e)

@@ -30,9 +30,6 @@
     <Reference Include="VisioForge.Controls.UI.NetCore">
       <HintPath>..\..\..\..\..\..\Redist\DotNetCore\VisioForge.Controls.UI.NetCore.dll</HintPath>
     </Reference>
-    <Reference Include="VisioForge.DirectX">
-      <HintPath>..\..\..\..\..\..\Redist\DotNetCore\VisioForge.DirectX.dll</HintPath>
-    </Reference>
     <Reference Include="VisioForge.MediaFramework.NetCore">
       <HintPath>..\..\..\..\..\..\Redist\DotNetCore\VisioForge.MediaFramework.NetCore.dll</HintPath>
     </Reference>

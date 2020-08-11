@@ -97,9 +97,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UIAutomationProvider" />
-    <Reference Include="VisioForge.DirectX, Version=2.6.3.0, Culture=neutral, PublicKeyToken=2f064561f42d5b6a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\VisioForge.DotNet.Core.TRIAL.12.0.47\lib\net45\VisioForge.DirectX.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -157,37 +154,37 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.Base.x64">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.Base.x86">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.FFMPEGDLL.x86">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.FFMPEGEXE.x64">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.FFMPEGEXE.x86">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.MP4.x64">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.MP4.x86">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.WebM.x86">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.XIPH.x64">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.Core.Redist.XIPH.x86">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
     <PackageReference Include="VisioForge.DotNet.VideoEdit.TRIAL">
-<Version>12.0.47</Version>
+<Version>12.0.48</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

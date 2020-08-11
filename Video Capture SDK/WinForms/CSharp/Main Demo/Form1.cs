@@ -15,7 +15,6 @@ namespace VideoCapture_CSharp_Demo
     using System.Globalization;
     using System.IO;
     using System.Linq;
-    using System.Runtime.InteropServices;
     using System.Windows.Forms;
 
     using VisioForge.Controls.UI;
@@ -1978,7 +1977,7 @@ namespace VideoCapture_CSharp_Demo
             speexSettingsDialog.SaveSettings(ref speexOutput);
         }
 
-        public void SetM4AOutput(ref VFM4AOutput m4aOutput)
+        private void SetM4AOutput(ref VFM4AOutput m4aOutput)
         {
             if (m4aSettingsDialog == null)
             {
@@ -3475,9 +3474,9 @@ namespace VideoCapture_CSharp_Demo
 
         #region Barcode detector
 
-        public delegate void BarcodeDelegate(BarcodeEventArgs value);
+        private delegate void BarcodeDelegate(BarcodeEventArgs value);
 
-        public void BarcodeDelegateMethod(BarcodeEventArgs value)
+        private void BarcodeDelegateMethod(BarcodeEventArgs value)
         {
             edBarcode.Text = value.Value;
             edBarcodeMetadata.Text = string.Empty;
@@ -3500,9 +3499,9 @@ namespace VideoCapture_CSharp_Demo
 
         #endregion
 
-        public delegate void MotionDelegate(MotionDetectionEventArgs e);
+        private delegate void MotionDelegate(MotionDetectionEventArgs e);
 
-        public void MotionDelegateMethod(MotionDetectionEventArgs e)
+        private void MotionDelegateMethod(MotionDetectionEventArgs e)
         {
             string s = string.Empty;
             int k = 0;
@@ -3996,9 +3995,9 @@ namespace VideoCapture_CSharp_Demo
 
         #region VU Meter
 
-        public delegate void VUDelegate(VUMeterEventArgs e);
+        private delegate void VUDelegate(VUMeterEventArgs e);
 
-        public void VUDelegateMethod(VUMeterEventArgs e)
+        private void VUDelegateMethod(VUMeterEventArgs e)
         {
             if (VideoCapture1.Status == VFVideoCaptureStatus.Free)
             {
@@ -4017,7 +4016,7 @@ namespace VideoCapture_CSharp_Demo
 
         private delegate void AFMotionDelegate(float level);
 
-        public void AFMotionDelegateMethod(float level)
+        private void AFMotionDelegateMethod(float level)
         {
             pbAFMotionLevel.Value = (int)(level * 100);
         }
@@ -4097,20 +4096,20 @@ namespace VideoCapture_CSharp_Demo
                 cbCCFocusRelative.Checked = (focus.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
 
-            var zoom = await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Zoom);
-            if (zoom != null)
+            var zoomRange = await VideoCapture1.Video_CaptureDevice_CameraControl_GetRangeAsync(VFCameraControlProperty.Zoom);
+            if (zoomRange != null)
             {
-                tbCCZoom.Minimum = zoom.Min;
-                tbCCZoom.Maximum = zoom.Max;
-                tbCCZoom.SmallChange = zoom.Step;
-                tbCCZoom.Value = zoom.Default;
-                lbCCZoomMin.Text = "Min: " + Convert.ToString(zoom.Min);
-                lbCCZoomMax.Text = "Max: " + Convert.ToString(zoom.Max);
-                lbCCZoomCurrent.Text = "Current: " + Convert.ToString(zoom.Default);
+                tbCCZoom.Minimum = zoomRange.Min;
+                tbCCZoom.Maximum = zoomRange.Max;
+                tbCCZoom.SmallChange = zoomRange.Step;
+                tbCCZoom.Value = zoomRange.Default;
+                lbCCZoomMin.Text = "Min: " + Convert.ToString(zoomRange.Min);
+                lbCCZoomMax.Text = "Max: " + Convert.ToString(zoomRange.Max);
+                lbCCZoomCurrent.Text = "Current: " + Convert.ToString(zoomRange.Default);
 
-                cbCCZoomManual.Checked = (zoom.Flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
-                cbCCZoomAuto.Checked = (zoom.Flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
-                cbCCZoomRelative.Checked = (zoom.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
+                cbCCZoomManual.Checked = (zoomRange.Flags & VFCameraControlFlags.Manual) == VFCameraControlFlags.Manual;
+                cbCCZoomAuto.Checked = (zoomRange.Flags & VFCameraControlFlags.Auto) == VFCameraControlFlags.Auto;
+                cbCCZoomRelative.Checked = (zoomRange.Flags & VFCameraControlFlags.Relative) == VFCameraControlFlags.Relative;
             }
         }
 
@@ -4488,9 +4487,9 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke(new FaceDelegate(FaceDelegateMethod), e);
         }
 
-        public delegate void FaceDelegate(AFFaceDetectionEventArgs e);
+        private delegate void FaceDelegate(AFFaceDetectionEventArgs e);
 
-        public void FaceDelegateMethod(AFFaceDetectionEventArgs e)
+        private void FaceDelegateMethod(AFFaceDetectionEventArgs e)
         {
             edFaceTrackingFaces.Text = string.Empty;
 
@@ -4605,9 +4604,9 @@ namespace VideoCapture_CSharp_Demo
             BeginInvoke(new NetworkStopDelegate(NetworkStopDelegateMethod));
         }
 
-        public delegate void NetworkStopDelegate();
+        private delegate void NetworkStopDelegate();
 
-        public async void NetworkStopDelegateMethod()
+        private async void NetworkStopDelegateMethod()
         {
             await VideoCapture1.StopAsync();
 
@@ -5018,12 +5017,6 @@ namespace VideoCapture_CSharp_Demo
 
                 cbDecklinkCaptureVideoFormat.SelectedIndex = 0;
             }
-        }
-
-        private void linkLabel7_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
-            Process.Start(startInfo);
         }
 
         private void FFMPEGDownloadLinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

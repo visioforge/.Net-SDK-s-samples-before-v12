@@ -82,10 +82,6 @@ Partial Class Form1
         Me.rbGPUDXVACopyBack = New System.Windows.Forms.RadioButton()
         Me.rbGPUIntel = New System.Windows.Forms.RadioButton()
         Me.rbGPUNVidia = New System.Windows.Forms.RadioButton()
-        Me.groupBox5 = New System.Windows.Forms.GroupBox()
-        Me.linkLabel3 = New System.Windows.Forms.LinkLabel()
-        Me.linkLabel2 = New System.Windows.Forms.LinkLabel()
-        Me.label20 = New System.Windows.Forms.Label()
         Me.tabPage1 = New System.Windows.Forms.TabPage()
         Me.cbUseLibMediaInfo = New System.Windows.Forms.CheckBox()
         Me.btReadInfo = New System.Windows.Forms.Button()
@@ -626,7 +622,6 @@ Partial Class Form1
         Me.tabControl1.SuspendLayout
         Me.TabPage20.SuspendLayout
         Me.groupBox6.SuspendLayout
-        Me.groupBox5.SuspendLayout
         Me.tabPage1.SuspendLayout
         Me.tabControl2.SuspendLayout
         Me.tabPage6.SuspendLayout
@@ -1259,7 +1254,6 @@ Partial Class Form1
         'TabPage20
         '
         Me.TabPage20.Controls.Add(Me.groupBox6)
-        Me.TabPage20.Controls.Add(Me.groupBox5)
         Me.TabPage20.Location = New System.Drawing.Point(4, 22)
         Me.TabPage20.Name = "TabPage20"
         Me.TabPage20.Padding = New System.Windows.Forms.Padding(3)
@@ -1275,7 +1269,7 @@ Partial Class Form1
         Me.groupBox6.Controls.Add(Me.rbGPUDXVACopyBack)
         Me.groupBox6.Controls.Add(Me.rbGPUIntel)
         Me.groupBox6.Controls.Add(Me.rbGPUNVidia)
-        Me.groupBox6.Location = New System.Drawing.Point(10, 93)
+        Me.groupBox6.Location = New System.Drawing.Point(6, 12)
         Me.groupBox6.Name = "groupBox6"
         Me.groupBox6.Size = New System.Drawing.Size(280, 108)
         Me.groupBox6.TabIndex = 3
@@ -1333,47 +1327,6 @@ Partial Class Form1
         Me.rbGPUNVidia.TabIndex = 0
         Me.rbGPUNVidia.Text = "nVidia CUVID"
         Me.rbGPUNVidia.UseVisualStyleBackColor = true
-        '
-        'groupBox5
-        '
-        Me.groupBox5.Controls.Add(Me.linkLabel3)
-        Me.groupBox5.Controls.Add(Me.linkLabel2)
-        Me.groupBox5.Controls.Add(Me.label20)
-        Me.groupBox5.Location = New System.Drawing.Point(10, 10)
-        Me.groupBox5.Name = "groupBox5"
-        Me.groupBox5.Size = New System.Drawing.Size(280, 77)
-        Me.groupBox5.TabIndex = 2
-        Me.groupBox5.TabStop = false
-        Me.groupBox5.Text = "VLC"
-        '
-        'linkLabel3
-        '
-        Me.linkLabel3.AutoSize = true
-        Me.linkLabel3.Location = New System.Drawing.Point(68, 50)
-        Me.linkLabel3.Name = "linkLabel3"
-        Me.linkLabel3.Size = New System.Drawing.Size(52, 13)
-        Me.linkLabel3.TabIndex = 3
-        Me.linkLabel3.TabStop = true
-        Me.linkLabel3.Text = "x64 redist"
-        '
-        'linkLabel2
-        '
-        Me.linkLabel2.AutoSize = true
-        Me.linkLabel2.Location = New System.Drawing.Point(10, 50)
-        Me.linkLabel2.Name = "linkLabel2"
-        Me.linkLabel2.Size = New System.Drawing.Size(52, 13)
-        Me.linkLabel2.TabIndex = 2
-        Me.linkLabel2.TabStop = true
-        Me.linkLabel2.Text = "x86 redist"
-        '
-        'label20
-        '
-        Me.label20.AutoSize = true
-        Me.label20.Location = New System.Drawing.Point(10, 21)
-        Me.label20.Name = "label20"
-        Me.label20.Size = New System.Drawing.Size(264, 13)
-        Me.label20.TabIndex = 0
-        Me.label20.Text = "Please install VisioForge VLC redist to use VLC engine "
         '
         'tabPage1
         '
@@ -6909,8 +6862,6 @@ Partial Class Form1
         Me.TabPage20.ResumeLayout(false)
         Me.groupBox6.ResumeLayout(false)
         Me.groupBox6.PerformLayout
-        Me.groupBox5.ResumeLayout(false)
-        Me.groupBox5.PerformLayout
         Me.tabPage1.ResumeLayout(false)
         Me.tabPage1.PerformLayout
         Me.tabControl2.ResumeLayout(false)
@@ -7659,10 +7610,6 @@ End Sub
     Private WithEvents rbGPUDXVACopyBack As RadioButton
     Private WithEvents rbGPUIntel As RadioButton
     Private WithEvents rbGPUNVidia As RadioButton
-    Private WithEvents groupBox5 As GroupBox
-    Private WithEvents linkLabel3 As LinkLabel
-    Private WithEvents linkLabel2 As LinkLabel
-    Private WithEvents label20 As Label
     Private WithEvents cbOSDEnabled As CheckBox
     Private WithEvents btOSDClearLayer As Button
     Private WithEvents cbVideoEffectsGPUEnabled As CheckBox

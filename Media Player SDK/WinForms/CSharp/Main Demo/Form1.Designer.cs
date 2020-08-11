@@ -41,10 +41,6 @@ namespace Media_Player_Demo
             this.rbGPUDXVACopyBack = new System.Windows.Forms.RadioButton();
             this.rbGPUIntel = new System.Windows.Forms.RadioButton();
             this.rbGPUNVidia = new System.Windows.Forms.RadioButton();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.label20 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cbUseLibMediaInfo = new System.Windows.Forms.CheckBox();
             this.btReadInfo = new System.Windows.Forms.Button();
@@ -626,7 +622,6 @@ namespace Media_Player_Demo
             this.tabControl1.SuspendLayout();
             this.tabPage20.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage6.SuspendLayout();
@@ -802,7 +797,6 @@ namespace Media_Player_Demo
             // tabPage20
             // 
             this.tabPage20.Controls.Add(this.groupBox6);
-            this.tabPage20.Controls.Add(this.groupBox5);
             this.tabPage20.Location = new System.Drawing.Point(4, 22);
             this.tabPage20.Name = "tabPage20";
             this.tabPage20.Padding = new System.Windows.Forms.Padding(3);
@@ -818,7 +812,7 @@ namespace Media_Player_Demo
             this.groupBox6.Controls.Add(this.rbGPUDXVACopyBack);
             this.groupBox6.Controls.Add(this.rbGPUIntel);
             this.groupBox6.Controls.Add(this.rbGPUNVidia);
-            this.groupBox6.Location = new System.Drawing.Point(10, 93);
+            this.groupBox6.Location = new System.Drawing.Point(6, 6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(280, 108);
             this.groupBox6.TabIndex = 1;
@@ -876,49 +870,6 @@ namespace Media_Player_Demo
             this.rbGPUNVidia.TabIndex = 0;
             this.rbGPUNVidia.Text = "nVidia CUVID";
             this.rbGPUNVidia.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.linkLabel3);
-            this.groupBox5.Controls.Add(this.linkLabel2);
-            this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Location = new System.Drawing.Point(10, 10);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(280, 77);
-            this.groupBox5.TabIndex = 0;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "VLC";
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(68, 50);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(52, 13);
-            this.linkLabel3.TabIndex = 3;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "x64 redist";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(10, 50);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(52, 13);
-            this.linkLabel2.TabIndex = 2;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "x86 redist";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(10, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(264, 13);
-            this.label20.TabIndex = 0;
-            this.label20.Text = "Please install VisioForge VLC redist to use VLC engine ";
             // 
             // tabPage1
             // 
@@ -7223,8 +7174,6 @@ namespace Media_Player_Demo
             this.tabPage20.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabControl2.ResumeLayout(false);
@@ -8004,10 +7953,6 @@ namespace Media_Player_Demo
         private System.Windows.Forms.CheckBox cbFlipX;
         private System.Windows.Forms.CheckBox cbTelemetry;
         private System.Windows.Forms.TabPage tabPage20;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.LinkLabel linkLabel3;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.RadioButton rbGPUDirect3D;
         private System.Windows.Forms.RadioButton rbGPUDXVANative;

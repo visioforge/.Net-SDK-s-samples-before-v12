@@ -1161,7 +1161,6 @@
                                     <ComboBoxItem Content="RTSP Low Latency UDP"/>
                                     <ComboBoxItem Content="NDI" />
                                 </ComboBox>
-                                <Label x:Name="lbVLCRedist" Content="Please install VisioForge VLC redist to use VLC engine " HorizontalAlignment="Left" Margin="185,233,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist_MouseLeftButtonDown"/>
                                 <Button x:Name="btShowIPCamDatabase" Content="Show IP cam database" HorizontalAlignment="Left" Margin="10,236,0,0" VerticalAlignment="Top" Width="148" Click="btShowIPCamDatabase_Click"/>
                                 <CheckBox x:Name="cbIPCameraONVIF" Content="ONVIF camera" HorizontalAlignment="Left" Margin="275,48,0,0" VerticalAlignment="Top"/>
                                 <CheckBox x:Name="cbIPDisconnect" Content="Notify if connection lost" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top"/>

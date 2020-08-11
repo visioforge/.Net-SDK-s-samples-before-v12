@@ -153,12 +153,6 @@ namespace Main_Demo
             VideoCapture1.Audio_Effects_Add(-1, VFAudioEffectType.TrueBass, cbAudTrueBassEnabled.IsChecked == true, TimeSpan.Zero, TimeSpan.Zero);
         }
 
-        private void lbVLCRedist_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            var startInfo = new ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86);
-            Process.Start(startInfo);
-        }
-
         private void Form1_Load(object sender, RoutedEventArgs e)
         {
             Title += " (SDK v" + VideoCapture1.SDK_Version + ", " + VideoCapture1.SDK_State + ")";
@@ -1064,7 +1058,7 @@ namespace Main_Demo
                     cbPIPDevices.Items.Insert(0, "Main source");
                 }
             }
-           
+
             VideoCapture1.Debug_Dir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\VisioForge\\";
             VideoCapture1.VLC_Path = Environment.GetEnvironmentVariable("VFVLCPATH");
 
@@ -2132,11 +2126,11 @@ namespace Main_Demo
             if (cbChromaKeyEnabled.IsChecked == true)
             {
                 VideoCapture1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
-                                              {
-                                                  Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
-                                                  ThresholdSensitivity = (float)(tbChromaKeyThresholdSensitivity.Value / 1000f),
-                                                  Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color)
-                                              };
+                {
+                    Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
+                    ThresholdSensitivity = (float)(tbChromaKeyThresholdSensitivity.Value / 1000f),
+                    Color = ColorConv(((SolidColorBrush)pnChromaKeyColor.Fill).Color)
+                };
             }
             else
             {
@@ -2624,12 +2618,12 @@ namespace Main_Demo
 
         private async void btDVPause_Click(object sender, RoutedEventArgs e)
         {
-            await  VideoCapture1.DV_SendCommandAsync(VFDVCommand.Pause);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Pause);
         }
 
         private async void btDVRewind_Click(object sender, RoutedEventArgs e)
         {
-            await  VideoCapture1.DV_SendCommandAsync(VFDVCommand.Rew);
+            await VideoCapture1.DV_SendCommandAsync(VFDVCommand.Rew);
         }
 
         private async void btDVPlay_Click(object sender, RoutedEventArgs e)
@@ -3123,21 +3117,21 @@ namespace Main_Demo
             if (cbMotDetEnabled.IsChecked == true)
             {
                 VideoCapture1.Motion_Detection = new MotionDetectionSettings
-                                                     {
-                                                         Enabled = cbMotDetEnabled.IsChecked == true,
-                                                         Compare_Red = cbCompareRed.IsChecked == true,
-                                                         Compare_Green = cbCompareGreen.IsChecked == true,
-                                                         Compare_Blue = cbCompareBlue.IsChecked == true,
-                                                         Compare_Greyscale = cbCompareGreyscale.IsChecked == true,
-                                                         Highlight_Color = (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
-                                                         Highlight_Enabled = cbMotDetHLEnabled.IsChecked == true,
-                                                         Highlight_Threshold = (int)tbMotDetHLThreshold.Value,
-                                                         FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
-                                                         Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
-                                                         Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
-                                                         DropFrames_Enabled = cbMotDetDropFramesEnabled.IsChecked == true,
-                                                         DropFrames_Threshold = (int)tbMotDetDropFramesThreshold.Value
-                                                     };
+                {
+                    Enabled = cbMotDetEnabled.IsChecked == true,
+                    Compare_Red = cbCompareRed.IsChecked == true,
+                    Compare_Green = cbCompareGreen.IsChecked == true,
+                    Compare_Blue = cbCompareBlue.IsChecked == true,
+                    Compare_Greyscale = cbCompareGreyscale.IsChecked == true,
+                    Highlight_Color = (VFMotionCHLColor)cbMotDetHLColor.SelectedIndex,
+                    Highlight_Enabled = cbMotDetHLEnabled.IsChecked == true,
+                    Highlight_Threshold = (int)tbMotDetHLThreshold.Value,
+                    FrameInterval = Convert.ToInt32(edMotDetFrameInterval.Text),
+                    Matrix_Height = Convert.ToInt32(edMotDetMatrixHeight.Text),
+                    Matrix_Width = Convert.ToInt32(edMotDetMatrixWidth.Text),
+                    DropFrames_Enabled = cbMotDetDropFramesEnabled.IsChecked == true,
+                    DropFrames_Threshold = (int)tbMotDetDropFramesThreshold.Value
+                };
                 VideoCapture1.MotionDetection_Update();
             }
             else
@@ -3507,7 +3501,7 @@ namespace Main_Demo
                 VideoCapture1.Video_Renderer.StretchMode = VFVideoRendererStretchMode.Letterbox;
             }
 
-           await VideoCapture1.Video_Renderer_UpdateAsync();
+            await VideoCapture1.Video_Renderer_UpdateAsync();
         }
 
         private void cbMPEGEncoder_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -3740,7 +3734,7 @@ namespace Main_Demo
             VideoCapture1.Barcode_Reader_Enabled = true;
         }
 
-#region Barcode detector
+        #region Barcode detector
 
         private delegate void BarcodeDelegate(BarcodeEventArgs value);
 
@@ -3761,7 +3755,7 @@ namespace Main_Demo
             Dispatcher?.BeginInvoke(new BarcodeDelegate(BarcodeDelegateMethod), e);
         }
 
-#endregion
+        #endregion
 
         private void btAddAdditionalAudioSource_Click(object sender, RoutedEventArgs e)
         {
@@ -3876,7 +3870,7 @@ namespace Main_Demo
             Process.Start(startInfo);
         }
 
-#region Full screen
+        #region Full screen
 
         private bool fullScreen;
 
@@ -3922,13 +3916,13 @@ namespace Main_Demo
                 Width = Screen.AllScreens[0].Bounds.Width;
                 Height = Screen.AllScreens[0].Bounds.Height;
                 Margin = new Thickness(0);
-                
+
                 // resizing control
-                VideoCapture1.Margin = new Thickness(0,0,0,0);
+                VideoCapture1.Margin = new Thickness(0, 0, 0, 0);
                 VideoCapture1.Width = Screen.AllScreens[0].Bounds.Width;
                 VideoCapture1.Height = Screen.AllScreens[0].Bounds.Height;
-                
-               await VideoCapture1.Video_Renderer_UpdateAsync();
+
+                await VideoCapture1.Video_Renderer_UpdateAsync();
             }
             else
             {
@@ -3955,7 +3949,7 @@ namespace Main_Demo
                 Topmost = false;
                 ResizeMode = ResizeMode.CanResize;
 
-               await VideoCapture1.Video_Renderer_UpdateAsync();
+                await VideoCapture1.Video_Renderer_UpdateAsync();
             }
         }
 
@@ -3967,9 +3961,9 @@ namespace Main_Demo
             }
         }
 
-#endregion
+        #endregion
 
-#region VU meter Pro
+        #region VU meter Pro
 
         private delegate void AudioVUMeterProMaximumCalculatedDelegate(VUMeterMaxSampleEventArgs e);
 
@@ -4028,7 +4022,7 @@ namespace Main_Demo
             volumeMeter2.Boost = (float)tbVUMeterBoost.Value / 10.0F;
         }
 
-#endregion
+        #endregion
 
         private void cbLiveRotation_Checked(object sender, RoutedEventArgs e)
         {
@@ -4448,7 +4442,7 @@ namespace Main_Demo
 
         private void Log(string txt)
         {
-            Dispatcher.Invoke((Action)(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; }));
+            Dispatcher.Invoke(() => { mmLog.Text = mmLog.Text + txt + Environment.NewLine; });
         }
 
         private void VideoCapture1_OnError(object sender, ErrorsEventArgs e)

@@ -10,14 +10,7 @@
         <TabControl Height="567" HorizontalAlignment="Left" Margin="10,10,0,0" x:Name="tabControl1" VerticalAlignment="Top" Width="382">
             <TabItem Header="Source">
                 <Grid>
-                    <GroupBox x:Name="groupBox3" Header="VLC" HorizontalAlignment="Left" Height="94" Margin="10,10,0,0" VerticalAlignment="Top" Width="356">
-                        <Grid>
-                            <Label Content="Please install VisioForge VLC redist to use VLC engine" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
-                            <Label x:Name="lbVLCRedistx86" Content="x86 redist" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist86_MouseLeftButtonDown"/>
-                            <Label x:Name="lbVLCRedistx64" Content="x64 redist" HorizontalAlignment="Left" Margin="91,41,0,0" VerticalAlignment="Top" Foreground="#FF003AFF" FontWeight="Bold" MouseLeftButtonDown="lbVLCRedist64_MouseLeftButtonDown"/>
-                        </Grid>
-                    </GroupBox>
-                    <GroupBox Header="GPU decoder" HorizontalAlignment="Left" Height="205" Margin="10,119,0,0" VerticalAlignment="Top" Width="356">
+                    <GroupBox Header="GPU decoder" HorizontalAlignment="Left" Height="105" Margin="10,10,0,0" VerticalAlignment="Top" Width="356">
                         <Grid>
                             <RadioButton x:Name="rbGPUNVidia" Content="nVidia CUVID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                             <RadioButton x:Name="rbGPUIntel" Content="Intel QuickSync" HorizontalAlignment="Left" Margin="151,13,0,0" VerticalAlignment="Top"/>

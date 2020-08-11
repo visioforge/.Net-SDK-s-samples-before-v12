@@ -544,7 +544,7 @@ Public Class Form1
         memoryFileStream = New FileStream(edFilenameOrURL.Text, FileMode.Open)
         Dim stream As ManagedIStream = New ManagedIStream(memoryFileStream)
 
-        ' specifing settings
+        ' specifying settings
         ' MediaPlayer1.Source_Mode = VFMediaPlayerSource.Memory_DS;
         MediaPlayer1.Source_Stream = stream
         MediaPlayer1.Source_Stream_Size = memoryFileStream.Length
@@ -2680,13 +2680,6 @@ Public Class Form1
 
     End Sub
 
-    Private Sub linkLabel2_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel2.LinkClicked
-
-        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx86)
-        Process.Start(startInfo)
-
-    End Sub
-
     Private Sub btAudioChannelMapperClear_Click(sender As Object, e As EventArgs) Handles btAudioChannelMapperClear.Click
 
         audioChannelMapperItems.Clear()
@@ -3006,11 +2999,6 @@ Public Class Form1
                         edTags.Text += "MIDI Info from OnMIDIFileInfo event:" + Environment.NewLine
                         edTags.Text += e.Info.ToString()
                     End Sub)
-    End Sub
-
-    Private Sub linkLabel3_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkLabel3.LinkClicked
-        Dim startInfo = New ProcessStartInfo("explorer.exe", HelpLinks.RedistVLCx64)
-        Process.Start(startInfo)
     End Sub
 
     Private Sub btOSDClearLayer_Click(sender As Object, e As EventArgs) Handles btOSDClearLayer.Click

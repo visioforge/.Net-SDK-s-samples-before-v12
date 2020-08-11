@@ -260,7 +260,6 @@ Partial Class Form1
         Me.label165 = New System.Windows.Forms.Label()
         Me.cbIPCameraONVIF = New System.Windows.Forms.CheckBox()
         Me.btShowIPCamDatabase = New System.Windows.Forms.Button()
-        Me.linkLabel7 = New System.Windows.Forms.LinkLabel()
         Me.cbIPDisconnect = New System.Windows.Forms.CheckBox()
         Me.edIPForcedFramerateID = New System.Windows.Forms.TextBox()
         Me.label344 = New System.Windows.Forms.Label()
@@ -3651,7 +3650,6 @@ Partial Class Form1
         Me.tabPage144.Controls.Add(Me.label165)
         Me.tabPage144.Controls.Add(Me.cbIPCameraONVIF)
         Me.tabPage144.Controls.Add(Me.btShowIPCamDatabase)
-        Me.tabPage144.Controls.Add(Me.linkLabel7)
         Me.tabPage144.Controls.Add(Me.cbIPDisconnect)
         Me.tabPage144.Controls.Add(Me.edIPForcedFramerateID)
         Me.tabPage144.Controls.Add(Me.label344)
@@ -3707,16 +3705,6 @@ Partial Class Form1
         Me.btShowIPCamDatabase.TabIndex = 77
         Me.btShowIPCamDatabase.Text = "Show IP cam database"
         Me.btShowIPCamDatabase.UseVisualStyleBackColor = true
-        '
-        'linkLabel7
-        '
-        Me.linkLabel7.AutoSize = true
-        Me.linkLabel7.Location = New System.Drawing.Point(13, 214)
-        Me.linkLabel7.Name = "linkLabel7"
-        Me.linkLabel7.Size = New System.Drawing.Size(264, 13)
-        Me.linkLabel7.TabIndex = 76
-        Me.linkLabel7.TabStop = true
-        Me.linkLabel7.Text = "Please install VisioForge VLC redist to use VLC engine "
         '
         'cbIPDisconnect
         '
@@ -13878,7 +13866,6 @@ End Sub
     Private WithEvents tabPage144 As TabPage
     Private WithEvents cbIPCameraONVIF As CheckBox
     Private WithEvents btShowIPCamDatabase As Button
-    Private WithEvents linkLabel7 As LinkLabel
     Private WithEvents cbIPDisconnect As CheckBox
     Private WithEvents edIPForcedFramerateID As TextBox
     Private WithEvents label344 As Label
