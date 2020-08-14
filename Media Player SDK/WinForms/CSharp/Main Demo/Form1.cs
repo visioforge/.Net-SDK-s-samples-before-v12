@@ -792,14 +792,14 @@ namespace Media_Player_Demo
                 MediaPlayer1.ChromaKey = null;
             }
 
-            if (!File.Exists(edChromaKeyImage.Text))
-            {
-                MessageBox.Show("Chroma-key background file doesn't exists.");
-                return;
-            }
-
             if (cbChromaKeyEnabled.Checked)
             {
+                if (!File.Exists(edChromaKeyImage.Text))
+                {
+                    MessageBox.Show("Chroma-key background file doesn't exists.");
+                    return;
+                }
+
                 MediaPlayer1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                 {
                     Smoothing = tbChromaKeySmoothing.Value / 1000f,
@@ -3162,7 +3162,7 @@ namespace Media_Player_Demo
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(MediaPlayer1.Core);
+            var name = dlg.GenerateNewEffectName(MediaPlayer1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             MediaPlayer1.Video_Effects_Add(effect);
@@ -3199,7 +3199,7 @@ namespace Media_Player_Demo
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(MediaPlayer1.Core);
+            var name = dlg.GenerateNewEffectName(MediaPlayer1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             MediaPlayer1.Video_Effects_Add(effect);

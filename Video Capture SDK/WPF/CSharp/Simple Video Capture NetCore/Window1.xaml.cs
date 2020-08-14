@@ -367,7 +367,7 @@ namespace Simple_Video_Capture
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -536,7 +536,7 @@ namespace Simple_Video_Capture
             }
             else
             {
-                VideoCapture1.Mode = VFVideoCaptureMode.ScreenCapture;
+                VideoCapture1.Mode = VFVideoCaptureMode.VideoCapture;
 
                 VideoCapture1.Output_Filename = edOutput.Text;
 
@@ -815,7 +815,7 @@ namespace Simple_Video_Capture
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -1182,7 +1182,7 @@ namespace Simple_Video_Capture
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -1197,7 +1197,7 @@ namespace Simple_Video_Capture
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);

@@ -146,7 +146,7 @@ namespace Video_Join_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -203,7 +203,7 @@ namespace Video_Join_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
                         }
 
                         wmvSettingsDialog.WMA = true;
@@ -677,7 +677,7 @@ namespace Video_Join_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -688,7 +688,7 @@ namespace Video_Join_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
             }
 
             wmvSettingsDialog.WMA = true;

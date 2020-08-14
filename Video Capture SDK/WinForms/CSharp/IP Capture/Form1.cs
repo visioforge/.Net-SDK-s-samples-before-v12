@@ -634,7 +634,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -869,7 +869,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -1013,7 +1013,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -1028,7 +1028,7 @@ namespace VisioForge_SDK_4_IP_Camera_CSharp_Demo
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);

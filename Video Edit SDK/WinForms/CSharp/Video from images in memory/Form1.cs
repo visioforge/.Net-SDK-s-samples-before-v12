@@ -105,7 +105,7 @@ namespace Video_From_Images
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -596,7 +596,7 @@ namespace Video_From_Images
                 {
                     if (wmvSettingsDialog == null)
                     {
-                        wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                        wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
                     }
 
                     wmvSettingsDialog.WMA = false;
@@ -699,7 +699,7 @@ namespace Video_From_Images
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoEdit1.Core);
+            var name = dlg.GenerateNewEffectName(VideoEdit1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoEdit1.Video_Effects_Add(effect);
@@ -714,7 +714,7 @@ namespace Video_From_Images
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoEdit1.Core);
+            var name = dlg.GenerateNewEffectName(VideoEdit1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoEdit1.Video_Effects_Add(effect);

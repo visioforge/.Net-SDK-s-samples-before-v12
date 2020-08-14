@@ -827,7 +827,7 @@ namespace Main_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -838,7 +838,7 @@ namespace Main_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = true;
@@ -2117,14 +2117,14 @@ namespace Main_Demo
                 VideoCapture1.ChromaKey = null;
             }
 
-            if (!File.Exists(edChromaKeyImage.Text))
-            {
-                MessageBox.Show("Chroma-key background file doesn't exists.");
-                return;
-            }
-
             if (cbChromaKeyEnabled.IsChecked == true)
             {
+                if (!File.Exists(edChromaKeyImage.Text))
+                {
+                    MessageBox.Show("Chroma-key background file doesn't exists.");
+                    return;
+                }
+
                 VideoCapture1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                 {
                     Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
@@ -5221,7 +5221,7 @@ namespace Main_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -5278,7 +5278,7 @@ namespace Main_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = true;
@@ -5474,7 +5474,7 @@ namespace Main_Demo
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -5511,7 +5511,7 @@ namespace Main_Demo
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -5777,22 +5777,22 @@ namespace Main_Demo
             }
         }
 
-        private async void cbAdjBrightnessAuto_Click(object sender, RoutedEventArgs e)
+        private void cbAdjBrightnessAuto_Click(object sender, RoutedEventArgs e)
         {
             tbAdjBrightness_Scroll(null, null);
         }
 
-        private async void cbAdjHueAuto_Click(object sender, RoutedEventArgs e)
+        private void cbAdjHueAuto_Click(object sender, RoutedEventArgs e)
         {
             tbAdjHue_Scroll(null, null);
         }
 
-        private async void cbAdjContrastAuto_Click(object sender, RoutedEventArgs e)
+        private void cbAdjContrastAuto_Click(object sender, RoutedEventArgs e)
         {
             tbAdjContrast_Scroll(null, null);
         }
 
-        private async void cbAdjSaturationAuto_Click(object sender, RoutedEventArgs e)
+        private void cbAdjSaturationAuto_Click(object sender, RoutedEventArgs e)
         {
             tbAdjSaturation_Scroll(null, null);
         }

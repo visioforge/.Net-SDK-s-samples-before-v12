@@ -1228,13 +1228,13 @@ Public Class Form1
             VideoCapture1.ChromaKey.Dispose()
             VideoCapture1.ChromaKey = Nothing
         End If
-
-        If (Not File.Exists(edChromaKeyImage.Text)) Then
-            MessageBox.Show("Chroma-key background file doesn't exists.")
-            Return
-        End If
-
+        
         If (cbChromaKeyEnabled.Checked) Then
+            If (Not File.Exists(edChromaKeyImage.Text)) Then
+                MessageBox.Show("Chroma-key background file doesn't exists.")
+                Return
+            End If
+
             VideoCapture1.ChromaKey = New ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
             VideoCapture1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
             VideoCapture1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F
@@ -1531,7 +1531,7 @@ Public Class Form1
 
     Private Sub SetWMVOutput(ByRef wmvOutput As VFWMVOutput)
         If (wmvSettingsDialog Is Nothing) Then
-            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1)
         End If
 
         wmvSettingsDialog.WMA = False
@@ -1540,7 +1540,7 @@ Public Class Form1
 
     Private Sub SetWMAOutput(ByRef wmaOutput As VFWMAOutput)
         If (wmvSettingsDialog Is Nothing) Then
-            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1)
         End If
 
         wmvSettingsDialog.WMA = True
@@ -4696,7 +4696,7 @@ Public Class Form1
                 aviSettingsDialog.ShowDialog(Me)
             Case 2
                 If (wmvSettingsDialog Is Nothing) Then
-                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1)
                 End If
 
                 wmvSettingsDialog.WMA = False
@@ -4727,7 +4727,7 @@ Public Class Form1
                 m4aSettingsDialog.ShowDialog(Me)
             Case 7
                 If (wmvSettingsDialog Is Nothing) Then
-                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1)
                 End If
 
                 wmvSettingsDialog.WMA = True
@@ -4894,7 +4894,7 @@ Public Class Form1
     Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
         Dim dlg = New ImageLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1)
         Dim effect = New VFVideoEffectImageLogo(True, effectName)
 
         VideoCapture1.Video_Effects_Add(effect)
@@ -4926,7 +4926,7 @@ Public Class Form1
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
         Dim dlg = New TextLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1)
         Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         VideoCapture1.Video_Effects_Add(effect)

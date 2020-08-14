@@ -350,12 +350,12 @@ Public Class Form1
             VideoEdit1.ChromaKey = Nothing
         End If
 
-        If (Not File.Exists(edChromaKeyImage.Text)) Then
-            MessageBox.Show("Chroma-key background file doesn't exists.")
-            Return
-        End If
-
         If (cbChromaKeyEnabled.Checked) Then
+            If (Not File.Exists(edChromaKeyImage.Text)) Then
+                MessageBox.Show("Chroma-key background file doesn't exists.")
+                Return
+            End If
+
             VideoEdit1.ChromaKey = New ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
             VideoEdit1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
             VideoEdit1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F

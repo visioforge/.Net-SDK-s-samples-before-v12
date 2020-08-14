@@ -159,7 +159,7 @@ namespace Push_Source_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -573,7 +573,7 @@ namespace Push_Source_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;

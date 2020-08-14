@@ -404,7 +404,7 @@ Public Class Form1
     End Sub
     Private Sub SetWMAOutput(ByRef wmaOutput As VFWMAOutput)
         If (wmvSettingsDialog Is Nothing) Then
-            wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1.Core)
+            wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1)
         End If
 
         wmvSettingsDialog.WMA = True
@@ -413,7 +413,7 @@ Public Class Form1
 
     Private Sub SetWMVOutput(ByRef wmvOutput As VFWMVOutput)
         If (wmvSettingsDialog Is Nothing) Then
-            wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1.Core)
+            wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1)
         End If
 
         wmvSettingsDialog.WMA = False
@@ -2577,7 +2577,7 @@ Public Class Form1
                 aviSettingsDialog.ShowDialog(Me)
             Case 2
                 If (wmvSettingsDialog Is Nothing) Then
-                    wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1.Core)
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1)
                 End If
 
                 wmvSettingsDialog.WMA = False
@@ -2608,7 +2608,7 @@ Public Class Form1
                 m4aSettingsDialog.ShowDialog(Me)
             Case 7
                 If (wmvSettingsDialog Is Nothing) Then
-                    wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1.Core)
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoEdit1)
                 End If
 
                 wmvSettingsDialog.WMA = True
@@ -2774,7 +2774,7 @@ Public Class Form1
     Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
         Dim dlg = New ImageLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(VideoEdit1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(VideoEdit1)
         Dim effect = New VFVideoEffectImageLogo(True, effectName)
 
         VideoEdit1.Video_Effects_Add(effect)
@@ -2806,7 +2806,7 @@ Public Class Form1
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
         Dim dlg = New TextLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(VideoEdit1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(VideoEdit1)
         Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         VideoEdit1.Video_Effects_Add(effect)
@@ -2838,13 +2838,13 @@ Public Class Form1
             VideoEdit1.ChromaKey.Dispose()
             VideoEdit1.ChromaKey = Nothing
         End If
-
-        If (Not File.Exists(edChromaKeyImage.Text)) Then
-            MessageBox.Show("Chroma-key background file doesn't exists.")
-            Return
-        End If
-
+        
         If (cbChromaKeyEnabled.Checked) Then
+            If (Not File.Exists(edChromaKeyImage.Text)) Then
+                MessageBox.Show("Chroma-key background file doesn't exists.")
+                Return
+            End If
+
             VideoEdit1.ChromaKey = New ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
             VideoEdit1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
             VideoEdit1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F

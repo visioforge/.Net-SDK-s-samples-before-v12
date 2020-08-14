@@ -1911,6 +1911,11 @@ Public Class Form1
         End If
 
         If (cbChromaKeyEnabled.Checked) Then
+            If (Not File.Exists(edChromaKeyImage.Text)) Then
+                MessageBox.Show("Chroma-key background file doesn't exists.")
+                Return
+            End If
+
             MediaPlayer1.ChromaKey = New ChromaKeySettings(New Bitmap(edChromaKeyImage.Text))
             MediaPlayer1.ChromaKey.Smoothing = tbChromaKeySmoothing.Value / 1000.0F
             MediaPlayer1.ChromaKey.ThresholdSensitivity = tbChromaKeyThresholdSensitivity.Value / 1000.0F
@@ -2951,7 +2956,7 @@ Public Class Form1
     Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
         Dim dlg = New ImageLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1)
         Dim effect = New VFVideoEffectImageLogo(True, effectName)
 
         MediaPlayer1.Video_Effects_Add(effect)
@@ -2983,7 +2988,7 @@ Public Class Form1
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
         Dim dlg = New TextLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(MediaPlayer1)
         Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         MediaPlayer1.Video_Effects_Add(effect)

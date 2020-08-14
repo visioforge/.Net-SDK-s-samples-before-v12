@@ -518,7 +518,7 @@ namespace Separate_Capture_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -723,7 +723,7 @@ namespace Separate_Capture_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;

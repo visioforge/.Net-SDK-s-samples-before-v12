@@ -215,7 +215,7 @@ namespace Main_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -226,7 +226,7 @@ namespace Main_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
             }
 
             wmvSettingsDialog.WMA = true;
@@ -1444,14 +1444,14 @@ namespace Main_Demo
                 VideoEdit1.ChromaKey = null;
             }
 
-            if (!File.Exists(edChromaKeyImage.Text))
-            {
-                MessageBox.Show("Chroma-key background file doesn't exists.");
-                return;
-            }
-
             if (cbChromaKeyEnabled.IsChecked == true)
             {
+                if (!File.Exists(edChromaKeyImage.Text))
+                {
+                    MessageBox.Show("Chroma-key background file doesn't exists.");
+                    return;
+                }
+
                 VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                                            {
                                                Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),
@@ -3023,7 +3023,7 @@ namespace Main_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -3080,7 +3080,7 @@ namespace Main_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoEdit1);
                         }
 
                         wmvSettingsDialog.WMA = true;
@@ -3217,7 +3217,7 @@ namespace Main_Demo
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoEdit1.Core);
+            var name = dlg.GenerateNewEffectName(VideoEdit1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoEdit1.Video_Effects_Add(effect);
@@ -3254,7 +3254,7 @@ namespace Main_Demo
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoEdit1.Core);
+            var name = dlg.GenerateNewEffectName(VideoEdit1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoEdit1.Video_Effects_Add(effect);

@@ -179,7 +179,7 @@ namespace Decklink_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -236,7 +236,7 @@ namespace Decklink_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = true;
@@ -565,7 +565,7 @@ namespace Decklink_Demo
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -580,7 +580,7 @@ namespace Decklink_Demo
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -980,7 +980,7 @@ namespace Decklink_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;

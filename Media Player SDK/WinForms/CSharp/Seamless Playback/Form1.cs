@@ -108,7 +108,7 @@
             }
         }
 
-        private async Task PlayFile(string filename, MediaPlayer player)
+        private async Task PlayFileAsync(string filename, MediaPlayer player)
         {
             player.FilenamesOrURL.Clear();
             player.FilenamesOrURL.Add(filename);
@@ -138,10 +138,10 @@
 
             MediaPlayer1.Show();
             MediaPlayer2.Hide();
-            await PlayFile(sourceFiles[0], MediaPlayer1);
+            await this.PlayFileAsync(sourceFiles[0], MediaPlayer1);
             sourceFiles.RemoveAt(0);
 
-            await PlayFile(sourceFiles[0], MediaPlayer2);
+            await this.PlayFileAsync(sourceFiles[0], MediaPlayer2);
             sourceFiles.RemoveAt(0);
             await MediaPlayer2.PauseAsync();
         }
@@ -172,7 +172,7 @@
             await MediaPlayer2.ResumeAsync();
             if (sourceFiles.Count > 0)
             {
-                PlayFile(sourceFiles[0], MediaPlayer1);
+                await this.PlayFileAsync(sourceFiles[0], MediaPlayer1);
                 sourceFiles.RemoveAt(0);
                 await MediaPlayer1.PauseAsync();
             }
@@ -190,7 +190,7 @@
             await MediaPlayer1.ResumeAsync();
             if (sourceFiles.Count > 0)
             {
-                PlayFile(sourceFiles[0], MediaPlayer2);
+                await this.PlayFileAsync(sourceFiles[0], MediaPlayer2);
                 sourceFiles.RemoveAt(0);
                 await MediaPlayer2.PauseAsync();
             }

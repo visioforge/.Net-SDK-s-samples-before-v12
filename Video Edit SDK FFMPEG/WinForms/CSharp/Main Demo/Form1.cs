@@ -314,15 +314,15 @@ namespace VideoEdit_CS_Demo
                 VideoEdit1.ChromaKey.Dispose();
                 VideoEdit1.ChromaKey = null;
             }
-
-            if (!File.Exists(edChromaKeyImage.Text))
-            {
-                MessageBox.Show("Chroma-key background file doesn't exists.");
-                return;
-            }
-
+            
             if (cbChromaKeyEnabled.Checked)
             {
+                if (!File.Exists(edChromaKeyImage.Text))
+                {
+                    MessageBox.Show("Chroma-key background file doesn't exists.");
+                    return;
+                }
+
                 VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                                            {
                                                Smoothing = tbChromaKeySmoothing.Value / 1000f,

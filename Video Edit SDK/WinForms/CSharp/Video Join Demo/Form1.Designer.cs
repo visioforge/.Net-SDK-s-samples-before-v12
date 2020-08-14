@@ -265,6 +265,7 @@
             this.VideoEdit1.Barcode_Reader_Enabled = false;
             this.VideoEdit1.Barcode_Reader_Type = VisioForge.Types.VFBarcodeType.Auto;
             this.VideoEdit1.ChromaKey = null;
+            this.VideoEdit1.CustomRedist_Auto = true;
             this.VideoEdit1.CustomRedist_Enabled = false;
             this.VideoEdit1.CustomRedist_Path = null;
             this.VideoEdit1.Debug_Dir = "";

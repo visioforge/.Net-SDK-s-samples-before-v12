@@ -57,8 +57,7 @@ namespace Main_Demo
 
             pnChromaKeyColor.Fill = new SolidColorBrush(System.Windows.Media.Color.FromArgb(255, 128, 218, 128));
         }
-
-
+        
         private void btSelectOutput_Click(object sender, RoutedEventArgs e)
         {
             if (saveFileDialog1.ShowDialog() == true)
@@ -290,20 +289,25 @@ namespace Main_Demo
 
         private void ConfigureChromaKey()
         {
+            if (VideoEdit1 == null)
+            {
+                return;
+            }
+
             if (VideoEdit1.ChromaKey != null)
             {
                 VideoEdit1.ChromaKey.Dispose();
                 VideoEdit1.ChromaKey = null;
             }
-
-            if (!File.Exists(edChromaKeyImage.Text))
-            {
-                MessageBox.Show("Chroma-key background file doesn't exists.");
-                return;
-            }
-
+            
             if (cbChromaKeyEnabled.IsChecked == true)
             {
+                if (!File.Exists(edChromaKeyImage.Text))
+                {
+                    MessageBox.Show("Chroma-key background file doesn't exists.");
+                    return;
+                }
+
                 VideoEdit1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                                            {
                                                Smoothing = (float)(tbChromaKeySmoothing.Value / 1000f),

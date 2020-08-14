@@ -1455,15 +1455,15 @@ namespace VideoCapture_CSharp_Demo
                 VideoCapture1.ChromaKey.Dispose();
                 VideoCapture1.ChromaKey = null;
             }
-
-            if (!File.Exists(edChromaKeyImage.Text))
-            {
-                MessageBox.Show("Chroma-key background file doesn't exists.");
-                return;
-            }
-
+            
             if (cbChromaKeyEnabled.Checked)
             {
+                if (!File.Exists(edChromaKeyImage.Text))
+                {
+                    MessageBox.Show("Chroma-key background file doesn't exists.");
+                    return;
+                }
+
                 VideoCapture1.ChromaKey = new ChromaKeySettings(new Bitmap(edChromaKeyImage.Text))
                                               {
                                                   Smoothing = tbChromaKeySmoothing.Value / 1000f,
@@ -1879,7 +1879,7 @@ namespace VideoCapture_CSharp_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -1890,7 +1890,7 @@ namespace VideoCapture_CSharp_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = true;
@@ -5556,7 +5556,7 @@ namespace VideoCapture_CSharp_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;
@@ -5613,7 +5613,7 @@ namespace VideoCapture_CSharp_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = true;
@@ -5971,7 +5971,7 @@ namespace VideoCapture_CSharp_Demo
         {
             var dlg = new TextLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectTextLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);
@@ -6008,7 +6008,7 @@ namespace VideoCapture_CSharp_Demo
         {
             var dlg = new ImageLogoSettingsDialog();
 
-            var name = dlg.GenerateNewEffectName(VideoCapture1.Core);
+            var name = dlg.GenerateNewEffectName(VideoCapture1);
             var effect = new VFVideoEffectImageLogo(true, name);
 
             VideoCapture1.Video_Effects_Add(effect);

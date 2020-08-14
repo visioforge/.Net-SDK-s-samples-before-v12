@@ -15,8 +15,6 @@
     {
         private List<Bitmap> _images = new List<Bitmap>();
 
-        private int _imageIndex;
-
         private int _imageWidth;
 
         private int _imageHeight;
@@ -24,8 +22,6 @@
         private Rectangle _imageRect;
 
         private long _frameDuration;
-
-        private long _frameTime;
 
         private string[] IMAGE_SEARCH_PATTERN = { "*.jpeg", "*.jpg", "*.bmp", "*.png" };
 
@@ -59,9 +55,6 @@
             }
 
             _images.Clear();
-            _imageIndex = 0;
-            _frameTime = 0;
-
             _imageWidth = Convert.ToInt32(edVideoWidth.Text);
             _imageHeight = Convert.ToInt32(edVideoHeight.Text);
             _imageRect = new Rectangle(0, 0, _imageWidth, _imageHeight);
@@ -70,7 +63,7 @@
             foreach (var file in files)
             {
                 var bmp = new Bitmap(file);
-                var res = ImageHelper.ResizeImage(bmp, _imageWidth, _imageHeight);
+                var res = bmp.ResizeImage(_imageWidth, _imageHeight);
                 bmp.Dispose();
 
                 _images.Add(res);

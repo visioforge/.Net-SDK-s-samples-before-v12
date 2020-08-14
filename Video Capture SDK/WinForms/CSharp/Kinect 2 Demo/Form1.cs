@@ -80,7 +80,7 @@ namespace Kinect_2_Demo
         {
             if (wmvSettingsDialog == null)
             {
-                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
             }
 
             wmvSettingsDialog.WMA = false;
@@ -359,7 +359,7 @@ namespace Kinect_2_Demo
 
             VideoCapture1.Audio_PlayAudio = false;
 
-            kinect.Init(VideoCapture1.Core);
+            kinect.Init(VideoCapture1);
             kinect.Start();
 
             tcMain.SelectedIndex = 2;
@@ -595,7 +595,7 @@ namespace Kinect_2_Demo
                     {
                         if (wmvSettingsDialog == null)
                         {
-                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1.Core);
+                            wmvSettingsDialog = new WMVSettingsDialog(VideoCapture1);
                         }
 
                         wmvSettingsDialog.WMA = false;

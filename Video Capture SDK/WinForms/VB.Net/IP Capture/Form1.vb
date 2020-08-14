@@ -140,7 +140,7 @@ Public Class Form1
 
     Private Sub SetWMVOutput(ByRef wmvOutput As VFWMVOutput)
         If (wmvSettingsDialog Is Nothing) Then
-            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+            wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1)
         End If
 
         wmvSettingsDialog.WMA = False
@@ -632,7 +632,7 @@ Public Class Form1
                 aviSettingsDialog.ShowDialog(Me)
             Case 2
                 If (wmvSettingsDialog Is Nothing) Then
-                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1.Core)
+                    wmvSettingsDialog = New WMVSettingsDialog(VideoCapture1)
                 End If
 
                 wmvSettingsDialog.WMA = False
@@ -883,7 +883,7 @@ Public Class Form1
     Private Sub btImageLogoAdd_Click(sender As Object, e As EventArgs) Handles btImageLogoAdd.Click
         Dim dlg = new ImageLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1)
         Dim effect = new VFVideoEffectImageLogo(true, effectName)
 
         VideoCapture1.Video_Effects_Add(effect)
@@ -897,7 +897,7 @@ Public Class Form1
     Private Sub btTextLogoAdd_Click(sender As Object, e As EventArgs) Handles btTextLogoAdd.Click
         Dim dlg = New TextLogoSettingsDialog()
 
-        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1.Core)
+        Dim effectName = dlg.GenerateNewEffectName(VideoCapture1)
         Dim effect = New VFVideoEffectTextLogo(True, effectName)
 
         VideoCapture1.Video_Effects_Add(effect)
