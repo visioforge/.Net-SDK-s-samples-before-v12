@@ -144,6 +144,9 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="visioforge_main_icon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

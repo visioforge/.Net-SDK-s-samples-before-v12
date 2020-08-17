@@ -1975,6 +1975,7 @@ Public Class Form1
 
         tmRecording.Stop()
 
+        VideoCapture1.Video_Filters_Clear()
         Await VideoCapture1.StopAsync()
 
         If cbMultiscreenDrawOnPanels.Checked Then
@@ -2004,7 +2005,6 @@ Public Class Form1
         cbPIPDevices.Items.Clear()
 
         lbFilters.Items.Clear()
-        VideoCapture1.Video_Filters_Clear()
     End Sub
 
     ' ReSharper disable once UnusedParameter.Local

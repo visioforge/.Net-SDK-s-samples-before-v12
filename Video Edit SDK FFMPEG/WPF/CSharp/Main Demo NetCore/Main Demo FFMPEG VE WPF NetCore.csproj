@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
     <RootNamespace>Main_Demo</RootNamespace>
     <Prefer32Bit>true</Prefer32Bit>
     <PlatformTarget>x86</PlatformTarget>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

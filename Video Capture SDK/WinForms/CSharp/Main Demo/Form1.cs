@@ -2494,6 +2494,7 @@ namespace VideoCapture_CSharp_Demo
         {
             tmRecording.Stop();
 
+            VideoCapture1.Video_Filters_Clear();
             await VideoCapture1.StopAsync();
 
             if (cbMultiscreenDrawOnPanels.Checked)
@@ -2523,7 +2524,6 @@ namespace VideoCapture_CSharp_Demo
             cbPIPDevices.Items.Clear();
 
             lbFilters.Items.Clear();
-            VideoCapture1.Video_Filters_Clear();
         }
 
         /// <summary>

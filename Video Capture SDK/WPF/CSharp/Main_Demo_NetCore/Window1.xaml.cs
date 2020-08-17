@@ -2330,6 +2330,7 @@ namespace Main_Demo
 
         private async void btStop_Click(object sender, RoutedEventArgs e)
         {
+            VideoCapture1.Video_Filters_Clear();
             await VideoCapture1.StopAsync();
 
             // if ((bool)cbUseAdditionalScreens.IsChecked)
@@ -2354,8 +2355,7 @@ namespace Main_Demo
             cbPIPDevices.Items.Clear();
 
             lbFilters.Items.Clear();
-            VideoCapture1.Video_Filters_Clear();
-
+            
             tmRecording.Stop();
         }
 

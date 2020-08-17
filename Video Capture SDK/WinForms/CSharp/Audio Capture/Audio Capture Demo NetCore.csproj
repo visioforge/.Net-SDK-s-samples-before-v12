@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>VisioForge_SDK_4_Audio_Capture_CSharp</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
