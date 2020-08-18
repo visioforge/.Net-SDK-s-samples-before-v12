@@ -1,3 +1,5 @@
+# [New repository for v12 samples](https://github.com/visioforge/.Net-SDK-s-samples)
+
 # NuGet usage
 
 Call Build on required project to restore NuGet packages for project and build it. Do not call build for entire solution.
