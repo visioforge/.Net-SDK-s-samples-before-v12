@@ -13,6 +13,7 @@ using System.Windows.Forms;
 namespace read_file_info
 {
     using VisioForge.Controls.VideoCapture;
+    using VisioForge.Shared;
     using VisioForge.Tools.MediaInfo;
     using VisioForge.Tools.TagLib;
     using VisioForge.Types;
@@ -22,6 +23,8 @@ namespace read_file_info
         public Form1()
         {
             InitializeComponent();
+
+            RedistCheck.ConfigureLocalRedist(out var _);
         }
 
         private void btOpenFile_Click(object sender, EventArgs e)

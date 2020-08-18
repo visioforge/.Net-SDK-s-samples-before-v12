@@ -37,7 +37,7 @@ Public Class Form1
         MediaPlayer1.FilenamesOrURL.Add(edFilename.Text)
         MediaPlayer1.Audio_PlayAudio = True
         MediaPlayer1.Info_UseLibMediaInfo = True
-        MediaPlayer1.Source_Mode = VFMediaPlayerSource.File_DS
+        MediaPlayer1.Source_Mode = VFMediaPlayerSource.LAV
 
         MediaPlayer1.Audio_OutputDevice = "Default DirectSound Device"
 
