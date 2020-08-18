@@ -1,5 +1,0 @@
-c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\webcam-preview\obj\Debug\webcam-preview (NuGet).csprojAssemblyReference.cache
-c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\webcam-preview\obj\Debug\webcam_preview.Form1.resources
-c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\webcam-preview\obj\Debug\webcam_preview.Properties.Resources.resources
-c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\webcam-preview\obj\Debug\webcam-preview (NuGet).csproj.GenerateResource.cache
-c:\Projects\_Projects\MediaFrameworkDotNet\_SETUP\FILES\Demos\Video Capture SDK\WinForms\CSharp\_CodeSnippets\webcam-preview\obj\Debug\webcam-preview (NuGet).csproj.CoreCompileInputs.cache
