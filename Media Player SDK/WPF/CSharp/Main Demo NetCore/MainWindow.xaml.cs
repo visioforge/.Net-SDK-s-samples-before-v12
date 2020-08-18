@@ -12,6 +12,7 @@ namespace Main_Demo
     using System.Drawing;
     using System.Globalization;
     using System.IO;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Forms;
@@ -1448,7 +1449,7 @@ namespace Main_Demo
             volumeMeter2.Clear();
         }
 
-        private async void btStop_Click(object sender, RoutedEventArgs e)
+        private async Task StopAll()
         {
             await MediaPlayer1.StopAsync().ConfigureAwait(false);
 
@@ -1462,6 +1463,11 @@ namespace Main_Demo
             {
                 Dispatcher.Invoke(ClearUI);
             }
+        }
+
+        private async void btStop_Click(object sender, RoutedEventArgs e)
+        {
+            await StopAll();
         }
 
         private async void btResume_Click(object sender, RoutedEventArgs e)
@@ -2849,9 +2855,9 @@ namespace Main_Demo
             MediaPlayer1.PreviousFrame();
         }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            btStop_Click(null, null);
+            await StopAll();
         }
 
         private void BtTextLogoAdd_Click(object sender, RoutedEventArgs e)

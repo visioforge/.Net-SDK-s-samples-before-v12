@@ -90,6 +90,10 @@ del /S /Q "Timeshift Demo\bin\*"
 del /S /Q "Timeshift Demo\obj\*"
 del /S /Q "Timeshift Demo\obj_netcore\*"
 
+del /S /Q "Video From Images Demo\bin\*"
+del /S /Q "Video From Images Demo\obj\*"
+del /S /Q "Video From Images Demo\obj_netcore\*"
+
 del /S /Q "Window Capture\bin\*"
 del /S /Q "Window Capture\obj\*"
 del /S /Q "Window Capture\obj_netcore\*"
