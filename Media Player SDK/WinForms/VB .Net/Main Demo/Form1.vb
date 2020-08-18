@@ -7,6 +7,8 @@ Imports VisioForge.Types.VideoEffects ' ReSharper disable InconsistentNaming
 
 Imports System.IO
 Imports VisioForge.Tools.MediaInfo
+Imports VisioForge.Types
+Imports VisioForge.Tools
 
 Public Class Form1
     Private ReadOnly audioChannelMapperItems As List(Of AudioChannelMapperItem) = New List(Of AudioChannelMapperItem)
